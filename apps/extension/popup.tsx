@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-import { trpc } from "~utils/trpc"
+import { trpc } from "~libs/trpc"
 
 function App() {
   const [data, setData] = useState([])

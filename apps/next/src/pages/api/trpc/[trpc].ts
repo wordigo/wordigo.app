@@ -13,7 +13,6 @@ const handler = createNextApiHandler({
   createContext: createTRPCContext,
 })
 
-
 const nextApiHandler = (req, res) => {
   return new Promise((resolve, reject) => {
     cors(req, res, (error) => {

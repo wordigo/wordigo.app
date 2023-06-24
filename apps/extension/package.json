@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@acme/api": "^0.1.0",
+    "@plasmohq/storage": "^1.6.1",
     "@trpc/client": "^10.19.1",
     "@trpc/react": "^9.27.4",
     "cors": "^2.8.5",
@@ -30,8 +31,12 @@
     "typescript": "5.0.4"
   },
   "manifest": {
+    "permissions": [
+      "cookies",
+      "contextMenus"
+    ],
     "host_permissions": [
-      "https://*/*"
+      "http://localhost:3000/"
     ]
   }
 }
