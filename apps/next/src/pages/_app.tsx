@@ -1,13 +1,13 @@
 import { useState } from "react";
 import type { AppProps } from "next/app";
+import { api } from "@/libs/trpc";
 import {
   type Session,
   createBrowserSupabaseClient,
 } from "@supabase/auth-helpers-nextjs";
 import { SessionContextProvider } from "@supabase/auth-helpers-react";
 
-import { api } from "~/libs/trpc";
-import "../styles/globals.css";
+import "@/styles/globals.css";
 
 function MyApp({
   Component,
