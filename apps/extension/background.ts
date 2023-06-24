@@ -1,5 +1,5 @@
 import { Storage } from "@plasmohq/storage"
-import { trpc } from "~libs/trpc"
+import trpc from "~libs/trpc"
 
 export { }
 
