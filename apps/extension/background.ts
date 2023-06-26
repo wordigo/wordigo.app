@@ -1,7 +1,9 @@
 import { Storage } from "@plasmohq/storage"
 import trpc from "~libs/trpc"
 
-export { }
+const storage = new Storage({
+  area: "local"
+})
 
 chrome.contextMenus.create({
   id: "translateMenuItem",
@@ -18,24 +20,33 @@ chrome.contextMenus.onClicked.addListener(function (info, tab) {
 })
 
 async function translateText(selectedText) {
-  console.log(selectedText)
-  const test = await trpc.post.all.query()
-  console.log(test)
-  storage.set("lastText", selectedText)
-  // Tercüme işlemleri burada gerçekleştirilir
-  storage.getAll().then((res) => {
-    console.log(res)
+  const post = await trpc.translation.translate.mutate({
+    query: selectedText,
+    sourceLanguage: "en",
+    targetLanguage: "tr"
   })
+  console.log(post)
 }
-
-const storage = new Storage({
-  area: "local"
-})
 
 storage.getAll().then((res) => {
   console.log(res)
-})
+}).catch(() => { })
 
 chrome.cookies.get({ url: "http://localhost:3000", name: "supabase-auth-token" }, async (result) => {
-  await storage.set("token", result.value)
+  await storage.set("token", result?.value)
 })
+
+chrome.runtime.onMessage.addListener((request) => {
+  if (request.open) {
+    return new Promise(resolve => {
+      console.log(chrome.action)
+
+
+      chrome.action.getPopup({}, (popup) => {
+        return resolve(popup)
+      })
+    })
+  }
+})
+
+export { }

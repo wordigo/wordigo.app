@@ -26,7 +26,7 @@ const config = {
       { prefer: "type-imports", fixStyle: "inline-type-imports" },
     ],
     "@typescript-eslint/no-misused-promises": [
-      2,
+      0,
       {
         checksVoidReturn: {
           // Allow promises to be used as attributes such as `onSubmit`

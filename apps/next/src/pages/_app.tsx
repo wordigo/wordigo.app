@@ -7,8 +7,6 @@ import {
 } from "@supabase/auth-helpers-nextjs";
 import { SessionContextProvider } from "@supabase/auth-helpers-react";
 
-import "@/styles/globals.css";
-
 function MyApp({
   Component,
   pageProps,
@@ -17,7 +15,7 @@ function MyApp({
 
   return (
     <SessionContextProvider
-      supabaseClient={supabaseClient}
+      supabaseClient={supabaseClient as never}
       initialSession={pageProps.initialSession}
     >
       <Component {...pageProps} />

@@ -4,4 +4,6 @@ packages:
   - packages/api
   - packages/auth
   - packages/db
+  - packages/ui
+  - packages/tsconfig
   - packages/config/*

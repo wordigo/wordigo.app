@@ -6,9 +6,12 @@
 
 /** @type {import("next").NextConfig} */
 const config = {
+  experimental: {
+    appDir: false
+  },
   reactStrictMode: true,
   /** Enables hot reloading for local packages without a build step */
-  transpilePackages: ["@acme/api", "@acme/db"],
+  transpilePackages: ["@acme/ui", "@acme/api", "@acme/db"],
 
   // Allow optimizing avatar images from GitHub
   images: {

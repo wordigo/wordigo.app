@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@acme/ui";
 
-const Home = () => {
-  return <Button>Hello World</Button>;
+export const ToastDemo = () => {
+  return <Button>Show Toast</Button>;
 };
 
-export default Home;
+export default ToastDemo;
