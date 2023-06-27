@@ -1,26 +1,14 @@
-import { useState } from "react";
 import type { AppProps } from "next/app";
 import { api } from "@/libs/trpc";
-import {
-  type Session,
-  createBrowserSupabaseClient,
-} from "@supabase/auth-helpers-nextjs";
-import { SessionContextProvider } from "@supabase/auth-helpers-react";
+import { type Session } from "@supabase/auth-helpers-nextjs";
+
+import "@acme/ui/styles/globals.css";
 
 function MyApp({
   Component,
   pageProps,
 }: AppProps<{ initialSession: Session | null }>) {
-  const [supabaseClient] = useState(() => createBrowserSupabaseClient());
-
-  return (
-    <SessionContextProvider
-      supabaseClient={supabaseClient as never}
-      initialSession={pageProps.initialSession}
-    >
-      <Component {...pageProps} />
-    </SessionContextProvider>
-  );
+  return <Component {...pageProps} />;
 }
 
 export default api.withTRPC(MyApp);
