@@ -16,7 +16,7 @@ export const ToastDemo = () => {
   return (
     <div>
       <MainNav />
-      <Badge variant="default">
+      <Badge variant="default" className="bg-red-500">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, at.
       </Badge>
       <Button onClick={showToast}>Show Toast</Button>

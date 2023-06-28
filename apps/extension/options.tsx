@@ -1,6 +1,6 @@
 import { Button, Input, ToastAction, Toaster, useToast } from "@acme/ui"
 
-import "@acme/ui/styles/globals.css"
+// import "@acme/ui/styles/globals.css"
 
 export const ToastDemo = () => {
   const { toast } = useToast()
