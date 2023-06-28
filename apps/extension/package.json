@@ -10,9 +10,9 @@
     "package": "plasmo package"
   },
   "dependencies": {
-    "@acme/api": "^0.1.0",
-    "@acme/tailwind-config": "^0.1.0",
-    "@acme/ui": "^0.0.0",
+    "@acme/api": "*",
+    "@acme/tailwind-config": "*",
+    "@acme/ui": "*",
     "@plasmohq/storage": "^1.6.1",
     "@trpc/client": "^10.19.1",
     "@trpc/react": "^9.27.4",
