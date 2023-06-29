@@ -1,25 +1,37 @@
-import { Button, Input, ToastAction, Toaster, useToast } from "@acme/ui"
+import { Label, Switch } from "@acme/ui"
 
-// import "@acme/ui/styles/globals.css"
+import "@acme/ui/styles/globals.css"
 
-export const ToastDemo = () => {
-  const { toast } = useToast()
+import { useEffect, useState } from "react"
 
-  const showToast = () => {
-    toast({
-      title: "Scheduled: Catch up ",
-      description: "Friday, February 10, 2023 at 5:57 PM",
-      action: <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
-    })
+import { Storage } from "@plasmohq/storage"
+
+const storage = new Storage({
+  area: "local"
+})
+
+export const Options = () => {
+  const [status, setStatus] = useState<boolean>()
+  const updateStorage = async () => {
+    setStatus(!status)
+    await storage.set("translateStatus", !status)
   }
 
+  const getStatus = async () => {
+    const translateStatus = await storage.get("translateStatus")
+    setStatus(translateStatus as never)
+  }
+
+  useEffect(() => {
+    getStatus()
+  }, [])
+
   return (
-    <div>
-      <Toaster />
-      <Button onClick={showToast}>Show Toast</Button>
-      <Input placeholder="Hello World" />
+    <div className="p-4 flex flex-col">
+      <Label>Translate Status:</Label>
+      <Switch checked={status} onCheckedChange={updateStorage} />
     </div>
   )
 }
 
-export default ToastDemo
+export default Options

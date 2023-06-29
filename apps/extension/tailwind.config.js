@@ -1,7 +1,1 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  mode: "jit",
-  darkMode: "class",
-  content: ["./**/*.tsx"],
-  plugins: []
-}
+module.exports = require('@acme/tailwind-config')

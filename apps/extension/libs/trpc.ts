@@ -13,7 +13,7 @@ const storage = new Storage({
 })
 
 function getBaseUrl() {
-  return `http://localhost:3000` // dev SSR should use localhost
+  return `https://monorepo-next-nu.vercel.app` // dev SSR should use localhost
 }
 
 
