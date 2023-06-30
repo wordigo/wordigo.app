@@ -2,7 +2,7 @@
  * @type {import('prettier').Options}
  */
 module.exports = {
-  printWidth: 80,
+  printWidth: 130,
   tabWidth: 2,
   useTabs: false,
   semi: false,

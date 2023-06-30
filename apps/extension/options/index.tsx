@@ -1,0 +1,23 @@
+import { Separator } from "@acme/ui"
+
+import "@acme/ui/styles/globals.css"
+
+import SettingsLayout from "./layout"
+import SettingsForm from "./settings-form"
+
+export const SettingsPage = () => {
+  return (
+    <SettingsLayout>
+      <div className="space-y-4">
+        <div>
+          <h3 className="text-lg font-medium">General</h3>
+          <p className="text-sm text-muted-foreground">Update your translation preference and select target language..</p>
+        </div>
+        <Separator />
+        <SettingsForm />
+      </div>
+    </SettingsLayout>
+  )
+}
+
+export default SettingsPage

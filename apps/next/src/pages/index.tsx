@@ -1,8 +1,10 @@
 import { MainNav } from "@/components/header";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 import { Badge, Button, Input, ToastAction, useToast } from "@acme/ui";
 
 export const ToastDemo = () => {
+  const supabase = useSupabaseClient();
   const { toast } = useToast();
 
   const showToast = () => {
@@ -16,7 +18,7 @@ export const ToastDemo = () => {
   return (
     <div>
       <MainNav />
-      <Badge variant="default" className="bg-red-500">
+      <Badge variant="default">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, at.
       </Badge>
       <Button onClick={showToast}>Show Toast</Button>

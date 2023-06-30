@@ -6,7 +6,8 @@ export default {
     './src/pages/**/*.{ts,tsx}',
     './src/components/**/*.{ts,tsx}',
     './src/app/**/*.{ts,tsx}',
-    './contents/*.{ts,tsx}',
+    './**/*.{ts,tsx}',
+    './*.{ts,tsx}',
     '../../packages/ui/components/**/*.{ts,tsx}',
   ],
   theme: {

@@ -1,4 +1,5 @@
 import type { AppRouter } from '@acme/api'
+import { sendToBackground } from "@plasmohq/messaging"
 import {
   createTRPCProxyClient,
   httpBatchLink,
@@ -6,16 +7,9 @@ import {
 } from '@trpc/client'
 import superjson from 'superjson'
 
-import { Storage } from "@plasmohq/storage"
-
-const storage = new Storage({
-  area: "local"
-})
-
 function getBaseUrl() {
   return `https://monorepo-next-nu.vercel.app` // dev SSR should use localhost
 }
-
 
 const trpc = createTRPCProxyClient<AppRouter>({
   transformer: superjson,
@@ -29,7 +23,9 @@ const trpc = createTRPCProxyClient<AppRouter>({
       url: `${getBaseUrl()}/api/trpc`,
       async headers() {
 
-        const token = await storage.get("token")
+        const token = await sendToBackground({
+          name: "getToken",
+        })
 
         return {
           authorization: token

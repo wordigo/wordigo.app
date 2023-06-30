@@ -5,7 +5,7 @@
 /** @type { PrettierConfig | SortImportsConfig | TailwindConfig } */
 const config = {
   arrowParens: "always",
-  printWidth: 80,
+  printWidth: 150,
   singleQuote: false,
   jsxSingleQuote: false,
   semi: true,
@@ -37,6 +37,6 @@ const config = {
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
   importOrderMergeDuplicateImports: true,
   importOrderCombineTypeAndValueImports: true,
-};
+}
 
-module.exports = config;
+module.exports = config
