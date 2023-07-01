@@ -1,30 +1,18 @@
-import { MainNav } from "@/components/header";
-import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import React from "react";
+import Section_1 from "@/components/home/Section_1";
+import { api } from "@/libs/trpc";
 
-import { Badge, Button, Input, ToastAction, useToast } from "@acme/ui";
-
-export const ToastDemo = () => {
-  const supabase = useSupabaseClient();
-  const { toast } = useToast();
-
-  const showToast = () => {
-    toast({
-      title: "Scheduled: Catch up ",
-      description: "Friday, February 10, 2023 at 5:57 PM",
-      action: <ToastAction altText="Goto schedule to undo">Undo</ToastAction>,
-    });
-  };
+export default function index() {
 
   return (
     <div>
-      <MainNav />
-      <Badge variant="default">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, at.
-      </Badge>
-      <Button onClick={showToast}>Show Toast</Button>
-      <Input placeholder="Hello World" />
+      <div>
+        <Section_1></Section_1>
+
+        <div className="bg-blue-400">
+          asdadsasdasd
+        </div>
+      </div>
     </div>
   );
-};
-
-export default ToastDemo;
+}
