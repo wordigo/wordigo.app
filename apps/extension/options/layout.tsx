@@ -1,8 +1,8 @@
 import { Separator, Toaster } from "@acme/ui"
 import type { PropsWithChildren } from "react"
-import { Fragment } from "react"
 
 import { SidebarNav } from "./components/sidebar-nav"
+import { TRPCProvider } from "./providers/trpc-provider"
 
 const sidebarNavItems = [
   {
@@ -13,7 +13,7 @@ const sidebarNavItems = [
 
 const SettingsLayout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
-    <Fragment>
+    <TRPCProvider>
       <div className="space-y-6 p-10 pb-16">
         <div className="space-y-0.5">
           <h2 className="text-2xl font-bold tracking-tight">Settings</h2>
@@ -28,7 +28,7 @@ const SettingsLayout: React.FC<PropsWithChildren> = ({ children }) => {
         </div>
       </div>
       <Toaster />
-    </Fragment>
+    </TRPCProvider>
   )
 }
 

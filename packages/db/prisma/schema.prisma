@@ -10,25 +10,44 @@ datasource db {
   schemas   = ["auth", "public"]
 }
 
-model Post {
-  id        String   @id @default(cuid())
+model Content {
+  id             String      @id @default(cuid())
+  message        String
+  translatedText String
+  isLearned      Boolean     @default(false)
+  picture        String?
+  Dictionary     Dictionary? @relation(fields: [dictionaryId], references: [id])
+  dictionaryId   String
+  author         Profile?    @relation(fields: [authorId], references: [id])
+  authorId       String
+
+  @@schema("public")
+}
+
+model Dictionary {
+  id        String    @id @default(cuid())
   title     String
   content   String
-  published Boolean  @default(false)
-  author    Profile? @relation(fields: [authorId], references: [id])
-  authorId  String?
+  published Boolean   @default(false)
+  author    Profile?  @relation(fields: [authorId], references: [id])
+  authorId  String
+  contents  Content[]
 
   @@schema("public")
 }
 
 model Profile {
-  id     String  @id @default(cuid())
-  name   String
-  image  String?
-  email  String?
-  userId String  @db.Uuid
-  user   users   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  posts  Post[]
+  id             String       @id @default(cuid())
+  name           String
+  avatar         String?
+  email          String?
+  country        String?
+  nativeLanguage String?
+  targetLanguage String?
+  userId         String       @db.Uuid
+  user           users        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  dictionarys    Dictionary[]
+  Content        Content[]
 
   @@schema("public")
 }

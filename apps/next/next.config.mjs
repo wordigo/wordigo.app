@@ -13,14 +13,18 @@ const config = {
   /** Enables hot reloading for local packages without a build step */
   transpilePackages: ["@acme/ui", "@acme/api", "@acme/db"],
 
-  // Allow optimizing avatar images from GitHub
   images: {
-    domains: ["avatars.githubusercontent.com", "api.dicebear.com"],
+    domains: ["api.dicebear.com"],
   },
 
   /** We already do linting and typechecking as separate tasks in CI */
   eslint: { ignoreDuringBuilds: !!process.env.CI },
   typescript: { ignoreBuildErrors: !!process.env.CI },
+
+  i18n: {
+    locales: ["tr-TR", "en-EN"],
+    defaultLocale: "en-EN"
+  }
 }
 
 export default config

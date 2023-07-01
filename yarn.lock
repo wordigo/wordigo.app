@@ -6587,6 +6587,11 @@ lucide-react@^0.244.0:
   resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.244.0.tgz#9626f44881830280012dad23afda7ddbcffff24b"
   integrity sha512-PeDVbx5PlIRrVvdxiuSxPfBo7sK5qrL3LbvvRoGVNiHYRAkBm/48lKqoioxcmp0bgsyJs9lMw7CdtGFvnMJbVg==
 
+lucide-react@^0.257.0:
+  version "0.257.0"
+  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.257.0.tgz#39babb647f22f88a67715662a78cbda937c0f40b"
+  integrity sha512-iP/RIvOhB8hI+AeocKXBleP9NopM1MgQbwB8hCfNdxYqJrQreJCsEvBtmXb3SS92kxwEGWp6ikJ0XQ6hqaYsdA==
+
 magic-string@^0.30.0:
   version "0.30.0"
   resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.30.0.tgz#fd58a4748c5c4547338a424e90fa5dd17f4de529"
@@ -6830,6 +6835,11 @@ needle@^3.1.0:
     debug "^3.2.6"
     iconv-lite "^0.6.3"
     sax "^1.2.4"
+
+next-themes@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/next-themes/-/next-themes-0.2.1.tgz#0c9f128e847979daf6c67f70b38e6b6567856e45"
+  integrity sha512-B+AKNfYNIzh0vqQQKqQItTS8evEouKD7H5Hj3kmuPERwddR2TxvDSFZuTj6T7Jfn1oyeUyJMydPl1Bkxkh0W7A==
 
 next-tick@^1.1.0:
   version "1.1.0"
