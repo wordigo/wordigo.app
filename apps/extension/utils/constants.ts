@@ -1,0 +1,2 @@
+export const TRANSLATE_CARD_WIDTH = 480
+export const TRANSLATE_CARD_HEIGHT = 200

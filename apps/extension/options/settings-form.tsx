@@ -1,5 +1,10 @@
 import {
   Button,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
   Form,
   FormControl,
   FormDescription,
@@ -7,6 +12,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  ScrollArea,
   Select,
   SelectContent,
   SelectGroup,
@@ -119,6 +125,19 @@ export const SettingsForm = () => {
             </FormItem>
           )}
         />
+        <DropdownMenu>
+          <DropdownMenuTrigger>Open</DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <ScrollArea className="h-[200px] w-[350px] rounded-md">
+              <DropdownMenuSeparator />
+              {supportLanguages.map((lang) => {
+                return (
+                  <DropdownMenuItem key={lang[0]}>{lang[1]}</DropdownMenuItem>
+                )
+              })}
+            </ScrollArea>
+          </DropdownMenuContent>
+        </DropdownMenu>
         <Button type="submit">Save Changes</Button>
       </form>
       <Toaster />

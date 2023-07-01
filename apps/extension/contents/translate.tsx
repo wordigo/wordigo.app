@@ -4,26 +4,29 @@ import {
   CardContent,
   CardFooter,
   CardHeader,
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-  Skeleton
+  CardTitle,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  ScrollArea,
+  Skeleton,
+  Textarea
 } from "@acme/ui"
 import { Settings, Volume2, X } from "lucide-react"
 
 import "@acme/ui/styles/globals.css"
 
+import { Portal } from '@radix-ui/react-portal'
+
 import styleText from "data-text:@acme/ui/styles/globals.css"
-import type { MouseEvent, PropsWithChildren } from "react"
+import type { MouseEvent } from "react"
 import { useEffect, useState } from "react"
 
 import { sendToBackground } from "@plasmohq/messaging"
 import { Storage } from "@plasmohq/storage"
 
-import { cn } from "~../../packages/ui/lib/utils"
+import { ChevronDown } from "lucide-react"
 import { supportLanguages } from "~common/supportedLanguages"
 import trpc from "~libs/trpc"
 import { TRPCProvider } from "~options/providers/trpc-provider"
@@ -41,25 +44,30 @@ export const getStyle = () => {
 const CTranslateLayout = () => {
   return (
     <TRPCProvider>
-      <CTranslate className="el-translator-contaier" />
+      <div className="deneme">
+        <CTranslate />
+      </div>
     </TRPCProvider>
   )
 }
 
-export const getShadowHostId = () => "el-translate-container"
+export const getShadowHostId = () => "el-translate-content"
 
-const CTranslate = ({ className }: PropsWithChildren<{ className: string }>) => {
+const CTranslate = () => {
   const [toggleState, setToggleState] = useState(false)
   const [cordinate, setCordinate] = useState({ x: 0, y: 0 })
-
+  const targetElement = document.querySelector<HTMLElement>("#el-translate-content")
   const { mutateAsync: handleTranslate, isLoading, data, reset } = trpc.translation.translate.useMutation({})
 
   const handleMouseUp = async (event) => {
-    const currentElement = event.target
-    const targetElement = document.querySelector("#el-translate-container")
     const { pageX: x, pageY: y } = event
+    const tag = event?.target?.tagName
 
-    if (targetElement && targetElement.contains(currentElement)) {
+    const currentElement = event.target as HTMLElement
+    const languageSelectorContainer = document.querySelector("#el-language-container")
+    const rootTranslatorContainer = document.querySelector<HTMLElement>("#el-translate-container")
+
+    if (languageSelectorContainer?.contains(currentElement) || targetElement?.contains(currentElement) || rootTranslatorContainer?.contains((currentElement)) || tag === "INPUT" || tag === "VIDEO" || tag === "TEXTAREA") {
       return
     }
 
@@ -82,19 +90,17 @@ const CTranslate = ({ className }: PropsWithChildren<{ className: string }>) => 
         else document.removeEventListener("mouseup", handleMouseUp)
       }
     })
-    ;() => {
-      document.removeEventListener("mouseup", handleMouseUp)
-      storage.unwatchAll()
-    }
+      ; () => {
+        document.removeEventListener("mouseup", handleMouseUp)
+        storage.unwatchAll()
+      }
   }, [])
 
   const openSettingsPage = async () => {
-    console.log("test")
-
     const opeendSettings = await sendToBackground({
       name: "openSettings"
     })
-    console.log(opeendSettings)
+    opeendSettings && setToggleState(false)
   }
 
   const handleAddLibrary = (event: MouseEvent<HTMLElement>) => {
@@ -114,29 +120,47 @@ const CTranslate = ({ className }: PropsWithChildren<{ className: string }>) => 
 
   if (toggleState)
     return (
-      <Card
-        tabIndex={50}
-        className={cn("w-[400px] absolute flex-col flex", className)}
-        style={{ top: cordinate.y + 10, left: cordinate.x - 50 }}>
-        <CardHeader className="flex flex-col space-y-0 px-4 py-2">
-          <div className="flex flex-row gap-x-2 items-center justify-between">
-            <Select>
-              <SelectTrigger className="w-40">
-                <SelectValue defaultValue="tr" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  {supportLanguages.map((lang) => {
-                    return (
-                      <SelectItem key={lang[0]} value={lang[0]}>
-                        {lang[1]}
-                      </SelectItem>
-                    )
-                  })}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-            <div className="flex gap-x-2">
+      <Portal>
+        <Card
+          tabIndex={1}
+          id="el-translate-container"
+          className="w-[400px] absolute flex-col flex"
+          style={{ top: cordinate.y + 10, left: cordinate.x - 50 }}>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 px-4 py-2">
+            <CardTitle className="!text-lg">Bussu Translater</CardTitle>
+            <div className="flex flex-row gap-x-2 items-center justify-between">
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <Button variant="outline" size="default" className="rounded-md !h-8 flex justify-between items-center gap-x-2">
+                    Türkçe
+                    <ChevronDown size={16} />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent id="el-language-container">
+                  <ScrollArea className="w-full h-60 rounded-md">
+                    {supportLanguages.map((lang) => {
+                      return (
+                        <DropdownMenuItem key={lang[0]}>{lang[1]}</DropdownMenuItem>
+                      )
+                    })}
+                  </ScrollArea>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          </CardHeader>
+          <CardContent className="!px-4 !pt-1 !pb-2">
+            {isLoading ? <CTranslate.Loading /> : <Textarea className="!opacity-75" disabled rows={2} value={data.translatedText} />}
+          </CardContent>
+          <CardFooter className="flex justify-between !px-4 !py-2">
+            <div className="flex gap-x-1">
+              <Button onClick={textToSpeech} size="icon" variant="outline">
+                <Volume2 className="cursor-pointer" size={16} />
+              </Button>
+              <Button onClick={handleAddLibrary} disabled variant="default">
+                Save to library
+              </Button>
+            </div>
+            <div className="flex gap-x-1">
               <Button onClick={openSettingsPage} size="icon" variant="outline">
                 <Settings size={16} />
               </Button>
@@ -144,20 +168,9 @@ const CTranslate = ({ className }: PropsWithChildren<{ className: string }>) => 
                 <X size={16} />
               </Button>
             </div>
-          </div>
-        </CardHeader>
-        <CardContent className="!px-4 !py-2">{isLoading ? <CTranslate.Loading /> : data.translatedText}</CardContent>
-        <CardFooter className="flex gap-x-2 !px-4 !py-2">
-          <Button onClick={textToSpeech} size="icon" variant="outline">
-            <Volume2 className="cursor-pointer" size={16} />
-          </Button>
-          <div className="flex space-x-4 text-sm text-muted-foreground">
-            <Button onClick={handleAddLibrary} disabled variant="default">
-              Save to library
-            </Button>
-          </div>
-        </CardFooter>
-      </Card>
+          </CardFooter>
+        </Card>
+      </Portal>
     )
 }
 
