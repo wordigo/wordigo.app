@@ -30,7 +30,6 @@ const Translate = () => {
 
 Translate.Layout = () => {
   const popover = usePopover({})
-  console.log(popover)
 
   return (
     <PopoverContext.Provider value={popover}>
