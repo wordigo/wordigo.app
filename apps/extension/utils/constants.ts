@@ -1,2 +1,5 @@
 export const TRANSLATE_CARD_WIDTH = 480
 export const TRANSLATE_CARD_HEIGHT = 200
+
+export const TRANSLATE_POPUP_TOP = 14
+export const TRANSLATE_POPUP_LEFT = 0

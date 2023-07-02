@@ -8,7 +8,7 @@ import { createTRPCReact } from "@trpc/react-query"
 import superjson from 'superjson'
 
 function getBaseUrl() {
-  return `https://monorepo-next-nu.vercel.app` // dev SSR should use localhost
+  return `http://localhost:3000` // dev SSR should use localhost
 }
 
 const trpc = createTRPCReact<AppRouter>()
