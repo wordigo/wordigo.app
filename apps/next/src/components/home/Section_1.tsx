@@ -63,7 +63,7 @@ export default function Section_1() {
           </div>
         </section>
 
-        <section className="w-[450px] min-w-[450px] rounded-2xl flex items-center flex-col bg-gradient-to-t from-white via-[#E1EFFE] to-[#E1EFFE]">
+        <section className="w-[450px] min-w-[450px] rounded-2xl flex items-center flex-col bg-gradient-to-t from-white via-[#f9fdff] to-[#f8fcff]">
           <div className="flex gap-6 mt-[20px]">
             <Select>
               <SelectTrigger className="w-[150px]">
