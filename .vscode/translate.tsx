@@ -1,3 +1,5 @@
+import { Settings, Volume2, X } from "lucide-react"
+
 import {
   Button,
   Card,
@@ -11,28 +13,23 @@ import {
   DropdownMenuTrigger,
   ScrollArea,
   Skeleton,
-  Textarea
+  Textarea,
 } from "@acme/ui"
-import { Settings, Volume2, X } from "lucide-react"
 
 import "@acme/ui/styles/globals.css"
-
-import { Portal } from '@radix-ui/react-portal'
-
-import styleText from "data-text:@acme/ui/styles/globals.css"
-import type { MouseEvent } from "react"
-import { useEffect, useState } from "react"
-
 import { sendToBackground } from "@plasmohq/messaging"
 import { Storage } from "@plasmohq/storage"
-
+import { Portal } from "@radix-ui/react-portal"
+import styleText from "data-text:@acme/ui/styles/globals.css"
 import { ChevronDown } from "lucide-react"
+import type { MouseEvent } from "react"
+import { useEffect, useState } from "react"
 import { supportLanguages } from "~common/supportedLanguages"
 import trpc from "~libs/trpc"
 import { TRPCProvider } from "~options/providers/trpc-provider"
 
 const storage = new Storage({
-  area: "local"
+  area: "local",
 })
 
 export const getStyle = () => {
@@ -67,9 +64,15 @@ const CTranslate = () => {
     const languageSelectorContainer = document.querySelector("#el-language-container")
     const rootTranslatorContainer = document.querySelector<HTMLElement>("#el-translate-container")
 
-    if (languageSelectorContainer?.contains(currentElement) || targetElement?.contains(currentElement) || rootTranslatorContainer?.contains((currentElement)) || tag === "INPUT" || tag === "VIDEO" || tag === "TEXTAREA") {
+    if (
+      languageSelectorContainer?.contains(currentElement) ||
+      targetElement?.contains(currentElement) ||
+      rootTranslatorContainer?.contains(currentElement) ||
+      tag === "INPUT" ||
+      tag === "VIDEO" ||
+      tag === "TEXTAREA"
+    )
       return
-    }
 
     const selectedText = window.getSelection().toString()
 
@@ -88,17 +91,17 @@ const CTranslate = () => {
       translateStatus: (c) => {
         if (c.newValue) document.addEventListener("mouseup", handleMouseUp)
         else document.removeEventListener("mouseup", handleMouseUp)
-      }
-    })
-      ; () => {
-        document.removeEventListener("mouseup", handleMouseUp)
-        storage.unwatchAll()
-      }
+      },
+    });
+    () => {
+      document.removeEventListener("mouseup", handleMouseUp)
+      storage.unwatchAll()
+    }
   }, [])
 
   const openSettingsPage = async () => {
     const opeendSettings = await sendToBackground({
-      name: "openSettings"
+      name: "openSettings",
     })
     opeendSettings && setToggleState(false)
   }
@@ -108,7 +111,7 @@ const CTranslate = () => {
   }
 
   const textToSpeech = () => {
-    const msg = new SpeechSynthesisUtterance(data.translatedText)
+    const msg = new SpeechSynthesisUtterance(data.translatedText as string)
     msg.lang = "en_US"
     window.speechSynthesis.speak(msg)
   }
@@ -125,9 +128,10 @@ const CTranslate = () => {
           tabIndex={1}
           id="el-translate-container"
           className="w-[400px] absolute flex-col flex"
-          style={{ top: cordinate.y + 10, left: cordinate.x - 50 }}>
+          style={{ top: cordinate.y + 10, left: cordinate.x - 50 }}
+        >
           <CardHeader className="flex flex-row items-center justify-between space-y-0 px-4 py-2">
-            <CardTitle className="!text-lg">Bussu Translater</CardTitle>
+            <CardTitle className="!text-lg">Wordigo Translator</CardTitle>
             <div className="flex flex-row gap-x-2 items-center justify-between">
               <DropdownMenu>
                 <DropdownMenuTrigger>
@@ -139,9 +143,7 @@ const CTranslate = () => {
                 <DropdownMenuContent id="el-language-container">
                   <ScrollArea className="w-full h-60 rounded-md">
                     {supportLanguages.map((lang) => {
-                      return (
-                        <DropdownMenuItem key={lang[0]}>{lang[1]}</DropdownMenuItem>
-                      )
+                      return <DropdownMenuItem key={lang[0]}>{lang[1]}</DropdownMenuItem>
                     })}
                   </ScrollArea>
                 </DropdownMenuContent>
@@ -149,7 +151,11 @@ const CTranslate = () => {
             </div>
           </CardHeader>
           <CardContent className="!px-4 !pt-1 !pb-2">
-            {isLoading ? <CTranslate.Loading /> : <Textarea className="!opacity-75" disabled rows={2} value={data.translatedText} />}
+            {isLoading ? (
+              <CTranslate.Loading />
+            ) : (
+              <Textarea className="!opacity-75 disabled:!cursor-default" disabled rows={2} value={data.translatedText} />
+            )}
           </CardContent>
           <CardFooter className="flex justify-between !px-4 !py-2">
             <div className="flex gap-x-1">

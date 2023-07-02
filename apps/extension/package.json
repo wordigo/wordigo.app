@@ -1,6 +1,6 @@
 {
   "name": "extension",
-  "displayName": "Extension",
+  "displayName": "Wordigo",
   "version": "0.0.1",
   "description": "english learning extension.",
   "author": "osman.delismen",
@@ -21,7 +21,7 @@
     "@trpc/react": "^9.27.4",
     "cors": "^2.8.5",
     "lucide-react": "^0.257.0",
-    "plasmo": "0.76.3",
+    "plasmo": "0.77.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.1",

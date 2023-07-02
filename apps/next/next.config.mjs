@@ -18,8 +18,8 @@ const config = {
   },
 
   /** We already do linting and typechecking as separate tasks in CI */
-  eslint: { ignoreDuringBuilds: !!process.env.CI },
-  typescript: { ignoreBuildErrors: !!process.env.CI },
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
 
   i18n: {
     locales: ["tr-TR", "en-EN"],
