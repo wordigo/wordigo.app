@@ -1,32 +1,85 @@
 import React from "react";
+import Link from "next/link";
 import HomeHeader from "@/components/home/HomeHeader";
-
-
-
+import Arrow_2 from "./Arrow_2";
+import { FaLanguage, FaCloudDownloadAlt } from 'react-icons/fa'
+import { FaPeopleGroup } from 'react-icons/fa6'
+import { Button } from "@acme/ui";
 
 export default function Section_1() {
   return (
-    <section className="h-screen m-auto max-w-[1440px] py-9 flex flex-col">
-      <HomeHeader></HomeHeader>
+    <div className="m-auto max-w-[1440px] flex flex-col mt-3">
+      <main className="m-auto max-w-[1440px] mx-3 flex justify-between">
+        <section className="ml-[80px] mt-[20px] w-full">
+          <HomeHeader></HomeHeader>
+          <div className="mt-[80px] text-[#333549]">
+            <p className="font-semibold text-[14px] text-[#4BB1AA]">Make your commutes more productive</p>
 
-      <div className="m-auto">
-        <div className="m-auto font-bold text-center text-[60px]">
-          <h1>
-            Lorem <span className="text-[#1D64F3]">ipsum</span>
-          </h1>
-          <h1 className="mt-[-8px]">has been the industry`s standard dummy text ever</h1>
-        </div>
+            <div className="my-[20px] text-[45px] font-bold">
+              <h1>The free, fun, and effective</h1>
+              <h1 className="mt-[-15px]">
+                way to learn a <span className="text-[#FB8A8B]">language!</span>
+              </h1>
+            </div>
 
-        <div className="m-auto text-center items-center text-[#4A5562] mt-[30px] font-medium">
-          <p>Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s, when an unknown printer</p>
-          <p className="mt-1">took a galley of type and scrambled it to make a type specimen book.</p>
-        </div>
+            <div className="font-semibold text-[14px]">
+              <p>Welcome to the convenient, fast, and affordable English test</p>
+              <p>accepted around the world.</p>
+            </div>
 
-        <div className="flex items-center justify-center mt-[48px] text-center font-medium">
-          <button className="bg-[#111928] text-white mr-6 px-[20px] py-[6px] rounded-3xl">Get Start</button>
-          <button className="mr-6 px-[20px] py-[6px] rounded-3xl border-2 border-[#E5E7EB] text-[#4A5562] flex items-center gap-2">Watch video</button>
-        </div>
-      </div>
-    </section>
+            {/* Data Information */}
+            <div className="mt-[40px] flex flex-col gap-4">
+              <div>
+                <span className="flex gap-3 items-center">
+                  <div className="rounded-lg text-[30px] text-center"><FaLanguage></FaLanguage></div>
+                  <span>
+                    <h1 className="font-semibold text-[15px]">Lorem Ipsum</h1>
+                  </span>
+                </span>
+              </div>
+
+              <span className="flex gap-3 items-center">
+                <div className="rounded-lg text-[30px] text-center"><FaPeopleGroup></FaPeopleGroup></div>
+                <span>
+                  <h1 className="font-semibold text-[15px]">Lorem Ipsum</h1>
+                </span>
+              </span>
+
+              <span className="flex gap-3 items-center">
+                <div className="rounded-lg text-[30px] text-center"><FaCloudDownloadAlt></FaCloudDownloadAlt></div>
+                <span>
+                  <h1 className="font-semibold text-[15px]">Lorem Ipsum</h1>
+                </span>
+              </span>
+            </div>
+
+            <div className="w-full relative bg-black mt-[-100px]">
+              <span className="absolute right-[-35px]">
+                <Arrow_2></Arrow_2>
+              </span>
+
+              <div className="right-[100px] mt-[120px] absolute bg-gray-400 py-[10px] px-[25px] rounded-lg w-[320px] h-[120px]">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="w-[450px] min-w-[450px] rounded-2xl flex items-center flex-col header_right">
+          <div className="flex gap-6 mt-[20px]">
+            TR
+            <div className="w-[2px] bg-[#E0EBEA]"></div>
+            <span>
+              <Button variant={'outline'} className="bg-transparent h-[30px] mr-3">Sign in</Button>
+              <Button variant={'outline'} className="bg-[#4BB1AA] h-[30px] text-white">Sign up</Button>
+            </span>
+          </div>
+
+          <div className="mt-[80px] mb-[80px] w-full px-[50px]">
+            {/* Extension File */}
+            <div className="bg-gray-400 w-full h-[500px] rounded-lg"></div>
+          </div>
+        </section>
+      </main>
+    </div>
   );
 }
