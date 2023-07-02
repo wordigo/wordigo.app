@@ -1,1 +1,1 @@
-module.exports = require('@acme/tailwind-config')
+module.exports = require('@wordigo/tailwind-config')

@@ -1,5 +1,5 @@
-import { appRouter, createTRPCContext } from "@acme/api"
 import { createNextApiHandler } from "@trpc/server/adapters/next"
+import { appRouter, createTRPCContext } from "@wordigo/api"
 import Cors from 'cors'
 import { type NextApiRequest, type NextApiResponse } from "next"
 

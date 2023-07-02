@@ -1,15 +1,14 @@
-import { TRPCProvider } from "~options/providers/trpc-provider"
-
 import FloatingButton from "~features/translate/components/floatingButton"
 import { PopoverContext, useContextPopover, usePopover } from "~features/translate/context/popover"
+import { TRPCProvider } from "~options/providers/trpc-provider"
 
-import "@acme/ui/styles/globals.css"
-
-import styleText from "data-text:@acme/ui/styles/globals.css"
+import "@wordigo/ui/styles/globals.css"
 
 import { Portal } from "@radix-ui/react-portal"
+import styleText from "data-text:@wordigo/ui/styles/globals.css"
 import type { PlasmoCSConfig } from "plasmo"
 import { Fragment } from "react"
+
 import TranslatePopup from "~features/translate/components/traslatePopup"
 
 export const config: PlasmoCSConfig = {
@@ -32,12 +31,8 @@ const Translate = () => {
 
   return (
     <Fragment>
-      {
-        isFloating && <FloatingButton />
-      }
-      {
-        isPopup && <TranslatePopup />
-      }
+      {isFloating && <FloatingButton />}
+      {isPopup && <TranslatePopup />}
     </Fragment>
   )
 }

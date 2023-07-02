@@ -7,7 +7,7 @@ import { type CreateNextContextOptions } from "@trpc/server/adapters/next"
 import superjson from "superjson"
 import { ZodError } from "zod"
 
-import { prisma } from "@acme/db"
+import { prisma } from "@wordigo/db"
 
 type CreateContextOptions = {
   user: User | null

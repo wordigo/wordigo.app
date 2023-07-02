@@ -1,4 +1,4 @@
-import { Button, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@acme/ui"
+import { Button, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@wordigo/ui"
 import { Languages } from "lucide-react"
 
 import { getPopupCordinate } from "~utils"

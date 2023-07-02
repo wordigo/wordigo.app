@@ -1,10 +1,10 @@
-import type { AppRouter } from '@acme/api'
 import { sendToBackground } from "@plasmohq/messaging"
 import {
   httpBatchLink,
   loggerLink
 } from '@trpc/client'
 import { createTRPCReact } from "@trpc/react-query"
+import type { AppRouter } from '@wordigo/api'
 import superjson from 'superjson'
 
 function getBaseUrl() {

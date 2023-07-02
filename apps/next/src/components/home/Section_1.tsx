@@ -1,9 +1,8 @@
 import { supportLanguages } from "@/common/supportedLanguages";
 import HomeHeader from "@/components/home/HomeHeader";
+import { Button, Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@wordigo/ui";
 import { FaCloudDownloadAlt, FaLanguage } from "react-icons/fa";
 import { FaPeopleGroup } from "react-icons/fa6";
-
-import { Button, Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@acme/ui";
 
 import Arrow_2 from "./Arrow_2";
 

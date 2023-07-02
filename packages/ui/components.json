@@ -10,6 +10,6 @@
   },
   "aliases": {
     "components": "@/components",
-    "utils": "@acme/ui/lib/utils"
+    "utils": "@wordigo/ui/lib/utils"
   }
 }

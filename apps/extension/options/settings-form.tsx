@@ -16,9 +16,9 @@ import {
   Switch,
   Toaster,
   useToast
-} from "@acme/ui"
+} from "@wordigo/ui"
 
-import "@acme/ui/styles/globals.css"
+import "@wordigo/ui/styles/globals.css"
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useEffect } from "react"

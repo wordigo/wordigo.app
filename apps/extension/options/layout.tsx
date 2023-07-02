@@ -1,4 +1,4 @@
-import { Separator, Toaster } from "@acme/ui"
+import { Separator, Toaster } from "@wordigo/ui"
 import type { PropsWithChildren } from "react"
 
 import { SidebarNav } from "./components/sidebar-nav"

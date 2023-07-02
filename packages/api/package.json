@@ -1,5 +1,5 @@
 {
-  "name": "@acme/api",
+  "name": "@wordigo/api",
   "version": "0.1.0",
   "main": "./index.ts",
   "types": "./index.ts",
@@ -11,7 +11,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@acme/db": "^0.1.0",
+    "@wordigo/db": "^0.1.0",
     "@google-cloud/translate": "^7.2.1",
     "@supabase/auth-helpers-nextjs": "^0.6.0",
     "@supabase/supabase-js": "^2.20.0",
@@ -21,7 +21,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@acme/eslint-config": "^0.1.0",
+    "@wordigo/eslint-config": "^0.1.0",
     "eslint": "^8.38.0",
     "typescript": "^5.0.4"
   }

@@ -1,7 +1,7 @@
 /** @type {import("eslint").Linter.Config} */
 const config = {
   root: true,
-  extends: ["@acme/eslint-config"], // uses the config in `packages/config/eslint`
+  extends: ["@wordigo/eslint-config"], // uses the config in `packages/config/eslint`
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "latest",
@@ -17,6 +17,6 @@ const config = {
       rootDir: ["apps/nextjs"],
     },
   },
-};
+}
 
-module.exports = config;
+module.exports = config

@@ -1,6 +1,6 @@
-import { Separator } from "@acme/ui"
+import { Separator } from "@wordigo/ui"
 
-import "@acme/ui/styles/globals.css"
+import "@wordigo/ui/styles/globals.css"
 
 import SettingsLayout from "./layout"
 import SettingsForm from "./settings-form"

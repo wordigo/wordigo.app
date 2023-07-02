@@ -11,7 +11,7 @@ const config = {
   },
   reactStrictMode: true,
   /** Enables hot reloading for local packages without a build step */
-  transpilePackages: ["@acme/ui", "@acme/api", "@acme/db"],
+  transpilePackages: ["@wordigo/ui", "@wordigo/api", "@wordigo/db"],
 
   images: {
     domains: ["api.dicebear.com"],

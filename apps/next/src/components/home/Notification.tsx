@@ -1,4 +1,4 @@
-import { Badge } from "@acme/ui";
+import { Badge } from "@wordigo/ui";
 
 export default function Example() {
   return (

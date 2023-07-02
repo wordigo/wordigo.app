@@ -1,5 +1,5 @@
-import { buttonVariants } from "@acme/ui"
-import { cn } from "@acme/ui/lib/utils"
+import { buttonVariants } from "@wordigo/ui"
+import { cn } from "@wordigo/ui/lib/utils"
 
 interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {
   items: {

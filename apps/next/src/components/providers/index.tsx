@@ -1,7 +1,6 @@
 import { type PropsWithChildren } from "react";
+import { Toaster } from "@wordigo/ui";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-
-import { Toaster } from "@acme/ui";
 
 const AppProviders: React.FC<PropsWithChildren> = ({ children }) => {
   return (
