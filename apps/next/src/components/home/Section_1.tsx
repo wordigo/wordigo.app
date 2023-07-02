@@ -64,19 +64,19 @@ export default function Section_1() {
           </div>
         </section>
 
-        <section className="w-[450px] min-w-[450px] rounded-2xl flex items-center flex-col header_right">
+        <section className="w-[450px] min-w-[450px] rounded-2xl flex items-center flex-col bg-gradient-to-t from-white via-[#E1EFFE] to-[#E1EFFE]">
           <div className="flex gap-6 mt-[20px]">
             TR
-            <div className="w-[2px] bg-[#E0EBEA]"></div>
+            <div className="w-[2px] bg-gray-700"></div>
             <span>
-              <Button variant={'outline'} className="bg-transparent h-[30px] mr-3">Sign in</Button>
+              <Button variant={'outline'} className="bg-transparent h-[30px] mr-3 border-gray-700">Sign in</Button>
               <Button variant={'outline'} className="bg-[#4BB1AA] h-[30px] text-white">Sign up</Button>
             </span>
           </div>
 
           <div className="mt-[80px] mb-[80px] w-full px-[50px]">
             {/* Extension File */}
-            <div className="bg-gray-400 w-full h-[500px] rounded-lg"></div>
+            <div className="bg-gray-400 w-full h-[500px] rounded-lg "></div>
           </div>
         </section>
       </main>
