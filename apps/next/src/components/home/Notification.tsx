@@ -1,6 +1,6 @@
 export default function Example() {
     return (
-        <div className="relative isolate flex items-center gap-x-6 overflow-hidden bg-transparent px-6 py-2.5 sm:px-3.5 sm:before:flex-1 bg-[#cfe6fc]">
+        <div className="relative isolate flex items-center gap-x-6 overflow-hidden bg-[#cfe6fc] px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
             <div
                 className="absolute left-[max(-7rem,calc(50%-52rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl"
                 aria-hidden="true"
@@ -43,6 +43,7 @@ export default function Example() {
             <div className="flex flex-1 justify-end">
                 <button type="button" className="-m-3 p-3 focus-visible:outline-offset-[-4px]">
                     <span className="sr-only">Dismiss</span>
+
                 </button>
             </div>
         </div>
