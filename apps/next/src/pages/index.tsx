@@ -1,6 +1,5 @@
-import React from "react";
-import Section_1 from "@/components/home/Section_1";
-import Example from "@/components/home/Notification";
+import Example from "@/components/home/Notification"
+import Section_1 from "@/components/home/Section_1"
 
 export default function index() {
 
@@ -13,5 +12,5 @@ export default function index() {
         </div>
       </div>
     </div>
-  );
+  )
 }

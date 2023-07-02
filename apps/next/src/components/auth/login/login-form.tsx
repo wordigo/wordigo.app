@@ -1,36 +1,34 @@
-"use client";
+import { useSupabaseClient } from "@supabase/auth-helpers-react"
+import React, { useState, type SyntheticEvent } from "react"
 
-import React, { type SyntheticEvent, useState } from "react";
-import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import { Button, Input, Label } from "@acme/ui"
+import { cn } from "@acme/ui/lib/utils"
 
-import { Button, Input, Label } from "@acme/ui";
-import { cn } from "@acme/ui/lib/utils";
-
-type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
+type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>
 
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
-  const supabase = useSupabaseClient();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const supabase = useSupabaseClient()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
   async function onSubmit(event: SyntheticEvent) {
-    event.preventDefault();
-    setIsLoading(true);
+    event.preventDefault()
+    setIsLoading(true)
 
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
-    });
+    })
 
     setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+      setIsLoading(false)
+    }, 3000)
   }
 
   const signInWithGoogle = async () => {
-    const result = await supabase.auth.signInWithOAuth({ provider: "google" });
-  };
+    const result = await supabase.auth.signInWithOAuth({ provider: "google" })
+  }
 
   return (
     <div className={cn("grid gap-6", className)} {...props}>
@@ -91,5 +89,5 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         Google
       </Button>
     </div>
-  );
+  )
 }
