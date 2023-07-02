@@ -90,10 +90,9 @@ export default function Section_1() {
               <Button variant="default" className="h-[30px]">Sign up</Button>
             </span>
           </div>
-
           <div className="mt-[80px] mb-[80px] w-full px-[50px]">
             {/* Extension File */}
-            <div className="bg-gray-400 w-full h-[500px] rounded-lg"></div>
+            <div className="bg-gray-400 w-full h-[500px] rounded-lg "></div>
           </div>
         </section>
       </main>
