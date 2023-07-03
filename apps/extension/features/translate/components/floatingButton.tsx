@@ -1,4 +1,5 @@
 import { Button, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@wordigo/ui"
+import { motion } from "framer-motion"
 import { Languages } from "lucide-react"
 
 import { getPopupCordinate } from "~utils"
@@ -18,14 +19,20 @@ const FloatingButton = () => {
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button
-            className="absolute font-bold !h-8 !w-8 text-gray-600"
-            variant="secondary"
-            onClick={handleTogglePopup}
-            style={{ top, left }}
-            size="icon">
-            <Languages size={18} />
-          </Button>
+          <motion.div
+            className="absolute"
+            initial={{
+              top: top - 5,
+              left
+            }}
+            animate={{
+              top: top + 15,
+              left
+            }}>
+            <Button className="font-bold !h-8 !w-8" variant="default" onClick={handleTogglePopup} size="icon">
+              <Languages size={18} />
+            </Button>
+          </motion.div>
         </TooltipTrigger>
         <TooltipContent side="bottom">
           <p className="!text-sm">Translate selection text</p>
