@@ -2,26 +2,26 @@ import React from "react";
 import HomeHeader from "@/components/home/HomeHeader";
 import { FaCloudDownloadAlt, FaLanguage } from "react-icons/fa";
 import { FaPeopleGroup } from "react-icons/fa6";
-import Arrow_2 from "../Arrow_2";
 
+import Arrow_2 from "../Arrow_2";
 
 export default function Section_02() {
   return (
     <section className="ml-[80px] mt-[20px] w-full">
       <HomeHeader></HomeHeader>
       <div className="mt-[80px] text-[#333549]">
-        <p className="font-semibold text-[14px] text-primary-blue">Make your commutes more productive</p>
+        <p className="font-semibold text-[14px] text-primary-blue">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 
         <div className="my-[20px] text-[45px] font-bold">
-          <h1>The free, fun, and effective</h1>
+          <h1>Lorem Ipsum is simply</h1>
           <h1 className="mt-[-15px]">
-            way to learn a <span className="text-primary-blue">language!</span>
+            dummy text of the <span className="text-primary-blue">printing!</span>
           </h1>
         </div>
 
         <div className="font-semibold text-[14px]">
-          <p>Welcome to the convenient, fast, and affordable English test</p>
-          <p>accepted around the world.</p>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          <p>and typesetting industry.</p>
         </div>
 
         {/* Data Information */}
