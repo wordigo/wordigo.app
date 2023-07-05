@@ -1,4 +1,3 @@
-import React from "react";
 import HomeHeader from "@/components/home/HomeHeader";
 import { FaCloudDownloadAlt, FaLanguage } from "react-icons/fa";
 import { FaPeopleGroup } from "react-icons/fa6";

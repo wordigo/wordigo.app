@@ -6,10 +6,11 @@ import { SessionContextProvider } from "@supabase/auth-helpers-react";
 import "@wordigo/ui/styles/globals.css";
 import { useState } from "react";
 import type { AppProps } from "next/app";
+import { appWithTranslation } from "next-i18next";
 
 import "../styles/styles.css";
 
-function App({ Component, pageProps }: AppProps<{ initialSession: Session | null }>) {
+const App = ({ Component, pageProps }: AppProps<{ initialSession: Session | null }>) => {
   const [supabaseClient] = useState(() => createBrowserSupabaseClient());
 
   return (
@@ -19,6 +20,6 @@ function App({ Component, pageProps }: AppProps<{ initialSession: Session | null
       </AppProviders>
     </SessionContextProvider>
   );
-}
+};
 
-export default api.withTRPC(App);
+export default api.withTRPC(appWithTranslation(App));

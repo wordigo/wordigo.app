@@ -1,4 +1,9 @@
-export const supportLanguages: [string, string][] = [
+export const SupportedLanguages: [string, string][] = [
+  ['us', 'English'],
+  ['tr', 'Turkish'],
+]
+
+export const AllCountryLanguages: [string, string][] = [
   ['en', 'English'],
   ['zh-cn', '简体中文'],
   ['zh-tw', '繁體中文'],
@@ -63,8 +68,8 @@ export const supportLanguages: [string, string][] = [
   ['vi', 'Tiếng Việt'],
 ]
 
-export const langMap: Map<string, string> = new Map(supportLanguages)
+export const langMap: Map<string, string> = new Map(SupportedLanguages)
 
 export const langMapReverse = new Map(
-  supportLanguages.map(([standardLang, lang]) => [lang, standardLang]),
+  SupportedLanguages.map(([standardLang, lang]) => [lang, standardLang]),
 )

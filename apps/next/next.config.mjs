@@ -4,6 +4,9 @@
  */
 // !process.env.SKIP_ENV_VALIDATION && (await import("./src/env.mjs"));
 
+// @ts-ignore
+import i18n from "./next-i18next.config.js"
+
 /** @type {import("next").NextConfig} */
 const config = {
   experimental: {
@@ -21,10 +24,7 @@ const config = {
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
 
-  i18n: {
-    locales: ["tr-TR", "en-EN"],
-    defaultLocale: "en-EN"
-  }
+  ...i18n
 }
 
 export default config
