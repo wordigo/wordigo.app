@@ -5,7 +5,7 @@ import Arrow_2 from "../Arrow_2";
 
 export default function Section_02() {
   return (
-    <section className="ml-[80px] mt-[20px] w-full">
+    <section className="ml-[30px] mt-[20px] w-full">
       <div className="mt-[80px] text-[#333549]">
         <p className="font-semibold text-[14px] text-primary-blue">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 
@@ -54,7 +54,7 @@ export default function Section_02() {
         </div>
 
         <div className="w-full relative bg-black mt-[-100px]">
-          <span className="absolute right-[20px]">
+          <span className="absolute right-0">
             <Arrow_2></Arrow_2>
           </span>
 

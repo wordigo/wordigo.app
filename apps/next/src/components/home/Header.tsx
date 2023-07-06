@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@wordigo/ui";
@@ -9,11 +10,16 @@ export default function HomeHeader() {
   return (
     <>
       <Example></Example>
-      <div className="flex justify-between max-w-[1380px] m-auto">
+      <div className="flex items-center justify-between max-w-[1380px] m-auto">
         <nav className="flex items-center justify-between gap-16">
-          <Link href={"/"} className="font-bold text-[22px]">
-            Wordigo
-          </Link>
+          
+          <span className="flex gap-3 items-center">
+            <Image src="/images/Logo.png" width={26} height={26} alt="" className="rounded-md" />
+            <Link href={"/"} className="font-bold text-[18px]">
+              Wordigo
+            </Link>
+          </span>
+
           <ul className="flex items-center gap-8 text-[#4A5562] justify-between w-full">
             <li className="flex items-center gap-9 text-[13px] font-bold">
               <Link href={"/"} passHref>
@@ -24,6 +30,10 @@ export default function HomeHeader() {
               </Link>
               <Link href={"/dashboard"} passHref>
                 Dashboard
+              </Link>
+
+              <Link href={"/team"} passHref>
+                Team
               </Link>
             </li>
           </ul>
