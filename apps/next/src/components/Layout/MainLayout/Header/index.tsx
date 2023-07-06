@@ -42,7 +42,7 @@ export default function HomeHeader() {
         <div className="flex gap-y-6 gap-x-3 mt-[20px]">
           <ThemeMode />
           <LanguageSelector className="w-[150px] !h-9" />
-          <div className="w-[2px] bg-[#E0EBEA]"></div>
+          <div className="w-[1px] !h-9 bg-gray-200 dark:bg-gray-800"></div>
           <span>
             <Button variant="outline" className="bg-transparent mr-3" size="sm">
               Sign in
