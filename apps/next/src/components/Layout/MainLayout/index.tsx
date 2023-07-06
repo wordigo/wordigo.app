@@ -1,5 +1,6 @@
 import { Fragment, type PropsWithChildren } from "react";
-import HomeHeader from "@/components/home/Header";
+
+import HomeHeader from "./Header";
 
 const MainLayout: React.FC<PropsWithChildren> = ({ children }) => {
   return (

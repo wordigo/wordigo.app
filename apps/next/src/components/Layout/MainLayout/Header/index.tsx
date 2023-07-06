@@ -1,18 +1,19 @@
+import { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@wordigo/ui";
 import LanguageSelector from "@wordigo/ui/components/ui/language-selector";
 
-import Example from "./Notification";
+import Banner from "../Banner";
+import { ModeToggle } from "./ThemeMode";
 
 export default function HomeHeader() {
   return (
-    <>
-      <Example></Example>
+    <Fragment>
+      <Banner />
       <div className="flex items-center justify-between max-w-[1380px] m-auto">
         <nav className="flex items-center justify-between gap-16">
-          
           <span className="flex gap-3 items-center">
             <Image src="/images/Logo.png" width={26} height={26} alt="" className="rounded-md" />
             <Link href={"/"} className="font-bold text-[18px]">
@@ -38,8 +39,9 @@ export default function HomeHeader() {
             </li>
           </ul>
         </nav>
-        <div className="flex gap-6 mt-[20px]">
-          <LanguageSelector />
+        <div className="flex gap-y-6 gap-x-3 mt-[20px]">
+          <ModeToggle />
+          <LanguageSelector className="w-[150px] !h-9" />
           <div className="w-[2px] bg-[#E0EBEA]"></div>
           <span>
             <Button variant="outline" className="bg-transparent mr-3" size="sm">
@@ -51,6 +53,6 @@ export default function HomeHeader() {
           </span>
         </div>
       </div>
-    </>
+    </Fragment>
   );
 }

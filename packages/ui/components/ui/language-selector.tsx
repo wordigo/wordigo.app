@@ -7,14 +7,15 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 
 export interface ILanguageSelector {
   supportLanguages?: boolean;
+  className?: string;
 }
 
-const LanguageSelector: React.FC<ILanguageSelector> = ({ supportLanguages = true }) => {
+const LanguageSelector: React.FC<ILanguageSelector> = ({ className, supportLanguages = true }) => {
   const computedLanguages = supportLanguages ? SupportedLanguages : AllCountryLanguages;
 
   return (
     <Select>
-      <SelectTrigger className="w-[150px] !h-9">
+      <SelectTrigger className={className}>
         <SelectValue placeholder="Select language" />
       </SelectTrigger>
       <SelectContent>
