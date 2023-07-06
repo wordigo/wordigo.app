@@ -1,12 +1,15 @@
 import { type PropsWithChildren } from "react";
-import { Toaster } from "@wordigo/ui";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
+
+import { Toaster } from "@wordigo/ui";
+
+import RootLayout from "../Layout";
 
 const AppProviders: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <NextThemesProvider attribute="class" defaultTheme="system" enableSystem>
       <Toaster />
-      {children}
+      <RootLayout>{children}</RootLayout>
     </NextThemesProvider>
   );
 };

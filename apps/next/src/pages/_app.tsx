@@ -2,7 +2,6 @@ import AppProviders from "@/components/providers";
 import { api } from "@/libs/trpc";
 import { type Session, createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { SessionContextProvider } from "@supabase/auth-helpers-react";
-import HomeHeader from "@/components/home/Header";
 
 import "@wordigo/ui/styles/globals.css";
 import { useState } from "react";
@@ -17,7 +16,6 @@ const App = ({ Component, pageProps }: AppProps<{ initialSession: Session | null
   return (
     <SessionContextProvider supabaseClient={supabaseClient} initialSession={pageProps.initialSession}>
       <AppProviders>
-        <HomeHeader />
         <Component {...pageProps} />
       </AppProviders>
     </SessionContextProvider>
