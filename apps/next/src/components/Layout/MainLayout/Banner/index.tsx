@@ -22,7 +22,7 @@ const Banner = () => {
         />
       </div>
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-        <div className="text-sm leading-6 text-gray-900 text-white">
+        <div className="text-sm leading-6 text-gray-900 dark:text-white">
           <Badge className="font-bold uppercase rounded-md dark:bg-black" variant="outline">
             Beta
           </Badge>
