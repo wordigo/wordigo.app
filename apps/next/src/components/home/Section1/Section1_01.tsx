@@ -6,17 +6,17 @@ import Arrow_2 from "../Arrow_2";
 export default function Section_02() {
   return (
     <section className="ml-[30px] mt-[20px] w-full">
-      <div className="mt-[80px] text-[#333549]">
+      <div className="mt-[80px] text-[#333549] dark:text-white">
         <p className="font-semibold text-[14px] text-primary-blue">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 
         <div className="my-[20px] text-[45px] font-bold">
           <h1>Lorem Ipsum is simply</h1>
           <h1 className="mt-[-15px]">
-            dummy text of the <span className="text-primary-blue">printing!</span>
+            dummy text of the <span className="text-primary-blue ">printing!</span>
           </h1>
         </div>
 
-        <div className="font-semibold text-[14px]">
+        <div className="font-semibold text-[14px] opacity-70">
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
           <p>and typesetting industry.</p>
         </div>

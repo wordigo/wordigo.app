@@ -38,25 +38,25 @@ export default function Footer() {
         </div> */}
 
         <div className="grid space-y-3 text-sm">
-          <a className="opacity-60 text-xs font-semibold text-gray-900 uppercase" href="#">
+          <a className="opacity-60 text-xs font-semibold text-gray-900 uppercase dark:text-white" href="#">
             Home
           </a>
         </div>
 
         <div className="mt-3 grid space-y-3 text-sm">
-          <a className="opacity-60 text-xs font-semibold text-gray-900 uppercase" href="#">
+          <a className="opacity-60 text-xs font-semibold text-gray-900 uppercase dark:text-white" href="#">
             Translate
           </a>
         </div>
 
         <div className="mt-3 grid space-y-3 text-sm">
-          <a className="opacity-60 text-xs font-semibold text-gray-900 uppercase" href="#">
+          <a className="opacity-60 text-xs font-semibold text-gray-900 uppercase dark:text-white" href="#">
             Dashboard
           </a>
         </div>
 
         <div className="mt-3 grid space-y-3 text-sm">
-          <a className="opacity-60 text-xs font-semibold text-gray-900 uppercase" href="#">
+          <a className="opacity-60 text-xs font-semibold text-gray-900 uppercase dark:text-white" href="#">
             Team
           </a>
         </div>
@@ -66,7 +66,7 @@ export default function Footer() {
         <div className="sm:flex sm:justify-between sm:items-center">
           <div className="flex items-center gap-x-3">
             <LanguageSelector />
-            <div className="space-x-4 text-sm ml-4">© Copyright 2023. All Rights Reserved by Wordigo.</div>
+            <div className="space-x-4 text-sm ml-4 opacity-80">© Copyright 2023. All Rights Reserved by Wordigo.</div>
           </div>
 
           <div className="flex justify-between items-center">

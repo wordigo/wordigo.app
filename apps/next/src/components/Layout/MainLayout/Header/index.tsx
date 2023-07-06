@@ -21,7 +21,7 @@ export default function HomeHeader() {
             </Link>
           </span>
 
-          <ul className="flex items-center gap-8 text-[#4A5562] justify-between w-full">
+          <ul className="flex items-center gap-8 text-[#4A5562] justify-between w-full dark:text-white dark:opacity-80">
             <li className="flex items-center gap-9 text-[13px] font-bold">
               <Link href={"/"} passHref>
                 Home
