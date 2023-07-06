@@ -1,5 +1,6 @@
 import React, { type SyntheticEvent, useState } from "react";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
+
 import { Button, Input, Label } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 

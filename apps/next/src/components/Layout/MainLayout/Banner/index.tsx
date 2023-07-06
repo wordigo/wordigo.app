@@ -1,4 +1,6 @@
-import { Badge } from "@wordigo/ui";
+import { ArrowRightIcon } from "lucide-react";
+
+import { Button } from "@wordigo/ui";
 
 const Banner = () => {
   return (
@@ -23,20 +25,15 @@ const Banner = () => {
       </div>
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
         <div className="text-sm leading-6 text-gray-900 dark:text-white">
-          <Badge className="font-bold uppercase rounded-md dark:bg-black" variant="outline">
-            Beta
-          </Badge>
           <svg viewBox="0 0 2 2" className="mx-2 inline h-0.5 w-0.5 fill-current text-white" aria-hidden="true">
             <circle cx={1} cy={1} r={1} />
           </svg>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi?
         </div>
-        <a
-          href="#"
-          className="flex-none rounded-md bg-gray-800 px-3.5 py-1 text-sm font-semibold dark:bg-transparent dark:border dark:border-gray-800 text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
-        >
-          Register now <span aria-hidden="true">&rarr;</span>
-        </a>
+        <Button className="flex gap-x-2 !h-8" variant="secondary">
+          Register now
+          <ArrowRightIcon size={14} />
+        </Button>
       </div>
       <div className="flex flex-1 justify-end">
         <button type="button" className="-m-3 p-3 focus-visible:outline-offset-[-4px]">

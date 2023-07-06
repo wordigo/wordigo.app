@@ -5,8 +5,8 @@ import Link from "next/link";
 import { Button } from "@wordigo/ui";
 import LanguageSelector from "@wordigo/ui/components/ui/language-selector";
 
+import ThemeMode from "../../ThemeMode";
 import Banner from "../Banner";
-import { ModeToggle } from "./ThemeMode";
 
 export default function HomeHeader() {
   return (
@@ -40,7 +40,7 @@ export default function HomeHeader() {
           </ul>
         </nav>
         <div className="flex gap-y-6 gap-x-3 mt-[20px]">
-          <ModeToggle />
+          <ThemeMode />
           <LanguageSelector className="w-[150px] !h-9" />
           <div className="w-[2px] bg-[#E0EBEA]"></div>
           <span>
