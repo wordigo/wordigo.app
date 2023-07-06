@@ -1,5 +1,4 @@
 import Footer from "@/components/home/Footers/Footer";
-import Notification from "@/components/home/Notification";
 import Section_1 from "@/components/home/Section1/Section1_Container";
 import Section2_Container from "@/components/home/Section2/Section2_Container";
 import Section3_Container from "@/components/home/Section3/Section3_Container";
@@ -12,10 +11,9 @@ export default function index() {
 
   return (
     <div>
-      <div className="flex flex-col gap-y-16">
+      <div className="flex flex-col gap-y-10">
         <div>{t("welcome")}</div>
         <div>
-          <Notification></Notification>
           <Section_1></Section_1>
         </div>
         <Section2_Container></Section2_Container>
@@ -26,15 +24,15 @@ export default function index() {
   );
 }
 
-export async function getStaticProps({ locale }) {
-  console.log(locale);
-  const test = await serverSideTranslations(locale, ["common"]);
-  console.log(test);
+// export async function getStaticProps({ locale }) {
+//   console.log(locale);
+//   const test = await serverSideTranslations(locale, ["common"]);
+//   console.log(test);
 
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ["common"])),
-      // Will be passed to the page component as props
-    },
-  };
-}
+//   return {
+//     props: {
+//       ...(await serverSideTranslations(locale, ["common"])),
+//       // Will be passed to the page component as props
+//     },
+//   };
+// }

@@ -5,7 +5,7 @@ import { Button } from "@wordigo/ui";
 export default function Section2_Container() {
   return (
     <section>
-      <div className="container px-4 mx-auto">
+      <div className="container px-4 mx-auto max-w-[1440px] w-[1440px]">
         <div className="relative py-18 px-6 bg-blue-500 rounded-2xl overflow-hidden">
           <Image
             src="/images/background-banner-squares.png"
