@@ -1,6 +1,3 @@
-"use client";
-
-import * as React from "react";
 import Link from "next/link";
 import ProfilAvatar from "@/components/ProfilAvatar";
 import { siteConfig } from "@/config/site";

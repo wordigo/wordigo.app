@@ -1,3 +1,5 @@
+import { cn } from "@wordigo/ui/lib/utils";
+
 interface DocsPageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   heading: string;
   text?: string;
