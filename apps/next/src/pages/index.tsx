@@ -1,8 +1,8 @@
 import MainLayout from "@/components/Layout/MainLayout";
 import Footer from "@/components/home/Footers/Footer";
-import Section_1 from "@/components/home/Section1/Section1_Container";
-import Section2_Container from "@/components/home/Section2/Section2_Container";
-import Section3_Container from "@/components/home/Section3/Section3_Container";
+import Section_1 from "@/components/home/Hero/Hero_Container";
+import Section2_Container from "@/components/home/Banner/Banner";
+import Section3_Container from "@/components/home/Steps/Steps";
 
 export default function index() {
   return (

@@ -1,5 +1,5 @@
-import Section_01 from "./Section1_01";
-import Section_02 from "./Section1_02";
+import Section_01 from "./Hero_1";
+import Section_02 from "./Hero_2";
 
 export default function Section_1() {
   return (

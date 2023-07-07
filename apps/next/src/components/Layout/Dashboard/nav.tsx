@@ -1,9 +1,7 @@
 "use client";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRightIcon } from "lucide-react";
-
 import { cn } from "@wordigo/ui/lib/utils";
 
 interface DashboardNavProps {
