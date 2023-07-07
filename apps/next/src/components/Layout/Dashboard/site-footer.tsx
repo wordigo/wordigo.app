@@ -1,10 +1,8 @@
 import * as React from "react";
-import { siteConfig } from "@/config/site";
-import { GitlabIcon } from "lucide-react";
+import { GithubIcon, GitlabIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from "lucide-react";
 
 import { cn } from "@wordigo/ui/lib/utils";
-
-import ThemeMode from "../ThemeMode";
+import { Button } from "@wordigo/ui";
 
 export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
   return (
@@ -13,26 +11,29 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
         <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
           <GitlabIcon />
           <p className="text-center text-sm leading-loose md:text-left">
-            Built by{" "}
-            <a href={siteConfig.links.twitter} target="_blank" rel="noreferrer" className="font-medium underline underline-offset-4">
-              shadcn
-            </a>
-            . Hosted on{" "}
-            <a href="https://vercel.com" target="_blank" rel="noreferrer" className="font-medium underline underline-offset-4">
-              Vercel
-            </a>
-            . Illustrations by{" "}
-            <a href="https://popsy.co" target="_blank" rel="noreferrer" className="font-medium underline underline-offset-4">
-              Popsy
-            </a>
-            . The source code is available on{" "}
-            <a href={siteConfig.links.github} target="_blank" rel="noreferrer" className="font-medium underline underline-offset-4">
-              GitHub
+            © Copyright 2023. All Rights Reserved by
+            <a href={"/"} target="_blank" rel="noreferrer" className="font-medium underline underline-offset-4 ml-1">
+              Wordigo
             </a>
             .
           </p>
         </div>
-        <ThemeMode />
+        <div>
+          <div className="space-x-2">
+            <Button variant="link" size="icon">
+              <InstagramIcon size={14} />
+            </Button>
+            <Button variant="link" size="icon">
+              <TwitterIcon size={14} />
+            </Button>
+            <Button variant="link" size="icon">
+              <GithubIcon size={14} />
+            </Button>
+            <Button variant="link" size="icon">
+              <YoutubeIcon size={14} />
+            </Button>
+          </div>
+        </div>
       </div>
     </footer>
   );

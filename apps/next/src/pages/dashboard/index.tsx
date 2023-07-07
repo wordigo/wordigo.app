@@ -7,7 +7,7 @@ export default function DashboardPage() {
   return (
     <DashboardTwoLayout>
       <DashboardShell>
-        <DashboardHeader heading="Posts" text="Create and manage posts."></DashboardHeader>
+        <DashboardHeader heading="Dashboard" text="Create and manage dashboard."></DashboardHeader>
       </DashboardShell>
     </DashboardTwoLayout>
   );

@@ -13,11 +13,10 @@ export default function DashboardTwoLayout({ children }: DashboardLayoutProps) {
     <div className="flex min-h-screen flex-col space-y-6">
       <header className="sticky top-0 z-40 border-b bg-background">
         <div className="container flex h-16 items-center justify-between py-4">
-          <MainNav items={dashboardConfig.mainNav} />
-          <UserAccountNav
+          <MainNav
             user={{
-              name: "Ali osman",
-              image: "user.image",
+              name: "Ali Osman",
+              image: "https://lh3.googleusercontent.com/a/AAcHTtczzH11A-_TB88rKRqjREKz7sViMrikNGPAvyTxa1tXJw=s96-c",
               email: "dlsmnosman@gmail.com",
             }}
           />
