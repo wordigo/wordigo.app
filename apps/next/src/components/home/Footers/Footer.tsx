@@ -2,7 +2,6 @@ import ChangeLanguage from "@/components/Layout/MainLayout/ChangeLanguage";
 import { GithubIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from "lucide-react";
 
 import { Button } from "@wordigo/ui";
-import LanguageSelector from "@wordigo/ui/components/ui/language-selector";
 
 export default function Footer() {
   return (

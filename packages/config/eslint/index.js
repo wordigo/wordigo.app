@@ -8,6 +8,7 @@ const config = {
     "prettier",
   ],
   rules: {
+    "import/no-anonymous-default-export": "off",
     "react/display-name": "off",
     "@typescript-eslint/no-unsafe-member-access": "off",
     "@typescript-eslint/no-unsafe-assignment": "off",
