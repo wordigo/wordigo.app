@@ -1,9 +1,10 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import useCommonStore from "@/stores/Common";
 import { ArrowRightIcon, ChevronUp } from "lucide-react";
+
 import { Button } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
@@ -12,16 +13,11 @@ interface DashboardNavProps {
 }
 
 export function DashboardNav({ items }: DashboardNavProps) {
-  const { showDetailDictionary, setDetailDictionary } = useCommonStore((state) => state);
   const path = usePathname();
 
   if (!items?.length) {
     return null;
   }
-
-  const handlerDetail = () => {
-    setDetailDictionary(!showDetailDictionary);
-  };
 
   return (
     <nav className="grid items-start gap-2">
@@ -43,9 +39,9 @@ export function DashboardNav({ items }: DashboardNavProps) {
                 </span>
               </Link>
               {item.title === "Dictionary" && (
-                <p className="text-sm font-medium absolute right-0 mr-2" onClick={handlerDetail}>
+                <p className="text-sm font-medium absolute right-0 mr-2">
                   <Button variant="outline" size="icon" className="w-fit h-fit p-1">
-                    <ChevronUp size={"12"} className={cn("transform transition duration-500", showDetailDictionary && "rotate-180")} />
+                    <ChevronUp size={"12"} />
                   </Button>
                 </p>
               )}

@@ -2,12 +2,13 @@ import { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Button, buttonVariants } from "@wordigo/ui";
+import { buttonVariants } from "@wordigo/ui";
 import LanguageSelector from "@wordigo/ui/components/ui/language-selector";
 import { cn } from "@wordigo/ui/lib/utils";
 
 import ThemeMode from "../../ThemeMode";
 import Banner from "../Banner";
+import Navigation from "../Navigation";
 
 export default function HomeHeader() {
   return (
@@ -21,24 +22,7 @@ export default function HomeHeader() {
               Wordigo
             </Link>
           </span>
-
-          <ul className="flex items-center gap-8 text-[#4A5562] justify-between w-full dark:text-white dark:opacity-80">
-            <li className="flex items-center gap-9 text-[13px] font-bold">
-              <Link href={"/"} passHref>
-                Home
-              </Link>
-              <Link href={"/translate"} passHref>
-                Translate
-              </Link>
-              <Link href={"/dashboard"} passHref>
-                Dashboard
-              </Link>
-
-              <Link href={"/team"} passHref>
-                Team
-              </Link>
-            </li>
-          </ul>
+          <Navigation />
         </nav>
         <div className="flex gap-y-6 gap-x-3 mt-[20px]">
           <ThemeMode />
