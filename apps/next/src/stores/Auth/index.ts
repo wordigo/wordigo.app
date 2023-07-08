@@ -3,8 +3,26 @@ import { type AuthState } from "./interfaces"
 import supabase from "@/libs/supabase"
 
 const useAuthStore = create<AuthState>((set) => ({
+  user: null,
   session: null,
   setSession: (session) => set({ session }),
+  getUserMe: async () => {
+    const { data } = await supabase.auth.getSession()
+
+    if (data.session) {
+      const {
+        data: { user },
+        error,
+      } = await supabase.auth.getUser(data.session?.access_token)
+
+      if (error) {
+        return error
+      } else {
+        set({ user })
+      }
+    }
+
+  },
   login: async (email, password) => {
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
