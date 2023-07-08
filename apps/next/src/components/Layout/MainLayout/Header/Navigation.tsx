@@ -16,13 +16,13 @@ const Navigation = ({ variant }: { variant?: "Sidebar" }) => {
     >
       <li className={cn("flex items-center font-bold", variant === "Sidebar" && "gap-5", variant !== "Sidebar" && "gap-9")}>
         <Link href={"/"} passHref>
-          {t("Home")}
+          {t("nav_home")}
         </Link>
         <Link href={"/translate"} passHref>
-          {t("Translate")}
+          {t("nav_translate")}
         </Link>
         <Link href={"/team"} passHref>
-          {t("Teams")}
+          {t("nav_teams")}
         </Link>
       </li>
     </ul>
