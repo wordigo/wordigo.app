@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import useCommonStore from "@/stores/Common";
 import { ArrowRightIcon, ChevronUp, X } from "lucide-react";
+import { useStore } from "zustand";
 
 import { Button } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
@@ -12,11 +14,14 @@ interface DashboardNavProps {
 }
 
 export function DashboardNav({ items }: DashboardNavProps) {
+  const showSidebarPanel = useCommonStore((state) => state.showSidebarPanel);
   const path = usePathname();
 
   if (!items?.length) {
     return null;
   }
+
+  console.log(showSidebarPanel);
 
   return (
     <nav className="grid items-start gap-2">

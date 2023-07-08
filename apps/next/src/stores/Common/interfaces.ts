@@ -1,5 +1,5 @@
 
 export interface ICommonStore {
-  showSidebaPanel: boolean
+  showSidebarPanel: boolean
   setSidebarPanel: (session: boolean) => void
 }
