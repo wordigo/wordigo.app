@@ -8,13 +8,17 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 export interface ILanguageSelector {
   supportLanguages?: boolean;
   className?: string;
+  defaultValue?: string;
+  onSelect?: (value: string) => void;
 }
 
-const LanguageSelector: React.FC<ILanguageSelector> = ({ className, supportLanguages = true }) => {
-  const computedLanguages = supportLanguages ? SupportedLanguages : AllCountryLanguages;
+const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue, supportLanguages = true, onSelect }) => {
+  const handleSelect = (value: string) => {
+    onSelect?.(value);
+  };
 
   return (
-    <Select>
+    <Select defaultValue={defaultValue} onValueChange={handleSelect}>
       <SelectTrigger className={className}>
         <SelectValue placeholder="Select language" />
       </SelectTrigger>
@@ -24,7 +28,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({ className, supportLangu
             <SelectItem value="0" disabled>
               Select language
             </SelectItem>
-            {computedLanguages.map(([code, lang]) => {
+            {SupportedLanguages.map(({ code, icon, name }) => {
               return (
                 <SelectItem key={code} value={code}>
                   <div className="flex items-center gap-x-2">
@@ -34,9 +38,9 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({ className, supportLangu
                         lineHeight: "1em",
                       }}
                       svg
-                      countryCode={code}
+                      countryCode={icon}
                     />
-                    {lang}
+                    {name}
                   </div>
                 </SelectItem>
               );
