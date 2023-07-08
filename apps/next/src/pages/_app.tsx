@@ -14,11 +14,11 @@ const App = ({ Component, pageProps }: AppProps<{ initialSession: Session | null
   const [supabaseClient] = useState(() => createBrowserSupabaseClient());
 
   return (
-    <SessionContextProvider supabaseClient={supabaseClient} initialSession={pageProps.initialSession}>
-      <AppProviders>
-        <Component {...pageProps} />
-      </AppProviders>
-    </SessionContextProvider>
+    // <SessionContextProvider supabaseClient={supabaseClient} initialSession={pageProps.initialSession}>
+    <AppProviders>
+      <Component {...pageProps} />
+    </AppProviders>
+    // </SessionContextProvider>
   );
 };
 

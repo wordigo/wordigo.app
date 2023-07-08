@@ -1,21 +1,19 @@
 import { create } from "zustand"
 import { type AuthState } from "./interfaces"
+import supabase from "@/libs/supabase"
 
 const useAuthStore = create<AuthState>((set) => ({
   session: null,
   setSession: (session) => set({ session }),
   login: async (email, password) => {
-    if (!email) return Promise.reject("Email is required")
-    if (!password) return Promise.reject("Password is required")
-
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     })
-    if (error) return Promise.reject(error)
+    if (error) return error
 
     set({ session: data.session })
-    return Promise.resolve(data.user)
+    return data.user
   },
   register: async (email, password) => {
     if (!email) return Promise.reject("Email is required")

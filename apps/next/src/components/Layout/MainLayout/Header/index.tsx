@@ -2,8 +2,9 @@ import { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Button } from "@wordigo/ui";
+import { Button, buttonVariants } from "@wordigo/ui";
 import LanguageSelector from "@wordigo/ui/components/ui/language-selector";
+import { cn } from "@wordigo/ui/lib/utils";
 
 import ThemeMode from "../../ThemeMode";
 import Banner from "../Banner";
@@ -44,12 +45,12 @@ export default function HomeHeader() {
           <LanguageSelector className="w-[150px] !h-9" />
           <div className="w-[1px] !h-9 bg-gray-200 dark:bg-gray-800"></div>
           <span>
-            <Button variant="outline" className="bg-transparent mr-3" size="sm">
+            <Link href="/auth/login" className={cn("bg-transparent mr-3", buttonVariants({ size: "sm", variant: "outline" }))}>
               Sign in
-            </Button>
-            <Button variant="default" size="sm">
+            </Link>
+            <Link href="/auth/register" className={cn(buttonVariants({ size: "sm", variant: "default" }))}>
               Sign up
-            </Button>
+            </Link>
           </span>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React from "react";
+import useAuthStore from "@/stores/Auth";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useForm } from "react-hook-form";
 import z from "zod";
 
@@ -19,7 +19,8 @@ const AuthLoginSchema = z.object({
 type AuthLoginValues = z.infer<typeof AuthLoginSchema>;
 
 const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
-  const supabase = useSupabaseClient();
+  const authStore = useAuthStore();
+
   const defaultValues: Partial<AuthLoginValues> = {
     email: "",
     password: "",
@@ -32,6 +33,9 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
 
   const handleSubmit = async (values: AuthLoginValues) => {
     console.log(values);
+
+    const result = await authStore.login(values.email, values.password);
+    console.log(result);
 
     // const { data, error } = await supabase.auth.signInWithPassword({
     //   email,

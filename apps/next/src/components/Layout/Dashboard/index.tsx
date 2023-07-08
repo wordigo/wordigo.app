@@ -1,14 +1,12 @@
 import { SiteFooter } from "@/components/Layout/Dashboard/Footer";
 import { MainNav } from "@/components/Layout/Dashboard/Header/MainNav";
 import BurgerMenu from "@/components/Layout/Dashboard/Sidebar/Menu";
-import { DashboardNav } from "@/components/Layout/Dashboard/nav";
-import { dashboardConfig } from "@/constants/dashboard";
 
 interface DashboardLayoutProps {
   children?: React.ReactNode;
 }
 
-export default function DashboardTwoLayout({ children }: DashboardLayoutProps) {
+export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <div className="flex min-h-screen flex-col space-y-6">
       <header className="sticky top-0 z-40 border-b bg-background">

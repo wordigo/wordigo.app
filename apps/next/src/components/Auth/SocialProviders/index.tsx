@@ -1,10 +1,8 @@
-import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import supabase from "@/libs/supabase";
 
 import { Button } from "@wordigo/ui";
 
 const SocialProviders = () => {
-  const supabase = useSupabaseClient();
-
   const signInWithGoogle = async () => {
     const result = await supabase.auth.signInWithOAuth({ provider: "google" });
   };

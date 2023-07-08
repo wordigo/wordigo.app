@@ -1,14 +1,13 @@
+import DashboardLayout from "@/components/Layout/Dashboard";
 import { DashboardHeader } from "@/components/Layout/Dashboard/Header";
-import { DashboardShell } from "@/components/Layout/Dashboard/shell";
-
-import DashboardTwoLayout from "./layout";
+import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
 
 export default function DashboardPage() {
   return (
-    <DashboardTwoLayout>
+    <DashboardLayout>
       <DashboardShell>
         <DashboardHeader heading="Dashboard" text="Create and manage dashboard."></DashboardHeader>
       </DashboardShell>
-    </DashboardTwoLayout>
+    </DashboardLayout>
   );
 }
