@@ -8,7 +8,7 @@ import type { AppRouter } from '@wordigo/api'
 import superjson from 'superjson'
 
 function getBaseUrl() {
-  return `https://www.wordigo.app` // dev SSR should use localhost
+  return `http://localhost:3000` // dev SSR should use localhost
 }
 
 const trpc = createTRPCReact<AppRouter>()
