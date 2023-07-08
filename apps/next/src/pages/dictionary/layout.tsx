@@ -1,6 +1,6 @@
-import BurgerMenu from "@/components/Layout/Dashboard/BurgerMenu";
-import { MainNav } from "@/components/Layout/Dashboard/main-nav";
-import { SiteFooter } from "@/components/Layout/Dashboard/site-footer";
+import { SiteFooter } from "@/components/Layout/Dashboard/Footer";
+import { MainNav } from "@/components/Layout/Dashboard/Header/MainNav";
+import BurgerMenu from "@/components/Layout/Dashboard/Sidebar/Menu";
 
 interface DashboardLayoutProps {
   children?: React.ReactNode;

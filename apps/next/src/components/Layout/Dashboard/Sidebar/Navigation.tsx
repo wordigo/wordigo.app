@@ -14,14 +14,11 @@ interface DashboardNavProps {
 }
 
 export function DashboardNav({ items }: DashboardNavProps) {
-  const showSidebarPanel = useCommonStore((state) => state.showSidebarPanel);
   const path = usePathname();
 
   if (!items?.length) {
     return null;
   }
-
-  console.log(showSidebarPanel);
 
   return (
     <nav className="grid items-start gap-2">

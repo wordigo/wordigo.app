@@ -1,4 +1,4 @@
-import { DashboardHeader } from "@/components/Layout/Dashboard/header";
+import { DashboardHeader } from "@/components/Layout/Dashboard/Header";
 import { DashboardShell } from "@/components/Layout/Dashboard/shell";
 
 export default function DashboardLoading() {

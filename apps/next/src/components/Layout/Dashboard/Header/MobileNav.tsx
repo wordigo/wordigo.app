@@ -1,6 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/constants/site";
 import { GitlabIcon } from "lucide-react";
 
 import { cn } from "@wordigo/ui/lib/utils";

@@ -1,7 +1,8 @@
-import { MainNav } from "@/components/Layout/Dashboard/main-nav";
+import { SiteFooter } from "@/components/Layout/Dashboard/Footer";
+import { MainNav } from "@/components/Layout/Dashboard/Header/MainNav";
+import BurgerMenu from "@/components/Layout/Dashboard/Sidebar/Menu";
 import { DashboardNav } from "@/components/Layout/Dashboard/nav";
-import { SiteFooter } from "@/components/Layout/Dashboard/site-footer";
-import { dashboardConfig } from "@/config/dashboard";
+import { dashboardConfig } from "@/constants/dashboard";
 
 interface DashboardLayoutProps {
   children?: React.ReactNode;
@@ -23,7 +24,7 @@ export default function DashboardTwoLayout({ children }: DashboardLayoutProps) {
       </header>
       <div className="m-auto max-w-[1760px] w-full grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
         <aside className="hidden w-[200px] flex-col md:flex">
-          <DashboardNav items={dashboardConfig.sidebarNav} />
+          <BurgerMenu />
         </aside>
         <main className="flex w-full flex-1 flex-col overflow-hidden">{children}</main>
       </div>

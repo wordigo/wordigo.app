@@ -1,7 +1,8 @@
 import * as React from "react";
 import { GithubIcon, GitlabIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from "lucide-react";
-import { cn } from "@wordigo/ui/lib/utils";
+
 import { Button } from "@wordigo/ui";
+import { cn } from "@wordigo/ui/lib/utils";
 
 export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
   return (
