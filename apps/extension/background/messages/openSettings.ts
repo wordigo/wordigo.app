@@ -14,8 +14,6 @@ const handler: PlasmoMessaging.MessageHandler<
     chrome.runtime.openOptionsPage()
     res.send(true)
   } catch (err) {
-    console.log(err)
-
     res.send(false)
   }
 

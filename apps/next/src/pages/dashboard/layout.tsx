@@ -1,7 +1,6 @@
 import { MainNav } from "@/components/Layout/Dashboard/main-nav";
 import { DashboardNav } from "@/components/Layout/Dashboard/nav";
 import { SiteFooter } from "@/components/Layout/Dashboard/site-footer";
-import { UserAccountNav } from "@/components/Layout/Dashboard/user-account-nav";
 import { dashboardConfig } from "@/config/dashboard";
 
 interface DashboardLayoutProps {

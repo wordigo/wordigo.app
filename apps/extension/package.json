@@ -1,8 +1,8 @@
 {
-  "name": "extension",
+  "name": "@wordigo/extension",
   "displayName": "Wordigo Translator",
   "version": "0.0.1",
-  "description": "english learning extension.",
+  "description": "Wordigo: Translate text in the browser and add it to the dictionary. Easily bypass language restrictions.",
   "author": "osman.delismen",
   "scripts": {
     "dev": "plasmo dev",
@@ -44,8 +44,7 @@
   },
   "manifest": {
     "permissions": [
-      "cookies",
-      "contextMenus"
+      "cookies"
     ],
     "host_permissions": [
       "http://localhost:3000/"

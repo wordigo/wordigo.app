@@ -11,7 +11,7 @@ const Error404Page = () => {
   };
 
   return (
-    <div className="max-w-[50rem] flex flex-col mx-auto w-full h-full">
+    <div className="max-w-[50rem] flex flex-col mx-auto w-full h-screen">
       <header className="mb-auto flex justify-center z-50 w-full py-4">
         <nav className="px-4 sm:px-6 lg:px-8" aria-label="Global">
           <a className="flex-none text-xl font-semibold sm:text-3xl dark:text-white" href="#" aria-label="Brand">
@@ -35,7 +35,7 @@ const Error404Page = () => {
 
       <footer className="mt-auto text-center py-5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm text-gray-500">© All Rights Reserved. 2023.</p>
+          <p className="text-sm text-gray-500">© Copyright 2023. All Rights Reserved by Wordigo.</p>
         </div>
       </footer>
     </div>
