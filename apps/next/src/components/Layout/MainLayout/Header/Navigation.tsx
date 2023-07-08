@@ -22,7 +22,7 @@ const Navigation = ({ variant }: { variant?: "Sidebar" }) => {
           {t("nav_translate")}
         </Link>
         <Link href={"/dashboard"} passHref>
-          {t("nav_dashboard")}a
+          {t("nav_dashboard")}
         </Link>
         <Link href={"/team"} passHref>
           {t("nav_teams")}

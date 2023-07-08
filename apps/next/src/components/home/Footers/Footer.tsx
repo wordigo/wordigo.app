@@ -1,3 +1,4 @@
+import ChangeLanguage from "@/components/Layout/MainLayout/ChangeLanguage";
 import { GithubIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from "lucide-react";
 
 import { Button } from "@wordigo/ui";
@@ -68,7 +69,7 @@ export default function Footer() {
       <div className="pt-5 mt-5 border-t border-gray-200 dark:border-gray-700">
         <div className="sm:flex sm:justify-between sm:items-center">
           <div className="flex flex-1 items-center gap-x-3">
-            <LanguageSelector className="w-[150px] !h-9" />
+            <ChangeLanguage />
             <div className="space-x-4 text-sm ml-4 opacity-80">© Copyright 2023. All Rights Reserved by Wordigo.</div>
           </div>
 

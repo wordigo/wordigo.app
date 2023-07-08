@@ -10,6 +10,7 @@ import { cn } from "@wordigo/ui/lib/utils";
 
 import ThemeMode from "../../ThemeMode";
 import Banner from "../Banner";
+import ChangeLanguage from "../ChangeLanguage";
 import Navigation from "./Navigation";
 
 export default function HomeHeader() {
@@ -34,8 +35,8 @@ export default function HomeHeader() {
           <Navigation />
         </nav>
         <div className="flex gap-y-6 gap-x-3 mt-[20px]">
+          <ChangeLanguage />
           <ThemeMode />
-          <LanguageSelector defaultValue={i18n.language} onSelect={handleChangeLocale} className="w-[150px] !h-9" />
           <div className="w-[1px] !h-9 bg-gray-200 dark:bg-gray-800"></div>
           <span>
             <Link href="/auth/login" className={cn("bg-transparent mr-3", buttonVariants({ size: "sm", variant: "outline" }))}>
