@@ -20,6 +20,10 @@ export default {
     },
     extend: {
       colors: {
+        DarkBackground: '#020817',
+        LightBackground: '#ffff',
+        light_text: '#333549',
+
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
