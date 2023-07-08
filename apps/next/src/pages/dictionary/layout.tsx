@@ -1,7 +1,6 @@
+import BurgerMenu from "@/components/Layout/Dashboard/BurgerMenu";
 import { MainNav } from "@/components/Layout/Dashboard/main-nav";
-import { DashboardNav } from "@/components/Layout/Dashboard/nav";
 import { SiteFooter } from "@/components/Layout/Dashboard/site-footer";
-import { dashboardConfig } from "@/config/dashboard";
 
 interface DashboardLayoutProps {
   children?: React.ReactNode;
@@ -9,7 +8,7 @@ interface DashboardLayoutProps {
 
 export default function DashboardTwoLayout({ children }: DashboardLayoutProps) {
   return (
-    <div className="flex min-h-screen flex-col space-y-6">
+    <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-40 border-b bg-background">
         <div className="px-[80px] m-auto  flex h-16 items-center justify-between py-4">
           <MainNav
@@ -21,10 +20,8 @@ export default function DashboardTwoLayout({ children }: DashboardLayoutProps) {
           />
         </div>
       </header>
-      <div className="m-auto max-w-[1760px] w-full grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
-        <aside className="hidden w-[200px] flex-col md:flex">
-          <DashboardNav items={dashboardConfig.sidebarNav} />
-        </aside>
+      <BurgerMenu />
+      <div className="m-auto max-w-[1760px] w-full grid flex-1 gap-12 md:grid-cols-[200px_1fr] py-6">
         <main className="flex w-full flex-1 flex-col overflow-hidden">{children}</main>
       </div>
       <SiteFooter className="border-t" />
