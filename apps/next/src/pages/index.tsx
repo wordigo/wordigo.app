@@ -1,8 +1,8 @@
+import FeatureBanner from "@/components/Home/Banner/Banner";
+import Footer from "@/components/Home/Footers/Footer";
+import HeroContainer from "@/components/Home/Hero/Hero";
+import FeatureSections from "@/components/Home/Steps/Steps";
 import MainLayout from "@/components/Layout/MainLayout";
-import Section2_Container from "@/components/home/Banner/Banner";
-import Footer from "@/components/home/Footers/Footer";
-import Section_1 from "@/components/home/Hero/Hero_Container";
-import Section3_Container from "@/components/home/Steps/Steps";
 import { i18n } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
@@ -10,10 +10,10 @@ export default function index() {
   return (
     <MainLayout>
       <div>
-        <Section_1></Section_1>
+        <HeroContainer></HeroContainer>
       </div>
-      <Section2_Container></Section2_Container>
-      <Section3_Container></Section3_Container>
+      <FeatureBanner />
+      <FeatureSections />
       <Footer></Footer>
     </MainLayout>
   );

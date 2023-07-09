@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { Button } from "@wordigo/ui";
 
-export default function Section2_Container() {
+export default function FeatureBanner() {
   return (
     <section>
       <div className="container px-4 mx-auto max-w-[1440px] w-full">
