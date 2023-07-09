@@ -14,7 +14,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
-import { Table, TableBody, TableCell, TableRow } from "@wordigo/ui";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@wordigo/ui";
 
 import { DataTablePagination } from "./data-table-pagination";
 import { DataTableToolbar } from "./data-table-toolbar";
@@ -53,11 +53,11 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
   });
 
   return (
-    <div className="space-y-4 relative pb-[85px]">
+    <div className="space-y-4">
       <DataTableToolbar table={table} />
       <div className="rounded-md border">
         <Table>
-          {/* <TableHeader className="w-full">
+          <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
@@ -69,11 +69,11 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
                 })}
               </TableRow>
             ))}
-          </TableHeader> */}
+          </TableHeader>
           <TableBody>
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow className="flex items-center justify-between" key={row.id} data-state={row.getIsSelected() && "selected"}>
+                <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
                   ))}

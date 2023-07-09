@@ -1,7 +1,7 @@
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import ReactCountryFlag from "react-country-flag";
 
-import { AllCountryLanguages, SupportedLanguages } from "@wordigo/common";
+import { SupportedLanguages } from "@wordigo/common";
 
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "./select";
 

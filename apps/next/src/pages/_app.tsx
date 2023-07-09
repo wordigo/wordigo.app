@@ -6,7 +6,7 @@ import { SessionContextProvider } from "@supabase/auth-helpers-react";
 import { Analytics } from "@vercel/analytics/react";
 
 import "@wordigo/ui/styles/globals.css";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import type { AppProps } from "next/app";
 import { appWithTranslation } from "next-i18next";
 import { DefaultSeo } from "next-seo";
@@ -17,13 +17,15 @@ const App = ({ Component, pageProps }: AppProps<{ initialSession: Session | null
   const [supabase] = useState(() => createBrowserSupabaseClient());
 
   return (
-    <AppProviders>
+    <Fragment>
       <DefaultSeo {...seo} />
       <SessionContextProvider supabaseClient={supabase} initialSession={pageProps.initialSession}>
-        <Component {...pageProps} />
+        <AppProviders>
+          <Component {...pageProps} />
+        </AppProviders>
       </SessionContextProvider>
       <Analytics />
-    </AppProviders>
+    </Fragment>
   );
 };
 

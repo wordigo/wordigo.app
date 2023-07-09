@@ -1,5 +1,5 @@
 import { type Column } from "@tanstack/react-table";
-import { ArrowDownIcon, ArrowUpIcon, EyeIcon, SortDescIcon } from "lucide-react";
+import { ArrowDownIcon, ArrowUpIcon, EyeOff, SortAscIcon } from "lucide-react";
 
 import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
@@ -15,7 +15,7 @@ export function DataTableColumnHeader<TData, TValue>({ column, title, className 
   }
 
   return (
-    <div className={cn("flex items-center space-x-2", className)}>
+    <div className={cn("flex items-center space-x-2 pl-4", className)}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="sm" className="-ml-3 h-8 data-[state=open]:bg-accent">
@@ -25,7 +25,7 @@ export function DataTableColumnHeader<TData, TValue>({ column, title, className 
             ) : column.getIsSorted() === "asc" ? (
               <ArrowUpIcon className="ml-2 h-4 w-4" />
             ) : (
-              <SortDescIcon className="ml-2 h-4 w-4" />
+              <SortAscIcon className="ml-2 h-4 w-4" />
             )}
           </Button>
         </DropdownMenuTrigger>
@@ -40,7 +40,7 @@ export function DataTableColumnHeader<TData, TValue>({ column, title, className 
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => column.toggleVisibility(false)}>
-            <EyeIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
+            <EyeOff className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
             Hide
           </DropdownMenuItem>
         </DropdownMenuContent>

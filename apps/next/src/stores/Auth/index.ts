@@ -8,13 +8,13 @@
 //   isLoggedIn: false,
 //   setSession: (session) => set({ session }),
 //   getUserMe: async () => {
-//     const { data } = await supabase.auth.getSession()
+    // const { data } = await supabase.auth.getSession()
 
-//     if (data.session) {
-//       const {
-//         data: { user },
-//         error,
-//       } = await supabase.auth.getUser(data.session?.access_token)
+    // if (data.session) {
+    //   const {
+    //     data: { user },
+    //     error,
+    //   } = await supabase.auth.getUser(data.session?.access_token)
 
 //       if (error) {
 //         return error

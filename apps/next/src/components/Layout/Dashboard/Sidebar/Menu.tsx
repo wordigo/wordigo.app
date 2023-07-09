@@ -1,11 +1,13 @@
-import { dashboardConfig } from "@/constants/dashboard";
+import Link from "next/link";
 import useCommonStore from "@/stores/Common";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
+
 import { Button } from "@wordigo/ui";
-import { cn } from "@wordigo/ui/lib/utils";
+
 import Navigation from "../../MainLayout/Header/Navigation";
 import { DashboardNav } from "./Navigation";
+import { SidebarConfig } from "./navigations.constants";
 
 export default function BurgerMenu() {
   const { showSidebarPanel, setSidebarPanel } = useCommonStore((state) => state);
@@ -26,27 +28,23 @@ export default function BurgerMenu() {
           transition={{ duration: 0.3 }}
         >
           <span>
-            <span className="flex  items-center justify-between mb-7">
-              <div>Wordingo</div>
-              <div onClick={handleSidebar} className="text-end text-[22px]">
+            <span className="flex items-center justify-between mb-7 px-4">
+              <Link href={"/"} className="font-bold text-[18px]">
+                Wordigo
+              </Link>
+              <div onClick={handleSidebar} className="text-end text-sm">
                 <Button variant="outline" size="icon" className="border-none">
                   <X size={"14"} />
                 </Button>
               </div>
             </span>
-            <aside className="hidden w-[200px] flex-col md:flex">
-              <DashboardNav items={dashboardConfig.sidebarNav} />
+            <aside className="flex w-full flex-col">
+              <DashboardNav items={SidebarConfig.sidebarNav} />
             </aside>
-
-            <hr className="my-[35px]" />
-
-            <div className={cn("transition-opacity duration-1000 opacity-0", showDetailDictionary && "opacity-100")}>
-              {showDetailDictionary && <div className="transition-opacity duration-1000">TEST PAGE</div>}
-            </div>
           </span>
 
           <div className="w-full">
-            <h1 className="text-[12px] my-4">© 2023 Wordigo.</h1>
+            <h1 className="text-sm my-4">© 2023 Wordigo.</h1>
             <Navigation variant="Sidebar" />
           </div>
         </motion.div>

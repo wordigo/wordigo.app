@@ -1,9 +1,9 @@
 import Link from "next/link";
 import NavProfile from "@/components/Layout/NavProfile";
-import { siteConfig } from "@/constants/site";
 import useCommonStore from "@/stores/Common";
-import { GitlabIcon } from "lucide-react";
-import { TbMenu2 } from "react-icons/tb";
+import { GitlabIcon, MenuIcon } from "lucide-react";
+
+import { Button } from "@wordigo/ui";
 
 import ThemeMode from "../../ThemeMode";
 
@@ -16,7 +16,7 @@ interface IMainNav {
   heading: string;
 }
 
-export function MainNav({ user, heading }: IMainNav) {
+export function MainNav({ heading }: IMainNav) {
   const { showSidebarPanel, setSidebarPanel } = useCommonStore((state) => state);
 
   const handleSidebar = () => {
@@ -26,20 +26,22 @@ export function MainNav({ user, heading }: IMainNav) {
   return (
     <div className="flex items-center w-full relative justify-between">
       <span className="flex items-center gap-4">
-        <div onClick={handleSidebar} className="text-[20px] p-1 border rounded-md">
-          <TbMenu2 />
-        </div>
+        <Button className="h-8 w-8" variant="outline" size="icon" onClick={handleSidebar}>
+          <MenuIcon size={18} />
+        </Button>
         <div className="flex items-center gap-3">
           <Link href="/" className="hidden items-center space-x-2 md:flex">
             <GitlabIcon />
-            <span className="hidden font-bold sm:inline-block">{siteConfig.name}</span>
+            <div className="inline-flex font-bold gap-x-1">
+              <span>Wordigo</span>
+              <span className="text-sm opacity-50 font-bold tracking-tight self-end">/{heading}</span>
+            </div>
           </Link>
-          <h2 className="text-xl font-bold tracking-tight">{heading}</h2>
         </div>
       </span>
-      <div className=" flex gap-4">
+      <div className="flex gap-4">
         <ThemeMode />
-        <NavProfile user={user} />
+        <NavProfile />
       </div>
     </div>
   );

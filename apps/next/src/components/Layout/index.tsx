@@ -1,8 +1,9 @@
 import Router from "next/router";
+import { useAuthStore } from "@/hooks/useAuthStore";
 import NProgress from "nprogress";
 
 import "nprogress/nprogress.css";
-import { type PropsWithChildren } from "react";
+import { type PropsWithChildren, useEffect } from "react";
 
 NProgress.configure({
   minimum: 0.3,
@@ -16,5 +17,11 @@ Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
 export default function RootLayout({ children }: PropsWithChildren) {
-  return <div>{children}</div>;
+  const authStore = useAuthStore();
+
+  useEffect(() => {
+    void authStore.getUserMe();
+  }, []);
+
+  return children;
 }

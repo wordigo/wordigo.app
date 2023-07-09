@@ -1,9 +1,11 @@
-import supabase from "@/libs/supabase/client";
 import getUrl from "@/utils/getUrl";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 import { Button } from "@wordigo/ui";
 
 const SocialProviders = () => {
+  const supabase = useSupabaseClient();
+
   const signInWithGoogle = async () => {
     const result = await supabase.auth.signInWithOAuth({
       provider: "google",

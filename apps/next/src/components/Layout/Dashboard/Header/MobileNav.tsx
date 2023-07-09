@@ -1,12 +1,13 @@
 import * as React from "react";
 import Link from "next/link";
-import { siteConfig } from "@/constants/site";
 import { GitlabIcon } from "lucide-react";
 
 import { cn } from "@wordigo/ui/lib/utils";
 
+import { type SidebarNavItem } from "../Sidebar/navigations.constants";
+
 interface MobileNavProps {
-  items: MainNavItem[];
+  items: SidebarNavItem[];
   children?: React.ReactNode;
 }
 
@@ -20,7 +21,7 @@ export function MobileNav({ items, children }: MobileNavProps) {
       <div className="relative z-20 grid gap-6 rounded-md bg-popover p-4 text-popover-foreground shadow-md">
         <Link href="/" className="flex items-center space-x-2">
           <GitlabIcon />
-          <span className="font-bold">{siteConfig.name}</span>
+          <span className="font-bold">Wordigo</span>
         </Link>
         <nav className="grid grid-flow-row auto-rows-max text-sm">
           {items.map((item, index) => (

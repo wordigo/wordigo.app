@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import useCommonStore from "@/stores/Common";
@@ -8,6 +6,8 @@ import { ArrowRightIcon, ChevronUp } from "lucide-react";
 
 import { Button } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
+
+import { type SidebarNavItem } from "./navigations.constants";
 
 interface DashboardNavProps {
   items: SidebarNavItem[];

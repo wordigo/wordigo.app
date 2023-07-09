@@ -14,7 +14,7 @@ export default function index() {
       </div>
       <FeatureBanner />
       <FeatureSections />
-      <Footer></Footer>
+      <Footer />
     </MainLayout>
   );
 }

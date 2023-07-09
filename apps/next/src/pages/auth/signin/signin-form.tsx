@@ -1,10 +1,12 @@
 import React from "react";
+import { useRouter } from "next/router";
+import CButton from "@/components/UI/Button";
 import { useAuthStore } from "@/hooks/useAuthStore";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import z from "zod";
 
-import { Button, Form, FormControl, FormField, FormItem, FormMessage, Input, useToast } from "@wordigo/ui";
+import { Form, FormControl, FormField, FormItem, FormMessage, Input, useToast } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
 type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
@@ -20,6 +22,7 @@ type AuthLoginValues = z.infer<typeof AuthLoginSchema>;
 
 const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
   const { toast } = useToast();
+  const router = useRouter();
   const authStore = useAuthStore();
 
   const defaultValues: Partial<AuthLoginValues> = {
@@ -44,6 +47,7 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
         title: "Success",
         description: "sign up successful you are redirected to homepage.",
       });
+      await router.push("/");
     }
   };
 
@@ -77,7 +81,9 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
               )}
             />
           </div>
-          <Button className="w-full">Sign In with Email</Button>
+          <CButton loading={authStore.isLoading} className="w-full">
+            Sign In with Email
+          </CButton>
         </form>
       </Form>
     </div>

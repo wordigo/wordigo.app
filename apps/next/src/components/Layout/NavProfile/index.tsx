@@ -18,14 +18,17 @@ import {
 export default function NavProfile() {
   const { user, logout } = useAuthStore();
 
+  const splittedText = user?.user_metadata.name?.split(" ") || ([] as string[]);
+  const computedName = splittedText?.[0]?.[0] + splittedText?.[1]?.[0];
+
   return (
     <div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="relative h-8 w-8 rounded-full">
             <Avatar className="h-9 w-9">
-              <AvatarImage src={user?.user_metadata.avatar_url} alt="@shadcn" />
-              <AvatarFallback>{user?.user_metadata.name}</AvatarFallback>
+              <AvatarImage src={user?.user_metadata.avatar_url} alt={"@" + user?.user_metadata.name} />
+              <AvatarFallback>{computedName}</AvatarFallback>
             </Avatar>
           </Button>
         </DropdownMenuTrigger>
@@ -45,7 +48,9 @@ export default function NavProfile() {
             <DropdownMenuItem>Settings</DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={logout}>Log out</DropdownMenuItem>
+          <DropdownMenuItem className="text-red-400 hover:!text-red-500" onClick={logout}>
+            Log out
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
