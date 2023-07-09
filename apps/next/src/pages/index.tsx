@@ -10,7 +10,7 @@ export default function index() {
   return (
     <MainLayout>
       <div>
-        <HeroContainer></HeroContainer>
+        <HeroContainer />
       </div>
       <FeatureBanner />
       <FeatureSections />
