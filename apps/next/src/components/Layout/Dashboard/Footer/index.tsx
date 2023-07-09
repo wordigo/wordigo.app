@@ -7,7 +7,7 @@ import { cn } from "@wordigo/ui/lib/utils";
 export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
   return (
     <footer className={cn(className)}>
-      <div className="max-w-[1760px] m-auto flex flex-col items-center justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0">
+      <div className="max-w-[1760px] flex items-center justify-between m-auto h-[64px]">
         <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
           <GitlabIcon />
           <p className="text-center text-sm leading-loose md:text-left">

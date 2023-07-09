@@ -9,7 +9,7 @@ export const dashboardConfig: DashboardConfig = {
     },
     {
       title: "Dictionary",
-      href: "/dictionary",
+      href: "/dashboard/dictionary",
       icon: "billing",
     }
   ],

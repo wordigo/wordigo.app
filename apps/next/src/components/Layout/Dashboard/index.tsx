@@ -10,7 +10,7 @@ interface DashboardLayoutProps {
 export default function DashboardLayout({ children, heading }: DashboardLayoutProps) {
   return (
     <div className="flex justify-center min-h-screen flex-col space-y-2">
-      <header className="sticky top-0 z-40 border-b bg-background">
+      <header className="sticky top-0 z-40 border-b bg-background h-[65px]">
         <div className="px-[80px] m-auto  flex h-16 items-center justify-between py-4">
           <MainNav
             heading={heading}
@@ -26,7 +26,7 @@ export default function DashboardLayout({ children, heading }: DashboardLayoutPr
         <BurgerMenu />
       </div>
       <main className="max-w-[1760px] m-auto w-full flex-1 gap-12 md:grid-cols-[200px_1fr] break-words flex-wrap">{children}</main>
-      <SiteFooter className="border-t" />
+      <SiteFooter className="border-t fixed w-full bottom-0 dark:bg-DarkBackground bg-LightBackground" />
     </div>
   );
 }

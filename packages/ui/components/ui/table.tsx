@@ -20,7 +20,7 @@ const TableBody = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes
 TableBody.displayName = "TableBody";
 
 const TableFooter = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(({ className, ...props }, ref) => (
-  <tfoot ref={ref} className={cn("bg-primary font-medium text-primary-foreground", className)} {...props} />
+  <tfoot ref={ref} className={cn("bg-primary font-medium text-primary-foreground relative", className)} {...props} />
 ));
 TableFooter.displayName = "TableFooter";
 
