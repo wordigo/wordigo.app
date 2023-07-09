@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import useAuthStore from "@/stores/Auth";
+import { useAuthStore } from "@/hooks/useAuthStore";
 import { useTranslation } from "next-i18next";
 
 import { buttonVariants } from "@wordigo/ui";
@@ -38,10 +38,10 @@ export default function HomeHeader() {
             <NavProfile />
           ) : (
             <span>
-              <Link href="/auth/login" className={cn("bg-transparent mr-3", buttonVariants({ size: "sm", variant: "outline" }))}>
+              <Link href="/auth/signin" className={cn("bg-transparent mr-3", buttonVariants({ size: "sm", variant: "outline" }))}>
                 {t("nav_login")}
               </Link>
-              <Link href="/auth/register" className={cn(buttonVariants({ size: "sm", variant: "default" }))}>
+              <Link href="/auth/signup" className={cn(buttonVariants({ size: "sm", variant: "default" }))}>
                 {t("nav_register")}
               </Link>
             </span>

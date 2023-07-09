@@ -1,18 +1,18 @@
 import AuthLayout from "@/components/Auth/Layout/AuthLayout";
 import SocialProviders from "@/components/Auth/SocialProviders";
 
-import AuthLoginForm from "./login-form";
+import AuthSıgnInForm from "./signin-form";
 
-const Login = () => {
+const SıgnIn = () => {
   return (
     <AuthLayout>
       <AuthLayout.Title>Welcome Back</AuthLayout.Title>
       <AuthLayout.Description>Enter your email to sign in to your account</AuthLayout.Description>
-      <AuthLoginForm />
+      <AuthSıgnInForm />
       <SocialProviders />
-      <AuthLayout.Footer url="/register">Don't have an account? Sign Up</AuthLayout.Footer>
+      <AuthLayout.Footer url="/auth/signup">Don't have an account? Sign Up</AuthLayout.Footer>
     </AuthLayout>
   );
 };
 
-export default Login;
+export default SıgnIn;

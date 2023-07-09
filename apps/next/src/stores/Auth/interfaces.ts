@@ -13,7 +13,10 @@ export interface IAuthState {
   getUserMe: () => void,
   register: (
     email: string,
-    password: string
+    password: string,
+    { }: {
+      name: string
+    }
   ) => Promise<User | AuthError | null>
   logout: () => Promise<AuthError | boolean>
 }

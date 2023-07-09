@@ -1,5 +1,5 @@
 import Link from "next/link";
-import useAuthStore from "@/stores/Auth";
+import { useAuthStore } from "@/hooks/useAuthStore";
 
 import {
   Avatar,

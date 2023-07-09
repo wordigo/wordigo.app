@@ -17,8 +17,6 @@ export async function middleware(request: NextRequest, response: NextResponse) {
       return response
     } else throw Error
   } catch (err) {
-    console.log(err)
-
     return NextResponse.redirect(new URL('/auth/login', request.url))
   }
 }

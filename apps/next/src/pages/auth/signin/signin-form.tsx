@@ -1,10 +1,10 @@
 import React from "react";
-import useAuthStore from "@/stores/Auth";
+import { useAuthStore } from "@/hooks/useAuthStore";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import z from "zod";
 
-import { Button, Form, FormControl, FormField, FormItem, FormMessage, Input } from "@wordigo/ui";
+import { Button, Form, FormControl, FormField, FormItem, FormMessage, Input, useToast } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
 type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
@@ -19,6 +19,7 @@ const AuthLoginSchema = z.object({
 type AuthLoginValues = z.infer<typeof AuthLoginSchema>;
 
 const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
+  const { toast } = useToast();
   const authStore = useAuthStore();
 
   const defaultValues: Partial<AuthLoginValues> = {
@@ -32,15 +33,18 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
   });
 
   const handleSubmit = async (values: AuthLoginValues) => {
-    console.log(values);
-
-    const result = await authStore.login(values.email, values.password);
-    console.log(result);
-
-    // const { data, error } = await supabase.auth.signInWithPassword({
-    //   email,
-    //   password,
-    // });
+    const { user, error } = await authStore.signIn(values.email, values.password);
+    if (error) {
+      toast({
+        title: "Warning",
+        description: error.message,
+      });
+    } else {
+      toast({
+        title: "Success",
+        description: "sign up successful you are redirected to homepage.",
+      });
+    }
   };
 
   return (
