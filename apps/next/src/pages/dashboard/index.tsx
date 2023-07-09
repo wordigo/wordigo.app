@@ -4,9 +4,9 @@ import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
 
 export default function DashboardPage() {
   return (
-    <DashboardLayout>
+    <DashboardLayout heading="Dashboard">
       <DashboardShell>
-        <DashboardHeader heading="Dashboard" text="Create and manage dashboard."></DashboardHeader>
+        <DashboardHeader text="Create and manage dashboard."></DashboardHeader>
       </DashboardShell>
     </DashboardLayout>
   );

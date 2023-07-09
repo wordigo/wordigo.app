@@ -8,9 +8,9 @@ import tasks from "./components/tasks.json";
 
 export default function DashboardPage() {
   return (
-    <DashboardLayout>
+    <DashboardLayout heading="Dictionary">
       <DashboardShell>
-        <DashboardHeader heading="Dictionary">
+        <DashboardHeader>
           <DataTable columns={columns} data={tasks} />
         </DashboardHeader>
       </DashboardShell>
