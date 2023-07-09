@@ -1,7 +1,7 @@
-import FeatureBanner from "@/components/Home/Banner/Banner";
+import FeatureBanner from "@/components/Home/Banner";
+import FeatureSections from "@/components/Home/FeatureSections";
 import Footer from "@/components/Home/Footers/Footer";
-import HeroContainer from "@/components/Home/Hero/Hero";
-import FeatureSections from "@/components/Home/Steps/Steps";
+import HeroContainer from "@/components/Home/Hero";
 import MainLayout from "@/components/Layout/MainLayout";
 import { i18n } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
