@@ -13,6 +13,8 @@ export const translationRouter = createTRPCRouter({
       targetLanguage: z.string()
     }))
     .mutation(async ({ ctx, input }) => {
+      console.log("ctx", ctx.user)
+
       const { sourceLanguage, targetLanguage, query } = input
       const [response, { data }] = await translate.translate(query, { from: sourceLanguage, to: targetLanguage })
       const translatedText = data.translations[0].translatedText

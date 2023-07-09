@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ProfilAvatar from "@/components/ProfilAvatar";
+import NavProfile from "@/components/Layout/NavProfile";
 import { siteConfig } from "@/constants/site";
 import useCommonStore from "@/stores/Common";
 import { GitlabIcon } from "lucide-react";
@@ -29,7 +29,7 @@ export function MainNav({ user }: { user: { name: string; image: string; email: 
       </span>
       <div className=" flex gap-4">
         <ThemeMode />
-        <ProfilAvatar user={user} />
+        <NavProfile user={user} />
       </div>
     </div>
   );
