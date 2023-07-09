@@ -1,11 +1,11 @@
-"use client";
-
 import * as React from "react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { DialogProps } from "@radix-ui/react-dialog";
-import { cn } from "@wordigo/ui/lib/utils";
 import { Command as CommandPrimitive } from "cmdk";
 import { Search } from "lucide-react";
+
+import { cn } from "@wordigo/ui/lib/utils";
+
+import { Dialog, DialogContent } from "./dialog";
 
 const Command = React.forwardRef<React.ElementRef<typeof CommandPrimitive>, React.ComponentPropsWithoutRef<typeof CommandPrimitive>>(
   ({ className, ...props }, ref) => (
