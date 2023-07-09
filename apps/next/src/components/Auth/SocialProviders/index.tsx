@@ -1,4 +1,4 @@
-import supabase from "@/libs/supabase";
+import supabase from "@/libs/supabase/client";
 
 import { Button } from "@wordigo/ui";
 

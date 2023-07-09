@@ -4,15 +4,16 @@ export interface IProfile {
   username: string
 }
 
-export interface AuthState {
+export interface IAuthState {
   session: Session | null
   user: User | null
+  isLoggedIn: boolean
   setSession: (session: Session | null) => void
   login: (email: string, password: string) => Promise<User | AuthError | null>
-  getUserMe: () => void
+  getUserMe: () => void,
   register: (
     email: string,
     password: string
   ) => Promise<User | AuthError | null>
-  logout: () => Promise<void>
+  logout: () => Promise<AuthError | boolean>
 }

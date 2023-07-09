@@ -1,5 +1,4 @@
 import { type PropsWithChildren } from "react";
-import { appWithTranslation } from "next-i18next";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 import { Toaster } from "@wordigo/ui";

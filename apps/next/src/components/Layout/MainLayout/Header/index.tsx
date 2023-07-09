@@ -1,25 +1,21 @@
 import { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import useAuthStore from "@/stores/Auth";
 import { useTranslation } from "next-i18next";
 
 import { buttonVariants } from "@wordigo/ui";
-import LanguageSelector from "@wordigo/ui/components/ui/language-selector";
 import { cn } from "@wordigo/ui/lib/utils";
 
+import NavProfile from "../../NavProfile";
 import ThemeMode from "../../ThemeMode";
 import Banner from "../Banner";
 import ChangeLanguage from "../ChangeLanguage";
 import Navigation from "./Navigation";
 
 export default function HomeHeader() {
-  const { t, i18n } = useTranslation();
-  const router = useRouter();
-
-  const handleChangeLocale = (locale: string) => {
-    router.replace(router.pathname, router.pathname, { locale });
-  };
+  const { t } = useTranslation();
+  const { isLoggedIn } = useAuthStore();
 
   return (
     <Fragment>
@@ -35,17 +31,21 @@ export default function HomeHeader() {
           <Navigation />
         </nav>
         <div className="flex gap-y-6 gap-x-3 mt-[20px]">
-          <ChangeLanguage />
           <ThemeMode />
+          <ChangeLanguage />
           <div className="w-[1px] !h-9 bg-gray-200 dark:bg-gray-800"></div>
-          <span>
-            <Link href="/auth/login" className={cn("bg-transparent mr-3", buttonVariants({ size: "sm", variant: "outline" }))}>
-              {t("nav_login")}
-            </Link>
-            <Link href="/auth/register" className={cn(buttonVariants({ size: "sm", variant: "default" }))}>
-              {t("nav_register")}
-            </Link>
-          </span>
+          {isLoggedIn ? (
+            <NavProfile />
+          ) : (
+            <span>
+              <Link href="/auth/login" className={cn("bg-transparent mr-3", buttonVariants({ size: "sm", variant: "outline" }))}>
+                {t("nav_login")}
+              </Link>
+              <Link href="/auth/register" className={cn(buttonVariants({ size: "sm", variant: "default" }))}>
+                {t("nav_register")}
+              </Link>
+            </span>
+          )}
         </div>
       </div>
     </Fragment>
