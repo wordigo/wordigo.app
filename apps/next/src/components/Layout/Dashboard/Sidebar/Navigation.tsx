@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import useCommonStore from "@/stores/Common";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { ArrowRightIcon, ChevronUp } from "lucide-react";
 
 import { Button } from "@wordigo/ui";
