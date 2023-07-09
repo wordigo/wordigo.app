@@ -11,7 +11,6 @@ export default function DashboardPage() {
     <DashboardLayout>
       <DashboardShell>
         <DashboardHeader heading="Dictionary">
-          <div className="break-words max-w-[1760px]"></div>
           <DataTable columns={columns} data={tasks} />
         </DashboardHeader>
       </DashboardShell>

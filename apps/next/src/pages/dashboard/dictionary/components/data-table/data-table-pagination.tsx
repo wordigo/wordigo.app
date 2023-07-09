@@ -1,4 +1,5 @@
 import { type Table } from "@tanstack/react-table";
+import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeft, ChevronsRight } from "lucide-react";
 
 import { Button, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@wordigo/ui";
 
@@ -44,15 +45,15 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
             disabled={!table.getCanPreviousPage()}
           >
             <span className="sr-only">Go to first page</span>
-            {/* <DoubleArrowLeftIcon className="h-4 w-4" /> */}
+            <ChevronsLeft className="h-4 w-4" />
           </Button>
           <Button variant="outline" className="h-8 w-8 p-0" onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
             <span className="sr-only">Go to previous page</span>
-            {/* <ChevronLeftIcon className="h-4 w-4" /> */}
+            <ChevronLeftIcon className="h-4 w-4" />
           </Button>
           <Button variant="outline" className="h-8 w-8 p-0" onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
             <span className="sr-only">Go to next page</span>
-            {/* <ChevronRightIcon className="h-4 w-4" /> */}
+            <ChevronRightIcon className="h-4 w-4" />
           </Button>
           <Button
             variant="outline"
@@ -61,7 +62,7 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
             disabled={!table.getCanNextPage()}
           >
             <span className="sr-only">Go to last page</span>
-            {/* <DoubleArrowRightIcon className="h-4 w-4" /> */}
+            <ChevronsRight className="h-4 w-4" />
           </Button>
         </div>
       </div>

@@ -2,7 +2,7 @@ import { type Table } from "@tanstack/react-table";
 
 import { Button, Input } from "@wordigo/ui";
 
-import { priorities, statuses } from "./data";
+import { priorities, statuses } from "./constants";
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
 
 interface DataTableToolbarProps<TData> {
