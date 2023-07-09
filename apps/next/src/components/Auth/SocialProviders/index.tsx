@@ -1,10 +1,16 @@
 import supabase from "@/libs/supabase/client";
+import getUrl from "@/utils/getUrl";
 
 import { Button } from "@wordigo/ui";
 
 const SocialProviders = () => {
   const signInWithGoogle = async () => {
-    const result = await supabase.auth.signInWithOAuth({ provider: "google" });
+    const result = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: getUrl(),
+      },
+    });
   };
 
   return (
