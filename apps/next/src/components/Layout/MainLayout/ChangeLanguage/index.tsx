@@ -8,7 +8,7 @@ const ChangeLanguage = () => {
   const router = useRouter();
 
   const handleChangeLocale = (locale: string) => {
-    router.replace(router.pathname, router.pathname, { locale });
+    void router.replace(router.pathname, router.pathname, { locale });
   };
 
   return <LanguageSelector defaultValue={i18n.language} onSelect={handleChangeLocale} className="w-[150px] !h-9" />;

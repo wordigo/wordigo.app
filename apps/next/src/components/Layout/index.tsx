@@ -3,7 +3,7 @@ import { useAuthStore } from "@/hooks/useAuthStore";
 import NProgress from "nprogress";
 
 import "nprogress/nprogress.css";
-import { type PropsWithChildren, useEffect } from "react";
+import { Fragment, type PropsWithChildren, useEffect } from "react";
 
 NProgress.configure({
   minimum: 0.3,
@@ -23,5 +23,5 @@ export default function RootLayout({ children }: PropsWithChildren) {
     void authStore.getUserMe();
   }, []);
 
-  return children;
+  return <Fragment>{children}</Fragment>;
 }

@@ -31,7 +31,6 @@ const Document = () => {
             content="Wordigo is a useful add-on that offers the ability to translate text and add it to the dictionary in your browser."
           />
           <meta name="keywords" content="Wordigo, translation, text translation, dictionary, browser plug-in, language learning" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </Head>
         <body>
           <Main />

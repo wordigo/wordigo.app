@@ -15,7 +15,7 @@ import Navigation from "./Navigation";
 
 export default function HomeHeader() {
   const { t } = useTranslation();
-  const { isLoggedIn } = useAuthStore();
+  const { isLoggedIn, userLoading } = useAuthStore();
 
   return (
     <Fragment>
@@ -34,7 +34,9 @@ export default function HomeHeader() {
           <ThemeMode />
           <ChangeLanguage />
           <div className="w-[1px] !h-9 bg-gray-200 dark:bg-gray-800"></div>
-          {isLoggedIn ? (
+          {userLoading ? (
+            <NavProfile.Loader />
+          ) : isLoggedIn ? (
             <NavProfile />
           ) : (
             <span>
