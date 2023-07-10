@@ -2,7 +2,7 @@
   "name": "wordigo.app",
   "private": true,
   "engines": {
-    "node": ">=v18.15.0"
+    "node": ">=v18.14.0"
   },
   "workspaces": [
     "apps/*",

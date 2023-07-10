@@ -8,37 +8,47 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model Content {
-  test           String
-  id             String      @id @default(cuid())
-  message        String
+model UserWords {
+  id             String        @id @default(cuid())
+  wordId         String
+  word           Words         @relation(fields: [wordId], references: [id])
   translatedText String
-  isLearned      Boolean     @default(false)
+  learningStatus Boolean       @default(false)
   picture        String?
-  Dictionary     Dictionary? @relation(fields: [dictionaryId], references: [id])
-  dictionaryId   String
-  author         Profile?    @relation(fields: [authorId], references: [id])
+  DictionaryId   String
+  Dictionary     Dictionaries? @relation(fields: [DictionaryId], references: [id])
   authorId       String
+  author         Profiles?     @relation(fields: [authorId], references: [id])
 }
 
-model Dictionary {
-  id        String    @id @default(cuid())
+model Dictionaries {
+  id        String      @id @default(cuid())
   title     String
   content   String
-  published Boolean   @default(false)
-  author    Profile?  @relation(fields: [authorId], references: [id])
-  authorId  String
-  contents  Content[]
+  published Boolean     @default(false)
+  author    Profiles?   @relation(fields: [id], references: [id])
+  UserWords UserWords[]
 }
 
-model Profile {
-  id             String       @id
+model Profiles {
+  id             String         @id
   username       String?
   name           String
   avatar_url     String?
-  country        String?
   nativeLanguage String?
   targetLanguage String?
-  dictionarys    Dictionary[]
-  Content        Content[]
+  UserWords      UserWords[]
+  Dictionaries   Dictionaries[]
 }
+
+model Words {
+  id        String      @id
+  text      String
+  status    Boolean
+  UserWords UserWords[]
+}
+
+//Discussion is gonna be about -->
+
+//Will Language Table add ?
+//User meanings are complicated author,user,profile ???
