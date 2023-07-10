@@ -9,24 +9,23 @@ datasource db {
 }
 
 model UserWords {
-  id             String        @id @default(cuid())
+  id             String         @id @default(cuid())
   wordId         String
-  word           Words         @relation(fields: [wordId], references: [id])
+  word           Words          @relation(fields: [wordId], references: [id])
   translatedText String
-  learningStatus Boolean       @default(false)
+  learningStatus Boolean        @default(false)
   picture        String?
-  DictionaryId   String
-  Dictionary     Dictionaries? @relation(fields: [DictionaryId], references: [id])
+  Dictionary     Dictionaries[]
   authorId       String
-  author         Profiles?     @relation(fields: [authorId], references: [id])
+  author         Profiles?      @relation(fields: [authorId], references: [id])
 }
 
 model Dictionaries {
   id        String      @id @default(cuid())
   title     String
-  content   String
   published Boolean     @default(false)
-  author    Profiles?   @relation(fields: [id], references: [id])
+  authorId  String
+  author    Profiles?   @relation(fields: [authorId], references: [id])
   UserWords UserWords[]
 }
 
@@ -48,7 +47,27 @@ model Words {
   UserWords UserWords[]
 }
 
-//Discussion is gonna be about -->
+// could be use for many to many relation
 
-//Will Language Table add ?
-//User meanings are complicated author,user,profile ???
+// model Post {
+//   id         Int                 @id @default(autoincrement())
+//   title      String
+//   categories CategoriesOnPosts[]
+// }
+
+// model Category {
+//   id    Int                 @id @default(autoincrement())
+//   name  String
+//   posts CategoriesOnPosts[]
+// }
+
+// model CategoriesOnPosts {
+//   post       Post     @relation(fields: [postId], references: [id])
+//   postId     Int // relation scalar field (used in the `@relation` attribute above)
+//   category   Category @relation(fields: [categoryId], references: [id])
+//   categoryId Int // relation scalar field (used in the `@relation` attribute above)
+//   assignedAt DateTime @default(now())
+//   assignedBy String
+
+//   @@id([postId, categoryId])
+// }
