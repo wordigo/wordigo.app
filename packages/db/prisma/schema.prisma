@@ -9,6 +9,7 @@ datasource db {
 }
 
 model Content {
+  test           String
   id             String      @id @default(cuid())
   message        String
   translatedText String
