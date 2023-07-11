@@ -83,7 +83,7 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{
-            duration: 0.7,
+            duration: 2.2,
           }}
           className="w-full relative bg-black  mt-[-100px]"
         >
