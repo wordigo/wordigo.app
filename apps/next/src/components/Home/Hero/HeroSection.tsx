@@ -37,7 +37,9 @@ export default function HeroSection() {
         }}
         className="mt-20 text-[#333549] dark:text-white"
       >
-        <Badge className="bg-primary-blue-400 text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</Badge>
+        <Badge className="bg-primary-blue-400 text-white hover:!bg-primary-blue-500">
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        </Badge>
         {/* <p className="font-semibold text-[14px] text-primary-blue">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> */}
 
         <div className="my-5 text-5xl font-bold">
