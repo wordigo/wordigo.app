@@ -37,7 +37,7 @@ export default function HeroContainer() {
       <motion.section className="w-full mr-5" variants={item2}>
         <HeroSection />
       </motion.section>
-    
+
       <motion.section className="item" variants={item}>
         <HeroBanner />
       </motion.section>

@@ -23,10 +23,7 @@ export default function HomeHeader() {
       <div className="flex items-center justify-between max-w-[1380px] m-auto">
         <nav className="flex items-center justify-between gap-16">
           <span className="flex gap-3 items-center">
-            <Image src="/images/Logo.png" width={26} height={26} alt="" className="rounded-md" />
-            <Link href={"/"} className="font-bold text-[18px]">
-              Wordigo
-            </Link>
+            <Image src="/images/logo.png" width={250} height={250} alt="" className="rounded-md pt-2" />
           </span>
           <Navigation />
         </nav>
