@@ -12,9 +12,7 @@ model UserWords {
   id             String             @id @default(cuid())
   wordId         String
   word           Words              @relation(fields: [wordId], references: [id])
-  translatedText String
   learningStatus Int                @default(0)
-  picture        String?
   authorId       String
   author         Profiles?          @relation(fields: [authorId], references: [id])
   Dictionary     DictAndUserWords[]
@@ -41,10 +39,13 @@ model Profiles {
 }
 
 model Words {
-  id        String      @id
-  text      String
-  status    Boolean
-  UserWords UserWords[]
+  id             String      @id
+  text           String
+  status         Boolean
+  translatedText String
+  nativeLanguage String
+  targetLanguage String
+  UserWords      UserWords[]
 }
 
 model DictAndUserWords {
