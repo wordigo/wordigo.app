@@ -9,24 +9,24 @@ datasource db {
 }
 
 model UserWords {
-  id             String         @id @default(cuid())
+  id             String             @id @default(cuid())
   wordId         String
-  word           Words          @relation(fields: [wordId], references: [id])
+  word           Words              @relation(fields: [wordId], references: [id])
   translatedText String
-  learningStatus Boolean        @default(false)
+  learningStatus Boolean            @default(false)
   picture        String?
-  Dictionary     Dictionaries[]
   authorId       String
-  author         Profiles?      @relation(fields: [authorId], references: [id])
+  author         Profiles?          @relation(fields: [authorId], references: [id])
+  Dictionary     DictAndUserWords[]
 }
 
 model Dictionaries {
-  id        String      @id @default(cuid())
+  id        String             @id @default(cuid())
   title     String
-  published Boolean     @default(false)
+  published Boolean            @default(false)
   authorId  String
-  author    Profiles?   @relation(fields: [authorId], references: [id])
-  UserWords UserWords[]
+  author    Profiles?          @relation(fields: [authorId], references: [id])
+  UserWords DictAndUserWords[]
 }
 
 model Profiles {
@@ -47,27 +47,11 @@ model Words {
   UserWords UserWords[]
 }
 
-// could be use for many to many relation
+model DictAndUserWords {
+  userWord     UserWords    @relation(fields: [userWordId], references: [id])
+  userWordId   String
+  Dictionary   Dictionaries @relation(fields: [dictionaryId], references: [id])
+  dictionaryId String
 
-// model Post {
-//   id         Int                 @id @default(autoincrement())
-//   title      String
-//   categories CategoriesOnPosts[]
-// }
-
-// model Category {
-//   id    Int                 @id @default(autoincrement())
-//   name  String
-//   posts CategoriesOnPosts[]
-// }
-
-// model CategoriesOnPosts {
-//   post       Post     @relation(fields: [postId], references: [id])
-//   postId     Int // relation scalar field (used in the `@relation` attribute above)
-//   category   Category @relation(fields: [categoryId], references: [id])
-//   categoryId Int // relation scalar field (used in the `@relation` attribute above)
-//   assignedAt DateTime @default(now())
-//   assignedBy String
-
-//   @@id([postId, categoryId])
-// }
+  @@id([userWordId, dictionaryId])
+}
