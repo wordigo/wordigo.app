@@ -13,7 +13,7 @@ model UserWords {
   wordId         String
   word           Words              @relation(fields: [wordId], references: [id])
   translatedText String
-  learningStatus Boolean            @default(false)
+  learningStatus Int                @default(0)
   picture        String?
   authorId       String
   author         Profiles?          @relation(fields: [authorId], references: [id])
