@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { ArrowLeftIcon } from "lucide-react";
 
@@ -14,9 +15,7 @@ const Error404Page = () => {
     <div className="max-w-[50rem] flex flex-col mx-auto w-full h-screen">
       <header className="mb-auto flex justify-center z-50 w-full py-4">
         <nav className="px-4 sm:px-6 lg:px-8" aria-label="Global">
-          <a className="flex-none text-xl font-semibold sm:text-3xl dark:text-white" href="#" aria-label="Brand">
-            Wordigo
-          </a>
+          <Image src="/images/logo.png" width={150} height={150} priority alt="" className="rounded-md pt-2" />
         </nav>
       </header>
 

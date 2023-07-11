@@ -1,7 +1,6 @@
-import React from "react";
 import { cubicBezier, motion } from "framer-motion";
 
-export default function App() {
+export default function AnimatinLogo() {
   const easing = cubicBezier(0.76, 0, 0.24, 1);
 
   const icon = {
@@ -15,7 +14,7 @@ export default function App() {
       fill: "#5282FF",
       stroke: "#5282FF",
       transition: {
-        duration: 3,
+        duration: 1,
         repeat: Infinity,
         repeatType: "mirror",
         repeatDelay: 1,

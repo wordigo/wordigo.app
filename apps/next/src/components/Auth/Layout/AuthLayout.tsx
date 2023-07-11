@@ -1,6 +1,7 @@
 import { type PropsWithChildren } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { LogoEnums } from "@/constants/logos";
 import { ChevronLeft } from "lucide-react";
 import { useTheme } from "next-themes";
 
@@ -8,9 +9,9 @@ import { buttonVariants } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
 const AuthLayout = ({ children }: PropsWithChildren) => {
-  const { theme } = useTheme();
+  const { theme = "system" } = useTheme();
 
-  const getModeLogoUrl = theme === "dark" ? "logo-white" : "logo-dark";
+  const getModeLogoUrl = LogoEnums[theme as keyof typeof LogoEnums];
 
   return (
     <div className="container flex h-screen w-screen flex-col items-center justify-center">
@@ -21,7 +22,7 @@ const AuthLayout = ({ children }: PropsWithChildren) => {
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         <div className="flex flex-col space-y-2 text-center">
           <div className="flex items-center justify-center">
-            <Image src={`/images/${getModeLogoUrl}.png`} width={200} height={200} alt="" className="rounded-md pt-2" />
+            <Image src={`/images/${getModeLogoUrl}.png`} width={200} height={200} priority alt="" className="rounded-md pt-2" />
           </div>
           <div className="text-left">{children}</div>
         </div>
