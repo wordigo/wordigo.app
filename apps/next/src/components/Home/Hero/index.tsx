@@ -34,7 +34,7 @@ export default function HeroContainer() {
 
   return (
     <motion.main variants={container} initial="hidden" animate="visible" className="m-auto max-w-[1440px] flex justify-between mb-[80px] mt-4">
-      <motion.section className="item" variants={item2}>
+      <motion.section className="w-full mr-5" variants={item2}>
         <HeroSection />
       </motion.section>
     
