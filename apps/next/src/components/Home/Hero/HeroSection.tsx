@@ -80,8 +80,8 @@ export default function HeroSection() {
         </motion.div>
 
         <motion.div
-          initial={{ rotate: -45 }}
-          animate={{ rotate: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{
             duration: 0.7,
           }}
