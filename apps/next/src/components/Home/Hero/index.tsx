@@ -24,10 +24,20 @@ export default function HeroContainer() {
     },
   };
 
+  const item2 = {
+    hidden: { x: -1000, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+    },
+  };
+
   return (
     <motion.main variants={container} initial="hidden" animate="visible" className="m-auto max-w-[1440px] flex justify-between mb-[80px] mt-4">
-      <HeroSection />
-
+      <motion.section className="item" variants={item2}>
+        <HeroSection />
+      </motion.section>
+    
       <motion.section className="item" variants={item}>
         <HeroBanner />
       </motion.section>
