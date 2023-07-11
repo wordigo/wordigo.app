@@ -35,16 +35,7 @@ export default function HeroSection() {
         }}
         className="mt-20 text-[#333549] dark:text-white"
       >
-        <motion.p
-          initial={{ x: 2000 }}
-          animate={{ x: 0 }}
-          transition={{
-            duration: 0.5,
-          }}
-          className="font-semibold text-[14px] text-primary-blue"
-        >
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        </motion.p>
+        <p className="font-semibold text-[14px] text-primary-blue">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 
         <div className="my-5 text-5xl font-bold">
           <h1>Lorem Ipsum is simply</h1>
@@ -53,17 +44,10 @@ export default function HeroSection() {
           </h1>
         </div>
 
-        <motion.div
-          initial={{ x: 2000 }}
-          animate={{ x: 0 }}
-          transition={{
-            duration: 0.5,
-          }}
-          className="font-semibold text-base opacity-70"
-        >
+        <div className="font-semibold text-base opacity-70">
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
           <p>and typesetting industry.</p>
-        </motion.div>
+        </div>
 
         {/* Data Information */}
         <motion.div variants={container} initial="hidden" animate="visible" className="mt-10 flex flex-col gap-4">
