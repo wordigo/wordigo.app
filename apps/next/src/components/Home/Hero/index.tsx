@@ -25,9 +25,9 @@ export default function HeroContainer() {
   };
 
   const item2 = {
-    hidden: { x: -1000, opacity: 0 },
+    hidden: { y: -1000, opacity: 0 },
     visible: {
-      x: 0,
+      y: 0,
       opacity: 1,
     },
   };
