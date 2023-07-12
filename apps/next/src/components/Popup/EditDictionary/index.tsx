@@ -3,22 +3,30 @@ import { useRouter } from "next/navigation";
 import Logo from "@/components/Logo/Logo";
 import { api } from "@/libs/trpc";
 import { HelpCircle } from "lucide-react";
+import { type Row } from "react-table";
 
 import { Button, Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, Input, Label, Switch } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
-export function EditDictionary({ label }: { label: string }) {
-  const [publics, setPublic] = useState(false);
-  const [name, setName] = useState("");
+interface DataTableRowActionsProps<TData extends object> {
+  row: Row<TData & { id: string }>;
+  original: { id: string; title: string; published: boolean };
+}
+
+export function EditDictionary<TData extends object>({ row, label }: { row: DataTableRowActionsProps<TData>; label: string; id: string }) {
+  const data: { id: string; title: string; published: boolean } = row?.original;
+  const [publics, setPublic] = useState(data.published);
+  const [name, setName] = useState(data.title);
 
   const router = useRouter();
+  const queryEdit = api.dictionary.updateDictionary.useMutation();
 
-  const addQuery = api.dictionary.addDictionary.useMutation();
-  const handleAddDictionary = () => {
-    addQuery.mutate({
+  const handleEdit = () => {
+    queryEdit.mutate({
+      dictionaryId: data.id,
+      published: publics,
       title: name,
     });
-    setName("");
     router.refresh();
   };
 
@@ -36,7 +44,7 @@ export function EditDictionary({ label }: { label: string }) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Add Dictionary</DialogTitle>
+          <DialogTitle>Edit Dictionary</DialogTitle>
           <span className="flex flex-col items-center justify-center">
             <Logo component="AddComponent" className="w-[55px] h-[55px] mt-[15px]" />
           </span>
@@ -76,8 +84,8 @@ export function EditDictionary({ label }: { label: string }) {
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit" onClick={handleAddDictionary}>
-            Save changes
+          <Button type="submit" onClick={handleEdit}>
+            Save Edit
           </Button>
         </DialogFooter>
       </DialogContent>

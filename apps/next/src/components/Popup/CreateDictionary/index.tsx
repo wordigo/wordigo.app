@@ -17,6 +17,7 @@ export function CreateDictionary({ label }: { label: string }) {
   const handleAddDictionary = () => {
     addQuery.mutate({
       title: name,
+      published: publics,
     });
     setName("");
     router.refresh();

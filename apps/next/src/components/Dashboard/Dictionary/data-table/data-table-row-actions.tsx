@@ -1,10 +1,11 @@
 import { useRouter } from "next/navigation";
+import { EditDictionary } from "@/components/Popup/EditDictionary";
 import { api } from "@/libs/trpc";
 import { MoreHorizontal } from "lucide-react";
 import { type Row } from "react-table";
 
 import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@wordigo/ui";
-import { EditDictionary } from "@/components/Popup/EditDictionary";
+
 import { CreateDictionary } from "../../../Popup/CreateDictionary";
 
 interface DataTableRowActionsProps<TData extends object> {
@@ -14,22 +15,11 @@ interface DataTableRowActionsProps<TData extends object> {
 export function DataTableRowActions<TData extends object>({ row }: DataTableRowActionsProps<TData>) {
   const router = useRouter();
   const queryDelete = api.dictionary.deleteDictionary.useMutation();
-  const queryEdit = api.dictionary.updateDictionary.useMutation();
+  const { id } = row.original;
 
   const handleDelete = () => {
-    const { id } = row.original;
     queryDelete.mutate({
       dictionaryId: id,
-    });
-    router.refresh();
-  };
-
-  const handleEdit = () => {
-    const { id } = row.original;
-    queryEdit.mutate({
-      dictionaryId: id,
-      published: false,
-      title: "TEST updateDictionary",
     });
     router.refresh();
   };
@@ -43,8 +33,8 @@ export function DataTableRowActions<TData extends object>({ row }: DataTableRowA
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[160px] flex flex-col">
-        <EditDictionary label="Edit" />
-        <CreateDictionary label="Share" />
+        <EditDictionary label="Edit" row={row} />
+        <DropdownMenuItem>Share</DropdownMenuItem>
         <DropdownMenuItem>Favorite</DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleDelete}>Delete</DropdownMenuItem>
