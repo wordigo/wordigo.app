@@ -109,12 +109,13 @@ export const dictionaryRouter = createTRPCRouter({
   updateDictionary: protectedProcedure
     .input(z.object({
       dictionaryId: z.string(),
-      title: z.string()
+      title: z.string(),
+      published: z.boolean()
     }))
     .mutation(async ({ ctx, input }) => {
 
       const userId = ctx.user.id
-      const { dictionaryId, title } = input
+      const { dictionaryId, title, published } = input
 
       const dictionary = await prisma.dictionaries.findFirst({
         where: { authorId: userId, id: dictionaryId }
@@ -129,7 +130,7 @@ export const dictionaryRouter = createTRPCRouter({
 
       await prisma.dictionaries.update({
         where: { id: dictionaryId },
-        data: { title }
+        data: { title, published }
       })
 
       return {
