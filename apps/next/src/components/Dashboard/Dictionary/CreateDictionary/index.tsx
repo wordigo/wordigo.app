@@ -1,22 +1,26 @@
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Logo from "@/components/Logo/Logo";
+import { api } from "@/libs/trpc";
 import { HelpCircle } from "lucide-react";
 
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  Input,
-  Label,
-  Switch,
-} from "@wordigo/ui";
-
-import Logo from "../../../Logo/Logo";
+import { Button, Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, Input, Label, Switch } from "@wordigo/ui";
 
 export function CreateDictionary() {
+  const [publics, setPublic] = useState(false);
+  const [name, setName] = useState("");
+
+  const router = useRouter();
+
+  const addQuery = api.dictionary.addDictionary.useMutation();
+  const handleAddDictionary = () => {
+    addQuery.mutate({
+      title: name,
+    });
+    setName("");
+    router.refresh();
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -35,14 +39,21 @@ export function CreateDictionary() {
             <Label htmlFor="name" className="text-right">
               Name
             </Label>
-            <Input id="name" value="" placeholder="Dictionary Name" className="col-span-3" />
+            <Input
+              id="name"
+              type="text"
+              value={name}
+              placeholder="Dictionary Name"
+              className="col-span-3"
+              onChange={(e) => setName(e.target.value)}
+            />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="username" className="text-right">
               Published
             </Label>
             <div className="flex items-center">
-              <Switch id="airplane-mode" />
+              <Switch id="airplane-mode" onClick={() => setPublic(!publics)} />
               <Dialog>
                 <DialogTrigger asChild>
                   <button className="ml-4">
@@ -57,7 +68,9 @@ export function CreateDictionary() {
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit">Save changes</Button>
+          <Button type="submit" onClick={handleAddDictionary}>
+            Save changes
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
