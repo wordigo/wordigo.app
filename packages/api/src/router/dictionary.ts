@@ -49,9 +49,14 @@ export const dictionaryRouter = createTRPCRouter({
           data: null,
         }
 
+      const responseData = {
+        dictionary,
+        numberOfWords: dictionary.UserWords.length
+      }
+
       return {
         success: true,
-        data: dictionary,
+        data: responseData,
         message: "Success",
       }
     }),
