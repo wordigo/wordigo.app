@@ -16,7 +16,7 @@ export interface IPopoverOptions {
   }
 }
 
-export const usePopover = ({ }) => {
+export const usePopover = ({}) => {
   const translatorShadowContent = document.querySelector("#wordigo-translate-content")
   const [isFloating, setFloating] = useState<boolean>(false)
   const [isPopup, setPopup] = useState<boolean>(false)
@@ -45,7 +45,6 @@ export const usePopover = ({ }) => {
     )
       return
 
-
     const selectedText = window.getSelection().toString()?.trim()
 
     if (selectedText !== "") {
@@ -59,14 +58,13 @@ export const usePopover = ({ }) => {
       setFloating(false)
       setPopup(false)
     }
-
   }
 
   useEffect(() => {
     document.addEventListener("mouseup", handleMouseUp)
-      ; () => {
-        document.removeEventListener("mouseup", handleMouseUp)
-      }
+    ;() => {
+      document.removeEventListener("mouseup", handleMouseUp)
+    }
   }, [])
 
   return useMemo(
