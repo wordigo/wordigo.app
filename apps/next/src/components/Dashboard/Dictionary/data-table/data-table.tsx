@@ -52,8 +52,6 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
     getFacetedUniqueValues: getFacetedUniqueValues(),
   });
 
-  console.log(table.getHeaderGroups());
-
   return (
     <div className="space-y-4 mb-[90px]">
       {data && (
