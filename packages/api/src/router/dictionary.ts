@@ -60,14 +60,19 @@ export const dictionaryRouter = createTRPCRouter({
     .input(
       z.object({
         title: z.string(),
+        published: z.boolean()
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      const { title } = input
+      const { title, published } = input
       const userId = ctx.user.id
 
       await prisma.dictionaries.create({
-        data: { title: title, authorId: userId }
+        data: {
+          title: title,
+          authorId: userId,
+          published
+        }
       })
 
       return {
