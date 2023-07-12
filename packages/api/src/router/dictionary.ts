@@ -63,13 +63,11 @@ export const dictionaryRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      const dictionary = {
-        title: input.title,
-        authorId: ctx.user.id,
-      }
+      const { title } = input
+      const userId = ctx.user.id
 
       await prisma.dictionaries.create({
-        data: dictionary,
+        data: { title: title, authorId: userId }
       })
 
       return {
@@ -77,4 +75,66 @@ export const dictionaryRouter = createTRPCRouter({
         message: "Success",
       }
     }),
+
+  deleteDictionary: protectedProcedure
+    .input(z.object({
+      dictionaryId: z.string()
+    }))
+    .mutation(async ({ ctx, input }) => {
+
+      const userId = ctx.user.id
+      const { dictionaryId } = input
+
+      const dictionary = await prisma.dictionaries.findFirst({
+        where: { authorId: userId, id: dictionaryId }
+      })
+
+      if (!dictionary) {
+        return {
+          success: false,
+          message: "Dictionary Couldn't Found!"
+        }
+      }
+
+      await prisma.dictionaries.delete({
+        where: { id: dictionaryId }
+      })
+
+      return {
+        success: true,
+        message: 'Dictionary Deleted Successfully'
+      }
+    }),
+
+  updateDictionary: protectedProcedure
+    .input(z.object({
+      dictionaryId: z.string(),
+      title: z.string()
+    }))
+    .mutation(async ({ ctx, input }) => {
+
+      const userId = ctx.user.id
+      const { dictionaryId, title } = input
+
+      const dictionary = await prisma.dictionaries.findFirst({
+        where: { authorId: userId, id: dictionaryId }
+      })
+
+      if (!dictionary) {
+        return {
+          success: false,
+          message: "Dictionary Couldn't Found!"
+        }
+      }
+
+      await prisma.dictionaries.update({
+        where: { id: dictionaryId },
+        data: { title }
+      })
+
+      return {
+        success: true,
+        message: 'Dictionary Updated Successfully'
+      }
+    })
 })

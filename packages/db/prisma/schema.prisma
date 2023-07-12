@@ -15,16 +15,20 @@ model UserWords {
   learningStatus Int                @default(0)
   authorId       String
   author         Profiles?          @relation(fields: [authorId], references: [id])
+  createdDate    DateTime           @default(now())
+  updatedDate    DateTime           @default(now()) @updatedAt
   Dictionary     DictAndUserWords[]
 }
 
 model Dictionaries {
-  id        String             @id @default(cuid())
-  title     String
-  published Boolean            @default(false)
-  authorId  String
-  author    Profiles?          @relation(fields: [authorId], references: [id])
-  UserWords DictAndUserWords[]
+  id          String             @id @default(cuid())
+  title       String
+  published   Boolean            @default(false)
+  authorId    String
+  author      Profiles?          @relation(fields: [authorId], references: [id])
+  createdDate DateTime           @default(now())
+  updatedDate DateTime           @default(now()) @updatedAt
+  UserWords   DictAndUserWords[]
 }
 
 model Profiles {
@@ -34,6 +38,8 @@ model Profiles {
   avatar_url     String?
   nativeLanguage String?
   targetLanguage String?
+  createdDate    DateTime       @default(now())
+  updatedDate    DateTime       @default(now()) @updatedAt
   UserWords      UserWords[]
   Dictionaries   Dictionaries[]
 }
@@ -45,6 +51,8 @@ model Words {
   translatedText String
   nativeLanguage String
   targetLanguage String
+  createdDate    DateTime    @default(now())
+  updatedDate    DateTime    @default(now()) @updatedAt
   UserWords      UserWords[]
 }
 
@@ -53,6 +61,8 @@ model DictAndUserWords {
   userWordId   String
   Dictionary   Dictionaries @relation(fields: [dictionaryId], references: [id])
   dictionaryId String
+  createdDate  DateTime     @default(now())
+  updatedDate  DateTime     @default(now()) @updatedAt
 
   @@id([userWordId, dictionaryId])
 }
