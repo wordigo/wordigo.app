@@ -1,12 +1,15 @@
+import { CreateDictionary } from "@/components/Dashboard/Dictionary/CreateDictionary";
+import { api } from "@/libs/trpc";
 import { type Table } from "@tanstack/react-table";
-
-import { Button, Input } from "@wordigo/ui";
+import { Input } from "@wordigo/ui";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
 }
 
 export function DataTableToolbar<TData>({ table }: DataTableToolbarProps<TData>) {
+  const handleAddDictionary = () => {};
+
   return (
     <div className="flex items-center justify-between">
       <div className="flex flex-1 items-center space-x-2">
@@ -17,7 +20,7 @@ export function DataTableToolbar<TData>({ table }: DataTableToolbarProps<TData>)
           className="h-8 w-[150px] lg:w-[250px]"
         />
       </div>
-      {/* <DataTableViewOptions table={table} /> */}
+      <CreateDictionary />
     </div>
   );
 }
