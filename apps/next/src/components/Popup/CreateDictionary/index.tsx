@@ -5,8 +5,9 @@ import { api } from "@/libs/trpc";
 import { HelpCircle } from "lucide-react";
 
 import { Button, Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, Input, Label, Switch } from "@wordigo/ui";
+import { cn } from "@wordigo/ui/lib/utils";
 
-export function CreateDictionary() {
+export function CreateDictionary({ label }: { label: string }) {
   const [publics, setPublic] = useState(false);
   const [name, setName] = useState("");
 
@@ -24,7 +25,14 @@ export function CreateDictionary() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Add Dictionary</Button>
+        <div
+          className={cn(
+            "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-accent",
+            label === "Add Dictionary" && "dark:bg-white dark:text-black dark:hover:bg-white font-semibold bg-accent hover:bg-accent",
+          )}
+        >
+          {label}
+        </div>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
@@ -69,7 +77,7 @@ export function CreateDictionary() {
         </div>
         <DialogFooter>
           <Button type="submit" onClick={handleAddDictionary}>
-            Save changes
+            Save Dictionary
           </Button>
         </DialogFooter>
       </DialogContent>

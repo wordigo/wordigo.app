@@ -9,8 +9,8 @@ interface DashboardLayoutProps {
 
 export default function DashboardLayout({ children, heading }: DashboardLayoutProps) {
   return (
-    <div className="flex justify-center min-h-screen flex-col space-y-2 px-[80px]">
-      <header className="sticky top-0 z-40 border-b bg-background h-[65px]">
+    <div className="flex justify-center min-h-screen flex-col space-y-2">
+      <header className="sticky top-0 z-40 border-b bg-background h-[65px] px-20">
         <div className="m-auto flex h-16 items-center justify-between py-4">
           <MainNav
             heading={heading}

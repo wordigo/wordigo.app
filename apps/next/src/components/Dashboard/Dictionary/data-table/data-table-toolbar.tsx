@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { CreateDictionary } from "@/components/Dashboard/Dictionary/CreateDictionary";
-import { api } from "@/libs/trpc";
+import { CreateDictionary } from "@/components/Popup/CreateDictionary";
 import { type Table } from "@tanstack/react-table";
 
 import { Input } from "@wordigo/ui";
@@ -20,7 +18,7 @@ export function DataTableToolbar<TData>({ table }: DataTableToolbarProps<TData>)
           className="h-8 w-[150px] lg:w-[250px]"
         />
       </div>
-      <CreateDictionary />
+      <CreateDictionary label="Add Dictionary" />
     </div>
   );
 }
