@@ -1,4 +1,4 @@
-import { CreateDictionary } from "@/components/Popup/CreateDictionary";
+import { CreateDictionary } from "@/components/Modals/CreateDictionary";
 import { type Table } from "@tanstack/react-table";
 
 import { Input } from "@wordigo/ui";

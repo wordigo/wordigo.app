@@ -1,12 +1,10 @@
 import { useRouter } from "next/navigation";
-import { EditDictionary } from "@/components/Popup/EditDictionary";
+import { EditDictionary } from "@/components/Modals/EditDictionary";
 import { api } from "@/libs/trpc";
 import { MoreHorizontal } from "lucide-react";
 import { type Row } from "react-table";
 
 import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@wordigo/ui";
-
-import { CreateDictionary } from "../../../Popup/CreateDictionary";
 
 interface DataTableRowActionsProps<TData extends object> {
   row: Row<TData & { id: string }>;

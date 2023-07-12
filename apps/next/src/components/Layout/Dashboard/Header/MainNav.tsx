@@ -1,10 +1,9 @@
-import Image from "next/image";
+import { type FunctionComponent } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import NavProfile from "@/components/Layout/NavProfile";
-import { LogoIconsEnums } from "@/constants/logos";
 import useCommonStore from "@/stores/Common";
 import { MenuIcon } from "lucide-react";
-import { useTheme } from "next-themes";
 
 import { Button } from "@wordigo/ui";
 
@@ -19,10 +18,11 @@ interface IMainNav {
   heading: string;
 }
 
-export function MainNav({ heading }: IMainNav) {
-  const { theme = "system" } = useTheme();
-  const logoUrl = LogoIconsEnums[theme as keyof typeof LogoIconsEnums];
+const DynamicIconLogo = dynamic(() => import("@/components/Logo/DynamicIconLogo"), {
+  ssr: false,
+}) as FunctionComponent;
 
+export function MainNav({ heading }: IMainNav) {
   const { showSidebarPanel, setSidebarPanel } = useCommonStore((state) => state);
 
   const handleSidebar = () => {
@@ -37,7 +37,7 @@ export function MainNav({ heading }: IMainNav) {
         </Button>
         <div className="flex items-center gap-3">
           <Link href="/" className="hidden items-center justify-center space-x-1 md:flex">
-            <Image src={`/images/${logoUrl}.png`} alt="Logo" width={32} height={32} />
+            <DynamicIconLogo />
             <div className="inline-flex font-bold gap-x-1">
               <span>Wordigo</span>
               <span className="text-sm opacity-50 font-bold tracking-tight self-end">/{heading}</span>
