@@ -1,20 +1,20 @@
-import { z } from "zod";
+import { z } from "zod"
 
-import { prisma } from "@wordigo/db";
+import { prisma } from "@wordigo/db"
 
-import { createTRPCRouter, protectedProcedure } from "../trpc";
+import { createTRPCRouter, protectedProcedure } from "../trpc"
 
 export const dictionaryRouter = createTRPCRouter({
   //getUserDictionaryList
   getUserDictionaries: protectedProcedure.query(async ({ ctx }) => {
-    const { id } = ctx.user;
-    const dictionaries = await prisma.dictionaries.findMany({ where: { authorId: id } });
+    const { id } = ctx.user
+    const dictionaries = await prisma.dictionaries.findMany({ where: { authorId: id } })
 
     return {
       success: true,
       message: "success",
       data: dictionaries,
-    };
+    }
   }),
 
   //getDictionaryWords
@@ -25,7 +25,7 @@ export const dictionaryRouter = createTRPCRouter({
       }),
     )
     .query(async ({ input, ctx }) => {
-      const { id } = ctx.user;
+      const { id } = ctx.user
 
       const dictionary = await prisma.dictionaries.findFirst({
         where: { authorId: id, id: input.dictionaryId },
@@ -40,20 +40,20 @@ export const dictionaryRouter = createTRPCRouter({
             },
           },
         },
-      });
+      })
 
       if (!dictionary)
         return {
           success: false,
           message: "Dictionary Not Found!",
           data: null,
-        };
+        }
 
       return {
         success: true,
         data: dictionary,
-        message: "success",
-      };
+        message: "Success",
+      }
     }),
 
   addDictionary: protectedProcedure
@@ -66,15 +66,15 @@ export const dictionaryRouter = createTRPCRouter({
       const dictionary = {
         title: input.title,
         authorId: ctx.user.id,
-      };
+      }
 
       await prisma.dictionaries.create({
         data: dictionary,
-      });
+      })
 
       return {
         success: true,
-        message: "success",
-      };
+        message: "Success",
+      }
     }),
-});
+})

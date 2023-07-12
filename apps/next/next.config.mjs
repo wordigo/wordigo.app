@@ -5,7 +5,7 @@ const config = {
   experimental: {
     appDir: false
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
   /** Enables hot reloading for local packages without a build step */
   transpilePackages: ["@wordigo/ui", "@wordigo/api", "@wordigo/db"],
 
