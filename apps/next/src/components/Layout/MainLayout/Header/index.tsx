@@ -21,15 +21,14 @@ export default function HomeHeader() {
   return (
     <Fragment>
       <Banner />
-      <div className="flex items-center justify-between max-w-[1380px] m-auto">
+      <div className="flex items-center justify-between max-w-[1380px] m-auto pt-2">
         <nav className="flex items-center justify-between gap-16">
-          <span className="flex gap-3 items-center">
-            {/* <Image src="/images/logo.png" width={250} height={250} priority alt="" className="rounded-md pt-2" /> */}
-            <Logo />
+          <span>
+           <Image src="/images/logo.png" width={250} height={250} priority alt="" className="rounded-md" />
           </span>
           <Navigation />
         </nav>
-        <div className="flex gap-y-6 gap-x-3 mt-[20px]">
+        <div className="flex gap-y-6 gap-x-3 mt-[20px] items-center">
           <ThemeMode />
           <ChangeLanguage />
           <div className="w-[1px] !h-9 bg-gray-200 dark:bg-gray-800"></div>
