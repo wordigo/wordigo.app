@@ -23,7 +23,7 @@ model UserWords {
 model Dictionaries {
   id          String             @id @default(cuid())
   title       String
-  published   Boolean
+  published   Boolean            @default(false)
   authorId    String
   author      Profiles?          @relation(fields: [authorId], references: [id])
   createdDate DateTime           @default(now())
@@ -45,9 +45,9 @@ model Profiles {
 }
 
 model Words {
-  id             String      @id
+  id             String      @id @default(cuid())
   text           String
-  status         Boolean
+  status         Int         @default(0)
   translatedText String
   nativeLanguage String
   targetLanguage String
