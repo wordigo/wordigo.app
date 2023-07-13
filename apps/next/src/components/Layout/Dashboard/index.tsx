@@ -26,7 +26,7 @@ export default function DashboardLayout({ children, heading }: DashboardLayoutPr
         <BurgerMenu />
       </div>
       <main className="max-w-[1760px] m-auto w-full flex-1 gap-12 md:grid-cols-[200px_1fr] break-words flex-wrap">{children}</main>
-      <SiteFooter className="border-t fixed w-full bottom-0 dark:bg-DarkBackground bg-LightBackground" />
+      <SiteFooter className="border-t fixed w-full bottom-0 dark:bg-DarkBackground bg-LightBackground max-w-[1760px]" />
     </div>
   );
 }

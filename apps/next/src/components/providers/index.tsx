@@ -10,7 +10,7 @@ const AppProviders: React.FC<PropsWithChildren> = ({ children }) => {
   const authContext = useAuth();
 
   return (
-    <NextThemesProvider attribute="class" defaultTheme="system" enableSystem>
+    <NextThemesProvider attribute="class" defaultTheme="light" enableSystem>
       <Toaster />
       <AuthContext.Provider value={authContext}>
         <RootLayout>{children}</RootLayout>

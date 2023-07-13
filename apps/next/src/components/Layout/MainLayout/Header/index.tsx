@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Logo from "@/components/Logo/DynamicLogo";
 import { useAuthStore } from "@/hooks/useAuthStore";
 import { useTranslation } from "next-i18next";
 
@@ -23,7 +24,8 @@ export default function HomeHeader() {
       <div className="flex items-center justify-between max-w-[1380px] m-auto">
         <nav className="flex items-center justify-between gap-16">
           <span className="flex gap-3 items-center">
-            <Image src="/images/logo.png" width={250} height={250} priority alt="" className="rounded-md pt-2" />
+            {/* <Image src="/images/logo.png" width={250} height={250} priority alt="" className="rounded-md pt-2" /> */}
+            <Logo />
           </span>
           <Navigation />
         </nav>

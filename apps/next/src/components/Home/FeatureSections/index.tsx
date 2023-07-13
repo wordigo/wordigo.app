@@ -39,13 +39,13 @@ const Box = ({ num }: { num: number }) => {
       <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6" ref={ref}>
         {num === 1 && (
           <motion.div variants={boxVariant} initial="hidden" animate={control} className="grid grid-cols-2 gap-4 mt-8">
-            <div className="w-[580px] h-[380px] bg-[#9CA3AF] rounded-xl"></div>
+            <div className="w-[580px] h-[380px] shadow-2xl bg-[#9CA3AF] dark:shadow-slate-800 dark:shadow-2xl rounded-xl"></div>
           </motion.div>
         )}
 
         {num === 3 && (
           <motion.div variants={boxVariant} initial="hidden" animate={control} className="grid grid-cols-2 gap-4 mt-8">
-            <div className="w-[580px] h-[380px] bg-[#9CA3AF] rounded-xl"></div>
+            <div className="w-[580px] h-[380px] shadow-2xl dark:shadow-slate-800 dark:shadow-2xl bg-[#9CA3AF] rounded-xl"></div>
           </motion.div>
         )}
 
@@ -57,7 +57,7 @@ const Box = ({ num }: { num: number }) => {
 
         {num === 2 && (
           <motion.div variants={boxVariant} initial="hidden" animate={control} className="grid grid-cols-2 gap-4 mt-8">
-            <div className="w-[580px] h-[380px] bg-[#9CA3AF] rounded-xl"></div>
+            <div className="w-[580px] h-[380px] shadow-2xl bg-[#9CA3AF] dark:shadow-slate-800 dark:shadow-2xl rounded-xl"></div>
           </motion.div>
         )}
       </div>

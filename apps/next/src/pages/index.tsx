@@ -1,10 +1,11 @@
-import FeatureBanner from "@/components/Home/Banner"
-import FeatureSections from "@/components/Home/FeatureSections"
-import Footer from "@/components/Home/Footers/Footer"
-import HeroContainer from "@/components/Home/Hero"
-import MainLayout from "@/components/Layout/MainLayout"
-import { i18n } from "next-i18next"
-import { serverSideTranslations } from "next-i18next/serverSideTranslations"
+import FeatureBanner from "@/components/Home/Banner";
+import Comment from "@/components/Home/Comments";
+import FeatureSections from "@/components/Home/FeatureSections";
+import Footer from "@/components/Home/Footers/Footer";
+import HeroContainer from "@/components/Home/Hero";
+import MainLayout from "@/components/Layout/MainLayout";
+import { i18n } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function index() {
   return (
@@ -14,6 +15,7 @@ export default function index() {
       </div>
       <FeatureBanner />
       <FeatureSections />
+      <Comment />
       <Footer />
     </MainLayout>
   );

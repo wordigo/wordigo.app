@@ -45,7 +45,7 @@ export default function HeroSection() {
         <div className="my-5 text-5xl font-bold">
           <h1>Lorem Ipsum is simply</h1>
           <h1 className="mt-3.5">
-            dummy text of the <span className="text-primary-blue ">printing!</span>
+            dummy text of the <span className="text-primary-blue">printing!</span>
           </h1>
         </div>
 

@@ -10,7 +10,7 @@ const config = {
   transpilePackages: ["@wordigo/ui", "@wordigo/api", "@wordigo/db"],
 
   images: {
-    domains: ["api.dicebear.com", "flowbite.s3.amazonaws.com"],
+    domains: ["api.dicebear.com", "flowbite.s3.amazonaws.com", "avatars.githubusercontent.com"],
   },
 
   /** We already do linting and typechecking as separate tasks in CI */
