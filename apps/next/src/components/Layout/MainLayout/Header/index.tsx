@@ -24,7 +24,7 @@ export default function HomeHeader() {
       <div className="flex items-center justify-between max-w-[1380px] m-auto pt-2">
         <nav className="flex items-center justify-between gap-16">
           <span>
-           <Image src="/images/logo.png" width={250} height={250} priority alt="" className="rounded-md" />
+            <Image src="/images/logo.png" width={250} height={250} priority alt="" className="rounded-md" />
           </span>
           <Navigation />
         </nav>
