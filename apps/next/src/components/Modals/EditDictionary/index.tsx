@@ -1,31 +1,64 @@
-import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Logo from "@/components/Logo/Logo";
+import CButton from "@/components/UI/Button";
 import { api } from "@/libs/trpc";
-import { HelpCircle } from "lucide-react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FilePlus } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { type Row } from "react-table";
+import { z } from "zod";
 
-import { Button, Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, Input, Label, Switch } from "@wordigo/ui";
-import { cn } from "@wordigo/ui/lib/utils";
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  Input,
+  Switch,
+} from "@wordigo/ui";
+
+const CreateDictionarySchema = z.object({
+  title: z.string().nonempty(),
+  published: z.boolean(),
+});
 
 interface DataTableRowActionsProps<TData extends object> {
   row: Row<TData & { id: string }>;
   original: { id: string; title: string; published: boolean };
 }
 
-export function EditDictionary<TData extends object>({ row, label }: { row: DataTableRowActionsProps<TData>; label: string; id: string }) {
+type CreateDictionaryValues = z.infer<typeof CreateDictionarySchema>;
+
+export function EditDictionary<TData extends object>({ label, row }: { label: string; row: DataTableRowActionsProps<TData> }) {
   const data: { id: string; title: string; published: boolean } = row?.original;
-  const [publics, setPublic] = useState(data.published);
-  const [name, setName] = useState(data.title);
-
+  console.log(data);
+  const { mutate: editDictionary, isLoading } = api.dictionary.updateDictionary.useMutation();
   const router = useRouter();
-  const queryEdit = api.dictionary.updateDictionary.useMutation();
 
-  const handleEdit = () => {
-    queryEdit.mutate({
+  const defaultValues: Partial<CreateDictionaryValues> = {
+    title: data.title,
+    published: data.published,
+  };
+
+  const form = useForm<CreateDictionaryValues>({
+    resolver: zodResolver(CreateDictionarySchema),
+    defaultValues,
+  });
+
+  const handleAddDictionary = (values: CreateDictionaryValues) => {
+    editDictionary({
+      title: values.title,
+      published: values.published,
       dictionaryId: data.id,
-      published: publics,
-      title: name,
     });
     router.refresh();
   };
@@ -33,61 +66,58 @@ export function EditDictionary<TData extends object>({ row, label }: { row: Data
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div
-          className={cn(
-            "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-accent",
-            label === "Add Dictionary" && "dark:bg-white dark:text-black dark:hover:bg-white font-semibold bg-accent hover:bg-accent",
-          )}
-        >
+        <Button variant="default" size="sm">
           {label}
-        </div>
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Edit Dictionary</DialogTitle>
-          <span className="flex flex-col items-center justify-center">
-            <Logo component="AddComponent" className="w-[55px] h-[55px] mt-[15px]" />
-          </span>
+          <DialogTitle className="flex gap-x-2 items-center">
+            <FilePlus size={18} />
+            Edit Dictionary
+          </DialogTitle>
         </DialogHeader>
 
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-            <Input
-              id="name"
-              type="text"
-              value={name}
-              placeholder="Dictionary Name"
-              className="col-span-3"
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Published
-            </Label>
-            <div className="flex items-center">
-              <Switch id="airplane-mode" onClick={() => setPublic(!publics)} />
-              <Dialog>
-                <DialogTrigger asChild>
-                  <button className="ml-4">
-                    <HelpCircle />
-                  </button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px] bg-[#FFF9EC] text-[#F2A11A]">
-                  It is the feature that allows you to share your dictionary publicly. It is only valid for the dictionary you have activated.
-                </DialogContent>
-              </Dialog>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(handleAddDictionary)} className="space-y-4">
+            <div className="grid gap-4 py-4">
+              <FormField
+                control={form.control}
+                name="title"
+                render={({ field }) => (
+                  <FormItem className="grid gap-1">
+                    <FormControl>
+                      <Input {...field} id="title" placeholder="Title" autoCapitalize="none" autoComplete="email" autoCorrect="off" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="published"
+                render={({ field }) => (
+                  <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                    <div className="space-y-0.5">
+                      <FormLabel className="text-base">Publish status</FormLabel>
+                      <FormDescription className="text-xs">
+                        It is the feature that allows you to share your dictionary publicly. It is only valid for the dictionary you have activated
+                      </FormDescription>
+                    </div>
+                    <FormControl>
+                      <Switch checked={field.value} onCheckedChange={field.onChange} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <DialogFooter>
+                <CButton loading={isLoading} type="submit">
+                  Save Dictionary
+                </CButton>
+              </DialogFooter>
             </div>
-          </div>
-        </div>
-        <DialogFooter>
-          <Button type="submit" onClick={handleEdit}>
-            Save Edit
-          </Button>
-        </DialogFooter>
+          </form>
+        </Form>
       </DialogContent>
     </Dialog>
   );
