@@ -1,0 +1,101 @@
+import { z } from "zod"
+
+import { prisma } from "@wordigo/db"
+
+import { createTRPCRouter, protectedProcedure } from "../trpc"
+
+import { DictionaryInitialTitle, LearningStatuses } from '../../../common/constants/index'
+
+export const wordRouter = createTRPCRouter({
+  // NOT FINISHED 
+  addWord: protectedProcedure
+    .input(
+      z.object({
+        text: z.string(),
+        translatedText: z.string(),
+        nativeLanguage: z.string(),
+        targetLanguage: z.string(),
+        dictionaryId: z.string().nullable()
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      const { text, translatedText, nativeLanguage, targetLanguage, dictionaryId } = input
+      const userId = ctx.user.id
+
+      const dicFromDb = await prisma.dictionaries.findFirst({
+        where: { id: dictionaryId as string }
+      })
+
+      if (!dicFromDb) {
+        return {
+          success: false,
+          message: "Dictionary Couldn't Found!"
+        }
+      }
+
+      // TODO: if the word is out there don't create just add it to user's userWord table...
+      // about that, there need to be a control with trim lower or upper case..
+
+      const word = await prisma.words.create({
+        data: {
+          text,
+          translatedText,
+          nativeLanguage,
+          targetLanguage
+        },
+      })
+
+      const userWord = await prisma.userWords.create({
+        data: {
+          wordId: word.id,
+          learningStatus: LearningStatuses['Not Learned'],
+          authorId: userId
+        }
+      })
+
+      const initialDictionary = await prisma.dictionaries.findFirst({
+        where: {
+          title: DictionaryInitialTitle
+        }
+      })
+
+      await prisma.dictAndUserWords.create({
+        data:
+        {
+          userWordId: userWord.id,
+          dictionaryId: initialDictionary?.id as string
+        }
+      })
+
+      if (dictionaryId) {
+        await prisma.dictAndUserWords.create({
+          data:
+          {
+            userWordId: userWord.id,
+            dictionaryId
+          }
+        })
+      }
+
+      return {
+        success: true,
+        message: "Success",
+      }
+    }),
+
+  //Whole list can be seen just by admins
+  getWordList: protectedProcedure
+    .query(async ({ ctx }) => {
+      const userId = ctx.user
+      // some authority control
+
+      const words = await prisma.words.findMany()
+
+      return {
+        data: words,
+        success: true,
+        message: 'Success'
+      }
+
+    }),
+})
