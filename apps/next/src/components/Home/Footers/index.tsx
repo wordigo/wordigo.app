@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="relative max-w-screen-8xl w-full m-auto" aria-labelledby="footer" id="footer">
       <svg
-        className="blur-3xl absolute opacity-80 right-0"
+        className="blur-3xl absolute right-0 opacity-20 dark:opacity-60 rounded-full pr-20"
         fill="none"
         viewBox="0 0 400 400"
         xmlns="http://www.w3.org/2000/svg"

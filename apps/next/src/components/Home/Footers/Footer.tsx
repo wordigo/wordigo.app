@@ -4,7 +4,7 @@ import Logo from "@/components/Logo/DynamicLogo";
 
 export default function Footer() {
   return (
-    <div className="relative mx-auto max-w-screen-8xl md:px-12 lg:px-32 px-8 py-12 lg:py-24">
+    <div className="relative mx-auto max-w-screen-8xl md:px-12 px-8 py-12 lg:py-24">
       <div className="xl:gap-8 xl:grid xl:grid-cols-4 dark:border-white/5 border-t lg:pt-24 border-black/30 ">
         <div className="dark:text-white text-light_text">
           <div className="gap-3 items-center inline-flex w-[140px]">
@@ -29,30 +29,22 @@ export default function Footer() {
               </h3>
               <ul className="mt-4 space-y-2" role="list">
                 <li>
-                  <p className="text-sm text-black opacity-80 hover:text-opacity-60 inline-flex items-center dark:text-white hover:dark:opacity-50">
-                    <Link href={"/"} passHref>
-                      Translate
-                    </Link>{" "}
-                    <span className="text-xs font-medium bg-vulcan-800 inline-flex items-center ml-4 px-3 py-0.5 rounded-full text-white dark:bg-[#3A3E90] bg-[#9272F6]">
-                      New
-                    </span>
-                  </p>
-                </li>
-                <li>
                   <p className="text-sm hover:text-opacity-60 text-black opacity-80 dark:text-white hover:dark:opacity-50">
-                    <Link href={"/"} passHref>
-                      Teams
+                    <Link href={"/about"} passHref>
+                      About
                     </Link>
                   </p>
                 </li>
               </ul>
             </div>
             <div className="mt-12 md:mt-0">
-              <h3 className="font-semibold text-light_text dark:text-white hover:dark:opacity-80">Dashboard</h3>
+              <Link href={"/dashboard"} className="font-semibold text-light_text dark:text-white hover:dark:opacity-80">
+                Dashboard
+              </Link>
               <ul className="mt-4 space-y-2" role="list">
                 <li>
                   <p className="text-sm text-black opacity-80 hover:text-opacity-60 dark:text-white hover:dark:opacity-50">
-                    <Link href={"/"} passHref>
+                    <Link href={"/dashboard/dictionary"} passHref>
                       Dictionary
                     </Link>
                   </p>
@@ -61,16 +53,19 @@ export default function Footer() {
               <ul className="mt-4 space-y-2" role="list">
                 <li>
                   <p className="text-sm text-black opacity-80 hover:text-opacity-60 dark:text-white hover:dark:opacity-50">
-                    <Link href={"/"} passHref>
+                    <Link href={"/dashboard/translate"} passHref>
                       Translate
                     </Link>
+                    <span className="text-xs font-medium bg-vulcan-800 inline-flex items-center ml-4 px-3 py-0.5 rounded-full text-white dark:bg-[#3A3E90] bg-[#9272F6]">
+                      New
+                    </span>
                   </p>
                 </li>
               </ul>
               <ul className="mt-4 space-y-2" role="list">
                 <li>
                   <p className="text-sm text-black opacity-80 hover:text-opacity-60 dark:text-white hover:dark:opacity-50">
-                    <Link href={"/"} passHref>
+                    <Link href={"/dashboard/settings"} passHref>
                       Settings
                     </Link>
                   </p>

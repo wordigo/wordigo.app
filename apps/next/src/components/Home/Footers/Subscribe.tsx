@@ -34,7 +34,7 @@ export default function Subscribe() {
 
   return (
     <footer>
-      <div className="relative mx-auto max-w-screen-8xl md:px-12 lg:px-32 px-8 pb-24">
+      <div className="relative mx-auto max-w-screen-8xl md:px-12 px-8 pb-24">
         <div className="dark:border-white/5 border-black/30 border-t lg:flex lg:items-center lg:justify-between pt-12">
           <div>
             <h3 className="dark:text-white text-light_text">Subscribe to Wordigo news</h3>

@@ -18,11 +18,11 @@ const Navigation = ({ variant }: { variant?: "Sidebar" }) => {
         <Link href={"/"} passHref>
           {t("nav_home")}
         </Link>
-        <Link href={"/translate"} passHref>
-          {t("nav_translate")}
+        <Link href={"/dashboard"} passHref>
+          {t("nav_dashboard")}
         </Link>
-        <Link href={"/team"} passHref>
-          {t("nav_teams")}
+        <Link href={"/about"} passHref>
+          {t("nav_about")}
         </Link>
       </li>
     </ul>

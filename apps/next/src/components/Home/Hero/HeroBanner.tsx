@@ -2,7 +2,7 @@ export default function FeatureBanner() {
   return (
     <section className="rounded-2xl flex items-center flex-col bg-gradient-to-t dark:from-transparent relative">
       <svg
-        className="blur-3xl absolute opacity-80 rounded-full -z-50 w-[450px] h-[1500px] pb-[900px]"
+        className="blur-3xl absolute rounded-full -z-50 w-[450px] h-[1500px] pb-[900px] opacity-40 dark:opacity-80"
         fill="none"
         viewBox="0 0 400 400"
         xmlns="http://www.w3.org/2000/svg"
