@@ -1,6 +1,10 @@
-import React from "react";
+import { type FunctionComponent } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
-import Logo from "@/components/Logo/DynamicLogo";
+
+const DynamicLogo = dynamic(() => import("@/components/Logo/DynamicLogo"), {
+  ssr: false,
+}) as FunctionComponent;
 
 export default function Footer() {
   return (
@@ -8,7 +12,7 @@ export default function Footer() {
       <div className="xl:gap-8 xl:grid xl:grid-cols-4 dark:border-white/5 border-t lg:pt-24 border-black/30 ">
         <div className="dark:text-white text-light_text">
           <div className="gap-3 items-center inline-flex w-[140px]">
-            <Logo></Logo>
+            <DynamicLogo />
           </div>
 
           <p className="text-center text-sm leading-loose md:text-left text-light_text">

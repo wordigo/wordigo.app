@@ -1,5 +1,3 @@
-import React from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import CButton from "@/components/UI/Button";
 import { api } from "@/libs/trpc";
