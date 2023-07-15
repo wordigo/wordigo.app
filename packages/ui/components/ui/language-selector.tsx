@@ -1,21 +1,24 @@
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import ReactCountryFlag from "react-country-flag";
 
-import { SupportedLanguages } from "@wordigo/common";
+import { AllCountryLanguages, SupportedLanguages } from "@wordigo/common";
 
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "./select";
 
 export interface ILanguageSelector {
-  supportLanguages?: boolean;
+  providerLanguages?: boolean;
   className?: string;
   defaultValue?: string;
   onSelect?: (value: string) => void;
 }
 
-const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue, supportLanguages = true, onSelect }) => {
+const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue, providerLanguages = false, onSelect }) => {
   const handleSelect = (value: string) => {
     onSelect?.(value);
   };
+  console.log(defaultValue);
+
+  const computedLanguages = providerLanguages ? AllCountryLanguages : SupportedLanguages;
 
   return (
     <Select defaultValue={defaultValue} onValueChange={handleSelect}>
@@ -28,7 +31,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue
             <SelectItem value="0" disabled>
               Select language
             </SelectItem>
-            {SupportedLanguages.map(({ code, icon, name }) => {
+            {computedLanguages.map(({ code, name, icon }) => {
               return (
                 <SelectItem key={code} value={code}>
                   <div className="flex items-center gap-x-2">
@@ -38,7 +41,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue
                         lineHeight: "1em",
                       }}
                       svg
-                      countryCode={icon}
+                      countryCode={icon as string}
                     />
                     {name}
                   </div>

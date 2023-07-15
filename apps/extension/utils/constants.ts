@@ -1,4 +1,4 @@
-export const TRANSLATE_CARD_WIDTH = 480
+export const TRANSLATE_CARD_WIDTH = 500
 export const TRANSLATE_CARD_HEIGHT = 200
 
 export const TRANSLATE_POPUP_TOP = 14
