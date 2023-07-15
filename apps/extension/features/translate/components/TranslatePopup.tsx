@@ -43,8 +43,6 @@ const TranslatePopup = () => {
   )
 
   useEffect(() => {
-    console.log("ee test")
-
     handleTranslate({ query: selectedText, sourceLanguage: null, targetLanguage })
   }, [selectedText])
 

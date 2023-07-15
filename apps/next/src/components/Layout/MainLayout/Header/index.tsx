@@ -21,9 +21,9 @@ export default function HomeHeader() {
       <Banner />
       <div className="flex items-center justify-between max-w-[1380px] m-auto py-2">
         <nav className="flex items-center justify-between gap-16">
-          <span>
+          <Link href="/">
             <Image src="/images/logo.png" width={250} height={250} priority alt="" className="rounded-md" />
-          </span>
+          </Link>
           <Navigation />
         </nav>
         <div className="flex gap-y-6 gap-x-3 items-center">
