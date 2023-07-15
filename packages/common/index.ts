@@ -7,10 +7,12 @@ export interface ILanguage {
 export const SupportedLanguages: ILanguage[] = [
   {
     code: "EN",
+    icon: "US",
     name: "English",
   },
   {
     code: "TR",
+    icon: "TR",
     name: "Turkish",
   },
 ];
