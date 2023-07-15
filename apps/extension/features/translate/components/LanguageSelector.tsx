@@ -13,8 +13,6 @@ export interface ILanguageSelector {
 }
 
 const LanguageSelector: React.FC<ILanguageSelector> = ({ defaultValue, onSelect }) => {
-  console.log(AllCountryLanguages, defaultValue)
-
   const computedDefaultValue = AllCountryLanguages.find((lang) => lang.code === defaultValue)
   const [selected, setSelected] = useState<ILanguage>(computedDefaultValue)
 

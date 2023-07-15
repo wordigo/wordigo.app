@@ -35,7 +35,6 @@ export const SettingsForm = () => {
     targetLanguage: "",
     translateStatus: false
   }
-  console.log(defaultValues)
 
   const { toast } = useToast()
   const form = useForm<SettingsFormValues>({
@@ -49,7 +48,6 @@ export const SettingsForm = () => {
     const targetLanguage = await storage.get("targetLanguage")
     form.setValue("translateStatus", translateStatus as never)
     form.setValue("targetLanguage", targetLanguage as never)
-    console.log("ee test", isLoading)
 
     setIsLoading(false)
   }
@@ -66,8 +64,6 @@ export const SettingsForm = () => {
       description: "Your changes have been successfully saved."
     })
   }
-
-  console.log(isLoading)
 
   if (!isLoading)
     return (

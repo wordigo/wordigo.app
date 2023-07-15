@@ -16,7 +16,6 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue
   const handleSelect = (value: string) => {
     onSelect?.(value);
   };
-  console.log(defaultValue);
 
   const computedLanguages = providerLanguages ? AllCountryLanguages : SupportedLanguages;
 

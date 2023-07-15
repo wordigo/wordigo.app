@@ -40,7 +40,6 @@ type CreateDictionaryValues = z.infer<typeof CreateDictionarySchema>;
 
 export function EditDictionary<TData extends object>({ label, row }: { label: string; row: DataTableRowActionsProps<TData> }) {
   const data: { id: string; title: string; published: boolean } = row?.original;
-  console.log(data);
   const { mutate: editDictionary, isLoading } = api.dictionary.updateDictionary.useMutation();
   const router = useRouter();
 

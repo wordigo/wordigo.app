@@ -12,7 +12,7 @@ export default function Footer() {
         height="100%"
         width="50%"
       >
-        <g clip-path="url(#clip0_17_60)">
+        <g clipPath="url(#clip0_17_60)">
           <g filter="url(#filter0_f_17_60)">
             <path d="M128.6 0H0V322.2L332.5 211.5L128.6 0Z" fill="#4D07E3"></path>
             <path d="M0 322.2V400H240H320L332.5 211.5L0 322.2Z" fill="#4C00FF"></path>
@@ -22,7 +22,7 @@ export default function Footer() {
         </g>
         <defs>
           <filter
-            color-interpolation-filters="sRGB"
+            colorinterpolation-filters="sRGB"
             filterUnits="userSpaceOnUse"
             height="719.867"
             id="filter0_f_17_60"
@@ -30,7 +30,7 @@ export default function Footer() {
             x="-159.933"
             y="-159.933"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+            <feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood>
             <feBlend in="SourceGraphic" in2="BackgroundImageFix" mode="normal" result="shape"></feBlend>
             <feGaussianBlur result="effect1_foregroundBlur_17_60" stdDeviation="79.9667"></feGaussianBlur>
           </filter>
