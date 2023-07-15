@@ -1,5 +1,7 @@
-import { GoogleSupportLanguages } from "@wordigo/common"
+import { AllCountryLanguages, type ILanguage } from "@wordigo/common"
 import { ChevronDown } from "lucide-react"
+import { useState } from "react"
+import ReactCountryFlag from "react-country-flag"
 
 import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, ScrollArea } from "~../../packages/ui"
 
@@ -7,31 +9,62 @@ export interface ILanguageSelector {
   supportLanguages?: boolean
   className?: string
   defaultValue?: string
-  onSelect?: (value: string) => void
+  onSelect?: (value: ILanguage) => void
 }
 
-const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue, onSelect }) => {
-  const handleSelect = (value: string) => {
+const LanguageSelector: React.FC<ILanguageSelector> = ({ defaultValue, onSelect }) => {
+  console.log(AllCountryLanguages, defaultValue)
+
+  const computedDefaultValue = AllCountryLanguages.find((lang) => lang.code === defaultValue)
+  const [selected, setSelected] = useState<ILanguage>(computedDefaultValue)
+
+  const handleSelect = (code: string) => {
+    const value = AllCountryLanguages.find((lang) => lang.code === code)
+    setSelected(value)
     onSelect?.(value)
   }
 
-  const selectedValue = GoogleSupportLanguages.find((test) => test.code === defaultValue)
+  const selectedValue = AllCountryLanguages.find((lang) => lang.code === selected?.code)
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild={true}>
+      <DropdownMenuTrigger asChild>
         <Button
           variant="outline"
           size="default"
-          className="rounded-md !h-9 !w-26 !px-3 flex justify-between items-center gap-x-2">
-          {selectedValue.language}
+          className="rounded-md !h-9 w-[120px] !px-3 flex justify-between items-center gap-x-2">
+          <div className="flex items-center gap-x-2">
+            <ReactCountryFlag
+              style={{
+                fontSize: "1em",
+                lineHeight: "1em"
+              }}
+              svg
+              countryCode={selectedValue.icon}
+            />
+            {selectedValue.name}
+          </div>
           <ChevronDown size={14} />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent id="el-language-container">
+      <DropdownMenuContent id="el-popup-container">
         <ScrollArea className="w-full h-60 rounded-md">
-          {GoogleSupportLanguages.map(({ code, language }) => {
-            return <DropdownMenuItem key={code}>{language}</DropdownMenuItem>
+          {AllCountryLanguages.map(({ code, name, icon }) => {
+            return (
+              <DropdownMenuItem onClick={() => handleSelect(code)} key={code}>
+                <div className="flex items-center gap-x-2">
+                  <ReactCountryFlag
+                    style={{
+                      fontSize: "1em",
+                      lineHeight: "1em"
+                    }}
+                    svg
+                    countryCode={icon}
+                  />
+                  {name}
+                </div>
+              </DropdownMenuItem>
+            )
           })}
         </ScrollArea>
       </DropdownMenuContent>

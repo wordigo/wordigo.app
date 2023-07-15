@@ -10,6 +10,7 @@ export interface IPopoverOptions {
   setFloating: Dispatch<SetStateAction<boolean>>
   setPopup: Dispatch<SetStateAction<boolean>>
   selectedText?: string
+  targetLanguage: string
   cordinate: {
     x: number
     y: number
@@ -28,15 +29,22 @@ export const usePopover = ({}) => {
       area: "local"
     })
   })
+  const [targetLanguage] = useStorage({
+    key: "targetLanguage",
+    instance: new Storage({
+      area: "local"
+    })
+  })
+
   const handleMouseUp = (event) => {
     const tag = event?.target?.tagName
 
     const targetElement = event.target as HTMLElement
-    const languageSelectorContainer = document.querySelector("#el-language-container")
+    const popupContainer = document.querySelector("#el-popup-container")
     const rootTranslatorContainer = document.querySelector<HTMLElement>("#el-translate-container")
 
     if (
-      languageSelectorContainer?.contains(targetElement) ||
+      popupContainer?.contains(targetElement) ||
       translatorShadowContent?.contains(targetElement) ||
       rootTranslatorContainer?.contains(targetElement) ||
       tag === "INPUT" ||
@@ -68,8 +76,18 @@ export const usePopover = ({}) => {
   }, [])
 
   return useMemo(
-    () => ({ selectedText, setSelectedText, isFloating, setFloating, isPopup, setPopup, cordinate, setCordinate }),
-    [selectedText, setSelectedText, isFloating, setFloating, isPopup, setPopup, cordinate, setCordinate]
+    () => ({
+      selectedText,
+      setSelectedText,
+      isFloating,
+      setFloating,
+      isPopup,
+      targetLanguage,
+      setPopup,
+      cordinate,
+      setCordinate
+    }),
+    [selectedText, setSelectedText, isFloating, setFloating, isPopup, setPopup, targetLanguage, cordinate, setCordinate]
   )
 }
 

@@ -8,6 +8,7 @@ const config = {
     "prettier",
   ],
   rules: {
+    "react-hooks/exhaustive-deps": "off",
     "@typescript-eslint/no-unsafe-call": "off",
     "@typescript-eslint/restrict-plus-operands": "off",
     "import/no-anonymous-default-export": "off",
