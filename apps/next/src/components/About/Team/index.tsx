@@ -7,7 +7,7 @@ export default function index() {
   return (
     <div className="max-w-screen-8xl w-full m-auto">
       <div className="flex flex-col items-center justify-center">
-        <h1 className="text-3xl opacity-80 font-bold tracking-tight px-10 py-10">{t("nav_teams")}</h1>
+        <h1 className="text-3xl opacity-80 font-bold tracking-tight px-10 pb-10">{t("nav_teams")}</h1>
         <span className="flex gap-6 items-center justify-center flex-wrap">
           <Comment
             description=""

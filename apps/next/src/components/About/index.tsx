@@ -3,7 +3,7 @@ import { useTranslation } from "next-i18next";
 export default function index() {
   const { t } = useTranslation();
   return (
-    <div className="max-w-screen-8xl w-full m-auto">
+    <div className="max-w-screen-8xl w-full m-auto my-5">
       <div className="flex flex-col items-center justify-center">
         <span className="flex gap-6 items-center justify-center flex-wrap flex-col">
           <h1 className="text-3xl font-bold tracking-tight py-2 opacity-80">{t("nav_about")}</h1>

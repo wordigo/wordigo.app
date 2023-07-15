@@ -25,7 +25,7 @@ export default function Comment({
   github?: string;
 }) {
   return (
-    <div className="max-w-[420px] h-fit px-[30px] py-[20px] rounded-xl dark:bg-[#141420] bg-[#F3F4FE] border-[#e9eafe]  text-light_text border dark:text-white dark:border-[rgb(33,32,44)] shadow-lg dark:shadow-black">
+    <div className="max-w-[420px] h-fit px-8 py-5 rounded-xl dark:bg-[#141420] bg-[#F3F4FE] border-[#e9eafe]  text-light_text border dark:text-white dark:border-[rgb(33,32,44)] shadow-lg dark:shadow-black">
       <span className={cn("flex items-center gap-3", teams && "flex-col")}>
         <span className="border-2 border-gray-600 rounded-full">
           {src && !teams && <Image className="rounded-full m-1" alt="" src={src} width={42} height={42}></Image>}
