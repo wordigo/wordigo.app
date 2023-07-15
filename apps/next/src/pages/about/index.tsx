@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "@/components/Home/Footers/Footer";
 import MainLayout from "@/components/Layout/MainLayout";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -11,9 +12,9 @@ export default function index() {
     <MainLayout>
       <div className="max-w-screen-8xl w-full m-auto">
         <div className="flex flex-col items-center justify-center">
-          <h1 className="text-3xl opacity-50 font-bold tracking-tight px-10 pt-10 pb-6">{t("nav_about")}</h1>
-          <span className="flex gap-6 items-center justify-center flex-wrap">
-            <p className="w-[680px] text-xl text-center">
+          <span className="flex gap-6 items-center justify-center flex-wrap flex-col">
+            <h1 className="text-3xl font-bold tracking-tight py-2 opacity-80">Wordigo</h1>
+            <p className="w-[680px] text-lg text-center">
               Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
               since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
             </p>
@@ -23,7 +24,7 @@ export default function index() {
 
       <div className="max-w-screen-8xl w-full m-auto">
         <div className="flex flex-col items-center justify-center">
-          <h1 className="text-3xl opacity-50 font-bold tracking-tight px-10 py-10">{t("nav_teams")}</h1>
+          <h1 className="text-3xl opacity-80 font-bold tracking-tight px-10 py-10">{t("nav_teams")}</h1>
           <span className="flex gap-6 items-center justify-center flex-wrap">
             <Comment
               description=""
@@ -68,6 +69,8 @@ export default function index() {
           </span>
         </div>
       </div>
+
+      <Footer />
     </MainLayout>
   );
 }
