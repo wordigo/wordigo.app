@@ -1,6 +1,4 @@
-import React from "react";
 import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function index() {
   const { t } = useTranslation();
@@ -17,12 +15,4 @@ export default function index() {
       </div>
     </div>
   );
-}
-
-export async function getStaticProps({ locale }: { locale: string }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ["common"])),
-    },
-  };
 }
