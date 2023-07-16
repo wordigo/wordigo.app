@@ -10,12 +10,7 @@ import { cn } from "@wordigo/ui/lib/utils";
 import useSidebarNavigations, { type SidebarChildNav, type SidebarNavItem } from "./navigations.constants";
 
 const DashboardNav = () => {
-  const { showSidebarPanel, setSidebarPanel } = useCommonStore((state) => state);
   const navigations = useSidebarNavigations();
-
-  const handleSidebar = () => {
-    setSidebarPanel(!showSidebarPanel);
-  };
 
   return (
     <AnimatePresence>
@@ -29,6 +24,7 @@ const DashboardNav = () => {
 };
 
 DashboardNav.Item = (item: SidebarNavItem, index: number) => {
+  const { showSidebarPanel, setSidebarPanel } = useCommonStore((state) => state);
   const path = usePathname();
 
   const classes = cn(
@@ -37,29 +33,34 @@ DashboardNav.Item = (item: SidebarNavItem, index: number) => {
     item.disabled && "cursor-not-allowed opacity-80",
   );
 
+  const handleSidebar = () => {
+    setSidebarPanel(!showSidebarPanel);
+  };
+
   return (
     <div className={classes}>
-      <Link key={index} href={item.disabled ? "/" : item.href} className="flex items-center w-full">
+      <Link key={index} href={item.disabled ? "/" : item.href} className="flex items-center w-full" onClick={handleSidebar}>
         <span className="flex items-center px-3 py-2 text-sm w-full">
           {item.icon}
           <span className="flex justify-between w-full items-center">{item.title}</span>
         </span>
       </Link>
-      {item.child && <DashboardNav.ChildItem {...item.child} key={index} />}
+      {item.child && <DashboardNav.ChildItem {...item.child} key={item.href} />}
     </div>
   );
 };
 
 DashboardNav.ChildItem = ({ navs, trigger, loading }: SidebarChildNav) => {
+  console.log(loading);
+
   return (
     <Fragment>
       <div tabIndex={50} className="text-sm z-50 font-medium absolute right-0 top-2 mr-2 flex items-center justify-center">
         {trigger}
       </div>
-      {loading && <DashboardNav.ChildItemLoading />}
-      {!loading && navs && (
+      {!loading && (
         <div className="flex flex-col">
-          {navs.map((item, index) => (
+          {navs?.map((item, index) => (
             <Link href={"/dashboard/dictionaries/" + item.link} key={index} className="w-full">
               <span className={cn("flex items-center px-3 py-2 text-sm w-full")}>
                 <span className="flex justify-between w-full items-center">{item.name}</span>

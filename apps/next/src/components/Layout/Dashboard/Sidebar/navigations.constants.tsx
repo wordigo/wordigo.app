@@ -1,6 +1,6 @@
 import { type ReactElement, useState } from "react";
 import { api } from "@/libs/trpc";
-import { BookMarked, ChevronDown, ChevronUp, LayoutDashboard } from "lucide-react";
+import { BookMarked, ChevronDown, ChevronUp, LayoutDashboard, RotateCw } from "lucide-react";
 
 import { Button } from "@wordigo/ui";
 
@@ -49,7 +49,7 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
       child: {
         trigger: (
           <Button onClick={handleDictionary} variant="outline" size="icon" className="w-fit h-fit p-1">
-            {showDictionary ? <ChevronDown size={12} /> : <ChevronUp size={"12"} />}
+            {isLoading ? <RotateCw className="h-3 w-3 animate-spin" /> : showDictionary ? <ChevronDown size={12} /> : <ChevronUp size={"12"} />}
           </Button>
         ),
         loading: isLoading,
