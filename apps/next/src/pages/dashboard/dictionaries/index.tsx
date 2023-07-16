@@ -1,6 +1,6 @@
 import { Fragment } from "react";
-import { columns } from "@/components/Dashboard/Dictionary/data-table/columns";
-import { DataTable } from "@/components/Dashboard/Dictionary/data-table/data-table";
+import { columns } from "@/components/Dashboard/Dictionaries/data-table/columns";
+import { DataTable } from "@/components/Dashboard/Dictionaries/data-table/data-table";
 import DashboardLayout from "@/components/Layout/Dashboard";
 import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
 import { api } from "@/libs/trpc";
