@@ -49,11 +49,15 @@ export const SettingsForm = () => {
     setIsLoading(false)
   }
 
+  console.log(form.formState)
+
   useEffect(() => {
     void getStatus()
   }, [])
 
   const handleSaveChanges = async (values: SettingsFormValues) => {
+    console.log(values)
+
     await storage.set("translateStatus", values.translateStatus)
     await storage.set("targetLanguage", values.targetLanguage)
     toast({
