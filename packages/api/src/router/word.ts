@@ -13,46 +13,82 @@ export const wordRouter = createTRPCRouter({
         translatedText: z.string(),
         nativeLanguage: z.string(),
         targetLanguage: z.string(),
-        dictionaryId: z.string().nullable(),
+        dictionaryId: z.string().nullable()
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      const { text, translatedText, nativeLanguage, targetLanguage } = input
-      let { dictionaryId } = input
+      const { text, translatedText, nativeLanguage, targetLanguage, dictionaryId } = input
       const userId = ctx.user.id
 
-      const word = await prisma.words.create({
-        data: {
-          text,
-          translatedText,
+      if (dictionaryId?.length as number > 0) {
+        const dicFromDb = await prisma.dictionaries.findFirst({
+          where: {
+            id: dictionaryId as string,
+            authorId: userId
+          }
+        })
+
+        if (!dicFromDb) {
+          return {
+            success: false,
+            message: "Dictionary Couldn't Found!"
+          }
+        }
+      }
+
+      const wordFromDb = await prisma.words.findFirst({
+        where: {
+          text: text.trim().toLowerCase(),
+          translatedText: translatedText.trim().toLowerCase(),
           nativeLanguage,
-          targetLanguage,
-        },
+          targetLanguage
+        }
       })
+
+      let word
+      if (!wordFromDb)
+        word = await prisma.words.create({
+          data: {
+            text: text.trim().toLowerCase(),
+            translatedText: translatedText.trim().toLowerCase(),
+            nativeLanguage,
+            targetLanguage
+          },
+        })
+      else
+        word = wordFromDb
 
       const userWord = await prisma.userWords.create({
         data: {
           wordId: word.id,
-          learningStatus: LearningStatuses["Not Learned"],
-          authorId: userId,
-        },
+          learningStatus: LearningStatuses['Not Learned'],
+          authorId: userId
+        }
       })
 
-      if (!dictionaryId) {
-        const dic = await prisma.dictionaries.findFirst({
-          where: {
-            title: DictionaryInitialTitle,
-          },
-        })
-        dictionaryId = dic?.id as string
-      }
+      const initialDictionary = await prisma.dictionaries.findFirst({
+        where: {
+          title: DictionaryInitialTitle
+        }
+      })
 
       await prisma.dictAndUserWords.create({
-        data: {
+        data:
+        {
           userWordId: userWord.id,
-          dictionaryId,
-        },
+          dictionaryId: initialDictionary?.id as string
+        }
       })
+
+      if (dictionaryId) {
+        await prisma.dictAndUserWords.create({
+          data:
+          {
+            userWordId: userWord.id,
+            dictionaryId
+          }
+        })
+      }
 
       return {
         success: true,
@@ -60,40 +96,19 @@ export const wordRouter = createTRPCRouter({
       }
     }),
 
-  deleteWord: protectedProcedure
-    .input(
-      z.object({
-        dictionaryId: z.string(),
-      }),
-    )
-    .mutation(async ({ ctx, input }) => {
-      const userId = ctx.user.id
-      const { dictionaryId } = input
+  //Whole list can be seen just by admins
+  // getWordList: protectedProcedure
+  //   .query(async ({ ctx }) => {
+  //     const userId = ctx.user
+  //     // some authority control
 
-      const dictionary = await prisma.dictionaries.findFirst({
-        where: { authorId: userId, id: dictionaryId },
-      })
+  //     const words = await prisma.words.findMany()
 
-      if (!dictionary) {
-        return {
-          success: false,
-          message: "Dictionary Couldn't Found!",
-        }
-      }
+  //     return {
+  //       data: words,
+  //       success: true,
+  //       message: 'Success'
+  //     }
 
-      await prisma.dictionaries.delete({
-        where: { id: dictionaryId },
-      })
-
-      return {
-        success: true,
-        message: "Dictionary Deleted Successfully",
-      }
-    }),
-
-  // updateWord: protectedProcedure
-  //   .input(
-  // )
-  //   .mutation(async ({ ctx, input }) => {
   //   }),
 })
