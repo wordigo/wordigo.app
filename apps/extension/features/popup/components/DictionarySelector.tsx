@@ -1,43 +1,21 @@
-import {
-  Button,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-  Skeleton,
-  ToastAction,
-  useToast
-} from "@wordigo/ui"
+import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Skeleton } from "@wordigo/ui"
 import { ChevronDown } from "lucide-react"
 import { useState } from "react"
-
-import { sendToBackground } from "@plasmohq/messaging"
 
 import trpc from "~libs/trpc"
 
 const DictionarySelector = () => {
   const { mutate, data, isLoading } = trpc.dictionary.getUserDictionariesMutation.useMutation()
   const [showMenu, setShowMenu] = useState(false)
-  const { toast } = useToast()
 
-  const handleOpenMenu = async () => {
+  const handleOpenMenu = () => {
     const targetValue = !showMenu
 
     if (targetValue) {
-      const token = await sendToBackground({
-        name: "getToken"
-      })
-      if (token) {
-        setShowMenu(!showMenu)
-        mutate()
-      } else {
-        toast({
-          title: "You need to login..",
-          description: "You need to be logged in to add words to your dictionary.",
-          action: <ToastAction altText="Logi">Login</ToastAction>
-        })
-      }
+      mutate()
     }
+
+    setShowMenu(!showMenu)
   }
 
   const handleAddLibrary = () => {}

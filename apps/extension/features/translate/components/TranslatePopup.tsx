@@ -24,7 +24,7 @@ import trpc from "~libs/trpc"
 import { TRANSLATE_CARD_WIDTH } from "~utils/constants"
 
 import { useContextPopover } from "../context/popover"
-import { DictionarySelector } from "./DictionarySelector"
+import DictionarySelector from "./DictionarySelector"
 
 const TranslatePopup = () => {
   const toast = useToast()
@@ -146,15 +146,6 @@ const TranslatePopup = () => {
         </CardFooter>
       </Card>
     </motion.div>
-  )
-}
-
-TranslatePopup.Loading = () => {
-  return (
-    <div className="flex flex-col gap-y-2">
-      <Skeleton className="h-4 w-full" />
-      <Skeleton className="h-4 w-full" />
-    </div>
   )
 }
 

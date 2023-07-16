@@ -1,15 +1,15 @@
-import { authRouter } from "./router/auth"
-import { dictionaryRouter } from './router/dictionary'
-import { dictionaryWordRouter } from './router/dictionaryWord'
-import { translationRouter } from "./router/translation"
-import { createTRPCRouter } from "./trpc"
+import { authRouter } from "./router/auth";
+import { dictionaryRouter } from "./router/dictionary";
+import { dictionaryWordRouter } from "./router/dictionaryWord";
+import { translationRouter } from "./router/translation.routes";
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   auth: authRouter,
   translation: translationRouter,
   dictionary: dictionaryRouter,
-  dictionaryWord: dictionaryWordRouter
-})
+  dictionaryWord: dictionaryWordRouter,
+});
 
 // export type definition of API
-export type AppRouter = typeof appRouter
+export type AppRouter = typeof appRouter;

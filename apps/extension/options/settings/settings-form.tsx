@@ -1,3 +1,4 @@
+import { zodResolver } from "@hookform/resolvers/zod"
 import {
   Button,
   Form,
@@ -10,10 +11,6 @@ import {
   Switch,
   useToast
 } from "@wordigo/ui"
-
-import "@wordigo/ui/styles/globals.css"
-
-import { zodResolver } from "@hookform/resolvers/zod"
 import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import type { z } from "zod"

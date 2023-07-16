@@ -25,5 +25,5 @@ export async function middleware(request: NextRequest, response: NextResponse) {
 }
 
 export const config = {
-  matcher: ["/dashboard"],
+  matcher: ["/dashboard", "/:lang/dashboard"],
 };
