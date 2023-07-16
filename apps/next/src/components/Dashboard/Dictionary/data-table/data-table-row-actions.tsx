@@ -31,7 +31,7 @@ export function DataTableRowActions<TData extends object>({ row }: DataTableRowA
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[160px] flex flex-col">
-        <EditDictionary label="Edit" row={row} />
+        <EditDictionary label="Edit" row={row as never} />
         <DropdownMenuItem>Share</DropdownMenuItem>
         <DropdownMenuItem>Favorite</DropdownMenuItem>
         <DropdownMenuSeparator />

@@ -13,6 +13,8 @@ export async function middleware(request: NextRequest, response: NextResponse) {
 
     const user = await supabase.auth.getUser(decodedToken as string);
 
+    console.log(user);
+
     if (!user.error) {
       const response = NextResponse.next();
       return response;
@@ -23,5 +25,5 @@ export async function middleware(request: NextRequest, response: NextResponse) {
 }
 
 export const config = {
-  matcher: "/dashboard",
+  matcher: ["/dashboard", "/:lang/dashboard"],
 };

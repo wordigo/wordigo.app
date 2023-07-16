@@ -1,23 +1,58 @@
-import { Separator } from "@wordigo/ui"
-
 import "@wordigo/ui/styles/globals.css"
 
-import SettingsLayout from "./layout"
-import SettingsForm from "./settings-form"
+import { Separator, Toaster } from "@wordigo/ui"
 
-export const SettingsPage = () => {
+import Apparance from "./apparence/layout"
+import { SidebarNav } from "./components/sidebar-nav"
+import { OptionsContext, useOptions, useOptionsContext } from "./context/options"
+import { TRPCProvider } from "./providers/trpc-provider"
+import Settings from "./settings/layout"
+
+export const sidebarNavItems = [
+  {
+    title: "General",
+    tab: "general"
+  },
+  {
+    title: "Appearance",
+    tab: "appearance"
+  }
+]
+
+const Dashboard = () => {
+  const options = useOptionsContext()
+
   return (
-    <SettingsLayout>
-      <div className="space-y-4">
-        <div>
-          <h3 className="text-lg font-medium">General</h3>
-          <p className="text-sm text-muted-foreground">Update your translation preference and select target language..</p>
-        </div>
-        <Separator />
-        <SettingsForm />
-      </div>
-    </SettingsLayout>
+    <div className="flex-1 lg:max-w-2xl">
+      {options.activeTab === "general" && <Settings />}
+      {options.activeTab === "appearance" && <Apparance />}
+    </div>
   )
 }
 
-export default SettingsPage
+Dashboard.Layout = () => {
+  const options = useOptions({})
+
+  return (
+    <OptionsContext.Provider value={options}>
+      <TRPCProvider>
+        <div className="space-y-6 p-10 pb-16">
+          <div className="space-y-0.5">
+            <h2 className="text-2xl font-bold tracking-tight">Settings</h2>
+            <p className="text-muted-foreground">Manage your plugin settings and you can change your translation preference.</p>
+          </div>
+          <Separator className="my-6" />
+          <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
+            <aside className="-mx-4 lg:w-1/5">
+              <SidebarNav items={sidebarNavItems} />
+            </aside>
+            <Dashboard />
+          </div>
+        </div>
+        <Toaster />
+      </TRPCProvider>
+    </OptionsContext.Provider>
+  )
+}
+
+export default Dashboard.Layout

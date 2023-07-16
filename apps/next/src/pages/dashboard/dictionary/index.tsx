@@ -12,7 +12,7 @@ export default function DashboardPage() {
   return (
     <Fragment>
       <DashboardLayout heading="Dictionary">
-        <DashboardShell>{data && <DataTable columns={columns} data={data.data as any} />}</DashboardShell>
+        <DashboardShell>{data && <DataTable columns={columns} data={data.dictionaries as never} />}</DashboardShell>
       </DashboardLayout>
     </Fragment>
   );

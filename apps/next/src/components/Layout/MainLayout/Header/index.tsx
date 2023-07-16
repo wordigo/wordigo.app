@@ -1,7 +1,5 @@
-import { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "@/components/Logo/DynamicLogo";
 import { useAuthStore } from "@/hooks/useAuthStore";
 import { useTranslation } from "next-i18next";
 
@@ -19,16 +17,16 @@ export default function HomeHeader() {
   const { isLoggedIn, userLoading } = useAuthStore();
 
   return (
-    <Fragment>
+    <div className="shadow-sm dark:shadow-black dark:shadow-md">
       <Banner />
-      <div className="flex items-center justify-between max-w-[1380px] m-auto pt-2">
+      <div className="flex items-center justify-between max-w-[1380px] m-auto py-2">
         <nav className="flex items-center justify-between gap-16">
-          <span>
+          <Link href="/">
             <Image src="/images/logo.png" width={250} height={250} priority alt="" className="rounded-md" />
-          </span>
+          </Link>
           <Navigation />
         </nav>
-        <div className="flex gap-y-6 gap-x-3 mt-[20px] items-center">
+        <div className="flex gap-y-6 gap-x-3 items-center">
           <ThemeMode />
           <ChangeLanguage />
           <div className="w-[1px] !h-9 bg-gray-200 dark:bg-gray-800"></div>
@@ -48,6 +46,6 @@ export default function HomeHeader() {
           )}
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 }

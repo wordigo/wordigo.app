@@ -2,9 +2,8 @@ import { z } from "zod"
 
 import { prisma } from "@wordigo/db"
 
+import { DictionaryInitialTitle, LearningStatuses } from "../../../common/constants/index"
 import { createTRPCRouter, protectedProcedure } from "../trpc"
-
-import { DictionaryInitialTitle, LearningStatuses } from '../../../common/constants/index'
 
 export const wordRouter = createTRPCRouter({
   addWord: protectedProcedure

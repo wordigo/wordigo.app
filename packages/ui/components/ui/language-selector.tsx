@@ -1,24 +1,27 @@
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import ReactCountryFlag from "react-country-flag";
 
-import { SupportedLanguages } from "@wordigo/common";
+import { AllCountryLanguages, SupportedLanguages } from "@wordigo/common";
 
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "./select";
 
 export interface ILanguageSelector {
-  supportLanguages?: boolean;
+  providerLanguages?: boolean;
+  targetLanguageSelect?: boolean;
   className?: string;
   defaultValue?: string;
   onSelect?: (value: string) => void;
 }
 
-const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue, supportLanguages = true, onSelect }) => {
+const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue, targetLanguageSelect, providerLanguages = false, onSelect }) => {
   const handleSelect = (value: string) => {
     onSelect?.(value);
   };
 
+  const computedLanguages = providerLanguages ? AllCountryLanguages : SupportedLanguages;
+
   return (
-    <Select defaultValue={defaultValue} onValueChange={handleSelect}>
+    <Select defaultValue={targetLanguageSelect ? "DT" : defaultValue} onValueChange={handleSelect}>
       <SelectTrigger className={className}>
         <SelectValue placeholder="Select language" />
       </SelectTrigger>
@@ -28,7 +31,22 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue
             <SelectItem value="0" disabled>
               Select language
             </SelectItem>
-            {SupportedLanguages.map(({ code, icon, name }) => {
+            {targetLanguageSelect && (
+              <SelectItem key="DT" value="DT">
+                <div className="flex items-center gap-x-2">
+                  <ReactCountryFlag
+                    style={{
+                      fontSize: "1em",
+                      lineHeight: "1em",
+                    }}
+                    svg
+                    countryCode="DT"
+                  />
+                  Detect Language
+                </div>
+              </SelectItem>
+            )}
+            {computedLanguages.map(({ code, name, icon }) => {
               return (
                 <SelectItem key={code} value={code}>
                   <div className="flex items-center gap-x-2">
@@ -38,7 +56,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue
                         lineHeight: "1em",
                       }}
                       svg
-                      countryCode={icon}
+                      countryCode={icon as string}
                     />
                     {name}
                   </div>

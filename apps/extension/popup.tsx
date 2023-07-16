@@ -1,19 +1,35 @@
-import { useEffect, useState } from "react"
+import { Portal } from "@radix-ui/react-portal"
 
-import trpc from "~libs/trpc"
+import "@wordigo/ui/styles/globals.css"
 
-function App() {
-  const [data, setData] = useState([])
-  const getData = async () => {
-    const test = await trpc.post.all.query()
-    setData(test)
-  }
+import styleText from "data-text:@wordigo/ui/styles/globals.css"
 
-  useEffect(() => {
-    getData()
-  }, [])
+import { Toaster } from "~../../packages/ui"
+import TranslatePopup from "~features/popup/components/Popup"
+import { PopupContext, usePopup } from "~features/popup/context/popup"
+import { TRPCProvider } from "~options/providers/trpc-provider"
 
-  return <div>{data[0]?.content}</div>
+export const getShadowHostId = () => "wordigo-translate-content"
+
+export const getStyle = () => {
+  const style = document.createElement("style")
+  style.textContent = styleText
+  return style
 }
 
-export default App
+const Popup = () => {
+  const popup = usePopup({})
+
+  return (
+    <Portal>
+      <Toaster />
+      <PopupContext.Provider value={popup}>
+        <TRPCProvider>
+          <TranslatePopup />
+        </TRPCProvider>
+      </PopupContext.Provider>
+    </Portal>
+  )
+}
+
+export default Popup

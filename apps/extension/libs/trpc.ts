@@ -1,11 +1,9 @@
-import { sendToBackground } from "@plasmohq/messaging"
-import {
-  httpBatchLink,
-  loggerLink
-} from '@trpc/client'
+import { httpBatchLink, loggerLink } from "@trpc/client"
 import { createTRPCReact } from "@trpc/react-query"
-import type { AppRouter } from '@wordigo/api'
-import superjson from 'superjson'
+import type { AppRouter } from "@wordigo/api"
+import superjson from "superjson"
+
+import { sendToBackground } from "@plasmohq/messaging"
 
 function getBaseUrl() {
   return `http://localhost:3000` // dev SSR should use localhost
@@ -17,24 +15,21 @@ export const trpcClient = trpc.createClient({
   transformer: superjson,
   links: [
     loggerLink({
-      enabled: (opts) =>
-        process.env.NODE_ENV === 'development' ||
-        (opts.direction === 'down' && opts.result instanceof Error),
+      enabled: (opts) => process.env.NODE_ENV === "development" || (opts.direction === "down" && opts.result instanceof Error)
     }),
     httpBatchLink({
       url: `${getBaseUrl()}/api/trpc`,
       async headers() {
-
         const token = await sendToBackground({
-          name: "getToken",
+          name: "getToken"
         })
 
         return {
           authorization: token
         }
       }
-    }),
-  ],
+    })
+  ]
 })
 
 export default trpc

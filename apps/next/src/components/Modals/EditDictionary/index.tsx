@@ -40,7 +40,6 @@ type CreateDictionaryValues = z.infer<typeof CreateDictionarySchema>;
 
 export function EditDictionary<TData extends object>({ label, row }: { label: string; row: DataTableRowActionsProps<TData> }) {
   const data: { id: string; title: string; published: boolean } = row?.original;
-  console.log(data);
   const { mutate: editDictionary, isLoading } = api.dictionary.updateDictionary.useMutation();
   const router = useRouter();
 
@@ -77,12 +76,11 @@ export function EditDictionary<TData extends object>({ label, row }: { label: st
             Edit Dictionary
           </DialogTitle>
         </DialogHeader>
-
         <Form {...form}>
           <form onSubmit={form.handleSubmit(handleAddDictionary)} className="space-y-4">
             <div className="grid gap-4 py-4">
               <FormField
-                control={form.control}
+                control={form.control as never}
                 name="title"
                 render={({ field }) => (
                   <FormItem className="grid gap-1">
@@ -94,7 +92,7 @@ export function EditDictionary<TData extends object>({ label, row }: { label: st
                 )}
               />
               <FormField
-                control={form.control}
+                control={form.control as never}
                 name="published"
                 render={({ field }) => (
                   <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">

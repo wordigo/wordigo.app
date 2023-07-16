@@ -1,8 +1,10 @@
 {
   "nav_home": "Ana Sayfa",
+  "nav_about": "Hakkımızda",
   "nav_translate": "Çeviri",
   "nav_dashboard": "Panel",
   "nav_teams": "Takım",
   "nav_login": "Giriş",
-  "nav_register": "Kayıt"
+  "nav_register": "Kayıt",
+  "nav_contact" : "İletişim"
 }
