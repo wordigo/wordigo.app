@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "next-i18next";
 import { FaCloudDownloadAlt, FaLanguage } from "react-icons/fa";
 import { FaPeopleGroup } from "react-icons/fa6";
 
@@ -27,6 +28,8 @@ export default function HeroSection() {
     },
   };
 
+  const { t } = useTranslation();
+
   return (
     <section className="ml-[30px] mt-5 w-full">
       <motion.div
@@ -37,22 +40,18 @@ export default function HeroSection() {
         }}
         className="mt-20 text-[#333549] dark:text-white"
       >
-        <Badge className="bg-primary-blue-400 text-white hover:!bg-primary-blue-500">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        </Badge>
+        <Badge className="bg-primary-blue-400 text-white hover:!bg-primary-blue-500">{t("nav_HeroBadge")}</Badge>
         {/* <p className="font-semibold text-[14px] text-primary-blue">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> */}
 
         <div className="my-5 text-5xl font-bold">
-          <h1>Lorem Ipsum is simply</h1>
-          <h1 className="mt-3.5">
-            dummy text of the <span className="text-primary-blue">printing!</span>
-          </h1>
+          <h1>{t("nav_HeroSectionHeading")}</h1>
+          <div className="mt-2">
+            {t("nav_HeroSectionTitle")}
+            <span className="text-primary-blue">{t("nav_HeroSectionBlueText")}</span>
+          </div>
         </div>
 
-        <div className="font-semibold text-base opacity-70">
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          <p>and typesetting industry.</p>
-        </div>
+        <p className="font-semibold text-base opacity-70">{t("nav_HeroSectionDescription")}</p>
 
         {/* Data Information */}
         <motion.div variants={container} initial="hidden" animate="visible" className="mt-10 flex flex-col gap-4">

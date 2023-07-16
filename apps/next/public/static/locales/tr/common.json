@@ -6,7 +6,16 @@
   "nav_teams": "Takım",
   "nav_login": "Giriş",
   "nav_register": "Kayıt",
-  "nav_contact" : "İletişim",
+  "nav_contact": "İletişim",
 
-  "nav_aboutDescription": "Lorem Ipsum"
+  "nav_aboutDescription": "Lorem Ipsum",
+  "nav_HeroBadge": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  "nav_HeroSectionHeading": "Lorem Ipsum is simply",
+  "nav_HeroSectionTitle": "Lorem Ipsum",
+  "nav_HeroSectionBlueText": "printing!",
+  "nav_HeroSectionDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+
+  "nav_HeroBannerHeading": "Lorem Ipsum",
+  "nav_HeroBannerDescription": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum cum deserunt enim quia mollitia atque natus nostrum eaque.",
+  "nav_HeroBannerButton": "Şimdi Başla"
 }

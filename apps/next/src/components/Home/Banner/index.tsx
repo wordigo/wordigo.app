@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Animation from "@/components/Animation";
+import { useTranslation } from "next-i18next";
 
 import { Button } from "@wordigo/ui";
 
 export default function FeatureBanner() {
+  const { t } = useTranslation();
   return (
     <Animation>
       <div className="container px-4 mx-auto max-w-[1440px] w-full">
@@ -17,12 +19,10 @@ export default function FeatureBanner() {
             data-config-id="auto-img-1-4"
           />
           <div className="relative max-w-lg mx-auto text-center my-[25px]">
-            <h3 className="text-3xl font-bold text-white mb-3">Lorem Ipsum</h3>
-            <p className="font-medium text-blue-200 mb-6">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum cum deserunt enim quia mollitia atque natus nostrum eaque.
-            </p>
+            <h3 className="text-3xl font-bold text-white mb-3">{t("nav_HeroBannerHeading")}</h3>
+            <p className="font-medium text-blue-200 mb-6">{t("nav_HeroBannerDescription")}</p>
             <Button variant={"default"} size={"lg"}>
-              Get Started
+              {t("nav_HeroBannerButton")}
             </Button>
           </div>
         </div>
