@@ -9,7 +9,7 @@ const Contact: IContact[] = [{
     href: "mailto:noreply@wordigo.com",
     title: "E - posta üzerinden iletişim",
     description: "Sorunuz veya farklı konular için bize e - posta gönderebilirsiniz.",
-    link_name: "E - posta gönderin < ArrowRight/>"
+    link_name: "E - posta gönderin"
 }]
 
 export default Contact

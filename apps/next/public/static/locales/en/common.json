@@ -6,5 +6,7 @@
   "nav_dashboard": "Dashboard",
   "nav_teams": "Teams",
   "nav_login": "Sign In",
-  "nav_register": "Sign Up"
+  "nav_register": "Sign Up",
+  
+  "nav_aboutDescription": "Lorem Ipsum"
 }

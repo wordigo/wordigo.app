@@ -1,46 +1,29 @@
-import { createRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useAnimation, useInView } from "framer-motion";
+import Animation from "@/components/Animation";
 import { Github, Linkedin, Twitter } from "lucide-react";
 
 import { cn } from "@wordigo/ui/lib/utils";
 
 import commentConstants, { type ITeam } from "./team.constants";
 
-const boxVariant = {
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
-  hidden: { opacity: 0, scale: 0 },
-};
-
 const TeamSection = () => {
   return (
-    <section>
-      <div className="gap-3 justify-center items-center py-8 mx-auto max-w-screen-xl flex lg:py-16 lg:px-6">
-        {commentConstants.map((item) => (
-          <TeamSection.Item key={item.title} {...item} />
-        ))}
-      </div>
-    </section>
+    <Animation>
+      <section>
+        <div className="gap-3 justify-center items-center py-8 mx-auto max-w-screen-xl flex lg:py-16 lg:px-6">
+          {commentConstants.map((item) => (
+            <TeamSection.Item key={item.title} {...item} />
+          ))}
+        </div>
+      </section>
+    </Animation>
   );
 };
 
 TeamSection.Item = ({ github, linkedin, name, src, title, twitter }: ITeam) => {
-  const ref = createRef();
-  const control = useAnimation();
-  const isInView = useInView(ref as never);
-  // const classes = cn("gap-4 mt-8 flex gap-x-10", positionRight ? "flex-row-reverse" : "");
-
-  useEffect(() => {
-    if (isInView) {
-      void control.start("visible");
-    } else {
-      void control.start("hidden");
-    }
-  }, [control, isInView]);
-
   return (
-    <motion.div initial="hidden" variants={boxVariant} className={""} animate={control} ref={ref as never}>
+    <Animation>
       <div className="max-w-[420px] h-fit px-8 py-5 rounded-xl dark:bg-[#141420] bg-[#F3F4FE] border-[#e9eafe]  text-light_text border dark:text-white dark:border-[rgb(33,32,44)] shadow-lg dark:shadow-black">
         <span className={cn("flex items-center gap-3 flex-col")}>
           <span className="border-2 border-gray-600 rounded-full">
@@ -70,7 +53,7 @@ TeamSection.Item = ({ github, linkedin, name, src, title, twitter }: ITeam) => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </Animation>
   );
 };
 

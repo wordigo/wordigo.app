@@ -1,10 +1,11 @@
 import Image from "next/image";
+import Animation from "@/components/Animation";
 
 import { Button } from "@wordigo/ui";
 
 export default function FeatureBanner() {
   return (
-    <section>
+    <Animation>
       <div className="container px-4 mx-auto max-w-[1440px] w-full">
         <div className="relative py-18 px-6 bg-blue-500 rounded-2xl overflow-hidden">
           <Image
@@ -26,6 +27,6 @@ export default function FeatureBanner() {
           </div>
         </div>
       </div>
-    </section>
+    </Animation>
   );
 }
