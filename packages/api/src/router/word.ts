@@ -7,7 +7,6 @@ import { createTRPCRouter, protectedProcedure } from "../trpc"
 import { DictionaryInitialTitle, LearningStatuses } from '../../../common/constants/index'
 
 export const wordRouter = createTRPCRouter({
-  // NOT FINISHED 
   addWord: protectedProcedure
     .input(
       z.object({
@@ -22,28 +21,43 @@ export const wordRouter = createTRPCRouter({
       const { text, translatedText, nativeLanguage, targetLanguage, dictionaryId } = input
       const userId = ctx.user.id
 
-      const dicFromDb = await prisma.dictionaries.findFirst({
-        where: { id: dictionaryId as string }
-      })
+      if (dictionaryId?.length as number > 0) {
+        const dicFromDb = await prisma.dictionaries.findFirst({
+          where: {
+            id: dictionaryId as string,
+            authorId: userId
+          }
+        })
 
-      if (!dicFromDb) {
-        return {
-          success: false,
-          message: "Dictionary Couldn't Found!"
+        if (!dicFromDb) {
+          return {
+            success: false,
+            message: "Dictionary Couldn't Found!"
+          }
         }
       }
 
-      // TODO: if the word is out there don't create just add it to user's userWord table...
-      // about that, there need to be a control with trim lower or upper case..
-
-      const word = await prisma.words.create({
-        data: {
-          text,
-          translatedText,
+      const wordFromDb = await prisma.words.findFirst({
+        where: {
+          text: text.trim().toLowerCase(),
+          translatedText: translatedText.trim().toLowerCase(),
           nativeLanguage,
           targetLanguage
-        },
+        }
       })
+
+      let word
+      if (!wordFromDb)
+        word = await prisma.words.create({
+          data: {
+            text: text.trim().toLowerCase(),
+            translatedText: translatedText.trim().toLowerCase(),
+            nativeLanguage,
+            targetLanguage
+          },
+        })
+      else
+        word = wordFromDb
 
       const userWord = await prisma.userWords.create({
         data: {
@@ -84,18 +98,18 @@ export const wordRouter = createTRPCRouter({
     }),
 
   //Whole list can be seen just by admins
-  getWordList: protectedProcedure
-    .query(async ({ ctx }) => {
-      const userId = ctx.user
-      // some authority control
+  // getWordList: protectedProcedure
+  //   .query(async ({ ctx }) => {
+  //     const userId = ctx.user
+  //     // some authority control
 
-      const words = await prisma.words.findMany()
+  //     const words = await prisma.words.findMany()
 
-      return {
-        data: words,
-        success: true,
-        message: 'Success'
-      }
+  //     return {
+  //       data: words,
+  //       success: true,
+  //       message: 'Success'
+  //     }
 
-    }),
+  //   }),
 })

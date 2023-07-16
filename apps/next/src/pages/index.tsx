@@ -1,32 +1,27 @@
-import FeatureBanner from "@/components/Home/Banner"
-import Comment from "@/components/Home/Comments"
-import FeatureSections from "@/components/Home/FeatureSections"
-import Footers from "@/components/Home/Footers"
-import HeroContainer from "@/components/Home/Hero"
-import MainLayout from "@/components/Layout/MainLayout"
-import { api } from '@/libs/trpc'
-import { i18n } from "next-i18next"
-import { serverSideTranslations } from "next-i18next/serverSideTranslations"
-import { useEffect } from 'react'
+import { useEffect } from "react";
+import FeatureBanner from "@/components/Home/Banner";
+import Comment from "@/components/Home/Comments";
+import FeatureSections from "@/components/Home/FeatureSections";
+import Footers from "@/components/Home/Footers";
+import HeroContainer from "@/components/Home/Hero";
+import MainLayout from "@/components/Layout/MainLayout";
+import { api } from "@/libs/trpc";
+import { i18n } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function index() {
-  const addingWord = api.word.addWord.useMutation()
-  const addingDic = api.dictionary.addDictionary.useMutation()
+  const addingWord = api.userWord.removeUserWord.useMutation();
 
-  useEffect(()=>{
+  useEffect(() => {
     addingWord.mutate({
-      text:'test4',
-      translatedText:'deneme4',
-      targetLanguage:'en',
-      nativeLanguage:'tr',
-      dictionaryId:'clk24mii60004p7xk9u6344mm'
-    })
+      wordId: "clk59s6vn000h8pbn6e7pf5w5",
+    });
 
     // addingDic.mutate({
     //   title:'testDic',
     //   published:false
     // })
-  },[])
+  }, []);
 
   return (
     <MainLayout>
