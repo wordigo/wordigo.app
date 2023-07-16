@@ -6,8 +6,7 @@ import { X } from "lucide-react";
 import { Button } from "@wordigo/ui";
 
 import Navigation from "../../MainLayout/Header/Navigation";
-import { DashboardNav } from "./Navigation";
-import { SidebarConfig } from "./navigations.constants";
+import DashboardNav from "./Navigation";
 
 export default function BurgerMenu() {
   const { showSidebarPanel, setSidebarPanel } = useCommonStore((state) => state);
@@ -39,7 +38,7 @@ export default function BurgerMenu() {
               </div>
             </span>
             <aside className="flex w-full flex-col">
-              <DashboardNav items={SidebarConfig.sidebarNav} />
+              <DashboardNav />
             </aside>
           </span>
 

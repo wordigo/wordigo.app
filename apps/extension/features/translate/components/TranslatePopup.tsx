@@ -33,12 +33,12 @@ const TranslatePopup = () => {
   const { mutate: handleTranslate, isLoading, data, reset } = trpc.translation.translate.useMutation({})
 
   const getSourceLanguageFlag = useMemo(
-    () => AllCountryLanguages.find((lang) => lang.code === data?.sourceLanguage?.toUpperCase()),
+    () => AllCountryLanguages.find((lang) => lang.code === (data?.sourceLanguage || "").toUpperCase()),
     [data?.sourceLanguage]
   )
 
   const getTargetLanguageFlag = useMemo(
-    () => AllCountryLanguages.find((lang) => lang.code === data?.targetLanguage?.toUpperCase()),
+    () => AllCountryLanguages.find((lang) => lang.code === (data?.targetLanguage || targetLanguage)?.toUpperCase()),
     [data?.targetLanguage]
   )
 
@@ -58,9 +58,14 @@ const TranslatePopup = () => {
   }
 
   const textToSpeech = () => {
-    const msg = new SpeechSynthesisUtterance(data.translatedText as string)
-    msg.lang = "en_US"
-    window.speechSynthesis.speak(msg)
+    const speech = new SpeechSynthesisUtterance(data.translatedText as string)
+    // Initialize the speech synthesis
+    speech.rate = 1
+    speech.pitch = 1
+    speech.volume = 1
+    speech.voice = speechSynthesis.getVoices()[0]
+    speech.lang = "en_US"
+    window.speechSynthesis.speak(speech)
   }
 
   const closeTranslationPopup = () => {
@@ -92,53 +97,57 @@ const TranslatePopup = () => {
       <Card tabIndex={1} className="flex-col flex h-60">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 px-4 py-2">
           <CardTitle className="!text-lg">Wordigo Translator</CardTitle>
-          {isLoading ? (
-            <Skeleton className="h-8 w-20 rounded-lg" />
-          ) : (
-            <div
-              className={buttonVariants({
-                variant: "outline",
-                size: "sm",
-                className: "flex gap-x-2 items-center rounded-lg !h-8"
-              })}>
+          <div
+            className={buttonVariants({
+              variant: "outline",
+              size: "sm",
+              className: "flex gap-x-2 items-center rounded-lg !h-8"
+            })}>
+            {isLoading ? (
+              <Skeleton className="w-4 h-4" />
+            ) : (
               <ReactCountryFlag
                 style={{
                   fontSize: "1em",
                   lineHeight: "1em"
                 }}
                 svg
-                countryCode={getSourceLanguageFlag?.icon}
+                countryCode={getSourceLanguageFlag?.icon || "DT"}
               />
-              <ArrowRightLeft className="!text-gray-300" size={12} />
-              <ReactCountryFlag
-                style={{
-                  fontSize: "1em",
-                  lineHeight: "1em"
-                }}
-                svg
-                countryCode={getTargetLanguageFlag?.icon}
-              />
-            </div>
-          )}
+            )}
+            <ArrowRightLeft className="!text-gray-300" size={12} />
+            <ReactCountryFlag
+              style={{
+                fontSize: "1em",
+                lineHeight: "1em"
+              }}
+              svg
+              countryCode={getTargetLanguageFlag?.icon || "DT"}
+            />
+          </div>
         </CardHeader>
         <Separator />
-        <CardContent className="!p-3 h-full">
+        <CardContent className="px-5 py-3 h-full">
           {isLoading ? (
             <TranslatePopup.Loading />
           ) : (
-            <Textarea className="!border-0 !opacity-75 disabled:!cursor-default" disabled rows={2} value={data?.translatedText} />
+            <Textarea
+              className="!border-0 !p-0 !opacity-75 disabled:!cursor-default !h-full"
+              disabled
+              value={data?.translatedText}
+            />
           )}
         </CardContent>
         <Separator />
         <CardFooter className="!p-3 flex items-center justify-between">
           <div className="flex flex-row gap-x-2 items-center justify-end">
-            <Button onClick={textToSpeech} className="h-9 w-9" variant="outline" size="icon">
+            <Button disabled={isLoading} onClick={textToSpeech} className="h-9 w-9" variant="outline" size="icon">
               <Volume2 size={18} />
             </Button>
-            <Button onClick={copyTranslatedText} className="h-9 w-9" variant="outline" size="icon">
+            <Button disabled={isLoading} onClick={copyTranslatedText} className="h-9 w-9" variant="outline" size="icon">
               <Copy size={18} />
             </Button>
-            <Button onClick={openSettingsPage} className="h-9 w-9" variant="outline" size="icon">
+            <Button disabled={isLoading} onClick={openSettingsPage} className="h-9 w-9" variant="outline" size="icon">
               <Settings size={18} />
             </Button>
           </div>

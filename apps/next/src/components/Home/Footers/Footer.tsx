@@ -1,6 +1,7 @@
 import { type FunctionComponent } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { TwitterIcon } from "lucide-react";
 
 const DynamicLogo = dynamic(() => import("@/components/Logo/DynamicLogo"), {
   ssr: false,
@@ -99,9 +100,10 @@ export default function Footer() {
                 <li>
                   <Link
                     href="https://twitter.com/wordigoapp"
-                    className="text-sm text-black opacity-80 hover:text-opacity-60 dark:text-white hover:dark:opacity-50"
+                    className="text-sm flex items-center gap-x-2 text-black opacity-80 hover:text-opacity-60 dark:text-white hover:dark:opacity-50"
                   >
-                    @wordigoapp
+                    <TwitterIcon size={16} />
+                    Twitter
                   </Link>
                 </li>
               </ul>
