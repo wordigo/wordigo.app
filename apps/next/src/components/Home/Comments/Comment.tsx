@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Github, Linkedin, Twitter } from "lucide-react";
@@ -38,7 +37,6 @@ export default function Comment({
         <span className={cn("flex items-center gap-2 text-sm py-1", teams && "flex-col")}>
           <h1 className="font-semibold">{name}</h1>
           <p className="opacity-60">
-            {" "}
             {!teams && <span className="mr-1">{"―"}</span>} {title}
           </p>
         </span>

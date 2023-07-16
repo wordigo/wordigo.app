@@ -10,12 +10,13 @@
     "packages/**/*"
   ],
   "scripts": {
-    "build": "turbo build",
+    "build": "turbo build --filter=...nextjs",
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "turbo clean",
     "db:generate": "turbo db:generate",
     "db:push": "turbo db:push db:generate",
-    "dev": "turbo dev --parallel",
+    "dev": "turbo dev --parallel --no-cache --continue",
+    "dev:web": "turbo dev --parallel --filter=...nextjs --no-cache --continue",
     "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",
     "lint": "turbo lint && manypkg check",
     "lint:fix": "turbo lint:fix && manypkg fix",

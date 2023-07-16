@@ -1,4 +1,3 @@
-import React from "react";
 import Comment from "@/components/Home/Comments/Comment";
 import { useTranslation } from "next-i18next";
 
@@ -36,7 +35,7 @@ export default function index() {
             title="Backend Developer"
             teams
             github="https://github.com/sefakpsz"
-            linkedin=""
+            linkedin="https://www.linkedin.com/in/muhammet-sefa-kap%C4%B1s%C4%B1z-26b136143/"
             twitter=""
           />
           <Comment
