@@ -1,5 +1,7 @@
 import { prisma } from '@wordigo/db'
 import { z } from "zod"
+import messages from '../../../common/constants/messages'
+import { errorResult, successResult } from '../../../common/constants/results'
 import { createTRPCRouter, protectedProcedure } from "../trpc"
 
 export const dictionaryWordRouter = createTRPCRouter({
@@ -19,10 +21,7 @@ export const dictionaryWordRouter = createTRPCRouter({
             })
 
             if (!dictionary) {
-                return {
-                    success: false,
-                    message: "Dictionary Couldn't Found!"
-                }
+                return errorResult(null, messages.dictionary_not_found)
             }
 
             const word = await prisma.words.findFirst({
@@ -30,10 +29,7 @@ export const dictionaryWordRouter = createTRPCRouter({
             })
 
             if (!word) {
-                return {
-                    success: false,
-                    message: "Word Couldn't Found!"
-                }
+                return errorResult(null, messages.word_not_found)
             }
 
             const userWord = await prisma.userWords.findFirst({
@@ -41,20 +37,14 @@ export const dictionaryWordRouter = createTRPCRouter({
             })
 
             if (!userWord) {
-                return {
-                    success: false,
-                    message: "UserWord Couldn't Found!"
-                }
+                return errorResult(null, messages.userWord_not_found)
             }
 
             await prisma.dictAndUserWords.delete({
                 where: { userWordId_dictionaryId: { dictionaryId, userWordId: userWord.id } }
             })
 
-            return {
-                success: true,
-                message: 'Success'
-            }
+            return successResult(null, messages.success)
         }),
 
     addWordToDic: protectedProcedure
@@ -72,10 +62,7 @@ export const dictionaryWordRouter = createTRPCRouter({
             })
 
             if (!dictionary) {
-                return {
-                    success: false,
-                    message: "Dictionary Couldn't Found!"
-                }
+                return errorResult(null, messages.dictionary_not_found)
             }
 
             const word = await prisma.words.findFirst({
@@ -83,10 +70,7 @@ export const dictionaryWordRouter = createTRPCRouter({
             })
 
             if (!word) {
-                return {
-                    success: false,
-                    message: "Word Couldn't Found!"
-                }
+                return errorResult(null, messages.word_not_found)
             }
 
             const userWord = await prisma.userWords.findFirst({
@@ -114,9 +98,6 @@ export const dictionaryWordRouter = createTRPCRouter({
                 data: dictUserWord
             })
 
-            return {
-                success: true,
-                message: "Success"
-            }
+            return successResult(null, messages.success)
         })
 })

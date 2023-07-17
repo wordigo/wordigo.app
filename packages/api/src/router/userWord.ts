@@ -2,6 +2,8 @@ import { z } from "zod"
 
 
 import { prisma } from "@wordigo/db"
+import messages from '../../../common/constants/messages'
+import { errorResult, successResult } from '../../../common/constants/results'
 import { createTRPCRouter, protectedProcedure } from "../trpc"
 
 
@@ -24,11 +26,7 @@ export const userWordRouter = createTRPCRouter({
             })
 
             if (!userWord) {
-                return {
-                    data: null,
-                    success: false,
-                    message: "UserWord Couldn't Found!"
-                }
+                return errorResult(null, messages.userWord_not_found)
             }
 
             await prisma.userWords.delete({
@@ -37,11 +35,7 @@ export const userWordRouter = createTRPCRouter({
                 }
             })
 
-            return {
-                data: null,
-                success: true,
-                message: 'Success'
-            }
+            return successResult(null, messages.success)
         }),
 
 
