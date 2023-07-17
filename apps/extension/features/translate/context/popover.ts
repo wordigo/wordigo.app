@@ -23,12 +23,7 @@ export const usePopover = ({}) => {
   const [isPopup, setPopup] = useState<boolean>(false)
   const [selectedText, setSelectedText] = useState<string>()
   const [cordinate, setCordinate] = useState({ x: 0, y: 0 })
-  const [translateOption, setTranslateOption] = useStorage({
-    key: "translate_option",
-    instance: new Storage({
-      area: "local"
-    })
-  })
+
   const [targetLanguage] = useStorage({
     key: "targetLanguage",
     instance: new Storage({

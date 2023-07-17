@@ -45,7 +45,8 @@
   },
   "manifest": {
     "permissions": [
-      "cookies"
+      "cookies",
+      "tts"
     ],
     "host_permissions": [
       "http://localhost:3000/"

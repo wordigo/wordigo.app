@@ -34,7 +34,7 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
     setShowDictionary(!showDictionary);
   };
 
-  const computedDictionariesNavs = data?.dictionaries.map((item) => ({ name: item.title, link: item.id })) as SidebarChildNavOption[];
+  const computedDictionariesNavs = data?.data?.map((item) => ({ name: item.title, link: item.id })) as SidebarChildNavOption[];
 
   return [
     {

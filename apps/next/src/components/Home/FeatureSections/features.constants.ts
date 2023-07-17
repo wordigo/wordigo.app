@@ -1,4 +1,3 @@
-
 export interface IFeature {
   title: string;
   description: string;
@@ -7,18 +6,18 @@ export interface IFeature {
 
 const Features: IFeature[] = [
   {
-    title: "Feature 1",
+    title: "Learn",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book ",
+      "By clicking on the Wordigo translation button on the screen, you can view the translation of the selected on the screen text in your preferred language and listen to its pronunciation.",
   },
   {
     positionRight: true,
-    title: "Feature 2",
+    title: "Add",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book ",
   },
   {
-    title: "Feature 3",
+    title: "Share",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book ",
   },

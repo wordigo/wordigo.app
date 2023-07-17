@@ -7,15 +7,13 @@
   "nav_teams": "Teams",
   "nav_login": "Sign In",
   "nav_register": "Sign Up",
-
   "nav_aboutDescription": "Lorem Ipsum",
   "nav_HeroBadge": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  "nav_HeroSectionHeading": "Lorem Ipsum is simply",
-  "nav_HeroSectionTitle": "Lorem Ipsum",
-  "nav_HeroSectionBlueText": "printing!",
-  "nav_HeroSectionDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-
-  "nav_HeroBannerHeading": "Lorem Ipsum",
-  "nav_HeroBannerDescription": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum cum deserunt enim quia mollitia atque natus nostrum eaque.",
-  "nav_HeroBannerButton": "Get Started"
+  "nav_HeroSectionHeading": "When, where ever you desire",
+  "nav_HeroSectionTitle": "learn, add and share ",
+  "nav_HeroSectionBlueText": "word.",
+  "nav_HeroSectionDescription": "Wordigo is a customizable dictionary application where you can add and share words.",
+  "nav_HeroBannerHeading": "Try the Wordigo Extension",
+  "nav_HeroBannerDescription": "Expand your vocabulary with the Wordigo extension - Download now and enhance your word learning experience!",
+  "nav_HeroBannerButton": "Install"
 }
