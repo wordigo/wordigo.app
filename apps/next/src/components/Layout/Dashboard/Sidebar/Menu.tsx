@@ -10,7 +10,6 @@ import DashboardNav from "./Navigation";
 
 export default function BurgerMenu() {
   const { showSidebarPanel, setSidebarPanel } = useCommonStore((state) => state);
-  const { showDetailDictionary } = useCommonStore();
 
   const handleSidebar = () => {
     setSidebarPanel(!showSidebarPanel);

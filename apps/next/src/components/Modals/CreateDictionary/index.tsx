@@ -1,6 +1,7 @@
 import { useRouter } from "next/navigation";
 import CButton from "@/components/UI/Button";
 import { api } from "@/libs/trpc";
+import useDictionaryStore from "@/stores/Dictionary";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FilePlus } from "lucide-react";
 import { useForm } from "react-hook-form";
@@ -34,6 +35,7 @@ type CreateDictionaryValues = z.infer<typeof CreateDictionarySchema>;
 
 export function CreateDictionary({ label }: { label: string }) {
   const { mutate: addDictionary, isLoading } = api.dictionary.addDictionary.useMutation();
+
   const router = useRouter();
 
   const defaultValues: Partial<CreateDictionaryValues> = {

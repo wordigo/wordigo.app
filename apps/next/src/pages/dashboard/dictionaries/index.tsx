@@ -1,18 +1,34 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { columns } from "@/components/Dashboard/Dictionaries/data-table/columns";
 import { DataTable } from "@/components/Dashboard/Dictionaries/data-table/data-table";
 import DashboardLayout from "@/components/Layout/Dashboard";
 import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
 import { api } from "@/libs/trpc";
+import useDictionaryStore from "@/stores/Dictionary";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
+interface IData {
+  success: boolean;
+  data: any;
+  message: string;
+}
+
 export default function DashboardPage() {
-  const { data } = api.dictionary.getUserDictionaries.useQuery();
+  const { data: dictionary } = api.dictionary.getUserDictionaries.useQuery() as unknown as IData;
+  const { dictionaryList, setDictionaryList } = useDictionaryStore((state) => state);
+
+  //Fix type Error
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    setDictionaryList(dictionary?.data || []);
+  }, [dictionary, setDictionaryList]);
 
   return (
     <Fragment>
       <DashboardLayout heading="Dictionary">
-        <DashboardShell>{data && <DataTable columns={columns} data={data.dictionaries as never} />}</DashboardShell>
+        <DashboardShell>
+          <DataTable columns={columns} data={dictionaryList} />
+        </DashboardShell>
       </DashboardLayout>
     </Fragment>
   );
