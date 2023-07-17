@@ -3,6 +3,8 @@ import { z } from "zod"
 import { prisma } from "@wordigo/db"
 
 import { DictionaryInitialTitle, LearningStatuses } from "../../../common/constants/index"
+import messages from '../../../common/constants/messages'
+import { errorResult, successResult } from '../../../common/constants/results'
 import { createTRPCRouter, protectedProcedure } from "../trpc"
 
 export const wordRouter = createTRPCRouter({
@@ -29,10 +31,7 @@ export const wordRouter = createTRPCRouter({
         })
 
         if (!dicFromDb) {
-          return {
-            success: false,
-            message: "Dictionary Couldn't Found!"
-          }
+          return errorResult(null, messages.dictionary_not_found)
         }
       }
 
@@ -90,10 +89,7 @@ export const wordRouter = createTRPCRouter({
         })
       }
 
-      return {
-        success: true,
-        message: "Success",
-      }
+      return successResult(null, messages.success)
     }),
 
   //Whole list can be seen just by admins
