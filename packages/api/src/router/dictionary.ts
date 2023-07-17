@@ -1,9 +1,9 @@
 import { z } from "zod"
 
-import { prisma } from "@wordigo/db"
+import { prisma, type Dictionaries } from "@wordigo/db"
 
-import messages from '../../../common/constants/messages'
-import { errorResult, successResult } from '../../../common/constants/results'
+import messages from "../../../common/constants/messages"
+import { errorResult, successResult } from "../../../common/constants/results"
 import { createTRPCRouter, protectedProcedure } from "../trpc"
 
 export const dictionaryRouter = createTRPCRouter({
@@ -12,7 +12,7 @@ export const dictionaryRouter = createTRPCRouter({
     const { id } = ctx.user
     const dictionaries = await prisma.dictionaries.findMany({ where: { authorId: id } })
 
-    return successResult(dictionaries, messages.success)
+    return successResult<Dictionaries[]>(dictionaries, messages.success)
   }),
 
   //getUserDictionary Mutation
@@ -20,7 +20,7 @@ export const dictionaryRouter = createTRPCRouter({
     const { id } = ctx.user
     const dictionaries = await prisma.dictionaries.findMany({ where: { authorId: id } })
 
-    return successResult(dictionaries, messages.success)
+    return successResult<Dictionaries[]>(dictionaries, messages.success)
   }),
 
   //getDictionaryWords
@@ -48,14 +48,15 @@ export const dictionaryRouter = createTRPCRouter({
         },
       })
 
-      if (!dictionary)
-        return errorResult(null, messages.dictionary_not_found)
-
       const responseData = {
         dictionary,
-        numberOfWords: dictionary.UserWords.length,
+        numberOfWords: dictionary?.UserWords.length,
       }
-      return successResult(responseData, messages.success)
+
+      if (!dictionary)
+        return errorResult<typeof responseData>(null, messages.dictionary_not_found)
+
+      return successResult<typeof responseData>(responseData, messages.success)
     }),
 
   addDictionary: protectedProcedure
@@ -77,7 +78,7 @@ export const dictionaryRouter = createTRPCRouter({
         },
       })
 
-      return successResult(null, messages.success)
+      return successResult<boolean>(false, messages.success)
     }),
 
   deleteDictionary: protectedProcedure
@@ -95,14 +96,14 @@ export const dictionaryRouter = createTRPCRouter({
       })
 
       if (!dictionary) {
-        return errorResult(null, messages.dictionary_not_found)
+        return errorResult<boolean>(false, messages.dictionary_not_found)
       }
 
       await prisma.dictionaries.delete({
         where: { id: dictionaryId },
       })
 
-      return successResult(null, messages.success)
+      return successResult<boolean>(true, messages.success)
     }),
 
   updateDictionary: protectedProcedure
@@ -122,7 +123,7 @@ export const dictionaryRouter = createTRPCRouter({
       })
 
       if (!dictionary) {
-        return errorResult(null, messages.dictionary_not_found)
+        return errorResult<boolean>(false, messages.dictionary_not_found)
       }
 
       await prisma.dictionaries.update({
@@ -130,6 +131,6 @@ export const dictionaryRouter = createTRPCRouter({
         data: { title, published },
       })
 
-      return successResult(null, messages.success)
+      return successResult<boolean>(true, messages.success)
     }),
 })

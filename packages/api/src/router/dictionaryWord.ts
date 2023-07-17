@@ -1,103 +1,106 @@
-import { prisma } from '@wordigo/db'
 import { z } from "zod"
-import messages from '../../../common/constants/messages'
-import { errorResult, successResult } from '../../../common/constants/results'
+
+import { prisma } from "@wordigo/db"
+
+import messages from "../../../common/constants/messages"
+import { errorResult, successResult } from "../../../common/constants/results"
 import { createTRPCRouter, protectedProcedure } from "../trpc"
 
 export const dictionaryWordRouter = createTRPCRouter({
+  removeWordFromDic: protectedProcedure
+    .input(
+      z.object({
+        dictionaryId: z.string(),
+        wordId: z.string(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      const userId = ctx.user.id
+      const { wordId, dictionaryId } = input
 
-    removeWordFromDic: protectedProcedure
-        .input(z.object({
-            dictionaryId: z.string(),
-            wordId: z.string()
-        }))
-        .mutation(async ({ ctx, input }) => {
+      const dictionary = await prisma.dictionaries.findFirst({
+        where: { authorId: userId, id: dictionaryId },
+      })
 
-            const userId = ctx.user.id
-            const { wordId, dictionaryId } = input
+      if (!dictionary) {
+        return errorResult<boolean>(false, messages.dictionary_not_found)
+      }
 
-            const dictionary = await prisma.dictionaries.findFirst({
-                where: { authorId: userId, id: dictionaryId }
-            })
+      const word = await prisma.words.findFirst({
+        where: { id: wordId },
+      })
 
-            if (!dictionary) {
-                return errorResult(null, messages.dictionary_not_found)
-            }
+      if (!word) {
+        return errorResult<boolean>(false, messages.word_not_found)
+      }
 
-            const word = await prisma.words.findFirst({
-                where: { id: wordId }
-            })
+      const userWord = await prisma.userWords.findFirst({
+        where: { word, authorId: userId },
+      })
 
-            if (!word) {
-                return errorResult(null, messages.word_not_found)
-            }
+      if (!userWord) {
+        return errorResult<boolean>(false, messages.userWord_not_found)
+      }
 
-            const userWord = await prisma.userWords.findFirst({
-                where: { word, authorId: userId }
-            })
+      await prisma.dictAndUserWords.delete({
+        where: { userWordId_dictionaryId: { dictionaryId, userWordId: userWord.id } },
+      })
 
-            if (!userWord) {
-                return errorResult(null, messages.userWord_not_found)
-            }
+      return successResult<boolean>(true, messages.success)
+    }),
 
-            await prisma.dictAndUserWords.delete({
-                where: { userWordId_dictionaryId: { dictionaryId, userWordId: userWord.id } }
-            })
+  addWordToDic: protectedProcedure
+    .input(
+      z.object({
+        dictionaryId: z.string(),
+        wordId: z.string(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      const userId = ctx.user.id
+      const { wordId, dictionaryId } = input
 
-            return successResult(null, messages.success)
-        }),
+      const dictionary = await prisma.dictionaries.findFirst({
+        where: { authorId: userId, id: dictionaryId },
+      })
 
-    addWordToDic: protectedProcedure
-        .input(z.object({
-            dictionaryId: z.string(),
-            wordId: z.string()
-        }))
-        .mutation(async ({ ctx, input }) => {
+      if (!dictionary) {
+        return errorResult<boolean>(false, messages.dictionary_not_found)
+      }
 
-            const userId = ctx.user.id
-            const { wordId, dictionaryId } = input
+      const word = await prisma.words.findFirst({
+        where: { id: wordId },
+      })
 
-            const dictionary = await prisma.dictionaries.findFirst({
-                where: { authorId: userId, id: dictionaryId }
-            })
+      if (!word) {
+        return errorResult<boolean>(false, messages.word_not_found)
+      }
 
-            if (!dictionary) {
-                return errorResult(null, messages.dictionary_not_found)
-            }
+      const userWord = await prisma.userWords.findFirst({
+        where: { word, authorId: userId },
+      })
 
-            const word = await prisma.words.findFirst({
-                where: { id: wordId }
-            })
+      const dictUserWord = {
+        dictionaryId: dictionary.id,
+        userWordId: "",
+      }
 
-            if (!word) {
-                return errorResult(null, messages.word_not_found)
-            }
-
-            const userWord = await prisma.userWords.findFirst({
-                where: { word, authorId: userId }
-            })
-
-            const dictUserWord = {
-                dictionaryId: dictionary.id,
-                userWordId: ''
-            }
-
-            if (!userWord) {
-                const newUserWord = await prisma.userWords.create({
-                    data: {
-                        wordId,
-                        authorId: userId
-                    }
-                })
-                dictUserWord.userWordId = newUserWord.id
-            } else {
-                dictUserWord.userWordId = userWord.id
-            }
-
-            await prisma.dictAndUserWords.create({
-                data: dictUserWord
-            })
-
-            return successResult(null, messages.success)
+      if (!userWord) {
+        const newUserWord = await prisma.userWords.create({
+          data: {
+            wordId,
+            authorId: userId,
+          },
         })
+        dictUserWord.userWordId = newUserWord.id
+      } else {
+        dictUserWord.userWordId = userWord.id
+      }
+
+      await prisma.dictAndUserWords.create({
+        data: dictUserWord,
+      })
+
+      return successResult<boolean>(true, messages.success)
+    }),
 })
