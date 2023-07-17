@@ -2,19 +2,24 @@ import Image from "next/image";
 import Link from "next/link";
 import Animation from "@/components/Animation";
 import { Github, Linkedin, Twitter } from "lucide-react";
+import { useTranslation } from "next-i18next";
 
 import { cn } from "@wordigo/ui/lib/utils";
 
 import commentConstants, { type ITeam } from "./team.constants";
 
 const TeamSection = () => {
+  const { t } = useTranslation();
   return (
     <Animation>
-      <section>
-        <div className="gap-3 justify-center items-center py-8 mx-auto max-w-screen-xl flex lg:py-16 lg:px-6">
-          {commentConstants.map((item) => (
-            <TeamSection.Item key={item.title} {...item} />
-          ))}
+      <section className="max-w-screen-8xl w-full m-auto">
+        <div className="flex flex-col items-center justify-center">
+          <h1 className="text-3xl opacity-80 font-bold tracking-tight">{t("nav_teams")}</h1>
+          <div className="gap-3 justify-center items-center py-8 mx-auto max-w-screen-xl flex lg:py-16 lg:px-6">
+            {commentConstants.map((item) => (
+              <TeamSection.Item key={item.title} {...item} />
+            ))}
+          </div>
         </div>
       </section>
     </Animation>
