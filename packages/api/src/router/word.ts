@@ -1,11 +1,11 @@
-import { z } from "zod";
+import { z } from "zod"
 
-import { prisma } from "@wordigo/db";
+import { prisma } from "@wordigo/db"
 
-import { DictionaryInitialTitle, LearningStatuses } from "../../../common/constants/index";
-import messages from "../../../common/constants/messages";
-import { errorResult, successResult } from "../../../common/constants/results";
-import { createTRPCRouter, protectedProcedure } from "../trpc";
+import { DictionaryInitialTitle, LearningStatuses } from "../../../common/constants/index"
+import messages from "../../../common/constants/messages"
+import { errorResult, successResult } from "../../../common/constants/results"
+import { createTRPCRouter, protectedProcedure } from "../trpc"
 
 export const wordRouter = createTRPCRouter({
   addWord: protectedProcedure
@@ -19,8 +19,8 @@ export const wordRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      const { text, translatedText, nativeLanguage, targetLanguage, dictionaryId } = input;
-      const userId = ctx.user.id;
+      const { text, translatedText, nativeLanguage, targetLanguage, dictionaryId } = input
+      const userId = ctx.user.id
 
       if ((dictionaryId?.length as number) > 0) {
         const dicFromDb = await prisma.dictionaries.findFirst({
@@ -28,10 +28,10 @@ export const wordRouter = createTRPCRouter({
             id: dictionaryId as string,
             authorId: userId,
           },
-        });
+        })
 
         if (!dicFromDb) {
-          return errorResult(null, messages.dictionary_not_found);
+          return errorResult<boolean>(false, messages.dictionary_not_found)
         }
       }
 
@@ -42,9 +42,9 @@ export const wordRouter = createTRPCRouter({
           nativeLanguage,
           targetLanguage,
         },
-      });
+      })
 
-      let word;
+      let word
       if (!wordFromDb)
         word = await prisma.words.create({
           data: {
@@ -53,8 +53,8 @@ export const wordRouter = createTRPCRouter({
             nativeLanguage,
             targetLanguage,
           },
-        });
-      else word = wordFromDb;
+        })
+      else word = wordFromDb
 
       const userWord = await prisma.userWords.create({
         data: {
@@ -62,20 +62,20 @@ export const wordRouter = createTRPCRouter({
           learningStatus: LearningStatuses["Not Learned"],
           authorId: userId,
         },
-      });
+      })
 
       const initialDictionary = await prisma.dictionaries.findFirst({
         where: {
           title: DictionaryInitialTitle,
         },
-      });
+      })
 
       await prisma.dictAndUserWords.create({
         data: {
           userWordId: userWord.id,
           dictionaryId: initialDictionary?.id as string,
         },
-      });
+      })
 
       if (dictionaryId) {
         await prisma.dictAndUserWords.create({
@@ -83,10 +83,10 @@ export const wordRouter = createTRPCRouter({
             userWordId: userWord.id,
             dictionaryId,
           },
-        });
+        })
       }
 
-      return successResult(null, messages.success);
+      return successResult<boolean>(true, messages.success)
     }),
 
   //Whole list can be seen just by admins
@@ -104,4 +104,4 @@ export const wordRouter = createTRPCRouter({
   //     }
 
   //   }),
-});
+})

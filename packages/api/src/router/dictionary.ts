@@ -1,26 +1,26 @@
-import { z } from "zod";
+import { z } from "zod"
 
-import { prisma } from "@wordigo/db";
+import { prisma, type Dictionaries } from "@wordigo/db"
 
-import messages from "../../../common/constants/messages";
-import { errorResult, successResult } from "../../../common/constants/results";
-import { createTRPCRouter, protectedProcedure } from "../trpc";
+import messages from "../../../common/constants/messages"
+import { errorResult, successResult } from "../../../common/constants/results"
+import { createTRPCRouter, protectedProcedure } from "../trpc"
 
 export const dictionaryRouter = createTRPCRouter({
   //getUserDictionaryList
   getUserDictionaries: protectedProcedure.query(async ({ ctx }) => {
-    const { id } = ctx.user;
-    const dictionaries = await prisma.dictionaries.findMany({ where: { authorId: id } });
+    const { id } = ctx.user
+    const dictionaries = await prisma.dictionaries.findMany({ where: { authorId: id } })
 
-    return successResult(dictionaries, messages.success);
+    return successResult<Dictionaries[]>(dictionaries, messages.success)
   }),
 
   //getUserDictionary Mutation
   getUserDictionariesMutation: protectedProcedure.mutation(async ({ ctx }) => {
-    const { id } = ctx.user;
-    const dictionaries = await prisma.dictionaries.findMany({ where: { authorId: id } });
+    const { id } = ctx.user
+    const dictionaries = await prisma.dictionaries.findMany({ where: { authorId: id } })
 
-    return successResult(dictionaries, messages.success);
+    return successResult<Dictionaries[]>(dictionaries, messages.success)
   }),
 
   //getDictionaryWords
@@ -31,7 +31,7 @@ export const dictionaryRouter = createTRPCRouter({
       }),
     )
     .query(async ({ input, ctx }) => {
-      const { id } = ctx.user;
+      const { id } = ctx.user
 
       const dictionary = await prisma.dictionaries.findFirst({
         where: { authorId: id, id: input.dictionaryId },
@@ -46,15 +46,17 @@ export const dictionaryRouter = createTRPCRouter({
             },
           },
         },
-      });
-
-      if (!dictionary) return errorResult(null, messages.dictionary_not_found);
+      })
 
       const responseData = {
         dictionary,
-        numberOfWords: dictionary.UserWords.length,
-      };
-      return successResult(responseData, messages.success);
+        numberOfWords: dictionary?.UserWords.length,
+      }
+
+      if (!dictionary)
+        return errorResult<typeof responseData>(null, messages.dictionary_not_found)
+
+      return successResult<typeof responseData>(responseData, messages.success)
     }),
 
   addDictionary: protectedProcedure
@@ -65,8 +67,8 @@ export const dictionaryRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      const { title, published } = input;
-      const userId = ctx.user.id;
+      const { title, published } = input
+      const userId = ctx.user.id
 
       await prisma.dictionaries.create({
         data: {
@@ -74,9 +76,9 @@ export const dictionaryRouter = createTRPCRouter({
           authorId: userId,
           published,
         },
-      });
+      })
 
-      return successResult(null, messages.success);
+      return successResult<boolean>(false, messages.success)
     }),
 
   deleteDictionary: protectedProcedure
@@ -86,22 +88,22 @@ export const dictionaryRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      const userId = ctx.user.id;
-      const { dictionaryId } = input;
+      const userId = ctx.user.id
+      const { dictionaryId } = input
 
       const dictionary = await prisma.dictionaries.findFirst({
         where: { authorId: userId, id: dictionaryId },
-      });
+      })
 
       if (!dictionary) {
-        return errorResult(null, messages.dictionary_not_found);
+        return errorResult<boolean>(false, messages.dictionary_not_found)
       }
 
       await prisma.dictionaries.delete({
         where: { id: dictionaryId },
-      });
+      })
 
-      return successResult(null, messages.success);
+      return successResult<boolean>(true, messages.success)
     }),
 
   updateDictionary: protectedProcedure
@@ -113,22 +115,22 @@ export const dictionaryRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      const userId = ctx.user.id;
-      const { dictionaryId, title, published } = input;
+      const userId = ctx.user.id
+      const { dictionaryId, title, published } = input
 
       const dictionary = await prisma.dictionaries.findFirst({
         where: { authorId: userId, id: dictionaryId },
-      });
+      })
 
       if (!dictionary) {
-        return errorResult(null, messages.dictionary_not_found);
+        return errorResult<boolean>(false, messages.dictionary_not_found)
       }
 
       await prisma.dictionaries.update({
         where: { id: dictionaryId },
         data: { title, published },
-      });
+      })
 
-      return successResult(null, messages.success);
+      return successResult<boolean>(true, messages.success)
     }),
-});
+})

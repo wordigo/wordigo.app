@@ -1,4 +1,4 @@
-export const successResult = (data: object | string | number | boolean | null = null, message: string) => {
+export const successResult = <T>(data: T | null, message: string) => {
     return {
         success: true,
         data,
@@ -6,7 +6,7 @@ export const successResult = (data: object | string | number | boolean | null = 
     }
 }
 
-export const errorResult = (data: object | string | number | boolean | null = null, message: string) => {
+export const errorResult = <T>(data: T | null, message: string) => {
     return {
         success: false,
         data,
