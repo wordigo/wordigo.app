@@ -5,9 +5,10 @@ import { Input } from "@wordigo/ui";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
+  label: string;
 }
 
-export function DataTableToolbar<TData>({ table }: DataTableToolbarProps<TData>) {
+export function DataTableToolbar<TData>({ table, label }: DataTableToolbarProps<TData>) {
   return (
     <div className="flex items-center justify-between">
       <div className="flex flex-1 items-center space-x-2">
@@ -18,7 +19,7 @@ export function DataTableToolbar<TData>({ table }: DataTableToolbarProps<TData>)
           className="h-8 w-[150px] lg:w-[250px]"
         />
       </div>
-      <CreateDictionary label="Add Dictionary" />
+      <CreateDictionary label={label} />
     </div>
   );
 }

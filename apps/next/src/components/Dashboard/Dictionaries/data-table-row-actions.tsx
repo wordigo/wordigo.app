@@ -12,11 +12,11 @@ interface DataTableRowActionsProps<TData extends object> {
 
 export function DataTableRowActions<TData extends object>({ row }: DataTableRowActionsProps<TData>) {
   const router = useRouter();
-  const queryDelete = api.dictionary.deleteDictionary.useMutation();
+  const { mutate: queryDelete } = api.dictionary.deleteDictionary.useMutation();
   const { id } = row.original;
 
   const handleDelete = () => {
-    queryDelete.mutate({
+    queryDelete({
       dictionaryId: id,
     });
     router.refresh();

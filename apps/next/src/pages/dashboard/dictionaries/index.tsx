@@ -1,6 +1,6 @@
 import { Fragment, useEffect } from "react";
-import { columns } from "@/components/Dashboard/Dictionaries/data-table/columns";
-import { DataTable } from "@/components/Dashboard/Dictionaries/data-table/data-table";
+import { columns } from "@/components/Dashboard/Dictionaries/columns";
+import { DataTable } from "@/components/Dashboard/Dictionaries/data-table";
 import DashboardLayout from "@/components/Layout/Dashboard";
 import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
 import { api } from "@/libs/trpc";
@@ -27,7 +27,7 @@ export default function DashboardPage() {
     <Fragment>
       <DashboardLayout heading="Dictionary">
         <DashboardShell>
-          <DataTable columns={columns} data={dictionaryList} />
+          <DataTable columns={columns} data={dictionaryList} label="Add Dictionary" />
         </DashboardShell>
       </DashboardLayout>
     </Fragment>

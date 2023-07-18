@@ -13,14 +13,7 @@ export default function DashboardLayout({ children, heading }: DashboardLayoutPr
     <div className="flex justify-center min-h-screen flex-col space-y-2 px-20">
       <header className="sticky top-0 z-40 border-b bg-background h-[65px]">
         <div className="m-auto flex h-16 items-center justify-between py-4">
-          <MainNav
-            heading={heading}
-            user={{
-              name: "Ali Osman",
-              image: "https://lh3.googleusercontent.com/a/AAcHTtczzH11A-_TB88rKRqjREKz7sViMrikNGPAvyTxa1tXJw=s96-c",
-              email: "dlsmnosman@gmail.com",
-            }}
-          />
+          <MainNav heading={heading} />
         </div>
       </header>
       <div>

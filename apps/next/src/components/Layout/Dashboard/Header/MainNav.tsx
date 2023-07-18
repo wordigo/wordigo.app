@@ -10,11 +10,6 @@ import { Button } from "@wordigo/ui";
 import ThemeMode from "../../ThemeMode";
 
 interface IMainNav {
-  user: {
-    name: string;
-    image: string;
-    email: string;
-  };
   heading: string;
 }
 

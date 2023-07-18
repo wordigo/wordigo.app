@@ -1,15 +1,14 @@
 import React from "react";
+import Footer from "@/components/Home/Footers/Footer";
 import MainLayout from "@/components/Layout/MainLayout";
-import { useTranslation } from "next-i18next";
+import Published from "@/components/Published";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function index() {
-  const { t } = useTranslation();
   return (
     <MainLayout>
-      <div className="max-w-screen-8xl w-full m-auto">
-        <div className="text-xl opacity-50 font-bold tracking-tight self-end pl-10 py-4">{t("nav_translate")}</div>
-      </div>
+      <Published />
+      <Footer />
     </MainLayout>
   );
 }
