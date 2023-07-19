@@ -24,6 +24,9 @@ const Navigation = ({ variant }: { variant?: "Sidebar" }) => {
         <Link href={"/about"} passHref>
           {t("nav_about")}
         </Link>
+        <Link href={"/dictionaries"} passHref>
+          {t("nav_dictionaries")}
+        </Link>
       </li>
     </ul>
   );
