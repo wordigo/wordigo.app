@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Rating({ rating }: { rating: string | null }) {
   return (
     <div className="flex items-center">

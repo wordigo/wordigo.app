@@ -43,6 +43,8 @@ const ApparanceForm = () => {
   })
 
   function onSubmit(data: AppearanceFormValues) {
+    console.log(data.theme)
+
     theme.setTheme(data.theme)
 
     // toast({
@@ -56,7 +58,7 @@ const ApparanceForm = () => {
   }
 
   return (
-    <Form {...form}>
+    <Form {...(form as any)}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control as never}

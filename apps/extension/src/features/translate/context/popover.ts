@@ -7,8 +7,10 @@ import { useStorage } from "@plasmohq/storage/hook"
 export interface IPopoverOptions {
   isFloating: boolean
   isPopup: boolean
+  sourceLanguage: string
   setFloating: Dispatch<SetStateAction<boolean>>
   setPopup: Dispatch<SetStateAction<boolean>>
+  setSourceLanguage: Dispatch<SetStateAction<string>>
   selectedText?: string
   targetLanguage: string
   cordinate: {
@@ -22,6 +24,7 @@ export const usePopover = ({}) => {
   const [isFloating, setFloating] = useState<boolean>(false)
   const [isPopup, setPopup] = useState<boolean>(false)
   const [selectedText, setSelectedText] = useState<string>()
+  const [sourceLanguage, setSourceLanguage] = useState<string>()
   const [cordinate, setCordinate] = useState({ x: 0, y: 0 })
 
   const [targetLanguage] = useStorage({
@@ -80,9 +83,23 @@ export const usePopover = ({}) => {
       targetLanguage,
       setPopup,
       cordinate,
-      setCordinate
+      setCordinate,
+      sourceLanguage,
+      setSourceLanguage
     }),
-    [selectedText, setSelectedText, isFloating, setFloating, isPopup, setPopup, targetLanguage, cordinate, setCordinate]
+    [
+      selectedText,
+      setSelectedText,
+      isFloating,
+      setFloating,
+      isPopup,
+      setPopup,
+      targetLanguage,
+      sourceLanguage,
+      cordinate,
+      setCordinate,
+      setSourceLanguage
+    ]
   )
 }
 

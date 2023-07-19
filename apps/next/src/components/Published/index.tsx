@@ -1,5 +1,3 @@
-import React from "react";
-
 import Published from "./Published";
 import PublishedConstan, { type IPublished } from "./published.constan";
 

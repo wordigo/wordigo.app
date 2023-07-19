@@ -1,16 +1,14 @@
 import FloatingButton from "~features/translate/components/FlaotingButton"
 import { PopoverContext, useContextPopover, usePopover } from "~features/translate/context/popover"
-import { TRPCProvider } from "~options/providers/trpc-provider"
 
 import "@wordigo/ui/styles/globals.css"
 
-import { Portal } from "@radix-ui/react-portal"
 import styleText from "data-text:@wordigo/ui/styles/globals.css"
 import type { PlasmoCSConfig } from "plasmo"
 import { Fragment } from "react"
 
-import { Toaster } from "~../../packages/ui"
 import TranslatePopup from "~features/translate/components/TranslatePopup"
+import Provider from "~providers"
 
 export const config: PlasmoCSConfig = {
   matches: ["<all_urls>"],
@@ -40,14 +38,11 @@ Translate.Layout = () => {
   const popover = usePopover({})
 
   return (
-    <Portal>
-      <Toaster />
+    <Provider>
       <PopoverContext.Provider value={popover}>
-        <TRPCProvider>
-          <Translate />
-        </TRPCProvider>
+        <Translate />
       </PopoverContext.Provider>
-    </Portal>
+    </Provider>
   )
 }
 

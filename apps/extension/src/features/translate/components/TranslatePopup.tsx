@@ -13,7 +13,6 @@ import {
 } from "@wordigo/ui"
 import { motion } from "framer-motion"
 import { ArrowRightLeft, Copy, Settings, Volume2 } from "lucide-react"
-import type { MouseEvent } from "react"
 import { useEffect, useMemo } from "react"
 import ReactCountryFlag from "react-country-flag"
 
@@ -53,10 +52,6 @@ const TranslatePopup = () => {
     opeendSettings && setPopup(false)
   }
 
-  const handleAddLibrary = (event: MouseEvent<HTMLElement>) => {
-    event.preventDefault()
-  }
-
   const textToSpeech = () => {
     const speech = new SpeechSynthesisUtterance(data.translatedText as string)
     // Initialize the speech synthesis
@@ -66,11 +61,6 @@ const TranslatePopup = () => {
     speech.voice = speechSynthesis.getVoices()[0]
     speech.lang = "en_US"
     window.speechSynthesis.speak(speech)
-  }
-
-  const closeTranslationPopup = () => {
-    setPopup(false)
-    reset()
   }
 
   const copyTranslatedText = () => {
@@ -147,11 +137,11 @@ const TranslatePopup = () => {
             <Button disabled={isLoading} onClick={copyTranslatedText} className="h-9 w-9" variant="outline" size="icon">
               <Copy size={18} />
             </Button>
-            <Button disabled={isLoading} onClick={openSettingsPage} className="h-9 w-9" variant="outline" size="icon">
+            <Button onClick={openSettingsPage} className="h-9 w-9" variant="outline" size="icon">
               <Settings size={18} />
             </Button>
           </div>
-          <DictionarySelector />
+          <DictionarySelector translatedText={data?.translatedText as string} sourceLangauge={data?.sourceLanguage as string} />
         </CardFooter>
       </Card>
     </motion.div>
