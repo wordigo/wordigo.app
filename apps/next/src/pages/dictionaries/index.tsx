@@ -8,9 +8,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 export default function index() {
   return (
     <MainLayout>
-      <main className="flex w-full">
-        <DataTable data={PublishedConstan} label="TEST" />
-      </main>
+      <DataTable data={PublishedConstan} label="TEST" />
       <Footer />
     </MainLayout>
   );
