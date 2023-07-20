@@ -4,6 +4,7 @@ export default {
   darkMode: ["class"],
   content: [
     "./src/app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
     "./**/**/**/*.{ts,tsx}",
     "./**/*.{ts,tsx}",
     "./*.{ts,tsx}",

@@ -14,9 +14,10 @@ import {
 } from "@wordigo/ui"
 import { cn } from "@wordigo/ui/lib/utils"
 import { ChevronDownIcon } from "lucide-react"
-import { useTheme } from "next-themes"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
+
+import { useStorage } from "@plasmohq/storage/hook"
 
 const appearanceFormSchema = z.object({
   theme: z.enum(["light", "dark"], {
@@ -36,14 +37,17 @@ const defaultValues: Partial<AppearanceFormValues> = {
 }
 
 const ApparanceForm = () => {
-  const theme = useTheme()
+  // const theme = useTheme()
+  const [theme, setRenderTheme, { setStoreValue }] = useStorage("theme")
   const form = useForm<AppearanceFormValues>({
     resolver: zodResolver(appearanceFormSchema),
     defaultValues
   })
 
-  function onSubmit(data: AppearanceFormValues) {
-    theme.setTheme(data.theme)
+  async function onSubmit(data: AppearanceFormValues) {
+    console.log(data.theme)
+
+    await setStoreValue(data.theme)
 
     // toast({
     //   title: "You submitted the following values:",
@@ -56,7 +60,7 @@ const ApparanceForm = () => {
   }
 
   return (
-    <Form {...form}>
+    <Form {...(form as any)}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control as never}
@@ -89,10 +93,7 @@ const ApparanceForm = () => {
               <FormLabel>Theme</FormLabel>
               <FormDescription>Select the theme for the dashboard.</FormDescription>
               <FormMessage />
-              <RadioGroup
-                onValueChange={field.onChange}
-                defaultValue={field.value}
-                className="grid max-w-md grid-cols-2 gap-8 pt-2">
+              <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="grid grid-cols-3 gap-8 pt-2">
                 <FormItem>
                   <FormLabel className="[&:has([data-state=checked])>div]:border-primary">
                     <FormControl>
@@ -139,6 +140,30 @@ const ApparanceForm = () => {
                       </div>
                     </div>
                     <span className="block w-full p-2 text-center font-normal">Dark</span>
+                  </FormLabel>
+                </FormItem>
+                <FormItem>
+                  <FormLabel className="[&:has([data-state=checked])>div]:border-primary">
+                    <FormControl>
+                      <RadioGroupItem value="blue" className="sr-only" />
+                    </FormControl>
+                    <div className="items-center rounded-md border-2 border-muted bg-popover p-1 hover:bg-accent hover:text-accent-foreground">
+                      <div className="space-y-2 rounded-sm bg-primary-blue-900 p-2">
+                        <div className="space-y-2 rounded-md bg-primary-blue-800 p-2 shadow-sm">
+                          <div className="h-2 w-[80px] rounded-lg bg-primary-blue-400" />
+                          <div className="h-2 w-[100px] rounded-lg bg-primary-blue-400" />
+                        </div>
+                        <div className="flex items-center space-x-2 rounded-md bg-primary-blue-800 p-2 shadow-sm">
+                          <div className="h-4 w-4 rounded-full bg-primary-blue-400" />
+                          <div className="h-2 w-[100px] rounded-lg bg-primary-blue-400" />
+                        </div>
+                        <div className="flex items-center space-x-2 rounded-md bg-primary-blue-800 p-2 shadow-sm">
+                          <div className="h-4 w-4 rounded-full bg-primary-blue-400" />
+                          <div className="h-2 w-[100px] rounded-lg bg-primary-blue-400" />
+                        </div>
+                      </div>
+                    </div>
+                    <span className="block w-full p-2 text-center font-normal">Blue</span>
                   </FormLabel>
                 </FormItem>
               </RadioGroup>

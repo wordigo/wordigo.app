@@ -1,4 +1,3 @@
-import React from "react";
 import Footer from "@/components/Home/Footers/Footer";
 import MainLayout from "@/components/Layout/MainLayout";
 import { DataTable } from "@/components/Published/Table/data-table";

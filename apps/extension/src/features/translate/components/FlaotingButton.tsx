@@ -20,7 +20,8 @@ const FloatingButton = () => {
       <Tooltip>
         <TooltipTrigger asChild>
           <motion.div
-            className="absolute cursor-pointer"
+            tabIndex={50}
+            className="absolute cursor-pointer z-50"
             initial={{
               top: top - 5,
               left

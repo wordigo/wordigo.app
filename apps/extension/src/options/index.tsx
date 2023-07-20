@@ -1,11 +1,12 @@
 import "@wordigo/ui/styles/globals.css"
 
-import { Separator, Toaster } from "@wordigo/ui"
+import { Separator } from "@wordigo/ui"
+
+import Provider from "~providers"
 
 import Apparance from "./apparence/layout"
 import { SidebarNav } from "./components/sidebar-nav"
 import { OptionsContext, useOptions, useOptionsContext } from "./context/options"
-import { TRPCProvider } from "./providers/trpc-provider"
 import Settings from "./settings/layout"
 
 export const sidebarNavItems = [
@@ -34,8 +35,8 @@ Dashboard.Layout = () => {
   const options = useOptions({})
 
   return (
-    <OptionsContext.Provider value={options}>
-      <TRPCProvider>
+    <Provider>
+      <OptionsContext.Provider value={options}>
         <div className="space-y-6 p-10 pb-16">
           <div className="space-y-0.5">
             <h2 className="text-2xl font-bold tracking-tight">Settings</h2>
@@ -49,9 +50,8 @@ Dashboard.Layout = () => {
             <Dashboard />
           </div>
         </div>
-        <Toaster />
-      </TRPCProvider>
-    </OptionsContext.Provider>
+      </OptionsContext.Provider>
+    </Provider>
   )
 }
 

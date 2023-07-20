@@ -6,5 +6,9 @@ export default {
 
     userWord_not_found: "UserWord Couldn't Found!",
 
-    word_not_found: "Word Couldn't Found!"
+    word_not_found: "Word Couldn't Found!",
+
+    user_not_found: "User Couldn't Found!",
+
+    language_not_found: "Language Couldn't Found!"
 }

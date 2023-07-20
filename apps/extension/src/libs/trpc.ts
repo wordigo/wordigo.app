@@ -5,9 +5,7 @@ import superjson from "superjson"
 
 import { sendToBackground } from "@plasmohq/messaging"
 
-function getBaseUrl() {
-  return `http://localhost:3000` // dev SSR should use localhost
-}
+const getBaseUrl = () => (process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://wordigo.app")
 
 const trpc = createTRPCReact<AppRouter>()
 

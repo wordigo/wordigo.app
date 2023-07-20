@@ -5,6 +5,7 @@ import { prisma } from "@wordigo/db"
 import { DictionaryInitialTitle, LearningStatuses } from "../../../common/constants/index"
 import messages from "../../../common/constants/messages"
 import { errorResult, successResult } from "../../../common/constants/results"
+import { AllCountryLanguages } from '../../../common/index'
 import { createTRPCRouter, protectedProcedure } from "../trpc"
 
 export const wordRouter = createTRPCRouter({
@@ -33,6 +34,15 @@ export const wordRouter = createTRPCRouter({
         if (!dicFromDb) {
           return errorResult<boolean>(false, messages.dictionary_not_found)
         }
+      }
+
+      const doLangsExist = AllCountryLanguages.filter(lang => {
+        return lang.code.toLowerCase() === nativeLanguage.trim().toLowerCase() ||
+          lang.code.toLowerCase() === targetLanguage.trim().toLowerCase()
+      })
+
+      if (doLangsExist.length !== 2) {
+        return errorResult<boolean>(false, messages.language_not_found)
       }
 
       const wordFromDb = await prisma.words.findFirst({

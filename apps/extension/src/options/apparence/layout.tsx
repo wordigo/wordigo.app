@@ -1,4 +1,4 @@
-import { Separator } from "~../../packages/ui"
+import { Separator } from "@wordigo/ui"
 
 import ApparanceForm from "./apparance-form"
 
