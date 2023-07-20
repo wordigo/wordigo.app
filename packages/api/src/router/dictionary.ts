@@ -15,6 +15,13 @@ export const dictionaryRouter = createTRPCRouter({
     return successResult<Dictionaries[]>(dictionaries, messages.success)
   }),
 
+  //getUserDictionaryList
+  getUserPublicDictionaries: protectedProcedure.query(async () => {
+    const dictionaries = await prisma.dictionaries.findMany({ where: { published: true } })
+
+    return successResult<Dictionaries[]>(dictionaries, messages.success)
+  }),
+
   //getUserDictionary Mutation
   getUserDictionariesMutation: protectedProcedure.mutation(async ({ ctx }) => {
     const { id } = ctx.user
