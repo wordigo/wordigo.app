@@ -2,6 +2,7 @@
 import { prisma } from "@wordigo/db"
 
 import { z } from 'zod'
+import { AllCountryLanguages } from '../../../common'
 import messages from '../../../common/constants/messages'
 import { errorResult, successResult } from '../../../common/constants/results'
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc"
@@ -47,6 +48,22 @@ export const userRouter = createTRPCRouter({
       const profile = await prisma.profiles.findFirst({ where: { id: user.id } })
       if (!profile)
         return errorResult<boolean>(false, messages.user_not_found)
+
+      if (nativeLanguage !== null && nativeLanguage !== '') {
+        const doNativeLangExist = AllCountryLanguages.filter(lang => {
+          return lang.code.toLowerCase() === nativeLanguage?.trim().toLowerCase()
+        })
+
+        if (doNativeLangExist.length === 0)
+          return errorResult<boolean>(false, messages.language_not_found)
+      } else if (targetLanguage !== null && targetLanguage !== '') {
+        const doTargetLangExist = AllCountryLanguages.filter(lang => {
+          return lang.code.toLowerCase() === targetLanguage?.trim().toLowerCase()
+        })
+
+        if (doTargetLangExist.length === 0)
+          return errorResult<boolean>(false, messages.language_not_found)
+      }
 
       await prisma.profiles.update({
         where: { id: profile.id },
