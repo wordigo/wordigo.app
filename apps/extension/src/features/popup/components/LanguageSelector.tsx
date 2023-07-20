@@ -1,9 +1,8 @@
 import { AllCountryLanguages, type ILanguage } from "@wordigo/common"
+import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, ScrollArea } from "@wordigo/ui"
 import { ChevronDown } from "lucide-react"
 import { useState } from "react"
 import ReactCountryFlag from "react-country-flag"
-
-import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, ScrollArea } from "~../../packages/ui"
 
 export interface ILanguageSelector {
   supportLanguages?: boolean

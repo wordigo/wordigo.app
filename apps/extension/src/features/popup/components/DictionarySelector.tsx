@@ -35,7 +35,7 @@ const DictionarySelector = () => {
         {isLoading ? (
           <DictionarySelector.Loader />
         ) : (
-          data?.dictionaries?.map((item) => <DropdownMenuItem key={item.id}>{item.title}</DropdownMenuItem>)
+          data?.data?.map((item) => <DropdownMenuItem key={item.id}>{item.title}</DropdownMenuItem>)
         )}
       </DropdownMenuContent>
     </DropdownMenu>

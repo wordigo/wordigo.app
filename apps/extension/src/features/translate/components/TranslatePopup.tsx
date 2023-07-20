@@ -9,6 +9,7 @@ import {
   Separator,
   Skeleton,
   Textarea,
+  Toaster,
   buttonVariants,
   useToast
 } from "@wordigo/ui"
@@ -70,6 +71,7 @@ const TranslatePopup = () => {
   const copyTranslatedText = () => {
     void navigator.clipboard.writeText(data.translatedText as string)
     toast.toast({
+      variant: "primary",
       title: "Successful",
       description: "The translated text was successfully copied."
     })
@@ -78,7 +80,6 @@ const TranslatePopup = () => {
   return (
     <motion.div
       tabIndex={50}
-      data-theme="dark"
       id="el-translate-container"
       className="absolute z-50"
       initial={{
@@ -90,9 +91,10 @@ const TranslatePopup = () => {
         top: cordinate.y,
         left: cordinate.x
       }}>
+      <Toaster />
       <Card tabIndex={1} className="flex-col flex h-60">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 px-4 py-2">
-          <CardTitle className="!text-lg">Wordigo Translator</CardTitle>
+          <CardTitle className="!text-lg dark:text-white text-primary">Wordigo Translator</CardTitle>
           <div
             className={buttonVariants({
               variant: "outline",
@@ -147,9 +149,6 @@ const TranslatePopup = () => {
               <Settings size={18} />
             </Button>
           </div>
-          <Button variant="outline" size="sm" className="rounded">
-            Save to library
-          </Button>
           <DictionarySelector translatedText={data?.translatedText as string} sourceLangauge={data?.sourceLanguage as string} />
         </CardFooter>
       </Card>

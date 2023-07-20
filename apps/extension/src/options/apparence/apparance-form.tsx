@@ -10,54 +10,67 @@ import {
   FormMessage,
   RadioGroup,
   RadioGroupItem,
-  buttonVariants
+  buttonVariants,
+  useToast
 } from "@wordigo/ui"
 import { cn } from "@wordigo/ui/lib/utils"
 import { ChevronDownIcon } from "lucide-react"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
-import { useStorage } from "@plasmohq/storage/hook"
+import { Storage } from "@plasmohq/storage"
+
+const storage = new Storage({
+  area: "local"
+})
 
 const appearanceFormSchema = z.object({
   theme: z.enum(["light", "dark"], {
     required_error: "Please select a theme."
-  }),
-  font: z.enum(["inter", "manrope", "system"], {
-    invalid_type_error: "Select a font",
-    required_error: "Please select a font."
   })
+  // font: z.enum(["inter", "manrope", "system"], {
+  //   invalid_type_error: "Select a font",
+  //   required_error: "Please select a font."
+  // })
 })
 
 type AppearanceFormValues = z.infer<typeof appearanceFormSchema>
 
 // This can come from your database or API.
-const defaultValues: Partial<AppearanceFormValues> = {
-  theme: "light"
-}
 
 const ApparanceForm = () => {
-  // const theme = useTheme()
-  const [theme, setRenderTheme, { setStoreValue }] = useStorage("theme")
+  const { toast } = useToast()
+  const defaultValues: Partial<AppearanceFormValues> = {
+    theme: "light"
+  }
+
   const form = useForm<AppearanceFormValues>({
     resolver: zodResolver(appearanceFormSchema),
     defaultValues
   })
 
   async function onSubmit(data: AppearanceFormValues) {
-    console.log(data.theme)
+    console.log(data)
 
-    await setStoreValue(data.theme)
+    // await storage.set(data.theme)
 
-    // toast({
-    //   title: "You submitted the following values:",
-    //   description: (
-    //     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-    //       <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-    //     </pre>
-    //   )
-    // })
+    toast({
+      title: "You submitted the following values:",
+      description: (
+        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+        </pre>
+      )
+    })
   }
+
+  // useEffect(() => {
+  //   storage.get("theme").then((res) => {
+  //     console.log(res)
+
+  //     // form.reset({ theme: res })
+  //   })
+  // }, [])
 
   return (
     <Form {...(form as any)}>
@@ -140,30 +153,6 @@ const ApparanceForm = () => {
                       </div>
                     </div>
                     <span className="block w-full p-2 text-center font-normal">Dark</span>
-                  </FormLabel>
-                </FormItem>
-                <FormItem>
-                  <FormLabel className="[&:has([data-state=checked])>div]:border-primary">
-                    <FormControl>
-                      <RadioGroupItem value="blue" className="sr-only" />
-                    </FormControl>
-                    <div className="items-center rounded-md border-2 border-muted bg-popover p-1 hover:bg-accent hover:text-accent-foreground">
-                      <div className="space-y-2 rounded-sm bg-primary-blue-900 p-2">
-                        <div className="space-y-2 rounded-md bg-primary-blue-800 p-2 shadow-sm">
-                          <div className="h-2 w-[80px] rounded-lg bg-primary-blue-400" />
-                          <div className="h-2 w-[100px] rounded-lg bg-primary-blue-400" />
-                        </div>
-                        <div className="flex items-center space-x-2 rounded-md bg-primary-blue-800 p-2 shadow-sm">
-                          <div className="h-4 w-4 rounded-full bg-primary-blue-400" />
-                          <div className="h-2 w-[100px] rounded-lg bg-primary-blue-400" />
-                        </div>
-                        <div className="flex items-center space-x-2 rounded-md bg-primary-blue-800 p-2 shadow-sm">
-                          <div className="h-4 w-4 rounded-full bg-primary-blue-400" />
-                          <div className="h-2 w-[100px] rounded-lg bg-primary-blue-400" />
-                        </div>
-                      </div>
-                    </div>
-                    <span className="block w-full p-2 text-center font-normal">Blue</span>
                   </FormLabel>
                 </FormItem>
               </RadioGroup>
