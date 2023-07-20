@@ -1,3 +1,4 @@
+import { AllCountryLanguages } from "@wordigo/common"
 import {
   Button,
   Card,
@@ -17,19 +18,22 @@ import { useEffect, useMemo } from "react"
 import ReactCountryFlag from "react-country-flag"
 
 import { sendToBackground } from "@plasmohq/messaging"
+import { useStorage } from "@plasmohq/storage/hook"
 
-import { AllCountryLanguages } from "~../../packages/common"
+import DictionarySelector from "~features/translate/components/DictionarySelector"
 import trpc from "~libs/trpc"
 import { TRANSLATE_CARD_WIDTH } from "~utils/constants"
 
 import { useContextPopover } from "../context/popover"
-import DictionarySelector from "./DictionarySelector"
 
 const TranslatePopup = () => {
   const toast = useToast()
+  const [theme] = useStorage("theme")
+
+  console.log(theme)
 
   const { cordinate, selectedText, setPopup, targetLanguage } = useContextPopover()
-  const { mutate: handleTranslate, isLoading, data, reset } = trpc.translation.translate.useMutation({})
+  const { mutate: handleTranslate, isLoading, data } = trpc.translation.translate.useMutation({})
 
   const getSourceLanguageFlag = useMemo(
     () => AllCountryLanguages.find((lang) => lang.code === (data?.sourceLanguage || "").toUpperCase()),
@@ -73,8 +77,10 @@ const TranslatePopup = () => {
 
   return (
     <motion.div
+      tabIndex={50}
+      data-theme="dark"
       id="el-translate-container"
-      className="absolute"
+      className="absolute z-50"
       initial={{
         top: cordinate.y - 5,
         left: cordinate.x - 5,
@@ -93,7 +99,7 @@ const TranslatePopup = () => {
               size: "sm",
               className: "flex gap-x-2 items-center rounded-lg !h-8"
             })}>
-            {isLoading ? (
+            {isLoading || !getSourceLanguageFlag ? (
               <Skeleton className="w-4 h-4" />
             ) : (
               <ReactCountryFlag
@@ -129,7 +135,7 @@ const TranslatePopup = () => {
           )}
         </CardContent>
         <Separator />
-        <CardFooter className="!p-3 flex items-center justify-between">
+        <CardFooter className="!p-3 flex items-center justify-between relative">
           <div className="flex flex-row gap-x-2 items-center justify-end">
             <Button disabled={isLoading} onClick={textToSpeech} className="h-9 w-9" variant="outline" size="icon">
               <Volume2 size={18} />
@@ -141,6 +147,9 @@ const TranslatePopup = () => {
               <Settings size={18} />
             </Button>
           </div>
+          <Button variant="outline" size="sm" className="rounded">
+            Save to library
+          </Button>
           <DictionarySelector translatedText={data?.translatedText as string} sourceLangauge={data?.sourceLanguage as string} />
         </CardFooter>
       </Card>

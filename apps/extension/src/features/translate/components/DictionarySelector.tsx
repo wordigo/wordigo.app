@@ -32,7 +32,7 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
         name: "getToken"
       })
       if (token) {
-        setShowMenu(!showMenu)
+        setShowMenu(true)
         mutate()
       } else {
         toast({
@@ -60,7 +60,7 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
   }
 
   return (
-    <DropdownMenu open={showMenu} onOpenChange={handleOpenMenu}>
+    <DropdownMenu open={showMenu} onOpenChange={handleOpenMenu} data-theme="dark">
       <DropdownMenuTrigger asChild className="w-[180px]">
         <Button
           variant="outline"
@@ -80,7 +80,7 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
           )}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-[180px]" id="el-popup-container">
+      <DropdownMenuContent className="w-[180px] border-0" data-theme="dark" id="el-popup-container">
         {isLoading ? (
           <DictionarySelector.Loader />
         ) : (

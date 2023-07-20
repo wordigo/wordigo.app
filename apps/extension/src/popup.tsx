@@ -1,13 +1,10 @@
-import { Portal } from "@radix-ui/react-portal"
-
 import "@wordigo/ui/styles/globals.css"
 
 import styleText from "data-text:@wordigo/ui/styles/globals.css"
 
-import { Toaster } from "~../../packages/ui"
 import TranslatePopup from "~features/popup/components/Popup"
 import { PopupContext, usePopup } from "~features/popup/context/popup"
-import { TRPCProvider } from "~options/providers/trpc-provider"
+import Provider from "~providers"
 
 export const getShadowHostId = () => "wordigo-translate-content"
 
@@ -21,14 +18,11 @@ const Popup = () => {
   const popup = usePopup({})
 
   return (
-    <Portal>
-      <Toaster />
+    <Provider>
       <PopupContext.Provider value={popup}>
-        <TRPCProvider>
-          <TranslatePopup />
-        </TRPCProvider>
+        <TranslatePopup />
       </PopupContext.Provider>
-    </Portal>
+    </Provider>
   )
 }
 

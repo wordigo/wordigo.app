@@ -1,18 +1,17 @@
-import { Portal } from "@radix-ui/react-portal"
-import { ThemeProvider } from "next-themes"
+import * as Portal from "@radix-ui/react-portal"
+import { Toaster } from "@wordigo/ui"
 import type { PropsWithChildren } from "react"
 
-import { Toaster } from "~../../packages/ui"
-import { TRPCProvider } from "~options/providers/trpc-provider"
+import { TRPCProvider } from "./trpc-provider"
 
 const Provider = ({ children }: PropsWithChildren) => {
+  const portalContainer = document.getElementById("el-translate-container") || document.body
+
   return (
-    <Portal>
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <TRPCProvider>{children}</TRPCProvider>
-        <Toaster />
-      </ThemeProvider>
-    </Portal>
+    <Portal.Root data-theme="dark" container={portalContainer}>
+      <TRPCProvider>{children}</TRPCProvider>
+      <Toaster />
+    </Portal.Root>
   )
 }
 

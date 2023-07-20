@@ -11,6 +11,8 @@ export interface IPopoverOptions {
   setFloating: Dispatch<SetStateAction<boolean>>
   setPopup: Dispatch<SetStateAction<boolean>>
   setSourceLanguage: Dispatch<SetStateAction<string>>
+  test: boolean
+  setTest: Dispatch<SetStateAction<boolean>>
   selectedText?: string
   targetLanguage: string
   cordinate: {

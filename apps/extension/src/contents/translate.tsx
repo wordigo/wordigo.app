@@ -1,9 +1,9 @@
 import FloatingButton from "~features/translate/components/FlaotingButton"
 import { PopoverContext, useContextPopover, usePopover } from "~features/translate/context/popover"
 
-import "@wordigo/ui/styles/globals.css"
+import "~/styles/globals.css"
 
-import styleText from "data-text:@wordigo/ui/styles/globals.css"
+import styleText from "data-text:~/styles/globals.css"
 import type { PlasmoCSConfig } from "plasmo"
 import { Fragment } from "react"
 
