@@ -18,7 +18,7 @@ export default function DashboardPage() {
   const { id } = router.query;
 
   const { data } = api.dictionary.getDictionaryWords.useQuery({
-    dictionaryId: "clk8ba7g2000tukjoiv58901v",
+    dictionaryId: id as string,
   });
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function DashboardPage() {
 
   return (
     <Fragment>
-      <DashboardLayout heading={id}>
+      <DashboardLayout heading={data?.data?.dictionary?.title}>
         <DashboardShell>
           <DataTable columns={columns} data={dictionaryList} label="Add Words" />
         </DashboardShell>

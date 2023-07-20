@@ -1,13 +1,13 @@
-import React from "react";
 import Footer from "@/components/Home/Footers/Footer";
 import MainLayout from "@/components/Layout/MainLayout";
-import Published from "@/components/Published";
+import { DataTable } from "@/components/Published/Table/data-table";
+import PublishedConstan from "@/components/Published/published.constan";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function index() {
   return (
     <MainLayout>
-      <Published />
+      <DataTable data={PublishedConstan} label="TEST" />
       <Footer />
     </MainLayout>
   );

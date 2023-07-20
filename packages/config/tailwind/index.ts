@@ -17,6 +17,7 @@ export default {
       padding: "2rem",
       screens: {
         "2xl": "1400px",
+        "7xl": "1320px",
         "8xl": "1440px",
       },
     },
@@ -93,6 +94,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       screens: {
+        "7xl": "1320px",
         "8xl": "1440px",
       },
     },

@@ -5,6 +5,7 @@ export interface IPublished {
   user: IUser;
   rating: string | null;
   words_length: string;
+  id: number;
 }
 
 interface IUser {
@@ -23,6 +24,7 @@ const published: IPublished[] = [
       profil_avatar: "",
     },
     words_length: "",
+    id: 1,
   },
   {
     description: "Des2",
@@ -34,6 +36,7 @@ const published: IPublished[] = [
       profil_avatar: "",
     },
     words_length: "",
+    id: 2,
   },
   {
     description: "Des2",
@@ -45,6 +48,7 @@ const published: IPublished[] = [
       profil_avatar: "",
     },
     words_length: "",
+    id: 3,
   },
   {
     description: "Des2",
@@ -56,6 +60,7 @@ const published: IPublished[] = [
       profil_avatar: "",
     },
     words_length: "",
+    id: 4,
   },
   {
     description: "Des2",
@@ -67,7 +72,82 @@ const published: IPublished[] = [
       profil_avatar: "",
     },
     words_length: "",
+    id: 5,
   },
+  {
+    description: "Des2",
+    rating: "5",
+    src: "",
+    title: "Title2",
+    user: {
+      name: "Ipsum",
+      profil_avatar: "",
+    },
+    words_length: "",
+    id: 5,
+  },
+
+  {
+    description: "Des2",
+    rating: "5",
+    src: "",
+    title: "Title2",
+    user: {
+      name: "Ipsum",
+      profil_avatar: "",
+    },
+    words_length: "",
+    id: 6,
+  },
+  {
+    description: "Des2",
+    rating: "5",
+    src: "",
+    title: "Title2",
+    user: {
+      name: "Ipsum",
+      profil_avatar: "",
+    },
+    words_length: "",
+    id: 7,
+  },
+  {
+    description: "Des2",
+    rating: "5",
+    src: "",
+    title: "Title2",
+    user: {
+      name: "Ipsum",
+      profil_avatar: "",
+    },
+    words_length: "",
+    id: 8,
+  },
+  {
+    description: "Des2",
+    rating: "5",
+    src: "",
+    title: "Title2",
+    user: {
+      name: "Ipsum",
+      profil_avatar: "",
+    },
+    words_length: "",
+    id: 9,
+  },
+  {
+    description: "Des2",
+    rating: "5",
+    src: "",
+    title: "Title2",
+    user: {
+      name: "Ipsum",
+      profil_avatar: "",
+    },
+    words_length: "",
+    id: 10,
+  },
+
   {
     description: "Des3",
     rating: "5",
@@ -78,6 +158,7 @@ const published: IPublished[] = [
       profil_avatar: "",
     },
     words_length: "",
+    id: 11,
   },
   {
     description: "Des4",
@@ -89,6 +170,7 @@ const published: IPublished[] = [
       profil_avatar: "",
     },
     words_length: "",
+    id: 12,
   },
 ];
 

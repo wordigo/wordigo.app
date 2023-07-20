@@ -6,7 +6,7 @@ import CommentConstant, { type IComment } from "./comments.constant";
 const Comment = () => {
   return (
     <Animation>
-      <div className="w-full flex flex-wrap gap-3">
+      <div className="flex flex-wrap items-center justify-center gap-3">
         {CommentConstant.map((item) => (
           <Comment.Item {...item} key={item.title} />
         ))}

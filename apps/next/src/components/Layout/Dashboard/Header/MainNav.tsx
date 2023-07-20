@@ -10,7 +10,7 @@ import { Button } from "@wordigo/ui";
 import ThemeMode from "../../ThemeMode";
 
 interface IMainNav {
-  heading: string;
+  heading: string | undefined;
 }
 
 const DynamicIconLogo = dynamic(() => import("@/components/Logo/DynamicIconLogo"), {

@@ -5,7 +5,7 @@ import { SiteFooter } from "./Footer";
 
 interface DashboardLayoutProps {
   children?: React.ReactNode;
-  heading: string;
+  heading: string | undefined;
 }
 
 export default function DashboardLayout({ children, heading }: DashboardLayoutProps) {
