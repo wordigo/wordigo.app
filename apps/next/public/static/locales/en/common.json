@@ -8,7 +8,6 @@
   "nav_login": "Sign In",
   "nav_register": "Sign Up",
   "nav_dictionaries": "Dictionaries",
-
   "nav_aboutDescription": "Lorem Ipsum",
   "nav_HeroBadge": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
   "nav_HeroSectionHeading": "When, where ever you desire",
@@ -17,5 +16,8 @@
   "nav_HeroSectionDescription": "Wordigo is a customizable dictionary application where you can add and share words.",
   "nav_HeroBannerHeading": "Try the Wordigo Extension",
   "nav_HeroBannerDescription": "Expand your vocabulary with the Wordigo extension - Download now and enhance your word learning experience!",
-  "nav_HeroBannerButton": "Install"
+  "nav_HeroBannerButton": "Install",
+  "about_title": "About",
+  "about_description": "<b>Wordigo<b/>, tarayıcı eklentisiyle gezinirken keşfedilen kelimeleri çevirip, kişisel sözlüğe eklemeye ve paylaşmaya olanak tanır. Wordigo ekibi, daha etkili bir dil öğrenme deneyimi sunmak için birlikte çalışmaktadır",
+  "about_teams_title": "Teams"
 }

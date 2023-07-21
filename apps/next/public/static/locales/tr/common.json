@@ -8,15 +8,15 @@
   "nav_register": "Kaydol",
   "nav_contact": "İletişim",
   "nav_dictionaries": "Sözlükler",
-
-  "nav_aboutDescription": "Lorem Ipsum",
   "nav_HeroBadge": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
   "nav_HeroSectionHeading": "Lorem Ipsum is simply",
   "nav_HeroSectionTitle": "Lorem Ipsum",
   "nav_HeroSectionBlueText": "printing!",
   "nav_HeroSectionDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-
   "nav_HeroBannerHeading": "Lorem Ipsum",
   "nav_HeroBannerDescription": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum cum deserunt enim quia mollitia atque natus nostrum eaque.",
-  "nav_HeroBannerButton": "Şimdi Başla"
+  "nav_HeroBannerButton": "Şimdi Başla",
+  "about_page_title": "Hakkımızda",
+  "about_page_description": "<b>Wordigo</b>, tarayıcı eklentisiyle gezinirken keşfedilen kelimeleri çevirip, kişisel sözlüğe eklemeye ve paylaşmaya olanak tanır. Wordigo ekibi, daha etkili bir dil öğrenme deneyimi sunmak için birlikte çalışmaktadır",
+  "about_page_teams_title": "Takım"
 }

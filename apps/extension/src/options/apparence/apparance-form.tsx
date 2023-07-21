@@ -48,8 +48,6 @@ const ApparanceForm = () => {
   })
 
   async function onSubmit(data: AppearanceFormValues) {
-    console.log(data)
-
     await storage.set("theme", data.theme)
 
     toast({

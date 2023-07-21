@@ -4,7 +4,6 @@ import Rating from "./Rating";
 import { type IPublished } from "./published.constan";
 
 export default function Published({ item }: { item: IPublished }) {
-  console.log(item);
   return (
     <>
       {item.user.name && (

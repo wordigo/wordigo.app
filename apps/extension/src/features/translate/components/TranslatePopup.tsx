@@ -31,8 +31,6 @@ const TranslatePopup = () => {
   const toast = useToast()
   const [theme] = useStorage("theme")
 
-  console.log(theme)
-
   const { cordinate, selectedText, setPopup, targetLanguage } = useContextPopover()
   const { mutate: handleTranslate, isLoading, data } = trpc.translation.translate.useMutation({})
 
