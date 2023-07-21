@@ -81,7 +81,7 @@ model DictAndUserWords {
   @@id([userWordId, dictionaryId])
 }
 
-model Subscribers {
+model SubscribedUsers {
   id          String   @id @default(cuid())
   email       String
   createdDate DateTime @default(now())

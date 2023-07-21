@@ -1,12 +1,12 @@
 import { z } from "zod"
 
-import { prisma, type Subscribers } from "@wordigo/db"
+import { prisma, type SubscribedUsers } from "@wordigo/db"
 
 import messages from "../../../common/constants/messages"
 import { successResult } from "../../../common/constants/results"
 import { createTRPCRouter, publicProcedure } from "../trpc"
 
-export const subscribeRouter = createTRPCRouter({
+export const userSubscriptionRouter = createTRPCRouter({
   subscribe: publicProcedure
     .input(
       z.object({
@@ -16,7 +16,7 @@ export const subscribeRouter = createTRPCRouter({
     .mutation(async ({ input }) => {
       const { email } = input
 
-      await prisma.subscribers.create({
+      await prisma.subscribedUsers.create({
         data: {
           email,
         },
@@ -26,8 +26,8 @@ export const subscribeRouter = createTRPCRouter({
     }),
 
   getSubscribersList: publicProcedure.query(async () => {
-    const subs = (await prisma.subscribers.findMany()) as []
+    const subs = (await prisma.subscribedUsers.findMany()) as []
 
-    return successResult<Subscribers[]>(subs, messages.success)
+    return successResult<SubscribedUsers[]>(subs, messages.success)
   }),
 })

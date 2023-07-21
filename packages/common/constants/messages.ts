@@ -5,6 +5,7 @@ export default {
     forbidden: 'You are not allowed!',
 
     dictionary_not_found: "Dictionary Couldn't Found!",
+    subscription_own_dic: "You can't subscribe your own dictionary!",
 
     userWord_not_found: "UserWord Couldn't Found!",
     user_word_already_exists: "UserWord Already Exists!",
