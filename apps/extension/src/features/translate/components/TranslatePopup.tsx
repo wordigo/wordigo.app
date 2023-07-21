@@ -71,7 +71,6 @@ const TranslatePopup = () => {
   const copyTranslatedText = () => {
     void navigator.clipboard.writeText(data.translatedText as string)
     toast.toast({
-      variant: "primary",
       title: "Successful",
       description: "The translated text was successfully copied."
     })

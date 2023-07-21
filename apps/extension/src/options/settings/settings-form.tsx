@@ -87,17 +87,16 @@ export const SettingsForm = () => {
             )}
           />
           <h3 className="mb-4 text-base font-medium">Translation options</h3>
+          {/* <CardDescription>when you select text translate action</CardDescription> */}
           <div className="space-y-4">
             <FormField
               control={form.control as never}
               name="communication_emails"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                <FormItem className="flex flex-row items-center justify-between rounded-lg border-gray-400 border-opacity-40 border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className="text-base">Select and translate</FormLabel>
-                    <FormDescription>
-                      When you hover over the selected text, the spin button pops up, and when you press it, it opens the popup.
-                    </FormDescription>
+                    <FormLabel className="text-base">Show Translate Button</FormLabel>
+                    <FormDescription>Show a button to translate right by the selected text</FormDescription>
                   </div>
                   <FormControl>
                     <Switch checked={field.value} onCheckedChange={field.onChange} />
@@ -109,11 +108,11 @@ export const SettingsForm = () => {
               control={form.control as never}
               name="communication_emails"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                <FormItem className="flex flex-row items-center justify-between rounded-lg border-gray-400 border-opacity-40  border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className="text-base">Double click translator</FormLabel>
+                    <FormLabel className="text-base">Select and translate</FormLabel>
                     <FormDescription>
-                      Double-click translator Opening a direct translation popup when you double-click on the selected text.
+                      When you hover over the selected text, the spin button pops up, and when you press it, it opens the popup.
                     </FormDescription>
                   </div>
                   <FormControl>
