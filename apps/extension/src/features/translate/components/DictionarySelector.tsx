@@ -44,7 +44,11 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
         toast({
           title: "You need to login..",
           description: "You need to be logged in to add words to your dictionary.",
-          action: <ToastAction altText="Logi">Login</ToastAction>
+          action: (
+            <ToastAction className="text-primary" altText="Logi">
+              Login
+            </ToastAction>
+          )
         })
       }
     }
@@ -55,7 +59,11 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
       toast({
         title: "Successful",
         description: "Word insertion successful.",
-        action: <ToastAction altText="View Dictionary">View Dictionary</ToastAction>
+        action: (
+          <ToastAction className="text-primary" altText="View Dictionary">
+            View Dictionary
+          </ToastAction>
+        )
       })
     }
   }, [status])

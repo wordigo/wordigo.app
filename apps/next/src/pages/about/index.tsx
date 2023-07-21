@@ -1,4 +1,3 @@
-import React from "react";
 import About from "@/components/About";
 import Contact from "@/components/About/Contact";
 import Team from "@/components/About/Team/team";
@@ -9,7 +8,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 export default function index() {
   return (
     <MainLayout>
-      <div className="flex flex-col gap-32">
+      <div className="flex flex-col gap-32 gap-y-12">
         <About />
         <Team />
         <Contact />

@@ -20,9 +20,7 @@ import * as z from "zod"
 
 import { Storage } from "@plasmohq/storage"
 
-const storage = new Storage({
-  area: "local"
-})
+const storage = new Storage({})
 
 const appearanceFormSchema = z.object({
   theme: z.enum(["light", "dark"], {
@@ -50,9 +48,7 @@ const ApparanceForm = () => {
   })
 
   async function onSubmit(data: AppearanceFormValues) {
-    console.log(data)
-
-    // await storage.set(data.theme)
+    await storage.set("theme", data.theme)
 
     toast({
       title: "You submitted the following values:",

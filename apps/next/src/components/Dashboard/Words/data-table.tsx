@@ -56,8 +56,11 @@ export function DataTable<TData, TValue>({ columns, data, label }: DataTableProp
     getFacetedUniqueValues: getFacetedUniqueValues(),
   });
 
+<<<<<<< HEAD
   console.log(table.options.data.UserWords.map);
 
+=======
+>>>>>>> e4ccb4350d4b358e93e263745b19aa59b68d3042
   return (
     <div className="space-y-4 mb-[90px]">
       <DataTableToolbar table={table} label={label} />
@@ -67,6 +70,12 @@ export function DataTable<TData, TValue>({ columns, data, label }: DataTableProp
             {table.options.data && table.options.data.UserWords.length ? (
               table.options.data.UserWords.map((row: any) => (
                 <TableRow key={row.id}>
+<<<<<<< HEAD
+=======
+                  {/* {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
+                  ))} */}
+>>>>>>> e4ccb4350d4b358e93e263745b19aa59b68d3042
                   <TableCell key={row.id}>{row.userWord.word.text}</TableCell>
                 </TableRow>
               ))

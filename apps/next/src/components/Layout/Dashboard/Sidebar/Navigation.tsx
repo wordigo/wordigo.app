@@ -51,8 +51,6 @@ DashboardNav.Item = (item: SidebarNavItem, index: number) => {
 };
 
 DashboardNav.ChildItem = ({ navs, trigger, loading }: SidebarChildNav) => {
-  console.log(loading);
-
   return (
     <Fragment>
       <div tabIndex={50} className="text-sm z-50 font-medium absolute right-0 top-2 mr-2 flex items-center justify-center">

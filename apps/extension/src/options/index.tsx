@@ -1,4 +1,4 @@
-import "@wordigo/ui/styles/globals.css"
+import "~/styles/globals.css"
 
 import { Separator } from "@wordigo/ui"
 
@@ -37,7 +37,7 @@ Dashboard.Layout = () => {
   return (
     <Provider>
       <OptionsContext.Provider value={options}>
-        <div className="space-y-6 p-10 pb-16">
+        <div className="space-y-6 p-10 pb-16 bg-background text-primary h-screen">
           <div className="space-y-0.5">
             <h2 className="text-2xl font-bold tracking-tight">Settings</h2>
             <p className="text-muted-foreground">Manage your plugin settings and you can change your translation preference.</p>

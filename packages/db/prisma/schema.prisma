@@ -23,25 +23,39 @@ model UserWords {
 model Dictionaries {
   id          String             @id @default(cuid())
   title       String
+  subscribers Int                @default(0)
   published   Boolean            @default(false)
   authorId    String
   author      Profiles?          @relation(fields: [authorId], references: [id])
   createdDate DateTime           @default(now())
   updatedDate DateTime           @default(now()) @updatedAt
   UserWords   DictAndUserWords[]
+  SubDics     SubscribedDics[]
 }
 
 model Profiles {
-  id             String         @id
+  id             String           @id
   username       String?
   name           String
   avatar_url     String?
   nativeLanguage String?
   targetLanguage String?
-  createdDate    DateTime       @default(now())
-  updatedDate    DateTime       @default(now()) @updatedAt
+  createdDate    DateTime         @default(now())
+  updatedDate    DateTime         @default(now()) @updatedAt
   UserWords      UserWords[]
   Dictionaries   Dictionaries[]
+  SubDics        SubscribedDics[]
+}
+
+model SubscribedDics {
+  profile      Profiles     @relation(fields: [profileId], references: [id])
+  profileId    String
+  Dictionary   Dictionaries @relation(fields: [dictionaryId], references: [id])
+  dictionaryId String
+  createdDate  DateTime     @default(now())
+  updatedDate  DateTime     @default(now()) @updatedAt
+
+  @@id([profileId, dictionaryId])
 }
 
 model Words {
