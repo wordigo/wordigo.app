@@ -23,6 +23,9 @@ export const wordRouter = createTRPCRouter({
       const { text, translatedText, nativeLanguage, targetLanguage, dictionaryId } = input
       const userId = ctx.user.id
 
+      if (nativeLanguage?.trim().toLowerCase() === targetLanguage?.trim().toLowerCase())
+        return errorResult<boolean>(false, messages.languages_cant_same)
+
       if ((dictionaryId?.length as number) > 0) {
         const dicFromDb = await prisma.dictionaries.findFirst({
           where: {

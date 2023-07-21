@@ -13,5 +13,6 @@ export default {
 
     user_not_found: "User Couldn't Found!",
 
-    language_not_found: "Language Couldn't Found!"
+    language_not_found: "Language Couldn't Found!",
+    languages_cant_same: "Native and Target Language can't be the same!"
 }

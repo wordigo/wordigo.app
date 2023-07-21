@@ -57,6 +57,9 @@ export const userRouter = createTRPCRouter({
       if (!profile)
         return errorResult<boolean>(false, messages.user_not_found)
 
+      if (nativeLanguage?.trim().toLowerCase() === targetLanguage?.trim().toLowerCase())
+        return errorResult<boolean>(false, messages.languages_cant_same)
+
       if (nativeLanguage !== null && nativeLanguage !== '') {
         const doNativeLangExist = AllCountryLanguages.filter(lang => {
           return lang.code.toLowerCase() === nativeLanguage?.trim().toLowerCase()
