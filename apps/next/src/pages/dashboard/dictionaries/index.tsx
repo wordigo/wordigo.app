@@ -25,7 +25,7 @@ export default function DashboardPage() {
 
   return (
     <Fragment>
-      <DashboardLayout heading="Dictionary">
+      <DashboardLayout heading="Dictionary" query="">
         <DashboardShell>
           <DataTable columns={columns} data={dictionaryList} label="Add Dictionary" />
         </DashboardShell>

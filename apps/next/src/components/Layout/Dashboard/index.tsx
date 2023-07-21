@@ -6,14 +6,15 @@ import { SiteFooter } from "./Footer";
 interface DashboardLayoutProps {
   children?: React.ReactNode;
   heading: string | undefined;
+  query: string | undefined;
 }
 
-export default function DashboardLayout({ children, heading }: DashboardLayoutProps) {
+export default function DashboardLayout({ children, heading, query }: DashboardLayoutProps) {
   return (
     <div className="flex justify-center min-h-screen flex-col space-y-2 px-20">
       <header className="sticky top-0 z-40 border-b bg-background h-[65px]">
         <div className="m-auto flex h-16 items-center justify-between py-4">
-          <MainNav heading={heading} />
+          <MainNav heading={heading} query={query} />
         </div>
       </header>
       <div>

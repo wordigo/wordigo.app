@@ -13,6 +13,7 @@ import { appWithTranslation } from "next-i18next";
 import { DefaultSeo } from "next-seo";
 
 import "../styles/styles.css";
+import "../styles/globals.css";
 
 const App = ({ Component, pageProps }: AppProps<{ initialSession: Session | null }>) => {
   const [supabase] = useState(() => createBrowserSupabaseClient());
