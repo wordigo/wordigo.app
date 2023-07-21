@@ -66,6 +66,16 @@ export const wordRouter = createTRPCRouter({
         })
       else word = wordFromDb
 
+      const wordExistInUserWord = await prisma.userWords.findFirst({
+        where: {
+          authorId: userId,
+          wordId: word.id
+        }
+      })
+
+      if (wordExistInUserWord)
+        return errorResult<boolean>(false, messages.user_word_already_exists)
+
       const userWord = await prisma.userWords.create({
         data: {
           wordId: word.id,

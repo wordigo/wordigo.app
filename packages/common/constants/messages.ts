@@ -5,6 +5,7 @@ export default {
     dictionary_not_found: "Dictionary Couldn't Found!",
 
     userWord_not_found: "UserWord Couldn't Found!",
+    user_word_already_exists: "UserWord Already Exists!",
 
     word_not_found: "Word Couldn't Found!",
 
