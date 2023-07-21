@@ -7,10 +7,12 @@ const SignUp = () => {
   return (
     <AuthLayout>
       <AuthLayout.Title>Welcome</AuthLayout.Title>
-      <AuthLayout.Description>Enter your email and username below to create your account</AuthLayout.Description>
+      <AuthLayout.Description>Enter your email and username below to create your account.</AuthLayout.Description>
       <AuthSıgnupForm />
       <SocialProviders />
-      <AuthLayout.Footer url="/auth/signin">Already have an account? Sign In</AuthLayout.Footer>
+      <AuthLayout.Footer url="/auth/signin">
+        Already have an account? <span className="text-foreground font-semibold">Sign in</span>
+      </AuthLayout.Footer>
     </AuthLayout>
   );
 };
