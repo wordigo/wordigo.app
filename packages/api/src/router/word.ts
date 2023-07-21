@@ -49,8 +49,8 @@ export const wordRouter = createTRPCRouter({
         where: {
           text: text.trim().toLowerCase(),
           translatedText: translatedText.trim().toLowerCase(),
-          nativeLanguage,
-          targetLanguage,
+          nativeLanguage: nativeLanguage.trim().toLowerCase(),
+          targetLanguage: targetLanguage.trim().toLowerCase(),
         },
       })
 
@@ -73,37 +73,63 @@ export const wordRouter = createTRPCRouter({
         }
       })
 
+      let userWord
+
       if (wordExistInUserWord)
-        return errorResult<boolean>(false, messages.user_word_already_exists)
+        userWord = wordExistInUserWord
+      else
+        userWord = await prisma.userWords.create({
+          data: {
+            wordId: word.id,
+            learningStatus: LearningStatuses["Not Learned"],
+            authorId: userId,
+          },
+        })
 
-      const userWord = await prisma.userWords.create({
-        data: {
-          wordId: word.id,
-          learningStatus: LearningStatuses["Not Learned"],
-          authorId: userId,
-        },
-      })
-
-      const initialDictionary = await prisma.dictionaries.findFirst({
+      let initialDictionary = await prisma.dictionaries.findFirst({
         where: {
           title: DictionaryInitialTitle,
         },
       })
+      if (!initialDictionary) {
+        initialDictionary = await prisma.dictionaries.create({
+          data: {
+            title: DictionaryInitialTitle,
+            authorId: userId
+          }
+        })
+      }
 
-      await prisma.dictAndUserWords.create({
-        data: {
+      const initialDicExisting = await prisma.dictAndUserWords.findFirst({
+        where: {
           userWordId: userWord.id,
-          dictionaryId: initialDictionary?.id as string,
-        },
+          dictionaryId: initialDictionary?.id
+        }
       })
 
-      if (dictionaryId) {
+      if (!initialDicExisting)
         await prisma.dictAndUserWords.create({
           data: {
             userWordId: userWord.id,
-            dictionaryId,
+            dictionaryId: initialDictionary?.id,
           },
         })
+
+      if (dictionaryId) {
+        const dictExisting = await prisma.dictAndUserWords.findFirst({
+          where: {
+            userWordId: userWord.id,
+            dictionaryId
+          }
+        })
+
+        if (!dictExisting)
+          await prisma.dictAndUserWords.create({
+            data: {
+              userWordId: userWord.id,
+              dictionaryId,
+            },
+          })
       }
 
       return successResult<boolean>(true, messages.success)
