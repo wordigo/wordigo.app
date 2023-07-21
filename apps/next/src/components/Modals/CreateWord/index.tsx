@@ -32,8 +32,8 @@ const CreateDictionarySchema = z.object({
 
 type CreateDictionaryValues = z.infer<typeof CreateDictionarySchema>;
 
-export function CreateDictionary({ label }: { label: string }) {
-  const { mutate: addDictionary, isLoading } = api.dictionary.addDictionary.useMutation();
+export function CreateWord({ label }: { label: string }) {
+  const { mutate, isLoading } = api.word.addWord.useMutation();
 
   const router = useRouter();
 
@@ -47,10 +47,13 @@ export function CreateDictionary({ label }: { label: string }) {
     defaultValues,
   });
 
-  const handleAddDictionary = (values: CreateDictionaryValues) => {
-    addDictionary({
-      title: values.title,
-      published: values.published,
+  const handleAddDictionary = () => {
+    mutate({
+      dictionaryId: "clkc64ros0001uk68fleputmt",
+      nativeLanguage: "TR",
+      targetLanguage: "EN",
+      text: "TEST",
+      translatedText: "TEST",
     });
     router.refresh();
   };

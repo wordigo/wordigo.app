@@ -81,7 +81,7 @@ export function DataTable<TData, TValue>({ columns, data, label }: DataTableProp
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  onClick={() => router.push(`/dashboard/dictionaries/${row.id}`)}
+                  onClick={() => router.push(`/dashboard/dictionaries/${row?.original?.id}`)}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>

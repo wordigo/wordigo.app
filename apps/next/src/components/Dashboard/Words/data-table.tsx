@@ -31,7 +31,6 @@ export function DataTable<TData, TValue>({ columns, data, label }: DataTableProp
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [sorting, setSorting] = React.useState<SortingState>([]);
-
   const router = useRouter();
 
   const table = useReactTable({
@@ -56,6 +55,8 @@ export function DataTable<TData, TValue>({ columns, data, label }: DataTableProp
     getFacetedUniqueValues: getFacetedUniqueValues(),
   });
 
+  console.log(table.options.data.data.dictionary.UserWords)
+
   return (
     <div className="space-y-4 mb-[90px]">
       <DataTableToolbar table={table} label={label} />
@@ -76,16 +77,15 @@ export function DataTable<TData, TValue>({ columns, data, label }: DataTableProp
               ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel() && table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                  onClick={() => router.push(`/dashboard/dictionaries/${row.id}`)}
-                >
-                  {row.getVisibleCells().map((cell) => (
+            {table.options.data && table.options.data.data.dictionary.UserWords.length ? (
+              table.options.data.data.dictionary.UserWords.map((row: any) => (
+                <TableRow key={row.id}>
+                  {/* {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
-                  ))}
+                  ))} */}
+                  <TableCell key={row.id}>
+                    {row.userWord.word.text}
+                  </TableCell>
                 </TableRow>
               ))
             ) : (
