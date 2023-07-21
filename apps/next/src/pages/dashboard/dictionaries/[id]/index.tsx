@@ -32,18 +32,3 @@ export default function DashboardPage() {
     </Fragment>
   );
 }
-
-export async function getStaticProps({ locale }: { locale: string }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ["common"])),
-    },
-  };
-}
-
-export const getStaticPaths: GetStaticPaths<{ slug: string }> = () => {
-  return {
-    paths: [], //indicates that no page needs be created at build time
-    fallback: "blocking", //indicates the type of fallback
-  };
-};
