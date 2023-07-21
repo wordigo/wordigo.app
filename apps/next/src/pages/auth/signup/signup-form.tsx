@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import z from "zod";
 
-import { Form, FormControl, FormField, FormItem, FormMessage, Input, useToast } from "@wordigo/ui";
+import { Form, FormControl, FormField, FormItem, FormMessage, Input, Label, useToast } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
 type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
@@ -55,49 +55,64 @@ const AuthSıgnUpForm = ({ className, ...props }: UserAuthFormProps) => {
   };
 
   return (
-    <div className={cn("grid gap-6 py-5", className)} {...props}>
+    <div className={cn("grid gap-6 py-6", className)} {...props}>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
-          <div className="grid gap-2">
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem className="grid gap-1">
-                  <FormControl>
-                    <Input {...field} id="name" placeholder="name" autoCapitalize="none" autoComplete="email" autoCorrect="off" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem className="grid gap-1">
-                  <FormControl>
-                    <Input {...field} id="email" placeholder="name@example.com" autoCapitalize="none" autoComplete="email" autoCorrect="off" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem className="grid gap-1">
-                  <FormControl>
-                    <Input {...field} id="email" placeholder="******" type="password" autoCapitalize="none" autoCorrect="off" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
+          <div className="grid gap-4">
+            <div className="grid gap-2">
+              <Label htmlFor="name" className="text-left">
+                Username
+              </Label>
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem className="grid gap-2">
+                    <FormControl>
+                      <Input {...field} id="name" placeholder="Enter your username" autoCapitalize="none" autoComplete="email" autoCorrect="off" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="email" className="text-left">
+                Email
+              </Label>
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem className="grid gap-2">
+                    <FormControl>
+                      <Input {...field} id="email" placeholder="Enter your email" autoCapitalize="none" autoComplete="email" autoCorrect="off" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="password" className="text-left">
+                Password
+              </Label>
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem className="grid gap-2">
+                    <FormControl>
+                      <Input {...field} id="password" placeholder="••••••••" type="password" autoCapitalize="none" autoCorrect="off" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
           </div>
           <CButton loading={authStore.isLoading} className="w-full">
-            Sign Up
+            Sign up
           </CButton>
         </form>
       </Form>

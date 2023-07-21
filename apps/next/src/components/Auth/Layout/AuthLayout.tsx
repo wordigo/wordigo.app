@@ -18,24 +18,24 @@ const AuthLayout = ({ children }: PropsWithChildren) => {
         Back
       </Link>
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-        <div className="flex flex-col space-y-2 text-center">
+        <div className="flex flex-col space-y-6 text-center">
           <div className="flex items-center justify-center">
             <DynamicLogo />
           </div>
-          <div className="text-left">{children}</div>
+          <div className="text-center">{children}</div>
         </div>
       </div>
     </div>
   );
 };
 
-AuthLayout.Title = ({ children }: PropsWithChildren) => <h1 className="text-2xl text-center font-semibold tracking-tight">{children}</h1>;
+AuthLayout.Title = ({ children }: PropsWithChildren) => <h1 className="text-2xl font-semibold tracking-tight">{children}</h1>;
 
-AuthLayout.Description = ({ children }: PropsWithChildren) => <h1 className="text-sm text-center text-muted-foreground">{children}</h1>;
+AuthLayout.Description = ({ children }: PropsWithChildren) => <h1 className="text-sm text-muted-foreground mt-1">{children}</h1>;
 
 AuthLayout.Footer = ({ url, children }: PropsWithChildren<{ url: string }>) => (
-  <p className="px-8 mt-6 text-center text-sm text-muted-foreground">
-    <Link href={url} className="hover:text-brand underline underline-offset-4">
+  <p className="px-8 mt-6 text-sm text-muted-foreground">
+    <Link href={url} className="hover:text-brand">
       {children}
     </Link>
   </p>
