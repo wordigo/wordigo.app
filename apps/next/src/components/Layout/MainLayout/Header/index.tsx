@@ -17,35 +17,33 @@ export default function HomeHeader() {
   const { isLoggedIn, userLoading } = useAuthStore();
 
   return (
-    <div className="shadow-sm dark:shadow-black dark:shadow-md">
+    <div>
       <Banner />
-      <div className="flex items-center justify-between max-w-[1380px] m-auto py-2">
-        <nav className="flex items-center justify-between gap-16">
-          <Link href="/">
-            <Image src="/images/logo.png" width={250} height={250} priority alt="" className="rounded-md" />
-          </Link>
-          <Navigation />
-        </nav>
-        <div className="flex gap-y-6 gap-x-3 items-center">
+      <nav className="flex items-center justify-between max-w-[1380px] m-auto py-6">
+        <Link href="/" className="h-10 relative w-[6.5rem]">
+          <Image src="/images/logo.png" fill priority alt="" />
+        </Link>
+        <Navigation />
+        <div className="flex gap-x-4 items-center">
           <ThemeMode />
           <ChangeLanguage />
-          <div className="w-[1px] !h-9 bg-gray-200 dark:bg-gray-800"></div>
+          <div className="w-[1px] !h-10 bg-border"></div>
           {userLoading ? (
             <NavProfile.Loader />
           ) : isLoggedIn ? (
             <NavProfile />
           ) : (
             <span>
-              <Link href="/auth/signin" className={cn("bg-transparent mr-3", buttonVariants({ size: "sm", variant: "outline" }))}>
+              <Link href="/auth/signin" className={cn("bg-transparent mr-4", buttonVariants({ variant: "outline" }))}>
                 {t("nav_login")}
               </Link>
-              <Link href="/auth/signup" className={cn(buttonVariants({ size: "sm", variant: "default" }))}>
+              <Link href="/auth/signup" className={cn(buttonVariants({ variant: "default" }))}>
                 {t("nav_register")}
               </Link>
             </span>
           )}
         </div>
-      </div>
+      </nav>
     </div>
   );
 }

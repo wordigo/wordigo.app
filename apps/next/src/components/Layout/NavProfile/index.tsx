@@ -26,7 +26,7 @@ const NavProfile = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-          <Avatar className="h-9 w-9">
+          <Avatar className="h-10 w-10">
             <AvatarImage src={user?.user_metadata.avatar_url} alt={"@" + user?.user_metadata.name} />
             <AvatarFallback>{computedName}</AvatarFallback>
           </Avatar>

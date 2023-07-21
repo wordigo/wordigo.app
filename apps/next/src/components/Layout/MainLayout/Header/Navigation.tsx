@@ -1,7 +1,7 @@
-import React from "react";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 
+import { buttonVariants } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
 const Navigation = ({ variant }: { variant?: "Sidebar" }) => {
@@ -11,20 +11,20 @@ const Navigation = ({ variant }: { variant?: "Sidebar" }) => {
       className={cn(
         "flex items-center",
         variant === "Sidebar" && "text-[12px] text-blue-800",
-        variant !== "Sidebar" && "text-[#4A5562] justify-between text-[13px] w-full dark:text-white dark:opacity-80",
+        variant !== "Sidebar" && "text-[#4A5562] justify-between text-[13px] dark:text-white dark:opacity-80",
       )}
     >
-      <li className={cn("flex items-center font-bold", variant === "Sidebar" && "gap-5", variant !== "Sidebar" && "gap-9")}>
-        <Link href={"/"} passHref>
+      <li className={cn("flex items-center font-bold", variant === "Sidebar" && "gap-5", variant !== "Sidebar" && "gap-3")}>
+        <Link href={"/"} passHref className={buttonVariants({ variant: "ghost" })}>
           {t("nav_home")}
         </Link>
-        <Link href={"/dashboard"} passHref>
+        <Link href={"/dashboard"} passHref className={buttonVariants({ variant: "ghost" })}>
           {t("nav_dashboard")}
         </Link>
-        <Link href={"/about"} passHref>
+        <Link href={"/about"} passHref className={buttonVariants({ variant: "ghost" })}>
           {t("nav_about")}
         </Link>
-        <Link href={"/dictionaries"} passHref>
+        <Link href={"/dictionaries"} passHref className={buttonVariants({ variant: "ghost" })}>
           {t("nav_dictionaries")}
         </Link>
       </li>

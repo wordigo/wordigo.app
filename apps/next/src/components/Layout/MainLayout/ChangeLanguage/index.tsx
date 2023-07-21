@@ -11,7 +11,7 @@ const ChangeLanguage = () => {
     void router.replace(router.pathname, router.pathname, { locale: locale.toLowerCase() });
   };
 
-  return <LanguageSelector defaultValue={i18n.language?.toUpperCase()} onSelect={handleChangeLocale} className="w-[150px] !h-9" />;
+  return <LanguageSelector defaultValue={i18n.language?.toUpperCase()} onSelect={handleChangeLocale} className="w-[150px]" />;
 };
 
 export default ChangeLanguage;
