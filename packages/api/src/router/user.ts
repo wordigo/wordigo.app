@@ -7,6 +7,8 @@ import messages from '../../../common/constants/messages'
 import { errorResult, successResult } from '../../../common/constants/results'
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc"
 
+import supabase from '../../../../apps/next/src/libs/supabase/client'
+
 export const userRouter = createTRPCRouter({
   publicDicsUsers: publicProcedure
     .query(async () => {
@@ -25,12 +27,18 @@ export const userRouter = createTRPCRouter({
       const { userId } = input
 
       const userFromDb = await prisma.profiles.findFirst({ where: { id: userId } })
-      if (!userFromDb) {
-        return errorResult<boolean>(null, messages.user_not_found)
-      }
+
+      if (!userFromDb) return errorResult<boolean>(null, messages.user_not_found)
+
+      if (userId !== ctx.user.id) return errorResult<boolean>(false, messages.forbidden)
+
+      const { error } = await supabase.auth.admin.deleteUser(userId)
+
+      if (error) return errorResult<boolean>(false, messages.error)
 
       await prisma.profiles.delete({ where: { id: userId } })
 
+      return successResult<boolean>(true, messages.success)
     }),
 
   update: protectedProcedure
