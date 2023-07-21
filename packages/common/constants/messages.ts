@@ -2,6 +2,8 @@ export default {
     success: 'Operation has succeeded!',
     error: 'Operation has failed!',
 
+    forbidden: 'You are not allowed!',
+
     dictionary_not_found: "Dictionary Couldn't Found!",
 
     userWord_not_found: "UserWord Couldn't Found!",
