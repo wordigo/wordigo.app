@@ -1,9 +1,7 @@
 import React from "react";
-import { type GetStaticPaths } from "next";
 import Footer from "@/components/Home/Footers";
 import MainLayout from "@/components/Layout/MainLayout";
 import { CopyIcon, Link, Volume2 } from "lucide-react";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function index() {
   return (
@@ -46,18 +44,3 @@ export default function index() {
     </MainLayout>
   );
 }
-
-export async function getStaticProps({ locale }: { locale: string }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ["common"])),
-    },
-  };
-}
-
-export const getStaticPaths: GetStaticPaths<{ slug: string }> = () => {
-  return {
-    paths: [], //indicates that no page needs be created at build time
-    fallback: "blocking", //indicates the type of fallback
-  };
-};
