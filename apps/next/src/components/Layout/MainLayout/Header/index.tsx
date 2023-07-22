@@ -17,9 +17,9 @@ export default function HomeHeader() {
   const { isLoggedIn, userLoading } = useAuthStore();
 
   return (
-    <div>
+    <div className="w-full">
       <Banner />
-      <nav className="flex items-center justify-between max-w-[1380px] m-auto py-6">
+      <nav className="flex items-center justify-between w-full m-auto py-6">
         <div className="flex items-center">
           <Link href="/" className="mr-3">
             <Image src="/images/logo.png" width={104} height={40} priority alt="" />
