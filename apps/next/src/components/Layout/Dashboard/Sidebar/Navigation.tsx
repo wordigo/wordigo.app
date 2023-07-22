@@ -12,9 +12,11 @@ import useSidebarNavigations, { type SidebarChildNav, type SidebarNavItem } from
 const DashboardNav = () => {
   const navigations = useSidebarNavigations();
 
+  const { showSidebarPanel, setSidebarPanel } = useCommonStore((state) => state);
+
   return (
     <AnimatePresence>
-      <nav className="grid items-start gap-2">
+      <nav className="grid items-start gap-2" onClick={() => setSidebarPanel(!showSidebarPanel)}>
         {navigations.map((item, index) => (
           <DashboardNav.Item {...item} key={index} />
         ))}
