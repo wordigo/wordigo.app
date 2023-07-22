@@ -6,6 +6,7 @@ import { AllCountryLanguages, SupportedLanguages } from "@wordigo/common";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "./select";
 
 export interface ILanguageSelector {
+  placeholder?: string;
   providerLanguages?: boolean;
   targetLanguageSelect?: boolean;
   className?: string;
@@ -13,7 +14,14 @@ export interface ILanguageSelector {
   onSelect?: (value: string) => void;
 }
 
-const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue, targetLanguageSelect, providerLanguages = false, onSelect }) => {
+const LanguageSelector: React.FC<ILanguageSelector> = ({
+  className,
+  defaultValue,
+  targetLanguageSelect,
+  placeholder,
+  providerLanguages = false,
+  onSelect,
+}) => {
   const handleSelect = (value: string) => {
     onSelect?.(value);
   };
@@ -21,9 +29,9 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue
   const computedLanguages = providerLanguages ? AllCountryLanguages : SupportedLanguages;
 
   return (
-    <Select defaultValue={targetLanguageSelect ? "DT" : defaultValue} onValueChange={handleSelect}>
+    <Select defaultValue={targetLanguageSelect ? "DT" : defaultValue || "0"} onValueChange={handleSelect}>
       <SelectTrigger className={className}>
-        <SelectValue placeholder="Select language" />
+        <SelectValue placeholder={placeholder || "Select language"} />
       </SelectTrigger>
       <SelectContent>
         <ScrollArea.Root className="max-h-[400px]" type="auto">

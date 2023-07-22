@@ -1,4 +1,4 @@
-import React, { ClassType, type PropsWithChildren, createRef, useEffect } from "react";
+import React, { createRef, useEffect } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 
 const boxVariant = {

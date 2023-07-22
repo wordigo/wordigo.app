@@ -19,7 +19,6 @@ import { useEffect, useMemo } from "react"
 import ReactCountryFlag from "react-country-flag"
 
 import { sendToBackground } from "@plasmohq/messaging"
-import { useStorage } from "@plasmohq/storage/hook"
 
 import DictionarySelector from "~features/translate/components/DictionarySelector"
 import trpc from "~libs/trpc"
@@ -29,7 +28,6 @@ import { useContextPopover } from "../context/popover"
 
 const TranslatePopup = () => {
   const toast = useToast()
-  const [theme] = useStorage("theme")
 
   const { cordinate, selectedText, setPopup, targetLanguage } = useContextPopover()
   const { mutate: handleTranslate, isLoading, data } = trpc.translation.translate.useMutation({})
@@ -55,14 +53,22 @@ const TranslatePopup = () => {
     opeendSettings && setPopup(false)
   }
 
+  const speech = new SpeechSynthesisUtterance(data?.translatedText as string)
   const textToSpeech = () => {
-    const speech = new SpeechSynthesisUtterance(data.translatedText as string)
-    // Initialize the speech synthesis
+    const speech = new SpeechSynthesisUtterance(data?.translatedText as string)
     speech.rate = 1
     speech.pitch = 1
     speech.volume = 1
-    speech.voice = speechSynthesis.getVoices()[0]
-    speech.lang = "en_US"
+
+    const voices = speechSynthesis.getVoices()
+    if (voices.length > 0) {
+      speech.voice = voices[0]
+    }
+
+    speech.lang = "EN_US"
+
+    window.speechSynthesis.cancel()
+
     window.speechSynthesis.speak(speech)
   }
 
