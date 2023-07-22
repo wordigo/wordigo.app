@@ -25,7 +25,7 @@ export default function DashboardPage() {
   return (
     <Fragment>
       <DashboardLayout heading={"Dictionary"} query={data?.data?.dictionary?.title}>
-        {/* <DashboardShell>{data && <DataTable columns={columns} data={data?.data?.dictionary} label="Add Words" />}</DashboardShell> */}
+        <DashboardShell>{data && <DataTable columns={columns} data={data?.data?.dictionary} label="Add Words" />}</DashboardShell>
       </DashboardLayout>
     </Fragment>
   );
