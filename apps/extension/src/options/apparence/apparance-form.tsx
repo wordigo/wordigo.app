@@ -44,9 +44,9 @@ const ApparanceForm = () => {
 
   async function onSubmit(data: AppearanceFormValues) {
     await storage.set("theme", data.theme)
-
     toast({
-      title: "You submitted the following values:"
+      title: "Successful",
+      description: "Your changes have been successfully saved."
     })
   }
 
