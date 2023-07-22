@@ -1,4 +1,5 @@
 import FeatureBanner from "@/components/Home/Banner";
+import CTASection from "@/components/Home/CTASection";
 import Comment from "@/components/Home/Comments";
 import FeatureSections from "@/components/Home/FeatureSections";
 import Footers from "@/components/Home/Footers";
@@ -14,6 +15,7 @@ export default function index() {
         <HeroContainer />
       </div>
       <FeatureBanner />
+      <CTASection />
       <FeatureSections />
       <Comment />
       <Footers />

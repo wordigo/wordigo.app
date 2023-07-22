@@ -1,32 +1,25 @@
 import Image from "next/image";
 import Animation from "@/components/Animation";
+import { Zap } from "lucide-react";
 import { useTranslation } from "next-i18next";
-import { FaFileDownload } from "react-icons/fa";
 
-import { Button } from "@wordigo/ui";
+import { Badge } from "@wordigo/ui";
 
 export default function FeatureBanner() {
   const { t } = useTranslation();
   return (
     <Animation>
-      <div className="container px-4 mx-auto max-w-[1440px] w-full">
-        <div className="relative py-18 px-6 bg-blue-500 rounded-2xl overflow-hidden">
-          <Image
-            src="/images/background-banner-squares.png"
-            width={1126}
-            height={323}
-            className="absolute top-0 left-0 h-full w-full object-cover opacity-70"
-            alt=""
-            data-config-id="auto-img-1-4"
-          />
-          <div className="relative max-w-lg mx-auto text-center my-[25px]">
-            <h3 className="text-3xl font-bold text-white mb-3">{t("nav_HeroBannerHeading")}</h3>
-            <p className="font-medium text-blue-200 mb-6">{t("nav_HeroBannerDescription")}</p>
-            <Button className=" gap-x-2" variant={"default"} size={"lg"}>
-              <FaFileDownload size={15} />
-              {t("nav_HeroBannerButton")}
-            </Button>
-          </div>
+      <div className="w-full flex flex-col items-center px-20 py-24">
+        <Badge className="text-sm font-medium px-2.5 py-1" variant="outline">
+          <Zap className="mr-2 h-4 w-4" />
+          Check out our new translate extension!
+        </Badge>
+        <h2 className="mt-4 text-4xl font-semibold">Start using our extension, today.</h2>
+        <p className="text-xl text-muted-foreground mt-5">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, reiciendis sunt atque dolore consectetur incidunt!
+        </p>
+        <div className="w-[48rem] relative h-[32rem] border-4 border-primary bg-primary rounded-[0.625rem] mt-16">
+          <Image src="/images/extension.png" fill alt="" className="rounded-[0.3125rem]" />
         </div>
       </div>
     </Animation>
