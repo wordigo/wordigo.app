@@ -1,6 +1,5 @@
 import React from "react";
 import { type GetStaticPaths } from "next";
-import Footer from "@/components/Home/Footers";
 import MainLayout from "@/components/Layout/MainLayout";
 import { CopyIcon, Link, Volume2 } from "lucide-react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -25,7 +24,7 @@ export default function index() {
             <h1 className="font-bold text-2xl text-light_text dark:text-white">Test Title</h1>
             <p className="text-light_text dark:text-white font-semibold text-sm opacity-80 my-1">TEST</p>
             <div className="my-3 flex flex-col gap-3">
-              <div className="bg-gray-400 px-6 py-3 rounded-md flex items-center gap-5 w-fit min-w-[480px]">
+              <div className="dark:bg-[#141420] bg-[#F3F4FE] px-6 py-3 rounded-md flex items-center gap-5 w-fit min-w-[480px]">
                 <span>
                   <Volume2 />
                 </span>
@@ -42,7 +41,6 @@ export default function index() {
           </span>
         </section>
       </main>
-      <Footer />
     </MainLayout>
   );
 }

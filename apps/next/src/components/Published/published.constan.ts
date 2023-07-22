@@ -1,4 +1,5 @@
 export interface IPublished {
+  [x: string]: any;
   title: string;
   src: string | null;
   description: string;

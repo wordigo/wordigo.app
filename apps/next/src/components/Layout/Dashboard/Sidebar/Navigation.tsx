@@ -61,12 +61,7 @@ DashboardNav.ChildItem = ({ navs, trigger, loading }: SidebarChildNav) => {
       {!loading && (
         <div className="flex flex-col">
           {navs?.map((item, index) => (
-            <Link
-              href={"/dashboard/dictionaries/" + item.link}
-              key={index}
-              className="w-full"
-              onClick={() => setSidebarPanel(!showSidebarPanel)}
-            >
+            <Link href={"/dashboard/dictionaries/" + item.link} key={index} className="w-full" onClick={() => setSidebarPanel(!showSidebarPanel)}>
               <span className={cn("flex items-center px-3 text-sm w-full")}>
                 <span className="flex justify-between w-full items-center hover:bg-accent px-3 py-2 rounded-sm">{item.name}</span>
               </span>

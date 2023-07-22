@@ -51,17 +51,11 @@ export function DataTable({ data }: DataTableProps) {
   });
 
   return (
-    <div className="max-w-screen-7xl m-auto flex flex-col gap-5 mt-10">
+    <div className="max-w-screen-7xl m-auto flex flex-col gap-5 my-10 mb-20">
       <DataTableToolbar table={table} />
       <div className="flex gap-4 flex-wrap">
-        {table.getRowModel() &&
-          table.getRowModel().rows.map((row) => (
-            <div key={row?.original?.id}>
-              <Published item={row.original} />
-            </div>
-          ))}
+        <Published items={data} />
       </div>
-      <DataTablePagination table={table} />
     </div>
   );
 }
