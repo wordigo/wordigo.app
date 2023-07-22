@@ -20,10 +20,12 @@ export default function HomeHeader() {
     <div>
       <Banner />
       <nav className="flex items-center justify-between max-w-[1380px] m-auto py-6">
-        <Link href="/" className="h-10 relative w-[6.5rem]">
-          <Image src="/images/logo.png" fill priority alt="" />
-        </Link>
-        <Navigation />
+        <div className="flex items-center">
+          <Link href="/" className="mr-3">
+            <Image src="/images/logo.png" width={104} height={40} priority alt="" />
+          </Link>
+          <Navigation />
+        </div>
         <div className="flex gap-x-4 items-center">
           <ThemeMode />
           <ChangeLanguage />
