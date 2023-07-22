@@ -8,7 +8,7 @@ export default {
     "./**/**/**/*.{ts,tsx}",
     "./**/*.{ts,tsx}",
     "./*.{ts,tsx}",
-    "../../apps/extension/contents/**/**/*.{ts,tsx}",
+    "../../apps/extension/**/**/**/*.{ts,tsx}",
     "../../packages/ui/components/**/*.{ts,tsx}",
   ],
   theme: {

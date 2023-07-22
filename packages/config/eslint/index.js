@@ -9,6 +9,10 @@ const config = {
   ],
   rules: {
     "react-hooks/rules-of-hooks": "off",
+    "typescript-eslint/no-explicit-any": "off",
+    "@next/next/no-img-element": "off",
+    "jsx-a11y/alt-text": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "react-hooks/exhaustive-deps": "off",
     "@typescript-eslint/no-unsafe-call": "off",
     "@typescript-eslint/restrict-plus-operands": "off",

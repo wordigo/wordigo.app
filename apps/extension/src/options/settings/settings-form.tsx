@@ -1,6 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import {
   Button,
+  CardDescription,
   Form,
   FormControl,
   FormDescription,
@@ -11,13 +12,13 @@ import {
   Switch,
   useToast
 } from "@wordigo/ui"
+import LanguageSelector from "@wordigo/ui/components/ui/language-selector"
 import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import type { z } from "zod"
 
 import { Storage } from "@plasmohq/storage"
 
-import LanguageSelector from "~../../packages/ui/components/ui/language-selector"
 import { SettingsFormSchema } from "~utils/schemas"
 
 const storage = new Storage({
@@ -49,15 +50,11 @@ export const SettingsForm = () => {
     setIsLoading(false)
   }
 
-  console.log(form.formState)
-
   useEffect(() => {
     void getStatus()
   }, [])
 
   const handleSaveChanges = async (values: SettingsFormValues) => {
-    console.log(values)
-
     await storage.set("translateStatus", values.translateStatus)
     await storage.set("targetLanguage", values.targetLanguage)
     toast({
@@ -68,13 +65,13 @@ export const SettingsForm = () => {
 
   if (!isLoading)
     return (
-      <Form {...form}>
+      <Form {...(form as any)}>
         <form className="space-y-4" onSubmit={form.handleSubmit(handleSaveChanges)}>
           <FormField
             control={form.control as never}
             name="targetLanguage"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="flex flex-col gap-y-2">
                 <FormLabel>Target Language</FormLabel>
                 <FormControl>
                   <LanguageSelector onSelect={field.onChange as never} defaultValue={field.value} providerLanguages />
@@ -87,7 +84,10 @@ export const SettingsForm = () => {
             )}
           />
           <h3 className="mb-4 text-base font-medium">Translation options</h3>
-          {/* <CardDescription>when you select text translate action</CardDescription> */}
+          <CardDescription>
+            Enable the 'Show Translate Button' for a convenient button next to selected text, or use 'Select and translate' to
+            effortlessly translate by hovering over the text and clicking the spin button.
+          </CardDescription>
           <div className="space-y-4">
             <FormField
               control={form.control as never}
@@ -96,7 +96,10 @@ export const SettingsForm = () => {
                 <FormItem className="flex flex-row items-center justify-between rounded-lg border-gray-400 border-opacity-40 border p-4">
                   <div className="space-y-0.5">
                     <FormLabel className="text-base">Show Translate Button</FormLabel>
-                    <FormDescription>Show a button to translate right by the selected text</FormDescription>
+                    <FormDescription>
+                      Enable this option to display a translate button next to the selected text, making translation more
+                      accessible.
+                    </FormDescription>
                   </div>
                   <FormControl>
                     <Switch checked={field.value} onCheckedChange={field.onChange} />
@@ -112,7 +115,7 @@ export const SettingsForm = () => {
                   <div className="space-y-0.5">
                     <FormLabel className="text-base">Select and translate</FormLabel>
                     <FormDescription>
-                      When you hover over the selected text, the spin button pops up, and when you press it, it opens the popup.
+                      Clicking on the selected text opens a pop-up window that provides the translation of the selected text.
                     </FormDescription>
                   </div>
                   <FormControl>
