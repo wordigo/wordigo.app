@@ -7,15 +7,25 @@ import type { z } from "zod"
 import "~/styles/globals.css"
 
 import LanguageSelector from "@wordigo/ui/components/ui/language-selector"
+import { RotateCw } from "lucide-react"
+import { useState } from "react"
+
+import { Storage } from "@plasmohq/storage/"
 
 import Provider from "~providers"
 import ThemeProvider from "~providers/theme"
 import type { SetupFormSchema } from "~utils/schemas"
 import { SettingsFormSchema } from "~utils/schemas"
 
+const storage = new Storage({
+  area: "local"
+})
+
 type SetupFormValues = z.infer<typeof SetupFormSchema>
 
 const WelcomePage = () => {
+  const [isLoading, setIsLoading] = useState(false)
+
   const defaultValues: Partial<SetupFormValues> = {
     targetLanguage: ""
   }
@@ -25,8 +35,11 @@ const WelcomePage = () => {
     mode: "onChange"
   })
 
-  const handleSaveChanges = (values: SetupFormValues) => {
-    console.log(values)
+  const handleSaveChanges = async (values: SetupFormValues) => {
+    setIsLoading(true)
+    await storage.set("targetLanguage", values.targetLanguage)
+    window.close()
+    setIsLoading(false)
   }
 
   return (
@@ -62,8 +75,8 @@ const WelcomePage = () => {
                       </FormItem>
                     )}
                   />
-                  <Button className="mt-10  w-full" type="submit">
-                    Save
+                  <Button disabled={isLoading} className="mt-10  w-full" type="submit">
+                    {isLoading ? <RotateCw className="mr-2 h-4 w-4 animate-spin" /> : "Save"}
                   </Button>
                 </form>
               </Form>

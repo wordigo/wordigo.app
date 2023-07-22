@@ -65,7 +65,7 @@ export const SettingsForm = () => {
 
   if (!isLoading)
     return (
-      <Form {...form}>
+      <Form {...(form as any)}>
         <form className="space-y-4" onSubmit={form.handleSubmit(handleSaveChanges)}>
           <FormField
             control={form.control as never}
