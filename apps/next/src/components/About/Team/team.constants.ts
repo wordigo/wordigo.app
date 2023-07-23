@@ -33,6 +33,14 @@ const Team: ITeam[] = [
     twitter: "",
   },
   {
+    name: "Mustafa Pekkirişci",
+    src: "https://avatars.githubusercontent.com/u/121763536?v=4",
+    title: "Frontend Developer / UI Designer",
+    github: "",
+    linkedin: "",
+    twitter: "",
+  },
+  {
     name: "Fatih Yıldız",
     src: "https://avatars.githubusercontent.com/u/47571500?v=4",
     title: "UI Designer",
