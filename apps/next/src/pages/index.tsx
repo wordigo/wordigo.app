@@ -15,9 +15,9 @@ export default function index() {
         <HeroContainer />
       </div>
       <FeatureBanner />
-      <CTASection />
       <FeatureSections />
       <Comment />
+      <CTASection />
       <Footers />
     </MainLayout>
   );

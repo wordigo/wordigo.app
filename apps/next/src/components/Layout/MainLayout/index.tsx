@@ -9,7 +9,7 @@ const MainLayout: React.FC<PropsWithChildren> = ({ children }) => {
       <Banner />
       <main className="max-w-[90rem] m-auto">
         <HomeHeader />
-        <div className="flex flex-col gap-y-10">{children}</div>
+        <div className="flex flex-col">{children}</div>
       </main>
     </>
   );

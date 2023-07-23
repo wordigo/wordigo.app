@@ -6,7 +6,7 @@ import { Button } from "@wordigo/ui";
 function CTASection() {
   return (
     <Animation>
-      <div className="flex bg-primary flex-col p-16 rounded-2xl items-center">
+      <div className="flex bg-primary mx-20 my-24 flex-col p-16 rounded-2xl items-center">
         <h2 className="text-4xl text-secondary font-semibold">
           Install our extension,&nbsp;
           <span className="bg-secondary text-primary rounded-sm inline-flex items-center">
