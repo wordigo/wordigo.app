@@ -8,7 +8,6 @@ import { cn } from "@wordigo/ui/lib/utils";
 
 import NavProfile from "../../NavProfile";
 import ThemeMode from "../../ThemeMode";
-import Banner from "../Banner";
 import ChangeLanguage from "../ChangeLanguage";
 import Navigation from "./Navigation";
 
@@ -18,7 +17,6 @@ export default function HomeHeader() {
 
   return (
     <div className="w-full">
-      <Banner />
       <nav className="flex items-center justify-between w-full m-auto py-6">
         <div className="flex items-center">
           <Link href="/" className="mr-3">
