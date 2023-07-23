@@ -5,7 +5,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function DashboardPage() {
   return (
-    <DashboardLayout heading="Dashboard">
+    <DashboardLayout heading="Dashboard" query="">
       <DashboardShell>
         <DashboardHeader text="Create and manage dashboard."></DashboardHeader>
       </DashboardShell>

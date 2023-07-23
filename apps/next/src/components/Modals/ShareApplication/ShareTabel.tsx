@@ -4,17 +4,25 @@ import { useRouter } from "next/navigation";
 import CButton from "@/components/UI/Button";
 import { api } from "@/libs/trpc";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FilePlus } from "lucide-react";
+import { Share2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-
-
-import { Button, Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Input, Label, Switch, Textarea } from "@wordigo/ui";
-
-
-
-
+import {
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+  Input,
+  Label,
+  Textarea,
+  useToast,
+} from "@wordigo/ui";
 
 const ShareDictionarySchema = z.object({
   title: z.string().max(80, { message: "Title must be at most 80 characters" }),
@@ -27,7 +35,9 @@ type CreateDictionaryValues = z.infer<typeof ShareDictionarySchema>;
 
 export function ShareDictionary({ label }: { label: string }) {
   const { mutate: addDictionary, isLoading } = api.dictionary.addDictionary.useMutation();
-  const [selectedImage, setSelectedImage] = useState('/images/dictionary_banner.jpg');
+  const [selectedImage, setSelectedImage] = useState("/images/dictionary_banner.jpg");
+
+  const { toast } = useToast();
 
   const router = useRouter();
 
@@ -53,31 +63,34 @@ export function ShareDictionary({ label }: { label: string }) {
     router.refresh();
   };
 
-  const handleImageChange = (event: any) => {
-    const file = event.target.files[0];
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event?.target?.files?.[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setSelectedImage(reader.result);
-      };
-      reader.readAsDataURL(file);
+      const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+      if (allowedTypes.includes(file.type)) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setSelectedImage(reader?.result as string);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        toast({
+          title: "Error",
+          description: "Please select an image file (JPEG, PNG, or GIF).",
+        });
+      }
     } else {
-      setSelectedImage(null);
+      setSelectedImage("/images/dictionary_banner.jpg");
     }
   };
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="default" size="sm">
-          {label}
-        </Button>
-      </DialogTrigger>
+    <div>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle className="flex gap-x-2 items-center">
-            <FilePlus size={18} />
-            Add Dictionary
+            <Share2 size={18} />
+            Published Dictionary
           </DialogTitle>
         </DialogHeader>
 
@@ -101,6 +114,7 @@ export function ShareDictionary({ label }: { label: string }) {
                           placeholder="Image"
                           autoCapitalize="none"
                           autoComplete="image"
+                          accept="image/jpeg, image/png, image/gif"
                           autoCorrect="off"
                           onChange={handleImageChange}
                           className="absolute bottom-4 w-[213px] left-[22%] dark:bg-[#020817ce] bg-[#ffffffa9]"
@@ -131,7 +145,15 @@ export function ShareDictionary({ label }: { label: string }) {
                   <FormItem className="grid gap-1">
                     <Label>Title</Label>
                     <FormControl>
-                      <Input {...field} id="title" placeholder="Title" autoCapitalize="none" autoComplete="title" autoCorrect="off" />
+                      <Input
+                        {...field}
+                        id="title"
+                        placeholder="Title"
+                        autoCapitalize="none"
+                        autoComplete="title"
+                        autoCorrect="off"
+                        className="focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -152,7 +174,7 @@ export function ShareDictionary({ label }: { label: string }) {
                         autoCapitalize="none"
                         autoComplete="description"
                         autoCorrect="off"
-                        className="min-h-[100px] max-h-[100px]"
+                        className="min-h-[100px] max-h-[100px] focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0"
                       />
                     </FormControl>
                     <FormMessage />
@@ -161,13 +183,13 @@ export function ShareDictionary({ label }: { label: string }) {
               />
               <DialogFooter>
                 <CButton loading={isLoading} type="submit" disabled>
-                  Save Dictionary
+                  Publish
                 </CButton>
               </DialogFooter>
             </div>
           </form>
         </Form>
       </DialogContent>
-    </Dialog>
+    </div>
   );
 }

@@ -1,5 +1,5 @@
 import { CreateWord } from "@/components/Modals/CreateWord";
-import { ShareDictionary } from "@/components/Modals/ShareDictionary";
+import { CreateDictionary } from "@/components/Modals/ShareApplication";
 import { type Table } from "@tanstack/react-table";
 
 import { Input } from "@wordigo/ui";
@@ -22,7 +22,7 @@ export function DataTableToolbar<TData>({ table, label }: DataTableToolbarProps<
       </div>
       <div className="flex items-center gap-3">
         <CreateWord label={label} />
-        <ShareDictionary label={"Share Dictionary"} />
+        <CreateDictionary label={"Publish"} />
       </div>
     </div>
   );

@@ -8,10 +8,6 @@ import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
 import { api } from "@/libs/trpc";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-
-
-
-
 export default function DashboardPage() {
   //   const data = api.dictionaryWord.addWordToDic.useMutation();
   //   const test = data.mutate({

@@ -1,5 +1,4 @@
 import { CreateDictionary } from "@/components/Modals/CreateDictionary";
-import { ShareDictionary } from "@/components/Modals/ShareDictionary";
 import { type Table } from "@tanstack/react-table";
 
 import { Input } from "@wordigo/ui";
