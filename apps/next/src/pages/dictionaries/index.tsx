@@ -6,7 +6,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 export default function index() {
   return (
     <MainLayout>
-      <DataTable data={PublishedConstan} label="TEST" />
+      <DataTable data={PublishedConstan} label="" />
     </MainLayout>
   );
 }

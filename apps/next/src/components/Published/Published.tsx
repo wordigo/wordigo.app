@@ -6,7 +6,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Rating from "./Rating";
 import { type IPublished } from "./published.constan";
 
-export default function Published({ items }: { items: IPublished }) {
+export default function Published({ items }: { items: IPublished[] }) {
   const router = useRouter();
   const [data, setData] = useState<any>(items);
   const [hasMore, setHasMore] = useState<boolean>(true);
@@ -18,16 +18,10 @@ export default function Published({ items }: { items: IPublished }) {
     }
     setData(newData);
   };
+
   return (
     <>
-      <InfiniteScroll
-        dataLength={data.length}
-        next={fetchMoreData}
-        hasMore={hasMore}
-        loader={<h4>Loading...</h4>}
-        endMessage={<p>No more data to load.</p>}
-        className="flex gap-2 flex-wrap"
-      >
+      <InfiniteScroll dataLength={data.length} next={fetchMoreData} hasMore={hasMore} loader={<h4>Loading...</h4>} className="flex gap-2 flex-wrap">
         {data.map((item: IPublished) => (
           <div key={item.id} onClick={() => router.push(`/dictionaries/${item.id}`)}>
             {item.user.name && (
