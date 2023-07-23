@@ -66,7 +66,6 @@ const TranslatePopup = () => {
     }
 
     speech.lang = "EN_US"
-
     window.speechSynthesis.cancel()
 
     window.speechSynthesis.speak(speech)
