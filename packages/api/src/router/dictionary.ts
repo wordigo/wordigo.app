@@ -38,9 +38,10 @@ export const dictionaryRouter = createTRPCRouter({
     )
     .query(async ({ input, ctx }) => {
       const { id } = ctx.user
+      const { dictionaryId } = input
 
       const dictionary = await prisma.dictionaries.findFirst({
-        where: { authorId: id, id: input.dictionaryId },
+        where: { authorId: id, id: dictionaryId },
         include: {
           UserWords: {
             include: {
@@ -54,8 +55,13 @@ export const dictionaryRouter = createTRPCRouter({
         },
       })
 
+      const words = [] as any
+      dictionary?.UserWords.map(w => {
+        words.push(w.userWord)
+      })
+
       const responseData = {
-        dictionary,
+        words,
         numberOfWords: dictionary?.UserWords.length,
       }
 
