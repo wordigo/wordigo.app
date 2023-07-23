@@ -8,6 +8,10 @@ import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
 import { api } from "@/libs/trpc";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
+
+
+
+
 export default function DashboardPage() {
   //   const data = api.dictionaryWord.addWordToDic.useMutation();
   //   const test = data.mutate({
@@ -24,8 +28,8 @@ export default function DashboardPage() {
 
   return (
     <Fragment>
-      <DashboardLayout heading={"Dictionary"} query={data?.data?.dictionary?.title}>
-        <DashboardShell>{data && <DataTable columns={columns} data={data?.data?.dictionary} label="Add Words" />}</DashboardShell>
+      <DashboardLayout heading={"Dictionary"} query={"Words"}>
+        <DashboardShell>{data && <DataTable columns={columns} data={data?.data?.words} label="Add Words" />}</DashboardShell>
       </DashboardLayout>
     </Fragment>
   );

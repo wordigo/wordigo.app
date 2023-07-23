@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useRouter } from "next/router";
-import { columns } from "@/components/Dashboard/Words/columns";
 import {
   type ColumnDef,
   type ColumnFiltersState,
@@ -60,14 +59,27 @@ export function DataTable<TData, TValue>({ columns, data, label }: DataTableProp
       <DataTableToolbar table={table} label={label} />
       <div className="rounded-md border">
         <Table>
+          <TableHeader>
+            {table.getHeaderGroups() &&
+              table.getHeaderGroups().map((headerGroup) => (
+                <TableRow key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => {
+                    return (
+                      <TableHead key={header.id}>
+                        {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                      </TableHead>
+                    );
+                  })}
+                </TableRow>
+              ))}
+          </TableHeader>
           <TableBody>
-            {table.options.data && table.options.data.UserWords.length ? (
-              table.options.data.UserWords.map((row: any) => (
-                <TableRow key={row.id}>
-                  {/* {row.getVisibleCells().map((cell) => (
+            {table.getRowModel() && table.getRowModel().rows?.length ? (
+              table.getRowModel().rows.map((row) => (
+                <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
+                  {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
-                  ))} */}
-                  <TableCell key={row.id}>{row.userWord.word.text}</TableCell>
+                  ))}
                 </TableRow>
               ))
             ) : (

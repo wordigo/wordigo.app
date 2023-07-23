@@ -9,7 +9,7 @@ import { DataTableRowActions } from "./data-table-row-actions";
 export const taskSchema = z.object({
   id: z.string(),
   title: z.string(),
-  words: z.string(),
+  text: z.string(),
 });
 
 export type Task = z.infer<typeof taskSchema>;
@@ -27,12 +27,12 @@ export const columns: ColumnDef<Task>[] = [
     },
   },
   {
-    accessorKey: "words",
+    accessorKey: "text",
     header: ({ column }) => <DataTableColumnHeader column={column} title="Words" />,
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className=" truncate font-medium">{row.getValue("words")}</span>
+          <span className=" truncate font-medium">{row.getValue("text")}</span>
         </div>
       );
     },
