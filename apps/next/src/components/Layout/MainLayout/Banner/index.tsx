@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { PartyPopper, X } from "lucide-react";
+import { PartyPopper } from "lucide-react";
 
 import { Button } from "@wordigo/ui";
 
@@ -39,12 +39,10 @@ const Banner = () => {
               </p>
             </div>
             <div className="flex items-center">
-              <Button className="mr-2" variant="default">
-                See More
-              </Button>
-              <Button variant="ghost" onClick={closeBanner}>
+              <Button variant="default">See More</Button>
+              {/* <Button variant="ghost" onClick={closeBanner}>
                 <X className="w-4 h-4" />
-              </Button>
+              </Button> */}
             </div>
           </div>
         </motion.div>
