@@ -54,8 +54,6 @@ export function DataTable<TData, TValue>({ columns, data, label }: DataTableProp
     getFacetedUniqueValues: getFacetedUniqueValues(),
   });
 
-  console.log(table.getRowModel().rows.map((item) => item.getVisibleCells().map((test) => console.log(test.getContext().row.original))));
-
   return (
     <div className="space-y-4 mb-[90px]">
       <DataTableToolbar table={table} label={label} />

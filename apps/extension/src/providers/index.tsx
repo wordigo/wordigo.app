@@ -10,8 +10,6 @@ const Provider = ({ children }: PropsWithChildren) => {
   const [theme] = useStorage("theme")
   const portalContainer = document.getElementById("el-translate-container") || document.body
 
-  console.log("theme", theme)
-
   return (
     <Portal.Root data-theme={theme || "light"} container={portalContainer}>
       <TRPCProvider>{children}</TRPCProvider>

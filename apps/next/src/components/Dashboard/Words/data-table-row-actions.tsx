@@ -7,7 +7,7 @@ import { type Row } from "react-table";
 import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@wordigo/ui";
 
 interface DataTableRowActionsProps<TData extends object> {
-  row: Row<TData & { id: string }>;
+  row: Row<TData & { id: string; text: string; targetLanguage: string; translateText: string; translateLanguage: string }>;
 }
 
 export function DataTableRowActions<TData extends object>({ row }: DataTableRowActionsProps<TData>) {

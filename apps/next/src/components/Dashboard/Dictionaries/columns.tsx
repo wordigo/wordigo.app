@@ -10,6 +10,7 @@ export const taskSchema = z.object({
   id: z.string(),
   title: z.string(),
   words: z.string(),
+  updatedDate: z.string(),
 });
 
 export type Task = z.infer<typeof taskSchema>;
@@ -27,23 +28,26 @@ export const columns: ColumnDef<Task>[] = [
     },
   },
   {
-    accessorKey: "words",
-    header: ({ column }) => <DataTableColumnHeader column={column} title="Words" />,
+    accessorKey: "subscribers",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Subscribers" className="pr-10 text-start" />,
     cell: ({ row }) => {
       return (
-        <div className="flex space-x-2">
-          <span className=" truncate font-medium">{row.getValue("words")}</span>
+        <div className="flex space-x-2 ">
+          <span className=" truncate font-medium">{row.getValue("subscribers")}000</span>
         </div>
       );
     },
   },
   {
     accessorKey: "time",
-    header: ({ column }) => <DataTableColumnHeader column={column} title="Date" />,
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Time" />,
     cell: ({ row }) => {
+      const timeValue = row.original.updatedDate;
+      const dateObj = new Date(timeValue);
+      const formattedDate = dateObj.toLocaleDateString();
       return (
         <div className="flex space-x-2">
-          <span className="truncate font-medium">{row.getValue("time")}</span>
+          <span className=" truncate font-medium">{formattedDate}</span>
         </div>
       );
     },

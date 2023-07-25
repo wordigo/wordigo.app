@@ -9,11 +9,7 @@ import { DataTableRowActions } from "./data-table-row-actions";
 // We're keeping a simple non-relational schema here.
 // IRL, you will have a schema for your data models.
 export const taskSchema = z.object({
-  id: z.string(),
-  translateText: z.string(),
-  text: z.string(),
-  targetLanguage: z.string(),
-  translateLanguage: z.string(),
+  word: z.object({ id: z.string(), translatedText: z.string(), text: z.string(), targetLanguage: z.string(), nativeLanguage: z.string() }),
 });
 
 export type Task = z.infer<typeof taskSchema>;

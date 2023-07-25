@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import CButton from "@/components/UI/Button";
 import { api } from "@/libs/trpc";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FilePlus } from "lucide-react";
+import { FilePlus, WholeWord } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -73,7 +73,7 @@ export function CreateWord({ label }: { label: string }) {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle className="flex gap-x-2 items-center">
-            <FilePlus size={18} />
+            <WholeWord size={18} />
             Create Word
           </DialogTitle>
         </DialogHeader>

@@ -2,7 +2,7 @@ import { useRouter } from "next/navigation";
 import CButton from "@/components/UI/Button";
 import { api } from "@/libs/trpc";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FilePlus } from "lucide-react";
+import { FilePlus, Table2Icon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -65,8 +65,8 @@ export function CreateDictionary({ label }: { label: string }) {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle className="flex gap-x-2 items-center">
-            <FilePlus size={18} />
-            Add Dictionary
+            <Table2Icon size={18} />
+            Create Dictionary
           </DialogTitle>
         </DialogHeader>
 

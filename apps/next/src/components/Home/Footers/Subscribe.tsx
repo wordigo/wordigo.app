@@ -27,7 +27,6 @@ export default function Subscribe() {
 
   const handleEmail = (values: CreateDictionaryValues) => {
     // email: values.email, router.refresh();
-    console.log(values.email + "HuHu!");
   };
 
   return (
