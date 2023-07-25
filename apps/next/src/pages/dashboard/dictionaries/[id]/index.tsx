@@ -16,8 +16,6 @@ export default function DashboardPage() {
     dictionaryId: id as string,
   });
 
-  console.log(data?.data)
-
   return (
     <Fragment>
       <DashboardLayout heading={"Dictionary"} query={"Words"}>

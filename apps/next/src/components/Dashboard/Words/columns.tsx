@@ -16,7 +16,7 @@ export type Task = z.infer<typeof taskSchema>;
 
 export const columns: ColumnDef<Task>[] = [
   {
-    accessorKey: "targetLanguage",
+    accessorKey: "text",
     header: ({ column }) => <DataTableColumnHeader column={column} title="Word" />,
     cell: ({ row }) => {
       return (

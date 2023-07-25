@@ -1,11 +1,10 @@
-import { useRouter } from "next/navigation";
 import CButton from "@/components/UI/Button";
 import { api } from "@/libs/trpc";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { DialogFooter, Form, FormControl, FormField, FormItem, FormMessage, Input } from "@wordigo/ui";
+import { DialogFooter, Form, FormControl, FormField, FormItem, FormMessage, Input, ToastAction, useToast } from "@wordigo/ui";
 
 const CreateDictionarySchema = z.object({
   email: z.string().nonempty(),
@@ -14,8 +13,8 @@ const CreateDictionarySchema = z.object({
 type CreateDictionaryValues = z.infer<typeof CreateDictionarySchema>;
 
 export default function Subscribe() {
-  const router = useRouter();
-  const { mutate, isLoading } = api.subscribe.subscribe.useMutation();
+  const { toast } = useToast();
+  const { mutate, isLoading, isSuccess } = api.subscribe.subscribe.useMutation();
   const defaultValues: Partial<CreateDictionaryValues> = {
     email: "",
   };
@@ -29,7 +28,6 @@ export default function Subscribe() {
     mutate({
       email: values.email,
     });
-    router.refresh();
   };
 
   return (
@@ -49,6 +47,7 @@ export default function Subscribe() {
                     <FormItem className="w-[220px]">
                       <FormControl>
                         <Input
+                          disabled
                           {...field}
                           id="email"
                           placeholder="Enter your email"
@@ -69,7 +68,7 @@ export default function Subscribe() {
                   )}
                 />
                 <DialogFooter>
-                  <CButton loading={isLoading} type="submit">
+                  <CButton disabled loading={isLoading} type="submit">
                     Subscribe
                   </CButton>
                 </DialogFooter>
