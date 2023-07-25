@@ -9,12 +9,6 @@ import { api } from "@/libs/trpc";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function DashboardPage() {
-  //   const data = api.dictionaryWord.addWordToDic.useMutation();
-  //   const test = data.mutate({
-  //     dictionaryId: "",
-  //     wordId: ""
-  //   })
-
   const router = useRouter();
   const { id } = router.query;
 

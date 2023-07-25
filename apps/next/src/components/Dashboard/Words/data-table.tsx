@@ -15,7 +15,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@wordigo/ui";
+import { Table, TableBody, TableCell, TableHeadWord, TableHeader, TableRow } from "@wordigo/ui";
 
 import { DataTablePagination } from "./data-table-pagination";
 import { DataTableToolbar } from "./data-table-toolbar";
@@ -54,6 +54,8 @@ export function DataTable<TData, TValue>({ columns, data, label }: DataTableProp
     getFacetedUniqueValues: getFacetedUniqueValues(),
   });
 
+  console.log(table.getRowModel().rows.map((item) => item.getVisibleCells().map((test) => console.log(test.getContext().row.original))));
+
   return (
     <div className="space-y-4 mb-[90px]">
       <DataTableToolbar table={table} label={label} />
@@ -65,9 +67,9 @@ export function DataTable<TData, TValue>({ columns, data, label }: DataTableProp
                 <TableRow key={headerGroup.id}>
                   {headerGroup.headers.map((header) => {
                     return (
-                      <TableHead key={header.id}>
+                      <TableHeadWord key={header.id}>
                         {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                      </TableHead>
+                      </TableHeadWord>
                     );
                   })}
                 </TableRow>

@@ -1,6 +1,8 @@
 import { type ColumnDef } from "@tanstack/react-table";
 import { z } from "zod";
 
+import { Badge } from "@wordigo/ui";
+
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
 
@@ -8,42 +10,35 @@ import { DataTableRowActions } from "./data-table-row-actions";
 // IRL, you will have a schema for your data models.
 export const taskSchema = z.object({
   id: z.string(),
-  title: z.string(),
+  translateText: z.string(),
   text: z.string(),
+  targetLanguage: z.string(),
+  translateLanguage: z.string(),
 });
 
 export type Task = z.infer<typeof taskSchema>;
 
 export const columns: ColumnDef<Task>[] = [
   {
-    accessorKey: "title",
-    header: ({ column }) => <DataTableColumnHeader column={column} title="Title" />,
+    accessorKey: "targetLanguage",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Word" />,
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[500px] truncate font-medium">{row.getValue("title")}</span>
+          <Badge className="truncate font-medium">{row?.original?.word?.targetLanguage}</Badge>
+          <span className="max-w-[500px] truncate font-medium">{row?.original?.word?.text}</span>
         </div>
       );
     },
   },
   {
-    accessorKey: "text",
-    header: ({ column }) => <DataTableColumnHeader column={column} title="Words" />,
+    accessorKey: "translateLanguage",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Translate Word" />,
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className=" truncate font-medium">{row.getValue("text")}</span>
-        </div>
-      );
-    },
-  },
-  {
-    accessorKey: "time",
-    header: ({ column }) => <DataTableColumnHeader column={column} title="Date" />,
-    cell: ({ row }) => {
-      return (
-        <div className="flex space-x-2">
-          <span className="truncate font-medium">{row.getValue("time")}</span>
+          <Badge className="truncate font-medium">{row?.original?.word?.nativeLanguage}</Badge>
+          <span className=" truncate font-medium">{row?.original?.word?.translatedText}</span>
         </div>
       );
     },

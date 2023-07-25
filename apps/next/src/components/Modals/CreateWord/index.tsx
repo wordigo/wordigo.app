@@ -1,4 +1,5 @@
-import { useRouter } from "next/navigation";
+import { useRouter as Navigation } from "next/navigation";
+import { useRouter } from "next/router";
 import CButton from "@/components/UI/Button";
 import { api } from "@/libs/trpc";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,46 +17,50 @@ import {
   DialogTrigger,
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
   Input,
-  Switch,
+  Label,
 } from "@wordigo/ui";
 
-const CreateDictionarySchema = z.object({
-  title: z.string().nonempty(),
-  published: z.boolean(),
+const CreateWordSchema = z.object({
+  text: z.string().nonempty(),
+  translateText: z.string().nonempty(),
+  nativeLanguage: z.string().nonempty(),
+  targetLanguage: z.string().nonempty(),
 });
 
-type CreateDictionaryValues = z.infer<typeof CreateDictionarySchema>;
+type CreateWordValues = z.infer<typeof CreateWordSchema>;
 
 export function CreateWord({ label }: { label: string }) {
   const { mutate, isLoading } = api.word.addWord.useMutation();
 
   const router = useRouter();
+  const { id } = router.query as any;
+  const Refresh = Navigation();
 
-  const defaultValues: Partial<CreateDictionaryValues> = {
-    title: "",
-    published: false,
+  const defaultValues: Partial<CreateWordValues> = {
+    text: "",
+    translateText: "",
+    nativeLanguage: "TR",
+    targetLanguage: "EN",
   };
 
-  const form = useForm<CreateDictionaryValues>({
-    resolver: zodResolver(CreateDictionarySchema),
+  const form = useForm<CreateWordValues>({
+    resolver: zodResolver(CreateWordSchema),
     defaultValues,
   });
 
-  const handleAddDictionary = () => {
+  const handleCreateWord = (values: CreateWordValues) => {
     mutate({
-      dictionaryId: "clkc64ros0001uk68fleputmt",
-      nativeLanguage: "TR",
-      targetLanguage: "EN",
-      text: "TEST",
-      translatedText: "TEST",
+      dictionaryId: id,
+      nativeLanguage: "EN",
+      targetLanguage: "TR",
+      text: values.text,
+      translatedText: values.translateText,
     });
-    router.refresh();
+    void Refresh.refresh();
   };
 
   return (
@@ -69,45 +74,50 @@ export function CreateWord({ label }: { label: string }) {
         <DialogHeader>
           <DialogTitle className="flex gap-x-2 items-center">
             <FilePlus size={18} />
-            Add Dictionary
+            Create Word
           </DialogTitle>
         </DialogHeader>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(handleAddDictionary)} className="space-y-4">
+          <form onSubmit={form.handleSubmit(handleCreateWord)} className="space-y-4">
             <div className="grid gap-4 py-4">
               <FormField
                 control={form.control}
-                name="title"
+                name="text"
                 render={({ field }) => (
                   <FormItem className="grid gap-1">
+                    <Label>Word</Label>
                     <FormControl>
-                      <Input {...field} id="title" placeholder="Title" autoCapitalize="none" autoComplete="email" autoCorrect="off" />
+                      <Input {...field} id="text" placeholder="Word" autoCapitalize="none" autoComplete="email" autoCorrect="off" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
+
               <FormField
                 control={form.control}
-                name="published"
+                name="translateText"
                 render={({ field }) => (
-                  <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
-                    <div className="space-y-0.5">
-                      <FormLabel className="text-base">Publish status</FormLabel>
-                      <FormDescription className="text-xs">
-                        It is the feature that allows you to share your dictionary publicly. It is only valid for the dictionary you have activated
-                      </FormDescription>
-                    </div>
+                  <FormItem className="grid gap-1">
+                    <Label>Translate Word</Label>
                     <FormControl>
-                      <Switch checked={field.value} onCheckedChange={field.onChange} />
+                      <Input
+                        {...field}
+                        id="translateText"
+                        placeholder="Translate Word"
+                        autoCapitalize="none"
+                        autoComplete="email"
+                        autoCorrect="off"
+                      />
                     </FormControl>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
               <DialogFooter>
                 <CButton loading={isLoading} type="submit">
-                  Save Dictionary
+                  Save Word
                 </CButton>
               </DialogFooter>
             </div>
