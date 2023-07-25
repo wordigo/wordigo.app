@@ -29,24 +29,24 @@ export const columns: ColumnDef<Task>[] = [
   },
   {
     accessorKey: "subscribers",
-    header: ({ column }) => <DataTableColumnHeader column={column} title="Subscribers" className="pr-10 text-start" />,
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Subscribers" className="ml-10 pr-10 text-start" />,
     cell: ({ row }) => {
       return (
-        <div className="flex space-x-2 ">
-          <span className=" truncate font-medium">{row.getValue("subscribers")}000</span>
+        <div className="flex space-x-2 ml-10">
+          <span className=" truncate font-medium">{row.getValue("subscribers")}</span>
         </div>
       );
     },
   },
   {
     accessorKey: "time",
-    header: ({ column }) => <DataTableColumnHeader column={column} title="Time" />,
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Time" className="ml-6" />,
     cell: ({ row }) => {
       const timeValue = row.original.updatedDate;
       const dateObj = new Date(timeValue);
       const formattedDate = dateObj.toLocaleDateString();
       return (
-        <div className="flex space-x-2">
+        <div className="flex space-x-2 ml-6">
           <span className=" truncate font-medium">{formattedDate}</span>
         </div>
       );

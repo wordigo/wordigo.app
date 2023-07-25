@@ -15,7 +15,7 @@ type CreateDictionaryValues = z.infer<typeof CreateDictionarySchema>;
 
 export default function Subscribe() {
   const router = useRouter();
-  const { mutate: addDictionary, isLoading } = api.dictionary.addDictionary.useMutation();
+  const { mutate, isLoading } = api.subscribe.subscribe.useMutation();
   const defaultValues: Partial<CreateDictionaryValues> = {
     email: "",
   };
@@ -26,7 +26,10 @@ export default function Subscribe() {
   });
 
   const handleEmail = (values: CreateDictionaryValues) => {
-    // email: values.email, router.refresh();
+    mutate({
+      email: values.email,
+    });
+    router.refresh();
   };
 
   return (
