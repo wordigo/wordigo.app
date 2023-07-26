@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 
-import { buttonVariants } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
 const Navigation = ({ variant }: { variant?: "Sidebar" }) => {
@@ -14,15 +13,18 @@ const Navigation = ({ variant }: { variant?: "Sidebar" }) => {
         variant !== "Sidebar" && "text-[#4A5562] justify-between text-[13px] dark:text-white dark:opacity-80",
       )}
     >
-      <li className={cn("flex items-center font-bold", variant === "Sidebar" && "gap-5", variant !== "Sidebar" && "gap-3")}>
-        <Link href={"/"} passHref className={buttonVariants({ variant: "ghost" })}>
-          {t("nav_home")}
+      <li className={cn("flex items-center font-bold", variant === "Sidebar" && "gap-5", variant !== "Sidebar" && "gap-6")}>
+        <Link href={"/#features"} passHref className="transition-colors hover:text-foreground text-muted-foreground text-sm font-medium">
+          {t("nav_features")}
         </Link>
-        <Link href={"/about"} passHref className={buttonVariants({ variant: "ghost" })}>
-          {t("nav_about")}
-        </Link>
-        <Link href={"/dictionaries"} passHref className={buttonVariants({ variant: "ghost" })}>
+        <Link href={"/dictionaries"} passHref className="transition-colors hover:text-foreground text-muted-foreground text-sm font-medium">
           {t("nav_dictionaries")}
+        </Link>
+        <Link href={"/pricing"} passHref className="transition-colors hover:text-foreground text-muted-foreground text-sm font-medium">
+          {t("nav_pricing")}
+        </Link>
+        <Link href={"/about"} passHref className="transition-colors hover:text-foreground text-muted-foreground text-sm font-medium">
+          {t("nav_about")}
         </Link>
       </li>
     </ul>

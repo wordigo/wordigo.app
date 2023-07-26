@@ -9,9 +9,10 @@ const boxVariant = {
 interface DashboardLayoutProps {
   children?: React.ReactNode;
   className?: string;
+  id?: string;
 }
 
-export default function index({ children, className }: DashboardLayoutProps) {
+export default function index({ children, className, id }: DashboardLayoutProps) {
   const ref = createRef();
   const control = useAnimation();
   const isInView = useInView(ref as never);
@@ -25,7 +26,7 @@ export default function index({ children, className }: DashboardLayoutProps) {
   }, [control, isInView]);
 
   return (
-    <motion.div className={className} initial="hidden" variants={boxVariant} animate={control} ref={ref as never}>
+    <motion.div className={className} id={id} initial="hidden" variants={boxVariant} animate={control} ref={ref as never}>
       {children}
     </motion.div>
   );

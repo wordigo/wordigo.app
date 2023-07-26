@@ -3,7 +3,7 @@ import CTASection from "@/components/Home/CTASection";
 import Comment from "@/components/Home/Comments";
 import FeatureSections from "@/components/Home/FeatureSections";
 import Footers from "@/components/Home/Footers";
-import HeroContainer from "@/components/Home/Hero";
+import NewHeroSection from "@/components/Home/Hero/NewHeroSection";
 import MainLayout from "@/components/Layout/MainLayout";
 import { i18n } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -11,9 +11,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 export default function index() {
   return (
     <MainLayout>
-      <div>
-        <HeroContainer />
-      </div>
+      <NewHeroSection />
       <FeatureBanner />
       <FeatureSections />
       <Comment />
