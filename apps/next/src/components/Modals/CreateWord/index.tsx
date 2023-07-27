@@ -3,8 +3,9 @@ import { useRouter } from "next/router";
 import CButton from "@/components/UI/Button";
 import { api } from "@/libs/trpc";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FilePlus, WholeWord } from "lucide-react";
+import { WholeWord } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { z } from "zod";
 
 import {
@@ -24,6 +25,8 @@ import {
   Label,
 } from "@wordigo/ui";
 
+import { WordPage } from "../../Translate/word.constant";
+
 const CreateWordSchema = z.object({
   text: z.string().nonempty(),
   translateText: z.string().nonempty(),
@@ -33,12 +36,14 @@ const CreateWordSchema = z.object({
 
 type CreateWordValues = z.infer<typeof CreateWordSchema>;
 
-export function CreateWord({ label }: { label: string }) {
+export function CreateWord() {
   const { mutate, isLoading } = api.word.addWord.useMutation();
 
   const router = useRouter();
   const { id } = router.query as any;
   const Refresh = Navigation();
+
+  const { t } = useTranslation();
 
   const defaultValues: Partial<CreateWordValues> = {
     text: "",
@@ -67,14 +72,14 @@ export function CreateWord({ label }: { label: string }) {
     <Dialog>
       <DialogTrigger asChild>
         <Button variant="default" size="sm">
-          {label}
+          {t(WordPage.addWord)}
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle className="flex gap-x-2 items-center">
             <WholeWord size={18} />
-            Create Word
+            {t(WordPage.addWord)}
           </DialogTitle>
         </DialogHeader>
 
@@ -86,9 +91,17 @@ export function CreateWord({ label }: { label: string }) {
                 name="text"
                 render={({ field }) => (
                   <FormItem className="grid gap-1">
-                    <Label>Word</Label>
+                    <Label>{t(WordPage.wordLabel)}</Label>
                     <FormControl>
-                      <Input {...field} id="text" placeholder="Word" autoCapitalize="none" autoComplete="email" autoCorrect="off" />
+                      <Input
+                        {...field}
+                        className="focus-visible:ring-0 focus-visible:ring-offset-0"
+                        id="text"
+                        placeholder={t(WordPage.word)}
+                        autoCapitalize="none"
+                        autoComplete="email"
+                        autoCorrect="off"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -100,12 +113,13 @@ export function CreateWord({ label }: { label: string }) {
                 name="translateText"
                 render={({ field }) => (
                   <FormItem className="grid gap-1">
-                    <Label>Translate Word</Label>
+                    <Label>{t(WordPage.translatedWordLabel)}</Label>
                     <FormControl>
                       <Input
                         {...field}
+                        className="focus-visible:ring-0 focus-visible:ring-offset-0"
                         id="translateText"
-                        placeholder="Translate Word"
+                        placeholder={t(WordPage.translatedWord)}
                         autoCapitalize="none"
                         autoComplete="email"
                         autoCorrect="off"
@@ -117,7 +131,7 @@ export function CreateWord({ label }: { label: string }) {
               />
               <DialogFooter>
                 <CButton loading={isLoading} type="submit">
-                  Save Word
+                  {t(WordPage.saveWord)}
                 </CButton>
               </DialogFooter>
             </div>

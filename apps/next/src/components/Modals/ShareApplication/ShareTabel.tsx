@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { WordPage } from "@/components/Translate/word.constant";
 import CButton from "@/components/UI/Button";
 import { api } from "@/libs/trpc";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Share2 } from "lucide-react";
+import { useTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -33,10 +35,10 @@ const ShareDictionarySchema = z.object({
 
 type CreateDictionaryValues = z.infer<typeof ShareDictionarySchema>;
 
-export function ShareDictionary({ label }: { label: string }) {
+export function ShareDictionary() {
   const { mutate: addDictionary, isLoading } = api.dictionary.addDictionary.useMutation();
   const [selectedImage, setSelectedImage] = useState("/images/dictionary_banner.jpg");
-
+  const { t } = useTranslation();
   const { toast } = useToast();
 
   const router = useRouter();
@@ -90,7 +92,7 @@ export function ShareDictionary({ label }: { label: string }) {
         <DialogHeader>
           <DialogTitle className="flex gap-x-2 items-center">
             <Share2 size={18} />
-            Published Dictionary
+            {t(WordPage.publishTitle)}
           </DialogTitle>
         </DialogHeader>
 
@@ -103,7 +105,7 @@ export function ShareDictionary({ label }: { label: string }) {
                 render={({ field }) => (
                   <FormItem className="grid gap-1">
                     <Label className="flex items-center gap-2">
-                      Picture <p className="text-xs">(Perf. 380px x 140px)</p>
+                      {t(WordPage.picture)} <p className="text-xs">(380px x 140px)</p>
                     </Label>
                     <FormControl>
                       <div className="relative w-fit h-fit">
@@ -143,12 +145,12 @@ export function ShareDictionary({ label }: { label: string }) {
                 name="title"
                 render={({ field }) => (
                   <FormItem className="grid gap-1">
-                    <Label>Title</Label>
+                    <Label>{t(WordPage.title)}</Label>
                     <FormControl>
                       <Input
                         {...field}
                         id="title"
-                        placeholder="Title"
+                        placeholder={t(WordPage.title)}
                         autoCapitalize="none"
                         autoComplete="title"
                         autoCorrect="off"
@@ -165,12 +167,12 @@ export function ShareDictionary({ label }: { label: string }) {
                 name="description"
                 render={({ field }) => (
                   <FormItem className="grid gap-1">
-                    <Label>Description</Label>
+                    <Label>{t(WordPage.description)}</Label>
                     <FormControl>
                       <Textarea
                         {...field}
                         id="description"
-                        placeholder="Description"
+                        placeholder={t(WordPage.description)}
                         autoCapitalize="none"
                         autoComplete="description"
                         autoCorrect="off"
@@ -183,7 +185,7 @@ export function ShareDictionary({ label }: { label: string }) {
               />
               <DialogFooter>
                 <CButton loading={isLoading} type="submit" disabled>
-                  Publish
+                  {t(WordPage.publish)}
                 </CButton>
               </DialogFooter>
             </div>

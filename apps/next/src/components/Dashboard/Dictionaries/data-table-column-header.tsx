@@ -1,3 +1,4 @@
+import { TranslateComponent } from "@/components/Translate";
 import { type Column } from "@tanstack/react-table";
 import { ArrowDownIcon, ArrowUpIcon, EyeOff, SortAscIcon } from "lucide-react";
 
@@ -11,14 +12,14 @@ interface DataTableColumnHeaderProps<TData, TValue> extends React.HTMLAttributes
 
 export function DataTableColumnHeader<TData, TValue>({ column, title, className }: DataTableColumnHeaderProps<TData, TValue>) {
   if (!column.getCanSort()) {
-    return <div className={cn(className)}>{title}</div>;
+    return <TranslateComponent head={title} />;
   }
 
   return (
     <div className={cn("flex items-center space-x-2 pl-4", className)}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <span>{title}</span>
+          <TranslateComponent head={title} />
         </DropdownMenuTrigger>
       </DropdownMenu>
     </div>

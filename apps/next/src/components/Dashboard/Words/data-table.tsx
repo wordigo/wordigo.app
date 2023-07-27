@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useRouter } from "next/router";
 import {
   type ColumnDef,
   type ColumnFiltersState,
@@ -17,7 +16,7 @@ import {
 
 import { Table, TableBody, TableCell, TableHeadWord, TableHeader, TableRow } from "@wordigo/ui";
 
-import { DataTablePagination } from "./data-table-pagination";
+import { DataTablePagination } from "../Dictionaries/data-table-pagination";
 import { DataTableToolbar } from "./data-table-toolbar";
 
 interface DataTableProps<TData, TValue> {
@@ -76,7 +75,7 @@ export function DataTable<TData, TValue>({ columns, data, label }: DataTableProp
           <TableBody>
             {table.getRowModel() && table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
+                <TableRow key={row.id}>
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
                   ))}

@@ -3,8 +3,8 @@ import * as React from "react";
 import { cn } from "@wordigo/ui/lib/utils";
 
 const Table = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableElement>>(({ className, ...props }, ref) => (
-  <div className="w-full overflow-auto">
-    <table ref={ref} className={cn("w-full caption-bottom text-sm", className)} {...props} />
+  <div className="overflow-auto w-full">
+    <table ref={ref} className={cn("caption-bottom text-sm w-full", className)} {...props} />
   </div>
 ));
 Table.displayName = "Table";
@@ -20,7 +20,7 @@ const TableBody = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes
 TableBody.displayName = "TableBody";
 
 const TableFooter = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(({ className, ...props }, ref) => (
-  <tfoot ref={ref} className={cn("bg-primary font-medium text-primary-foreground relative", className)} {...props} />
+  <tfoot ref={ref} className={cn("bg-primary font-medium text-primary-foreground", className)} {...props} />
 ));
 TableFooter.displayName = "TableFooter";
 

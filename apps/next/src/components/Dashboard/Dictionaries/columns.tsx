@@ -1,3 +1,4 @@
+import { TabelTranslate } from "@/components/Translate/tabel.constant";
 import { type ColumnDef } from "@tanstack/react-table";
 import { z } from "zod";
 
@@ -18,7 +19,7 @@ export type Task = z.infer<typeof taskSchema>;
 export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "title",
-    header: ({ column }) => <DataTableColumnHeader column={column} title="Title" />,
+    header: ({ column }) => <DataTableColumnHeader column={column} title={TabelTranslate.title} />,
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
@@ -29,7 +30,7 @@ export const columns: ColumnDef<Task>[] = [
   },
   {
     accessorKey: "subscribers",
-    header: ({ column }) => <DataTableColumnHeader column={column} title="Subscribers" className="ml-10 pr-10 text-start" />,
+    header: ({ column }) => <DataTableColumnHeader column={column} title={TabelTranslate.subscribers} className="ml-10 pr-10 text-start" />,
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2 ml-10">
@@ -40,7 +41,7 @@ export const columns: ColumnDef<Task>[] = [
   },
   {
     accessorKey: "time",
-    header: ({ column }) => <DataTableColumnHeader column={column} title="Time" className="ml-6" />,
+    header: ({ column }) => <DataTableColumnHeader column={column} title={TabelTranslate.time} className="ml-6" />,
     cell: ({ row }) => {
       const timeValue = row.original.updatedDate;
       const dateObj = new Date(timeValue);

@@ -2,7 +2,8 @@ import { useRouter } from "next/navigation";
 import CButton from "@/components/UI/Button";
 import { api } from "@/libs/trpc";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FilePlus, Table2Icon } from "lucide-react";
+import { Table2Icon } from "lucide-react";
+import { useTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -34,7 +35,7 @@ type CreateDictionaryValues = z.infer<typeof CreateDictionarySchema>;
 
 export function CreateDictionary({ label }: { label: string }) {
   const { mutate: addDictionary, isLoading } = api.dictionary.addDictionary.useMutation();
-
+  const { t } = useTranslation();
   const router = useRouter();
 
   const defaultValues: Partial<CreateDictionaryValues> = {
@@ -59,14 +60,14 @@ export function CreateDictionary({ label }: { label: string }) {
     <Dialog>
       <DialogTrigger asChild>
         <Button variant="default" size="sm">
-          {label}
+          {t(label)}
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle className="flex gap-x-2 items-center">
             <Table2Icon size={18} />
-            Create Dictionary
+            Add Dictionary
           </DialogTitle>
         </DialogHeader>
 

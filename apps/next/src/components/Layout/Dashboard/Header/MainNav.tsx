@@ -8,6 +8,7 @@ import { MenuIcon } from "lucide-react";
 
 import { Button } from "@wordigo/ui";
 
+import ChangeLanguage from "../../MainLayout/ChangeLanguage";
 import ThemeMode from "../../ThemeMode";
 
 interface IMainNav {
@@ -55,6 +56,7 @@ export function MainNav({ heading, query }: IMainNav) {
       </div>
       <div className="flex gap-4">
         <ThemeMode />
+        <ChangeLanguage />
         <NavProfile />
       </div>
     </div>

@@ -1,3 +1,4 @@
+import { TabelTranslate } from "@/components/Translate/tabel.constant";
 import { type ColumnDef } from "@tanstack/react-table";
 import { z } from "zod";
 
@@ -17,24 +18,24 @@ export type Task = z.infer<typeof taskSchema>;
 export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "text",
-    header: ({ column }) => <DataTableColumnHeader column={column} title="Word" />,
+    header: ({ column }) => <DataTableColumnHeader column={column} title={TabelTranslate.word} className="min-w-[150px]" />,
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
           <Badge className="truncate font-medium">{row?.original?.word?.targetLanguage}</Badge>
-          <span className="max-w-[500px] truncate font-medium">{row?.original?.word?.text}</span>
+          <span className="truncate font-medium max-w-[280px] break-word min-w-[150px]">{row?.original?.word?.text}</span>
         </div>
       );
     },
   },
   {
     accessorKey: "translateLanguage",
-    header: ({ column }) => <DataTableColumnHeader column={column} title="Translate Word" />,
+    header: ({ column }) => <DataTableColumnHeader column={column} title={TabelTranslate.translatedWord} />,
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
           <Badge className="truncate font-medium">{row?.original?.word?.nativeLanguage}</Badge>
-          <span className=" truncate font-medium">{row?.original?.word?.translatedText}</span>
+          <span className=" truncate font-medium max-w-[280px] break-word min-w-[150px]">{row?.original?.word?.translatedText}</span>
         </div>
       );
     },
