@@ -1,6 +1,6 @@
 import FeatureBanner from "@/components/Home/Banner";
-import CTASection from "@/components/Home/CTASection";
 import Comment from "@/components/Home/Comments";
+import FAQSection from "@/components/Home/FAQSection";
 import FeatureSections from "@/components/Home/FeatureSections";
 import Footers from "@/components/Home/Footers";
 import NewHeroSection from "@/components/Home/Hero/NewHeroSection";
@@ -15,7 +15,8 @@ export default function index() {
       <FeatureBanner />
       <FeatureSections />
       <Comment />
-      <CTASection />
+      <FAQSection />
+      {/* <CTASection /> */}
       <Footers />
     </MainLayout>
   );
