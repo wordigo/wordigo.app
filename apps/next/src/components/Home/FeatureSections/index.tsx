@@ -57,8 +57,8 @@ FeatureSection.Item = ({
           </Link>
         </div>
       </div>
-      <div className={cn("min-w-[35rem] relative w-full h-[25rem] bg-primary rounded-xl", positionLeft ? "mr-24" : "ml-24")}>
-        <Image src={image} fill alt="" className="object-cover" />
+      <div className={cn("min-w-[35rem] relative w-full h-[25rem]", positionLeft ? "mr-24" : "ml-24")}>
+        <Image src={image} fill alt="" className="object-cover rounded-3xl" />
       </div>
     </section>
   );
