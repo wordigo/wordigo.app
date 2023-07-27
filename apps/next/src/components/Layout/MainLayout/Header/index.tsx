@@ -17,9 +17,9 @@ export default function HomeHeader() {
 
   return (
     <div className="w-full">
-      <nav className="flex items-center justify-between w-full m-auto py-6">
+      <nav className="flex items-center justify-between w-full m-auto py-[1.125rem] px-20">
         <div className="flex items-center">
-          <Link href="/" className="mr-3">
+          <Link href="/" className="mr-6">
             <Image src="/images/logo.png" width={104} height={40} priority alt="" />
           </Link>
           <Navigation />

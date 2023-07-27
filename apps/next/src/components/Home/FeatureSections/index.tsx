@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import Animation from "@/components/Animation";
 
 import { Badge, buttonVariants } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
@@ -9,8 +8,8 @@ import featuresConstants, { type IFeature } from "./features.constants";
 
 const FeatureSection = () => {
   return (
-    <section className="px-20 py-24">
-      <Animation className="flex flex-col items-center">
+    <section id="features" className="px-20 py-24">
+      <div className="flex flex-col items-center">
         <Badge className="text-sm font-medium px-2.5 py-1 w-fit" variant="outline">
           Features
         </Badge>
@@ -18,7 +17,7 @@ const FeatureSection = () => {
         <p className="text-xl mt-5 text-muted-foreground">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Error tempore sed provident optio, nihil nulla?
         </p>
-      </Animation>
+      </div>
       <div className="mt-24 grid gap-y-24">
         {featuresConstants.map((item) => (
           <FeatureSection.Item key={item.title} {...item} />
@@ -43,7 +42,7 @@ FeatureSection.Item = ({
   const classes = cn("px-8 w-full", positionLeft ? "flex flex-row-reverse" : "flex");
 
   return (
-    <Animation className={classes}>
+    <section className={classes}>
       <div className="flex flex-col justify-center">
         <Icon className="h-6 w-6 p-3 box-content border rounded-[0.625rem]" />
         <h2 className="text-3xl font-semibold mt-6">{title}</h2>
@@ -61,7 +60,7 @@ FeatureSection.Item = ({
       <div className={cn("min-w-[35rem] relative w-full h-[25rem] bg-primary rounded-xl", positionLeft ? "mr-24" : "ml-24")}>
         <Image src={image} fill alt="" className="object-cover" />
       </div>
-    </Animation>
+    </section>
   );
 };
 

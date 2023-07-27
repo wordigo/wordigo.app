@@ -1,5 +1,4 @@
 import FootersHeader from "./Footer";
-import Subscribe from "./Subscribe";
 
 export default function Footer() {
   return (
@@ -37,7 +36,6 @@ export default function Footer() {
         </defs>
       </svg>
       <FootersHeader />
-      <Subscribe />
     </footer>
   );
 }

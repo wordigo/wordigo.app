@@ -14,7 +14,6 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
-import { DataTablePagination } from "./data-table-pagination";
 import { DataTableToolbar } from "./data-table-toolbar";
 
 interface DataTableProps {
@@ -51,11 +50,13 @@ export function DataTable({ data }: DataTableProps) {
   });
 
   return (
-    <div className="max-w-screen-7xl m-auto flex flex-col gap-5 my-5 mb-20">
+    <section className="flex flex-col w-full py-24 px-20">
+      <h1 className="text-5xl font-semibold text-center">Learn from published dictionaries</h1>
+      <p className="text-xl mt-6 text-muted-foreground text-center">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio ipsam possimus, facere fuga ratione aut.
+      </p>
       <DataTableToolbar table={table} />
-      <div className="flex gap-4 flex-wrap">
-        <Published items={data} />
-      </div>
-    </div>
+      <Published items={data} />
+    </section>
   );
 }

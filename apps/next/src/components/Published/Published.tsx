@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { Star } from "lucide-react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-import Rating from "./Rating";
 import { type IPublished } from "./published.constan";
 
 export default function Published({ items }: { items: IPublished[] }) {
@@ -21,33 +21,43 @@ export default function Published({ items }: { items: IPublished[] }) {
 
   return (
     <>
-      <InfiniteScroll dataLength={data.length} next={fetchMoreData} hasMore={hasMore} loader={<h4>Loading...</h4>} className="flex gap-2 flex-wrap">
+      <InfiniteScroll
+        dataLength={data.length}
+        next={fetchMoreData}
+        hasMore={hasMore}
+        loader={<h4>Loading...</h4>}
+        className="grid grid-cols-3 gap-x-8 gap-y-16 mt-24 w-full"
+      >
         {data.map((item: IPublished) => (
           <div key={item.id} onClick={() => router.push(`/dictionaries/${item.id}`)}>
             {item.user.name && (
-              <div className="flex flex-col gap-2 max-w-[318px] h-fit px-2 py-2 rounded-xl dark:bg-[#141420] bg-[#F3F4FE] border-[#e9eafe]  text-light_text border dark:text-white dark:border-[rgb(33,32,44)] shadow-md dark:shadow-black">
-                {!item.src ? (
-                  <Image alt="" src="/images/dictionary_banner.jpg" width={300} height={180} className="rounded-xl w-[300px] h-[180px]"></Image>
-                ) : (
-                  <div className="w-[300px] h-[180px] bg-gray-500 rounded-xl"></div>
-                )}
-                <span className="flex flex-col">
-                  <div className="font-semibold">{item.title}</div>
-                  <h1 className="opacity-60 text-sm">{item.description}</h1>
-                </span>
-                <span className="flex items-center justify-between">
-                  <div>
-                    <Rating rating={item.rating} />
-                  </div>
-                  <span className="flex items-center gap-3">
-                    {item.user.profil_avatar ? (
-                      <Image alt="" src={""} width={30} height={30} className="rounded-full"></Image>
-                    ) : (
-                      <div className="w-[30px] h-[30px] bg-gray-500 rounded-full"></div>
-                    )}
-                    <div>{item.user.name}</div>
+              <div className="flex w-full flex-col justify-between h-full">
+                <div>
+                  {!item.src ? (
+                    <div className="w-full h-60 relative">
+                      <Image alt="" src="/images/dictionary_banner.jpg" fill className="rounded-2xl"></Image>
+                    </div>
+                  ) : (
+                    <div className="w-[300px] h-[180px] bg-gray-500 rounded-xl"></div>
+                  )}
+                  <span className="py-1 inline-flex items-center pl-1 pr-2.5 rounded-[0.625rem] text-xs mt-6 font-medium border">
+                    <span className="px-1.5 inline-flex items-center py-0.5 rounded-md border mr-2">
+                      <Star fill="currentColor" className="h-3 w-3 mr-1" />
+                      {item.rating}
+                    </span>
+                    {item.words_length} Words
                   </span>
-                </span>
+                  <h3 className="text-2xl font-semibold mt-4">{item.title}</h3>
+                  <h4 className="text-base text-muted-foreground mt-2">{item.description}</h4>
+                </div>
+                {item.user.name && item.user.profil_avatar && (
+                  <span className="flex items-center mt-6">
+                    <div className="relative h-10 w-10 mr-3">
+                      <Image src={item.user.profil_avatar} alt="" fill className="rounded-full"></Image>
+                    </div>
+                    <span className="text-sm font-semibold">{item.user.name}</span>
+                  </span>
+                )}
               </div>
             )}
           </div>
