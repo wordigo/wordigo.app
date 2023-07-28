@@ -9,7 +9,7 @@ const Navigation = ({ variant }: { variant?: "Sidebar" }) => {
     <ul
       className={cn(
         "flex items-center",
-        variant === "Sidebar" && "text-[12px] text-blue-800",
+        variant === "Sidebar" && "text-[5px] text-blue-800",
         variant !== "Sidebar" && "text-[#4A5562] justify-between text-[13px] dark:text-white dark:opacity-80",
       )}
     >

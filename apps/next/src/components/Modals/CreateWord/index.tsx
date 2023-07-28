@@ -71,7 +71,7 @@ export function CreateWord() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="default" size="sm">
+        <Button variant="default" className="px-4 py-[10px] font-semibold text-sm">
           {t(WordPage.addWord)}
         </Button>
       </DialogTrigger>

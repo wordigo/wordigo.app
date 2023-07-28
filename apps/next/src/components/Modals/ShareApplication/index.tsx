@@ -4,17 +4,12 @@ import CButton from "@/components/UI/Button";
 import { Share2 } from "lucide-react";
 import { useTranslation } from "next-i18next";
 
-
-
 import { Button, Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@wordigo/ui";
-
-
 
 import { WordPage } from "../../Translate/word.constant";
 import { ShareDictionary } from "./ShareTabel";
 
-
-export function CreateDictionary() {
+export function Share() {
   const [tabel, setTabel] = useState<boolean>(false);
 
   const { t } = useTranslation();
@@ -23,7 +18,7 @@ export function CreateDictionary() {
     <Dialog>
       <>
         <DialogTrigger asChild>
-          <Button variant="default" size="sm">
+          <Button className="px-4 py-[10px] font-semibold text-sm">
             {t(WordPage.publish)}
           </Button>
         </DialogTrigger>

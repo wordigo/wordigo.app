@@ -23,7 +23,7 @@ export function DataTableRowActions<TData extends object>({ row }: DataTableRowA
   };
 
   return (
-    <div className="w-full relative">
+    <div className="w-full relative z-50">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="flex h-8 p-0 data-[state=open]:bg-muted">
@@ -32,7 +32,9 @@ export function DataTableRowActions<TData extends object>({ row }: DataTableRowA
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-[160px] flex flex-col">
-          <EditDictionary label="Edit" row={row as never} />
+          <DropdownMenuItem>
+            <EditDictionary label="Edit" row={row as never} />
+          </DropdownMenuItem>
           <DropdownMenuItem>Share</DropdownMenuItem>
           <DropdownMenuItem>Favorite</DropdownMenuItem>
           <DropdownMenuSeparator />
