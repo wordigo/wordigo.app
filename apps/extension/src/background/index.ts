@@ -1,6 +1,6 @@
 chrome.runtime.onInstalled.addListener(({ reason }) => {
-  openWelcomePage()
   if (reason !== chrome.runtime.OnInstalledReason.INSTALL) {
+    // openWelcomePage()
     return
   }
 })

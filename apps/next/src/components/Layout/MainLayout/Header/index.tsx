@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useAuthStore } from "@/hooks/useAuthStore";
+import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 
 import { buttonVariants } from "@wordigo/ui";
@@ -14,6 +15,7 @@ import Navigation from "./Navigation";
 export default function HomeHeader() {
   const { t } = useTranslation();
   const { isLoggedIn, userLoading } = useAuthStore();
+  const { data, status } = useSession();
 
   return (
     <div className="w-full">
@@ -28,9 +30,9 @@ export default function HomeHeader() {
           <ThemeMode />
           <ChangeLanguage />
           <div className="w-[1px] !h-10 bg-border"></div>
-          {userLoading ? (
+          {status === "loading" ? (
             <NavProfile.Loader />
-          ) : isLoggedIn ? (
+          ) : status === "authenticated" ? (
             <NavProfile />
           ) : (
             <span>

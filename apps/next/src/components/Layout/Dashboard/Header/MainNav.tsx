@@ -1,6 +1,5 @@
 import { type FunctionComponent } from "react";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import NavProfile from "@/components/Layout/NavProfile";
 import useCommonStore from "@/stores/Common";

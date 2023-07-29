@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import CButton from "@/components/UI/Button";
-import { useAuthStore } from "@/hooks/useAuthStore";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import z from "zod";
 
@@ -18,16 +18,16 @@ const AuthLoginSchema = z.object({
   password: z.string().min(6, { message: "Password must be atleast 6 characters" }),
 });
 // extracting the type
-type AuthLoginValues = z.infer<typeof AuthLoginSchema>;
+export type AuthLoginValues = z.infer<typeof AuthLoginSchema>;
 
 const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
   const { toast } = useToast();
   const router = useRouter();
-  const authStore = useAuthStore();
+  const [isLoading, setIsLoading] = useState(false);
 
   const defaultValues: Partial<AuthLoginValues> = {
-    email: "",
-    password: "",
+    email: "osmandlsmn34@gmail.com",
+    password: "deneme",
   };
 
   const form = useForm<AuthLoginValues>({
@@ -36,24 +36,35 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
   });
 
   const handleSubmit = async (values: AuthLoginValues) => {
-    const { user, error } = await authStore.signIn(values.email, values.password);
+    setIsLoading(true);
+    const { error } = await signIn("credentials", { email: values.email, password: values.password, redirect: false });
+    setIsLoading(false);
+
     if (error) {
       toast({
+        variant: "destructive",
         title: "Warning",
-        description: error.message,
+        description: error,
       });
     } else {
       toast({
         title: "Success",
-        description: "sign up successful you are redirected to homepage.",
+        description: "Sign in successful you are redirected to homepage.",
       });
-      await router.push("/");
+
+      const callbackUrl = router.query.callbackUrl;
+
+      if (typeof callbackUrl === "string") {
+        void router.push(callbackUrl);
+      } else {
+        void router.push("/");
+      }
     }
   };
 
   return (
     <div className={cn("grid gap-6 py-6", className)} {...props}>
-      <Form {...form}>
+      <Form {...(form as any)}>
         <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
           <div className="grid gap-4">
             <div className="grid gap-2">
@@ -61,7 +72,7 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
                 Email
               </Label>
               <FormField
-                control={form.control}
+                control={form.control as never}
                 name="email"
                 render={({ field }) => (
                   <FormItem className="grid gap-2">
@@ -78,7 +89,7 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
                 Password
               </Label>
               <FormField
-                control={form.control}
+                control={form.control as never}
                 name="password"
                 render={({ field }) => (
                   <FormItem className="grid gap-2">
@@ -91,7 +102,7 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
               />
             </div>
           </div>
-          <CButton loading={authStore.isLoading} className="w-full">
+          <CButton loading={isLoading} className="w-full">
             Sign in
           </CButton>
         </form>
