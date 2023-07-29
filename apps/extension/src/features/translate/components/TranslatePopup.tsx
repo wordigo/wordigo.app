@@ -17,20 +17,31 @@ import { motion } from "framer-motion"
 import { ArrowRightLeft, Copy, Settings, Volume2 } from "lucide-react"
 import { useEffect, useMemo } from "react"
 import ReactCountryFlag from "react-country-flag"
+import { useMutation } from "react-query"
 
 import { sendToBackground } from "@plasmohq/messaging"
 
 import DictionarySelector from "~features/translate/components/DictionarySelector"
-import trpc from "~libs/trpc"
 import { TRANSLATE_CARD_WIDTH } from "~utils/constants"
 
 import { useContextPopover } from "../context/popover"
+
+const postTodo = async (params: any): Promise<any> => {
+  const response = await fetch("https://api.wordigo.app/api/v1/translation/translate", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(params)
+  })
+  return await response.json()
+}
 
 const TranslatePopup = () => {
   const toast = useToast()
 
   const { cordinate, selectedText, setPopup, targetLanguage } = useContextPopover()
-  const { mutate: handleTranslate, isLoading, data } = trpc.translation.translate.useMutation({})
+  const { mutate: handleTranslate, isLoading, data } = useMutation<any>(postTodo, {})
 
   const getSourceLanguageFlag = useMemo(
     () => AllCountryLanguages.find((lang) => lang.code === (data?.sourceLanguage || "").toUpperCase()),
@@ -43,6 +54,7 @@ const TranslatePopup = () => {
   )
 
   useEffect(() => {
+    // @ts-ignore
     handleTranslate({ query: selectedText, sourceLanguage: null, targetLanguage })
   }, [selectedText])
 

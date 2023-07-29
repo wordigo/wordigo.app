@@ -1,18 +1,11 @@
 import getUrl from "@/utils/getUrl";
-import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import { signIn } from "next-auth/react";
 
 import { Button } from "@wordigo/ui";
 
 const SocialProviders = () => {
-  const supabase = useSupabaseClient();
-
   const signInWithGoogle = async () => {
-    const result = await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: getUrl(),
-      },
-    });
+    await signIn("google", { callbackUrl: getUrl() });
   };
 
   return (

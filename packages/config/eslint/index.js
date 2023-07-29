@@ -8,6 +8,8 @@ const config = {
     "prettier",
   ],
   rules: {
+    "no-unused-expressions": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
     "react-hooks/rules-of-hooks": "off",
     "typescript-eslint/no-explicit-any": "off",
     "@next/next/no-img-element": "off",

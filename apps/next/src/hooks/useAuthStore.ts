@@ -36,9 +36,9 @@ export const useAuth = (): IAuthStore => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const getUserMe = async () => {
-    const { data } = await supabase.auth.getSession();
+    const data = null as any;
 
-    if (data.session) {
+    if (data?.session) {
       setUserLoading(true);
       const {
         data: { user },
