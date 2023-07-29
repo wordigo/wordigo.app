@@ -26,8 +26,8 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const defaultValues: Partial<AuthLoginValues> = {
-    email: "osmandlsmn34@gmail.com",
-    password: "deneme",
+    email: "",
+    password: "",
   };
 
   const form = useForm<AuthLoginValues>({
