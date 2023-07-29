@@ -12,7 +12,7 @@ export const authOptions: NextAuthOptions = {
     },
     async signIn({ user, account }) {
       if (account?.provider === "google") {
-        const request = await fetch(`${env.WORDIG_BACKEND_URL}/auth/googleAuth?accessToken=${account.access_token}`);
+        const request = await fetch(`${env.WORDIGO_BACKEND_URL}/auth/googleAuth?accessToken=${account.access_token}`);
 
         const profile = await request.json();
 
@@ -33,7 +33,7 @@ export const authOptions: NextAuthOptions = {
       return { ...token, ...user };
     },
     async session({ session, token }) {
-      const request = await fetch(`${env.WORDIG_BACKEND_URL}/users/getUserMe`, {
+      const request = await fetch(`${env.WORDIGO_BACKEND_URL}/users/getUserMe`, {
         headers: {
           authorization: "Bearer " + token.accessToken,
         },
@@ -63,7 +63,7 @@ export const authOptions: NextAuthOptions = {
         try {
           const { email, password } = credentials as AuthLoginValues;
 
-          const request = await fetch(`${env.WORDIG_BACKEND_URL}/auth/signIn`, {
+          const request = await fetch(`${env.WORDIGO_BACKEND_URL}/auth/signIn`, {
             headers: {
               Accept: "application/json",
               "Content-Type": "application/json",

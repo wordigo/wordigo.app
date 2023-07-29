@@ -19,7 +19,7 @@ const client = z.object({
   GOOGLE_OAUTH2_ID: z.string().min(1),
   GOOGLE_OAUTH2_SECRET: z.string().min(1),
   NEXTAUTH_SECRET: z.string().min(1),
-  WORDIG_BACKEND_URL: z.string().min(1),
+  WORDIGO_BACKEND_URL: z.string().min(1),
 })
 
 /**
@@ -36,7 +36,7 @@ const processEnv = {
   GOOGLE_OAUTH2_ID: process.env.GOOGLE_OAUTH2_SECRET,
   GOOGLE_OAUTH2_SECRET: process.env.GOOGLE_OAUTH2_SECRET,
   NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
-  WORDIG_BACKEND_URL: process.env.WORDIG_BACKEND_URL
+  WORDIGO_BACKEND_URL: process.env.WORDIGO_BACKEND_URL
 }
 
 // Don't touch the part below
