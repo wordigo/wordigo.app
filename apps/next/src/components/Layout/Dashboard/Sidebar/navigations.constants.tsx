@@ -1,6 +1,6 @@
 import { type ReactElement, useState } from "react";
 import { api } from "@/libs/trpc";
-import { BookMarked, ChevronDown, ChevronUp, LayoutDashboard, RotateCw } from "lucide-react";
+import { BookMarked, ChevronDown, ChevronUp, LayoutDashboard, RotateCw, Settings } from "lucide-react";
 
 import { Button } from "@wordigo/ui";
 
@@ -40,12 +40,12 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
     {
       title: "Dashboard",
       href: "/dashboard",
-      icon: <LayoutDashboard className="mr-2 h-4 w-4" />,
+      icon: <LayoutDashboard className="text-2xl" />,
     },
     {
       title: "Dictionaries",
       href: "/dashboard/dictionaries",
-      icon: <BookMarked className="mr-2 h-4 w-4" />,
+      icon: <BookMarked className="text-2xl flex" />,
       child: {
         trigger: (
           <Button onClick={handleDictionary} variant="outline" size="icon" className="w-fit h-fit p-1">
@@ -55,6 +55,11 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
         loading: isLoading,
         navs: computedDictionariesNavs,
       },
+    },
+    {
+      title: "Settings",
+      href: "/settings",
+      icon: <Settings className="text-2xl" />,
     },
   ];
 };

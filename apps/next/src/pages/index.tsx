@@ -5,6 +5,7 @@ import FeatureSections from "@/components/Home/FeatureSections";
 import Footers from "@/components/Home/Footers";
 import NewHeroSection from "@/components/Home/Hero/NewHeroSection";
 import Newsletter from "@/components/Home/Newsletter";
+import Pricing from "@/components/Home/PricingSection";
 import MainLayout from "@/components/Layout/MainLayout";
 import { i18n } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -16,6 +17,7 @@ export default function index() {
       <FeatureBanner />
       <FeatureSections />
       <Comment />
+      <Pricing />
       <FAQSection />
       {/* <CTASection /> */}
       <Newsletter />

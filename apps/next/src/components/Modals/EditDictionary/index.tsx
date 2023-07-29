@@ -65,9 +65,9 @@ export function EditDictionary<TData extends object>({ label, row }: { label: st
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="default" size="sm">
+        <div className="relative flex cursor-default select-none items-center rounded-sm text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
           {label}
-        </Button>
+        </div>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

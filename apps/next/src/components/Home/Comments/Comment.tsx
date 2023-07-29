@@ -21,7 +21,7 @@ Comment.Item = ({ description, name, image, title, userDescription }: IComment) 
       </div>
       <div className="mt-6 flex items-center">
         <div className="min-w-[3.5rem] min-h-[3.5rem] relative mr-4">
-          <Image className="rounded-full" fill alt={name} src={image}></Image>
+          <Image className="rounded-full grayscale hover:grayscale-0" fill alt={name} src={image}></Image>
         </div>
         <div className="flex flex-col justify-center">
           <span className="text-sm font-semibold">{name}</span>

@@ -10,8 +10,8 @@ export default function ThemeMode() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" className="h-10 w-10 p-0">
-          <SunIcon size={16} className="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <MoonIcon size={16} className="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <SunIcon size={20} className="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <MoonIcon size={20} className="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
