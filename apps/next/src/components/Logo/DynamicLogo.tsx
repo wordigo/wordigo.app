@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { LogoEnums } from "@/constants/logos";
 import { useTheme } from "next-themes";

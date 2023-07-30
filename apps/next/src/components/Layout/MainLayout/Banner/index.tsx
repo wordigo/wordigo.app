@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { PartyPopper } from "lucide-react";
+import { useTranslation } from "next-i18next";
 
 import { Button } from "@wordigo/ui";
 
 const Banner = () => {
+  const { t } = useTranslation();
   const [isBannerOpen, setIsBannerOpen] = useState(true);
 
   const closeBanner = () => {
@@ -18,12 +20,10 @@ const Banner = () => {
             <div className="w-10 h-10 p-2.5 border rounded-[0.5rem] mr-4">
               <PartyPopper className="w-5 h-5 animate-pulse" />
             </div>
-            <p className="text-sm">
-              We have <span className="font-semibold">amazing news,</span> just for you! Learn from our blog!
-            </p>
+            <p className="text-sm" dangerouslySetInnerHTML={{ __html: t("announcement.description") }}></p>
           </div>
           <div className="flex items-center">
-            <Button variant="default">See More</Button>
+            <Button variant="default">{t("announcement.button")}</Button>
             {/* <Button variant="ghost" onClick={closeBanner}>
                 <X className="w-4 h-4" />
               </Button> */}

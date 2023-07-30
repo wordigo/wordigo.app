@@ -2,6 +2,7 @@ import { type GetServerSidePropsContext } from "next";
 import AuthLayout from "@/components/Auth/Layout/AuthLayout";
 import SocialProviders from "@/components/Auth/SocialProviders";
 import { getSession } from "next-auth/react";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { NextSeo } from "next-seo";
 import { type PageProps } from "types/global";
@@ -26,15 +27,17 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 }
 
 const SignUp = ({ _nextI18Next }: PageProps) => {
+  const { t } = useTranslation();
+
   return (
     <AuthLayout>
       <NextSeo title={_nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale]?.common.seo_signup_title} />
-      <AuthLayout.Title>Welcome</AuthLayout.Title>
-      <AuthLayout.Description>Enter your email and username below to create your account.</AuthLayout.Description>
+      <AuthLayout.Title>{t("signup.title")}</AuthLayout.Title>
+      <AuthLayout.Description>{t("signup.description")}</AuthLayout.Description>
       <AuthSıgnupForm />
       <SocialProviders />
       <AuthLayout.Footer url="/auth/signin">
-        Already have an account? <span className="text-foreground font-semibold">Sign in</span>
+        {t("signup.info")} <span className="text-foreground font-semibold">{t("signup.info_link")}</span>
       </AuthLayout.Footer>
     </AuthLayout>
   );

@@ -5,6 +5,7 @@ import { useRegisterMutation } from "@/store/auth/api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import z from "zod";
 
 import { Form, FormControl, FormField, FormItem, FormMessage, Input, Label, useToast } from "@wordigo/ui";
@@ -23,6 +24,7 @@ const AuthSıgnUpSchema = z.object({
 export type AuthRegisterValues = z.infer<typeof AuthSıgnUpSchema>;
 
 const AuthSıgnUpForm = ({ className, ...props }: UserAuthFormProps) => {
+  const { t } = useTranslation();
   const router = useRouter();
   const { toast } = useToast();
   const [handleRegister, { data, isLoading: registerIsLoading, status }] = useRegisterMutation();
@@ -93,7 +95,7 @@ const AuthSıgnUpForm = ({ className, ...props }: UserAuthFormProps) => {
           <div className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="name" className="text-left">
-                Username
+                {t("signup.username")}
               </Label>
               <FormField
                 control={form.control as never}
@@ -117,7 +119,7 @@ const AuthSıgnUpForm = ({ className, ...props }: UserAuthFormProps) => {
             </div>
             <div className="grid gap-2">
               <Label htmlFor="email" className="text-left">
-                Email
+                {t("signup.email")}
               </Label>
               <FormField
                 control={form.control as never}
@@ -134,7 +136,7 @@ const AuthSıgnUpForm = ({ className, ...props }: UserAuthFormProps) => {
             </div>
             <div className="grid gap-2">
               <Label htmlFor="password" className="text-left">
-                Password
+                {t("signup.password")}
               </Label>
               <FormField
                 control={form.control as never}

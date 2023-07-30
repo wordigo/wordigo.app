@@ -1,13 +1,16 @@
 import { type FunctionComponent } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { GithubIcon, Linkedin, LinkedinIcon, TwitterIcon } from "lucide-react";
+import { GithubIcon, LinkedinIcon, TwitterIcon } from "lucide-react";
+import { useTranslation } from "next-i18next";
 
 const DynamicLogo = dynamic(() => import("@/components/Logo/DynamicLogo"), {
   ssr: false,
 }) as FunctionComponent;
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <div className="relative mx-auto max-w-screen-8xl md:px-12 px-8 py-12 lg:py-24">
       <div className="xl:gap-8 xl:grid xl:grid-cols-4 dark:border-white/5 border-t lg:pt-24 border-black/30 ">
@@ -17,7 +20,7 @@ export default function Footer() {
           </div>
 
           <p className="text-center text-sm leading-loose md:text-left text-light_text">
-            © Copyright 2023. All Rights Reserved by
+            {t("footer.copyright")}
             <Link href={"/"} target="_blank" rel="noreferrer" className="font-medium underline underline-offset-4 ml-1">
               Wordigo
             </Link>
@@ -29,41 +32,55 @@ export default function Footer() {
             <div>
               <h3 className="font-semibold text-light_text dark:text-white hover:dark:opacity-80">
                 <Link href={"/"} passHref>
-                  Home
+                  {t("navbar.home")}
                 </Link>
               </h3>
               <ul className="mt-4 space-y-2" role="list">
                 <li>
                   <p className="text-sm hover:text-opacity-60 text-black opacity-80 dark:text-white hover:dark:opacity-50">
-                    <Link href={"/about"} passHref>
-                      About
+                    <Link href="/#features" passHref>
+                      {t("navbar.features")}
                     </Link>
                   </p>
                 </li>
+                <ul className="mt-4 space-y-2" role="list">
+                  <li>
+                    <p className="text-sm text-black opacity-80 hover:text-opacity-60 dark:text-white hover:dark:opacity-50">
+                      <Link href="/library" passHref>
+                        {t("navbar.library")}
+                      </Link>
+                      <span className="text-xs font-medium bg-vulcan-800 inline-flex items-center ml-4 px-3 py-0.5 rounded-full text-white dark:bg-[#3A3E90] bg-[#9272F6]">
+                        {t("general.new")}
+                      </span>
+                    </p>
+                  </li>
+                  <li>
+                    <p className="text-sm hover:text-opacity-60 text-black opacity-80 dark:text-white hover:dark:opacity-50">
+                      <Link href="/#pricing" passHref>
+                        {t("navbar.pricing")}
+                      </Link>
+                    </p>
+                  </li>
+                  <li>
+                    <p className="text-sm hover:text-opacity-60 text-black opacity-80 dark:text-white hover:dark:opacity-50">
+                      <Link href="/#about" passHref>
+                        {t("navbar.about")}
+                      </Link>
+                    </p>
+                  </li>
+                </ul>
               </ul>
             </div>
             <div className="mt-12 md:mt-0">
               <Link href={"/dashboard"} className="font-semibold text-light_text dark:text-white hover:dark:opacity-80">
-                Dashboard
+                {t("navbar.dashboard")}
               </Link>
               <ul className="mt-4 space-y-2" role="list">
                 <li>
                   <p className="text-sm text-black opacity-80 hover:text-opacity-60 dark:text-white hover:dark:opacity-50">
-                    <Link href={"/dashboard/dictionary"} passHref>
-                      Dictionary
+                    <Link href={"/dashboard/dictionaries"} passHref>
+                      {t("navbar.dictionaries")}
                     </Link>
-                  </p>
-                </li>
-              </ul>
-              <ul className="mt-4 space-y-2" role="list">
-                <li>
-                  <p className="text-sm text-black opacity-80 hover:text-opacity-60 dark:text-white hover:dark:opacity-50">
-                    <Link href={"/dashboard/translate"} passHref>
-                      Translate
-                    </Link>
-                    <span className="text-xs font-medium bg-vulcan-800 inline-flex items-center ml-4 px-3 py-0.5 rounded-full text-white dark:bg-[#3A3E90] bg-[#9272F6]">
-                      New
-                    </span>
                   </p>
                 </li>
               </ul>
@@ -71,7 +88,7 @@ export default function Footer() {
                 <li>
                   <p className="text-sm text-black opacity-80 hover:text-opacity-60 dark:text-white hover:dark:opacity-50">
                     <Link href={"/dashboard/settings"} passHref>
-                      Settings
+                      {t("navbar.settings")}
                     </Link>
                   </p>
                 </li>
@@ -80,27 +97,28 @@ export default function Footer() {
           </div>
           <div className="md:grid md:gap-8 md:grid-cols-2">
             <div>
-              <h3 className="font-semibold text-light_text dark:text-white hover:dark:opacity-80">Stay updated</h3>
+              <h3 className="font-semibold text-light_text dark:text-white hover:dark:opacity-80">{t("footer.stay_updated")}</h3>
               <ul className="mt-4 space-y-2" role="list">
                 <li>
                   <Link href="/" className="text-sm text-black opacity-80 hover:text-opacity-60 dark:text-white hover:dark:opacity-50">
-                    License
+                    {t("footer.license")}
                   </Link>
                 </li>
                 <li>
                   <Link href="/" className="text-sm text-black opacity-80 hover:text-opacity-60 dark:text-white hover:dark:opacity-50">
-                    Documentation
+                    {t("footer.documentation")}
                   </Link>
                 </li>
               </ul>
             </div>
             <div className="mt-12 md:mt-0">
-              <h3 className="font-semibold text-light_text dark:text-white hover:dark:opacity-80">Socials</h3>
+              <h3 className="font-semibold text-light_text dark:text-white hover:dark:opacity-80">{t("footer.socials")}</h3>
               <ul className="mt-4 space-y-2" role="list">
                 <li>
                   <Link
                     href="https://twitter.com/wordigoapp"
                     className="text-sm flex items-center gap-x-2 text-black opacity-80 hover:text-opacity-60 dark:text-white hover:dark:opacity-50"
+                    target="_blank"
                   >
                     <TwitterIcon size={16} />
                     Twitter
@@ -110,6 +128,7 @@ export default function Footer() {
                   <Link
                     href="https://www.linkedin.com/company/wordigo"
                     className="text-sm flex items-center gap-x-2 text-black opacity-80 hover:text-opacity-60 dark:text-white hover:dark:opacity-50"
+                    target="_blank"
                   >
                     <LinkedinIcon size={16} />
                     Linkedin
@@ -119,6 +138,7 @@ export default function Footer() {
                   <Link
                     href="https://github.com/wordigo"
                     className="text-sm flex items-center gap-x-2 text-black opacity-80 hover:text-opacity-60 dark:text-white hover:dark:opacity-50"
+                    target="_blank"
                   >
                     <GithubIcon size={16} />
                     Github

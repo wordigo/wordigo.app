@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useAuthStore } from "@/hooks/useAuthStore";
 import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 
@@ -14,8 +13,7 @@ import Navigation from "./Navigation";
 
 export default function HomeHeader() {
   const { t } = useTranslation();
-  const { isLoggedIn, userLoading } = useAuthStore();
-  const { data, status } = useSession();
+  const { status } = useSession();
 
   return (
     <div className="w-full">
@@ -37,10 +35,10 @@ export default function HomeHeader() {
           ) : (
             <span>
               <Link href="/auth/signin" className={cn("bg-transparent mr-4", buttonVariants({ variant: "outline" }))}>
-                {t("nav_login")}
+                {t("navbar.signin")}
               </Link>
               <Link href="/auth/signup" className={cn(buttonVariants({ variant: "default" }))}>
-                {t("nav_register")}
+                {t("navbar.signup")}
               </Link>
             </span>
           )}

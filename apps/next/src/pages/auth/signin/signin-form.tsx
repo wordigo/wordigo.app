@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import CButton from "@/components/UI/Button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
+import { useTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import z from "zod";
 
@@ -21,6 +22,7 @@ const AuthLoginSchema = z.object({
 export type AuthLoginValues = z.infer<typeof AuthLoginSchema>;
 
 const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
+  const { t } = useTranslation();
   const { toast } = useToast();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -69,7 +71,7 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
           <div className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="email" className="text-left">
-                Email
+                {t("signin.email")}
               </Label>
               <FormField
                 control={form.control as never}
@@ -86,7 +88,7 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
             </div>
             <div className="grid gap-2">
               <Label htmlFor="password" className="text-left">
-                Password
+                {t("signin.password")}
               </Label>
               <FormField
                 control={form.control as never}

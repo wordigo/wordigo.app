@@ -1,44 +1,66 @@
 {
-  "seo_home_title": "Learn, Add and Share with Wordigo!",
-  "seo_dictionaries_title": "Learn from published dictionaries",
-  "seo_about_title": "About",
-  "seo_signin_title": "Sign In",
-  "seo_signup_title": "Sign Up",
-  "nav_home": "Home",
-  "nav_about": "About",
-  "nav_contact": "Contact",
-  "nav_translate": "Translate",
-  "nav_dashboard": "Dashboard",
-  "nav_word": "Word",
-  "nav_translatedWord": "Translated Word",
-  "nav_subscribers": "Subscribers",
-  "nav_time": "Time",
-  "nav_addDictionary": "Add Dictionary",
-  "nav_addWord": "Add Word",
-  "nav_wordSave": "Save Word",
-  "nav_publish": "Publish",
-  "nav_save": "Save",
-  "nav_publishTitle": "Published Dictionary",
-  "nav_publishDescription": "It is the feature that allows you to share your dictionary publicly. It is only valid for the dictionary you have activated.",
-  "nav_title": "Title",
-  "nav_description": "Description",
-  "nav_picture": "Picture",
-  "nav_teams": "Teams",
-  "nav_login": "Sign In",
-  "nav_register": "Sign Up",
-  "nav_dictionaries": "Dictionaries",
-  "nav_pricing": "Pricing",
-  "nav_features": "Features",
-  "nav_aboutDescription": "Lorem Ipsum",
-  "nav_HeroBadge": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  "nav_HeroSectionHeading": "When, where ever you desire",
-  "nav_HeroSectionTitle": "learn, add and share ",
-  "nav_HeroSectionBlueText": "word.",
-  "nav_HeroSectionDescription": "Wordigo is a customizable dictionary application where you can add and share words.",
-  "nav_HeroBannerHeading": "Try the Wordigo Extension",
-  "nav_HeroBannerDescription": "Expand your vocabulary with the Wordigo extension - Download now and enhance your word learning experience!",
-  "nav_HeroBannerButton": "Install",
-  "about_title": "About",
-  "about_description": "<b>Wordigo</b> allows you to translate and add discovered words while browsing with its browser extension, and share them in your personal dictionary. The Wordigo team collaborates to provide a more effective language learning experience.",
-  "about_teams_title": "Teams"
+  "seo": {
+    "home_title": "Learn, Add and Share with Wordigo!",
+    "dictionaries_title": "Learn from published dictionaries.",
+    "about_title": "About",
+    "signin_title": "Sign In",
+    "signup_title": "Sign Up"
+  },
+  "general": {
+    "new": "New"
+  },
+  "announcement": {
+    "description": "We have <span className='font-semibold'>amazing news,</span> just for you! Learn from our blog!",
+    "button": "See More"
+  },
+  "navbar": {
+    "home": "Home",
+    "features": "Features",
+    "dictionaries": "Dictionaries",
+    "pricing": "Pricing",
+    "about": "About",
+    "library": "Library",
+    "signin": "Sign In",
+    "signup": "Sign Up",
+    "dashboard": "Dashboard",
+    "settings": "Settings"
+  },
+  "hero": {
+    "badge": "Check out our new translate extension!",
+    "title": "Learn, Add and Share with Wordigo!",
+    "description": "By clicking on the Wordigo translation button on the screen, you can view the translation of the selected on the screen text in your preferred language and listen to its pronunciation.",
+    "try_our_extension": "Try our extension",
+    "get_started": "Get Started"
+  },
+  "footer": {
+    "copyright": "© Copyright 2023. All Rights Reserved by",
+    "stay_updated": "Stay updated",
+    "license": "License",
+    "documentation": "Documentation",
+    "socials": "Socials"
+  },
+  "auth_layout": {
+    "back": "Back",
+    "with_section_title": "or continue with",
+    "contiune_google": "Continue with Google"
+  },
+  "signin": {
+    "title": "Welcome Back",
+    "description": "Enter your email to sign in to your account.",
+    "email": "Email",
+    "password": "Password",
+    "sign_button": "Sign in",
+    "info": "Don’t have an account?",
+    "info_link": "Sign up"
+  },
+  "signup": {
+    "title": "Welcome",
+    "description": "Enter your email and username below to create your account.",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "sign_button": "Sign up",
+    "info": "Already have an account?",
+    "info_link": "Sign in"
+  }
 }

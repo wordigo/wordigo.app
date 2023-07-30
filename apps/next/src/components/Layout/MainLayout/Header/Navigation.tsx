@@ -15,16 +15,16 @@ const Navigation = ({ variant }: { variant?: "Sidebar" }) => {
     >
       <li className={cn("flex items-center font-bold", variant === "Sidebar" && "gap-5", variant !== "Sidebar" && "gap-6")}>
         <Link href={"/#features"} passHref className="transition-colors hover:text-foreground text-muted-foreground text-sm font-medium">
-          {t("nav_features")}
+          {t("navbar.features")}
         </Link>
         <Link href={"/dictionaries"} passHref className="transition-colors hover:text-foreground text-muted-foreground text-sm font-medium">
-          {t("nav_dictionaries")}
+          {t("navbar.dictionaries")}
         </Link>
         <Link href={"/#pricing"} passHref className="transition-colors hover:text-foreground text-muted-foreground text-sm font-medium">
-          {t("nav_pricing")}
+          {t("navbar.pricing")}
         </Link>
         <Link href={"/about"} passHref className="transition-colors hover:text-foreground text-muted-foreground text-sm font-medium">
-          {t("nav_about")}
+          {t("navbar.about")}
         </Link>
       </li>
     </ul>

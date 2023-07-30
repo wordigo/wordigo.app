@@ -1,42 +1,42 @@
 {
-  "seo_home_title": "Wordigo ile Öğrenin, Ekleyin ve Paylaşın!",
-  "seo_dictionaries_title": "Yayınlanmış sözlüklerden öğrenin!",
-  "seo_about_title": "Hakkımızda",
-  "seo_signin_title": "Giriş",
-  "seo_signup_title": "Kayıt",
-  "nav_home": "Ana Sayfa",
-  "nav_about": "Hakkımızda",
-  "nav_translate": "Çeviri",
-  "nav_dashboard": "Panel",
-  "nav_teams": "Takım",
-  "nav_word": "Kelime",
-  "nav_translatedWord": "Çevrilmiş Kelime",
-  "nav_subscribers": "Aboneler",
-  "nav_time": "Zaman",
-  "nav_addDictionary": "Sözlük Ekle",
-  "nav_addWord": "Kelime Ekle",
-  "nav_save": "Kaydet",
-  "nav_publish": "Yayınla",
-  "nav_publishTitle": "Sözlüğünü Yayınla",
-  "nav_publishDescription": "Sözlüğünüzü herkese açık olarak paylaşmanıza olanak sağlayan özelliktir. Sadece aktif ettiğiniz sözlük için geçerlidir.",
-  "nav_title": "Başlık",
-  "nav_description": "Açıklama",
-  "nav_picture": "Fotoğraf",
-  "nav_login": "Giriş yap",
-  "nav_register": "Kaydol",
-  "nav_contact": "İletişim",
-  "nav_dictionaries": "Sözlükler",
-  "nav_pricing": "Ücretlendirme",
-  "nav_features": "Özellikler",
-  "nav_HeroBadge": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  "nav_HeroSectionHeading": "Lorem Ipsum is simply",
-  "nav_HeroSectionTitle": "Lorem Ipsum",
-  "nav_HeroSectionBlueText": "printing!",
-  "nav_HeroSectionDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  "nav_HeroBannerHeading": "Lorem Ipsum",
-  "nav_HeroBannerDescription": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum cum deserunt enim quia mollitia atque natus nostrum eaque.",
-  "nav_HeroBannerButton": "Şimdi Başla",
-  "about_page_title": "Hakkımızda",
-  "about_page_description": "<b>Wordigo</b>, tarayıcı eklentisiyle gezinirken keşfedilen kelimeleri çevirip, kişisel sözlüğe eklemeye ve paylaşmaya olanak tanır. Wordigo ekibi, daha etkili bir dil öğrenme deneyimi sunmak için birlikte çalışmaktadır",
-  "about_page_teams_title": "Takım"
+  "seo": {
+    "home_title": "Öğren, Ekle ve Paylaş<br/> Wordigo ile!",
+    "dictionaries_title": "Yayınlanmış sözlüklerden öğrenin.",
+    "about_title": "Hakkında",
+    "signin_title": "Giriş Yap",
+    "signup_title": "Üye Ol"
+  },
+  "general": {
+    "new": "Yeni"
+  },
+  "announcement": {
+    "description": "Sana harika bir haberimiz var! Blogumuzdan öğrenin!",
+    "button": "Daha Fazla"
+  },
+  "navbar": {
+    "home": "Ana Sayfa",
+    "features": "Özellikler",
+    "dictionaries": "Sözlükler",
+    "pricing": "Fiyatlandırma",
+    "about": "Hakkında",
+    "library": "Kütüphane",
+    "signin": "Giriş Yap",
+    "signup": "Üye Ol",
+    "dashboard": "Panel",
+    "settings": "Ayarlar"
+  },
+  "hero": {
+    "badge": "Yeni çeviri eklentimizi keşfedin!",
+    "title": "Öğren, Ekle ve Paylaş - Wordigo ile!",
+    "description": "Ekran üzerindeki metni seçerek Wordigo çeviri düğmesine tıklayarak tercih ettiğiniz dilde çevirisini görebilir ve telaffuzunu dinleyebilirsiniz.",
+    "try_our_extension": "Eklentimizi Deneyin",
+    "get_started": "Başlamak İçin"
+  },
+  "footer": {
+    "copyright": "© Tüm Hakları Saklıdır - 2023",
+    "stay_updated": "Güncel Kalın",
+    "license": "Lisans",
+    "documentation": "Dokümantasyon",
+    "socials": "Sosyal Medya"
+  }
 }

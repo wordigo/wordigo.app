@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { DialogFooter, Form, FormControl, FormField, FormItem, FormMessage, Input, ToastAction, useToast } from "@wordigo/ui";
+import { DialogFooter, Form, FormControl, FormField, FormItem, FormMessage, Input } from "@wordigo/ui";
 
 const CreateDictionarySchema = z.object({
   email: z.string().nonempty(),
@@ -13,8 +13,7 @@ const CreateDictionarySchema = z.object({
 type CreateDictionaryValues = z.infer<typeof CreateDictionarySchema>;
 
 export default function Subscribe() {
-  const { toast } = useToast();
-  const { mutate, isLoading, isSuccess } = api.subscribe.subscribe.useMutation();
+  const { mutate, isLoading } = api.subscribe.subscribe.useMutation();
   const defaultValues: Partial<CreateDictionaryValues> = {
     email: "",
   };
@@ -37,11 +36,11 @@ export default function Subscribe() {
           <div>
             <h3 className="dark:text-white text-light_text">Subscribe to Wordigo news</h3>
           </div>
-          <Form {...form}>
+          <Form {...(form as any)}>
             <form onSubmit={form.handleSubmit(handleEmail)} className="space-y-4">
               <div className="gap-4 py-4 flex">
                 <FormField
-                  control={form.control}
+                  control={form.control as never}
                   name="email"
                   render={({ field }) => (
                     <FormItem className="w-[220px]">
