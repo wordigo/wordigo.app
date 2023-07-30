@@ -1,6 +1,6 @@
 import { type ReactElement, useState } from "react";
 import { api } from "@/libs/trpc";
-import { BookMarked, ChevronDown, ChevronUp, LayoutDashboard, RotateCw, Settings } from "lucide-react";
+import { BookMarked, ChevronDown, ChevronUp, Home, LayoutDashboard, LibraryIcon, RotateCw, Settings } from "lucide-react";
 
 import { Button } from "@wordigo/ui";
 
@@ -58,8 +58,23 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
     },
     {
       title: "Settings",
-      href: "/settings",
+      href: "/dashboard/settings",
       icon: <Settings className="text-2xl" />,
+    },
+  ];
+};
+
+export const useSidebarUnderNavigations = (): SidebarNavItem[] => {
+  return [
+    {
+      title: "Home",
+      href: "/",
+      icon: <Home className="text-2xl" />,
+    },
+    {
+      title: "Library",
+      href: "/library",
+      icon: <LibraryIcon className="text-2xl" />,
     },
   ];
 };
