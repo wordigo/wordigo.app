@@ -3,7 +3,7 @@
   "displayName": "Wordigo Translator",
   "version": "0.0.1",
   "description": "Wordigo: Translate text in the browser and add it to the dictionary. Easily bypass language restrictions.",
-  "author": "osman.delismen",
+  "author": "osmandlsmn",
   "scripts": {
     "dev": "plasmo dev",
     "build": "plasmo build",
@@ -19,6 +19,7 @@
     "@wordigo/api": "*",
     "@wordigo/tailwind-config": "*",
     "@wordigo/ui": "*",
+    "axios": "^1.4.0",
     "cors": "^2.8.5",
     "framer-motion": "^10.12.18",
     "lucide-react": "^0.257.0",

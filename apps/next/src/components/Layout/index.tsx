@@ -1,9 +1,11 @@
 import Router from "next/router";
-import { useAuthStore } from "@/hooks/useAuthStore";
 import NProgress from "nprogress";
 
 import "nprogress/nprogress.css";
 import { Fragment, type PropsWithChildren, useEffect, useState } from "react";
+import { setToken } from "@/store/auth/slice";
+import { useAppDispatch } from "@/utils/hooks";
+import { useSession } from "next-auth/react";
 
 import PageLoader from "../UI/PageLoader";
 
@@ -15,8 +17,9 @@ NProgress.configure({
 });
 
 export default function RootLayout({ children }: PropsWithChildren) {
-  const authStore = useAuthStore();
   const [loading, setLoading] = useState(false);
+  const dispatch = useAppDispatch();
+  const { data: session } = useSession();
 
   useEffect(() => {
     const start = () => {
@@ -39,8 +42,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
   }, []);
 
   useEffect(() => {
-    void authStore.getUserMe();
-  }, []);
+    if (session?.user) dispatch(setToken(session.user.accessToken));
+  }, [session?.user?.accessToken]);
 
   return <Fragment>{loading ? <PageLoader /> : children}</Fragment>;
 }

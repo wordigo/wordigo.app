@@ -24,24 +24,14 @@ import { sendToBackground } from "@plasmohq/messaging"
 import DictionarySelector from "~features/translate/components/DictionarySelector"
 import { TRANSLATE_CARD_WIDTH } from "~utils/constants"
 
+import { TranslateApi } from "../api"
 import { useContextPopover } from "../context/popover"
-
-const postTodo = async (params: any): Promise<any> => {
-  const response = await fetch("https://api.wordigo.app/api/v1/translation/translate", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(params)
-  })
-  return await response.json()
-}
 
 const TranslatePopup = () => {
   const toast = useToast()
 
   const { cordinate, selectedText, setPopup, targetLanguage } = useContextPopover()
-  const { mutate: handleTranslate, isLoading, data } = useMutation<any>(postTodo, {})
+  const { mutate: handleTranslate, isLoading, data } = useMutation(TranslateApi)
 
   const getSourceLanguageFlag = useMemo(
     () => AllCountryLanguages.find((lang) => lang.code === (data?.sourceLanguage || "").toUpperCase()),
@@ -54,7 +44,6 @@ const TranslatePopup = () => {
   )
 
   useEffect(() => {
-    // @ts-ignore
     handleTranslate({ query: selectedText, sourceLanguage: null, targetLanguage })
   }, [selectedText])
 
@@ -65,9 +54,8 @@ const TranslatePopup = () => {
     opeendSettings && setPopup(false)
   }
 
-  const speech = new SpeechSynthesisUtterance(data?.translatedText as string)
+  const speech = new SpeechSynthesisUtterance(data?.translatedText)
   const textToSpeech = () => {
-    const speech = new SpeechSynthesisUtterance(data?.translatedText as string)
     speech.rate = 1
     speech.pitch = 1
     speech.volume = 1
@@ -84,7 +72,7 @@ const TranslatePopup = () => {
   }
 
   const copyTranslatedText = () => {
-    void navigator.clipboard.writeText(data.translatedText as string)
+    void navigator.clipboard.writeText(data.translatedText)
     toast.toast({
       title: "Successful",
       description: "The translated text was successfully copied."
@@ -163,20 +151,13 @@ const TranslatePopup = () => {
               <Settings size={18} />
             </Button>
           </div>
-          <DictionarySelector translatedText={data?.translatedText as string} sourceLangauge={data?.sourceLanguage as string} />
+          {/* <DictionarySelector translatedText={data?.translatedText} sourceLangauge={data?.sourceLanguage} /> */}
         </CardFooter>
       </Card>
     </motion.div>
   )
 }
 
-TranslatePopup.Loading = () => {
-  return (
-    <div className="flex flex-col gap-y-2">
-      <Skeleton className="h-4 w-full" />
-      <Skeleton className="h-4 w-full" />
-    </div>
-  )
-}
+TranslatePopup.Loading = () => {}
 
 export default TranslatePopup

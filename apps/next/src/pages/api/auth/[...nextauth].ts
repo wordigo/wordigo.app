@@ -6,10 +6,6 @@ import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions: NextAuthOptions = {
   callbacks: {
-    redirect({ baseUrl, url }) {
-      // Burada istediğiniz özel callback URL'i oluşturun
-      return url ?? "/"; // Varsayılan olarak, URL belirtilmemişse anasayfaya yönlendirir.
-    },
     async signIn({ user, account }) {
       if (account?.provider === "google") {
         const request = await fetch(`${env.WORDIGO_BACKEND_URL}/auth/googleAuth?accessToken=${account.access_token}`);
@@ -40,8 +36,7 @@ export const authOptions: NextAuthOptions = {
       });
 
       const profile = await request.json();
-
-      session.user = profile.data;
+      session.user = { accessToken: token.accessToken, ...profile.data };
 
       return session;
     },

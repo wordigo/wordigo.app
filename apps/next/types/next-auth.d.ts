@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 
 export interface LoggedInUser {
+  accessToken?: string;
   avatar_url: string;
   createdDate: string;
   email: string;

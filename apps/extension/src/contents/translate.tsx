@@ -6,7 +6,6 @@ import "~/styles/globals.css"
 import styleText from "data-text:~/styles/globals.css"
 import type { PlasmoCSConfig } from "plasmo"
 import { Fragment } from "react"
-import { QueryClient, QueryClientProvider } from "react-query"
 
 import TranslatePopup from "~features/translate/components/TranslatePopup"
 import Provider from "~providers"
@@ -37,16 +36,13 @@ const Translate = () => {
 
 Translate.Layout = () => {
   const popover = usePopover({})
-  const client = new QueryClient()
 
   return (
-    <QueryClientProvider client={client}>
-      <Provider>
-        <PopoverContext.Provider value={popover}>
-          <Translate />
-        </PopoverContext.Provider>
-      </Provider>
-    </QueryClientProvider>
+    <Provider>
+      <PopoverContext.Provider value={popover}>
+        <Translate />
+      </PopoverContext.Provider>
+    </Provider>
   )
 }
 
