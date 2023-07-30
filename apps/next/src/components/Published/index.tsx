@@ -1,5 +1,5 @@
 import Published from "./Published";
-import PublishedConstan, { type IPublished } from "./published.constan";
+import PublishedConstan, { type IPublished } from "./published.constants";
 
 export default function index() {
   const currentDate = new Date();

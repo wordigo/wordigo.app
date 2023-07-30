@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { Star } from "lucide-react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-import { type IPublished } from "./published.constan";
+import { type IPublished } from "./published.constants";
 
 export default function Published({ items }: { items: IPublished[] }) {
   const router = useRouter();

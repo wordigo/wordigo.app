@@ -62,5 +62,16 @@
     "sign_button": "Sign up",
     "info": "Already have an account?",
     "info_link": "Sign in"
+  },
+  "about": {
+    "title": "About",
+    "description": "<b>Wordigo</b> allows you to translate and add discovered words while browsing with its browser extension, and share them in your personal dictionary. The Wordigo team collaborates to provide a more effective language learning experience.",
+    "teams": "Teams"
+  },
+  "contact": {
+    "title": "Contact",
+    "mail_title": "Contact via E-mail",
+    "mail_description": "You can send us an e-mail for your questions or other topics.",
+    "mail_link": "Send an E-mail"
   }
 }

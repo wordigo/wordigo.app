@@ -1,20 +1,21 @@
-import React from "react";
 import Link from "next/link";
 import Animation from "@/components/Animation";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "next-i18next";
 
-import contactConstant, { type IContact } from "./contact.constant";
+import useContactsList, { type IContact } from "./contact.constant";
 
 const ContactSection = () => {
   const { t } = useTranslation();
+  const contactList = useContactsList();
+
   return (
     <Animation>
       <div className="max-w-screen-8xl w-full m-auto">
         <div className="flex flex-col items-center justify-center">
-          <h1 className="text-3xl opacity-80 font-bold tracking-tight px-10 pb-10">{t("nav_contact")}</h1>
+          <h1 className="text-3xl opacity-80 font-bold tracking-tight px-10 pb-10">{t("contact.title")}</h1>
           <span className="flex gap-6 items-center justify-center flex-wrap">
-            {contactConstant.map((item) => (
+            {contactList.map((item) => (
               <ContactSection.Item key={item.title} {...item} />
             ))}
           </span>

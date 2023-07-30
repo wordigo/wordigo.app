@@ -1,6 +1,6 @@
 {
   "seo": {
-    "home_title": "Öğren, Ekle ve Paylaş<br/> Wordigo ile!",
+    "home_title": "Öğren, Ekle ve Paylaş - Wordigo ile!",
     "dictionaries_title": "Yayınlanmış sözlüklerden öğrenin.",
     "about_title": "Hakkında",
     "signin_title": "Giriş Yap",
@@ -10,7 +10,7 @@
     "new": "Yeni"
   },
   "announcement": {
-    "description": "Sana harika bir haberimiz var! Blogumuzdan öğrenin!",
+    "description": "Sana <span className='font-semibold'>harika bir haberimiz</span> var! Blogumuzdan öğrenin!",
     "button": "Daha Fazla"
   },
   "navbar": {
@@ -38,5 +38,40 @@
     "license": "Lisans",
     "documentation": "Dokümantasyon",
     "socials": "Sosyal Medya"
+  },
+  "auth_layout": {
+    "back": "Geri",
+    "with_section_title": "veya devam et",
+    "contiune_google": "Google ile Devam Et"
+  },
+  "signin": {
+    "title": "Hoş Geldiniz",
+    "description": "Hesabınıza giriş yapmak için e-postanızı girin.",
+    "email": "E-posta",
+    "password": "Şifre",
+    "sign_button": "Giriş Yap",
+    "info": "Hesabınız yok mu?",
+    "info_link": "Üye Ol"
+  },
+  "signup": {
+    "title": "Hoş Geldiniz",
+    "description": "Hesabınızı oluşturmak için e-postanızı ve kullanıcı adınızı girin.",
+    "username": "Kullanıcı Adı",
+    "email": "E-posta",
+    "password": "Şifre",
+    "sign_button": "Üye Ol",
+    "info": "Zaten hesabınız var mı?",
+    "info_link": "Giriş Yap"
+  },
+  "about": {
+    "title": "Hakkımızda",
+    "description": "<b>Wordigo</b>, tarayıcı eklentisiyle gezinirken keşfedilen kelimeleri çevirip, kişisel sözlüğe eklemeye ve paylaşmaya olanak tanır. Wordigo ekibi, daha etkili bir dil öğrenme deneyimi sunmak için birlikte çalışmaktadır",
+    "teams": "Takım"
+  },
+  "contact": {
+    "title": "Contact",
+    "mail_title": "E - posta üzerinden iletişim",
+    "mail_description": "Sorunuz veya farklı konular için bize e - posta gönderebilirsiniz.",
+    "mail_link": "E - posta gönderin"
   }
 }

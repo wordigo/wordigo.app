@@ -1,6 +1,6 @@
 import MainLayout from "@/components/Layout/MainLayout";
 import { DataTable } from "@/components/Published/Table/data-table";
-import PublishedConstan from "@/components/Published/published.constan";
+import PublishedConstan from "@/components/Published/published.constants";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { NextSeo } from "next-seo";
 import { type PageProps } from "types/global";

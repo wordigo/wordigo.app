@@ -1,6 +1,6 @@
 import * as React from "react";
 import Published from "@/components/Published/Published";
-import { type IPublished } from "@/components/Published/published.constan";
+import { type IPublished } from "@/components/Published/published.constants";
 import {
   type ColumnFiltersState,
   type SortingState,
