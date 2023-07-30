@@ -1,7 +1,7 @@
 import { type FunctionComponent } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { TwitterIcon } from "lucide-react";
+import { GithubIcon, Linkedin, LinkedinIcon, TwitterIcon } from "lucide-react";
 
 const DynamicLogo = dynamic(() => import("@/components/Logo/DynamicLogo"), {
   ssr: false,
@@ -104,6 +104,24 @@ export default function Footer() {
                   >
                     <TwitterIcon size={16} />
                     Twitter
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="https://www.linkedin.com/company/wordigo"
+                    className="text-sm flex items-center gap-x-2 text-black opacity-80 hover:text-opacity-60 dark:text-white hover:dark:opacity-50"
+                  >
+                    <LinkedinIcon size={16} />
+                    Linkedin
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="https://github.com/wordigo"
+                    className="text-sm flex items-center gap-x-2 text-black opacity-80 hover:text-opacity-60 dark:text-white hover:dark:opacity-50"
+                  >
+                    <GithubIcon size={16} />
+                    Github
                   </Link>
                 </li>
               </ul>
