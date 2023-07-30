@@ -19,7 +19,7 @@ import "../styles/styles.css";
 const App = ({ Component, pageProps }: AppProps<{ session: any; _nextI18Next: { initialLocale: string } }>) => {
   return (
     <Fragment>
-      <DefaultSeo {...seo[pageProps._nextI18Next.initialLocale]} />
+      <DefaultSeo {...seo[pageProps?._nextI18Next?.initialLocale]} />
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0" />
       </Head>

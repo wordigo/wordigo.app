@@ -11,7 +11,7 @@ import AuthSıgnInForm from "./signin-form";
 const SıgnIn = ({ _nextI18Next }: PageProps) => {
   return (
     <AuthLayout>
-      <NextSeo title={_nextI18Next.initialI18nStore[_nextI18Next.initialLocale].common.seo_signin_title} />
+      <NextSeo title={_nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale]?.common?.seo_signin_title} />
       <AuthLayout.Title>Welcome Back</AuthLayout.Title>
       <AuthLayout.Description>Enter your email to sign in to your account.</AuthLayout.Description>
       <AuthSıgnInForm />

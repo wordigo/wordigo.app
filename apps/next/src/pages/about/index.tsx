@@ -10,7 +10,7 @@ import { type PageProps } from "types/global";
 export default function index({ _nextI18Next }: PageProps) {
   return (
     <MainLayout>
-      <NextSeo title={_nextI18Next.initialI18nStore[_nextI18Next.initialLocale].common.seo_about_title} />
+      <NextSeo title={_nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale]?.common.seo_about_title} />
       <div className="flex flex-col gap-32 gap-y-12">
         <About />
         <Team />

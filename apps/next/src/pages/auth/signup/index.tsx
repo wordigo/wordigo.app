@@ -28,7 +28,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 const SignUp = ({ _nextI18Next }: PageProps) => {
   return (
     <AuthLayout>
-      <NextSeo title={_nextI18Next.initialI18nStore[_nextI18Next.initialLocale].common.seo_signup_title} />
+      <NextSeo title={_nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale]?.common.seo_signup_title} />
       <AuthLayout.Title>Welcome</AuthLayout.Title>
       <AuthLayout.Description>Enter your email and username below to create your account.</AuthLayout.Description>
       <AuthSıgnupForm />
