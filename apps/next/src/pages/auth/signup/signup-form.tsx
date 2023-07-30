@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import CButton from "@/components/UI/Button";
-import { useAuthStore } from "@/hooks/useAuthStore";
+import { useRegisterMutation } from "@/store/auth/api";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import z from "zod";
 
@@ -12,22 +13,23 @@ import { cn } from "@wordigo/ui/lib/utils";
 type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
 
 const AuthSıgnUpSchema = z.object({
-  name: z.string().min(3, { message: "Name is required" }),
+  username: z.string().min(3, { message: "Username is required" }),
   email: z.string().min(1, { message: "Email is required" }).email({
     message: "Must be a valid email",
   }),
   password: z.string().min(6, { message: "Password must be atleast 6 characters" }),
 });
 // extracting the type
-type AuthRegisterValues = z.infer<typeof AuthSıgnUpSchema>;
+export type AuthRegisterValues = z.infer<typeof AuthSıgnUpSchema>;
 
 const AuthSıgnUpForm = ({ className, ...props }: UserAuthFormProps) => {
   const router = useRouter();
-  const authStore = useAuthStore();
   const { toast } = useToast();
+  const [handleRegister, { data, isLoading: registerIsLoading, status }] = useRegisterMutation();
+  const [isLoading, setIsLoading] = useState(false);
 
   const defaultValues: Partial<AuthRegisterValues> = {
-    name: "",
+    username: "",
     email: "",
     password: "",
   };
@@ -38,25 +40,55 @@ const AuthSıgnUpForm = ({ className, ...props }: UserAuthFormProps) => {
   });
 
   const handleSubmit = async (values: AuthRegisterValues) => {
-    const { error } = await authStore.signUp(values.email, values.password, { name: values.name });
+    await handleRegister(values);
+  };
 
+  const handleSign = async () => {
+    setIsLoading(true);
+    const { email, password } = form.getValues();
+
+    const { error } = await signIn("credentials", { email, password, redirect: false });
     if (error) {
       toast({
+        variant: "destructive",
         title: "Warning",
-        description: error.message,
+        description: error,
       });
     } else {
       toast({
         title: "Success",
-        description: "sign up successful you are redirected to homepage.",
+        description: "Sign in successful you are redirected to homepage.",
       });
-      await router.push("/");
+
+      const callbackUrl = router.query.callbackUrl;
+
+      if (typeof callbackUrl === "string") {
+        void router.push(callbackUrl);
+      } else {
+        void router.push("/");
+      }
     }
+
+    setIsLoading(false);
   };
+
+  useEffect(() => {
+    if (status === "fulfilled") {
+      if (data.success) {
+        void handleSign();
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Warning",
+          description: data.message,
+        });
+      }
+    }
+  }, [status]);
 
   return (
     <div className={cn("grid gap-6 py-6", className)} {...props}>
-      <Form {...form}>
+      <Form {...(form as any)}>
         <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
           <div className="grid gap-4">
             <div className="grid gap-2">
@@ -64,12 +96,19 @@ const AuthSıgnUpForm = ({ className, ...props }: UserAuthFormProps) => {
                 Username
               </Label>
               <FormField
-                control={form.control}
-                name="name"
+                control={form.control as never}
+                name="username"
                 render={({ field }) => (
                   <FormItem className="grid gap-2">
                     <FormControl>
-                      <Input {...field} id="name" placeholder="Enter your username" autoCapitalize="none" autoComplete="email" autoCorrect="off" />
+                      <Input
+                        {...field}
+                        id="username"
+                        placeholder="Enter your username"
+                        autoCapitalize="none"
+                        autoComplete="email"
+                        autoCorrect="off"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -81,7 +120,7 @@ const AuthSıgnUpForm = ({ className, ...props }: UserAuthFormProps) => {
                 Email
               </Label>
               <FormField
-                control={form.control}
+                control={form.control as never}
                 name="email"
                 render={({ field }) => (
                   <FormItem className="grid gap-2">
@@ -98,7 +137,7 @@ const AuthSıgnUpForm = ({ className, ...props }: UserAuthFormProps) => {
                 Password
               </Label>
               <FormField
-                control={form.control}
+                control={form.control as never}
                 name="password"
                 render={({ field }) => (
                   <FormItem className="grid gap-2">
@@ -111,7 +150,7 @@ const AuthSıgnUpForm = ({ className, ...props }: UserAuthFormProps) => {
               />
             </div>
           </div>
-          <CButton loading={authStore.isLoading} className="w-full">
+          <CButton loading={registerIsLoading || isLoading} className="w-full">
             Sign up
           </CButton>
         </form>
