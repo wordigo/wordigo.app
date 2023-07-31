@@ -4,8 +4,8 @@ import CButton from "@/components/UI/Button";
 import { useRegisterMutation } from "@/store/auth/api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
+import { useTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
-import { useTranslation } from "react-i18next";
 import z from "zod";
 
 import { Form, FormControl, FormField, FormItem, FormMessage, Input, Label, useToast } from "@wordigo/ui";
@@ -153,7 +153,7 @@ const AuthSıgnUpForm = ({ className, ...props }: UserAuthFormProps) => {
             </div>
           </div>
           <CButton loading={registerIsLoading || isLoading} className="w-full">
-            Sign up
+            {t("signin.sign_button")}
           </CButton>
         </form>
       </Form>

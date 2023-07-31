@@ -2,9 +2,9 @@ import { type GetServerSidePropsContext } from "next";
 import AuthLayout from "@/components/Auth/Layout/AuthLayout";
 import SocialProviders from "@/components/Auth/SocialProviders";
 import { getSession } from "next-auth/react";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { NextSeo } from "next-seo";
-import { useTranslation } from "react-i18next";
 import { type PageProps } from "types/global";
 
 import AuthSıgnInForm from "./signin-form";

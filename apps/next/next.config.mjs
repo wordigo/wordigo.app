@@ -1,6 +1,7 @@
 import i18n from "./next-i18next.config.js"
 
 /** @type {import("next").NextConfig} */
+// @ts-ignore
 const config = {
   experimental: {
     appDir: false

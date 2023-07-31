@@ -105,7 +105,7 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
             </div>
           </div>
           <CButton loading={isLoading} className="w-full">
-            Sign in
+            {t("signin.sign_button")}
           </CButton>
         </form>
       </Form>
