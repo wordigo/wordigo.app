@@ -7,20 +7,23 @@ import GoogleProvider from "next-auth/providers/google";
 export const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ user, account }) {
-      if (account?.provider === "google") {
-        const request = await fetch(`${env.NEXT_PUBLIC_WORDIGO_BACKEND_URL}/auth/googleAuth?accessToken=${account.access_token}`);
+      try {
+        if (account?.provider === "google") {
+          const request = await fetch(`${env.NEXT_PUBLIC_WORDIGO_BACKEND_URL}/auth/googleAuth?accessToken=${account.access_token}`);
+          const profile = await request.json();
 
-        const profile = await request.json();
+          // @ts-ignore
+          user.accessToken = profile.data;
+          return true;
+        }
 
-        // @ts-ignore
-        user.accessToken = profile.data;
-        return true;
-      }
-
-      if (account.provider === "credentials") {
-        // @ts-ignore
-        user.accessToken = user?.token;
-        return true;
+        if (account.provider === "credentials") {
+          // @ts-ignore
+          user.accessToken = user?.token;
+          return true;
+        }
+      } catch (err) {
+        throw new Error(err as string);
       }
 
       return false;
@@ -29,16 +32,20 @@ export const authOptions: NextAuthOptions = {
       return { ...token, ...user };
     },
     async session({ session, token }) {
-      const request = await fetch(`${env.NEXT_PUBLIC_WORDIGO_BACKEND_URL}/users/getUserMe`, {
-        headers: {
-          authorization: "Bearer " + token.accessToken,
-        },
-      });
+      try {
+        const request = await fetch(`${env.NEXT_PUBLIC_WORDIGO_BACKEND_URL}/users/getUserMe`, {
+          headers: {
+            authorization: "Bearer " + token.accessToken,
+          },
+        });
 
-      const profile = await request.json();
-      session.user = { accessToken: token.accessToken, ...profile.data };
+        const profile = await request.json();
+        session.user = { accessToken: token.accessToken, ...profile.data };
 
-      return session;
+        return session;
+      } catch (err) {
+        throw new Error(err as string);
+      }
     },
   },
   providers: [
@@ -53,6 +60,7 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       authorize: async (credentials) => {
+        console.log("ee test");
         if (!credentials) throw new Error("no credentials");
 
         try {
