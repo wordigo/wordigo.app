@@ -26,7 +26,7 @@ const Prices: Price[] = [
   },
   {
     Icon: Star,
-    planName: "Pro",
+    planName: "Business",
     popular: true,
     price: "$10/mth",
     priceDescription: "This description for pro plan.",
@@ -40,7 +40,7 @@ const Prices: Price[] = [
   },
   {
     Icon: Flame,
-    planName: "Business",
+    planName: "Pro",
     popular: false,
     price: "$15/mth",
     priceDescription: "This description for business plan.",
