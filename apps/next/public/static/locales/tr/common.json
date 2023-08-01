@@ -66,7 +66,10 @@
   "about": {
     "title": "Hakkımızda",
     "description": "Wordigo, tarayıcı eklentisiyle gezinirken keşfedilen kelimeleri çevirip, kişisel sözlüğe eklemeye ve paylaşmaya olanak tanır. Wordigo ekibi, daha etkili bir dil öğrenme deneyimi sunmak için birlikte çalışmaktadır.",
-    "teams": "Takım"
+    "team": {
+      "heading": "Takımımızla tanışın",
+      "subheading": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque recusandae nobis minima rem ratione ipsam tempore id, mollitia non odit."
+    }
   },
   "contact": {
     "title": "Contact",
