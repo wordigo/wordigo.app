@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 import CButton from "@/components/UI/Button";
-import { api } from "@/libs/trpc";
+import { dictionaryApi, useCreateDictionaryMutation } from "@/store/dictionary/api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Table2Icon } from "lucide-react";
 import { useTranslation } from "next-i18next";
@@ -34,9 +34,10 @@ const CreateDictionarySchema = z.object({
 type CreateDictionaryValues = z.infer<typeof CreateDictionarySchema>;
 
 export function CreateDictionary({ label }: { label: string }) {
-  const { mutate: addDictionary, isLoading } = api.dictionary.addDictionary.useMutation();
   const { t } = useTranslation();
   const router = useRouter();
+
+  const [addDictionary, { status, isLoading, error }] = useCreateDictionaryMutation();
 
   const defaultValues: Partial<CreateDictionaryValues> = {
     title: "",
@@ -49,10 +50,17 @@ export function CreateDictionary({ label }: { label: string }) {
   });
 
   const handleAddDictionary = (values: CreateDictionaryValues) => {
-    addDictionary({
+    void addDictionary({
       title: values.title,
       published: values.published,
     });
+
+    if (status) {
+      console.log("status", status);
+    } else if (error) {
+      console.log("error", error);
+    }
+
     router.refresh();
   };
 

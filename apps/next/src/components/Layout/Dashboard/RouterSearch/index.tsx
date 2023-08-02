@@ -22,7 +22,7 @@ const DynamicRoute = () => {
 DynamicRoute.Item = ({ index, item, active }) => {
   const name = item.charAt(0).toUpperCase() + item.slice(1);
 
-  const classes = cn("text-black p-1 rounded", active ? "bg-gray-100" : "");
+  const classes = cn("text-black dark:text-white p-1 rounded dark:text-white", active ? "bg-gray-100 dark:text-black" : "");
 
   return (
     <Fragment>
