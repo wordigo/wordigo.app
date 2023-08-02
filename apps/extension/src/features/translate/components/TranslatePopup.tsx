@@ -21,9 +21,10 @@ import { useMutation } from "react-query"
 
 import { sendToBackground } from "@plasmohq/messaging"
 
+import { getSession } from "~api/auth"
+import { TranslateApi } from "~api/translate"
 import { TRANSLATE_CARD_WIDTH } from "~utils/constants"
 
-import { TranslateApi } from "../api/translate"
 import { useContextPopover } from "../context/popover"
 import DictionarySelector from "./DictionarySelector"
 
@@ -48,10 +49,14 @@ const TranslatePopup = () => {
   }, [selectedText])
 
   const openSettingsPage = async () => {
-    const opeendSettings = await sendToBackground({
-      name: "openSettings"
-    })
-    opeendSettings && setPopup(false)
+    const test = await getSession({ sessionToken: "" })
+    console.log("user", test)
+    return
+
+    // const opeendSettings = await sendToBackground({
+    //   name: "openSettings"
+    // })
+    // opeendSettings && setPopup(false)
   }
 
   const speech = new SpeechSynthesisUtterance(data?.translatedText)

@@ -15,7 +15,8 @@ import { useMutation } from "react-query"
 import { sendToBackground } from "@plasmohq/messaging"
 import { useStorage } from "@plasmohq/storage/hook"
 
-import { getUserDictionaries } from "../api/dictionary"
+import { getUserDictionaries } from "~api/dictionary"
+
 import { useContextPopover } from "../context/popover"
 
 const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge: string; translatedText: string }) => {
@@ -34,6 +35,7 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
         name: "getToken"
       })
       console.log(token)
+      return
 
       if (token) {
         setShowMenu(true)
