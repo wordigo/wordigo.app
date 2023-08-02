@@ -14,7 +14,7 @@ const dictionarySlice = createSlice({
     initialState,
     reducers: {
         setDictionary(state, action) {
-            state.dictionary = action.payload.data;
+            state.dictionary = action.payload;
         },
     },
     extraReducers: (builder) => {

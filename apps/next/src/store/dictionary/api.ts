@@ -1,8 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { type IResponse } from "types/global";
-
 import { type RootState } from "..";
-
 
 export const dictionaryApi = createApi({
     reducerPath: "dictionaryApi",
