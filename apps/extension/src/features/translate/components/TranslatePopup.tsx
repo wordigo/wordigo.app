@@ -21,11 +21,11 @@ import { useMutation } from "react-query"
 
 import { sendToBackground } from "@plasmohq/messaging"
 
-import DictionarySelector from "~features/translate/components/DictionarySelector"
 import { TRANSLATE_CARD_WIDTH } from "~utils/constants"
 
-import { TranslateApi } from "../api"
+import { TranslateApi } from "../api/translate"
 import { useContextPopover } from "../context/popover"
+import DictionarySelector from "./DictionarySelector"
 
 const TranslatePopup = () => {
   const toast = useToast()
@@ -151,13 +151,13 @@ const TranslatePopup = () => {
               <Settings size={18} />
             </Button>
           </div>
-          {/* <DictionarySelector translatedText={data?.translatedText} sourceLangauge={data?.sourceLanguage} /> */}
+          <DictionarySelector translatedText={data?.translatedText} sourceLangauge={data?.sourceLanguage} />
         </CardFooter>
       </Card>
     </motion.div>
   )
 }
 
-TranslatePopup.Loading = () => {}
+TranslatePopup.Loading = () => <Skeleton className="w-full h-10" />
 
 export default TranslatePopup

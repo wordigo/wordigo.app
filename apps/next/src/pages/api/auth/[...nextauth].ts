@@ -29,7 +29,7 @@ export const authOptions: NextAuthOptions = {
       return false;
     },
     jwt({ token, user }) {
-      return { ...token, ...user };
+      return { ...token, ...user, encrypted: false };
     },
     async session({ session, token }) {
       try {
@@ -90,6 +90,5 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/auth/signin",
   },
-  secret: process.env.NEXTAUTH_SECRET,
 };
 export default NextAuth(authOptions);

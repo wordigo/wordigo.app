@@ -10,19 +10,19 @@ import {
 } from "@wordigo/ui"
 import { ChevronDown, RotateCw } from "lucide-react"
 import { Fragment, useEffect, useState } from "react"
+import { useMutation } from "react-query"
 
 import { sendToBackground } from "@plasmohq/messaging"
 import { useStorage } from "@plasmohq/storage/hook"
 
-import trpc from "~libs/trpc"
-
+import { getUserDictionaries } from "../api/dictionary"
 import { useContextPopover } from "../context/popover"
 
 const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge: string; translatedText: string }) => {
   const [theme] = useStorage("theme")
   const { targetLanguage, selectedText } = useContextPopover()
-  const { mutate, data, isLoading } = trpc.dictionary.getUserDictionariesMutation.useMutation()
-  const { mutate: addMutate, isLoading: addIsLoading, status } = trpc.word.addWord.useMutation()
+  const { mutate, data, isLoading } = useMutation(getUserDictionaries)
+  // const { mutate: addMutate, isLoading: addIsLoading, status } = trpc.word.addWord.useMutation()
   const [showMenu, setShowMenu] = useState(false)
   const { toast } = useToast()
 
@@ -33,6 +33,8 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
       const token = await sendToBackground({
         name: "getToken"
       })
+      console.log(token)
+
       if (token) {
         setShowMenu(true)
         mutate()
@@ -66,7 +68,7 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
 
   const handleAddLibrary = (dictionaryId: string) => {
     setShowMenu(false)
-    addMutate({ dictionaryId, nativeLanguage: sourceLangauge, targetLanguage, text: selectedText, translatedText })
+    // addMutate({ dictionaryId, nativeLanguage: sourceLangauge, targetLanguage, text: selectedText, translatedText })
   }
 
   return (
@@ -76,18 +78,12 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
           variant="outline"
           size="default"
           className="rounded-md !h-9 !w-26 !px-3 flex justify-between items-center gap-x-2"
-          disabled={addIsLoading}>
-          {!addIsLoading ? (
-            <Fragment>
-              Dictionary
-              <ChevronDown size={14} />
-            </Fragment>
-          ) : (
-            <div className="flex justify-between items-center w-full">
-              Please wait
-              <RotateCw className="mr-2 h-4 w-4 animate-spin" />
-            </div>
-          )}
+          // disabled={addIsLoading}
+        >
+          <Fragment>
+            Dictionary
+            <ChevronDown size={14} />
+          </Fragment>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent data-theme={theme || "light"} className="w-[180px] border-0" id="el-popup-container">
