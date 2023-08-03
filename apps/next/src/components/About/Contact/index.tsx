@@ -1,44 +1,38 @@
 import Link from "next/link";
-import Animation from "@/components/Animation";
-import { ArrowRight } from "lucide-react";
 import { useTranslation } from "next-i18next";
 
 import useContactsList, { type IContact } from "./contact.constant";
 
 const ContactSection = () => {
   const { t } = useTranslation();
+
   const contactList = useContactsList();
 
   return (
-    <Animation>
-      <div className="max-w-screen-8xl w-full m-auto">
-        <div className="flex flex-col items-center justify-center">
-          <h1 className="text-3xl opacity-80 font-bold tracking-tight px-10 pb-10">{t("contact.title")}</h1>
-          <span className="flex gap-6 items-center justify-center flex-wrap">
-            {contactList.map((item) => (
-              <ContactSection.Item key={item.title} {...item} />
-            ))}
-          </span>
-        </div>
+    <section className="px-20 py-24 w-full flex flex-col items-center">
+      <span className="px-32 flex flex-col">
+        <h2 className="text-4xl font-semibold text-center">{t("contact.title")}</h2>
+        <p className="mt-6 text-xl text-muted-foreground text-center">{t("contact.subtitle")}</p>
+      </span>
+      <div className="grid grid-cols-3 gap-x-8 mt-24 w-full px-8">
+        {contactList.map((item) => (
+          <ContactSection.Item key={item.title} {...item} />
+        ))}
       </div>
-    </Animation>
+    </section>
   );
 };
 
-ContactSection.Item = ({ description, href, link_name, title }: IContact) => {
+ContactSection.Item = ({ description, href, link_name, title, Icon }: IContact) => {
   return (
-    <Animation>
-      <Link
-        href={href}
-        className="max-w-[420px] h-fit px-9 py-6 rounded-xl dark:bg-[#141420] bg-[#F3F4FE] border-[#e9eafe]  text-light_text border dark:text-white dark:border-[rgb(33,32,44)] shadow-lg dark:shadow-black gap-1 flex flex-col"
-      >
-        <h1 className="font-bold">{title}</h1>
-        <p className="max-w-[280px] break-words opacity-70">{description}</p>
-        <div className="flex gap-3 items-center text-blue-500">
-          {link_name} <ArrowRight />
-        </div>
+    <div className="flex flex-col items-center">
+      <Icon className="p-3 w-6 h-6 box-content border rounded-[0.625rem]" />
+      <h3 className="mt-5 text-xl font-semibold text-center">{title}</h3>
+      <p className="mt-2 text-center text-muted-foreground text-base">{description}</p>
+      <Link href={href} className="mt-5 text-base font-semibold text-center">
+        {link_name}
       </Link>
-    </Animation>
+    </div>
   );
 };
 

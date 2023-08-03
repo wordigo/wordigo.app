@@ -72,9 +72,10 @@
     }
   },
   "contact": {
-    "title": "Contact",
-    "mail_title": "E - posta üzerinden iletişim",
-    "mail_description": "Sorunuz veya farklı konular için bize e - posta gönderebilirsiniz.",
-    "mail_link": "E - posta gönderin"
+    "title": "Bize ulaşın",
+    "subtitle": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quod consectetur fuga doloremque enim quibusdam.",
+    "mail_title": "E-posta",
+    "mail_description": "Bize herhangi bir soru, öneri veya talebinizi iletmek için aşağıdaki e-posta adresini kullanabilirsiniz.",
+    "mail_link": "noreply@wordigo.com"
   }
 }

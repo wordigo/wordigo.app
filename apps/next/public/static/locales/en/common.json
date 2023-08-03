@@ -72,9 +72,10 @@
     }
   },
   "contact": {
-    "title": "Contact",
-    "mail_title": "Contact via E-mail",
-    "mail_description": "You can send us an e-mail for your questions or other topics.",
-    "mail_link": "Send an E-mail"
+    "title": "Contact us",
+    "subtitle": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quod consectetur fuga doloremque enim quibusdam.",
+    "mail_title": "Email",
+    "mail_description": "You can use the email address below to send us any questions, suggestions, or requests.",
+    "mail_link": "noreply@wordigo.com"
   }
 }

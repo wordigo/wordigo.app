@@ -7590,10 +7590,10 @@ pirates@^4.0.1:
   resolved "https://registry.yarnpkg.com/pirates/-/pirates-4.0.6.tgz#3018ae32ecfcff6c29ba2267cbf21166ac1f36b9"
   integrity sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==
 
-plasmo@0.81.0:
-  version "0.81.0"
-  resolved "https://registry.yarnpkg.com/plasmo/-/plasmo-0.81.0.tgz#dd993f46cfd59f0b7b8f6a85d5e0841f4e31c273"
-  integrity sha512-VL/kpxF+Vl/y3SqGr/T9w3fyvWcWcWIYuVccVO2VKU6yoxDmS8WA10CUxp/lGYfCTa6Fe9XABbrh70BILS+kaQ==
+plasmo@0.82.0:
+  version "0.82.0"
+  resolved "https://registry.yarnpkg.com/plasmo/-/plasmo-0.82.0.tgz#8ff8b8d3b495663396f669afc095350d00791969"
+  integrity sha512-LorWjQx6uaQVqkibSidRHrVlcbSWosPAH+BWbKM2KvqMetDcBiApA4D4c4v3Y8a0KdKwNJxBc5La7AhTyaFotw==
   dependencies:
     "@expo/spawn-async" "1.7.2"
     "@parcel/core" "2.9.3"
