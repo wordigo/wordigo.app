@@ -1,9 +1,7 @@
+import { WORDIGO_JWT_TOKEN_COOKIE } from "@wordigo/common"
 import axios from "axios"
 
-import { sendToBackground } from "@plasmohq/messaging"
 import { Storage } from "@plasmohq/storage"
-
-import { JWT_TOKEN_COOKIE } from "~utils/constants"
 
 const baseURL = process.env.PLASMO_PUBLIC_BACKEND_URL
 
@@ -17,9 +15,10 @@ const instance = axios.create({
 
 instance.interceptors.request.use(async (config) => {
   try {
-    const token = await storage.get(JWT_TOKEN_COOKIE)
+    const token = await storage.get(WORDIGO_JWT_TOKEN_COOKIE)
 
-    config.headers.Authorization = `Bearer ${token}`
+    if (token) config.headers.Authorization = `${token}`
+
     return config
   } catch (error) {
     return Promise.reject(error)

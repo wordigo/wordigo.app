@@ -13,6 +13,6 @@ export interface addDictonaryWordType {
 }
 
 export const addDictionaryWord = async (params: addDictonaryWordType): Promise<any> => {
-  const response = await instance.post("/words/create", { data: params })
+  const response = await instance.post("/words/create", params)
   return response.data
 }

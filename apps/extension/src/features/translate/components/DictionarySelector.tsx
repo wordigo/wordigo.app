@@ -1,60 +1,26 @@
-import {
-  Button,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-  Skeleton,
-  ToastAction,
-  useToast
-} from "@wordigo/ui"
-import { ChevronDown, RotateCw } from "lucide-react"
-import { Fragment, useEffect, useState } from "react"
+import { WORDIGO_JWT_TOKEN_COOKIE } from "@wordigo/common"
+import { Button, ToastAction, useToast } from "@wordigo/ui"
+import { RotateCw } from "lucide-react"
+import { Fragment, useEffect } from "react"
 import { useMutation } from "react-query"
 
-import { sendToBackground } from "@plasmohq/messaging"
 import { Storage } from "@plasmohq/storage"
 import { useStorage } from "@plasmohq/storage/hook"
 
-import { addDictionaryWord, getUserDictionaries } from "~api/dictionary"
-import { JWT_TOKEN_COOKIE } from "~utils/constants"
+import { addDictionaryWord } from "~api/dictionary"
 
 import { useContextPopover } from "../context/popover"
 
-const storage = new Storage({
-  area: "local"
-})
-
 const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge: string; translatedText: string }) => {
-  const [theme] = useStorage("theme")
   const { targetLanguage, selectedText } = useContextPopover()
-  const { mutate, data, isLoading } = useMutation(getUserDictionaries)
   const { mutate: addMutate, isLoading: addIsLoading, status } = useMutation(addDictionaryWord)
-  const [showMenu, setShowMenu] = useState(false)
   const { toast } = useToast()
-
-  const handleOpenMenu = async () => {
-    const targetValue = !showMenu
-
-    if (targetValue) {
-      const token = await storage.get(JWT_TOKEN_COOKIE)
-
-      if (token) {
-        setShowMenu(true)
-        mutate()
-      } else {
-        toast({
-          title: "You need to login..",
-          description: "You need to be logged in to add words to your dictionary.",
-          action: (
-            <ToastAction className="text-primary" altText="Logi">
-              Login
-            </ToastAction>
-          )
-        })
-      }
-    }
-  }
+  const [hasToken] = useStorage({
+    key: WORDIGO_JWT_TOKEN_COOKIE,
+    instance: new Storage({
+      area: "local"
+    })
+  })
 
   useEffect(() => {
     if (status === "success") {
@@ -71,46 +37,21 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
   }, [status])
 
   const handleAddLibrary = () => {
-    // setShowMenu(false)
     addMutate({ nativeLanguage: sourceLangauge, targetLanguage, text: selectedText, translatedText })
   }
 
   return (
-    <Button onClick={handleAddLibrary} variant="default" size="sm">
-      Save to library
+    <Button disabled={!hasToken || addIsLoading} onClick={handleAddLibrary} variant="default" size="sm">
+      {addIsLoading ? (
+        <Fragment>
+          <RotateCw className="mr-2 h-4 w-4 animate-spin" />
+          Please wait
+        </Fragment>
+      ) : (
+        "Save to library"
+      )}
     </Button>
   )
 }
-
-{
-  /* <DropdownMenu open={showMenu} onOpenChange={handleOpenMenu}>
-<DropdownMenuTrigger asChild className="w-[180px]">
-  <Button
-    variant="outline"
-    size="default"
-    className="rounded-md !h-9 !w-26 !px-3 flex justify-between items-center gap-x-2"
-    // disabled={addIsLoading}
-  >
-    <Fragment>
-      Dictionary
-      <ChevronDown size={14} />
-    </Fragment>
-  </Button>
-</DropdownMenuTrigger>
-<DropdownMenuContent data-theme={theme || "light"} className="w-[180px] border-0" id="el-popup-container">
-  {isLoading ? (
-    <DictionarySelector.Loader />
-  ) : (
-    data?.data?.map((item) => (
-      <DropdownMenuItem onClick={() => handleAddLibrary(item.id)} key={item.id}>
-        {item.title}
-      </DropdownMenuItem>
-    ))
-  )}
-</DropdownMenuContent>
-</DropdownMenu> */
-}
-
-DictionarySelector.Loader = () => {}
 
 export default DictionarySelector

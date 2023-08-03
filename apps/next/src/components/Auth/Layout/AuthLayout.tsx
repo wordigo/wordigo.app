@@ -1,15 +1,16 @@
 import { type FunctionComponent, type PropsWithChildren } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import DynamicLogo from "@/components/Logo/DynamicLogo";
 import { ChevronLeft } from "lucide-react";
 import { useTranslation } from "next-i18next";
 
 import { buttonVariants } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
-const DynamicLogo = dynamic(() => import("@/components/Logo/DynamicLogo"), {
-  ssr: false,
-}) as FunctionComponent;
+// const DynamicLogo = dynamic(() => import("@/components/Logo/DynamicLogo"), {
+//   ssr: false,
+// }) as FunctionComponent;
 
 const AuthLayout = ({ children }: PropsWithChildren) => {
   const { t } = useTranslation();

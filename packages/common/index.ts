@@ -53,3 +53,5 @@ export const AllCountryLanguages: ILanguage[] = [
   { name: "Bengali", icon: "BD", code: "BN" },
   { name: "Tagalog", icon: "PH", code: "TL" },
 ];
+
+export const WORDIGO_JWT_TOKEN_COOKIE = "wordigo_extension_token";

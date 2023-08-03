@@ -1,12 +1,33 @@
-"use client";
-
+import { type FC, useEffect, useState } from "react";
 import Image from "next/image";
-import { LogoEnums } from "@/constants/logos";
 import { useTheme } from "next-themes";
 
-export default function DynamicLogo() {
-  const { theme = "system" } = useTheme();
-  const getModeLogoUrl = LogoEnums[theme as keyof typeof LogoEnums];
+const ThemedImage: FC = () => {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  let srcImage: string;
 
-  return <Image src={`/images/${getModeLogoUrl}.png`} width={200} height={200} priority={true} alt="" className="rounded-md" />;
-}
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
+  switch (resolvedTheme) {
+    case "light":
+      srcImage = "/images/logo-dark.png";
+      break;
+    case "dark":
+      srcImage = "/images/logo-white.png";
+      break;
+    default:
+      srcImage = "/images/logo-dark.png";
+      break;
+  }
+
+  return <Image className="rounded-md" src={srcImage} alt="Wordigo Logo" priority={true} width={200} height={200} />;
+};
+
+export default ThemedImage;

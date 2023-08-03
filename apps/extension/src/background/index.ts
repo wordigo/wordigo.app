@@ -1,7 +1,6 @@
-import { Storage } from "@plasmohq/storage"
+import { WORDIGO_JWT_TOKEN_COOKIE } from "@wordigo/common"
 
-import { getSession } from "~api/auth"
-import { JWT_TOKEN_COOKIE, WORDIGO_AUTH_SESSION_COOKIE } from "~utils/constants"
+import { Storage } from "@plasmohq/storage"
 
 const storage = new Storage({
   area: "local"
@@ -24,16 +23,29 @@ const openWelcomePage = () => {
   )
 }
 
-chrome.cookies.onChanged.addListener(async (changeInfo) => {
-  if (changeInfo.cookie.name === WORDIGO_AUTH_SESSION_COOKIE) {
+chrome.cookies.onChanged.addListener((changeInfo) => {
+  if (changeInfo.cookie.name === WORDIGO_JWT_TOKEN_COOKIE) {
     if (changeInfo.removed || changeInfo.cookie.value.trim() === "") {
-      void storage.remove(JWT_TOKEN_COOKIE)
+      void storage.remove(WORDIGO_JWT_TOKEN_COOKIE)
     } else {
-      const response = await getSession(changeInfo.cookie.value)
-
-      void storage.set(JWT_TOKEN_COOKIE, response.user.accessToken)
+      void storage.set(WORDIGO_JWT_TOKEN_COOKIE, changeInfo.cookie.value)
     }
   }
 })
+
+// const getCookie = async () => {
+//   const cookie = await chrome.cookies.get({ url: process.env.PLASMO_PUBLIC_SITE_URL, name: WORDIGO_AUTH_SESSION_COOKIE })
+
+//   if (cookie.value.trim() === "") {
+//     void storage.remove(JWT_TOKEN_COOKIE)
+//   } else {
+//     const response = await getSession(cookie.value)
+//     console.log(response)
+
+//     void storage.set(JWT_TOKEN_COOKIE, response.user.accessToken)
+//   }
+// }
+
+// getCookie()
 
 export {}
