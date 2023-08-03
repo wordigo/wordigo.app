@@ -19,7 +19,7 @@ NProgress.configure({
 export default function RootLayout({ children }: PropsWithChildren) {
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
 
   useEffect(() => {
     const start = () => {
@@ -41,9 +41,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
     };
   }, []);
 
-  useEffect(() => {
-    if (session?.user) dispatch(setToken(session.user.accessToken));
-  }, [session?.user?.accessToken]);
+  // console.log(session);
+  // useEffect(() => {
+  //   if (session?.user) dispatch(setToken(session.user.accessToken));
+  // }, [session?.user?.accessToken]);
 
   return <Fragment>{loading ? <PageLoader /> : children}</Fragment>;
 }

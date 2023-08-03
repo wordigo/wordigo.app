@@ -1,11 +1,12 @@
-import instance from "~/libs/axios"
-
-export const getSession = async ({ sessionToken }: { sessionToken: string }): Promise<any> => {
-  const response = await instance.get("/api/auth/session", {
-    baseURL: "http://localhost:3000",
+export const getSession = async (token: string): Promise<any> => {
+  const response = await fetch(process.env.PLASMO_PUBLIC_SITE_URL + "/api/auth/session", {
     headers: {
-      Cookie: `next-auth.session-token=${sessionToken}`
-    }
+      "Content-Type": "application/json",
+      Cookie: `next-auth.session-token=${token}`
+    },
+    credentials: "same-origin",
+    mode: "no-cors"
   })
-  return response.data
+  const data = response.json()
+  return data
 }

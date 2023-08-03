@@ -21,7 +21,6 @@ import { useMutation } from "react-query"
 
 import { sendToBackground } from "@plasmohq/messaging"
 
-import { getSession } from "~api/auth"
 import { TranslateApi } from "~api/translate"
 import { TRANSLATE_CARD_WIDTH } from "~utils/constants"
 
@@ -49,14 +48,10 @@ const TranslatePopup = () => {
   }, [selectedText])
 
   const openSettingsPage = async () => {
-    const test = await getSession({ sessionToken: "" })
-    console.log("user", test)
-    return
-
-    // const opeendSettings = await sendToBackground({
-    //   name: "openSettings"
-    // })
-    // opeendSettings && setPopup(false)
+    const opeendSettings = await sendToBackground({
+      name: "openSettings"
+    })
+    opeendSettings && setPopup(false)
   }
 
   const speech = new SpeechSynthesisUtterance(data?.translatedText)

@@ -1,8 +1,15 @@
 import axios from "axios"
 
 import { sendToBackground } from "@plasmohq/messaging"
+import { Storage } from "@plasmohq/storage"
+
+import { JWT_TOKEN_COOKIE } from "~utils/constants"
 
 const baseURL = process.env.PLASMO_PUBLIC_BACKEND_URL
+
+const storage = new Storage({
+  area: "local"
+})
 
 const instance = axios.create({
   baseURL: `${baseURL}`
@@ -10,7 +17,8 @@ const instance = axios.create({
 
 instance.interceptors.request.use(async (config) => {
   try {
-    const token = await sendToBackground({ name: "getToken" })
+    const token = await storage.get(JWT_TOKEN_COOKIE)
+
     config.headers.Authorization = `Bearer ${token}`
     return config
   } catch (error) {

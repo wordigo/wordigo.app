@@ -29,23 +29,11 @@ export const authOptions: NextAuthOptions = {
       return false;
     },
     jwt({ token, user }) {
-      return { ...token, ...user, encrypted: false };
+      return { ...token, ...user };
     },
-    async session({ session, token }) {
-      try {
-        const request = await fetch(`${env.NEXT_PUBLIC_WORDIGO_BACKEND_URL}/users/getUserMe`, {
-          headers: {
-            authorization: "Bearer " + token.accessToken,
-          },
-        });
-
-        const profile = await request.json();
-        session.user = { accessToken: token.accessToken, ...profile.data };
-
-        return session;
-      } catch (err) {
-        throw new Error(err as string);
-      }
+    session({ session, token }) {
+      session.user = token.user as any;
+      return session;
     },
   },
   providers: [
@@ -60,7 +48,6 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       authorize: async (credentials) => {
-        console.log("ee test");
         if (!credentials) throw new Error("no credentials");
 
         try {
@@ -77,7 +64,7 @@ export const authOptions: NextAuthOptions = {
           const response = await request.json();
 
           if (response?.data?.user) {
-            return { user: response.data.user as User, token: response.data.accessToken } as any;
+            return { user: response.data.user as User } as any;
           } else {
             throw new Error(response.message as string);
           }
@@ -90,5 +77,6 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/auth/signin",
   },
+  secret: process.env.NEXTAUTH_SECRET,
 };
 export default NextAuth(authOptions);
