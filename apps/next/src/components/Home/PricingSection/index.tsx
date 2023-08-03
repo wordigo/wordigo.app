@@ -30,14 +30,14 @@ const Pricing = () => {
 
 Pricing.Card = ({ Icon, planName, popular, price, priceDescription, features }: Price) => {
   return (
-    <div className={`p-8 rounded-2xl border flex flex-col items-center ${popular && "border-foreground"}`}>
-      <Icon className="w-5 h-5 box-content p-2.5 border rounded-[0.625rem]" />
-      <h3 className="text-xl font-semibold mt-5">{planName}</h3>
+    <div className={`p-8 pt-12 rounded-2xl border flex flex-col items-center relative ${popular && "border-foreground"}`}>
       {popular && (
-        <Badge className="text-sm font-medium px-2.5 mt-4 py-1" variant="outline">
+        <Badge className="text-sm bg-foreground text-primary-foreground font-medium px-2.5 py-1 top-[-0.9375rem] absolute" variant="outline">
           Most Popular
         </Badge>
       )}
+      <Icon className="w-5 h-5 box-content p-2.5 border rounded-[0.625rem]" />
+      <h3 className="text-xl font-semibold mt-5">{planName}</h3>
       <span className="text-5xl font-semibold mt-4">{price}</span>
       <p className=" text-base text-muted-foreground mt-2">{priceDescription}</p>
       <div className="mt-8 grid gap-y-4 mr-auto mb-10">
@@ -50,9 +50,14 @@ Pricing.Card = ({ Icon, planName, popular, price, priceDescription, features }: 
           );
         })}
       </div>
-      <Button type="button" className="w-full mt-auto">
-        Get Started
-      </Button>
+      <div className="mt-auto w-full">
+        <Button type="button" className="w-full">
+          Get Started
+        </Button>
+        <Button variant="outline" type="button" className="w-full mt-3">
+          Learn More
+        </Button>
+      </div>
     </div>
   );
 };
