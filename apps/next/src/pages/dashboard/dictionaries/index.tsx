@@ -41,7 +41,7 @@ export default function DashboardPage() {
               </div>
             </Fragment>
           ) : (
-            <DataTable columns={columns} data={data.data} label="nav_addDictionary" />
+            <Fragment>{data.data !== null && <DataTable columns={columns} data={data.data} label="nav_addDictionary" />}</Fragment>
           )}
         </DashboardShell>
       </DashboardLayout>

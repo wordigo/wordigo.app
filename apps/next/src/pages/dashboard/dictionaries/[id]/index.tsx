@@ -5,17 +5,17 @@ import { columns } from "@/components/Dashboard/Words/columns";
 import { DataTable } from "@/components/Dashboard/Words/data-table";
 import DashboardLayout from "@/components/Layout/Dashboard";
 import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
-import { api } from "@/libs/trpc";
+import { useGetWordDataQuery } from "@/store/word/api";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
+
+
+
 
 export default function DashboardPage() {
   const router = useRouter();
   const { id } = router.query;
-
-  const { data } = api.dictionary.getDictionaryWords.useQuery({
-    dictionaryId: id as string,
-  });
-
+  const { data } = useGetWordDataQuery(id);
   return (
     <Fragment>
       <DashboardLayout>

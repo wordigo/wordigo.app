@@ -52,6 +52,7 @@ export function DataTable<TData, TValue>({ columns, data, label }: DataTableProp
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
   });
+  
 
   return (
     <div className="space-y-8">
