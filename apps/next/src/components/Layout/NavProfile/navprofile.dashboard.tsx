@@ -1,27 +1,14 @@
-import Link from "next/link";
-import { BarChart, BookMarked, GemIcon, HomeIcon, LayoutDashboard, LibraryIcon, LogOut, Settings } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-  Button,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-  Skeleton,
-} from "@wordigo/ui";
-import { cn } from "@wordigo/ui/lib/utils";
+import { Avatar, AvatarFallback, AvatarImage, Button, DropdownMenu, DropdownMenuLabel, DropdownMenuTrigger, Skeleton } from "@wordigo/ui";
 
 const NavProfile = () => {
   const { data } = useSession();
   const splittedText = data?.user?.name?.toUpperCase()?.split(" ");
   const computedName = (splittedText?.[0]?.[0] || "") + (splittedText?.[1]?.[0] || "");
+
+  const handleSignOut = () => signOut({ callbackUrl: "/" });
 
   return (
     <DropdownMenu>
@@ -43,7 +30,7 @@ const NavProfile = () => {
             </div>
           </Button>
           <div className="z-40">
-            <DropdownMenuLabel className="text-gray-400 right-0 hover:!text-red-500" onClick={() => signOut()}>
+            <DropdownMenuLabel className="text-gray-400 right-0 hover:!text-red-500" onClick={handleSignOut}>
               <LogOut size={"20"} />
             </DropdownMenuLabel>
           </div>

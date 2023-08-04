@@ -1,10 +1,23 @@
+import { type FC, useEffect, useState } from "react";
 import Image from "next/image";
 import { LogoIconsEnums } from "@/constants/logos";
 import { useTheme } from "next-themes";
 
-export default function DynamicIconLogo() {
-  const { theme = "system" } = useTheme();
-  const getModeIconUrl = LogoIconsEnums[theme as keyof typeof LogoIconsEnums];
+const DynamicIconLogo: FC = () => {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  return <Image src={`/images/${getModeIconUrl}.png`} width={32} height={32} priority={true} alt="" className="rounded-md" />;
-}
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
+  const getModeIconUrl = LogoIconsEnums[resolvedTheme as keyof typeof LogoIconsEnums];
+
+  return <Image className="rounded-md" src={`/images/${getModeIconUrl}.png`} alt="Wordigo Logo" priority={true} width={32} height={32} />;
+};
+
+export default DynamicIconLogo;

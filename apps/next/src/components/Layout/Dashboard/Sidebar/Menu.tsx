@@ -1,7 +1,7 @@
 import Link from "next/link";
 import UnderNavigation from "@/components/Layout/Dashboard/Sidebar/Under.Navigation";
 import DashboardNavProfil from "@/components/Layout/NavProfile/navprofile.dashboard";
-import DynamicIconLogo from "@/components/Logo/DynamicIconLogo";
+import DynamicLogo from "@/components/Logo/DynamicLogo";
 
 import DashboardNav from "./Navigation";
 
@@ -10,9 +10,10 @@ export default function BurgerMenu() {
     <div className="flex flex-col fixed justify-between left-0 py-8 top-0 z-50 text-light_text dark:text-white dark:bg-DarkBackground bg-LightBackground g-red-500 px-5 min-w-[280px] max-w-[280px] rounded-r-2xl border-r-[#EAECF0] shadow-md shadow-[rgba(16, 24, 40, 1)] h-screen">
       <span>
         <span className="flex items-center justify-between w-full mb-6">
-          <div className="font-bold text-[18px] flex items-center select-none">
-            <DynamicIconLogo />
-            <h1 className="ml-2">Wordigo</h1>
+          <div className="font-bold text-[18px] flex items-center select-none px-3 pt-3">
+            <Link href="/">
+              <DynamicLogo size={120} />
+            </Link>
           </div>
         </span>
         <aside className="flex w-full flex-col">

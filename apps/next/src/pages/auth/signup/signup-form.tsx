@@ -14,7 +14,7 @@ import { cn } from "@wordigo/ui/lib/utils";
 type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
 
 const AuthSıgnUpSchema = z.object({
-  username: z.string().min(3, { message: "Username is required" }),
+  name: z.string().min(3, { message: "Name is required" }),
   email: z.string().min(1, { message: "Email is required" }).email({
     message: "Must be a valid email",
   }),
@@ -31,7 +31,7 @@ const AuthSıgnUpForm = ({ className, ...props }: UserAuthFormProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const defaultValues: Partial<AuthRegisterValues> = {
-    username: "",
+    name: "",
     email: "",
     password: "",
   };
@@ -95,11 +95,11 @@ const AuthSıgnUpForm = ({ className, ...props }: UserAuthFormProps) => {
           <div className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="name" className="text-left">
-                {t("signup.username")}
+                {t("signup.name")}
               </Label>
               <FormField
                 control={form.control as never}
-                name="username"
+                name="name"
                 render={({ field }) => (
                   <FormItem className="grid gap-2">
                     <FormControl>
