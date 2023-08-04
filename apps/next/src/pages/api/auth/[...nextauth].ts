@@ -39,7 +39,7 @@ export const authOptions = (request: NextApiRequest, response: NextApiResponse):
         try {
           const request = await fetch(`${env.NEXT_PUBLIC_WORDIGO_BACKEND_URL}/users/getMe`, {
             headers: {
-              authorization: token.accessToken as string,
+              authorization: "Bearer " + token.accessToken,
             },
           });
 

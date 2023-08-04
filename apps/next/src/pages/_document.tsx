@@ -32,7 +32,6 @@ const Document = () => {
           />
           <meta name="google" content="notranslate"></meta>
           <meta name="keywords" content="Wordigo, translation, text translation, dictionary, browser plug-in, language learning" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </Head>
         <body>
           <Main />

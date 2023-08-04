@@ -13,7 +13,7 @@ const SıgnIn = ({ _nextI18Next }: PageProps) => {
   const { t } = useTranslation();
   return (
     <AuthLayout>
-      <NextSeo title={_nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale]?.common?.seo_signin_title} />
+      <NextSeo title={_nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale]?.common?.seo.signin_title} />
       <AuthLayout.Title>{t("signin.title")}</AuthLayout.Title>
       <AuthLayout.Description>{t("signin.description")}</AuthLayout.Description>
       <AuthSıgnInForm />

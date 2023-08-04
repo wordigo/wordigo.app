@@ -29,7 +29,7 @@ export default function Published({ items }: { items: IPublished[] }) {
         className="grid grid-cols-3 gap-x-8 gap-y-16 mt-24 w-full"
       >
         {data.map((item: IPublished) => (
-          <div key={item.id} onClick={() => router.push(`/dictionaries/${item.id}`)}>
+          <div key={item.id} onClick={() => router.push(`/library/${item.id}`)}>
             {item.user.name && (
               <div className="flex w-full flex-col justify-between h-full">
                 <div>

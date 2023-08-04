@@ -77,5 +77,10 @@
     "mail_title": "E-posta",
     "mail_description": "Bize herhangi bir soru, öneri veya talebinizi iletmek için aşağıdaki e-posta adresini kullanabilirsiniz.",
     "mail_link": "noreply@wordigo.com"
+  },
+  "error_404": {
+    "title": "Hoop! Birşeyler yanlış gitti.",
+    "description": "Üzgünüm, aradığınız sayfa bulunamadı.",
+    "action": "Ana Sayfa'ya geri dön"
   }
 }

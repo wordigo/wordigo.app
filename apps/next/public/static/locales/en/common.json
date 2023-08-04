@@ -77,5 +77,10 @@
     "mail_title": "Email",
     "mail_description": "You can use the email address below to send us any questions, suggestions, or requests.",
     "mail_link": "noreply@wordigo.com"
+  },
+  "error_404": {
+    "title": "Oops, something went wrong.",
+    "description": "Sorry, we couldn't find your page.",
+    "action": "Back to home"
   }
 }

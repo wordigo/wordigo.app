@@ -31,7 +31,7 @@ const SignUp = ({ _nextI18Next }: PageProps) => {
 
   return (
     <AuthLayout>
-      <NextSeo title={_nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale]?.common.seo_signup_title} />
+      <NextSeo title={_nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale]?.common.seo.signup_title} />
       <AuthLayout.Title>{t("signup.title")}</AuthLayout.Title>
       <AuthLayout.Description>{t("signup.description")}</AuthLayout.Description>
       <AuthSıgnupForm />
