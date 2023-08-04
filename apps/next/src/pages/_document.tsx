@@ -8,7 +8,6 @@ const Document = () => {
           <link rel="manifest" href="/static/head/manifest.json" />
           <meta name="msapplication-TileColor" content="#2d89ef" />
           <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
-          <meta name="theme-color" content="#ffffff"></meta>
           <meta charSet="UTF-8" />
           <link rel="apple-touch-icon" sizes="57x57" href="/static/head/apple-icon-57x57.png" />
           <link rel="apple-touch-icon" sizes="60x60" href="/static/head/apple-icon-60x60.png" />
@@ -23,14 +22,17 @@ const Document = () => {
           <link rel="icon" type="image/png" sizes="32x32" href="/static/head/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="96x96" href="/static/head/favicon-96x96.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/static/head/favicon-16x16.png" />
-          <meta name="msapplication-TileColor" content="#ffffff" />
+          <link rel="icon" type="image/x-icon" href="/static/head/favicon.ico" />
+          <link rel="icon" type="image/png" href="/static/head/favicon.png" />
           <meta name="msapplication-TileImage" content="/static/head/ms-icon-144x144.png" />
           <meta name="theme-color" content="#ffffff" />
           <meta
             name="description"
             content="Wordigo is a useful add-on that offers the ability to translate text and add it to the dictionary in your browser."
           />
+          <meta name="google" content="notranslate"></meta>
           <meta name="keywords" content="Wordigo, translation, text translation, dictionary, browser plug-in, language learning" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </Head>
         <body>
           <Main />
