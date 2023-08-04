@@ -17,7 +17,7 @@ instance.interceptors.request.use(async (config) => {
   try {
     const token = await storage.get(WORDIGO_JWT_TOKEN_COOKIE)
 
-    if (token) config.headers.Authorization = `${token}`
+    if (token) config.headers.Authorization = `Bearer ${token}`
 
     return config
   } catch (error) {

@@ -1,4 +1,3 @@
-import { MainNav } from "@/components/Layout/Dashboard/Header/MainNav";
 import { CreateDictionary } from "@/components/Modals/CreateDictionary";
 import { type Table } from "@tanstack/react-table";
 

@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import { type GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 import { columns } from "@/components/Dashboard/Words/columns";
 import { DataTable } from "@/components/Dashboard/Words/data-table";
@@ -8,23 +7,6 @@ import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
 import { useGetWordDataQuery } from "@/store/word/api";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-
-
-
-
-export default function DashboardPage() {
-  const router = useRouter();
-  const { id } = router.query;
-  const { data } = useGetWordDataQuery(id);
-  return (
-    <Fragment>
-      <DashboardLayout>
-        <DashboardShell>{data && <DataTable columns={columns} data={data?.data?.words} label="nav_addWord" />}</DashboardShell>
-      </DashboardLayout>
-    </Fragment>
-  );
-}
-
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
     props: {
@@ -32,6 +14,24 @@ export async function getStaticProps({ locale }: { locale: string }) {
     },
   };
 }
+
+const DictionaryPage = () => {
+  const router = useRouter();
+  const { id } = router.query;
+  const { data } = useGetWordDataQuery(id);
+
+  return <DashboardShell>{data && <DataTable columns={columns} data={data?.data?.words} label="nav_addWord" />}</DashboardShell>;
+};
+
+DictionaryPage.Layout = () => {
+  return (
+    <DashboardLayout>
+      <DictionaryPage />
+    </DashboardLayout>
+  );
+};
+
+export default DictionaryPage.Layout;
 
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = () => {
   return {

@@ -1,11 +1,11 @@
 import Router from "next/router";
+import { setToken } from "@/store/auth/slice";
+import { useAppDispatch } from "@/utils/hooks";
+import { useSession } from "next-auth/react";
 import NProgress from "nprogress";
 
 import "nprogress/nprogress.css";
 import { Fragment, type PropsWithChildren, useEffect, useState } from "react";
-import { setToken } from "@/store/auth/slice";
-import { useAppDispatch } from "@/utils/hooks";
-import { useSession } from "next-auth/react";
 
 import PageLoader from "../UI/PageLoader";
 
@@ -17,9 +17,9 @@ NProgress.configure({
 });
 
 export default function RootLayout({ children }: PropsWithChildren) {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
-  const { data: session } = useSession();
+  const session = useSession();
 
   useEffect(() => {
     const start = () => {
@@ -42,11 +42,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
   }, []);
 
   useEffect(() => {
-    if (session?.user) {
-      dispatch(setToken(session.user.accessToken));
-    }
-    setLoading(false);
-  }, [session?.user, dispatch]);
+    if (session.status === "authenticated") dispatch(setToken(session?.data?.user?.accessToken));
+  }, [session?.data]);
 
-  return <Fragment>{loading ? <PageLoader /> : children}</Fragment>;
+  return <Fragment>{loading || session.status === "loading" ? <PageLoader /> : children}</Fragment>;
 }

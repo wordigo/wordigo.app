@@ -17,7 +17,7 @@ export const dictionaryApi = createApi({
   reducerPath: "dictionaryApi",
   baseQuery,
   endpoints: (builder) => ({
-    getDictionaryData: builder.query<IResponse, any>({
+    getUserDictionaries: builder.mutation<IResponse, any>({
       query: () => ({
         url: "/dictionaries/getUserDictionaries",
         method: "GET",
@@ -26,11 +26,11 @@ export const dictionaryApi = createApi({
     createDictionary: builder.mutation<any, any>({
       query: (create) => ({
         url: "/dictionaries/create",
-        body: create,
+        params: create,
         method: "POST",
       }),
     }),
   }),
 });
 
-export const { useGetDictionaryDataQuery, useCreateDictionaryMutation } = dictionaryApi;
+export const { useGetUserDictionariesMutation, useCreateDictionaryMutation } = dictionaryApi;

@@ -1,19 +1,28 @@
-import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import CButton from "@/components/UI/Button";
-import { useCreateDictionaryMutation } from "@/store/dictionary/api";
+import { useCreateDictionaryMutation, useGetUserDictionariesMutation } from "@/store/dictionary/api";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Table2Icon } from "lucide-react";
+import { Table2Icon, X } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-
-
-import { Button, Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Input, Switch } from "@wordigo/ui";
-
-
-
-
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+  Input,
+  useToast,
+} from "@wordigo/ui";
 
 const CreateDictionarySchema = z.object({
   title: z.string().nonempty(),
@@ -22,8 +31,10 @@ const CreateDictionarySchema = z.object({
 type CreateDictionaryValues = z.infer<typeof CreateDictionarySchema>;
 
 export function CreateDictionary({ label }: { label: string }) {
+  const [open, setOpen] = useState(false);
+  const { toast } = useToast();
   const { t } = useTranslation();
-  const router = useRouter();
+  const [getUserDictionaries] = useGetUserDictionariesMutation();
 
   const defaultValues: Partial<CreateDictionaryValues> = {
     title: "",
@@ -34,24 +45,41 @@ export function CreateDictionary({ label }: { label: string }) {
     defaultValues,
   });
 
-  const [addDictionary, { status, isLoading, error }] = useCreateDictionaryMutation();
+  const [addDictionary, { status, isLoading, data }] = useCreateDictionaryMutation();
 
   const handleAddDictionary = (values: CreateDictionaryValues) => {
     void addDictionary({
       title: values.title,
     });
-
-    if (status) {
-      router.refresh();
-    } else if (error) {
-      console.log("error", error);
-    }
   };
 
+  useEffect(() => {
+    if (status === "fulfilled") {
+      if (data.success) {
+        void getUserDictionaries("");
+        setOpen(false);
+        form.reset();
+        toast({
+          variant: "success",
+          title: "Successfull",
+          description: data.message,
+        });
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Warning",
+          description: data.message,
+        });
+      }
+    }
+  }, [status]);
+
+  const toggleShow = () => setOpen(!open);
+
   return (
-    <Dialog>
+    <Dialog open={open}>
       <DialogTrigger asChild>
-        <Button variant="default" className="px-4 py-[10px] font-semibold text-sm">
+        <Button onClick={toggleShow} variant="default" className="px-4 py-[10px] font-semibold text-sm">
           {t(label)}
         </Button>
       </DialogTrigger>
@@ -61,13 +89,20 @@ export function CreateDictionary({ label }: { label: string }) {
             <Table2Icon size={18} />
             Add Dictionary
           </DialogTitle>
+          <button
+            onClick={toggleShow}
+            className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
+          >
+            <X className="h-4 w-4" />
+            <span className="sr-only">Close</span>
+          </button>
         </DialogHeader>
 
-        <Form {...form}>
+        <Form {...(form as any)}>
           <form onSubmit={form.handleSubmit(handleAddDictionary)} className="space-y-4">
             <div className="grid gap-4 py-4">
               <FormField
-                control={form.control}
+                control={form.control as never}
                 name="title"
                 render={({ field }) => (
                   <FormItem className="grid gap-1">

@@ -1,34 +1,32 @@
-/* eslint-disable @next/next/no-img-element */
+import { AllCountryLanguages } from "@wordigo/common"
 import { Button, Card, CardContent, CardFooter, CardHeader, Separator, Skeleton, Textarea, useToast } from "@wordigo/ui"
 import type { MouseEvent } from "react"
 import { useMemo } from "react"
 
 import { sendToBackground } from "@plasmohq/messaging"
 
-import { AllCountryLanguages } from "~../../packages/common"
 import trpc from "~libs/trpc"
 
 import "../context/popup"
 
+import LanguageSelector from "@wordigo/ui/components/ui/language-selector"
 import lightLogo from "data-base64:~assets/logo-light.png"
 import { ArrowRightLeft, BookMarked, Settings } from "lucide-react"
-
-import LanguageSelector from "~../../packages/ui/components/ui/language-selector"
 
 const TranslatePopup = () => {
   const toast = useToast()
 
-  const { mutate: handleTranslate, isLoading, data, reset } = trpc.translation.translate.useMutation({})
+  // const { mutate: handleTranslate, isLoading, data, reset } = trpc.translation.translate.useMutation({})
 
-  const getSourceLanguageFlag = useMemo(
-    () => AllCountryLanguages.find((lang) => lang.code === data?.sourceLanguage?.toUpperCase()),
-    [data?.sourceLanguage]
-  )
+  // const getSourceLanguageFlag = useMemo(
+  //   () => AllCountryLanguages.find((lang) => lang.code === data?.sourceLanguage?.toUpperCase()),
+  //   [data?.sourceLanguage]
+  // )
 
-  const getTargetLanguageFlag = useMemo(
-    () => AllCountryLanguages.find((lang) => lang.code === data?.targetLanguage?.toUpperCase()),
-    [data?.targetLanguage]
-  )
+  // const getTargetLanguageFlag = useMemo(
+  //   () => AllCountryLanguages.find((lang) => lang.code === data?.targetLanguage?.toUpperCase()),
+  //   [data?.targetLanguage]
+  // )
 
   // useEffect(() => {
   //   // handleTranslate({ query: selectedText, sourceLanguage: null, targetLanguage })
@@ -45,13 +43,13 @@ const TranslatePopup = () => {
   }
 
   const textToSpeech = () => {
-    const msg = new SpeechSynthesisUtterance(data.translatedText as string)
+    const msg = new SpeechSynthesisUtterance("data.translatedText" as string)
     msg.lang = "en_US"
     window.speechSynthesis.speak(msg)
   }
 
   const copyTranslatedText = () => {
-    void navigator.clipboard.writeText(data.translatedText as string)
+    void navigator.clipboard.writeText("data.translatedText" as string)
     toast.toast({
       title: "Successful",
       description: "The translated text was successfully copied."
@@ -87,8 +85,8 @@ const TranslatePopup = () => {
         </div>
       </CardHeader>
       <CardContent className="!p-3 h-full flex flex-col gap-y-2 absolute top-[103px] left-0 right-0">
-        <Textarea className="bg-white" rows={4} value={data?.translatedText} />
-        <Textarea className="bg-white" rows={4} value={data?.translatedText} />
+        <Textarea className="bg-white" rows={4} value={"data?.translatedText"} />
+        <Textarea className="bg-white" rows={4} value={"data?.translatedText"} />
       </CardContent>
       <Separator />
       <CardFooter className="!p-3 flex items-center justify-between"></CardFooter>

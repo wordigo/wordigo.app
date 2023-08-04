@@ -1,58 +1,61 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { columns } from "@/components/Dashboard/Dictionaries/columns";
 import { DataTable } from "@/components/Dashboard/Dictionaries/data-table";
 import DashboardLayout from "@/components/Layout/Dashboard";
 import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
-import { useGetDictionaryDataQuery } from "@/store/dictionary/api";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useGetUserDictionariesMutation } from "@/store/dictionary/api";
+import { useAppSelector } from "@/utils/hooks";
 
 import { Skeleton } from "@wordigo/ui";
 
-export default function DashboardPage() {
-  const { data, isLoading } = useGetDictionaryDataQuery("");
+const DictionariesPage = () => {
+  const [getUserDictionaries, { isLoading }] = useGetUserDictionariesMutation();
+  const userDictionaries = useAppSelector((state) => state.dictionary.dictionaries);
+
+  useEffect(() => {
+    void getUserDictionaries("");
+  }, []);
 
   return (
-    <Fragment>
-      <DashboardLayout>
-        <DashboardShell>
-          {isLoading ? (
-            <Fragment>
-              <div className="flex gap-y-4 flex-col bg-gray-50 rounded">
-                <div className="h-10 flex">
-                  <Skeleton className="w-full h-10 rounded-none" />
-                  <Skeleton className="w-full h-10 rounded-none" />
-                  <Skeleton className="w-full h-10 rounded-none" />
-                  <Skeleton className="w-full h-10 rounded-none" />
-                </div>
-                {new Array(6).fill(1).map((item) => (
-                  <div key={item} className="h-10 flex gap-x-4">
-                    <Skeleton className="w-full h-10" />
-                    <Skeleton className="w-full h-10" />
-                    <Skeleton className="w-full h-10" />
-                    <Skeleton className="w-full h-10" />
-                  </div>
-                ))}
+    <DashboardShell>
+      {isLoading || !userDictionaries ? (
+        <Fragment>
+          <div className="flex gap-y-4 flex-col bg-gray-50 rounded">
+            <div className="h-10 flex">
+              <Skeleton className="w-full h-10 rounded-none" />
+              <Skeleton className="w-full h-10 rounded-none" />
+              <Skeleton className="w-full h-10 rounded-none" />
+              <Skeleton className="w-full h-10 rounded-none" />
+            </div>
+            {new Array(6).fill(1).map((item) => (
+              <div key={item} className="h-10 flex gap-x-4">
+                <Skeleton className="w-full h-10" />
+                <Skeleton className="w-full h-10" />
+                <Skeleton className="w-full h-10" />
+                <Skeleton className="w-full h-10" />
               </div>
-              <div className="flex justify-end gap-x-2">
-                <Skeleton className="w-8 h-8" />
-                <Skeleton className="w-8 h-8" />
-                <Skeleton className="w-8 h-8" />
-                <Skeleton className="w-8 h-8" />
-              </div>
-            </Fragment>
-          ) : (
-            <Fragment>{data.data !== null && <DataTable columns={columns} data={data.data} label="nav_addDictionary" />}</Fragment>
-          )}
-        </DashboardShell>
-      </DashboardLayout>
-    </Fragment>
+            ))}
+          </div>
+          <div className="flex justify-end gap-x-2">
+            <Skeleton className="w-8 h-8" />
+            <Skeleton className="w-8 h-8" />
+            <Skeleton className="w-8 h-8" />
+            <Skeleton className="w-8 h-8" />
+          </div>
+        </Fragment>
+      ) : (
+        <DataTable columns={columns} data={userDictionaries} label="nav_addDictionary" />
+      )}
+    </DashboardShell>
   );
-}
+};
 
-export async function getStaticProps({ locale }: { locale: string }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ["common"])),
-    },
-  };
-}
+DictionariesPage.Layout = () => {
+  return (
+    <DashboardLayout>
+      <DictionariesPage />
+    </DashboardLayout>
+  );
+};
+
+export default DictionariesPage.Layout;

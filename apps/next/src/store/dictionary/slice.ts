@@ -11,7 +11,7 @@ const initialState: IDictionaryState = {
 } as IDictionaryState;
 
 const dictionarySlice = createSlice({
-  name: "dictionary",
+  name: "dictionaries",
   initialState,
   reducers: {
     setDictionaries(state, action) {
@@ -19,10 +19,9 @@ const dictionarySlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addMatcher(dictionaryApi.endpoints.createDictionary.matchFulfilled, (state, action) => {
-      state.dictionaries = action.payload.data;
-    });
-    builder.addMatcher(dictionaryApi.endpoints.getDictionaryData.matchFulfilled, (state, action: any) => {
+    builder.addMatcher(dictionaryApi.endpoints.getUserDictionaries.matchFulfilled, (state, action) => {
+      console.log("test");
+
       state.dictionaries = action.payload.data;
     });
   },

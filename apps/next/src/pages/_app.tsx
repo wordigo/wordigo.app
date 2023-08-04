@@ -23,7 +23,7 @@ const App = ({ Component, pageProps }: AppProps<{ session: any; _nextI18Next: { 
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <SessionProvider session={pageProps.session}>
+      <SessionProvider session={pageProps.session} refetchOnWindowFocus={true}>
         <Provider store={store}>
           <AppProviders>
             <Component {...pageProps} />
