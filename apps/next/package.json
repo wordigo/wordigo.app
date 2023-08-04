@@ -10,7 +10,8 @@
     "lint:fix": "yarn lint --fix",
     "start": "yarn with-env next start",
     "type-check": "tsc --noEmit",
-    "with-env": "dotenv -e ../../.env --"
+    "with-env": "dotenv -e ../../.env --",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.1",
