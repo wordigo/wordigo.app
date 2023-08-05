@@ -1,6 +1,5 @@
 import { useRouter } from "next/navigation";
 import CButton from "@/components/UI/Button";
-import { api } from "@/libs/trpc";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FilePlus } from "lucide-react";
 import { useForm } from "react-hook-form";
@@ -40,7 +39,6 @@ type CreateDictionaryValues = z.infer<typeof CreateDictionarySchema>;
 
 export function EditDictionary<TData extends object>({ label, row }: { label: string; row: DataTableRowActionsProps<TData> }) {
   const data: { id: string; title: string; published: boolean } = row?.original;
-  const { mutate: editDictionary, isLoading } = api.dictionary.updateDictionary.useMutation();
   const router = useRouter();
 
   const defaultValues: Partial<CreateDictionaryValues> = {
@@ -54,11 +52,11 @@ export function EditDictionary<TData extends object>({ label, row }: { label: st
   });
 
   const handleAddDictionary = (values: CreateDictionaryValues) => {
-    editDictionary({
-      title: values.title,
-      published: values.published,
-      dictionaryId: data.id,
-    });
+    // editDictionary({
+    //   title: values.title,
+    //   published: values.published,
+    //   dictionaryId: data.id,
+    // });
     router.refresh();
   };
 
@@ -109,7 +107,7 @@ export function EditDictionary<TData extends object>({ label, row }: { label: st
                 )}
               />
               <DialogFooter>
-                <CButton loading={isLoading} type="submit">
+                <CButton loading={false} type="submit">
                   Save Dictionary
                 </CButton>
               </DialogFooter>

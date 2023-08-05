@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import UnderNavigation from "@/components/Layout/Dashboard/Sidebar/Under.Navigation";
 import DashboardNavProfil from "@/components/Layout/NavProfile/navprofile.dashboard";

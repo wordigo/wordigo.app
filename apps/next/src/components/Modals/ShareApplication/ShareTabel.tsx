@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { WordPage } from "@/components/Translate/word.constant";
 import CButton from "@/components/UI/Button";
-import { api } from "@/libs/trpc";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Share2 } from "lucide-react";
 import { useTranslation } from "next-i18next";
@@ -36,7 +35,7 @@ const ShareDictionarySchema = z.object({
 type CreateDictionaryValues = z.infer<typeof ShareDictionarySchema>;
 
 export function ShareDictionary() {
-  const { mutate: addDictionary, isLoading } = api.dictionary.addDictionary.useMutation();
+  // const { mutate: addDictionary, isLoading } = api.dictionary.addDictionary.useMutation();
   const [selectedImage, setSelectedImage] = useState("/images/dictionary_banner.jpg");
   const { t } = useTranslation();
   const { toast } = useToast();
@@ -56,12 +55,12 @@ export function ShareDictionary() {
   });
 
   const handleAddDictionary = (values: CreateDictionaryValues) => {
-    addDictionary({
-      title: values.title,
-      //description: values.description,
-      //image: values.image,
-      published: values.published,
-    });
+    // addDictionary({
+    //   title: values.title,
+    //   //description: values.description,
+    //   //image: values.image,
+    //   published: values.published,
+    // });
     router.refresh();
   };
 
@@ -184,7 +183,7 @@ export function ShareDictionary() {
                 )}
               />
               <DialogFooter>
-                <CButton loading={isLoading} type="submit" disabled>
+                <CButton loading={false} type="submit" disabled>
                   {t(WordPage.publish)}
                 </CButton>
               </DialogFooter>

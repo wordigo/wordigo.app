@@ -1,6 +1,5 @@
 import AppProviders from "@/components/providers";
 import seo from "@/constants/seo";
-import { api } from "@/libs/trpc";
 import { Analytics } from "@vercel/analytics/react";
 
 import "@wordigo/ui/styles/globals.css";
@@ -35,4 +34,4 @@ const App = ({ Component, pageProps }: AppProps<{ session: any; _nextI18Next: { 
   );
 };
 
-export default api.withTRPC(appWithTranslation(App));
+export default appWithTranslation(App);

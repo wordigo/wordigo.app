@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import useCommonStore from "@/stores/Common";
 import { AnimatePresence } from "framer-motion";
 
 import { Skeleton } from "@wordigo/ui";
@@ -24,7 +23,6 @@ const DashboardNav = () => {
 };
 
 DashboardNav.Item = (item: SidebarNavItem, index: number) => {
-  const { showSidebarPanel, setSidebarPanel } = useCommonStore((state) => state);
   const path = usePathname();
 
   const classes = cn(
@@ -39,7 +37,7 @@ DashboardNav.Item = (item: SidebarNavItem, index: number) => {
         key={index}
         href={item.disabled ? "/" : item.href}
         className="flex items-center w-full m-3"
-        onClick={() => setSidebarPanel(!showSidebarPanel)}
+        // onClick={() => setSidebarPanel(!showSidebarPanel)}
       >
         <span className="flex items-center w-full">
           <div className="flex items-center">

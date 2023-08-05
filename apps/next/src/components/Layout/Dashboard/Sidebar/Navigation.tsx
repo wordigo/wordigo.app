@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import useCommonStore from "@/stores/Common";
 import { AnimatePresence } from "framer-motion";
 import { CircleDot } from "lucide-react";
 
@@ -25,7 +24,6 @@ const DashboardNav = () => {
 };
 
 DashboardNav.Item = (item: SidebarNavItem, index: number) => {
-  const { showSidebarPanel, setSidebarPanel } = useCommonStore((state) => state);
   const path = usePathname();
 
   const classes = cn(
@@ -36,12 +34,7 @@ DashboardNav.Item = (item: SidebarNavItem, index: number) => {
 
   return (
     <div className={classes}>
-      <Link
-        key={index}
-        href={item.disabled ? "/" : item.href}
-        className="flex items-center w-full m-3"
-        onClick={() => setSidebarPanel(!showSidebarPanel)}
-      >
+      <Link key={index} href={item.disabled ? "/" : item.href} className="flex items-center w-full m-3">
         <span className="flex items-center w-full">
           <div className="flex items-center">
             {item.icon}
@@ -55,7 +48,6 @@ DashboardNav.Item = (item: SidebarNavItem, index: number) => {
 };
 
 DashboardNav.ChildItem = ({ navs, trigger, loading }: SidebarChildNav) => {
-  const { showSidebarPanel, setSidebarPanel } = useCommonStore((state) => state);
   return (
     <Fragment>
       <div tabIndex={50} className="text-sm z-50 absolute font-medium right-3 top-3 flex items-center justify-center">
@@ -68,7 +60,7 @@ DashboardNav.ChildItem = ({ navs, trigger, loading }: SidebarChildNav) => {
               href={"/dashboard/dictionaries/" + item.link}
               key={index}
               className="flex items-center hover:bg-accent px-3 mx-3 rounded-md mb-2"
-              onClick={() => setSidebarPanel(!showSidebarPanel)}
+              // onClick={() => setSidebarPanel(!showSidebarPanel)}
             >
               <CircleDot size="12"></CircleDot>
               <span className={cn("flex items-center px-3 text-sm w-full")}>

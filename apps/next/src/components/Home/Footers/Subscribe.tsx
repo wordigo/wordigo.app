@@ -1,5 +1,4 @@
 import CButton from "@/components/UI/Button";
-import { api } from "@/libs/trpc";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -13,7 +12,7 @@ const CreateDictionarySchema = z.object({
 type CreateDictionaryValues = z.infer<typeof CreateDictionarySchema>;
 
 export default function Subscribe() {
-  const { mutate, isLoading } = api.subscribe.subscribe.useMutation();
+  // const { mutate, isLoading } = api.subscribe.subscribe.useMutation();
   const defaultValues: Partial<CreateDictionaryValues> = {
     email: "",
   };
@@ -24,9 +23,9 @@ export default function Subscribe() {
   });
 
   const handleEmail = (values: CreateDictionaryValues) => {
-    mutate({
-      email: values.email,
-    });
+    // mutate({
+    //   email: values.email,
+    // });
   };
 
   return (
@@ -67,7 +66,7 @@ export default function Subscribe() {
                   )}
                 />
                 <DialogFooter>
-                  <CButton disabled loading={isLoading} type="submit">
+                  <CButton disabled loading={false} type="submit">
                     Subscribe
                   </CButton>
                 </DialogFooter>
