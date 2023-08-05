@@ -52,7 +52,7 @@ const DictionariWordPage = () => {
 
 DictionariWordPage.Layout = () => {
   return (
-    <DashboardLayout Button="word">
+    <DashboardLayout>
       <DictionariWordPage />
     </DashboardLayout>
   );

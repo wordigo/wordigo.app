@@ -1,3 +1,4 @@
+import DashboardHeaders from "@/components/Layout/Dashboard/Headers";
 import { Navbar } from "@/components/Layout/Dashboard/Navbar";
 import Sidebar from "@/components/Layout/Dashboard/Sidebar/Menu";
 import PageLoader from "@/components/UI/PageLoader";
@@ -6,10 +7,9 @@ import { useSession } from "next-auth/react";
 
 interface DashboardLayoutProps {
   children?: React.ReactNode;
-  Button: string;
 }
 
-export default function DashboardLayout({ children, Button }: DashboardLayoutProps) {
+export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const session = useSession();
   const token = useAppSelector((state) => state.auth.token);
 
@@ -20,7 +20,7 @@ export default function DashboardLayout({ children, Button }: DashboardLayoutPro
       <Sidebar />
       <div className="px-5 min-w-[280px] max-w-[280px]"></div>
       <section className="w-full mx-8 overflow-auto">
-        <Navbar Button={Button} />
+        <Navbar />
         {children}
       </section>
     </main>

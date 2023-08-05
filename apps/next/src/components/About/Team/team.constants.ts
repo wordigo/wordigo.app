@@ -18,7 +18,7 @@ const Team: ITeam[] = [
   },
   {
     name: "Yusuf Güneş",
-    src: "https://media.licdn.com/dms/image/D4D03AQGh0SGDZruHMA/profile-displayphoto-shrink_400_400/0/1690736094511?e=1696464000&v=beta&t=rYDq6ZJ0nCKaCtEuE8dQDes0t2kZlcfXi5WEzAd2vdI",
+    src: "https://media.licdn.com/dms/image/D4D03AQHZBnSYQZjKMQ/profile-displayphoto-shrink_200_200/0/1690905608993?e=1696464000&v=beta&t=8cI7Jfw4U1AzDdphiERA5pXBNp8A3T1Iq56LtohLiTU",
     title: "Frontend Developer",
     github: "https://github.com/yusufgns",
     linkedin: "https://www.linkedin.com/in/yusufgunes/",

@@ -8,7 +8,7 @@ export function DataTableViewOptions({ table }: { table: any }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="focus-visible:ring-0 focus-visible:ring-offset-0" variant="outline">
+        <Button  className="px-4 py-[10px] font-semibold text-sm focus-visible:ring-0 focus-visible:ring-offset-0" variant="outline">
           <FlipHorizontal className="mr-2 h-4 w-4" />
           View
         </Button>

@@ -45,7 +45,7 @@ const DictionariesPage = () => {
 
 DictionariesPage.Layout = () => {
   return (
-    <DashboardLayout Button={"dictionaries"}>
+    <DashboardLayout>
       <DictionariesPage />
     </DashboardLayout>
   );

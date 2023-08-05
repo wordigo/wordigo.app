@@ -99,7 +99,7 @@ export function CreateWord({ label }: { label: string | null }) {
   return (
     <Dialog open={open}>
       <DialogTrigger asChild>
-        <Button onClick={toggleShow} variant="default" className="px-4 py-[10px] font-semibold text-sm">
+        <Button onClick={toggleShow} variant="outline" className="dark:bg-white dark:text-black bg-black text-white font-semibold text-sm">
           {t(label)}
         </Button>
       </DialogTrigger>

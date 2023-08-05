@@ -30,7 +30,7 @@ const CreateDictionarySchema = z.object({
 
 type CreateDictionaryValues = z.infer<typeof CreateDictionarySchema>;
 
-export function CreateDictionary({ label }: { label: string }) {
+export default function CreateDictionary({ label }: { label: string }) {
   const [open, setOpen] = useState(false);
   const { toast } = useToast();
   const { t } = useTranslation();
@@ -79,7 +79,7 @@ export function CreateDictionary({ label }: { label: string }) {
   return (
     <Dialog open={open}>
       <DialogTrigger asChild>
-        <Button onClick={toggleShow} variant="default" className="px-4 py-[10px] font-semibold text-sm">
+        <Button onClick={toggleShow} variant="default" className="font-semibold text-sm">
           {t(label)}
         </Button>
       </DialogTrigger>
