@@ -9,7 +9,7 @@ const baseQuery = fetchBaseQuery({
     const token = (getState() as RootState).auth.token;
     if (token) {
       headers.set("authorization", `Bearer ${token}`);
-      console.log(token)
+      console.log(token);
     }
     return headers;
   },
@@ -18,7 +18,7 @@ export const dictionaryApi = createApi({
   reducerPath: "dictionaryApi",
   baseQuery,
   endpoints: (builder) => ({
-    getUserDictionaries: builder.mutation<IResponse, any>({
+    getUserDictionaries: builder.mutation<IResponse<any>, any>({
       query: () => ({
         url: "/dictionaries/getUserDictionaries",
         method: "GET",

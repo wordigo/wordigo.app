@@ -89,6 +89,12 @@
     "time": "Zaman",
     "add_dictionaries": "Sözlük Ekle"
   },
+  "breadcrumbs": {
+    "home": "Ana Sayfa",
+    "dashboard": "Panel",
+    "dictionaries": "Sözlükler",
+    "settings": "Ayarlar"
+  },
   "dic_words": {
     "text": "Yazı",
     "translated_text": "Çevrilen Yazı",

@@ -83,6 +83,12 @@
     "description": "Sorry, we couldn't find your page.",
     "action": "Back to home"
   },
+  "breadcrumbs": {
+    "dashboard": "Dashboard",
+    "home": "Home",
+    "dictionaries": "Dictionaries",
+    "settings": "Settings"
+  },
   "dictionaries": {
     "title": "Title",
     "subscribers": "Subscribers",

@@ -1,5 +1,5 @@
 import { type ReactElement, useState } from "react";
-import { api } from "@/libs/trpc";
+import { useGetUserDictionariesMutation } from "@/store/dictionaries/api";
 import { BookMarked, ChevronDown, ChevronUp, Home, LayoutDashboard, LibraryIcon, RotateCw, Settings } from "lucide-react";
 
 import { Button } from "@wordigo/ui";
@@ -12,7 +12,7 @@ export interface SidebarChildNavOption {
 export interface SidebarChildNav {
   trigger: ReactElement;
   loading?: boolean;
-  navs: SidebarChildNavOption[];
+  navs: SidebarChildNavOption[] | null;
 }
 
 export interface SidebarNavItem {
@@ -24,17 +24,17 @@ export interface SidebarNavItem {
 }
 
 const useSidebarNavigations = (): SidebarNavItem[] => {
-  const { mutate, data, isLoading, reset } = api.dictionary.getUserDictionariesMutation.useMutation();
+  const [handleGetDictionaries, { data, isLoading, reset }] = useGetUserDictionariesMutation();
   const [showDictionary, setShowDictionary] = useState<boolean>(false);
 
   const handleDictionary = () => {
     if (!showDictionary) {
-      mutate();
+      void handleGetDictionaries("");
     } else reset();
     setShowDictionary(!showDictionary);
   };
 
-  const computedDictionariesNavs = data?.data?.map((item) => ({ name: item.title, link: item.id })) as SidebarChildNavOption[];
+  const computedDictionariesNavs = data?.data?.slice(0, 5)?.map((item) => ({ name: item.title, link: item.id })) as SidebarChildNavOption[];
 
   return [
     {
@@ -78,5 +78,4 @@ export const useSidebarUnderNavigations = (): SidebarNavItem[] => {
     },
   ];
 };
-
 export default useSidebarNavigations;

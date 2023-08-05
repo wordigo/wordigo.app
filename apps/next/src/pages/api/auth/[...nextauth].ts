@@ -48,7 +48,7 @@ export const authOptions = (request: NextApiRequest, response: NextApiResponse):
           response.setHeader(
             "Set-Cookie",
             cookie.serialize(WORDIGO_JWT_TOKEN_COOKIE, token.accessToken as string, {
-              maxAge: 30 * 24 * 60 * 60,
+              maxAge: 60 * 60,
               path: "/",
             }),
           );
@@ -114,6 +114,13 @@ export const authOptions = (request: NextApiRequest, response: NextApiResponse):
 
         response.setHeader("Set-Cookie", cookieSerialized);
       },
+    },
+    session: {
+      strategy: "jwt",
+      maxAge: 60 * 60,
+    },
+    jwt: {
+      maxAge: 60 * 60,
     },
   };
 };

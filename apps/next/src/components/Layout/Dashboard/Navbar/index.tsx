@@ -1,5 +1,4 @@
-import { MainNav } from "@/components/Layout/Dashboard/Header/MainNav";
-import RouterSearch from "@/components/Layout/Dashboard/RouterSearch";
+import Breadcrumb from "@/components/Layout/Dashboard/Breadcrumb";
 import { CreateDictionary } from "@/components/Modals/CreateDictionaries";
 import { CreateWord } from "@/components/Modals/CreateWord";
 import { Share } from "@/components/Modals/ShareApplication";
@@ -7,7 +6,7 @@ import { Share } from "@/components/Modals/ShareApplication";
 export function Navbar({ Button }: { Button: string }) {
   return (
     <main className="flex items-center justify-between w-full mb-6">
-      <RouterSearch />
+      <Breadcrumb />
       <header className="flex gap-2">
         {Button === "dictionaries" ? (
           <div>
