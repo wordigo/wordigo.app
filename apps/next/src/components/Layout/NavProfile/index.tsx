@@ -18,6 +18,8 @@ import {
 } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
+import ThemeMode from "../ThemeMode";
+
 const NavProfile = () => {
   const { data } = useSession();
 
@@ -26,15 +28,15 @@ const NavProfile = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
-        <Button variant="ghost" className="relative h-10 w-10 rounded-full focus-visible:ring-2 focus-visible:ring-offset-2">
+      <DropdownMenuTrigger className="rounded-full" asChild>
+        <Button variant="ghost" className="relative h-10 w-10 rounded-full focus-visible:ring-0 focus-visible:ring-offset-0">
           <Avatar className="h-10 w-10">
             <AvatarImage src={data?.user.avatar_url} alt={"@" + data?.user.name} />
             <AvatarFallback>{computedName}</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className={cn("w-full")}>
+      <DropdownMenuContent className={cn("w-full py-2")}>
         <DropdownMenuLabel className="font-normal flex items-center">
           <Avatar className="h-10 w-10 mr-2">
             <AvatarImage className="h-10 w-10" src={data?.user.avatar_url} alt={"@" + data?.user.name} />
@@ -47,19 +49,26 @@ const NavProfile = () => {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem className="px-[10px] py-[4px]">
-            <LayoutDashboard className="w-4 mr-2" />
+          <DropdownMenuItem className="px-[10px] py-1">
+            {/* <LayoutDashboard className="w-4 mr-2" /> */}
             <Link href="/dashboard">Dashboard</Link>
           </DropdownMenuItem>
-          <DropdownMenuItem className="px-[10px] py-[4px]">
-            <BookMarked className="w-4 mr-2" />
+          <DropdownMenuItem className="px-[10px] py-1">
+            {/* <BookMarked className="w-4 mr-2" /> */}
             <Link href="/dashboard/dictionaries">Dictionaries</Link>
           </DropdownMenuItem>
-          <DropdownMenuItem className="px-[10px] py-[4px]">
-            <Settings className="w-4 mr-2" />
+          <DropdownMenuItem className="px-[10px] py-1">
+            {/* <Settings className="w-4 mr-2" /> */}
             <Link href="/dashboard/settings">Settings</Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+
+        <div className="px-[10px] text-sm focus:bg-transparent py-[4px] flex items-center justify-between">
+          Theme
+          <ThemeMode />
+        </div>
+
         <DropdownMenuSeparator />
         <DropdownMenuItem className="text-red-400 hover:!text-red-500 px-[10px] py-[4px]" onClick={() => signOut()}>
           <LogOut className="w-4 mr-1 ml-[2px]" />

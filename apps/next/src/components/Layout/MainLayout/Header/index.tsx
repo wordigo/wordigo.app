@@ -25,7 +25,6 @@ export default function HomeHeader() {
           <Navigation />
         </div>
         <div className="flex gap-x-4 items-center">
-          <ThemeMode />
           <ChangeLanguage />
           <div className="w-[1px] !h-10 bg-border"></div>
           {status === "loading" ? (

@@ -4,28 +4,71 @@ import { useTheme } from "next-themes";
 import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@wordigo/ui";
 
 export default function ThemeMode() {
-  const { setTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
+
+  const getThemeLabel = () => {
+    switch (resolvedTheme) {
+      case "dark":
+        return <p className="text-[12px]">Dark</p>;
+      case "light":
+        return <p className="text-[12px]">Light</p>;
+      case "system":
+        return <p className="text-[12px]">System</p>;
+      default:
+        return <p className="text-[12px]">Toggle theme</p>;
+    }
+  };
+
+  const getThemeIcon = () => {
+    switch (resolvedTheme) {
+      case "dark":
+        return <MoonIcon className="h-3 w-3" />;
+      case "light":
+        return <SunIcon className="h-3 w-3" />;
+      case "system":
+        return <LaptopIcon className="h-3 w-3" />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="h-10 w-10 p-0">
-          <SunIcon size={20} className="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <MoonIcon size={20} className="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
+        <Button variant="outline" className="h-fit w-fit px-3 py-1">
+          <span className="mr-2 text-xs">{getThemeIcon()}</span>
+          <span className="rotate-0  scale-100 transition-all">{getThemeLabel()}</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          <SunIcon className="mr-2 h-4 w-4" />
+      <DropdownMenuContent align="start" className="max-w-[25px] min-w-fit text-[12px]">
+        <DropdownMenuItem
+          className="text-[12px]"
+          onClick={(e) => {
+            e.stopPropagation();
+            setTheme("light");
+          }}
+        >
+          <SunIcon className="mr-2 h-3 w-3" />
           <span>Light</span>
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          <MoonIcon className="mr-2 h-4 w-4" />
+        <DropdownMenuItem
+          className="text-[12px]"
+          onClick={(e) => {
+            e.stopPropagation();
+            setTheme("dark");
+          }}
+        >
+          <MoonIcon className="mr-2 h-3 w-3" />
           <span>Dark</span>
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          <LaptopIcon className="mr-2 h-4 w-4" />
+        <DropdownMenuItem
+          className="text-[12px]"
+          onClick={(e) => {
+            e.stopPropagation();
+            setTheme("system");
+          }}
+        >
+          <LaptopIcon className="mr-2 h-3 w-3" />
           <span>System</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
