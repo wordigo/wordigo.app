@@ -6,9 +6,10 @@ import { useSession } from "next-auth/react";
 
 interface DashboardLayoutProps {
   children?: React.ReactNode;
+  Button: string;
 }
 
-export default function DashboardLayout({ children }: DashboardLayoutProps) {
+export default function DashboardLayout({ children, Button }: DashboardLayoutProps) {
   const session = useSession();
   const token = useAppSelector((state) => state.auth.token);
 
@@ -19,7 +20,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       <Sidebar />
       <div className="px-5 min-w-[280px] max-w-[280px]"></div>
       <section className="w-full mx-8 overflow-auto">
-        <Navbar />
+        <Navbar Button={Button} />
         {children}
       </section>
     </main>

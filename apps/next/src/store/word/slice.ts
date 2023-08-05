@@ -10,11 +10,11 @@ const initialState: IWordState = {
   word: null,
 } as IWordState;
 
-const wordSlice = createSlice({
-  name: "word",
+const userDicWordSlice = createSlice({
+  name: "dicWord",
   initialState,
   reducers: {
-    setDictionaries(state, action) {
+    setDicWords(state, action) {
       state.word = action.payload;
     },
   },
@@ -28,5 +28,5 @@ const wordSlice = createSlice({
   },
 });
 
-export default wordSlice.reducer;
-export const { setDictionaries } = wordSlice.actions;
+export default userDicWordSlice.reducer;
+export const { setDicWords } = userDicWordSlice.actions;

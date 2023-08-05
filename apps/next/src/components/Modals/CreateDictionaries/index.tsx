@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import CButton from "@/components/UI/Button";
-import { useCreateDictionaryMutation, useGetUserDictionariesMutation } from "@/store/dictionary/api";
+import { useCreateDictionaryMutation, useGetUserDictionariesMutation } from "@/store/dictionaries/api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Table2Icon, X } from "lucide-react";
 import { useTranslation } from "next-i18next";

@@ -16,15 +16,15 @@ export const wordApi = createApi({
   reducerPath: "wordApi",
   baseQuery,
   endpoints: (builder) => ({
-    getWordData: builder.query<IResponse, any>({
-      query: (dicID: string | number) => ({
+    getWordData: builder.mutation<IResponse, string | number>({
+      query: (dicID) => ({
         url: `/dictionaries/getWords?dictionaryId=${dicID}`,
         method: "GET",
       }),
     }),
     createWord: builder.mutation<any, any>({
       query: (create) => ({
-        url: "/word/create",
+        url: "/words/create",
         body: create,
         method: "POST",
       }),
@@ -32,4 +32,4 @@ export const wordApi = createApi({
   }),
 });
 
-export const { useCreateWordMutation, useGetWordDataQuery } = wordApi;
+export const { useCreateWordMutation, useGetWordDataMutation } = wordApi;

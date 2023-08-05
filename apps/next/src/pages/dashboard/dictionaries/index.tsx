@@ -3,7 +3,7 @@ import { columns } from "@/components/Dashboard/Dictionaries/columns";
 import { DataTable } from "@/components/Dashboard/Dictionaries/data-table";
 import DashboardLayout from "@/components/Layout/Dashboard";
 import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
-import { useGetUserDictionariesMutation } from "@/store/dictionary/api";
+import { useGetUserDictionariesMutation } from "@/store/dictionaries/api";
 import { useAppSelector } from "@/utils/hooks";
 
 import { Skeleton } from "@wordigo/ui";
@@ -20,27 +20,12 @@ const DictionariesPage = () => {
     <DashboardShell>
       {isLoading || !userDictionaries ? (
         <Fragment>
-          <div className="flex gap-y-4 flex-col bg-gray-50 rounded">
-            <div className="h-10 flex">
-              <Skeleton className="w-full h-10 rounded-none" />
-              <Skeleton className="w-full h-10 rounded-none" />
-              <Skeleton className="w-full h-10 rounded-none" />
-              <Skeleton className="w-full h-10 rounded-none" />
-            </div>
+          <div className="flex gap-y-2 flex-col rounded">
             {new Array(6).fill(1).map((item) => (
-              <div key={item} className="h-10 flex gap-x-4">
-                <Skeleton className="w-full h-10" />
-                <Skeleton className="w-full h-10" />
-                <Skeleton className="w-full h-10" />
+              <div key={item}>
                 <Skeleton className="w-full h-10" />
               </div>
             ))}
-          </div>
-          <div className="flex justify-end gap-x-2">
-            <Skeleton className="w-8 h-8" />
-            <Skeleton className="w-8 h-8" />
-            <Skeleton className="w-8 h-8" />
-            <Skeleton className="w-8 h-8" />
           </div>
         </Fragment>
       ) : (
@@ -52,7 +37,7 @@ const DictionariesPage = () => {
 
 DictionariesPage.Layout = () => {
   return (
-    <DashboardLayout>
+    <DashboardLayout Button={"dictionaries"}>
       <DictionariesPage />
     </DashboardLayout>
   );

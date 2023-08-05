@@ -1,10 +1,13 @@
-import { Fragment } from "react";
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+import { useEffect } from "react";
+import { type GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 import { columns } from "@/components/Dashboard/Words/columns";
 import { DataTable } from "@/components/Dashboard/Words/data-table";
 import DashboardLayout from "@/components/Layout/Dashboard";
 import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
-import { useGetWordDataQuery } from "@/store/word/api";
+import { useGetWordDataMutation } from "@/store/word/api";
+import { useAppSelector } from "@/utils/hooks";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export async function getStaticProps({ locale }: { locale: string }) {
@@ -15,23 +18,33 @@ export async function getStaticProps({ locale }: { locale: string }) {
   };
 }
 
-const DictionaryPage = () => {
+const DictionariWordPage = () => {
   const router = useRouter();
-  const { id } = router.query;
-  const { data } = useGetWordDataQuery(id);
+  const { id } = router.query as any;
 
-  return <DashboardShell>{data && <DataTable columns={columns} data={data?.data?.words} label="nav_addWord" />}</DashboardShell>;
+  const [getWordDataMutation, { isLoading }] = useGetWordDataMutation();
+  const userDicWords = useAppSelector((state) => state.word.word);
+
+  useEffect(() => {
+    void getWordDataMutation(id);
+  }, []);
+
+  return (
+    <DashboardShell>
+      {isLoading || !userDicWords ? <div>LOADİNG...</div> : <DataTable columns={columns} data={userDicWords?.words as never} label="nav_addWord" />}
+    </DashboardShell>
+  );
 };
 
-DictionaryPage.Layout = () => {
+DictionariWordPage.Layout = () => {
   return (
-    <DashboardLayout>
-      <DictionaryPage />
+    <DashboardLayout Button="word">
+      <DictionariWordPage />
     </DashboardLayout>
   );
 };
 
-export default DictionaryPage.Layout;
+export default DictionariWordPage.Layout;
 
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = () => {
   return {

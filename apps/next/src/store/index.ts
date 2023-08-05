@@ -1,10 +1,10 @@
 import { authApi } from "./auth/api";
 // import { authApi } from "./auth/api";
 import AuthSlice from "./auth/slice";
-import DictionarySlice from "./dictionary/slice";
-import WordSlice from "./dictionary/slice";
+import DictionarySlice from "./dictionaries/slice";
+import userDicWordSlice from "./word/slice";
 import { configureStore } from '@reduxjs/toolkit'
-import { dictionaryApi } from './dictionary/api'
+import { dictionaryApi } from './dictionaries/api'
 import { wordApi } from './word/api'
 
 const store = configureStore({
@@ -14,7 +14,7 @@ const store = configureStore({
     [dictionaryApi.reducerPath]: dictionaryApi.reducer,
     [wordApi.reducerPath]: wordApi.reducer,
     dictionary: DictionarySlice,
-    word: WordSlice,
+    word: userDicWordSlice,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }).concat([authApi.middleware, dictionaryApi.middleware, wordApi.middleware]),
 });
