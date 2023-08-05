@@ -1,7 +1,7 @@
 import { LogOut } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 
-import { Avatar, AvatarFallback, AvatarImage, Button, DropdownMenu, DropdownMenuLabel, DropdownMenuTrigger, Skeleton } from "@wordigo/ui";
+import { Avatar, AvatarFallback, AvatarImage, DropdownMenu, DropdownMenuLabel, DropdownMenuTrigger, Skeleton } from "@wordigo/ui";
 
 const NavProfile = () => {
   const { data } = useSession();
@@ -13,25 +13,25 @@ const NavProfile = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div className="flex items-center bg-background select-none">
-          <Button variant={"navProfil"} className="w-full justify-between relative h-fit focus-visible:ring-0 focus-visible:ring-offset-0">
-            <div className="flex items-center">
-              <Avatar className="h-10 w-10">
-                <AvatarImage className="h-10 w-10" src={data?.user.avatar_url} alt={"@" + data?.user.name} />
+        <div className="flex justify-between items-center">
+          <button className="w-full justify-between select-none cursor-default relative h-fit focus-visible:ring-0 focus-visible:ring-offset-0">
+            <div className="flex items-center gap-x-1">
+              <Avatar className="h-12 w-12">
+                <AvatarImage className="h-12 w-12" src={data?.user.avatar_url} alt={"@" + data?.user.name} />
                 <AvatarFallback>{computedName}</AvatarFallback>
               </Avatar>
 
               <DropdownMenuLabel>
                 <div className="flex flex-col">
                   <p className="text-sm font-semibold leading-5 text-start">{data?.user.name}</p>
-                  <p className="text-sm font-normal leading-5 text-muted-foreground">{"@username"}</p>
+                  <p className="text-sm font-normal leading-5 text-muted-foreground">{data?.user.email}</p>
                 </div>
               </DropdownMenuLabel>
             </div>
-          </Button>
+          </button>
           <div className="z-40">
             <DropdownMenuLabel className="text-gray-400 right-0 hover:!text-red-500" onClick={handleSignOut}>
-              <LogOut size={"20"} />
+              <LogOut size={"20"} className="cursor-pointer" />
             </DropdownMenuLabel>
           </div>
         </div>

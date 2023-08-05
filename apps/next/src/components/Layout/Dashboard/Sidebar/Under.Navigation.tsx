@@ -7,10 +7,9 @@ import { AnimatePresence } from "framer-motion";
 import { Skeleton } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
-import useSidebarNavigations, { type SidebarChildNav, type SidebarNavItem, useSidebarUnderNavigations } from "./navigations.constants";
+import { type SidebarChildNav, type SidebarNavItem, useSidebarUnderNavigations } from "./navigations.constants";
 
 const DashboardNav = () => {
-  const navigations = useSidebarNavigations();
   const underNavigations = useSidebarUnderNavigations();
 
   return (

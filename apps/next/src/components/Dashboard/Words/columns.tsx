@@ -29,7 +29,6 @@ export const columns: ColumnDef<Task>[] = [
     accessorKey: "translateLanguage",
     header: ({ column }) => <DataTableColumnHeader column={column} title={"dic_words.translated_text"} />,
     cell: ({ row }) => {
-      console.log(row.original);
       return (
         <div className="flex space-x-2">
           <Badge className="truncate font-medium">{row?.original?.targetLanguage}</Badge>

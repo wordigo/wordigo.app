@@ -23,7 +23,7 @@ export default function BurgerMenu() {
 
       <div>
         <UnderNavigation />
-        <div className="w-full h-[2px] rounded-full dark:bg-[#1E293B] bg-[#5F6170] mb-6 mt-5 select-none"></div>
+        <div className="w-full h-[1px] rounded-full dark:bg-[#1E293B] bg-gray-500 bg-opacity-50 my-4 select-none"></div>
         <DashboardNavProfil />
       </div>
     </div>

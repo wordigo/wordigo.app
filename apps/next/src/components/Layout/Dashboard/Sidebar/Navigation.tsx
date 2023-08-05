@@ -30,7 +30,7 @@ DashboardNav.Item = (item: SidebarNavItem, index: number) => {
 
   const classes = cn(
     "flex flex-col hover:text-accent-foreground rounded-[6px] font-medium group relative mb-1 hover:bg-[#F8FAFC] dark:hover:bg-[#101929]",
-    path === item.href ? "" : "transparent",
+    path === item.href ? "text-accent-foreground bg-[#F8FAFC] dark:bg-[#101929]" : "transparent",
     item.disabled && "cursor-not-allowed opacity-80",
   );
 
@@ -70,7 +70,7 @@ DashboardNav.ChildItem = ({ navs, trigger, loading }: SidebarChildNav) => {
               className="flex items-center hover:bg-accent px-3 mx-3 rounded-md mb-2"
               onClick={() => setSidebarPanel(!showSidebarPanel)}
             >
-              <CircleDot size={"12"}></CircleDot>
+              <CircleDot size="12"></CircleDot>
               <span className={cn("flex items-center px-3 text-sm w-full")}>
                 <span className="flex justify-between w-full items-center px-1 py-1 rounded-sm">{item.name}</span>
               </span>

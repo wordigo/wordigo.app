@@ -1,4 +1,5 @@
 import { type ReactElement, useState } from "react";
+import { useRouter } from "next/router";
 import { useGetUserDictionariesMutation } from "@/store/dictionaries/api";
 import { BookMarked, ChevronDown, ChevronUp, Home, LayoutDashboard, LibraryIcon, RotateCw, Settings } from "lucide-react";
 
