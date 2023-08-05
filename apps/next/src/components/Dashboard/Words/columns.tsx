@@ -1,4 +1,3 @@
-import { TabelTranslate } from "@/components/Translate/tabel.constant";
 import { type ColumnDef } from "@tanstack/react-table";
 import { z } from "zod";
 
@@ -7,8 +6,6 @@ import { Badge } from "@wordigo/ui";
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
 
-// We're keeping a simple non-relational schema here.
-// IRL, you will have a schema for your data models.
 export const taskSchema = z.object({
   word: z.object({ id: z.string(), translatedText: z.string(), text: z.string(), targetLanguage: z.string(), nativeLanguage: z.string() }),
 });
@@ -18,7 +15,7 @@ export type Task = z.infer<typeof taskSchema>;
 export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "text",
-    header: ({ column }) => <DataTableColumnHeader column={column} title={TabelTranslate.word} className="min-w-[150px]" />,
+    header: () => <DataTableColumnHeader title={"dic_words.text"} className="min-w-[150px]" column={undefined} />,
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
@@ -30,7 +27,7 @@ export const columns: ColumnDef<Task>[] = [
   },
   {
     accessorKey: "translateLanguage",
-    header: ({ column }) => <DataTableColumnHeader column={column} title={TabelTranslate.translatedWord} />,
+    header: ({ column }) => <DataTableColumnHeader column={column} title={"dic_words.translated_text"} />,
     cell: ({ row }) => {
       console.log(row.original);
       return (

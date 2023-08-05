@@ -4,18 +4,15 @@ import { type Column } from "@tanstack/react-table";
 import { DropdownMenu, DropdownMenuTrigger } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
-interface DataTableColumnHeaderProps<TData, TValue> extends React.HTMLAttributes<HTMLDivElement> {
-  column: Column<TData, TValue>;
+interface DataTableColumnHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
 }
 
-export function DataTableColumnHeader<TData, TValue>({ column, title, className }: DataTableColumnHeaderProps<TData, TValue>) {
-  if (!column.getCanSort()) {
-    return <TranslateComponent head={title} />;
-  }
+export function DataTableColumnHeader({title, className }: DataTableColumnHeaderProps) {
+
 
   return (
-    <div className={cn("flex items-center space-x-2 pl-4", className)}>
+    <div className={cn("flex items-end space-x-2 pl-4", className)}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <TranslateComponent head={title} />

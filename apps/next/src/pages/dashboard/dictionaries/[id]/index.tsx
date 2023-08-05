@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { type GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 import { columns } from "@/components/Dashboard/Words/columns";
@@ -9,6 +9,8 @@ import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
 import { useGetWordDataMutation } from "@/store/word/api";
 import { useAppSelector } from "@/utils/hooks";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
+import { Skeleton } from "@wordigo/ui";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -31,7 +33,19 @@ const DictionariWordPage = () => {
 
   return (
     <DashboardShell>
-      {isLoading || !userDicWords ? <div>LOADİNG...</div> : <DataTable columns={columns} data={userDicWords?.words as never} label="nav_addWord" />}
+      {isLoading || !userDicWords ? (
+        <Fragment>
+          <div className="flex gap-y-2 flex-col rounded">
+            {new Array(6).fill(1).map((item) => (
+              <div key={item}>
+                <Skeleton className="w-full h-10" />
+              </div>
+            ))}
+          </div>
+        </Fragment>
+      ) : (
+        <DataTable columns={columns} data={userDicWords?.words as never} label="nav_addWord" />
+      )}
     </DashboardShell>
   );
 };

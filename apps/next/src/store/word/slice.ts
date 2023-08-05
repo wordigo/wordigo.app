@@ -19,9 +19,6 @@ const userDicWordSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addMatcher(wordApi.endpoints.createWord.matchFulfilled, (state, action) => {
-      state.word = action.payload.data;
-    });
     builder.addMatcher(wordApi.endpoints.getWordData.matchFulfilled, (state, action: any) => {
       state.word = action.payload.data;
     });

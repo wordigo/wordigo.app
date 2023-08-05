@@ -82,5 +82,19 @@
     "title": "Hoop! Birşeyler yanlış gitti.",
     "description": "Üzgünüm, aradığınız sayfa bulunamadı.",
     "action": "Ana Sayfa'ya geri dön"
+  },
+  "dictionaries": {
+    "title": "Başlık",
+    "subscribers": "Aboneler",
+    "time": "Zaman",
+    "add_dictionaries": "Sözlük Ekle"
+  },
+  "dic_words": {
+    "text": "Yazı",
+    "translated_text": "Çevrilen Yazı",
+    "time": "Zaman",
+    "add_word": "Kelime Ekle",
+    "public": "Herkese Açık",
+    "private": "Size Özel"
   }
 }

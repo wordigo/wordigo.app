@@ -1,6 +1,5 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
-
 import { cn } from "@wordigo/ui/lib/utils";
 
 interface ITranslateComponent {
@@ -12,7 +11,7 @@ const TranslateComponent: React.FC<ITranslateComponent> = ({ className, head, ..
   const { t } = useTranslation();
   return (
     <h1 className={cn(className)} {...props}>
-      {t(head)}
+      {t("dictionaries.title")}
     </h1>
   );
 };

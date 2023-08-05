@@ -29,7 +29,14 @@ export const wordApi = createApi({
         method: "POST",
       }),
     }),
+    deleteDicWord: builder.mutation<any, any>({
+      query: (deletes) => ({
+        url: "/dictionaries/removeWord",
+        body: deletes,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
-export const { useCreateWordMutation, useGetWordDataMutation } = wordApi;
+export const { useCreateWordMutation, useGetWordDataMutation, useDeleteDicWordMutation } = wordApi;

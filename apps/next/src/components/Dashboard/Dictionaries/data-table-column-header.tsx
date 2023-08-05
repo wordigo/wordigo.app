@@ -1,8 +1,7 @@
-import { TranslateComponent } from "@/components/Translate";
 import { type Column } from "@tanstack/react-table";
-import { ArrowDownIcon, ArrowUpIcon, EyeOff, SortAscIcon } from "lucide-react";
+import { useTranslation } from "next-i18next";
 
-import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@wordigo/ui";
+import { DropdownMenu, DropdownMenuTrigger } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
 interface DataTableColumnHeaderProps<TData, TValue> extends React.HTMLAttributes<HTMLDivElement> {
@@ -10,16 +9,13 @@ interface DataTableColumnHeaderProps<TData, TValue> extends React.HTMLAttributes
   title: string;
 }
 
-export function DataTableColumnHeader<TData, TValue>({ column, title, className }: DataTableColumnHeaderProps<TData, TValue>) {
-  if (!column.getCanSort()) {
-    return <TranslateComponent head={title} />;
-  }
-
+export function DataTableColumnHeader<TData, TValue>({ title, className }: DataTableColumnHeaderProps<TData, TValue>) {
+  const { t } = useTranslation();
   return (
-    <div className={cn("flex items-center space-x-2 pl-4", className)}>
+    <div className={cn("flex items-center space-x-2 pl-4 mr-10", className)}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <TranslateComponent head={title} />
+          <span>{t(title)}</span>
         </DropdownMenuTrigger>
       </DropdownMenu>
     </div>

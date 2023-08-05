@@ -11,11 +11,11 @@ export function Navbar({ Button }: { Button: string }) {
       <header className="flex gap-2">
         {Button === "dictionaries" ? (
           <div>
-            <CreateDictionary label="Add Dictionaries" />
+            <CreateDictionary label="dictionaries.add_dictionaries" />
           </div>
         ) : Button === "word" ? (
           <section className="flex items-center">
-            <CreateWord />
+            <CreateWord label="dic_words.add_word" />
             <span className="mx-2">
               <Share />
             </span>

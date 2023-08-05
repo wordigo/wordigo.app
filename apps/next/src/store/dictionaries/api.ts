@@ -9,6 +9,7 @@ const baseQuery = fetchBaseQuery({
     const token = (getState() as RootState).auth.token;
     if (token) {
       headers.set("authorization", `Bearer ${token}`);
+      console.log(token)
     }
     return headers;
   },
@@ -30,7 +31,13 @@ export const dictionaryApi = createApi({
         method: "POST",
       }),
     }),
+    deleteUserDictionaries: builder.mutation<any, any>({
+      query: (dicID) => ({
+        url: `/dictionaries/delete?dictionaryId=${dicID}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
-export const { useGetUserDictionariesMutation, useCreateDictionaryMutation } = dictionaryApi;
+export const { useGetUserDictionariesMutation, useCreateDictionaryMutation, useDeleteUserDictionariesMutation } = dictionaryApi;

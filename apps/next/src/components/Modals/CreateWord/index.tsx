@@ -38,7 +38,7 @@ const CreateWordSchema = z.object({
 
 type CreateWordValues = z.infer<typeof CreateWordSchema>;
 
-export function CreateWord() {
+export function CreateWord({ label }: { label: string | null }) {
   const [open, setOpen] = useState(false);
   const { toast } = useToast();
   const { t } = useTranslation();
@@ -100,7 +100,7 @@ export function CreateWord() {
     <Dialog open={open}>
       <DialogTrigger asChild>
         <Button onClick={toggleShow} variant="default" className="px-4 py-[10px] font-semibold text-sm">
-          Add Word
+          {t(label)}
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">

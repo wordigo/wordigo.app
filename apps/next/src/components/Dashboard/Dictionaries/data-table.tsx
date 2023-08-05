@@ -61,7 +61,7 @@ export function DataTable<TData, TValue>({ columns, data, label }: DataTableProp
       <div className="rounded-md border">
         <Table>
           <TableHeader>
-            {table.getHeaderGroups() &&
+            {table.getHeaderGroups() && table.getRowModel() && table.getRowModel().rows?.length ? (
               table.getHeaderGroups().map((headerGroup) => (
                 <TableRow key={headerGroup.id}>
                   {headerGroup.headers.map((header) => {
@@ -72,7 +72,10 @@ export function DataTable<TData, TValue>({ columns, data, label }: DataTableProp
                     );
                   })}
                 </TableRow>
-              ))}
+              ))
+            ) : (
+              <div></div>
+            )}
           </TableHeader>
           <TableBody>
             {table.getRowModel() && table.getRowModel().rows?.length ? (

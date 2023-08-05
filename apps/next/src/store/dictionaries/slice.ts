@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 import { dictionaryApi } from "./api";
 
 interface IDictionaryState {
@@ -20,8 +19,6 @@ const dictionarySlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addMatcher(dictionaryApi.endpoints.getUserDictionaries.matchFulfilled, (state, action) => {
-      console.log("test");
-
       state.dictionaries = action.payload.data;
     });
   },

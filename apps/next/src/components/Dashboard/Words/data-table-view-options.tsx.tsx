@@ -2,26 +2,13 @@
 
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import { FlipHorizontal } from "lucide-react";
+import { Button, DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent } from "@wordigo/ui";
 
-import {
-  Button,
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  type Table,
-} from "@wordigo/ui";
-
-interface DataTableViewOptionsProps<TData> {
-  table: Table<TData>;
-}
-
-export function DataTableViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
+export function DataTableViewOptions({ table }: { table: any }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">
+        <Button className="focus-visible:ring-0 focus-visible:ring-offset-0" variant="outline">
           <FlipHorizontal className="mr-2 h-4 w-4" />
           View
         </Button>
@@ -38,7 +25,7 @@ export function DataTableViewOptions<TData>({ table }: DataTableViewOptionsProps
                 checked={column.getIsVisible()}
                 onCheckedChange={(value) => column.toggleVisibility(!!value)}
               >
-                {column.id}
+                <span className="truncate">{column.id}</span>
               </DropdownMenuCheckboxItem>
             );
           })}

@@ -82,5 +82,19 @@
     "title": "Oops, something went wrong.",
     "description": "Sorry, we couldn't find your page.",
     "action": "Back to home"
+  },
+  "dictionaries": {
+    "title": "Title",
+    "subscribers": "Subscribers",
+    "time": "Time",
+    "add_dictionaries": "Add Dictionaries"
+  },
+  "dic_words": {
+    "text": "Text",
+    "translated_text": "Translated Text",
+    "time": "Time",
+    "add_word": "Add Word",
+    "public": "Public",
+    "private": "Private"
   }
 }

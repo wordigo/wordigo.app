@@ -18,9 +18,7 @@ export function Share() {
     <Dialog>
       <>
         <DialogTrigger asChild>
-          <Button className="px-4 py-[10px] font-semibold text-sm">
-            {t(WordPage.publish)}
-          </Button>
+          <Button className="px-4 py-[10px] font-semibold text-sm">{t("dic_words.public")}</Button>
         </DialogTrigger>
 
         <DialogContent className="sm:max-w-[425px]">
