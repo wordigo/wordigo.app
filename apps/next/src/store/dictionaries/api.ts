@@ -9,7 +9,7 @@ const baseQuery = fetchBaseQuery({
     const token = (getState() as RootState).auth.token;
     if (token) {
       headers.set("authorization", `Bearer ${token}`);
-      console.log(token);
+      console.log(token)
     }
     return headers;
   },
@@ -27,7 +27,7 @@ export const dictionaryApi = createApi({
     createDictionary: builder.mutation<any, any>({
       query: (create) => ({
         url: "/dictionaries/create",
-        params: create,
+        body: create,
         method: "POST",
       }),
     }),

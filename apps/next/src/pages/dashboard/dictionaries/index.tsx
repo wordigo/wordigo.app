@@ -38,7 +38,7 @@ const DictionariesPage = () => {
           </div>
         </Fragment>
       ) : (
-        <DataTable columns={columns} data={userDictionaries} label="nav_addDictionary" />
+        <DataTable columns={columns} data={userDictionaries} />
       )}
     </DashboardShell>
   );

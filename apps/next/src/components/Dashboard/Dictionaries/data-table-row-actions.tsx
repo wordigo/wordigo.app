@@ -8,12 +8,14 @@ import { type Row } from "react-table";
 import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger, useToast } from "@wordigo/ui";
 
 interface DataTableRowActionsProps<TData extends object> {
-  row: Row<TData & { id: string }>;
+  row: Row<TData & { id: string; title: string }>;
 }
 
 export function DataTableRowActions<TData extends object>({ row }: DataTableRowActionsProps<TData>) {
   const { id } = row.original;
   const { toast } = useToast();
+
+  console.log(id);
 
   const [getUserDictionaries] = useGetUserDictionariesMutation();
   const [deleteWord, { status, data }] = useDeleteUserDictionariesMutation();

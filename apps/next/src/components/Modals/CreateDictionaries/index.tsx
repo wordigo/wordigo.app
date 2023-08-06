@@ -26,6 +26,9 @@ import {
 
 const CreateDictionarySchema = z.object({
   title: z.string().nonempty(),
+  image: z.string(),
+  description: z.string(),
+  level: z.number().nonnegative(),
 });
 
 type CreateDictionaryValues = z.infer<typeof CreateDictionarySchema>;
@@ -38,6 +41,9 @@ export default function CreateDictionary({ label }: { label: string }) {
 
   const defaultValues: Partial<CreateDictionaryValues> = {
     title: "",
+    image: "",
+    description: "",
+    level: 0,
   };
 
   const form = useForm<CreateDictionaryValues>({
