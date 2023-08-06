@@ -1,4 +1,4 @@
 module.exports = {
   ...require('@wordigo/tailwind-config'),
-  darkMode: "[data-theme]"
+  darkMode: '[data-theme="dark"]'
 }
