@@ -8,8 +8,8 @@ import ReactCountryFlag from "react-country-flag";
 
 import { Badge, Button } from "@wordigo/ui";
 
-import ArrowRightLeft from "./ArrowRightLeft";
-import WordPageConstants from "./id.constants";
+import ArrowRightLeft from "../../../components/Published/WordsPage/ArrowRightLeft";
+import WordPageConstants from "../../../components/Published/WordsPage/id.constants";
 
 export default function index() {
   return (
