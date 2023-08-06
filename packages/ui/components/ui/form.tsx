@@ -1,9 +1,10 @@
 import * as React from "react";
 import * as LabelPrimitive from "@radix-ui/react-label";
 import { Slot } from "@radix-ui/react-slot";
+import { Controller, ControllerProps, FieldPath, FieldValues, FormProvider, useFormContext } from "react-hook-form";
+
 import { Label } from "@wordigo/ui/components/ui/label";
 import { cn } from "@wordigo/ui/lib/utils";
-import { Controller, ControllerProps, FieldPath, FieldValues, FormProvider, useFormContext } from "react-hook-form";
 
 const Form = FormProvider;
 
@@ -88,7 +89,7 @@ const FormControl = React.forwardRef<React.ElementRef<typeof Slot>, React.Compon
 FormControl.displayName = "FormControl";
 
 const FormDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(({ className, ...props }, ref) => {
-  const { formDescriptionId } = useFormField();
+  const { formDescriptionId, error } = useFormField();
 
   return <p ref={ref} id={formDescriptionId} className={cn("text-sm text-muted-foreground", className)} {...props} />;
 });

@@ -38,7 +38,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   }
 
   return {
-    props: { session, ...(await serverSideTranslations(context.locale, ["common"])) },
+    props: { session, ...(await serverSideTranslations(context.locale, ["common", "zod"])) },
   };
 }
 

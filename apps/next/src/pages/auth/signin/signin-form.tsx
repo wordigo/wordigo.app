@@ -1,25 +1,16 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import CButton from "@/components/UI/Button";
+import { AuthLoginSchema, type AuthLoginValues } from "@/schemas/auth.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
-import z from "zod";
 
 import { Form, FormControl, FormField, FormItem, FormMessage, Input, Label, useToast } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
 type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
-
-const AuthLoginSchema = z.object({
-  email: z.string().min(1, { message: "Email is required" }).email({
-    message: "Must be a valid email",
-  }),
-  password: z.string().min(6, { message: "Password must be atleast 6 characters" }),
-});
-// extracting the type
-export type AuthLoginValues = z.infer<typeof AuthLoginSchema>;
 
 const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
   const { t } = useTranslation();

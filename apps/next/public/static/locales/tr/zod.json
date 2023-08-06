@@ -1,0 +1,112 @@
+{
+  "errors": {
+    "invalid_type": "{{expected}} bekleniyor, alınan: {{received}}",
+    "invalid_type_received_undefined": "Bu alan zorunlu.",
+    "invalid_literal": "Geçersiz değer, beklenen: {{expected}}",
+    "unrecognized_keys": "Nesne içinde tanınmayan anahtar(lar): {{- keys}}",
+    "invalid_union": "Geçersiz tip birleşimi",
+    "invalid_union_discriminator": "Geçersiz ayırıcı değer. Beklenen: {{- options}}",
+    "invalid_enum_value": "Geçersiz enum değeri. Beklenen: {{- options}}, alınan: '{{received}}'",
+    "invalid_arguments": "Geçersiz fonksiyon argümanları",
+    "invalid_return_type": "Geçersiz fonksiyon dönüş değeri",
+    "invalid_date": "Geçersiz tarih",
+    "custom": "Geçersiz girdi",
+    "invalid_intersection_types": "Kesişim sonuçları birleştirilemez",
+    "not_multiple_of": "{{multipleOf}} ve katları olmalıdır",
+    "not_finite": "Sayı sonlu olmalıdır",
+    "invalid_string": {
+      "email": "Lütfen geçerli bir e-posta adresi girin",
+      "url": "Lütfen geçerli bir bağlantı girin",
+      "uuid": "Lütfen geçerli bir UUID girin",
+      "cuid": "Lütfen geçerli bir CUID girin",
+      "regex": "Geçersiz",
+      "datetime": "Lütfen geçerli bir tarih ve zaman girin",
+      "startsWith": "Geçersiz girdi: Başlamalıdır with \"{{startsWith}}\"",
+      "endsWith": "Geçersiz girdi: Bitmelidir with \"{{endsWith}}\""
+    },
+    "too_small": {
+      "array": {
+        "exact": "Dizi tam olarak {{minimum}} adet veri içermelidir",
+        "inclusive": "Dizi en az {{minimum}} adet veri içermelidir",
+        "not_inclusive": "Dizi {{minimum}} adetten fazla veri içermelidir"
+      },
+      "string": {
+        "exact": "Metin tam olarak {{minimum}} karakter içermelidir",
+        "inclusive": "Metin en az {{minimum}} karakter içermelidir",
+        "not_inclusive": "Metin {{minimum}} karakterden fazla içermelidir"
+      },
+      "number": {
+        "exact": "Sayı tam olarak {{minimum}} olmalıdır",
+        "inclusive": "Sayı {{minimum}} veya daha büyük olmalıdır",
+        "not_inclusive": "Sayı {{minimum}}'den daha büyük olmalıdır"
+      },
+      "set": {
+        "exact": "Geçersiz girdi",
+        "inclusive": "Geçersiz girdi",
+        "not_inclusive": "Geçersiz girdi"
+      },
+      "date": {
+        "exact": "Tarih tam olarak {{- minimum, datetime}}",
+        "inclusive": "Tarih eşit veya daha büyük olmalıdır {{- minimum, datetime}}",
+        "not_inclusive": "Tarih daha büyük olmalıdır {{- minimum, datetime}}"
+      }
+    },
+    "too_big": {
+      "array": {
+        "exact": "Dizi tam olarak {{maximum}} adet veri içermelidir",
+        "inclusive": "Dizi en fazla {{maximum}} adet veri içermelidir",
+        "not_inclusive": "Dizi {{maximum}} adetten daha az veri içermelidir"
+      },
+      "string": {
+        "exact": "Metin tam olarak {{maximum}} karakter içermelidir",
+        "inclusive": "Metin en fazla {{maximum}} karakter içermelidir",
+        "not_inclusive": "Metin {{maximum}} karakterden daha az içermelidir"
+      },
+      "number": {
+        "exact": "Sayı tam olarak {{maximum}} olmalıdır",
+        "inclusive": "Sayı {{maximum}} veya daha küçük olmalıdır",
+        "not_inclusive": "Sayı {{maximum}}'den daha küçük olmalıdır"
+      },
+      "set": {
+        "exact": "Geçersiz girdi",
+        "inclusive": "Geçersiz girdi",
+        "not_inclusive": "Geçersiz girdi"
+      },
+      "date": {
+        "exact": "Tarih tam olarak {{- maximum, datetime}}",
+        "inclusive": "Tarih eşit veya daha küçük olmalıdır {{- maximum, datetime}}",
+        "not_inclusive": "Tarih daha küçük olmalıdır {{- maximum, datetime}}"
+      }
+    }
+  },
+  "validations": {
+    "email": "E-posta",
+    "url": "Bağlantı",
+    "uuid": "UUID",
+    "cuid": "CUID",
+    "regex": "düzenli ifade",
+    "datetime": "tarih ve zaman"
+  },
+  "types": {
+    "function": "fonksiyon",
+    "number": "sayı",
+    "string": "metin",
+    "nan": "NaN",
+    "integer": "tam sayı",
+    "float": "ondalık sayı",
+    "boolean": "mantıksal",
+    "date": "tarih",
+    "bigint": "büyük tam sayı",
+    "undefined": "tanımlanmamış",
+    "symbol": "sembol",
+    "null": "boş",
+    "array": "dizi",
+    "object": "nesne",
+    "unknown": "bilinmeyen",
+    "promise": "söz",
+    "void": "boş",
+    "never": "asla",
+    "map": "harita",
+    "set": "küme"
+  }
+}

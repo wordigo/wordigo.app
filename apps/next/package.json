@@ -46,6 +46,7 @@
     "tailwind-merge": "^1.13.2",
     "tailwindcss-animate": "^1.0.6",
     "zod": "^3.21.4",
+    "zod-i18n-map": "^2.14.0",
     "zustand": "^4.3.9"
   },
   "devDependencies": {

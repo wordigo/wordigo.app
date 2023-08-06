@@ -17,7 +17,7 @@ export default function index({ _nextI18Next }: PageProps) {
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common"])),
+      ...(await serverSideTranslations(locale, ["common", "zod"])),
     },
   };
 }
