@@ -5,6 +5,7 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
+  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
@@ -16,6 +17,9 @@ import {
 } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
+import ChangeLanguage from "../MainLayout/ChangeLanguage";
+import ThemeMode from "../ThemeMode";
+
 const NavProfile = () => {
   const { data } = useSession();
   const splittedText = data?.user?.name?.toUpperCase()?.split(" ");
@@ -26,28 +30,24 @@ const NavProfile = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="dark:bg-[#161e2b] bg-gray-500 border border-transparent px-2 py-1 rounded-md w-[220px] flex items-center justify-between select-none cursor-default relative h-fit focus-visible:ring-0 focus-visible:ring-offset-0 ">
+        <Button variant="ghost" className="dark:bg-[#101929] m-auto shadow px-2 h-fit rounded-md w-[220px] flex items-center justify-between select-none cursor-default relative focus-visible:ring-0 focus-visible:ring-offset-0">
           <div className="flex items-center">
-            <Avatar className="h-12 w-12">
-              <AvatarImage className="h-12 w-12" src={data?.user.avatar_url} alt={"@" + data?.user.name} />
-              <AvatarFallback>{computedName}</AvatarFallback>
+            <Avatar className="h-10 w-10 mr-2">
+              <Avatar className="h-10 w-10">
+                <AvatarImage src={data?.user.avatar_url} alt={"@" + data?.user.name} />
+                <AvatarFallback>{computedName}</AvatarFallback>
+              </Avatar>
             </Avatar>
 
-            <DropdownMenuLabel>
-              <div className="flex flex-col text-start">
-                <p className="text-sm font-semibold leading-5 text-start max-w-[117px] truncate">{data?.user.name}</p>
-                <p className="text-sm font-normal leading-5 text-muted-foreground max-w-[117px] truncate">{"@" + data?.user.username}</p>
-              </div>
-            </DropdownMenuLabel>
+            <div className="flex flex-col text-start">
+              <p className="text-sm font-medium leading-none max-w-[152px] truncate mb-1">{data?.user.name}</p>
+              <p className="text-xs leading-none text-muted-foreground max-w-[152px] truncate">{"@" + data?.user.username}</p>
+            </div>
           </div>
-        </button>
+        </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className={cn("w-full")}>
+      <DropdownMenuContent className={cn("w-full py-1")}>
         <DropdownMenuLabel className="font-normal flex items-center">
-          <Avatar className="h-10 w-10 mr-2">
-            <AvatarImage className="h-10 w-10" src={data?.user.avatar_url} alt={"@" + data?.user.name} />
-            <AvatarFallback>{computedName}</AvatarFallback>
-          </Avatar>
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium leading-none">{data?.user.name}</p>
             <p className="text-xs leading-none text-muted-foreground">{data?.user.email}</p>
@@ -55,21 +55,17 @@ const NavProfile = () => {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem className="px-[10px] py-[4px]">
-            <LayoutDashboard className="w-4 mr-2" />
-            <Link href="/dashboard">Dashboard</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem className="px-[10px] py-[4px]">
-            <BookMarked className="w-4 mr-2" />
-            <Link href="/dashboard/dictionaries">Dictionaries</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem className="px-[10px] py-[4px]">
-            <Settings className="w-4 mr-2" />
-            <Link href="/dashboard/settings">Settings</Link>
-          </DropdownMenuItem>
+          <div className="px-[10px] text-sm focus:bg-transparent py-[4px] flex items-center justify-between">
+            <p className="mr-3">Theme</p>
+            <ThemeMode />
+          </div>
+          <div className="px-[10px] text-sm focus:bg-transparent py-[4px] flex items-center justify-between">
+            <p className="mr-3">Language</p>
+            <ChangeLanguage />
+          </div>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="text-red-400 hover:!text-red-500 px-[10px] py-[4px]" onClick={() => handleSignOut}>
+        <DropdownMenuItem className="text-red-400 text-sm hover:!text-red-500 px-[10px] py-[4px]" onClick={() => handleSignOut}>
           <LogOut className="w-4 mr-1 ml-[2px]" />
           <div>Log out</div>
         </DropdownMenuItem>

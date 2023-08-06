@@ -71,7 +71,7 @@ const NavProfile = () => {
         </div>
 
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="text-red-400 hover:!text-white px-[10px] py-[5px]" onClick={() => signOut()}>
+        <DropdownMenuItem className="text-red-400 hover:!text-red-500 px-[10px] py-[5px]" onClick={() => signOut()}>
           <div>Log out</div>
         </DropdownMenuItem>
       </DropdownMenuContent>
