@@ -29,13 +29,18 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({
   const computedLanguages = providerLanguages ? AllCountryLanguages : SupportedLanguages;
 
   return (
-    <Select defaultValue={targetLanguageSelect ? "DT" : defaultValue || "0"} onValueChange={handleSelect}>
+    <Select defaultValue={targetLanguageSelect && !defaultValue ? "DT" : defaultValue || "0"} onValueChange={handleSelect}>
       <SelectTrigger className={className}>
         <SelectValue placeholder={placeholder || "Select language"} />
       </SelectTrigger>
       <SelectContent>
         <ScrollArea.Root className="max-h-[400px] overflow-auto" type="auto">
           <SelectGroup>
+            {providerLanguages && (
+              <SelectItem value="0" disabled>
+                Select language
+              </SelectItem>
+            )}
             {targetLanguageSelect && (
               <SelectItem key="DT" value="DT">
                 <div className="flex items-center gap-x-2">
