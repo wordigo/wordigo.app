@@ -7,8 +7,6 @@ import { buttonVariants } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
 import NavProfile from "../../NavProfile";
-import ThemeMode from "../../ThemeMode";
-import ChangeLanguage from "../ChangeLanguage";
 import Navigation from "./Navigation";
 
 export default function HomeHeader() {
@@ -25,8 +23,6 @@ export default function HomeHeader() {
           <Navigation />
         </div>
         <div className="flex gap-x-4 items-center">
-          <ChangeLanguage />
-          <div className="w-[1px] !h-10 bg-border"></div>
           {status === "loading" ? (
             <NavProfile.Loader />
           ) : status === "authenticated" ? (

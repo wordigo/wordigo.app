@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { BookMarked, LayoutDashboard, LogOut, Settings } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 
 import {
@@ -18,6 +17,7 @@ import {
 } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
+import ChangeLanguage from "../MainLayout/ChangeLanguage";
 import ThemeMode from "../ThemeMode";
 
 const NavProfile = () => {
@@ -36,12 +36,8 @@ const NavProfile = () => {
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className={cn("w-full py-2")}>
+      <DropdownMenuContent align="end" className={cn("w-full py-0.5")}>
         <DropdownMenuLabel className="font-normal flex items-center">
-          <Avatar className="h-10 w-10 mr-2">
-            <AvatarImage className="h-10 w-10" src={data?.user.avatar_url} alt={"@" + data?.user.name} />
-            <AvatarFallback>{computedName}</AvatarFallback>
-          </Avatar>
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium leading-none">{data?.user.name}</p>
             <p className="text-xs leading-none text-muted-foreground">{data?.user.email}</p>
@@ -49,15 +45,15 @@ const NavProfile = () => {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem className="px-[10px] py-1">
+          <DropdownMenuItem className="px-[10px]">
             {/* <LayoutDashboard className="w-4 mr-2" /> */}
             <Link href="/dashboard">Dashboard</Link>
           </DropdownMenuItem>
-          <DropdownMenuItem className="px-[10px] py-1">
+          <DropdownMenuItem className="px-[10px]">
             {/* <BookMarked className="w-4 mr-2" /> */}
             <Link href="/dashboard/dictionaries">Dictionaries</Link>
           </DropdownMenuItem>
-          <DropdownMenuItem className="px-[10px] py-1">
+          <DropdownMenuItem className="px-[10px]">
             {/* <Settings className="w-4 mr-2" /> */}
             <Link href="/dashboard/settings">Settings</Link>
           </DropdownMenuItem>
@@ -65,13 +61,17 @@ const NavProfile = () => {
         <DropdownMenuSeparator />
 
         <div className="px-[10px] text-sm focus:bg-transparent py-[4px] flex items-center justify-between">
-          Theme
+          <p className="mr-3">Theme</p>
           <ThemeMode />
         </div>
 
+        <div className="px-[10px] text-sm focus:bg-transparent py-[4px] flex items-center justify-between">
+          <p className="mr-3">Language</p>
+          <ChangeLanguage />
+        </div>
+
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="text-red-400 hover:!text-red-500 px-[10px] py-[4px]" onClick={() => signOut()}>
-          <LogOut className="w-4 mr-1 ml-[2px]" />
+        <DropdownMenuItem className="text-red-400 hover:!text-white px-[10px] py-[5px]" onClick={() => signOut()}>
           <div>Log out</div>
         </DropdownMenuItem>
       </DropdownMenuContent>

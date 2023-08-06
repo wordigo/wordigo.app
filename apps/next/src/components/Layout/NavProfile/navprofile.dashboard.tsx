@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { BookMarked, ChevronDown, ChevronUp, LayoutDashboard, Link, LogOut, Settings } from "lucide-react";
+import { BookMarked, LayoutDashboard, Link, LogOut, Settings } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 
 import {
