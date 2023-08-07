@@ -8,6 +8,8 @@ const config = {
     "prettier",
   ],
   rules: {
+    "@typescript-eslint/no-unsafe-argument": "off",
+    "@next/next/no-head-element": "off",
     "no-unused-expressions": "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "react-hooks/rules-of-hooks": "off",

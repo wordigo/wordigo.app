@@ -32,8 +32,7 @@ export const TextToSpeechApi = async ({ text, phonetic = "en-US" }: TextToSpeech
     `https://translate.googleapis.com/translate_tts?client=gtx&tl=${phonetic}&q=${encodeURIComponent(text)}`,
     {
       credentials: "same-origin",
-      mode: "no-cors",
-      method: "post"
+      mode: "no-cors"
     }
   )
   const blob = await res.blob()
