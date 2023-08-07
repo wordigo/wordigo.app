@@ -3,7 +3,7 @@ import * as React from "react";
 import { cn } from "@wordigo/ui/lib/utils";
 
 const Table = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableElement>>(({ className, ...props }, ref) => (
-  <div className="overflow-auto w-full">
+  <div className="overflow-auto w-full flex item-center">
     <table ref={ref} className={cn("caption-bottom text-sm w-full", className)} {...props} />
   </div>
 ));
@@ -30,12 +30,12 @@ const TableRow = React.forwardRef<HTMLTableRowElement, React.HTMLAttributes<HTML
 TableRow.displayName = "TableRow";
 
 const TableHead = React.forwardRef<HTMLTableCellElement, React.ThHTMLAttributes<HTMLTableCellElement>>(({ className, ...props }, ref) => (
-  <th ref={ref} className={cn("w-full h-12 text-left align-middle font-medium text-muted-foreground", className)} {...props} />
+  <th ref={ref} className={cn("w-fit h-12 text-left align-middle font-medium text-muted-foreground", className)} {...props} />
 ));
 TableHead.displayName = "TableHead";
 
 const TableHeadWord = React.forwardRef<HTMLTableCellElement, React.ThHTMLAttributes<HTMLTableCellElement>>(({ className, ...props }, ref) => (
-  <th ref={ref} className={cn("h-12 text-left align-middle font-medium text-muted-foreground", className)} {...props} />
+  <th ref={ref} className={cn("w-fit h-12 text-center align-middle font-medium text-muted-foreground", className)} {...props} />
 ));
 TableHead.displayName = "TableHeadWord";
 

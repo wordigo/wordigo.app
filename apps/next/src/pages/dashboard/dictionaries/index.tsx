@@ -7,7 +7,13 @@ import { useGetUserDictionariesMutation } from "@/store/dictionaries/api";
 import { useAppSelector } from "@/utils/hooks";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
+
+
 import { Skeleton } from "@wordigo/ui";
+
+
+
+
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {

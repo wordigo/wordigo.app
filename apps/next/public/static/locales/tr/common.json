@@ -86,8 +86,10 @@
   "dictionaries": {
     "title": "Başlık",
     "subscribers": "Aboneler",
-    "time": "Zaman",
-    "add_dictionaries": "Sözlük Ekle"
+    "time": "Oluşturulma Tarihi",
+    "add_dictionaries": "Sözlük Ekle",
+    "image": "Görsel",
+    "public": "Herkese Açık"
   },
   "breadcrumbs": {
     "home": "Ana Sayfa",

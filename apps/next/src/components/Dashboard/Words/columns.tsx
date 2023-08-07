@@ -19,7 +19,6 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <Badge className="truncate font-medium">{row?.original?.nativeLanguage}</Badge>
           <span className="truncate font-medium max-w-[280px] break-word min-w-[150px]">{row?.original?.text}</span>
         </div>
       );
@@ -31,7 +30,6 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <Badge className="truncate font-medium">{row?.original?.targetLanguage}</Badge>
           <span className=" truncate font-medium max-w-[280px] break-word min-w-[150px]">{row?.original?.translatedText}</span>
         </div>
       );

@@ -1,6 +1,4 @@
 import { TranslateComponent } from "@/components/Translate";
-import { type Column } from "@tanstack/react-table";
-
 import { DropdownMenu, DropdownMenuTrigger } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
@@ -9,8 +7,6 @@ interface DataTableColumnHeaderProps extends React.HTMLAttributes<HTMLDivElement
 }
 
 export function DataTableColumnHeader({title, className }: DataTableColumnHeaderProps) {
-
-
   return (
     <div className={cn("flex items-end space-x-2 pl-4", className)}>
       <DropdownMenu>
