@@ -14,29 +14,26 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-  buttonVariants,
-  useToast
+  buttonVariants
 } from "@wordigo/ui"
 import { motion } from "framer-motion"
-import { ArrowRightLeft, Copy, Settings, Volume2 } from "lucide-react"
-import { useEffect, useMemo } from "react"
+import { ArrowRightLeft, Copy, Settings } from "lucide-react"
+import { useEffect, useMemo, useState } from "react"
 import ReactCountryFlag from "react-country-flag"
 import { useMutation } from "react-query"
 
 import { sendToBackground } from "@plasmohq/messaging"
 
-import { TextToSpeechApi, TranslateApi } from "~api/translate"
+import { TranslateApi } from "~api/translate"
 import { TRANSLATE_CARD_WIDTH } from "~utils/constants"
 
 import { useContextPopover } from "../context/popover"
+import AuidoPlayer from "./AudioPlayer"
 import DictionarySelector from "./DictionarySelector"
 
 const TranslatePopup = () => {
-  const toast = useToast()
-
   const { cordinate, selectedText, setPopup, targetLanguage } = useContextPopover()
   const { mutate: handleTranslate, isLoading, data } = useMutation(TranslateApi)
-  const { mutate: handleTextToSpeech } = useMutation(TextToSpeechApi)
 
   const getSourceLanguageFlag = useMemo(
     () => AllCountryLanguages.find((lang) => lang.code === (data?.sourceLanguage || "").toUpperCase()),
@@ -52,40 +49,6 @@ const TranslatePopup = () => {
     handleTranslate({ query: selectedText, sourceLanguage: null, targetLanguage })
   }, [selectedText])
 
-  const openSettingsPage = async () => {
-    const opeendSettings = await sendToBackground({
-      name: "openSettings"
-    })
-    opeendSettings && setPopup(false)
-  }
-
-  // const speech = new SpeechSynthesisUtterance(data?.translatedText)
-  const textToSpeech = () => {
-    const sound = new Audio("http://translate.google.com/translate_tts?tl=sv&q=Testar")
-    sound.play()
-    console.log("test")
-
-    // handleTextToSpeech({ text: "selam dünya" })
-    // speech.rate = 1
-    // speech.pitch = 1
-    // speech.volume = 1
-    // const voices = speechSynthesis.getVoices()
-    // if (voices.length > 0) {
-    //   speech.voice = voices[0]
-    // }
-    // speech.lang = "EN_US"
-    // window.speechSynthesis.cancel()
-    // window.speechSynthesis.speak(speech)
-  }
-
-  const copyTranslatedText = () => {
-    void navigator.clipboard.writeText(data.translatedText)
-    toast.toast({
-      title: "Successful",
-      description: "The translated text was successfully copied."
-    })
-  }
-
   return (
     <motion.div
       tabIndex={50}
@@ -100,6 +63,9 @@ const TranslatePopup = () => {
         top: cordinate.y,
         left: cordinate.x
       }}>
+      <head>
+        <meta name="referrer" content="no-referrer" />
+      </head>
       <Toaster />
       <Card tabIndex={1} className="flex-col flex !h-60">
         <CardHeader className="flex flex-row items-center justify-between px-4 !py-[8px]">
@@ -136,7 +102,11 @@ const TranslatePopup = () => {
         <Separator />
         <CardContent className="!px-5 !py-3 !h-full">
           {isLoading ? (
-            <TranslatePopup.Loading />
+            <div className="flex flex-col">
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-full" />
+            </div>
           ) : (
             <Textarea
               className="!border-0 !p-0 !opacity-75 disabled:!cursor-default !h-full"
@@ -148,38 +118,9 @@ const TranslatePopup = () => {
         <Separator />
         <CardFooter className="!p-3 flex items-center justify-between relative">
           <div className="flex flex-row gap-x-2 items-center justify-end">
-            <TooltipProvider delayDuration={100}>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button disabled={isLoading} onClick={textToSpeech} className="!h-9 !w-9" variant="outline" size="icon">
-                    <Volume2 size={18} />
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent className="!py-0.5">
-                  <p>Text to speech</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-
-            {/* <TooltipProvider delayDuration={100}>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button disabled={isLoading} onClick={textToSpeech} className="!h-9 !w-9" variant="outline" size="icon">
-                    <Volume2 size={18} />
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent className="!py-0.5">
-                  <p>Copied</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider> */}
-
-            <Button disabled={isLoading} onClick={copyTranslatedText} className="!h-9 !w-9" variant="outline" size="icon">
-              <Copy size={18} />
-            </Button>
-            <Button onClick={openSettingsPage} className="!h-9 !w-9" variant="outline" size="icon">
-              <Settings size={18} />
-            </Button>
+            <TranslatePopup.SettingsAction />
+            <TranslatePopup.CopyTranslatedText text={data?.translatedText} />
+            <TranslatePopup.AudioPlayer translatedText={data?.translatedText} />
           </div>
           <DictionarySelector translatedText={data?.translatedText} sourceLangauge={data?.sourceLanguage} />
         </CardFooter>
@@ -188,6 +129,62 @@ const TranslatePopup = () => {
   )
 }
 
-TranslatePopup.Loading = () => <Skeleton className="w-full h-10" />
+TranslatePopup.AudioPlayer = AuidoPlayer
+
+TranslatePopup.CopyTranslatedText = ({ text }: { text: string }) => {
+  const [visible, setVisible] = useState<boolean>(false)
+  const [copiedStatus, setCopiedStatus] = useState<boolean>(false)
+
+  const copyTranslatedText = () => {
+    void navigator.clipboard.writeText(text)
+    setCopiedStatus(true)
+    setTimeout(() => setCopiedStatus(false), 700)
+  }
+
+  return (
+    <TooltipProvider delayDuration={100}>
+      <Tooltip open={visible}>
+        <TooltipTrigger
+          onMouseEnter={() => setVisible(true)}
+          onMouseLeave={() => setVisible(false)}
+          onClick={copyTranslatedText}
+          asChild>
+          <Button className="!h-9 !w-9" variant="outline" size="icon">
+            <Copy size={18} />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent className="!py-0.5">
+          <p>{copiedStatus ? "Translation copied" : "Copy to clipboard"}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  )
+}
+
+TranslatePopup.SettingsAction = () => {
+  const { setPopup } = useContextPopover()
+
+  const openSettingsPage = async () => {
+    const opeendSettings = await sendToBackground({
+      name: "openSettings"
+    })
+    opeendSettings && setPopup(false)
+  }
+
+  return (
+    <TooltipProvider delayDuration={100}>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button onClick={openSettingsPage} className="!h-9 !w-9" variant="outline" size="icon">
+            <Settings size={18} />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent className="!py-0.5">
+          <p>Open Settings page</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  )
+}
 
 export default TranslatePopup

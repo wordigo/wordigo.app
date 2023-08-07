@@ -12,6 +12,7 @@ import lightLogo from "data-base64:~assets/logo-light.png"
 import { ArrowRightLeft, BookMarked, Settings } from "lucide-react"
 import { useEffect } from "react"
 import { useState } from "react"
+import type { ChangeEventHandler } from "react"
 import { useMutation } from "react-query"
 
 import { TranslateApi } from "~api/translate"
@@ -19,7 +20,6 @@ import { TranslateApi } from "~api/translate"
 const TranslatePopup = () => {
   const [value, setValue] = useState("")
   const [targetLanguage, setTargetLanguage] = useState("EN")
-  const toast = useToast()
 
   const { mutate: handleTranslate, isLoading, data, reset } = useMutation(TranslateApi)
 
@@ -39,24 +39,6 @@ const TranslatePopup = () => {
     })
   }
 
-  const handleAddLibrary = (event: MouseEvent<HTMLElement>) => {
-    event.preventDefault()
-  }
-
-  const textToSpeech = () => {
-    const msg = new SpeechSynthesisUtterance("data.translatedText" as string)
-    msg.lang = "en_US"
-    window.speechSynthesis.speak(msg)
-  }
-
-  const copyTranslatedText = () => {
-    void navigator.clipboard.writeText("data.translatedText" as string)
-    toast.toast({
-      title: "Successful",
-      description: "The translated text was successfully copied."
-    })
-  }
-
   useEffect(() => {
     const typingTimeout = setTimeout(() => {
       handleTranslate({ query: value, sourceLanguage: null, targetLanguage })
@@ -71,9 +53,6 @@ const TranslatePopup = () => {
         <div className="flex flex-row items-center w-full justify-center relative">
           <img src={lightLogo} width={100} height={70} alt="Logo" />
           <div className="flex flex-row gap-x-2 items-center justify-end text-white absolute right-0">
-            <Button onClick={copyTranslatedText} className="h-8 w-8 hover:bg-gray-300 !bg-opacity-30" variant="ghost" size="icon">
-              <BookMarked size={18} />
-            </Button>
             <Button onClick={openSettingsPage} className="h-8 w-8 hover:bg-gray-300 !bg-opacity-30" variant="ghost" size="icon">
               <Settings size={18} />
             </Button>
@@ -96,12 +75,21 @@ const TranslatePopup = () => {
         </div>
       </CardHeader>
       <CardContent className="!p-3 h-full flex flex-col gap-y-2 absolute top-[103px] left-0 right-0">
-        <Textarea className="bg-white" rows={4} value={value} onChange={(event) => setValue(event.target.value)} />
-        <Textarea className="bg-white" rows={4} value={data?.translatedText} />
+        <TranslatePopup.Textarea value={value} onChange={(event) => setValue(event.target.value)} />
+        <TranslatePopup.Textarea value={data?.translatedText} onChange={(event) => {}} />
       </CardContent>
       <Separator />
       <CardFooter className="!p-3 flex items-center justify-between"></CardFooter>
     </Card>
+  )
+}
+
+TranslatePopup.Textarea = ({ value, onChange }: { value: string; onChange: ChangeEventHandler<T> | undefined }) => {
+  return (
+    <div className="relative">
+      <Textarea className="bg-white w-full h-full" rows={4} value={value} onChange={onChange} />
+      <div className="absolute right-5 bottom-3">test</div>
+    </div>
   )
 }
 

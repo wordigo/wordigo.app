@@ -1,7 +1,7 @@
 import { LogOut } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 
-import { Avatar, AvatarFallback, AvatarImage, Skeleton } from "@wordigo/ui";
+import { Avatar, AvatarFallback, AvatarImage, DropdownMenu, DropdownMenuLabel, DropdownMenuTrigger, Skeleton } from "@wordigo/ui";
 
 const NavProfile = () => {
   const { data } = useSession();
@@ -11,23 +11,32 @@ const NavProfile = () => {
   const handleSignOut = () => signOut({ callbackUrl: "/" });
 
   return (
-    <div className="m-auto px-2 mt-7 h-fit rounded-md w-[220px] flex items-center justify-between select-none cursor-default relative focus-visible:ring-0 focus-visible:ring-offset-0">
-      <span className="flex items-center">
-        <Avatar className="h-10 w-10 mr-2">
-          <Avatar className="h-10 w-10">
-            <AvatarImage src={data?.user.avatar_url} alt={"@" + data?.user.name} />
-            <AvatarFallback>{computedName}</AvatarFallback>
-          </Avatar>
-        </Avatar>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <div className="flex justify-between items-center relative">
+          <button className="w-full justify-between select-none cursor-default relative h-fit focus-visible:ring-0 focus-visible:ring-offset-0">
+            <div className="flex items-center gap-x-1">
+              <Avatar className="h-12 w-12">
+                <AvatarImage className="h-12 w-12" src={data?.user.avatar_url} alt={"@" + data?.user.name} />
+                <AvatarFallback>{computedName}</AvatarFallback>
+              </Avatar>
 
-        <div className="flex flex-col text-start">
-          <p className="text-sm font-medium leading-none max-w-[122px] truncate mb-1">{data?.user.name}</p>
-          <p className="text-xs leading-none text-muted-foreground max-w-[122px] truncate">{"@" + data?.user.username}</p>
+              <DropdownMenuLabel>
+                <div className="flex flex-col">
+                  <p className="text-sm font-semibold leading-5 text-start">{data?.user.name}</p>
+                  <p className="text-sm font-normal leading-5 text-muted-foreground max-w-[140px] overflow-hidden truncate">{data?.user.email}</p>
+                </div>
+              </DropdownMenuLabel>
+            </div>
+          </button>
+          <div className="z-40">
+            <DropdownMenuLabel className="text-gray-400 right-0 hover:!text-red-500 absolute top-2 bottom-0" onClick={handleSignOut}>
+              <LogOut size={20} className="cursor-pointer" />
+            </DropdownMenuLabel>
+          </div>
         </div>
-      </span>
-
-      <LogOut className="text-red-500 hover:text-red-400" onClick={handleSignOut} />
-    </div>
+      </DropdownMenuTrigger>
+    </DropdownMenu>
   );
 };
 

@@ -37,7 +37,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({
         <ScrollArea.Root className="max-h-[400px] overflow-auto" type="auto">
           <SelectGroup>
             {providerLanguages && (
-              <SelectItem value="0" disabled>
+              <SelectItem className="text-start" value="0" disabled>
                 Select language
               </SelectItem>
             )}
