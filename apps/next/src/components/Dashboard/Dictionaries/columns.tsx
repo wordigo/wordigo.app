@@ -3,7 +3,7 @@ import { type ColumnDef } from "@tanstack/react-table";
 import { Wifi, WifiOff, Zap, ZapOff } from "lucide-react";
 import { z } from "zod";
 
-import { Switch } from "@wordigo/ui";
+import { Badge, Switch } from "@wordigo/ui";
 
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
@@ -60,10 +60,21 @@ export const columns: ColumnDef<Task>[] = [
     },
   },
   {
+    accessorKey: "numberOfWords",
+    header: ({ column }) => <DataTableColumnHeader column={column} title={"dictionaries.word_count"} />,
+    cell: ({ row }) => {
+      return (
+        <span className="ml-6 font-bold">
+          <Badge variant="secondary font-bold">{row.getValue("numberOfWords")}</Badge>
+        </span>
+      );
+    },
+  },
+  {
     accessorKey: "published",
     header: ({ column }) => <DataTableColumnHeader column={column} title={"dictionaries.public"} />,
     cell: ({ row }) => {
-      return <div className="ml-8">{row.original.published ? <Switch checked></Switch> : <Switch></Switch>}</div>;
+      return <div className="">{row.original.published ? <Switch checked></Switch> : <Switch></Switch>}</div>;
     },
   },
   {
@@ -73,7 +84,7 @@ export const columns: ColumnDef<Task>[] = [
       const timeValue = row.original.updatedDate;
       const dateObj = new Date(timeValue);
       const formattedDate = dateObj.toLocaleDateString();
-      return <span className="mr-5">{formattedDate}</span>;
+      return <span className="ml-3">{formattedDate}</span>;
     },
   },
   {
