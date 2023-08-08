@@ -1,29 +1,30 @@
-import DashboardLayout from "@/components/Layout/Dashboard";
-import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
-
+import CInput from "@/components/UI/Input/Input";
 import { ProfileFormSchema } from "@/schemas/profile.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Separator } from "@wordigo/ui";
+import { AtSign } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { type z } from "zod";
+
+import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Separator } from "@wordigo/ui";
+
 import ProfileUploadAvatar from "./Avatar.profile";
 
-type ProfileFormValues = z.infer<typeof ProfileFormSchema>
+type ProfileFormValues = z.infer<typeof ProfileFormSchema>;
 
 export default function ProfileForm() {
   const { data } = useSession();
 
   const defaultValues: Partial<ProfileFormValues> = {
     name: data?.user?.name,
-    username: data?.user?.username
-  }
+    username: data?.user?.username,
+  };
 
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(ProfileFormSchema),
     defaultValues,
     mode: "onChange",
-  })
+  });
 
   return (
     <div className="space-y-4 max-w-3xl">
@@ -35,11 +36,11 @@ export default function ProfileForm() {
       </div>
       <Separator />
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(() => { })} className="space-y-8">
+        <form onSubmit={form.handleSubmit(() => {})} className="space-y-8">
           <ProfileUploadAvatar />
           <FormField
             control={form.control}
-            name="username"
+            name="name"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Name</FormLabel>
@@ -57,7 +58,16 @@ export default function ProfileForm() {
               <FormItem>
                 <FormLabel>Username</FormLabel>
                 <FormControl>
-                  <Input placeholder="@osmandlsmn" {...field} />
+                  <CInput
+                    leftSection={
+                      // <div className="flex items-center cursor-pointer gap-x-1 text-muted-foreground">
+                      //   <AtSign size={15} />
+                      <span className="text-center text-sm text-muted-foreground">https://wordigo.app/profile/</span>
+                      // </div>
+                    }
+                    placeholder="@osmandlsmn"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>

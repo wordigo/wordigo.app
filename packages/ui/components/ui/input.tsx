@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import { cn } from "@wordigo/ui/lib/utils";
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}

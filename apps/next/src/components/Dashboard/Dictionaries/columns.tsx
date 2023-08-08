@@ -1,6 +1,4 @@
-import Image from "next/image";
 import { type ColumnDef } from "@tanstack/react-table";
-import { Wifi, WifiOff, Zap, ZapOff } from "lucide-react";
 import { z } from "zod";
 
 import { Badge, Switch } from "@wordigo/ui";
@@ -65,7 +63,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <span className="ml-6 font-bold">
-          <Badge variant="secondary font-bold">{row.getValue("numberOfWords")}</Badge>
+          <Badge variant="secondary">{row.getValue("numberOfWords")}</Badge>
         </span>
       );
     },
