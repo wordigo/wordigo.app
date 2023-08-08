@@ -1,6 +1,5 @@
 import React from "react";
 import { useRouter } from "next/router";
-
 import useHeaders from "./headers.constant";
 
 const DashboardHeaders = () => {

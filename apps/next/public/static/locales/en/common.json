@@ -103,6 +103,7 @@
     "time": "Time",
     "add_word": "Add Word",
     "public": "Public",
-    "private": "Private"
+    "private": "Private",
+    "settings": "Dictionaries Settings"
   }
 }

@@ -1,7 +1,7 @@
 import { type ReactElement } from "react";
 import CreateDictionary from "@/components/Modals/CreateDictionaries";
 import { CreateWord } from "@/components/Modals/CreateWord";
-import { Share } from "@/components/Modals/ShareApplication";
+import { Share } from "@/components/Modals/Settings";
 
 export interface IHeaders {
   title: string;
