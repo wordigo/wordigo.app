@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { Fragment, useEffect } from "react";
 import { type GetStaticPaths } from "next";
 import { useRouter } from "next/router";
@@ -61,7 +60,7 @@ export default DictionariesSettings.Layout;
 
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = () => {
   return {
-    paths: [], //indicates that no page needs be created at build time
-    fallback: "blocking", //indicates the type of fallback
+    paths: [],
+    fallback: "blocking",
   };
 };

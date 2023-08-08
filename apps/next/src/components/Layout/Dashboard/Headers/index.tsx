@@ -42,8 +42,8 @@ DashboardHeaders.Button = () => {
     <>
       {headers.map((item, index) => (
         <main key={index} className="flex items-center">
-          <div className="mr-2">{item.child_components}</div>
-          <div>{item.components}</div>
+          <div className="mr-2">{item.components}</div>
+          <div>{item.child_components}</div>
         </main>
       ))}
     </>
