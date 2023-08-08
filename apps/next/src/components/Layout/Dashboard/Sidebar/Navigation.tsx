@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import { AnimatePresence } from "framer-motion";
 import { CircleDot } from "lucide-react";
 
@@ -25,6 +26,7 @@ const DashboardNav = () => {
 
 DashboardNav.Item = (item: SidebarNavItem, index: number) => {
   const path = usePathname();
+  const router = useRouter();
 
   const classes = cn(
     "flex flex-col hover:text-accent-foreground rounded-[6px] font-medium group relative mb-1 hover:bg-[#F8FAFC] dark:hover:bg-[#101929]",
@@ -32,16 +34,20 @@ DashboardNav.Item = (item: SidebarNavItem, index: number) => {
     item.disabled && "cursor-not-allowed opacity-80",
   );
 
+  const handleChangePage = () => {
+    if (item.href) void router.push(item.href);
+  };
+
   return (
-    <div className={classes}>
-      <Link key={index} href={item.disabled ? "/" : item.href} className="flex items-center w-full m-3">
+    <div className={classes} key={index}>
+      <button onClick={handleChangePage} className="flex items-center w-full m-3">
         <span className="flex items-center w-full">
           <div className="flex items-center">
             {item.icon}
             <span className="ml-3">{item.title}</span>
           </div>
         </span>
-      </Link>
+      </button>
       {item.child && <DashboardNav.ChildItem {...item.child} key={item.href} />}
     </div>
   );
@@ -57,10 +63,9 @@ DashboardNav.ChildItem = ({ navs, trigger, loading }: SidebarChildNav) => {
         <div className="flex flex-col">
           {navs?.map((item, index) => (
             <Link
-              href={"/dashboard/dictionaries/" + item.link}
+              href={item.value ? "/dashboard/dictionaries/" + item.value : item.href}
               key={index}
               className="flex items-center hover:bg-accent px-3 mx-3 rounded-md mb-2"
-              // onClick={() => setSidebarPanel(!showSidebarPanel)}
             >
               <CircleDot size="12"></CircleDot>
               <span className={cn("flex items-center px-3 text-sm w-full")}>

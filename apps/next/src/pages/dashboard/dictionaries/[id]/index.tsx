@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { Fragment, useEffect } from "react";
 import { type GetStaticPaths } from "next";
 import { useRouter } from "next/router";

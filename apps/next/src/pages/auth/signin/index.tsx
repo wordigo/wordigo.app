@@ -7,16 +7,16 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { NextSeo } from "next-seo";
 import { type PageProps } from "types/global";
 
-import AuthSıgnInForm from "./signin-form";
+import AuthSignInForm from "./signin-form";
 
-const SıgnIn = ({ _nextI18Next }: PageProps) => {
+const signIn = ({ _nextI18Next }: PageProps) => {
   const { t } = useTranslation();
   return (
     <AuthLayout>
       <NextSeo title={_nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale]?.common?.seo.signin_title} />
       <AuthLayout.Title>{t("signin.title")}</AuthLayout.Title>
       <AuthLayout.Description>{t("signin.description")}</AuthLayout.Description>
-      <AuthSıgnInForm />
+      <AuthSignInForm />
       <SocialProviders />
       <AuthLayout.Footer url="/auth/signup">
         {t("signin.info")} <span className="text-foreground font-semibold">{t("signin.info_link")}</span>
@@ -42,4 +42,4 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   };
 }
 
-export default SıgnIn;
+export default signIn;

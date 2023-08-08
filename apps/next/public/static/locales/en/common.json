@@ -87,12 +87,16 @@
     "dashboard": "Dashboard",
     "home": "Home",
     "dictionaries": "Dictionaries",
-    "settings": "Settings"
+    "settings": "Settings",
+    "profile": "Profile",
+    "account": "Account",
+    "apparance": "Apparance"
   },
   "dictionaries": {
     "title": "Title",
     "subscribers": "Subscribers",
-    "time": "Time",
+    "time": "Created Date",
+    "word_count": "Word Count",
     "add_dictionaries": "Add Dictionaries",
     "image": "Image",
     "public": "Public"
@@ -100,7 +104,7 @@
   "dic_words": {
     "text": "Native Text",
     "translated_text": "Translate Text",
-    "time": "Time",
+    "time": "Created Date",
     "add_word": "Add Word",
     "public": "Public",
     "private": "Private",

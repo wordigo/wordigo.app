@@ -1,13 +1,14 @@
 import { type ReactElement, useState } from "react";
-import { useRouter } from "next/router";
 import { useGetUserDictionariesMutation } from "@/store/dictionaries/api";
 import { BookMarked, ChevronDown, ChevronUp, Home, LayoutDashboard, LibraryIcon, RotateCw, Settings } from "lucide-react";
+import { useTranslation } from "next-i18next";
 
 import { Button } from "@wordigo/ui";
 
 export interface SidebarChildNavOption {
   name: string;
-  link: string;
+  value?: string;
+  href?: string;
 }
 
 export interface SidebarChildNav {
@@ -18,15 +19,17 @@ export interface SidebarChildNav {
 
 export interface SidebarNavItem {
   title: string;
-  href: string;
+  href?: string;
   icon: ReactElement;
   disabled?: string;
   child?: SidebarChildNav;
 }
 
 const useSidebarNavigations = (): SidebarNavItem[] => {
+  const { t } = useTranslation();
   const [handleGetDictionaries, { data, isLoading, reset }] = useGetUserDictionariesMutation();
   const [showDictionary, setShowDictionary] = useState<boolean>(false);
+  const [showSettings, setShowSettings] = useState<boolean>(false);
 
   const handleDictionary = () => {
     if (!showDictionary) {
@@ -35,7 +38,11 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
     setShowDictionary(!showDictionary);
   };
 
-  const computedDictionariesNavs = data?.data?.slice(0, 5)?.map((item) => ({ name: item.title, link: item.id })) as SidebarChildNavOption[];
+  const handleSettings = () => {
+    setShowSettings(!showSettings);
+  };
+
+  const computedDictionariesNavs = data?.data?.slice(0, 5)?.map((item) => ({ name: item.title, value: item.id })) as SidebarChildNavOption[];
 
   return [
     {
@@ -59,8 +66,31 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
     },
     {
       title: "Settings",
-      href: "/dashboard/settings",
       icon: <Settings className="text-2xl" />,
+      child: {
+        trigger: (
+          <Button onClick={handleSettings} variant="outline" size="icon" className="w-fit h-fit p-1">
+            {showSettings ? <ChevronDown size={12} /> : <ChevronUp size={"12"} />}
+          </Button>
+        ),
+        loading: false,
+        navs: showSettings
+          ? [
+              {
+                href: "/dashboard/settings/profile",
+                name: t("breadcrumbs.profile"),
+              },
+              {
+                href: "/dashboard/settings/account",
+                name: t("breadcrumbs.account"),
+              },
+              {
+                href: "/dashboard/settings/apparance",
+                name: t("breadcrumbs.apparance"),
+              },
+            ]
+          : [],
+      },
     },
   ];
 };
