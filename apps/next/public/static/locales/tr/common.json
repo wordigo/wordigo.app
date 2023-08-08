@@ -95,7 +95,10 @@
     "home": "Ana Sayfa",
     "dashboard": "Panel",
     "dictionaries": "Sözlükler",
-    "settings": "Ayarlar"
+    "settings": "Ayarlar",
+    "profile": "Profil",
+    "account": "Hesap",
+    "apparance": "Görünüm"
   },
   "dic_words": {
     "text": "Yazı",

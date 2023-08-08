@@ -1,7 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import UnderNavigation from "@/components/Layout/Dashboard/Sidebar/Under.Navigation";
-import DashboardNavProfil from "@/components/Layout/NavProfile/navprofile.dashboard";
+import DashboardNavProfil from "@/components/Layout/NavProfile/Navprofile.dashboard";
 import DynamicLogo from "@/components/Logo/DynamicLogo";
 
 import DashboardNav from "./Navigation";

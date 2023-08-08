@@ -87,7 +87,10 @@
     "dashboard": "Dashboard",
     "home": "Home",
     "dictionaries": "Dictionaries",
-    "settings": "Settings"
+    "settings": "Settings",
+    "profile": "Profile",
+    "account": "Account",
+    "apparance": "Apparance"
   },
   "dictionaries": {
     "title": "Title",

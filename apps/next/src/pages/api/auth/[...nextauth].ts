@@ -1,6 +1,5 @@
 import { type NextApiRequest, type NextApiResponse } from "next";
 import { env } from "@/env.mjs";
-import { type AuthLoginValues } from "@/pages/auth/signin/signin-form";
 import cookie from "cookie";
 import NextAuth, { type NextAuthOptions, type User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -75,7 +74,7 @@ export const authOptions = (request: NextApiRequest, response: NextApiResponse):
           if (!credentials) throw new Error("no credentials");
 
           try {
-            const { email, password } = credentials as AuthLoginValues;
+            const { email, password } = credentials;
 
             const request = await fetch(`${env.NEXT_PUBLIC_WORDIGO_BACKEND_URL}/auth/signIn`, {
               headers: {
