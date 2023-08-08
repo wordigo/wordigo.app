@@ -1,7 +1,6 @@
 import { type ColumnDef } from "@tanstack/react-table";
+import { useTranslation } from "react-i18next";
 import { z } from "zod";
-
-import { Badge } from "@wordigo/ui";
 
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
@@ -33,6 +32,16 @@ export const columns: ColumnDef<Task>[] = [
           <span className=" truncate font-medium max-w-[280px] break-word min-w-[150px]">{row?.original?.translatedText}</span>
         </div>
       );
+    },
+  },
+  {
+    accessorKey: "time",
+    header: ({ column }) => <DataTableColumnHeader column={column} title={"dictionaries.time"} />,
+    cell: ({ row }) => {
+      const timeValue = row.original.updatedDate;
+      const dateObj = new Date(timeValue);
+      const formattedDate = dateObj.toLocaleString();
+      return <span>{formattedDate}</span>;
     },
   },
   {
