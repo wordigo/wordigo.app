@@ -27,12 +27,17 @@ export interface SidebarNavItem {
 const useSidebarNavigations = (): SidebarNavItem[] => {
   const [handleGetDictionaries, { data, isLoading, reset }] = useGetUserDictionariesMutation();
   const [showDictionary, setShowDictionary] = useState<boolean>(false);
+  const [showSettings, setShowSettings] = useState<boolean>(false);
 
   const handleDictionary = () => {
     if (!showDictionary) {
       void handleGetDictionaries("");
     } else reset();
     setShowDictionary(!showDictionary);
+  };
+
+  const handleSettings = () => {
+    setShowSettings(!showSettings);
   };
 
   const computedDictionariesNavs = data?.data?.slice(0, 5)?.map((item) => ({ name: item.title, link: item.id })) as SidebarChildNavOption[];
@@ -61,6 +66,28 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
       title: "Settings",
       href: "/dashboard/settings",
       icon: <Settings className="text-2xl" />,
+      child: {
+        trigger: (
+          <Button onClick={handleSettings} variant="outline" size="icon" className="w-fit h-fit p-1">
+            {showSettings ? <ChevronDown size={12} /> : <ChevronUp size={"12"} />}
+          </Button>
+        ),
+        loading: false,
+        navs: [
+          {
+            link: "/",
+            name: "Profile"
+          },
+          {
+            link: "/",
+            name: "Account"
+          },
+          {
+            link: "/",
+            name: "Apparance"
+          }
+        ]
+      }
     },
   ];
 };

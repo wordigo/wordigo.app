@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { type NextApiRequest, type NextApiResponse } from "next";
 import { env } from "@/env.mjs";
 import { type AuthLoginValues } from "@/pages/auth/signin/signin-form";
