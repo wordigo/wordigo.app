@@ -1,7 +1,6 @@
 import CInput from "@/components/UI/Input/Input";
 import { ProfileFormSchema } from "@/schemas/profile.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AtSign } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { type z } from "zod";
@@ -23,7 +22,7 @@ export default function ProfileForm() {
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(ProfileFormSchema),
     defaultValues,
-    mode: "onChange",
+    mode: "onSubmit",
   });
 
   return (
@@ -59,12 +58,7 @@ export default function ProfileForm() {
                 <FormLabel>Username</FormLabel>
                 <FormControl>
                   <CInput
-                    leftSection={
-                      // <div className="flex items-center cursor-pointer gap-x-1 text-muted-foreground">
-                      //   <AtSign size={15} />
-                      <span className="text-center text-sm text-muted-foreground">https://wordigo.app/profile/</span>
-                      // </div>
-                    }
+                    leftSection={<span className="text-center text-sm text-muted-foreground">https://wordigo.app/profile/</span>}
                     placeholder="@osmandlsmn"
                     {...field}
                   />

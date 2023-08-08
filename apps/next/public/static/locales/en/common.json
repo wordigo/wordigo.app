@@ -99,7 +99,8 @@
     "word_count": "Word Count",
     "add_dictionaries": "Add Dictionaries",
     "image": "Image",
-    "public": "Public"
+    "public": "Public",
+    "open_settings": "Open dictionary settings"
   },
   "dic_words": {
     "text": "Native Text",

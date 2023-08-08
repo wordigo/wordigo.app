@@ -90,7 +90,8 @@
     "word_count": "Kelime Sayısı",
     "add_dictionaries": "Sözlük Ekle",
     "image": "Görsel",
-    "public": "Herkese Açık"
+    "public": "Herkese Açık",
+    "open_settings": "Sözlük ayarlarına git"
   },
   "breadcrumbs": {
     "home": "Ana Sayfa",

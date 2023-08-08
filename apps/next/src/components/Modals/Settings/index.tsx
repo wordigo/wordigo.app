@@ -1,9 +1,10 @@
 import { useRouter } from "next/router";
+import { SettingsIcon } from "lucide-react";
 import { useTranslation } from "next-i18next";
 
-import { Button } from "@wordigo/ui";
+import { Button, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@wordigo/ui";
 
-export function Share() {
+export function DictionarySettingsLink() {
   const { t } = useTranslation();
 
   const router = useRouter();
@@ -13,8 +14,17 @@ export function Share() {
   };
 
   return (
-    <Button onClick={goingSettings} variant="outline" className="dark:bg-white dark:text-black bg-black text-white font-semibold text-sm">
-      {t("dic_words.settings")}
-    </Button>
+    <TooltipProvider delayDuration={100}>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button onClick={goingSettings} variant="outline">
+            <SettingsIcon size={16} />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>{t("dictionaries.open_settings")}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 }

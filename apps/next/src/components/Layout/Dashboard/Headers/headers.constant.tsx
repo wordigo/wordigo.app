@@ -1,7 +1,7 @@
 import { type ReactElement } from "react";
 import CreateDictionary from "@/components/Modals/CreateDictionaries";
 import { CreateWord } from "@/components/Modals/CreateWord";
-import { Share } from "@/components/Modals/Settings";
+import { DictionarySettingsLink } from "@/components/Modals/Settings";
 
 export interface IHeaders {
   title: string;
@@ -24,7 +24,7 @@ const useHeaders = (selectedSrc: string | null = null): IHeaders[] => {
       title: "Lorem Word",
       description: "Lorem Ipsum Word",
       components: <CreateWord label={"dic_words.add_word"} />,
-      child_components: <Share />,
+      child_components: <DictionarySettingsLink />,
     },
   ];
 

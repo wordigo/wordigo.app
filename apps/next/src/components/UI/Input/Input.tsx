@@ -18,7 +18,11 @@ const CInput = ({ leftSection, rightSection, ...props }: InputProps) => {
 
   return (
     <div className="flex items-center rounded-md border-[1px] !border-input">
-      {leftSection && <div className="py-2 px-3 inline-flex min-w-fit items-center pointer-events-none pr-0 bg-input">{leftSection}</div>}
+      {leftSection && (
+        <div className="py-2.5 px-3 !cursor-pointer rounded-md inline-flex min-w-fit items-center pointer-events-none pr-2 bg-input">
+          {leftSection}
+        </div>
+      )}
       <Input className={classes} {...props} />
     </div>
   );
