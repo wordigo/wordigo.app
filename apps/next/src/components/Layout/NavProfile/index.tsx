@@ -29,7 +29,7 @@ const NavProfile = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="rounded-full" asChild>
-        <Button variant="ghost" className="relative h-10 w-10 rounded-full focus-visible:ring-0 focus-visible:ring-offset-0">
+        <Button variant="ghost" className="relative h-10 w-10 rounded-full">
           <Avatar className="h-10 w-10">
             <AvatarImage src={data?.user.avatar_url} alt={"@" + data?.user.name} />
             <AvatarFallback>{computedName}</AvatarFallback>

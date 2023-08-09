@@ -1,22 +1,24 @@
 import React from "react";
-import { useRouter } from "next/router";
 import { Copy } from "lucide-react";
 
-import { Input, Label } from "@wordigo/ui";
+import { Button, Input, Label } from "@wordigo/ui";
 
 export default function link() {
-  const router = useRouter();
-  const { id } = router.query;
   const username = "Test_User";
-  const test = `https://wordigo.app/library/${username}/${id}`;
+  const url = `https://wordigo.app/library/${username}/`;
   return (
-    <main className="grid grid-cols-3 gap-4 my-5 w-full">
-      <Label className="max-w-[280px] min-w-[280px] mr-8">Link</Label>
-      <div className="border border-gray-300 dark:border-gray-800  flex items-center rounded-md w-full overflow-hidden max-w-[512px] min-w-[512px]">
-        <div className="py-[10px] px-3 border-r border-gray-300 dark:border-gray-800">
+    <main className="grid grid-cols-3 w-full">
+      <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
+        <Label>
+          <h1>Link</h1>
+        </Label>
+        <p className="text-[hsl(var(--muted-foreground))] text-sm">You can share your dictionary from this link.</p>
+      </span>
+      <div className="border flex items-center rounded-md w-full overflow-hidden max-w-[512px] min-w-[512px]">
+        <Button className="py-[10px] px-3 border-r border-gray-300 dark:border-gray-800">
           <Copy />
-        </div>
-        <Input className="w-full h-[26px] py-[10px] px-3 border-none rounded-none" placeholder={test} disabled />
+        </Button>
+        <Input className="w-full h-[26px] py-[10px] px-3 border-none rounded-none" placeholder={url} disabled />
       </div>
     </main>
   );

@@ -19,7 +19,7 @@ export function DataTableToolbar<TData>({ table }: DataTableToolbarProps<TData>)
             placeholder="Filter word..."
             value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
             onChange={(event) => table.getColumn("title")?.setFilterValue(event.target.value)}
-            className="w-[292px] lg:w-[250px] focus-visible:ring-0 focus-visible:ring-offset-0 text-base px-[14px] py-[10px]"
+            className="w-[292px] lg:w-[250px] text-base px-[14px] py-[10px]"
           />
         </section>
       </section>

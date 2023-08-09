@@ -1,6 +1,4 @@
-import { type ReactElement } from "react";
 import { UploadCloud, type LucideIcon } from "lucide-react"
-import { Label } from "@wordigo/ui"
 
 export interface ISettings {
     page_title: string | null,

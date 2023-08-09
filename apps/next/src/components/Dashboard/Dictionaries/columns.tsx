@@ -81,8 +81,8 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       const timeValue = row.original.updatedDate;
       const dateObj = new Date(timeValue);
-      const formattedDate = dateObj.toLocaleDateString();
-      return <span className="ml-3">{formattedDate}</span>;
+      const formattedDate = dateObj.toLocaleString();
+      return <span>{formattedDate}</span>;
     },
   },
   {

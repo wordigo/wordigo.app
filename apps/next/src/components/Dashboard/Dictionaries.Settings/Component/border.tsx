@@ -1,7 +1,6 @@
-import React from 'react'
+import { cn } from "@wordigo/ui/lib/utils";
+import React from "react";
 
-export default function border() {
-  return (
-    <div className="w-full h-[1px] bg-gray-300 dark:bg-gray-800 rounded-full"></div>
-  )
+export default function border({ className }: { className?: string }) {
+  return <div className={cn("w-full h-[1px] bg-gray-300 dark:bg-gray-800 rounded-full my-5", className)}></div>;
 }

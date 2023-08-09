@@ -1,5 +1,4 @@
 import { type ColumnDef } from "@tanstack/react-table";
-import { useTranslation } from "react-i18next";
 import { z } from "zod";
 
 import { DataTableColumnHeader } from "./data-table-column-header";

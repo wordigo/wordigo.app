@@ -128,15 +128,7 @@ export function CreateWord({ label }: { label: string | null }) {
                   <FormItem className="grid gap-1">
                     <Label>{t(WordPage.wordLabel)}</Label>
                     <FormControl>
-                      <Input
-                        {...field}
-                        className="focus-visible:ring-0 focus-visible:ring-offset-0"
-                        id="text"
-                        placeholder={t(WordPage.word)}
-                        autoCapitalize="none"
-                        autoComplete="email"
-                        autoCorrect="off"
-                      />
+                      <Input {...field} id="text" placeholder={t(WordPage.word)} autoCapitalize="none" autoComplete="email" autoCorrect="off" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -152,7 +144,6 @@ export function CreateWord({ label }: { label: string | null }) {
                     <FormControl>
                       <Input
                         {...field}
-                        className="focus-visible:ring-0 focus-visible:ring-offset-0"
                         id="translatedText"
                         placeholder={t(WordPage.translatedWord)}
                         autoCapitalize="none"

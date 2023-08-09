@@ -16,10 +16,11 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   if (session.status !== "authenticated" || !token) return <PageLoader />;
 
   return (
-    <main className="flex w-full my-8">
-      <Sidebar />
-      <div className="px-5 min-w-[280px] max-w-[280px]"></div>
-      <section className="w-full mx-8 overflow-auto">
+    <main className="flex items-center">
+      <div className="min-w-[280px] max-w-[280px]">
+        <Sidebar />
+      </div>
+      <section className="py-8 px-8 max-w-[92rem] w-full m-auto overflow-auto">
         <Navbar />
         {children}
       </section>

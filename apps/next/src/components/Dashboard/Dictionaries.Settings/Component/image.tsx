@@ -4,7 +4,7 @@ import { Label, toast } from "@wordigo/ui";
 
 import { Images } from "../settings.constant";
 
-export default function ImageComponent({...field}) {
+export default function ImageComponent({ ...field }) {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,7 +35,7 @@ export default function ImageComponent({...field}) {
         });
       }
     } else {
-      setSelectedImage(null)
+      setSelectedImage(null);
     }
   };
 
@@ -44,8 +44,13 @@ export default function ImageComponent({...field}) {
   };
 
   return (
-    <main className="grid grid-cols-3 gap-4 my-5 w-full">
-      <Label className="max-w-[280px] min-w-[280px] mr-8">{Images.label}</Label>
+    <main className="grid grid-cols-3 w-full">
+      <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
+        <Label>
+          <h1>Image</h1>
+        </Label>
+        <p className="text-[hsl(var(--muted-foreground))] text-sm">You can upload meaningful images with your dictionary.</p>
+      </span>
       <label htmlFor="imageUpload" className="cursor-pointer max-w-[280px] min-w-[280px] mr-8">
         <div
           className="flex flex-col items-center justify-center py-4 px-6 border rounded-md border-gray-300 dark:border-gray-800 w-[512px] h-[364.09px]"
@@ -53,7 +58,14 @@ export default function ImageComponent({...field}) {
         >
           <section className="border border-[#EAECF0] dark:bg-[#0208174c] bg-[#ffffff4c] rounded-md w-fit p-[10px] mb-3">
             <Images.Icon className="text-black dark:text-white" />
-            <input {...field} type="file" id="imageUpload" accept="image/jpeg, image/png, image/gif" onChange={handleImageChange} className="sr-only" />
+            <input
+              {...field}
+              type="file"
+              id="imageUpload"
+              accept="image/jpeg, image/png, image/gif"
+              onChange={handleImageChange}
+              className="sr-only"
+            />
           </section>
           <div className="image-component font-semibold dark:bg-[#0208174c] bg-[#ffffff4c] px-2 py-1 rounded-md">
             <h1>

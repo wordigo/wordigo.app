@@ -40,7 +40,7 @@ DashboardNav.Item = (item: SidebarNavItem, index: number) => {
 
   return (
     <div className={classes} key={index}>
-      <button onClick={handleChangePage} className="flex items-center w-full m-3">
+      <button onClick={handleChangePage} className="flex items-center p-3">
         <span className="flex items-center w-full">
           <div className="flex items-center">
             {item.icon}

@@ -1,4 +1,5 @@
 "use client";
+
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import { FlipHorizontal } from "lucide-react";
 
@@ -8,7 +9,7 @@ export function DataTableViewOptions({ table }: { table: any }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button  className="px-4 py-[10px] font-semibold text-sm focus-visible:ring-0 focus-visible:ring-offset-0" variant="outline">
+        <Button className="px-4 py-[10px] font-semibold text-sm" variant="outline">
           <FlipHorizontal className="mr-2 h-4 w-4" />
           View
         </Button>
