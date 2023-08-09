@@ -20,7 +20,7 @@ const useHeaders = (selectedSrc: string | null = null): IHeaders[] => {
       components: <CreateDictionary label={"dictionaries.add_dictionaries"} />,
     },
     {
-      src: "/dashboard/dictionaries/[id]",
+      src: "/dashboard/dictionaries/[slug]",
       title: "Lorem Word",
       description: "Lorem Ipsum Word",
       components: <CreateWord label={"dic_words.add_word"} />,

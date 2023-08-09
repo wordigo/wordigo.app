@@ -102,10 +102,10 @@ const TranslatePopup = () => {
         <Separator />
         <CardContent className="!px-5 !py-3 !h-full">
           {isLoading ? (
-            <div className="flex flex-col">
-              <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-4 w-full" />
+            <div className="flex flex-col gap-y-1">
+              <Skeleton className="rounded h-5 w-full" />
+              <Skeleton className="rounded h-5 w-full" />
+              <Skeleton className="rounded h-5 w-full" />
             </div>
           ) : (
             <Textarea

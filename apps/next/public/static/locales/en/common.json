@@ -141,5 +141,9 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur expedita, earum eligendi tenetur soluta quibusdam.",
     "placeholder": "Enter your email",
     "button": "Subscribe"
+  },
+  "table": {
+    "columns": "Columns",
+    "no_data": "No results."
   }
 }

@@ -5,7 +5,16 @@ import { useDeleteUserDictionariesMutation, useGetUserDictionariesMutation } fro
 import { MoreHorizontal } from "lucide-react";
 import { type Row } from "react-table";
 
-import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger, useToast } from "@wordigo/ui";
+import {
+  Button,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+  useToast,
+} from "@wordigo/ui";
 
 interface DataTableRowActionsProps<TData extends object> {
   row: Row<TData & { id: string; title: string }>;

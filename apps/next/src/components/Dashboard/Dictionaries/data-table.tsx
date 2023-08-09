@@ -14,22 +14,26 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import { useTranslation } from "next-i18next";
 
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@wordigo/ui";
+import { Table, TableBody, TableCell, TableHeadWord, TableHeader, TableRow } from "@wordigo/ui";
 
 import { DataTablePagination } from "./data-table-pagination";
 import { DataTableToolbar } from "./data-table-toolbar";
+import TableColumLoader from "./table.loader";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  isLoading?: boolean;
 }
 
-export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) {
+export function DataTable<TData, TValue>({ columns, data, isLoading }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [sorting, setSorting] = React.useState<SortingState>([]);
+  const { t } = useTranslation();
   const router = useRouter();
 
   const table = useReactTable({
@@ -54,34 +58,31 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
     getFacetedUniqueValues: getFacetedUniqueValues(),
   });
 
-  console.log(data)
-
   return (
     <div className="space-y-8">
       <DataTableToolbar table={table} />
       <div className="rounded-md border">
         <Table>
           <TableHeader>
-            {table.getHeaderGroups() && table.getRowModel() && table.getRowModel().rows?.length ? (
+            {table.getHeaderGroups() &&
               table.getHeaderGroups().map((headerGroup) => (
                 <TableRow key={headerGroup.id}>
                   {headerGroup.headers.map((header) => {
                     return (
-                      <TableHead key={header.id}>
+                      <TableHeadWord key={header.id}>
                         {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                      </TableHead>
+                      </TableHeadWord>
                     );
                   })}
                 </TableRow>
-              ))
-            ) : (
-              <div></div>
-            )}
+              ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel() && table.getRowModel().rows?.length ? (
+            {isLoading ? (
+              <TableColumLoader />
+            ) : table.getRowModel() && table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id} onClick={() => router.push(`/dashboard/dictionaries/${row?.original?.id}`)}>
+                <TableRow key={row.id} onClick={() => router.push(`/dashboard/dictionaries/${row?.original?.slug}`)}>
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
                   ))}
@@ -90,7 +91,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
             ) : (
               <TableRow>
                 <TableCell colSpan={columns.length} className="h-24 text-center">
-                  No results.
+                  {t("table.no_data")}
                 </TableCell>
               </TableRow>
             )}

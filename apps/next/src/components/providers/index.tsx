@@ -8,7 +8,7 @@ import RootLayout from "../Layout";
 
 const AppProviders: React.FC<PropsWithChildren> = ({ children }) => {
   return (
-    <NextThemesProvider attribute="class" defaultTheme="system" enableSystem>
+    <NextThemesProvider attribute="class" defaultTheme="light" enableSystem>
       <Toaster />
       <RootLayout>{children}</RootLayout>
     </NextThemesProvider>

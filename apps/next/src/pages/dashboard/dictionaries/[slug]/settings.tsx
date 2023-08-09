@@ -1,8 +1,7 @@
 import { Fragment, useEffect } from "react";
 import { type GetStaticPaths } from "next";
 import { useRouter } from "next/router";
-import { columns } from "@/components/Dashboard/Words/columns";
-import { DataTable } from "@/components/Dashboard/Words/data-table";
+import Settings from "@/components/Dashboard/Dictionaries.Settings/index";
 import DashboardLayout from "@/components/Layout/Dashboard";
 import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
 import { useGetWordDataMutation } from "@/store/word/api";
@@ -19,15 +18,15 @@ export async function getStaticProps({ locale }: { locale: string }) {
   };
 }
 
-const DictionariWordPage = () => {
+const DictionariesSettings = () => {
   const router = useRouter();
-  const { id } = router.query as any;
+  const { slug } = router.query as { slug: string };
 
   const [getWordDataMutation, { isLoading }] = useGetWordDataMutation();
   const userDicWords = useAppSelector((state) => state.word.word);
 
   useEffect(() => {
-    void getWordDataMutation(id);
+    void getWordDataMutation(slug);
   }, []);
 
   return (
@@ -43,25 +42,25 @@ const DictionariWordPage = () => {
           </div>
         </Fragment>
       ) : (
-        <DataTable columns={columns} data={userDicWords?.words as never} label="nav_addWord" />
+        <Settings></Settings>
       )}
     </DashboardShell>
   );
 };
 
-DictionariWordPage.Layout = () => {
+DictionariesSettings.Layout = () => {
   return (
     <DashboardLayout>
-      <DictionariWordPage />
+      <DictionariesSettings />
     </DashboardLayout>
   );
 };
 
-export default DictionariWordPage.Layout;
+export default DictionariesSettings.Layout;
 
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = () => {
   return {
-    paths: [], //indicates that no page needs be created at build time
-    fallback: "blocking", //indicates the type of fallback
+    paths: [],
+    fallback: "blocking",
   };
 };

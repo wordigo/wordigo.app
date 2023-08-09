@@ -13,23 +13,26 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import { useTranslation } from "next-i18next";
 
 import { Table, TableBody, TableCell, TableHeadWord, TableHeader, TableRow } from "@wordigo/ui";
 
 import { DataTablePagination } from "../Dictionaries/data-table-pagination";
 import { DataTableToolbar } from "./data-table-toolbar";
+import TableColumLoader from "./table.loader";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-  label: string;
+  isLoading?: boolean;
 }
 
-export function DataTable<TData, TValue>({ columns, data, label }: DataTableProps<TData, TValue>) {
+export function DataTable<TData, TValue>({ columns, data, isLoading }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [sorting, setSorting] = React.useState<SortingState>([]);
+  const { t } = useTranslation();
 
   const table = useReactTable({
     data,
@@ -55,7 +58,7 @@ export function DataTable<TData, TValue>({ columns, data, label }: DataTableProp
 
   return (
     <div className="space-y-8">
-      <DataTableToolbar table={table} label={label} />
+      <DataTableToolbar table={table} />
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -73,7 +76,9 @@ export function DataTable<TData, TValue>({ columns, data, label }: DataTableProp
               ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel() && table.getRowModel().rows?.length ? (
+            {isLoading ? (
+              <TableColumLoader />
+            ) : table.getRowModel() && table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow key={row.id}>
                   {row.getVisibleCells().map((cell) => (
@@ -84,7 +89,7 @@ export function DataTable<TData, TValue>({ columns, data, label }: DataTableProp
             ) : (
               <TableRow>
                 <TableCell colSpan={columns.length} className="h-24 text-center">
-                  No results.
+                  {t("table.no_data")}
                 </TableCell>
               </TableRow>
             )}

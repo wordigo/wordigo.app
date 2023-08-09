@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { type IResponse } from "types/global";
+
 import { type RootState } from "..";
 
 const baseQuery = fetchBaseQuery({
@@ -17,8 +18,8 @@ export const wordApi = createApi({
   baseQuery,
   endpoints: (builder) => ({
     getWordData: builder.mutation<IResponse, string | number>({
-      query: (dicID) => ({
-        url: `/dictionaries/getWords?dictionaryId=${dicID}`,
+      query: (slug) => ({
+        url: `/dictionaries/getWords?slug=${slug}`,
         method: "GET",
       }),
     }),

@@ -1,11 +1,26 @@
 import CInput from "@/components/UI/Input/Input";
 import { ProfileFormSchema } from "@/schemas/profile.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { InfoIcon } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { type z } from "zod";
 
-import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Separator } from "@wordigo/ui";
+import {
+  Button,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  Input,
+  Separator,
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@wordigo/ui";
 
 import ProfileUploadAvatar from "./Avatar.profile";
 
@@ -35,7 +50,7 @@ export default function ProfileForm() {
       </div>
       <Separator />
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(() => {})} className="space-y-8">
+        <form onSubmit={form.handleSubmit(() => {})} className="space-y-8 !max-w-2xl">
           <ProfileUploadAvatar />
           <FormField
             control={form.control}
@@ -58,7 +73,19 @@ export default function ProfileForm() {
                 <FormLabel>Username</FormLabel>
                 <FormControl>
                   <CInput
-                    leftSection={<span className="text-center text-sm text-muted-foreground">https://wordigo.app/profile/</span>}
+                    leftSection={<span className="text-center text-sm text-muted-foreground select-none">wordigo.app/profile/</span>}
+                    rightSection={
+                      <TooltipProvider delayDuration={100}>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <InfoIcon className="text-muted-foreground" size={16} />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    }
                     placeholder="@osmandlsmn"
                     {...field}
                   />
