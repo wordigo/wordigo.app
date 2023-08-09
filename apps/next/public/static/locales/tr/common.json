@@ -110,5 +110,36 @@
     "public": "Herkese Açık",
     "private": "Size Özel",
     "settings": "Sözlük Ayarları"
+  },
+  "feature_mockup": {
+    "badge": "Yeni çeviri eklentimizi kontrol edin!",
+    "heading": "Bugün eklentimizi kullanmaya başlayın.",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, reiciendis sunt atque dolore consectetur incidunt!"
+  },
+  "features": {
+    "badge": "Özellikler",
+    "heading": "Özelliklerimize bir göz atın!",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error tempore sed provident optio, nihil nulla?"
+  },
+  "testimonials": {
+    "heading": "İnsanlar tarafından seviliyor!",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam iste odit, ad quisquam explicabo nulla?"
+  },
+  "pricing": {
+    "heading": "İşleri basit tutmayı seviyoruz",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, itaque consequuntur ut ea placeat maiores.",
+    "popular_badge": "En Avantajlı",
+    "get_started": "Başlayın",
+    "learn_more": "Daha Fazla Bilgi Edinin"
+  },
+  "faq": {
+    "heading": "Sıkça Sorulan Sorular",
+    "description": "Ürün ve fatura hakkında bilmeniz gereken her şey."
+  },
+  "newsletter": {
+    "heading": "Bültenimize abone olun",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur expedita, earum eligendi tenetur soluta quibusdam.",
+    "placeholder": "E-postanızı girin",
+    "button": "Abone Ol"
   }
 }

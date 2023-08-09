@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 
 import { Badge, buttonVariants } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
@@ -7,16 +8,16 @@ import { cn } from "@wordigo/ui/lib/utils";
 import featuresConstants, { type IFeature } from "./features.constants";
 
 const FeatureSection = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="features" className="px-20 py-24">
       <div className="flex flex-col items-center">
         <Badge className="text-sm font-medium px-2.5 py-1 w-fit" variant="outline">
-          Features
+          {t("features.badge")}
         </Badge>
-        <h2 className="text-4xl font-semibold mt-3">Have a look our features!</h2>
-        <p className="text-xl mt-5 text-muted-foreground">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Error tempore sed provident optio, nihil nulla?
-        </p>
+        <h2 className="text-4xl font-semibold mt-3">{t("features.heading")}</h2>
+        <p className="text-xl mt-5 text-muted-foreground">{t("features.description")}</p>
       </div>
       <div className="mt-24 grid gap-y-24">
         {featuresConstants.map((item) => (

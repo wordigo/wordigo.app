@@ -2,7 +2,7 @@ import React from "react";
 import { type GetStaticPaths } from "next";
 import Image from "next/image";
 import MainLayout from "@/components/Layout/MainLayout";
-import { Copy, Hash, Languages, Link, Star, Volume2 } from "lucide-react";
+import { Book, Copy, Hash, Heart, Languages, Link, Star, Volume2 } from "lucide-react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import ReactCountryFlag from "react-country-flag";
 
@@ -78,10 +78,18 @@ export default function index() {
             <h2 className="text-4xl font-semibold">Words</h2>
             <p className="text-xl text-muted-foreground mt-5">Learn the meanings of words, listen and share with others.</p>
           </span>
-          <Button type="button" variant="outline">
-            <Link className="h-5 w-5 mr-2" />
-            Copy Link
-          </Button>
+          <div className="grid grid-flow-col gap-x-3">
+            <Button type="button" variant="outline" size="icon">
+              <Link className="h-5 w-5" />
+            </Button>
+            <Button type="button" variant="outline" size="icon">
+              <Heart className="h-5 w-5" />
+            </Button>
+            <Button type="button" variant="default">
+              <Book className="h-5 w-5 mr-2" />
+              Copy Dictionary
+            </Button>
+          </div>
         </div>
         <div className="grid grid-cols-3 mt-20 gap-y-6 gap-x-6">
           {WordPageConstants.words.map(({ word, translatedWord }, index) => (

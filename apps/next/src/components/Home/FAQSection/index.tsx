@@ -1,10 +1,14 @@
+import { useTranslation } from "next-i18next";
+
 import FAQ, { type Question } from "./faq.constant";
 
 const FAQSection = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="px-20 py-24 flex flex-col items-center">
-      <h2 className="text-4xl font-semibold">Frequently asked questions</h2>
-      <p className="text-xl text-muted-foreground mt-5">Everything you need to know about the product and billing.</p>
+      <h2 className="text-4xl font-semibold">{t("faq.heading")}</h2>
+      <p className="text-xl text-muted-foreground mt-5">{t("faq.description")}</p>
       <div className="mt-16 grid grid-cols-3 grid-rows-2 gap-x-8 gap-y-16">
         {FAQ.map((item, index) => (
           <FAQSection.Card key={index} question={item.question} answer={item.answer} Icon={item.Icon} />
