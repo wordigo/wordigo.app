@@ -110,5 +110,36 @@
     "public": "Public",
     "private": "Private",
     "settings": "Dictionaries Settings"
+  },
+  "feature_mockup": {
+    "badge": "Check out our new translate extension!",
+    "heading": "Start using our extension, today.",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, reiciendis sunt atque dolore consectetur incidunt!"
+  },
+  "features": {
+    "badge": "Features",
+    "heading": "Have a look our features!",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error tempore sed provident optio, nihil nulla?"
+  },
+  "testimonials": {
+    "heading": "Loved by people!",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam iste odit, ad quisquam explicabo nulla?"
+  },
+  "pricing": {
+    "heading": "We love keeping things simple",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, itaque consequuntur ut ea placeat maiores.",
+    "popular_badge": "Most Advantageous",
+    "get_started": "Get Started",
+    "learn_more": "Learn More"
+  },
+  "faq": {
+    "heading": "Frequently asked questions",
+    "description": "Everything you need to know about the product and billing."
+  },
+  "newsletter": {
+    "heading": "Subscribe our newsletter",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur expedita, earum eligendi tenetur soluta quibusdam.",
+    "placeholder": "Enter your email",
+    "button": "Subscribe"
   }
 }

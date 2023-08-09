@@ -1,16 +1,17 @@
 import { CheckCircle2 } from "lucide-react";
+import { useTranslation } from "next-i18next";
 
 import { Badge, Button } from "@wordigo/ui";
 
 import Prices, { type Price } from "./pricing.constant";
 
 const Pricing = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="pricing" className="px-20 py-24 flex flex-col items-center">
-      <h2 className="text-5xl font-semibold text-center">We love keeping things simple</h2>
-      <p className="text-xl mt-6 text-muted-foreground text-center">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, itaque consequuntur ut ea placeat maiores.
-      </p>
+      <h2 className="text-5xl font-semibold text-center">{t("pricing.heading")}</h2>
+      <p className="text-xl mt-6 text-muted-foreground text-center">{t("pricing.description")}</p>
       <div className="mt-24 grid grid-cols-3 gap-x-8 w-full">
         {Prices.map(({ Icon, planName, popular, price, priceDescription, features }, index) => (
           <Pricing.Card
@@ -29,11 +30,13 @@ const Pricing = () => {
 };
 
 Pricing.Card = ({ Icon, planName, popular, price, priceDescription, features }: Price) => {
+  const { t } = useTranslation();
+
   return (
     <div className={`p-8 pt-12 rounded-2xl border flex flex-col items-center relative ${popular && "border-foreground"}`}>
       {popular && (
         <Badge className="text-sm bg-foreground text-primary-foreground font-medium px-2.5 py-1 top-[-0.9375rem] absolute" variant="outline">
-          Most Popular
+          {t("pricing.popular_badge")}
         </Badge>
       )}
       <Icon className="w-5 h-5 box-content p-2.5 border rounded-[0.625rem]" />
@@ -52,10 +55,10 @@ Pricing.Card = ({ Icon, planName, popular, price, priceDescription, features }: 
       </div>
       <div className="mt-auto w-full">
         <Button type="button" className="w-full">
-          Get Started
+          {t("pricing.get_started")}
         </Button>
         <Button variant="outline" type="button" className="w-full mt-3">
-          Learn More
+          {t("pricing.learn_more")}
         </Button>
       </div>
     </div>
