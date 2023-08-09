@@ -85,22 +85,15 @@ const AuthSıgnUpForm = ({ className, ...props }: UserAuthFormProps) => {
           <div className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="name" className="text-left">
-                {t("signup.name")}
+                {t("username")}
               </Label>
               <FormField
                 control={form.control as never}
-                name="name"
+                name="username"
                 render={({ field }) => (
                   <FormItem className="grid gap-2">
                     <FormControl>
-                      <Input
-                        {...field}
-                        id="username"
-                        placeholder="Enter your username"
-                        autoCapitalize="none"
-                        autoComplete="email"
-                        autoCorrect="off"
-                      />
+                      <Input {...field} id="username" placeholder={t("username")} autoCapitalize="none" autoComplete="email" autoCorrect="off" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -109,7 +102,7 @@ const AuthSıgnUpForm = ({ className, ...props }: UserAuthFormProps) => {
             </div>
             <div className="grid gap-2">
               <Label htmlFor="email" className="text-left">
-                {t("signup.email")}
+                {t("email")}
               </Label>
               <FormField
                 control={form.control as never}
@@ -117,7 +110,7 @@ const AuthSıgnUpForm = ({ className, ...props }: UserAuthFormProps) => {
                 render={({ field }) => (
                   <FormItem className="grid gap-2">
                     <FormControl>
-                      <Input {...field} id="email" placeholder="Enter your email" autoCapitalize="none" autoComplete="email" autoCorrect="off" />
+                      <Input {...field} id="email" placeholder={t("email")} autoCapitalize="none" autoComplete="email" autoCorrect="off" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

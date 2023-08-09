@@ -1,9 +1,10 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@wordigo/ui";
+import { type ChangeEvent, Fragment } from "react";
 import { cx } from "class-variance-authority";
 import { FileEditIcon } from "lucide-react";
 import { useSession } from "next-auth/react";
-import { Fragment, type ChangeEvent } from "react";
 import { FaSpinner } from "react-icons/fa";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@wordigo/ui";
 
 const ProfileUploadAvatar = () => {
   const { data } = useSession();
@@ -36,10 +37,7 @@ const ProfileUploadAvatar = () => {
           type="file"
           id="changePhoto"
           onChange={onSelectPhoto}
-          className={cx(
-            "absolute inset-0 h-full w-full cursor-pointer border-gray-300 opacity-0",
-            { "pointer-events-none": false }
-          )}
+          className={cx("absolute inset-0 h-full w-full cursor-pointer border-gray-300 opacity-0", { "pointer-events-none": false })}
         />
         <Avatar className="h-24 w-24 rounded-full">
           <AvatarImage className="h-full w-full rounded-full" src={data?.user.avatar_url} alt={"@" + data?.user.name} />
@@ -47,10 +45,9 @@ const ProfileUploadAvatar = () => {
         </Avatar>
         <label
           htmlFor="changePhoto"
-          className={cx(
-            "absolute inset-0 hidden group-hover:flex items-center justify-center bg-gray-600/50 rounded-full cursor-pointer",
-            { "w-30 pointer-events-none gap-x-0 !flex": false }
-          )}
+          className={cx("absolute inset-0 hidden group-hover:flex items-center justify-center bg-gray-600/50 rounded-full cursor-pointer", {
+            "w-30 pointer-events-none gap-x-0 !flex": false,
+          })}
         >
           {false ? (
             <FaSpinner className="mr-1" />
@@ -63,9 +60,7 @@ const ProfileUploadAvatar = () => {
       </div>
       <div className="flex flex-col justify-center">
         <h4 className="text-medium ">Profil Resmi Ayarla</h4>
-        <p className="text-sm text-muted-foreground">
-          Bir fotoğraf yükleyin ve profil resminizi değiştirin
-        </p>
+        <p className="text-sm text-muted-foreground">Bir fotoğraf yükleyin ve profil resminizi değiştirin</p>
       </div>
     </div>
   );

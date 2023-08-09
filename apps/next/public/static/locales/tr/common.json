@@ -145,5 +145,9 @@
   "table": {
     "columns": "Sütunlar",
     "no_data": "Sonuç yok."
-  }
+  },
+  "name": "Name",
+  "email": "Email",
+  "username": "Username",
+  "password": "Password"
 }

@@ -4,7 +4,7 @@ import { useRef } from "react"
 
 import { useContextPopover } from "../context/popover"
 
-const AuidoPlayer = ({ translatedText }: { translatedText: string }) => {
+const AuidoPlayer = ({ text, translatedText }: { text: string; translatedText: string }) => {
   const playerRef = useRef<HTMLAudioElement>()
   const { targetLanguage } = useContextPopover()
 
@@ -13,7 +13,7 @@ const AuidoPlayer = ({ translatedText }: { translatedText: string }) => {
   }
 
   const computedUrl = `https://translate.googleapis.com/translate_tts?client=gtx&tl=${targetLanguage}&q=${encodeURIComponent(
-    translatedText
+    text
   )}`
 
   return (

@@ -19,10 +19,10 @@ const Navigation = ({ variant }: { variant?: "Sidebar" }) => {
         <Link href="/library" passHref className="transition-colors hover:text-foreground text-muted-foreground text-sm font-medium">
           {t("navbar.library")}
         </Link>
-        <Link href="/#pricing" passHref className="transition-colors hover:text-foreground text-muted-foreground text-sm font-medium">
+        <Link href="/#pricing" className="transition-colors hover:text-foreground text-muted-foreground text-sm font-medium">
           {t("navbar.pricing")}
         </Link>
-        <Link href="/about" passHref className="transition-colors hover:text-foreground text-muted-foreground text-sm font-medium">
+        <Link href="/about" className="transition-colors hover:text-foreground text-muted-foreground text-sm font-medium">
           {t("navbar.about")}
         </Link>
       </li>

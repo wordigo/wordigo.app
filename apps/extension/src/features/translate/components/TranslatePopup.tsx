@@ -120,7 +120,7 @@ const TranslatePopup = () => {
           <div className="flex flex-row gap-x-2 items-center justify-end">
             <TranslatePopup.SettingsAction />
             <TranslatePopup.CopyTranslatedText text={data?.translatedText} />
-            <TranslatePopup.AudioPlayer translatedText={data?.translatedText} />
+            <TranslatePopup.AudioPlayer text={selectedText} translatedText={data?.translatedText} />
           </div>
           <DictionarySelector translatedText={data?.translatedText} sourceLangauge={data?.sourceLanguage} />
         </CardFooter>

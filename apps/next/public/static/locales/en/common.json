@@ -47,8 +47,6 @@
   "signin": {
     "title": "Welcome Back",
     "description": "Enter your email to sign in to your account.",
-    "email": "Email",
-    "password": "Password",
     "sign_button": "Sign in",
     "info": "Don’t have an account?",
     "info_link": "Sign up"
@@ -56,9 +54,6 @@
   "signup": {
     "title": "Welcome",
     "description": "Enter your email and username below to create your account.",
-    "username": "Username",
-    "email": "Email",
-    "password": "Password",
     "sign_button": "Sign up",
     "info": "Already have an account?",
     "info_link": "Sign in"
@@ -145,5 +140,9 @@
   "table": {
     "columns": "Columns",
     "no_data": "No results."
-  }
+  },
+  "name": "Name",
+  "email": "Email",
+  "username": "Username",
+  "password": "Password"
 }

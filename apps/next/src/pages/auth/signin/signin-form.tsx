@@ -62,7 +62,7 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
           <div className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="email" className="text-left">
-                {t("signin.email")}
+                {t("email")}
               </Label>
               <FormField
                 control={form.control as never}
@@ -70,7 +70,7 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
                 render={({ field }) => (
                   <FormItem className="grid gap-2">
                     <FormControl>
-                      <Input {...field} id="email" placeholder="Enter your email" autoCapitalize="none" autoComplete="email" autoCorrect="off" />
+                      <Input {...field} id="email" placeholder={t("email")} autoCapitalize="none" autoComplete="email" autoCorrect="off" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -79,7 +79,7 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
             </div>
             <div className="grid gap-2">
               <Label htmlFor="password" className="text-left">
-                {t("signin.password")}
+                {t("password")}
               </Label>
               <FormField
                 control={form.control as never}
