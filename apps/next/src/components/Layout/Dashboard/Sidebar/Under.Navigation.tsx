@@ -33,12 +33,7 @@ DashboardNav.Item = (item: SidebarNavItem, index: number) => {
 
   return (
     <div className={classes}>
-      <Link
-        key={index}
-        href={item.disabled ? "/" : item.href}
-        className="flex items-center w-full m-3"
-        // onClick={() => setSidebarPanel(!showSidebarPanel)}
-      >
+      <Link key={index} href={item.disabled ? "/" : item.href} className="flex items-center w-full m-3">
         <span className="flex items-center w-full">
           <div className="flex items-center">
             {item.icon}

@@ -141,6 +141,20 @@
     "columns": "Columns",
     "no_data": "No results."
   },
+  "headers": {
+    "dashboard": {
+      "title": "Dashboard",
+      "description": "Manage Your User Data"
+    },
+    "dictionaries": {
+      "title": "Dictionaries",
+      "description": "Create and Manage Your Personal Dictionaries"
+    },
+    "dictionaries_detail": {
+      "title": "Dictionary Detail",
+      "description": "View Details of a Selected Word in the Chosen Dictionary"
+    }
+  },
   "name": "Name",
   "email": "Email",
   "username": "Username",

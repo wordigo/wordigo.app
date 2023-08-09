@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
 import FeatureBanner from "@/components/Home/Banner";
 import Comment from "@/components/Home/Comments";
 import FAQSection from "@/components/Home/FAQSection";

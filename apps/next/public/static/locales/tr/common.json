@@ -146,6 +146,20 @@
     "columns": "Sütunlar",
     "no_data": "Sonuç yok."
   },
+  "headers": {
+    "dashboard": {
+      "title": "Kontrol Paneli",
+      "description": "Kullanıcı Verilerinizi Yönetin"
+    },
+    "dictionaries": {
+      "title": "Sözlükler",
+      "description": "Kişisel Sözlüklerinizi Oluşturun ve Düzenleyin"
+    },
+    "dictionaries_detail": {
+      "title": "Sözlük Detayı",
+      "description": "Seçili Sözlükteki Bir Kelimenin Detaylarını Görüntüleyin"
+    }
+  },
   "name": "Name",
   "email": "Email",
   "username": "Username",

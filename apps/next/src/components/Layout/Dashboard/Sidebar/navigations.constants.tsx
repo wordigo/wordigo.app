@@ -46,12 +46,12 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
 
   return [
     {
-      title: "Dashboard",
+      title: t("navbar.dashboard"),
       href: "/dashboard",
       icon: <LayoutDashboard className="text-2xl" />,
     },
     {
-      title: "Dictionaries",
+      title: t("navbar.dictionaries"),
       href: "/dashboard/dictionaries",
       icon: <BookMarked className="text-2xl flex" />,
       child: {
@@ -65,7 +65,7 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
       },
     },
     {
-      title: "Settings",
+      title: t("navbar.settings"),
       icon: <Settings className="text-2xl" />,
       child: {
         trigger: (
@@ -96,14 +96,15 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
 };
 
 export const useSidebarUnderNavigations = (): SidebarNavItem[] => {
+  const { t } = useTranslation();
   return [
     {
-      title: "Home",
+      title: t("navbar.home"),
       href: "/",
       icon: <Home className="text-2xl" />,
     },
     {
-      title: "Library",
+      title: t("navbar.library"),
       href: "/library",
       icon: <LibraryIcon className="text-2xl" />,
     },
