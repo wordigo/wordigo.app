@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import StaticLogo from "@/components/Logo/StaticLogo";
 import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 
@@ -18,7 +19,7 @@ export default function HomeHeader() {
       <nav className="flex items-center justify-between w-full m-auto py-[1.125rem] px-20">
         <div className="flex items-center">
           <Link href="/" className="mr-6">
-            <Image src="/images/logo.png" width={104} height={40} priority alt="" />
+            <StaticLogo />
           </Link>
           <Navigation />
         </div>
