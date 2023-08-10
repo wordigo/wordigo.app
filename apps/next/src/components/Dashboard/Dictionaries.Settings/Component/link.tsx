@@ -1,27 +1,39 @@
 import React from "react";
-import { Copy } from "lucide-react";
+import CInput from "@/components/UI/Input/Input";
+import { InfoIcon } from "lucide-react";
 import { useTranslation } from "next-i18next";
 
-import { Button, Input, Label } from "@wordigo/ui";
+import { Label, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@wordigo/ui";
 
-export default function link() {
+export default function Link({ ...field }) {
   const { t } = useTranslation();
-  const username = "Test_User";
-  const url = `https://wordigo.app/library/${username}/`;
   return (
-    <main className="grid grid-cols-3 w-full mt-10 my-7">
+    <main className="grid grid-cols-3 w-full">
       <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
         <Label>
           <h1>{t("link")}</h1>
         </Label>
         <p className="text-[hsl(var(--muted-foreground))] text-sm">{t("dictionaries_settings.link_notes")}</p>
       </span>
-      <div className="border flex items-center rounded-md w-full overflow-hidden max-w-[512px] min-w-[512px]">
-        <Button className="py-[10px] px-3 border-r border-gray-300 dark:border-gray-800">
-          <Copy />
-        </Button>
-        <Input className="w-full h-[26px] py-[10px] px-3 border-none rounded-none" placeholder={url} disabled />
-      </div>
+      <CInput
+        classNames="w-full border max-w-[512px] min-w-[512px]"
+        className="w-full bg-white rounded-none border-none outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+        leftSection={<span className=" text-center text-sm text-muted-foreground select-none">wordigo.app/library/TESTUSER/</span>}
+        rightSection={
+          <TooltipProvider delayDuration={100}>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <InfoIcon className="text-muted-foreground" size={16} />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        }
+        placeholder={field.value}
+        {...field}
+      />
     </main>
   );
 }

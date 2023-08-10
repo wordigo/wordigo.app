@@ -12,7 +12,7 @@ export default function Title({ ...field }) {
             {t("title")}
           </h1>
         </Label>
-        <p className="text-[hsl(var(--muted-foreground))] text-sm">{t("dictionaries_settings.link_notes")}</p>
+        <p className="text-[hsl(var(--muted-foreground))] text-sm">{t("dictionaries_settings.title_notes")}</p>
       </span>
       <Input {...field} className="w-full py-[22px] border px-3 max-w-[512px] min-w-[512px]" placeholder={t("title")} />
     </main>

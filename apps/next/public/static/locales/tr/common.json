@@ -112,8 +112,9 @@
     "settings": "Sözlük Ayarları"
   },
   "dictionaries_settings": {
-    "link_notes": "Sözlüğünüzü bu bağlantıdan paylaşabilirsiniz.",
-    "title_notes": "İnsanların sözlükte arama yapmasını kolaylaştırın.",
+    "link_notes": "Bu bağlantı ile sözlüğünüze erişin.",
+    "title_notes": "İnsanların sözlüğünüzü bulmasını kolaylaştırın.",
+    "permissions_notes": "Sözlüğünüzün izinlerini ayarlayın.",
     "description": {
       "description_notes": "İnsanlara sözlüğünüz hakkında bilgi verin.",
       "left_charachters": "karakter kaldı"
@@ -123,6 +124,12 @@
       "image_color_title": "Tıkla ve yükle",
       "image_title": "ya da Sürükle ve Bırak",
       "image_resolution": "SVG, PNG ya da JPG (675x480px)"
+    },
+    "published": {
+      "false_title": "Özel",
+      "false_description": "Sözlüğünüzü sizden başka kimse göremez.",
+      "true_title": "Herkese Açık",
+      "true_description": "İnsanların sözlük içeriğine erişmesine izin veriyorsunuz."
     }
   },
   "feature_mockup": {
@@ -192,6 +199,7 @@
   },
   "description": "Açıklama",
   "title": "Başlık",
+  "permissions": "İzinler",
   "image": "Görsel",
   "link": "Bağlantı",
   "name": "Name",

@@ -1,15 +1,34 @@
 import React from "react";
 import { useRouter } from "next/router";
+import CInput from "@/components/UI/Input/Input";
 import { DictionariesSettingsSchema } from "@/schemas/dictionaries.settings";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { InfoIcon } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
-import { type z } from "zod";
-import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Label, Separator, Textarea } from "@wordigo/ui";
+import { boolean, type z } from "zod";
+
+import {
+  Button,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+  Input,
+  Label,
+  Switch,
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@wordigo/ui";
+
 import Border from "./Component/border";
 import Description from "./Component/description";
 import Images from "./Component/image";
 import Link from "./Component/link";
+import Published from "./Component/published";
 import Title from "./Component/title";
 
 type DictionariesValues = z.infer<typeof DictionariesSettingsSchema>;
@@ -22,6 +41,7 @@ export default function index() {
     title: "",
     description: "",
     image: "",
+    published: false,
   };
 
   const form = useForm<DictionariesValues>({
@@ -29,6 +49,7 @@ export default function index() {
     defaultValues,
     mode: "onSubmit",
   });
+
   const handleSave = (data: DictionariesValues) => {
     console.log(data);
   };
@@ -61,10 +82,35 @@ export default function index() {
       </section>
       <section className="w-full">
         <Border />
-        <Link />
         <Form {...(form as any)}>
           <form onSubmit={form.handleSubmit(handleSave)}>
             <div className="grid">
+              <FormField
+                control={form.control as never}
+                name="link"
+                render={({ field }) => (
+                  <FormItem className="grid gap-1 my-7">
+                    <FormControl>
+                      <Link {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control as never}
+                name="published"
+                render={({ field }) => (
+                  <FormItem className="grid gap-1 my-7">
+                    <FormControl>
+                      <Published {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
               <FormField
                 control={form.control as never}
                 name="title"

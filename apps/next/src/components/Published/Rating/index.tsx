@@ -23,10 +23,10 @@ export function Rating() {
         return "public.not_bad";
 
       case 4:
-        return "public.very_good";
+        return "public.good";
 
       case 5:
-        return "public.Çok İyi";
+        return "public.very_good";
 
       default:
         return "public.not_bad";
