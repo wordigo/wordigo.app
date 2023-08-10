@@ -1,41 +1,42 @@
+import { type DictionaryWord } from "@/store/word/type";
 import { type ColumnDef } from "@tanstack/react-table";
-import { z } from "zod";
+
+import { Checkbox } from "@wordigo/ui";
 
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
 
-export const taskSchema = z.object({
-  word: z.object({ id: z.string(), translatedText: z.string(), text: z.string(), targetLanguage: z.string(), nativeLanguage: z.string() }),
-});
-
-export type Task = z.infer<typeof taskSchema>;
-
-export const columns: ColumnDef<Task>[] = [
+export const columns: ColumnDef<DictionaryWord>[] = [
+  {
+    id: "select",
+    header: ({ table }) => (
+      <Checkbox
+        checked={table.getIsAllPageRowsSelected()}
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label="Select all"
+      />
+    ),
+    cell: ({ row }) => <Checkbox checked={row.getIsSelected()} onCheckedChange={(value) => row.toggleSelected(!!value)} aria-label="Select row" />,
+    enableSorting: false,
+    enableHiding: false,
+  },
   {
     accessorKey: "text",
-    header: () => <DataTableColumnHeader title={"dic_words.text"} className="min-w-[150px]" column={undefined} />,
+    header: () => <DataTableColumnHeader title="dic_words.text" />,
     cell: ({ row }) => {
-      return (
-        <div className="flex space-x-2">
-          <span className="truncate font-medium max-w-[280px] break-word min-w-[150px]">{row?.original?.text}</span>
-        </div>
-      );
+      return <span className="truncate font-medium">{row?.original?.text}</span>;
     },
   },
   {
     accessorKey: "translateLanguage",
-    header: ({ column }) => <DataTableColumnHeader column={column} title={"dic_words.translated_text"} />,
+    header: () => <DataTableColumnHeader title="dic_words.translated_text" />,
     cell: ({ row }) => {
-      return (
-        <div className="flex space-x-2">
-          <span className=" truncate font-medium max-w-[280px] break-word min-w-[150px]">{row?.original?.translatedText}</span>
-        </div>
-      );
+      return <span className="truncate font-medium]">{row?.original.translatedText}</span>;
     },
   },
   {
     accessorKey: "time",
-    header: ({ column }) => <DataTableColumnHeader column={column} title={"dictionaries.time"} />,
+    header: () => <DataTableColumnHeader title="dictionaries.time" />,
     cell: ({ row }) => {
       const timeValue = row.original.updatedDate;
       const dateObj = new Date(timeValue);

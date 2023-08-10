@@ -33,7 +33,6 @@ export function DataTableRowActions<TData extends object>({ row }: DataTableRowA
   useEffect(() => {
     if (status === "fulfilled") {
       if (data.success) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         void getWordDataMutation(queryID);
         toast({
           variant: "success",

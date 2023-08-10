@@ -1,6 +1,5 @@
 import { useTranslation } from "next-i18next";
 
-import { DropdownMenu, DropdownMenuTrigger } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
 interface DataTableColumnHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -12,11 +11,7 @@ export function DataTableColumnHeader({ title, className }: DataTableColumnHeade
 
   return (
     <div className={cn("flex items-center space-x-2 pl-4 mr-10", className)}>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <span>{t(title)}</span>
-        </DropdownMenuTrigger>
-      </DropdownMenu>
+      <span>{t(title)}</span>
     </div>
   );
 }
