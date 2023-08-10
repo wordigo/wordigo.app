@@ -23,8 +23,6 @@ const DictionariesPage = () => {
     void getUserDictionaries("");
   }, []);
 
-  console.log(userDictionaries);
-
   return (
     <DashboardShell>
       <DataTable columns={columns} data={userDictionaries} isLoading={isLoading} />

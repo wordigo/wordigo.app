@@ -1,5 +1,6 @@
 import { type ReactElement, useState } from "react";
 import { useGetUserDictionariesMutation } from "@/store/dictionaries/api";
+import { computedDictionaries } from "@/utils/computedDictionaries";
 import { BookMarked, ChevronDown, ChevronUp, Home, LayoutDashboard, LibraryIcon, RotateCw, Settings } from "lucide-react";
 import { useTranslation } from "next-i18next";
 
@@ -42,7 +43,9 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
     setShowSettings(!showSettings);
   };
 
-  const computedDictionariesNavs = data?.data?.slice(0, 5)?.map((item) => ({ name: item.title, value: item.slug })) as SidebarChildNavOption[];
+  const computedDictionariesNavs = computedDictionaries(data?.data)?
+    .slice(0, 5)
+    ?.map((item) => ({ name: item.title, value: item.slug })) as SidebarChildNavOption[];
 
   return [
     {
