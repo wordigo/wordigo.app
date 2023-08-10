@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "next-i18next";
 
 import { Label, toast } from "@wordigo/ui";
 
@@ -6,7 +7,7 @@ import { Images } from "../settings.constant";
 
 export default function ImageComponent({ ...field }) {
   const [selectedImage, setSelectedImage] = useState(null);
-
+  const { t } = useTranslation();
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event?.target?.files?.[0];
     if (file) {
@@ -47,9 +48,9 @@ export default function ImageComponent({ ...field }) {
     <main className="grid grid-cols-3 w-full">
       <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
         <Label>
-          <h1>Image</h1>
+          <h1>{t("image")}</h1>
         </Label>
-        <p className="text-[hsl(var(--muted-foreground))] text-sm">You can upload meaningful images with your dictionary.</p>
+        <p className="text-[hsl(var(--muted-foreground))] text-sm">{t("dictionaries_settings.images.image_notes")}</p>
       </span>
       <label htmlFor="imageUpload" className="cursor-pointer max-w-[280px] min-w-[280px] mr-8">
         <div
@@ -67,11 +68,11 @@ export default function ImageComponent({ ...field }) {
               className="sr-only"
             />
           </section>
-          <div className="image-component font-semibold dark:bg-[#0208174c] bg-[#ffffff4c] px-2 py-1 rounded-md">
+          <div className="image-component text-sm dark:bg-[#0208174c] text-[hsl(var(--muted-foreground))] bg-[#ffffff4c] px-2 py-1 rounded-md text-center">
             <h1>
-              <span>{Images.color_title}</span> {Images.title}
+              <span>{t("dictionaries_settings.images.image_color_title")}</span> {t("dictionaries_settings.images.image_title")}
             </h1>
-            <h1>{Images.description}</h1>
+            <h1>{t("dictionaries_settings.images.image_resolution")}</h1>
           </div>
         </div>
       </label>

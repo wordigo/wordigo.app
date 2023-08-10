@@ -111,6 +111,20 @@
     "private": "Size Özel",
     "settings": "Sözlük Ayarları"
   },
+  "dictionaries_settings": {
+    "link_notes": "Sözlüğünüzü bu bağlantıdan paylaşabilirsiniz.",
+    "title_notes": "İnsanların sözlükte arama yapmasını kolaylaştırın.",
+    "description": {
+      "description_notes": "İnsanlara sözlüğünüz hakkında bilgi verin.",
+      "left_charachters": "karakter kaldı"
+    },
+    "images": {
+      "image_notes": "Sözlüğünüz ile anlamlı görsel yükleyin.",
+      "image_color_title": "Tıkla ve yükle",
+      "image_title": "ya da Sürükle ve Bırak",
+      "image_resolution": "SVG, PNG ya da JPG (675x480px)"
+    }
+  },
   "feature_mockup": {
     "badge": "Yeni çeviri eklentimizi kontrol edin!",
     "heading": "Bugün eklentimizi kullanmaya başlayın.",
@@ -158,8 +172,28 @@
     "dictionaries_detail": {
       "title": "Sözlük Detayı",
       "description": "Seçili Sözlükteki Bir Kelimenin Detaylarını Görüntüleyin"
+    },
+    "dictionaries_settings": {
+      "title": "Sözlük Ayarları",
+      "description": "Seçtiğiniz sözlüğün bilgilerini güncellemenizi sağlar"
     }
   },
+  "buttons": {
+    "cancle": "İptal Et",
+    "save": "Kaydet"
+  },
+  "public": {
+    "rating_title": "Bu sözlüğü nasıl değerlendiriyorsunuz?",
+    "too_bad": "Çok Kötü",
+    "bad": "Kötü",
+    "not_bad": "İyi Gibi",
+    "good": "İyi",
+    "very_good": "Çok İyi"
+  },
+  "description": "Açıklama",
+  "title": "Başlık",
+  "image": "Görsel",
+  "link": "Bağlantı",
   "name": "Name",
   "email": "Email",
   "username": "Username",

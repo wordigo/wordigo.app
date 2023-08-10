@@ -36,6 +36,12 @@ export const dictionaryApi = createApi({
         method: "DELETE",
       }),
     }),
+    updateUserDictionaries: builder.mutation<any, any>({
+      query: () => ({
+        url: "/dictionaries/update",
+        method: "PUT"
+      })
+    })
   }),
 });
 

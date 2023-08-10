@@ -2,6 +2,7 @@ import React from "react";
 import { type GetStaticPaths } from "next";
 import Image from "next/image";
 import MainLayout from "@/components/Layout/MainLayout";
+import { Rating } from "@/components/Published/Rating";
 import { Book, Copy, Hash, Heart, Languages, Link, Star, Volume2 } from "lucide-react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import ReactCountryFlag from "react-country-flag";
@@ -82,6 +83,7 @@ export default function index() {
             <Button type="button" variant="outline" size="icon">
               <Link className="h-5 w-5" />
             </Button>
+            <Rating />
             <Button type="button" variant="outline" size="icon">
               <Heart className="h-5 w-5" />
             </Button>

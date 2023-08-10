@@ -106,6 +106,20 @@
     "private": "Private",
     "settings": "Dictionaries Settings"
   },
+  "dictionaries_settings": {
+    "link_notes": "You can share your dictionary from this link.",
+    "title_notes": "Make it easy for people to search the dictionary.",
+    "description": {
+      "description_notes": "İnsanlara sözlüğünüz hakkında bilgi verin.",
+      "left_charachters": "charachters left"
+    },
+    "images": {
+      "image_notes": "Upload meaningful pictures with your dictionary.",
+      "image_color_title": "Click to upload",
+      "image_title": "or drag and drop",
+      "image_resolution": "SVG, PNG or JPG (675x480px)"
+    }
+  },
   "feature_mockup": {
     "badge": "Check out our new translate extension!",
     "heading": "Start using our extension, today.",
@@ -153,8 +167,25 @@
     "dictionaries_detail": {
       "title": "Dictionary Detail",
       "description": "View Details of a Selected Word in the Chosen Dictionary"
+    },
+    "dictionaries_settings": {
+      "title": "Dictionary Settings",
+      "description": "Allows you to update the information of the dictionary you selected"
     }
   },
+  "public": {
+    "rating_title": "How do you rate these dictionary?",
+    "too_bad": "Too Bad",
+    "bad": "Bad",
+    "not_bad": "Not Bad",
+    "good": "Good",
+    "very_good": "Very Good"
+  },
+  "buttons": {
+    "Cancle": "Cancle",
+    "Save": "Save"
+  },
+  "description": "Description",
   "name": "Name",
   "email": "Email",
   "username": "Username",
