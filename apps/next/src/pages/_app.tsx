@@ -1,7 +1,6 @@
 import AppProviders from "@/components/providers";
 import seo from "@/constants/seo";
 import store from "@/store";
-import { Analytics } from "@vercel/analytics/react";
 
 import "@wordigo/ui/styles/globals.css";
 import { Fragment } from "react";
@@ -34,7 +33,6 @@ const App = ({ Component, pageProps }: AppProps<{ session: any; _nextI18Next: { 
           </AppProviders>
         </Provider>
       </SessionProvider>
-      <Analytics />
     </Fragment>
   );
 };

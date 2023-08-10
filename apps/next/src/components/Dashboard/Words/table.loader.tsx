@@ -16,6 +16,9 @@ const TableColumLoader = () => {
           <TableCell>
             <Skeleton className="w-full h-7" />
           </TableCell>
+          <TableCell>
+            <Skeleton className="w-full h-7" />
+          </TableCell>
         </TableRow>
       ))}
     </Fragment>

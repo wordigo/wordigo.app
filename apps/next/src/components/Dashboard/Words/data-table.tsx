@@ -17,7 +17,7 @@ import { useTranslation } from "next-i18next";
 
 import { Table, TableBody, TableCell, TableHeadWord, TableHeader, TableRow } from "@wordigo/ui";
 
-import { DataTablePagination } from "../Dictionaries/data-table-pagination";
+import { DataTablePagination } from "./data-table-pagination";
 import { DataTableToolbar } from "./data-table-toolbar";
 import TableColumLoader from "./table.loader";
 
@@ -67,7 +67,7 @@ export function DataTable<TData, TValue>({ columns, data, isLoading }: DataTable
                 <TableRow key={headerGroup.id}>
                   {headerGroup.headers.map((header) => {
                     return (
-                      <TableHeadWord key={header.id}>
+                      <TableHeadWord key={header.id} className={header.id === "select" && "!pl-4 text-start"}>
                         {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                       </TableHeadWord>
                     );
@@ -80,7 +80,7 @@ export function DataTable<TData, TValue>({ columns, data, isLoading }: DataTable
               <TableColumLoader />
             ) : table.getRowModel() && table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id}>
+                <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
                   ))}
