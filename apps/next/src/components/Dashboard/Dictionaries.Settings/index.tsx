@@ -8,34 +8,25 @@ import { useTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { boolean, type z } from "zod";
 
-import {
-  Button,
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-  Input,
-  Label,
-  Switch,
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@wordigo/ui";
+
+
+import { Button, Form, FormControl, FormField, FormItem, FormMessage, Input, Label, Switch, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@wordigo/ui";
+
+
 
 import Border from "./Component/border";
 import Description from "./Component/description";
 import Images from "./Component/image";
 import Link from "./Component/link";
-import Published from "./Component/published";
+import Published from "./Component/permissions";
 import Title from "./Component/title";
+
 
 type DictionariesValues = z.infer<typeof DictionariesSettingsSchema>;
 
 export default function index() {
   const router = useRouter();
-  const { id } = router.query;
+  const { slug } = router.query;
 
   const defaultValues: Partial<DictionariesValues> = {
     title: "",
@@ -55,7 +46,7 @@ export default function index() {
   };
 
   const handleCancle = () => {
-    void router.push(`/dashboard/dictionaries/${id}`);
+    void router.push(`/dashboard/dictionaries/${slug}`);
   };
 
   const { t } = useTranslation();

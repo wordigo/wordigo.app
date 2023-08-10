@@ -2,10 +2,16 @@ import React from "react";
 import { CheckCircle2, Eye, EyeOff } from "lucide-react";
 import { useTranslation } from "next-i18next";
 
+
+
 import { Input, Label } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
-export default function Published({ ...field }) {
+
+
+
+
+export default function Permissions({ ...field }) {
   const { t } = useTranslation();
 
   return (
@@ -19,8 +25,8 @@ export default function Published({ ...field }) {
       <section className="w-full flex items-center flex-col max-w-[512px] min-w-[512px]">
         <Label
           className={cn(
-            "w-full py-[22px] border px-3 max-w-[512px] min-w-[512px] mb-2 rounded-md",
-            field.value === true && "border-gray-400 dark:border-gray-100",
+            "w-full py-[22px] border px-3 max-w-[512px] min-w-[512px] mb-2 rounded-md text-[hsl(var(--muted-foreground))]",
+            field.value === true && "border-gray-400 dark:border-gray-100 text-black",
           )}
         >
           <div className="flex items-center justify-between">
@@ -38,8 +44,8 @@ export default function Published({ ...field }) {
 
         <Label
           className={cn(
-            "w-full py-[22px] border px-3 max-w-[512px] min-w-[512px] mb-2 rounded-md",
-            field.value === false && "border-gray-400 dark:border-gray-100",
+            "w-full py-[22px] border px-3 max-w-[512px] min-w-[512px] mb-2 rounded-md text-[hsl(var(--muted-foreground))]",
+            field.value === false && "border-gray-400 dark:border-gray-100 text-black",
           )}
         >
           <div className="flex items-center justify-between">

@@ -57,8 +57,8 @@ export default function ImageComponent({ ...field }) {
           className="flex flex-col items-center justify-center py-4 px-6 border rounded-md border-gray-300 dark:border-gray-800 w-[512px] h-[364.09px]"
           style={backgroundImageStyle}
         >
-          <section className="border border-[#EAECF0] dark:bg-[#0208174c] bg-[#ffffff4c] rounded-md w-fit p-[10px] mb-3">
-            <Images.Icon className="text-black dark:text-white" />
+          <section className="border border-gray-300 dark:border-gray-800 dark:bg-[#0208174c] bg-[#ffffff4c] rounded-md w-fit p-[10px] mb-3">
+            <Images.Icon className="dark:text-white border-gray-300 dark:border-gray-800 text-[hsl(var(--muted-foreground))]" />
             <input
               {...field}
               type="file"
