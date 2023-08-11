@@ -186,7 +186,7 @@
     }
   },
   "buttons": {
-    "cancle": "İptal Et",
+    "cancel": "İptal Et",
     "save": "Kaydet"
   },
   "public": {

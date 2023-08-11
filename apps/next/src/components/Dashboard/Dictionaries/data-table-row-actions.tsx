@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { EditDictionary } from "@/components/Modals/EditDictionary";
 import { useDeleteUserDictionariesMutation, useGetUserDictionariesMutation } from "@/store/dictionaries/api";
@@ -15,7 +16,6 @@ import {
   DropdownMenuTrigger,
   useToast,
 } from "@wordigo/ui";
-import Link from "next/link";
 
 interface DataTableRowActionsProps<TData extends object> {
   row: Row<TData & { id: string; title: string }>;
@@ -62,7 +62,9 @@ export function DataTableRowActions<TData extends object>({ row }: DataTableRowA
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-[160px] flex flex-col">
-          <DropdownMenuItem><Link href={`dictionaries/${row.original.title}/settings`}>Settings</Link></DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link href={`dictionaries/${row.original.title}/settings`}>Settings</Link>
+          </DropdownMenuItem>
           <DropdownMenuItem>Favorite</DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={(event) => handleDeleteClick(event, id)}>Delete</DropdownMenuItem>

@@ -52,7 +52,7 @@ export default function ImageComponent({ ...field }) {
         </Label>
         <p className="text-[hsl(var(--muted-foreground))] text-sm">{t("dictionaries_settings.images.image_notes")}</p>
       </span>
-      <label htmlFor="imageUpload" className="cursor-pointer max-w-[280px] min-w-[280px] mr-8">
+      <label htmlFor="imageUpload" className="cursor-pointer mr-8">
         <div
           className="flex flex-col items-center justify-center py-4 px-6 border rounded-md border-gray-300 dark:border-gray-800 w-[512px] h-[364.09px]"
           style={backgroundImageStyle}

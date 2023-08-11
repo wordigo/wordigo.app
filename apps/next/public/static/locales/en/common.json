@@ -109,7 +109,7 @@
   "dictionaries_settings": {
     "link_notes": "Access your dictionary with this link.",
     "title_notes": "Make it easy for people to search the dictionary.",
-    "permissions_notes": "Set your dictionary's permissions.",
+    "published_status_note": "Set dictionary public and private.",
     "description": {
       "description_notes": "Let people know about your dictionary.",
       "left_charachters": "charachters left"
@@ -189,11 +189,13 @@
     "very_good": "Very Good"
   },
   "buttons": {
-    "cancle": "Cancle",
+    "cancel": "cancel",
     "save": "Save"
   },
   "title": "Title",
   "permissions": "Permissions",
+  "published_status": "Published Status",
+  "published_status_info": "",
   "image": "Image",
   "link": "Link",
   "description": "Description",

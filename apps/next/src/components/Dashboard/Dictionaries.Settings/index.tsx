@@ -1,30 +1,37 @@
-import React from "react";
 import { useRouter } from "next/router";
 import CInput from "@/components/UI/Input/Input";
 import { DictionariesSettingsSchema } from "@/schemas/dictionaries.settings";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { InfoIcon } from "lucide-react";
+import { Copy } from "lucide-react";
+import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
-import { boolean, type z } from "zod";
+import { type z } from "zod";
 
+import {
+  Button,
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  Input,
+  Label,
+  Switch,
+  Textarea,
+  useToast,
+} from "@wordigo/ui";
 
-
-import { Button, Form, FormControl, FormField, FormItem, FormMessage, Input, Label, Switch, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@wordigo/ui";
-
-
-
-import Border from "./Component/border";
-import Description from "./Component/description";
 import Images from "./Component/image";
-import Link from "./Component/link";
-import Published from "./Component/permissions";
-import Title from "./Component/title";
-
 
 type DictionariesValues = z.infer<typeof DictionariesSettingsSchema>;
 
 export default function index() {
+  const { toast } = useToast();
+  const { t } = useTranslation();
+  const { data } = useSession();
   const router = useRouter();
   const { slug } = router.query;
 
@@ -45,11 +52,14 @@ export default function index() {
     console.log(data);
   };
 
-  const handleCancle = () => {
-    void router.push(`/dashboard/dictionaries/${slug}`);
+  const handleCopyUrl = () => {
+    void navigator.clipboard.writeText(`https://wordigo.app/` + form.getValues().title);
+    toast({ title: "Successful", description: "Copied dictionary public url." });
   };
 
-  const { t } = useTranslation();
+  const handleCancel = () => {
+    void router.push(`/dashboard/dictionaries/${slug}`);
+  };
 
   return (
     <main>
@@ -59,8 +69,8 @@ export default function index() {
           <h1 className="text-sm text-[hsl(var(--muted-foreground))] font-semibold leading-7">{t("headers.dictionaries_settings.description")}</h1>
         </span>
         <span>
-          <Button onClick={handleCancle} variant="outline" className="font-semibold text-sm mr-1">
-            {t("buttons.cancle")}
+          <Button onClick={handleCancel} variant="outline" className="font-semibold text-sm mr-1">
+            {t("buttons.cancel")}
           </Button>
           <Button
             type="submit"
@@ -72,7 +82,7 @@ export default function index() {
         </span>
       </section>
       <section className="w-full">
-        <Border />
+        <div className="w-full h-[1px] bg-gray-300 dark:bg-gray-800 rounded-full my-5" />
         <Form {...(form as any)}>
           <form onSubmit={form.handleSubmit(handleSave)}>
             <div className="grid">
@@ -82,25 +92,68 @@ export default function index() {
                 render={({ field }) => (
                   <FormItem className="grid gap-1 my-7">
                     <FormControl>
-                      <Link {...field} />
+                      <div className="grid grid-cols-3 w-full">
+                        <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
+                          <Label>
+                            <h1>{t("link")}</h1>
+                          </Label>
+                          <p className="text-[hsl(var(--muted-foreground))] text-sm">{t("dictionaries_settings.link_notes")}</p>
+                        </span>
+                        <CInput
+                          disabled
+                          className="placeholder:!text-gray-400"
+                          defaultValue={`wordigo.app/library/${data.user.username}`}
+                          rightSection={<Copy onClick={handleCopyUrl} className="text-muted-foreground" size={20} />}
+                          placeholder={field.value}
+                          {...field}
+                        />
+                      </div>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
 
-              <FormField
-                control={form.control as never}
-                name="published"
-                render={({ field }) => (
-                  <FormItem className="grid gap-1 my-7">
-                    <FormControl>
-                      <Published {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              <div className="grid grid-cols-3 w-full">
+                <section className="max-w-[280px] min-w-[280px] mr-8 word-break">
+                  <Label>
+                    <h1>{t("published_status")}</h1>
+                  </Label>
+                  <p className="text-[hsl(var(--muted-foreground))] text-sm">{t("dictionaries_settings.published_status_note")}</p>
+                </section>
+                <section className="w-full flex flex-col gap-y-4">
+                  <FormField
+                    control={form.control as never}
+                    name="published"
+                    render={({ field }) => (
+                      <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                        <div className="space-y-0.5">
+                          <FormLabel className="text-base">{t("dictionaries_settings.published.true_title")}</FormLabel>
+                          <FormDescription>{t("dictionaries_settings.published.true_description")}</FormDescription>
+                        </div>
+                        <FormControl>
+                          <Switch checked={field.value} onCheckedChange={field.onChange} />
+                        </FormControl>
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control as never}
+                    name="published"
+                    render={({ field }) => (
+                      <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                        <div className="space-y-0.5">
+                          <FormLabel className="text-base">{t("dictionaries_settings.published.false_title")}</FormLabel>
+                          <FormDescription>{t("dictionaries_settings.published.false_description")}</FormDescription>
+                        </div>
+                        <FormControl>
+                          <Switch checked={field.value} onCheckedChange={field.onChange} />
+                        </FormControl>
+                      </FormItem>
+                    )}
+                  />
+                </section>
+              </div>
 
               <FormField
                 control={form.control as never}
@@ -108,7 +161,15 @@ export default function index() {
                 render={({ field }) => (
                   <FormItem className="grid gap-1 my-7">
                     <FormControl>
-                      <Title {...field} id="title" />
+                      <main className="grid grid-cols-3 w-full">
+                        <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
+                          <Label>
+                            <h1>{t("title")}</h1>
+                          </Label>
+                          <p className="text-[hsl(var(--muted-foreground))] text-sm">{t("dictionaries_settings.title_notes")}</p>
+                        </span>
+                        <Input {...field} placeholder={t("title")} />
+                      </main>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -121,7 +182,15 @@ export default function index() {
                 render={({ field }) => (
                   <FormItem className="grid gap-1 my-7">
                     <FormControl>
-                      <Description {...field} id="description" />
+                      <main className="grid grid-cols-3 w-full">
+                        <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
+                          <Label>
+                            <h1>{t("description")}</h1>
+                          </Label>
+                          <p className="text-[hsl(var(--muted-foreground))] text-sm">{t("dictionaries_settings.title_notes")}</p>
+                        </span>
+                        <Textarea {...field} placeholder={t("description")} />
+                      </main>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -142,8 +211,8 @@ export default function index() {
               />
 
               <div className="w-full text-end my-7">
-                <Button onClick={handleCancle} variant="outline" className="font-semibold text-sm mr-1">
-                  {t("buttons.cancle")}
+                <Button onClick={handleCancel} variant="outline" className="font-semibold text-sm mr-1">
+                  {t("buttons.cancel")}
                 </Button>
                 <Button
                   type="submit"

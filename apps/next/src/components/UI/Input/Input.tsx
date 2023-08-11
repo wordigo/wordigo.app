@@ -1,13 +1,7 @@
 import { type ReactElement } from "react";
 
-
-
 import { Input } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
-
-
-
-
 
 export interface CInputProps {
   leftSection?: ReactElement;
@@ -17,7 +11,7 @@ export interface CInputProps {
 
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & CInputProps;
 
-const CInput = ({ classNames,leftSection, rightSection, ...props }: InputProps) => {
+const CInput = ({ classNames, leftSection, rightSection, ...props }: InputProps) => {
   const classes = cn({
     "block w-full bg-transparent border-0 pl-2 py-0 pb-0.5 !opacity-80": true,
   });
