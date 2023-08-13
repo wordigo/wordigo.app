@@ -36,7 +36,6 @@ export const TextToSpeechApi = async ({ text, phonetic = "en-US" }: TextToSpeech
     }
   )
   const blob = await res.blob()
-  console.log(blob)
 
   const dataURL = await blobToDataURL(blob)
 

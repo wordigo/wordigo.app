@@ -7,7 +7,7 @@ const storage = new Storage({
 })
 
 chrome.runtime.onInstalled.addListener(({ reason }) => {
-  if (reason !== chrome.runtime.OnInstalledReason.INSTALL) {
+  if (reason === chrome.runtime.OnInstalledReason.INSTALL) {
     openWelcomePage()
     return
   }
