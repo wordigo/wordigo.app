@@ -1,8 +1,5 @@
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import DynamicIconLogo from "@/components/Logo/DynamicIconLogo";
-// Import useState
 import DynamicLogo from "@/components/Logo/DynamicLogo";
 import { X } from "lucide-react";
 import { useSession } from "next-auth/react";
@@ -25,42 +22,51 @@ export default function HomeHeader() {
   };
 
   return (
-    <div className="w-full">
-      <nav className="flex max-lg:px-3 items-center justify-between w-full m-auto py-[1.125rem] px-20">
-        <div className="flex items-center">
-          <Link href="/" className={cn("flex items-center mr-6", !toggleMenu && "hidden")}>
-            <DynamicLogo />
-            <div className="font-semibold ml-[10px]">Wordigo</div>
-          </Link>
-          <span className="max-lg:hidden">
-            <Navigation />
-          </span>
-        </div>
-        <div className="flex gap-x-4 items-center max-lg:hidden">
-          {status === "loading" ? (
-            <NavProfile.Loader />
-          ) : status === "authenticated" ? (
-            <NavProfile />
-          ) : (
-            <span>
-              <Link href="/auth/signin" className={cn("bg-transparent mr-4", buttonVariants({ variant: "outline" }))}>
-                {t("navbar.signin")}
-              </Link>
-              <Link href="/auth/signup" className={cn(buttonVariants({ variant: "default" }))}>
-                {t("navbar.signup")}
-              </Link>
+    <>
+      <div className="w-full">
+        <nav className="flex max-lg:px-3 items-center justify-between w-full m-auto py-[1.125rem] px-20">
+          <div className="flex items-center">
+            <Link href="/" className={cn("flex items-center mr-6", !toggleMenu && "hidden")}>
+              <DynamicLogo />
+              <div className="font-semibold ml-[10px]">Wordigo</div>
+            </Link>
+            <span className="max-lg:hidden">
+              <Navigation />
             </span>
-          )}
-        </div>
-        <Button onClick={toggleMenu} className={cn("lg:hidden text-black bg-transparent bg-white", isMenuOpen === true && "hidden")} variant="outline">
-          Menu
-        </Button>
-      </nav>
+          </div>
+          <div className="flex gap-x-4 items-center max-lg:hidden">
+            {status === "loading" ? (
+              <NavProfile.Loader />
+            ) : status === "authenticated" ? (
+              <NavProfile />
+            ) : (
+              <span>
+                <Link href="/auth/signin" className={cn("bg-transparent mr-4", buttonVariants({ variant: "outline" }))}>
+                  {t("navbar.signin")}
+                </Link>
+                <Link href="/auth/signup" className={cn(buttonVariants({ variant: "default" }))}>
+                  {t("navbar.signup")}
+                </Link>
+              </span>
+            )}
+          </div>
+          <Button
+            onClick={toggleMenu}
+            className={cn("lg:hidden text-black bg-transparent bg-white", isMenuOpen === true && "hidden")}
+            variant="outline"
+          >
+            Menu
+          </Button>
+        </nav>
+      </div>
       {isMenuOpen && (
-        <div className="lg:hidden fixed top-0 left-0 w-full text-black bg-LightBackground dark:bg-DarkBackground max-w-fit min-w-fit h-screen px-6 py-6 border border-r justify-between flex flex-col">
+        <div className="col-span-1 flex flex-col fixed justify-between py-8 top-0 right-0 z-50 overflow-hidden text-light_text dark:text-white dark:bg-DarkBackground bg-LightBackground g-red-500 px-5 min-w-[280px] max-w-[280px] border-l shadow-md shadow-[rgba(16, 24, 40, 1)] h-screen">
           <span className="flex items-center flex-col w-full border-b border-gray-300 dark:border-gray-800 mb-8">
             <div className="w-full flex items-center justify-between pb-3">
-              <DynamicIconLogo />
+              <Link href="/" className={cn("flex items-center mr-6", !toggleMenu && "hidden")}>
+                <DynamicLogo />
+                <div className="font-semibold ml-[10px]">Wordigo</div>
+              </Link>
               <X className="p-1 dark:text-white" onClick={toggleMenu} />
             </div>
 
@@ -73,7 +79,7 @@ export default function HomeHeader() {
             {status === "loading" ? (
               <NavProfile.Loader />
             ) : status === "authenticated" ? (
-              <NavProfile />
+              <NavProfile variant="borgerMenu" />
             ) : (
               <span>
                 <Link href="/auth/signin" className={cn("bg-transparent mr-4 text-white", buttonVariants({ variant: "outline" }))}>
@@ -87,6 +93,6 @@ export default function HomeHeader() {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
