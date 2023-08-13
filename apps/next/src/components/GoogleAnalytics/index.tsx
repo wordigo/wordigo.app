@@ -4,7 +4,7 @@ import Script from "next/script";
 
 // **Important** Replace this tracking ID by your Analytics code
 // Or you can put it into the environment file.
-const GA_TRACKING_ID = process.env.GA_TRACKING_ID;
+const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID;
 
 // @ts-ignore
 const addPageView = (url) => {
