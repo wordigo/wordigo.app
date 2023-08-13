@@ -1,12 +1,8 @@
-import { type FunctionComponent, type PropsWithChildren } from "react";
-import dynamic from "next/dynamic";
+import { type PropsWithChildren } from "react";
 import Link from "next/link";
+import HomeHeader from "@/components/Layout/MainLayout/Header";
 import DynamicLogo from "@/components/Logo/DynamicLogo";
-import { ChevronLeft } from "lucide-react";
 import { useTranslation } from "next-i18next";
-
-import { buttonVariants } from "@wordigo/ui";
-import { cn } from "@wordigo/ui/lib/utils";
 
 // const DynamicLogo = dynamic(() => import("@/components/Logo/DynamicLogo"), {
 //   ssr: false,
@@ -16,17 +12,13 @@ const AuthLayout = ({ children }: PropsWithChildren) => {
   const { t } = useTranslation();
 
   return (
-    <div className="container flex h-screen w-screen flex-col items-center justify-center">
-      <Link href="/" className={cn(buttonVariants({ variant: "ghost" }), "absolute left-4 top-4 md:left-8 md:top-8")}>
-        <ChevronLeft className="mr-2 h-4 w-4" />
-        {t("auth_layout.back")}
-      </Link>
-      <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-        <div className="flex flex-col space-y-6 text-center">
-          <div className="flex items-center justify-center">
-            <DynamicLogo />
+    <div className="h-screen">
+      <HomeHeader />
+      <div className="container flex h-full w-screen flex-col items-center justify-center">
+        <div className="mx-auto flex flex-col justify-center space-y-6 sm:w-[350px]">
+          <div className="flex flex-col space-y-6 text-center">
+            <div className="text-center">{children}</div>
           </div>
-          <div className="text-center">{children}</div>
         </div>
       </div>
     </div>

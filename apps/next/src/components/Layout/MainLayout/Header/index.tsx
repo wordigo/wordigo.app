@@ -18,8 +18,9 @@ export default function HomeHeader() {
     <div className="w-full">
       <nav className="flex items-center justify-between w-full m-auto py-[1.125rem] px-20">
         <div className="flex items-center">
-          <Link href="/" className="mr-6">
+          <Link href="/" className="mr-6 flex items-center justify-center">
             <StaticLogo />
+            <span className="font-bold">Wordigo</span>
           </Link>
           <Navigation />
         </div>

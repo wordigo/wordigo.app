@@ -1,20 +1,9 @@
 import { Head, Html, Main, NextScript } from "next/document";
-import Script from "next/script";
 
 const Document = () => {
   return (
     <Html lang="en" dir="ltr" className="scroll-smooth">
       <Head>
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-D9ZJE2XHB8" />
-        <Script id="google-analytics">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-D9ZJE2XHB8');
-        `}
-        </Script>
         <link rel="manifest" href="/static/head/manifest.json" />
         <meta name="msapplication-TileColor" content="#2d89ef" />
         <meta name="msapplication-config" content="/favicon/browserconfig.xml" />

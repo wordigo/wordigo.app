@@ -15,6 +15,7 @@ import { makeZodI18nMap } from "zod-i18n-map";
 
 import "../styles/globals.css";
 import "../styles/styles.css";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const App = ({ Component, pageProps }: AppProps<{ session: any; _nextI18Next: { initialLocale: string } }>) => {
   const { t } = useTranslation();
@@ -22,6 +23,7 @@ const App = ({ Component, pageProps }: AppProps<{ session: any; _nextI18Next: { 
 
   return (
     <Fragment>
+      <GoogleAnalytics />
       <DefaultSeo {...seo[pageProps?._nextI18Next?.initialLocale]} />
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />

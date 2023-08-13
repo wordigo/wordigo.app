@@ -20,6 +20,7 @@ const client = z.object({
   GOOGLE_OAUTH2_SECRET: z.string().min(1),
   NEXTAUTH_SECRET: z.string().min(1),
   NEXT_PUBLIC_WORDIGO_BACKEND_URL: z.string().min(1),
+  GA_TRACKING_ID: z.string().min(1)
 })
 
 /**
@@ -29,14 +30,12 @@ const client = z.object({
  * @type {Record<keyof z.infer<typeof server> | keyof z.infer<typeof client>, string | undefined>}
  */
 const processEnv = {
-  DATABASE_URL: process.env.DATABASE_URL,
   NODE_ENV: process.env.NODE_ENV,
-  NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
-  NEXT_PUBLIC_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   GOOGLE_OAUTH2_ID: process.env.GOOGLE_OAUTH2_SECRET,
   GOOGLE_OAUTH2_SECRET: process.env.GOOGLE_OAUTH2_SECRET,
   NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
-  NEXT_PUBLIC_WORDIGO_BACKEND_URL: process.env.NEXT_PUBLIC_WORDIGO_BACKEND_URL
+  NEXT_PUBLIC_WORDIGO_BACKEND_URL: process.env.NEXT_PUBLIC_WORDIGO_BACKEND_URL,
+  GA_TRACKING_ID: process.env.GA_TRACKING_ID
 }
 
 // Don't touch the part below
