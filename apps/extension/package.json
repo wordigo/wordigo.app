@@ -1,6 +1,6 @@
 {
   "name": "@wordigo/extension",
-  "displayName": "Wordigo Translator",
+  "displayName": "Wordigo - Translator, Dictionary, TTS",
   "version": "0.0.1",
   "description": "Wordigo: Translate text in the browser and add it to the dictionary. Easily bypass language restrictions.",
   "author": "osmandlsmn",
