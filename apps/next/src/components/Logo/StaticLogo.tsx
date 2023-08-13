@@ -2,66 +2,66 @@ import React from "react";
 
 function StaticLogo({ className }: { className?: string }) {
   return (
-    <svg width="52" height="52" viewBox="0 0 52 52" className="mt-2" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g filter="url(#filter0_d_526_44920)">
-        <rect x="8" y="6" width="32" height="32" rx="8" fill="url(#paint0_radial_526_44920)" />
-        <rect x="8" y="6" width="32" height="32" rx="8" fill="url(#paint1_linear_526_44920)" fill-opacity="0.05" />
+    <svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g filter="url(#filter0_d_533_43933)">
+        <rect x="8" y="6" width="32.12" height="32.12" rx="4" fill="url(#paint0_radial_533_43933)" />
+        <rect x="8" y="6" width="32.12" height="32.12" rx="4" fill="url(#paint1_linear_533_43933)" fill-opacity="0.05" />
       </g>
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
-        d="M24.0139 31.4577C21.3682 31.5231 18.7015 30.5463 16.6824 28.5272C12.7709 24.6157 12.7709 18.2739 16.6824 14.3624C20.5939 10.4509 26.9357 10.4509 30.8472 14.3624C34.7587 18.2739 34.7587 24.6157 30.8472 28.5272C31.896 29.576 31.1658 31.3699 29.6827 31.3881L24.0139 31.4577ZM29.47 27.15C26.3191 30.301 21.2104 30.301 18.0595 27.15C14.9086 23.9991 14.9086 18.8905 18.0595 15.7395C21.2104 12.5886 26.3191 12.5886 29.47 15.7395C32.621 18.8905 32.621 23.9991 29.47 27.15Z"
-        fill="url(#paint2_linear_526_44920)"
+        d="M23.6264 32.2116C20.7581 32.2825 17.8671 31.2235 15.6782 29.0345C11.4376 24.794 11.4376 17.9187 15.6782 13.6782C19.9187 9.43763 26.794 9.43763 31.0345 13.6782C35.275 17.9187 35.275 24.794 31.0345 29.0345C32.1715 30.1715 31.3799 32.1163 29.772 32.1361L23.6264 32.2116ZM29.5415 27.5415C26.1255 30.9575 20.5871 30.9575 17.1711 27.5415C13.7552 24.1255 13.7552 18.5871 17.1711 15.1712C20.5871 11.7552 26.1255 11.7552 29.5415 15.1712C32.9575 18.5871 32.9575 24.1255 29.5415 27.5415Z"
+        fill="url(#paint2_linear_533_43933)"
         fill-opacity="0.5"
       />
-      <g filter="url(#filter1_d_526_44920)">
+      <g filter="url(#filter1_d_533_43933)">
         <path
           fill-rule="evenodd"
           clip-rule="evenodd"
-          d="M24.0139 31.4577C21.3682 31.5231 18.7015 30.5463 16.6824 28.5272C12.7709 24.6157 12.7709 18.2739 16.6824 14.3624C20.5939 10.4509 26.9357 10.4509 30.8472 14.3624C34.7587 18.2739 34.7587 24.6157 30.8472 28.5272C28.9548 30.4195 26.4935 31.3964 24.0139 31.4577ZM29.47 27.15C26.3191 30.301 21.2104 30.301 18.0595 27.15C14.9086 23.9991 14.9086 18.8905 18.0595 15.7395C21.2104 12.5886 26.3191 12.5886 29.47 15.7395C32.621 18.8905 32.621 23.9991 29.47 27.15Z"
-          fill="url(#paint3_linear_526_44920)"
+          d="M23.6264 32.2116C20.7581 32.2825 17.8671 31.2235 15.6782 29.0345C11.4376 24.794 11.4376 17.9187 15.6782 13.6782C19.9187 9.43763 26.794 9.43763 31.0345 13.6782C35.275 17.9187 35.275 24.794 31.0345 29.0345C28.9829 31.0861 26.3146 32.1451 23.6264 32.2116ZM29.5415 27.5415C26.1255 30.9575 20.5871 30.9575 17.1711 27.5415C13.7552 24.1255 13.7552 18.5871 17.1711 15.1712C20.5871 11.7552 26.1255 11.7552 29.5415 15.1712C32.9575 18.5871 32.9575 24.1255 29.5415 27.5415Z"
+          fill="url(#paint3_linear_533_43933)"
           shape-rendering="crispEdges"
         />
       </g>
       <path
-        d="M30.4656 22.5414C30.4656 25.6709 27.5383 28.2079 23.9273 28.2079C20.3164 28.2079 17.3891 25.6709 17.3891 22.5414C17.3891 21.4563 20.3164 20.9741 23.9273 20.9741C27.5383 20.9741 30.4656 21.4564 30.4656 22.5414Z"
-        fill="url(#paint4_linear_526_44920)"
+        d="M30.6208 22.5453C30.6208 25.938 27.4473 28.6884 23.5326 28.6884C19.6178 28.6884 16.4443 25.938 16.4443 22.5453C16.4443 21.3689 19.6178 20.8461 23.5326 20.8461C27.4473 20.8461 30.6208 21.3689 30.6208 22.5453Z"
+        fill="url(#paint4_linear_533_43933)"
       />
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
-        d="M28.7947 22.1942C28.7278 24.7991 26.6512 26.8876 24.0661 27.0429C26.6995 27.126 28.9268 25.2466 29.091 22.7551C29.1045 22.5504 28.9988 22.3634 28.7947 22.1942Z"
+        d="M28.8094 22.1688C28.737 24.9928 26.4856 27.257 23.6831 27.4254C26.5379 27.5154 28.9526 25.478 29.1307 22.7768C29.1453 22.555 29.0307 22.3522 28.8094 22.1688Z"
         fill="white"
       />
-      <g clip-path="url(#clip0_526_44920)">
+      <g clip-path="url(#clip0_533_43933)">
         <path
-          d="M34.6389 11.9319L34.2215 13.0448L33.1086 13.4621L34.2215 13.8794L34.6389 14.9923L35.0562 13.8794L36.1691 13.4621L35.0562 13.0448L34.6389 11.9319Z"
+          d="M35.1452 11.0432L34.6928 12.2497L33.4863 12.7022L34.6928 13.1546L35.1452 14.3611L35.5977 13.1546L36.8042 12.7022L35.5977 12.2497L35.1452 11.0432Z"
           fill="#5282FF"
         />
       </g>
-      <g clip-path="url(#clip1_526_44920)">
+      <g clip-path="url(#clip1_533_43933)">
         <path
-          d="M14.3286 28.347L13.9113 29.4599L12.7984 29.8772L13.9113 30.2945L14.3286 31.4074L14.746 30.2945L15.8588 29.8772L14.746 29.4599L14.3286 28.347Z"
+          d="M13.1264 28.8392L12.674 30.0457L11.4675 30.4981L12.674 30.9506L13.1264 32.1571L13.5789 30.9506L14.7854 30.4981L13.5789 30.0457L13.1264 28.8392Z"
           fill="#5282FF"
         />
       </g>
       <defs>
-        <filter id="filter0_d_526_44920" x="0" y="0" width="52" height="52" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <filter id="filter0_d_533_43933" x="0" y="0" width="52.12" height="52.12" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
           <feFlood flood-opacity="0" result="BackgroundImageFix" />
           <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
           <feOffset dx="2" dy="4" />
           <feGaussianBlur stdDeviation="5" />
           <feComposite in2="hardAlpha" operator="out" />
           <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
-          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_526_44920" />
-          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_526_44920" result="shape" />
+          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_533_43933" />
+          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_533_43933" result="shape" />
         </filter>
         <filter
-          id="filter1_d_526_44920"
-          x="5.74878"
-          y="5.42877"
-          width="40.032"
-          height="40.032"
+          id="filter1_d_533_43933"
+          x="4.49777"
+          y="4.49776"
+          width="41.7171"
+          height="41.7171"
           filterUnits="userSpaceOnUse"
           color-interpolation-filters="sRGB"
         >
@@ -71,41 +71,41 @@ function StaticLogo({ className }: { className?: string }) {
           <feGaussianBlur stdDeviation="5" />
           <feComposite in2="hardAlpha" operator="out" />
           <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
-          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_526_44920" />
-          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_526_44920" result="shape" />
+          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_533_43933" />
+          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_533_43933" result="shape" />
         </filter>
         <radialGradient
-          id="paint0_radial_526_44920"
+          id="paint0_radial_533_43933"
           cx="0"
           cy="0"
           r="1"
           gradientUnits="userSpaceOnUse"
-          gradientTransform="translate(24 22) rotate(90) scale(16)"
+          gradientTransform="translate(24.06 22.06) rotate(90) scale(16.06)"
         >
           <stop stop-color="#E2EAFF" />
           <stop offset="1" stop-color="white" />
         </radialGradient>
-        <linearGradient id="paint1_linear_526_44920" x1="38.08" y1="7.76" x2="21.6" y2="38" gradientUnits="userSpaceOnUse">
+        <linearGradient id="paint1_linear_533_43933" x1="38.1928" y1="7.7666" x2="21.651" y2="38.12" gradientUnits="userSpaceOnUse">
           <stop stop-color="#5282FF" />
           <stop offset="1" stop-color="#5282FF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="paint2_linear_526_44920" x1="26.7171" y1="10.2324" x2="-0.0314969" y2="44.3468" gradientUnits="userSpaceOnUse">
+        <linearGradient id="paint2_linear_533_43933" x1="26.557" y1="9.20071" x2="-2.44171" y2="46.1849" gradientUnits="userSpaceOnUse">
           <stop stop-color="#5282FF" />
           <stop offset="1" stop-color="#5282FF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="paint3_linear_526_44920" x1="26.4888" y1="10.004" x2="0.115398" y2="44.3406" gradientUnits="userSpaceOnUse">
+        <linearGradient id="paint3_linear_533_43933" x1="26.3095" y1="8.95314" x2="-2.28246" y2="46.1782" gradientUnits="userSpaceOnUse">
           <stop stop-color="#5282FF" />
           <stop offset="1" stop-color="#5282FF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="paint4_linear_526_44920" x1="17.3891" y1="22.3652" x2="44.3767" y2="28.7643" gradientUnits="userSpaceOnUse">
+        <linearGradient id="paint4_linear_533_43933" x1="16.4443" y1="22.3542" x2="45.7021" y2="29.2916" gradientUnits="userSpaceOnUse">
           <stop stop-color="#5282FF" />
           <stop offset="1" stop-color="#5282FF" stop-opacity="0" />
         </linearGradient>
-        <clipPath id="clip0_526_44920">
-          <rect width="3.33867" height="3.33867" fill="white" transform="translate(32.9695 11.7928)" />
+        <clipPath id="clip0_533_43933">
+          <rect width="3.61952" height="3.61952" fill="white" transform="translate(33.3354 10.8924)" />
         </clipPath>
-        <clipPath id="clip1_526_44920">
-          <rect width="3.33867" height="3.33867" fill="white" transform="translate(12.6593 28.2079)" />
+        <clipPath id="clip1_533_43933">
+          <rect width="3.61952" height="3.61952" fill="white" transform="translate(11.3167 28.6884)" />
         </clipPath>
       </defs>
     </svg>

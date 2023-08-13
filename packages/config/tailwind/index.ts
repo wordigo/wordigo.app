@@ -16,6 +16,7 @@ export default {
       center: true,
       padding: "2rem",
       screens: {
+        "rxl": "1024px",
         "2xl": "1400px",
         "7xl": "1320px",
         "8xl": "1440px",
@@ -95,7 +96,7 @@ export default {
       },
       screens: {
         "7xl": "1320px",
-        "8xl": "1440px",
+        "8xl": "1440px"
       },
     },
   },

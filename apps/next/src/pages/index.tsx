@@ -24,7 +24,6 @@ export default function index({ _nextI18Next }: PageProps) {
       <Comment />
       <Pricing />
       <FAQSection />
-      {/* <CTASection /> */}
       <Newsletter />
       <Footers />
     </MainLayout>

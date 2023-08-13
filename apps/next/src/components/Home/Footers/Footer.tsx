@@ -15,11 +15,12 @@ export default function Footer() {
     <div className="relative mx-auto max-w-screen-8xl md:px-12 px-8 py-12 lg:py-24">
       <div className="xl:gap-8 xl:grid xl:grid-cols-4 dark:border-white/5 border-t lg:pt-24 border-black/30 ">
         <div className="dark:text-white text-light_text">
-          <div className="gap-3 items-center inline-flex w-[140px]">
+          <div className="items-center inline-flex w-[140px]">
             <DynamicLogo />
+            <div className="font-semibold ml-[10px]">Wordigo</div>
           </div>
 
-          <p className="text-center text-sm leading-loose md:text-left text-light_text">
+          <p className="text-center text-sm leading-loose md:text-left dark:text-gray-400 text-light_text">
             {t("footer.copyright")}
             <Link href={"/"} target="_blank" rel="noreferrer" className="font-medium underline underline-offset-4 ml-1">
               Wordigo
