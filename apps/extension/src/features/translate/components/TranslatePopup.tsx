@@ -2,11 +2,7 @@ import { AllCountryLanguages } from "@wordigo/common"
 import {
   Button,
   Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-  Separator,
+  Input,
   Skeleton,
   Textarea,
   Toaster,
@@ -17,7 +13,7 @@ import {
   buttonVariants
 } from "@wordigo/ui"
 import { motion } from "framer-motion"
-import { ArrowRightLeft, Copy, Settings } from "lucide-react"
+import { ArrowRightLeft, Copy, Settings, X } from "lucide-react"
 import { useEffect, useMemo, useState } from "react"
 import ReactCountryFlag from "react-country-flag"
 import { useMutation } from "react-query"
@@ -25,15 +21,18 @@ import { useMutation } from "react-query"
 import { sendToBackground } from "@plasmohq/messaging"
 
 import { TranslateApi } from "~api/translate"
+import { getPopupCordinate } from "~utils"
 import { TRANSLATE_CARD_WIDTH } from "~utils/constants"
 
 import { useContextPopover } from "../context/popover"
 import AuidoPlayer from "./AudioPlayer"
 import DictionarySelector from "./DictionarySelector"
+import Logo from "./Logo"
 
 const TranslatePopup = () => {
-  const { cordinate, selectedText, setPopup, targetLanguage } = useContextPopover()
+  const { cordinate, selectedText, targetLanguage } = useContextPopover()
   const { mutate: handleTranslate, isLoading, data } = useMutation(TranslateApi)
+  const { top, left } = getPopupCordinate(cordinate)
 
   const getSourceLanguageFlag = useMemo(
     () => AllCountryLanguages.find((lang) => lang.code === (data?.sourceLanguage || "").toUpperCase()),
@@ -55,75 +54,92 @@ const TranslatePopup = () => {
       id="el-translate-container"
       className="absolute z-50"
       initial={{
-        top: cordinate.y - 5,
-        left: cordinate.x - 5,
+        top: top + 30,
+        left: left - 150,
         width: TRANSLATE_CARD_WIDTH
       }}
       animate={{
-        top: cordinate.y,
-        left: cordinate.x
+        top: top + 10,
+        left: left - 200
       }}>
       <head>
         <meta name="referrer" content="no-referrer" />
       </head>
       <Toaster />
-      <Card tabIndex={1} className="flex-col flex !h-60">
-        <CardHeader className="flex flex-row items-center justify-between px-4 !py-[8px]">
-          <CardTitle className="!text-lg dark:text-white !text-primary">Wordigo Translator</CardTitle>
-          <div
-            className={buttonVariants({
-              variant: "outline",
-              size: "sm",
-              className: "flex gap-x-2 items-center rounded-lg !h-8"
-            })}>
-            {isLoading || !getSourceLanguageFlag ? (
-              <Skeleton className="w-4 h-4" />
-            ) : (
+      <Card className="border-1 border-gray-300 shadow-md flex items-center space-x-1 rounded-md p-3 flex-col gap-y-3">
+        <div className="flex items-center justify-between h-8 w-full">
+          <div className="flex items-center gap-x-1">
+            <Logo className="h-8 w-8 bg-transparent cursor-pointer" />
+            <p className="font-bold text-lg text-gray-950">Translate</p>
+          </div>
+          <div className="flex items-center gap-x-1">
+            <div
+              className={buttonVariants({
+                variant: "outline",
+                size: "sm",
+                className: "flex gap-x-2 items-center rounded-lg !h-7"
+              })}>
+              {isLoading || !getSourceLanguageFlag ? (
+                <Skeleton className="w-4 h-4" />
+              ) : (
+                <ReactCountryFlag
+                  style={{
+                    fontSize: "1em",
+                    lineHeight: "1em"
+                  }}
+                  svg
+                  countryCode={getSourceLanguageFlag?.icon || "DT"}
+                />
+              )}
+              <ArrowRightLeft className="!text-gray-300" size={12} />
               <ReactCountryFlag
                 style={{
                   fontSize: "1em",
                   lineHeight: "1em"
                 }}
                 svg
-                countryCode={getSourceLanguageFlag?.icon || "DT"}
+                countryCode={getTargetLanguageFlag?.icon || "DT"}
               />
-            )}
-            <ArrowRightLeft className="!text-gray-300" size={12} />
-            <ReactCountryFlag
-              style={{
-                fontSize: "1em",
-                lineHeight: "1em"
-              }}
-              svg
-              countryCode={getTargetLanguageFlag?.icon || "DT"}
+            </div>
+            <Button className="!h-8 !w-8 text-gray-500" variant="ghost" size="icon">
+              <X size={18} />
+            </Button>
+          </div>
+        </div>
+        <div className="w-full gap-y-2 flex flex-col">
+          <Input
+            value={selectedText}
+            disabled
+            className="rounded border-gray-300 border-[1.5px] !opacity-75 disabled:!cursor-default"
+          />
+          <div>
+            <div className="flex items-center justify-between mb-1">
+              <p className="text-sm text-gray-950 font-medium">Sonuç</p>
+              <div className="flex items-center gap-x-1">
+                <TranslatePopup.CopyTranslatedText text={data?.translatedText} />
+                <TranslatePopup.AudioPlayer text={selectedText} translatedText={data?.translatedText} />
+              </div>
+            </div>
+            <Textarea
+              disabled
+              value={data?.translatedText}
+              className="border-gray-200 border-[1.5px] rounded !opacity-75 disabled:!cursor-default"
             />
           </div>
-        </CardHeader>
-        <Separator />
-        <CardContent className="!px-5 !py-3 !h-full">
-          {isLoading ? (
+          {/* {isLoading ? (
             <div className="flex flex-col gap-y-1">
               <Skeleton className="rounded h-5 w-full" />
               <Skeleton className="rounded h-5 w-full" />
               <Skeleton className="rounded h-5 w-full" />
             </div>
-          ) : (
-            <Textarea
-              className="!border-0 !p-0 !opacity-75 disabled:!cursor-default !h-full"
-              disabled
-              value={data?.translatedText}
-            />
-          )}
-        </CardContent>
-        <Separator />
-        <CardFooter className="!p-3 flex items-center justify-between relative">
-          <div className="flex flex-row gap-x-2 items-center justify-end">
-            <TranslatePopup.SettingsAction />
-            <TranslatePopup.CopyTranslatedText text={data?.translatedText} />
-            <TranslatePopup.AudioPlayer text={selectedText} translatedText={data?.translatedText} />
-          </div>
+          ) : ( */}
+          {/* )} */}
+        </div>
+        {/* <Separator /> */}
+        <div className="w-full flex items-center justify-between">
+          <TranslatePopup.SettingsAction />
           <DictionarySelector translatedText={data?.translatedText} sourceLangauge={data?.sourceLanguage} />
-        </CardFooter>
+        </div>
       </Card>
     </motion.div>
   )
@@ -149,7 +165,7 @@ TranslatePopup.CopyTranslatedText = ({ text }: { text: string }) => {
           onMouseLeave={() => setVisible(false)}
           onClick={copyTranslatedText}
           asChild>
-          <Button className="!h-9 !w-9" variant="outline" size="icon">
+          <Button className="!w-7 !h-7 text-gray-500" variant="ghost" size="icon">
             <Copy size={18} />
           </Button>
         </TooltipTrigger>
@@ -175,7 +191,7 @@ TranslatePopup.SettingsAction = () => {
     <TooltipProvider delayDuration={100}>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button onClick={openSettingsPage} className="!h-9 !w-9" variant="outline" size="icon">
+          <Button onClick={openSettingsPage} className="!h-8 !w-8 text-gray-500" variant="outline" size="icon">
             <Settings size={18} />
           </Button>
         </TooltipTrigger>

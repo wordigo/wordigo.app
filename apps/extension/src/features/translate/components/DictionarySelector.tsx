@@ -1,6 +1,6 @@
 import { WORDIGO_JWT_TOKEN_COOKIE } from "@wordigo/common"
 import { Button, ToastAction, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, useToast } from "@wordigo/ui"
-import { RotateCw } from "lucide-react"
+import { ChevronDown, RotateCw } from "lucide-react"
 import { Fragment, useEffect } from "react"
 import { useMutation } from "react-query"
 
@@ -46,10 +46,10 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
       <Tooltip>
         <TooltipTrigger disabled={!hasToken || addIsLoading} asChild>
           <Button
-            className="!pointer-events-auto disabled:!opacity-100"
+            className="!pointer-events-auto disabled:!opacity-100 !h-8 flex items-center justify-between gap-x-2"
             disabled={!hasToken || addIsLoading}
             onClick={handleAddLibrary}
-            variant="outline"
+            variant="default"
             size="sm">
             {addIsLoading ? (
               <Fragment>
@@ -57,7 +57,10 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
                 Please wait
               </Fragment>
             ) : (
-              "Save to library"
+              <Fragment>
+                Save to library
+                <ChevronDown size={16} />
+              </Fragment>
             )}
           </Button>
         </TooltipTrigger>

@@ -60,6 +60,49 @@
   }
 }
 
+@layer components {
+  .tooltip-container {
+    @apply absolute z-50 cursor-pointer bg-white;
+  }
+
+  .tooltip-content {
+    @apply flex items-center gap-x-1 rounded border border-gray-200 font-thin shadow-md;
+    @apply justify-between p-2;
+  }
+
+  .logo {
+    @apply h-6 w-6;
+  }
+
+  .tooltip-buttons {
+    @apply flex items-center gap-x-2 text-gray-950;
+  }
+
+  .translate-button {
+    @apply flex items-center gap-x-1.5 text-sm;
+  }
+
+  .voice-button {
+    @apply flex items-center gap-x-1.5 text-sm;
+  }
+
+  .add-button {
+    @apply flex items-center gap-x-1.5 text-sm;
+  }
+
+  .separator {
+    @apply !h-7 !w-1 border-r border-gray-200;
+  }
+
+  .more-button {
+    @apply mx-0 !h-7 rounded-sm px-1 text-gray-400 transition-all hover:text-primary-blue-500;
+  }
+
+  .floating-button {
+    @apply flex !h-7 items-center gap-x-1 rounded-none !px-1 text-sm font-normal;
+  }
+}
+
 #plasmo-shadow-container {
   z-index: 2147483646 !important;
 }

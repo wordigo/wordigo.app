@@ -1,12 +1,14 @@
-import { Button, TooltipProvider } from "@wordigo/ui"
+import { Button, TooltipProvider, type ButtonProps } from "@wordigo/ui"
 import { motion } from "framer-motion"
-import { LanguagesIcon } from "lucide-react"
+import { BookMarked, Languages, MoreVertical, Volume2 } from "lucide-react"
+import type { PropsWithChildren } from "react"
 
 import { getPopupCordinate } from "~utils"
 
 import { useContextPopover } from "../context/popover"
+import Logo from "./Logo"
 
-const FloatingButton = () => {
+const Floating = () => {
   const { cordinate, setFloating, setPopup } = useContextPopover()
   const { top, left } = getPopupCordinate(cordinate)
 
@@ -18,22 +20,47 @@ const FloatingButton = () => {
   return (
     <TooltipProvider>
       <motion.div
-        tabIndex={50}
-        className="absolute cursor-pointer z-50"
+        tabIndex={500}
+        id="el-popup-container"
+        className="absolute cursor-pointer z-50 bg-white"
         initial={{
-          top: top - 5,
-          left
+          top: top + 10,
+          left: left - 50
         }}
         animate={{
-          top: top + 15,
-          left
+          top: top + 5,
+          left: left - 120
         }}>
-        <Button className="font-bold !h-8 !w-8" variant="default" onClick={handleTogglePopup} size="icon">
-          <LanguagesIcon size={18} />
-        </Button>
+        <div className="border-gray-200 shadow-md flex items-center space-x-1 rounded !font-thin border">
+          <Logo className="h-7 w-7 bg-transparent cursor-pointer hover:bg-gray-200 rounded-none" />
+          <div className="flex space-x-1.5 items-center !text-gray-950">
+            <Floating.Button onClick={handleTogglePopup}>
+              <Languages size={14} />
+              Translate
+            </Floating.Button>
+            <Floating.Button>
+              <Volume2 size={15} />
+              Voice
+            </Floating.Button>
+            <Floating.Button>
+              <BookMarked size={14} />
+              Add
+            </Floating.Button>
+            <div className="h-7 w-1 border-r border-gray-200"></div>
+          </div>
+          <Button className="more-button" variant="ghost" size="sm">
+            <MoreVertical size={14} />
+          </Button>
+        </div>
       </motion.div>
     </TooltipProvider>
   )
 }
 
-export default FloatingButton
+Floating.Button = ({ children, ...attr }: PropsWithChildren<ButtonProps>) => (
+  <Button {...attr} className="floating-button" variant="ghost" size="sm">
+    {children}
+  </Button>
+)
+
+export default Floating

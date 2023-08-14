@@ -25,6 +25,7 @@ export const getStyle = () => {
 
 const Translate = () => {
   const { isFloating, isPopup } = useContextPopover()
+  console.log(isPopup)
 
   return (
     <Fragment>
