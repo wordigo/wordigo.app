@@ -22,7 +22,7 @@ const AuidoPlayer = ({ text, translatedText }: { text: string; translatedText: s
       <TooltipProvider delayDuration={100}>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button onClick={textToSpeech} className="!w-7 !h-7 text-gray-500" variant="ghost" size="icon">
+            <Button onClick={textToSpeech} className="!w-7 !h-7 text-gray-500 dark:text-gray-200" variant="ghost" size="icon">
               <Volume2 size={18} />
             </Button>
           </TooltipTrigger>

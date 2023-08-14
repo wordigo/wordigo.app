@@ -22,7 +22,7 @@ const Floating = () => {
       <motion.div
         tabIndex={500}
         id="el-popup-container"
-        className="absolute cursor-pointer z-50 bg-white"
+        className="absolute cursor-pointer z-50"
         initial={{
           top: top + 10,
           left: left - 50
@@ -31,9 +31,9 @@ const Floating = () => {
           top: top + 5,
           left: left - 120
         }}>
-        <div className="border-gray-200 shadow-md flex items-center space-x-1 rounded !font-thin border">
-          <Logo className="h-7 w-7 bg-transparent cursor-pointer hover:bg-gray-200 rounded-none" />
-          <div className="flex space-x-1.5 items-center !text-gray-950">
+        <div className="border-gray-200 shadow-md flex items-center space-x-1 rounded !font-thin border bg-background dark:bg-gray-950">
+          <Logo className="h-7 w-7 bg-transparent cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 rounded-none" />
+          <div className="flex space-x-1.5 items-center">
             <Floating.Button onClick={handleTogglePopup}>
               <Languages size={14} />
               Translate
@@ -46,7 +46,7 @@ const Floating = () => {
               <BookMarked size={14} />
               Add
             </Floating.Button>
-            <div className="h-7 w-1 border-r border-gray-200"></div>
+            <div className="h-7 w-1 border-r border-gray-200 dark:border-gray-500"></div>
           </div>
           <Button className="more-button" variant="ghost" size="sm">
             <MoreVertical size={14} />

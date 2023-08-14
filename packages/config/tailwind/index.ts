@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 export default {
-  darkMode: ["class"],
+  darkMode: ["class", '[data-theme="dark"]'],
   content: [
     "./src/app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
@@ -19,7 +19,7 @@ export default {
         "2xl": "1400px",
         "7xl": "1320px",
         "8xl": "1440px",
-        "9xl": "940px"
+        "9xl": "940px",
       },
     },
     extend: {
@@ -96,7 +96,7 @@ export default {
       },
       screens: {
         "7xl": "1320px",
-        "8xl": "1440px"
+        "8xl": "1440px",
       },
     },
   },

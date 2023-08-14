@@ -27,7 +27,10 @@ const NavProfile = () => {
           </DropdownMenuLabel>
         </div>
       </button>
-      <button className="z-40 cursor-pointer border-none hover:bg-none text-gray-400 right-0 hover:!text-red-500 absolute top-2 p-2 bottom-0 w-fit h-fit" onClick={handleSignOut}>
+      <button
+        className="z-40 cursor-pointer border-none hover:bg-none text-gray-400 right-0 hover:!text-red-500 absolute top-2 p-2 bottom-0 w-fit h-fit"
+        onClick={handleSignOut}
+      >
         <LogOut size={20} />
       </button>
     </main>

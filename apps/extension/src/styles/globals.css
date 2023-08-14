@@ -75,7 +75,7 @@
   }
 
   .tooltip-buttons {
-    @apply flex items-center gap-x-2 text-gray-950;
+    @apply flex items-center gap-x-2 text-gray-950  dark:text-white;
   }
 
   .translate-button {
@@ -95,11 +95,11 @@
   }
 
   .more-button {
-    @apply mx-0 !h-7 rounded-sm px-1 text-gray-400 transition-all hover:text-primary-blue-500;
+    @apply mx-0 !h-7 rounded-sm px-1 text-gray-400 transition-all hover:text-primary-blue-500 dark:text-gray-200;
   }
 
   .floating-button {
-    @apply flex !h-7 items-center gap-x-1 rounded-none !px-1 text-sm font-normal;
+    @apply flex !h-7 items-center gap-x-1 rounded-none !px-1 text-sm font-normal text-gray-950 dark:text-gray-200;
   }
 }
 

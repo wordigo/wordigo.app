@@ -66,11 +66,11 @@ const TranslatePopup = () => {
         <meta name="referrer" content="no-referrer" />
       </head>
       <Toaster />
-      <Card className="border-1 border-gray-300 shadow-md flex items-center space-x-1 rounded-md p-3 flex-col gap-y-3">
+      <Card className="border-1 border-gray-300 shadow-md flex items-center space-x-1 rounded-md p-3 flex-col gap-y-3 bg-background">
         <div className="flex items-center justify-between h-8 w-full">
           <div className="flex items-center gap-x-1">
             <Logo className="h-8 w-8 bg-transparent cursor-pointer" />
-            <p className="font-bold text-lg text-gray-950">Translate</p>
+            <p className="font-bold text-lg text-gray-950 dark:text-white">Translate</p>
           </div>
           <div className="flex items-center gap-x-1">
             <div
@@ -165,7 +165,7 @@ TranslatePopup.CopyTranslatedText = ({ text }: { text: string }) => {
           onMouseLeave={() => setVisible(false)}
           onClick={copyTranslatedText}
           asChild>
-          <Button className="!w-7 !h-7 text-gray-500" variant="ghost" size="icon">
+          <Button className="!w-7 !h-7 text-gray-500 dark:text-gray-200" variant="ghost" size="icon">
             <Copy size={18} />
           </Button>
         </TooltipTrigger>
@@ -191,7 +191,7 @@ TranslatePopup.SettingsAction = () => {
     <TooltipProvider delayDuration={100}>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button onClick={openSettingsPage} className="!h-8 !w-8 text-gray-500" variant="outline" size="icon">
+          <Button onClick={openSettingsPage} className="!h-8 !w-8 text-gray-500 dark:text-gray-200" variant="outline" size="icon">
             <Settings size={18} />
           </Button>
         </TooltipTrigger>
