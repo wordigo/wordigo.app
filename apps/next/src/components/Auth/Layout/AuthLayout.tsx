@@ -1,11 +1,12 @@
 import { type PropsWithChildren } from "react";
 import Link from "next/link";
+import DynamicIconLogo from "@/components/Logo/DynamicIconLogo";
+import DynamicLogo from "@/components/Logo/DynamicLogo";
 import { ChevronLeft } from "lucide-react";
 import { useTranslation } from "next-i18next";
 
 import { buttonVariants } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
-import DynamicIconLogo from "@/components/Logo/DynamicIconLogo";
 
 // const DynamicLogo = dynamic(() => import("@/components/Logo/DynamicLogo"), {
 //   ssr: false,
@@ -23,7 +24,7 @@ const AuthLayout = ({ children }: PropsWithChildren) => {
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         <div className="flex flex-col space-y-6 text-center">
           <div className="flex items-center justify-center">
-            <DynamicIconLogo />
+            <DynamicLogo />
           </div>
           <div className="text-center">{children}</div>
         </div>

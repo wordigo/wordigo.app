@@ -1,6 +1,8 @@
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import DynamicLogo from "@/components/Logo/DynamicLogo";
+import StaticLogo from "@/components/Logo/StaticLogo";
 import { X } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
@@ -27,7 +29,7 @@ export default function HomeHeader() {
         <nav className="flex items-center justify-between w-full m-auto py-[1.125rem] px-20">
           <div className="flex items-center">
             <Link href="/" className={cn("flex items-center mr-6", !toggleMenu && "hidden")}>
-              <DynamicLogo />
+              <StaticLogo />
               <div className="font-semibold ml-[10px]">Wordigo</div>
             </Link>
             <span className="max-lg:hidden">
@@ -38,7 +40,7 @@ export default function HomeHeader() {
             {status === "loading" ? (
               <NavProfile.Loader />
             ) : status === "authenticated" ? (
-                <NavProfile />
+              <NavProfile />
             ) : (
               <span>
                 <Link href="/auth/signin" className={cn("bg-transparent mr-4", buttonVariants({ variant: "outline" }))}>
@@ -50,11 +52,7 @@ export default function HomeHeader() {
               </span>
             )}
           </div>
-          <Button
-            onClick={toggleMenu}
-            className="lg:hidden text-black bg-transparent bg-white"
-            variant="outline"
-          >
+          <Button onClick={toggleMenu} className="lg:hidden text-black bg-transparent bg-white" variant="outline">
             Menu
           </Button>
         </nav>

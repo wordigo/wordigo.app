@@ -1,10 +1,13 @@
 import { type FunctionComponent } from "react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import Link from "next/link";
+import StaticLogo from "@/components/Logo/StaticLogo";
 import { GithubIcon, LinkedinIcon, TwitterIcon } from "lucide-react";
 import { useTranslation } from "next-i18next";
-import { cn } from "@wordigo/ui/lib/utils";
+
 import { Button } from "@wordigo/ui";
+import { cn } from "@wordigo/ui/lib/utils";
 
 const DynamicLogo = dynamic(() => import("@/components/Logo/DynamicLogo"), {
   ssr: false,
@@ -137,13 +140,11 @@ export default function Footer({ className }: { className?: string }) {
             </div>
           </div>
         </div>
-
-
       </div>
       <div className="flex items-center justify-between border-t pt-8">
         <div className="items-center inline-flex w-[140px]">
-          <DynamicLogo />
-          <div className="font-semibold ml-[10px]">Wordigo</div>
+          <StaticLogo />
+          <div className="font-semibold ml-[10px]">WordigoS</div>
         </div>
 
         <p className="text-center text-sm leading-loose md:text-left">

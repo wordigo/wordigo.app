@@ -1,5 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
+import StaticLogo from "@/components/Logo/StaticLogo";
 import { GitlabIcon } from "lucide-react";
 
 import { cn } from "@wordigo/ui/lib/utils";
@@ -20,7 +21,7 @@ export function MobileNav({ items, children }: MobileNavProps) {
     >
       <div className="relative z-20 grid gap-6 rounded-md bg-popover p-4 text-popover-foreground shadow-md">
         <Link href="/" className="flex items-center space-x-2">
-          <GitlabIcon />
+          <StaticLogo />
           <span className="font-bold">Wordigo</span>
         </Link>
         <nav className="grid grid-flow-row auto-rows-max text-sm">
