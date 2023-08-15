@@ -11,7 +11,7 @@ export default function BurgerMenu() {
       <span>
         <span className="flex items-center justify-between w-full mb-6">
           <div className="font-bold text-[18px] flex items-center select-none px-3 pt-3">
-            <Link href="/" className="flex items-center justify-center gap-x-2">
+            <Link href="/" className="flex items-center justify-center gap-x-2 max-w-[128px] min-w-[128px] min-h-[34px]">
               <DynamicLogo size={128} />
             </Link>
           </div>
