@@ -136,14 +136,6 @@ export default function Footer({ className }: { className?: string }) {
               </ul>
             </div>
           </div>
-
-          <Button className="flex items-center border rounded-lg w-fit h-fit py-2 px-3">
-            <DynamicLogo />
-            <span className="ml-3 text-start">
-              <p className="text-xs">Get It On</p>
-              <h1 className="text-sm">Add Extensition</h1>
-            </span>
-          </Button>
         </div>
 
 
