@@ -15,8 +15,8 @@ export default function Footer({ className }: { className?: string }) {
 
   return (
     <div className={cn("relative mx-auto max-w-screen-8xl md:px-12 px-8 py-12 lg:py-24", className)}>
-      <div className="xl:gap-8 xl:grid xl:grid-cols-2 dark:border-white/5 border-t lg:pt-24 max-lg:pt-12 border-black/30 pb-8">
-        <div className="grid grid-cols-3 gap-8 xl:col-span-3 max-lg:grid-cols-1">
+      <div className="xl:gap-8 xl:grid xl:grid-cols-4 dark:border-white/5 border-t lg:pt-24 max-lg:pt-12 border-black/30 pb-8">
+        <div className="grid grid-cols-2 gap-8 xl:col-span-3 max-lg:grid-cols-1">
           <div className="md:grid md:gap-8 md:grid-cols-2">
             <div>
               <h3 className="font-semibold opacity-100 hover:opacity-80">

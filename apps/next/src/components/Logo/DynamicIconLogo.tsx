@@ -17,7 +17,7 @@ const DynamicIconLogo: FC = () => {
 
   const getModeIconUrl = LogoIconsEnums[resolvedTheme as keyof typeof LogoIconsEnums];
 
-  return <Image className="" src={`/images/dynamic_icon_logo.svg`} alt="Wordigo Logo" priority={true} width={100} height={100} />;
+  return <Image className="" src={`/images/logo-white.png`} alt="Wordigo Logo" priority={true} width={100} height={100} />;
 };
 
 export default DynamicIconLogo;
