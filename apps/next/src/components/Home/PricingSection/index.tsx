@@ -12,7 +12,7 @@ const Pricing = () => {
     <section id="pricing" className="px-20 py-24 flex flex-col items-center max-lg:py-16">
       <h2 className="text-5xl font-semibold text-center">{t("pricing.heading")}</h2>
       <p className="text-xl mt-6 text-muted-foreground">{t("pricing.description")}</p>
-      <div className="mt-24 grid grid-cols-3 gap-x-8 w-full max-lg:items-center max-lg:justify-center max-lg:grid-cols-1 max-lg:space-y-8 max-lg:w-fit">
+      <div className="mt-24 grid grid-cols-3 gap-x-8 w-full max-lg:items-center max-lg:justify-center max-lg:grid-cols-1 max-lg:space-y-12 max-lg:w-fit">
         {Prices.map(({ Icon, planName, popular, price, priceDescription, features }, index) => (
           <Pricing.Card
             key={index}

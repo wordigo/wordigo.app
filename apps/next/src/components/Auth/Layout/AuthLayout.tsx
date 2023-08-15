@@ -1,6 +1,5 @@
 import { type PropsWithChildren } from "react";
 import Link from "next/link";
-import DynamicIconLogo from "@/components/Logo/DynamicIconLogo";
 import DynamicLogo from "@/components/Logo/DynamicLogo";
 import { ChevronLeft } from "lucide-react";
 import { useTranslation } from "next-i18next";

@@ -40,7 +40,7 @@ FeatureSection.Item = ({
   image,
   positionLeft,
 }: IFeature) => {
-  const classes = cn("px-8 w-full", positionLeft ? "flex flex-row-reverse" : "flex");
+  const classes = cn("px-8 w-full max-xl:flex-col max-xl:items-center max-xl:justify-center", positionLeft ? "flex xl:flex-row-reverse" : "flex");
 
   return (
     <section className={classes}>
@@ -58,7 +58,7 @@ FeatureSection.Item = ({
           </Link>
         </div>
       </div>
-      <div className={cn("min-w-[35rem] relative w-full h-[25rem]", positionLeft ? "mr-24" : "ml-24")}>
+      <div className={cn("min-w-[35rem] relative w-full h-[25rem] max-xl:w-[48rem] max-xl:h-[32rem] max-xl:mt-10", positionLeft ? "xl:mr-24" : "xl:ml-24")}>
         <Image src={image} fill alt="" className="object-cover rounded-3xl" />
       </div>
     </section>

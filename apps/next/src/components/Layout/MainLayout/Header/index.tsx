@@ -58,12 +58,11 @@ export default function HomeHeader() {
         </nav>
       </div>
       {isMenuOpen && (
-        <div className="col-span-1 flex flex-col fixed justify-between py-8 top-0 right-0 z-50 overflow-hidden text-light_text dark:text-white dark:bg-DarkBackground bg-LightBackground g-red-500 px-5 min-w-[280px] max-w-[280px] border-l shadow-md shadow-[rgba(16, 24, 40, 1)] h-screen">
+        <div className="col-span-1 flex flex-col fixed justify-between py-8 top-0 right-0 z-50 text-light_text dark:text-white bg-LightBackground dark:bg-DarkBackground g-red-500 px-5 min-w-[280px] max-w-[280px] border-l shadow-md shadow-[rgba(16, 24, 40, 1)] h-screen lg:hidden">
           <span className="flex items-center flex-col w-full border-b border-gray-300 dark:border-gray-800 mb-8">
             <div className="w-full flex items-center justify-between pb-3">
-              <Link href="/" className={cn("flex items-center mr-6", !toggleMenu && "hidden")}>
+              <Link href="/" className={cn("flex items-center mr-6 w-[100px]", !toggleMenu && "hidden")}>
                 <DynamicLogo />
-                <div className="font-semibold ml-[10px]">Wordigo</div>
               </Link>
               <X className="p-1 dark:text-white" onClick={toggleMenu} />
             </div>
