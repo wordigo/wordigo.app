@@ -34,7 +34,7 @@ export default function ThemeMode() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="h-fit w-fit px-2 py-0">
+        <Button variant="outline" className="h-fit w-fit px-2 py-0.5">
           <span className="mr-2 text-xs">{getThemeIcon()}</span>
           <span className="rotate-0  scale-100 transition-all">{getThemeLabel()}</span>
         </Button>

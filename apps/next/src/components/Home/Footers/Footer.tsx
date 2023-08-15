@@ -1,13 +1,15 @@
 import { type FunctionComponent } from "react";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import Link from "next/link";
 import StaticLogo from "@/components/Logo/StaticLogo";
 import { GithubIcon, LinkedinIcon, TwitterIcon } from "lucide-react";
 import { useTranslation } from "next-i18next";
 
-import { Button } from "@wordigo/ui";
+import ThemeMode from "@/components/Layout/ThemeMode";
+import ChangeLanguage from "@/components/Layout/MainLayout/ChangeLanguage";
+
 import { cn } from "@wordigo/ui/lib/utils";
+import { FaGoogle } from "react-icons/fa";
 
 const DynamicLogo = dynamic(() => import("@/components/Logo/DynamicLogo"), {
   ssr: false,
@@ -15,12 +17,22 @@ const DynamicLogo = dynamic(() => import("@/components/Logo/DynamicLogo"), {
 
 export default function Footer({ className }: { className?: string }) {
   const { t } = useTranslation();
-
+  // flex - col - reverse
   return (
-    <div className={cn("relative mx-auto max-w-screen-8xl md:px-12 px-8 py-12 lg:py-24", className)}>
-      <div className="xl:gap-8 xl:grid xl:grid-cols-4 dark:border-white/5 border-t lg:pt-24 max-lg:pt-12 border-black/30 pb-8">
-        <div className="grid grid-cols-2 gap-8 xl:col-span-3">
-          <div className="md:grid md:gap-8 md:grid-cols-2">
+    <div className={cn("relative mx-auto max-w-screen-8xl md:px-12 px-8 max-xl:mb-4", className)}>
+      <div className="xl:justify-between xl:flex dark:border-white/5 border-t lg:pt-24 max-lg:pt-12 border-black/30 pb-8">
+        <div className="flex flex-col justify-between">
+          <div className="items-start flex flex-col">
+            <div className="max-w-[110px] mb-1">
+              <DynamicLogo />
+            </div>
+            <p className="text-center text-sm leading-loose md:text-left dark:text-white/50 text-black/50">
+              {t("footer.wordigo_description")}
+            </p>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-10 max-xl:mt-10 max-xl:mb-4">
+          <div className="md:grid md:gap-16 md:grid-cols-2">
             <div>
               <h3 className="font-semibold opacity-100 hover:opacity-80">
                 <Link href={"/"} passHref>
@@ -63,7 +75,7 @@ export default function Footer({ className }: { className?: string }) {
                 </ul>
               </ul>
             </div>
-            <div className="mt-12 md:mt-0">
+            <div>
               <Link href={"/dashboard"} className="font-semibold opacity-100 hover:opacity-80">
                 {t("navbar.dashboard")}
               </Link>
@@ -87,7 +99,7 @@ export default function Footer({ className }: { className?: string }) {
               </ul>
             </div>
           </div>
-          <div className="md:grid md:gap-8 md:grid-cols-2">
+          <div className="md:grid md:gap-16 md:grid-cols-2">
             <div>
               <h3 className="font-semibold opacity-100 hover:opacity-80">{t("footer.stay_updated")}</h3>
               <ul className="mt-4 space-y-2" role="list">
@@ -103,7 +115,7 @@ export default function Footer({ className }: { className?: string }) {
                 </li>
               </ul>
             </div>
-            <div className="mt-12 md:mt-0">
+            <div>
               <h3 className="font-semibold opacity-100 hover:opacity-80">{t("footer.socials")}</h3>
               <ul className="mt-4 space-y-2" role="list">
                 <li className="text-sm opacity-70 hover:opacity-100 hover:dark:opacity-100">
@@ -141,13 +153,12 @@ export default function Footer({ className }: { className?: string }) {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-between border-t pt-8">
-        <div className="items-center inline-flex w-[140px]">
-          <StaticLogo />
-          <div className="font-semibold ml-[10px]">WordigoS</div>
+      <div>
+        <div className="flex items-start space-x-2">
+          <ThemeMode />
+          <ChangeLanguage />
         </div>
-
-        <p className="text-center text-sm leading-loose md:text-left">
+        <p className="text-center text-sm leading-loose md:text-left dark:text-white/50 text-black/50 mt-1">
           {t("footer.copyright")}
           <Link href={"/"} target="_blank" rel="noreferrer" className="font-medium underline underline-offset-4 ml-1">
             Wordigo
