@@ -66,7 +66,12 @@ const WelcomePage = () => {
                       <FormItem className="flex flex-col gap-y-2">
                         <FormLabel>Target Language</FormLabel>
                         <FormControl>
-                          <LanguageSelector onSelect={field.onChange as never} defaultValue={field.value} providerLanguages />
+                          <LanguageSelector
+                            className="h-10 px-3 py-2"
+                            onSelect={field.onChange as never}
+                            defaultValue={field.value}
+                            providerLanguages
+                          />
                         </FormControl>
                         <FormDescription>
                           You can set the language in which the texts you will translate will be translated.
