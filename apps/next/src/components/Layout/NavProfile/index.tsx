@@ -20,7 +20,7 @@ import { cn } from "@wordigo/ui/lib/utils";
 import ChangeLanguage from "../MainLayout/ChangeLanguage";
 import ThemeMode from "../ThemeMode";
 
-const NavProfile = ({ variant }: { variant: "borgerMenu" }) => {
+const NavProfile = ({ variant }: { variant?: "borgerMenu" }) => {
   const { data } = useSession();
 
   const splittedText = data?.user?.name?.toUpperCase()?.split(" ");

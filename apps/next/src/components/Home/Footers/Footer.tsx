@@ -3,32 +3,20 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { GithubIcon, LinkedinIcon, TwitterIcon } from "lucide-react";
 import { useTranslation } from "next-i18next";
+import { cn } from "@wordigo/ui/lib/utils";
+import { Button } from "@wordigo/ui";
 
 const DynamicLogo = dynamic(() => import("@/components/Logo/DynamicLogo"), {
   ssr: false,
 }) as FunctionComponent;
 
-export default function Footer() {
+export default function Footer({ className }: { className?: string }) {
   const { t } = useTranslation();
 
   return (
-    <div className="relative mx-auto max-w-screen-8xl md:px-12 px-8 py-12 lg:py-24">
-      <div className="xl:gap-8 xl:grid xl:grid-cols-4 dark:border-white/5 border-t lg:pt-24 border-black/30 ">
-        <div className="dark:text-white text-light_text">
-          <div className="items-center inline-flex w-[140px]">
-            <DynamicLogo />
-            <div className="font-semibold ml-[10px]">Wordigo</div>
-          </div>
-
-          <p className="text-center text-sm leading-loose md:text-left dark:text-gray-400 text-light_text">
-            {t("footer.copyright")}
-            <Link href={"/"} target="_blank" rel="noreferrer" className="font-medium underline underline-offset-4 ml-1">
-              Wordigo
-            </Link>
-            .
-          </p>
-        </div>
-        <div className="grid grid-cols-2 gap-8 xl:col-span-3">
+    <div className={cn("relative mx-auto max-w-screen-8xl md:px-12 px-8 py-12 lg:py-24", className)}>
+      <div className="xl:gap-8 xl:grid xl:grid-cols-3 dark:border-white/5 border-t lg:pt-24 max-lg:pt-12 border-black/30 pb-8">
+        <div className="grid grid-cols-3 gap-8 xl:col-span-3 max-lg:grid-cols-1">
           <div className="md:grid md:gap-8 md:grid-cols-2">
             <div>
               <h3 className="font-semibold text-light_text dark:text-white hover:dark:opacity-80">
@@ -148,7 +136,30 @@ export default function Footer() {
               </ul>
             </div>
           </div>
+
+          <Button className="flex items-center border rounded-lg w-fit h-fit py-2 px-3">
+            <DynamicLogo />
+            <span className="ml-3 text-start">
+              <p className="text-xs">Get It On</p>
+              <h1 className="text-sm">Add Extensition</h1>
+            </span>
+          </Button>
         </div>
+
+      </div>
+      <div className="dark:text-white text-light_text flex items-center justify-between dark:border-white/5 border-t pt-8">
+        <div className="items-center inline-flex w-[140px]">
+          <DynamicLogo />
+          <div className="font-semibold ml-[10px]">Wordigo</div>
+        </div>
+
+        <p className="text-center text-sm leading-loose md:text-left dark:text-gray-400 text-light_text">
+          {t("footer.copyright")}
+          <Link href={"/"} target="_blank" rel="noreferrer" className="font-medium underline underline-offset-4 ml-1">
+            Wordigo
+          </Link>
+          .
+        </p>
       </div>
     </div>
   );

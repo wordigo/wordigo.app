@@ -24,7 +24,7 @@ export default function HomeHeader() {
   return (
     <>
       <div className="w-full">
-        <nav className="flex max-lg:px-3 items-center justify-between w-full m-auto py-[1.125rem] px-20">
+        <nav className="flex items-center justify-between w-full m-auto py-[1.125rem] px-20">
           <div className="flex items-center">
             <Link href="/" className={cn("flex items-center mr-6", !toggleMenu && "hidden")}>
               <DynamicLogo />
@@ -38,7 +38,7 @@ export default function HomeHeader() {
             {status === "loading" ? (
               <NavProfile.Loader />
             ) : status === "authenticated" ? (
-              <NavProfile />
+                <NavProfile />
             ) : (
               <span>
                 <Link href="/auth/signin" className={cn("bg-transparent mr-4", buttonVariants({ variant: "outline" }))}>
@@ -52,7 +52,7 @@ export default function HomeHeader() {
           </div>
           <Button
             onClick={toggleMenu}
-            className={cn("lg:hidden text-black bg-transparent bg-white", isMenuOpen === true && "hidden")}
+            className="lg:hidden text-black bg-transparent bg-white"
             variant="outline"
           >
             Menu
@@ -81,7 +81,7 @@ export default function HomeHeader() {
             ) : status === "authenticated" ? (
               <NavProfile variant="borgerMenu" />
             ) : (
-              <span>
+              <span className="w-full flex items-center justify-center">
                 <Link href="/auth/signin" className={cn("bg-transparent mr-4 text-white", buttonVariants({ variant: "outline" }))}>
                   {t("navbar.signin")}
                 </Link>
