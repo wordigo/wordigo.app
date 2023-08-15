@@ -1,15 +1,14 @@
 import { type FunctionComponent } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import ChangeLanguage from "@/components/Layout/MainLayout/ChangeLanguage";
+import ThemeMode from "@/components/Layout/ThemeMode";
 import StaticLogo from "@/components/Logo/StaticLogo";
 import { GithubIcon, LinkedinIcon, TwitterIcon } from "lucide-react";
 import { useTranslation } from "next-i18next";
-
-import ThemeMode from "@/components/Layout/ThemeMode";
-import ChangeLanguage from "@/components/Layout/MainLayout/ChangeLanguage";
+import { FaGoogle } from "react-icons/fa";
 
 import { cn } from "@wordigo/ui/lib/utils";
-import { FaGoogle } from "react-icons/fa";
 
 const DynamicLogo = dynamic(() => import("@/components/Logo/DynamicLogo"), {
   ssr: false,
@@ -19,16 +18,20 @@ export default function Footer({ className }: { className?: string }) {
   const { t } = useTranslation();
   // flex - col - reverse
   return (
-    <div className={cn("relative mx-auto max-w-screen-8xl md:px-12 px-8 max-xl:mb-4", className)}>
+    <div className={cn("relative mx-auto max-w-screen-8xl md:px-12 px-8 max-xl:mb-4 mb-8", className)}>
       <div className="xl:justify-between xl:flex dark:border-white/5 border-t lg:pt-24 max-lg:pt-12 border-black/30 pb-8">
         <div className="flex flex-col justify-between">
           <div className="items-start flex flex-col">
             <div className="max-w-[110px] mb-1">
               <DynamicLogo />
             </div>
-            <p className="text-center text-sm leading-loose md:text-left dark:text-white/50 text-black/50">
+            <p className="text-center text-xs leading-loose md:text-left dark:text-white/50 text-black/50 max-w-md">
               {t("footer.wordigo_description")}
             </p>
+            <div className="flex items-start space-x-4 mt-2">
+              <ChangeLanguage />
+              <ThemeMode />
+            </div>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-10 max-xl:mt-10 max-xl:mb-4">
@@ -53,7 +56,7 @@ export default function Footer({ className }: { className?: string }) {
                       <Link href="/library" passHref>
                         {t("navbar.library")}
                       </Link>
-                      <span className="text-xs font-medium bg-vulcan-800 inline-flex items-center ml-4 px-3 py-0.5 rounded-full text-white dark:bg-[#3A3E90] bg-[#9272F6]">
+                      <span className="text-xs font-medium bg-vulcan-800 inline-flex items-center ml-4 px-3 py-0.5 rounded-full text-white dark:text-white bg-primary dark:bg-primary-foreground">
                         {t("general.new")}
                       </span>
                     </p>
@@ -153,11 +156,7 @@ export default function Footer({ className }: { className?: string }) {
           </div>
         </div>
       </div>
-      <div>
-        <div className="flex items-start space-x-2">
-          <ThemeMode />
-          <ChangeLanguage />
-        </div>
+      <div className="flex gap-y-2 flex-col">
         <p className="text-center text-sm leading-loose md:text-left dark:text-white/50 text-black/50 mt-1">
           {t("footer.copyright")}
           <Link href={"/"} target="_blank" rel="noreferrer" className="font-medium underline underline-offset-4 ml-1">
