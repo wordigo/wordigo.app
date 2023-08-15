@@ -10,3 +10,27 @@
   background: #003db2;
   filter: blur(30px);
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    position: absolute ;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+    position: absolute ;
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+    position: absolute ;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
