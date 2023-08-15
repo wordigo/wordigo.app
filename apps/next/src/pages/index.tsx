@@ -17,7 +17,10 @@ export default function index({ _nextI18Next }: PageProps) {
 
   return (
     <MainLayout>
-      <NextSeo title={_nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale]?.common.seo.home_title} />
+      <NextSeo
+        title={_nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale]?.common.seo.home_title}
+        titleTemplate={_nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale]?.common.seo.home_title}
+      />
       <NewHeroSection />
       <FeatureBanner />
       <FeatureSections />

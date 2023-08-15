@@ -1,6 +1,23 @@
 import { WORDIGO_JWT_TOKEN_COOKIE } from "@wordigo/common"
-import { Button, ToastAction, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, useToast } from "@wordigo/ui"
-import { RotateCw } from "lucide-react"
+import {
+  Button,
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  ToastAction,
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+  useToast
+} from "@wordigo/ui"
+import { ChevronDown, RotateCw } from "lucide-react"
 import { Fragment, useEffect } from "react"
 import { useMutation } from "react-query"
 
@@ -43,30 +60,38 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
 
   return (
     <TooltipProvider delayDuration={100}>
-      <Tooltip>
-        <TooltipTrigger disabled={!hasToken || addIsLoading} asChild>
-          <Button
-            className="!pointer-events-auto disabled:!opacity-100"
-            disabled={!hasToken || addIsLoading}
-            onClick={handleAddLibrary}
-            variant="outline"
-            size="sm">
-            {addIsLoading ? (
-              <Fragment>
-                <RotateCw className="mr-2 h-4 w-4 animate-spin" />
-                Please wait
-              </Fragment>
-            ) : (
-              "Save to library"
-            )}
-          </Button>
-        </TooltipTrigger>
-        {!hasToken && (
-          <TooltipContent className="!py-0.5">
-            <p>you need to login.</p>
-          </TooltipContent>
-        )}
-      </Tooltip>
+      <HoverCard openDelay={100}>
+        <Tooltip>
+          <HoverCardTrigger asChild>
+            <TooltipTrigger disabled={!hasToken || addIsLoading} asChild>
+              <Button
+                className="!pointer-events-auto disabled:!opacity-100 !h-8 flex items-center justify-between gap-x-2"
+                disabled={!hasToken || addIsLoading}
+                onClick={handleAddLibrary}
+                variant="default"
+                size="sm">
+                {addIsLoading ? (
+                  <Fragment>
+                    <RotateCw className="mr-2 h-4 w-4 animate-spin" />
+                    Please wait
+                  </Fragment>
+                ) : (
+                  <Fragment>
+                    Save to library
+                    <ChevronDown size={16} />
+                  </Fragment>
+                )}
+              </Button>
+            </TooltipTrigger>
+          </HoverCardTrigger>
+          <HoverCardContent>test</HoverCardContent>
+          {!hasToken && (
+            <TooltipContent className="!py-0.5">
+              <p>you need to login.</p>
+            </TooltipContent>
+          )}
+        </Tooltip>
+      </HoverCard>
     </TooltipProvider>
   )
 }

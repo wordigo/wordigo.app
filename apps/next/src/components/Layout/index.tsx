@@ -13,7 +13,7 @@ NProgress.configure({
   minimum: 0.3,
   easing: "ease",
   speed: 800,
-  showSpinner: false,
+  showSpinner: true,
 });
 
 export default function RootLayout({ children }: PropsWithChildren) {
