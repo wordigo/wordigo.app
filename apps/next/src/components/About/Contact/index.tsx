@@ -9,12 +9,12 @@ const ContactSection = () => {
   const contactList = useContactsList();
 
   return (
-    <section className="px-20 py-24 w-full flex flex-col items-center">
-      <span className="px-32 flex flex-col">
-        <h2 className="text-4xl font-semibold text-center">{t("contact.title")}</h2>
-        <p className="mt-6 text-xl text-muted-foreground text-center">{t("contact.subtitle")}</p>
+    <section className="px-20 py-24 w-full flex flex-col items-center max-lg:px-9 max-lg:py-12 max-md:px-0">
+      <span className="px-32 flex flex-col max-lg:px-20 max-md:px-4">
+        <h2 className="text-4xl font-semibold text-center max-lg:text-3xl">{t("contact.title")}</h2>
+        <p className="mt-6 text-xl text-muted-foreground text-center max-lg:text-lg">{t("contact.subtitle")}</p>
       </span>
-      <div className="grid grid-cols-3 gap-x-8 mt-24 w-full px-8">
+      <div className="grid grid-cols-3 gap-x-8 mt-24 w-full px-8 max-md:grid-cols-1 max-lg:grid-cols-2">
         {contactList.map((item) => (
           <ContactSection.Item key={item.title} {...item} />
         ))}

@@ -3,10 +3,8 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import ChangeLanguage from "@/components/Layout/MainLayout/ChangeLanguage";
 import ThemeMode from "@/components/Layout/ThemeMode";
-import StaticLogo from "@/components/Logo/StaticLogo";
 import { GithubIcon, LinkedinIcon, TwitterIcon } from "lucide-react";
 import { useTranslation } from "next-i18next";
-import { FaGoogle } from "react-icons/fa";
 
 import { cn } from "@wordigo/ui/lib/utils";
 
