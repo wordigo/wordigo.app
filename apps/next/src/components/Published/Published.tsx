@@ -25,10 +25,10 @@ export default function Published({ items }: { items: IPublished[] }) {
         next={fetchMoreData}
         hasMore={hasMore}
         loader={<h4>Loading...</h4>}
-        className="grid grid-cols-3 gap-x-8 gap-y-16 mt-24 max-lg:mt-10 w-full max-xl:grid-cols-2 max-xl:flex max-xl:flex-wrap max-xl:justify-center"
+        className="grid grid-cols-3 gap-x-8 gap-y-16 mt-24 max-xl:mt-10 w-full max-xl:justify-center max-xl:flex max-xl:flex-wrap max-xl:px-2 max-xl:grid-cols-2"
       >
         {data.map((item: IPublished) => (
-          <div key={item.id} className="min-w-[352px] max-w-[405px]" onClick={() => router.push(`/library/${item.id}`)}>
+          <div key={item.id} className="max-md:min-w-[325px] max-md:max-w-[405px] max-w-[405px]" onClick={() => router.push(`/library/${item.id}`)}>
             {item.user.name && (
               <div className="flex w-full flex-col justify-between h-full">
                 <div>
