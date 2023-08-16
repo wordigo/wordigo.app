@@ -11,15 +11,15 @@ const FeatureSection = () => {
   const { t } = useTranslation();
 
   return (
-    <section id="features" className="px-20 py-24 max-md:px-4 max-lg:py-16">
-      <div className="flex flex-col items-center">
+    <section id="features" className="px-20 py-24 max-md:px-0 max-lg:py-16">
+      <div className="flex flex-col items-center max-md:px-4">
         <Badge className="text-sm font-medium px-2.5 py-1 w-fit" variant="outline">
           {t("features.badge")}
         </Badge>
         <h2 className="text-4xl font-semibold mt-3 max-lg:text-2xl">{t("features.heading")}</h2>
         <p className="text-xl mt-5 text-muted-foreground max-lg:text-lg max-lg:mt-4">{t("features.description")}</p>
       </div>
-      <div className="mt-24 grid gap-y-24">
+      <div className="mt-24 grid gap-y-24 max-lg:mt-12 max-lg:gap-y-12">
         {featuresConstants.map((item) => (
           <FeatureSection.Item key={item.title} {...item} />
         ))}

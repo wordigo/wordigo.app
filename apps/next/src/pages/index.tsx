@@ -24,11 +24,11 @@ export default function index({ _nextI18Next }: PageProps) {
       <NewHeroSection />
       <FeatureBanner />
       <FeatureSections />
-      {/*<Comment />
-      <Pricing />*/}
+      <Comment />
+      <Pricing />
       <FAQSection />
       <Newsletter />
-      {/*<Footers /> */}
+      <Footers />
     </MainLayout>
   );
 }

@@ -17,17 +17,17 @@ const DynamicLogo = dynamic(() => import("@/components/Logo/DynamicLogo"), {
 export default function Footer({ className }: { className?: string }) {
   const { t } = useTranslation();
   return (
-    <div className={cn("relative mx-auto max-w-screen-8xl md:px-12 px-8 max-xl:mb-4 mb-8", className)}>
+    <div className={cn("relative mx-auto max-w-screen-8xl max-md:px-4 px-8 max-xl:mb-4 mb-8", className)}>
       <div className="xl:justify-between xl:flex dark:border-white/5 border-t lg:pt-24 max-lg:pt-12 border-black/30 pb-8">
         <div className="flex flex-col justify-between">
           <div className="items-start flex flex-col">
-            <div className="max-w-[110px] mb-1">
+            <div className="max-w-[110px]">
               <DynamicLogo />
             </div>
-            <p className="text-center text-xs leading-loose md:text-left dark:text-white/50 text-black/50 max-w-md">
+            <p className="text-left text-xs leading-loose md:text-left dark:text-white/50 text-black/50 max-w-md">
               {t("footer.wordigo_description")}
             </p>
-            <div className="flex items-start space-x-2 mt-2">
+            <div className="flex items-start space-x-2 mt-4">
               <ChangeLanguage />
               <ThemeMode />
             </div>
@@ -156,7 +156,7 @@ export default function Footer({ className }: { className?: string }) {
         </div>
       </div>
       <div className="flex gap-y-2 flex-col">
-        <p className="text-center text-sm leading-loose md:text-left dark:text-white/50 text-black/50 mt-1">
+        <p className="text-left text-sm leading-loose md:text-left dark:text-white/50 text-black/50 mt-1">
           {t("footer.copyright")}
           <Link href={"/"} target="_blank" rel="noreferrer" className="font-medium underline underline-offset-4 ml-1">
             Wordigo
