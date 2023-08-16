@@ -28,7 +28,7 @@ function NewHeroSection() {
           <Button size="lg">{t("hero.get_started")}</Button>
         </div>
       </section>
-      <section className="relative aspect-square lg:min-w-[35rem] xl:max-w-[40rem] xl:max-h-[35rem] md:w-[30rem] md:h-[24rem] max-md:w-[340px] max-md:h-[240px] max-lg:mt-12 mt-0">
+      <section className="relative aspect-square lg:min-w-[30rem] xl:max-w-[40rem] xl:max-h-[35rem] md:w-[30rem] md:h-[24rem] max-md:w-[340px] max-md:h-[240px] max-lg:mt-12 mt-0">
         <Image src="/images/extension.png" fill alt="" className="rounded-2xl object-cover" />
       </section>
     </div>
