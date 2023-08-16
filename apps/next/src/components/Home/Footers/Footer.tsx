@@ -16,7 +16,6 @@ const DynamicLogo = dynamic(() => import("@/components/Logo/DynamicLogo"), {
 
 export default function Footer({ className }: { className?: string }) {
   const { t } = useTranslation();
-  // flex - col - reverse
   return (
     <div className={cn("relative mx-auto max-w-screen-8xl md:px-12 px-8 max-xl:mb-4 mb-8", className)}>
       <div className="xl:justify-between xl:flex dark:border-white/5 border-t lg:pt-24 max-lg:pt-12 border-black/30 pb-8">
@@ -28,7 +27,7 @@ export default function Footer({ className }: { className?: string }) {
             <p className="text-center text-xs leading-loose md:text-left dark:text-white/50 text-black/50 max-w-md">
               {t("footer.wordigo_description")}
             </p>
-            <div className="flex items-start space-x-4 mt-2">
+            <div className="flex items-start space-x-2 mt-2">
               <ChangeLanguage />
               <ThemeMode />
             </div>

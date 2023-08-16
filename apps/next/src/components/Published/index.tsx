@@ -8,7 +8,7 @@ export default function index() {
   const uniqueId = `${date}_${time}`;
 
   return (
-    <main className="max-w-[1320px] m-auto mt-10">
+    <main className="max-w-[1320px] m-auto">
       <main className="flex flex-wrap gap-4">
         {PublishedConstan.map((item: IPublished) => (
           <Published key={uniqueId} item={item} />

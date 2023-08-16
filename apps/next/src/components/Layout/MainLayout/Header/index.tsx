@@ -26,7 +26,7 @@ export default function HomeHeader() {
   return (
     <>
       <div className="w-full">
-        <nav className="flex items-center justify-between w-full m-auto py-[1.125rem] px-20">
+        <nav className="flex items-center justify-between w-full m-auto py-[1.125rem] px-20 max-md:px-4">
           <div className="flex items-center">
             <Link href="/" className={cn("flex items-center mr-6", !toggleMenu && "hidden")}>
               <StaticLogo />

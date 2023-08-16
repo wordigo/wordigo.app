@@ -50,9 +50,9 @@ export function DataTable({ data }: DataTableProps) {
   });
 
   return (
-    <section className="flex flex-col w-full py-24 px-20">
-      <h1 className="text-5xl font-semibold text-center">Learn from published dictionaries</h1>
-      <p className="text-xl mt-6 text-muted-foreground text-center">
+    <section className="flex flex-col w-full py-24 max-xl:py-16 px-20">
+      <h1 className="text-5xl font-semibold text-center max-xl:text-4xl max-md:text-2xl">Learn from published dictionaries</h1>
+      <p className="text-xl mt-6 text-muted-foreground text-center max-xl:text-lg max-xl:mt-4 max-md:text-base">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio ipsam possimus, facere fuga ratione aut.
       </p>
       <DataTableToolbar table={table} />
