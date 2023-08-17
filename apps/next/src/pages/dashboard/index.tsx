@@ -108,9 +108,6 @@ export default function DashboardPage() {
           </Card>
         </div>
       </DashboardShell>
-      <div className="max- bg-blue-400">
-        TEST
-      </div>
     </DashboardLayout>
   );
 }

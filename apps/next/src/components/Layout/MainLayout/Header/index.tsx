@@ -79,7 +79,7 @@ export default function HomeHeader() {
               <NavProfile variant="borgerMenu" />
             ) : (
               <span className="w-full flex items-center justify-center">
-                <Link href="/auth/signin" className={cn("bg-transparent mr-4 text-white", buttonVariants({ variant: "outline" }))}>
+                <Link href="/auth/signin" className={cn("bg-transparent mr-4 text-black dark:text-white", buttonVariants({ variant: "outline" }))}>
                   {t("navbar.signin")}
                 </Link>
                 <Link href="/auth/signup" className={cn(buttonVariants({ variant: "default" }))}>
