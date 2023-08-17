@@ -9,7 +9,7 @@ export const useTargetElement = () => {
 
     if (hasTarget) {
       const hasTargetElement = document.getElementById(hasTarget);
-      hasTargetElement.scrollIntoView({
+      hasTargetElement?.scrollIntoView({
         behavior: "smooth",
         block: "start",
         inline: "nearest",

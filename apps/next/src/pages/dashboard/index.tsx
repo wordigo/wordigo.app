@@ -1,5 +1,4 @@
 import DashboardLayout from "@/components/Layout/Dashboard";
-import { DashboardHeader } from "@/components/Layout/Dashboard/Header";
 import DashboardHeaders from "@/components/Layout/Dashboard/Headers";
 import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -108,9 +107,6 @@ export default function DashboardPage() {
           </Card>
         </div>
       </DashboardShell>
-      <div className="max- bg-blue-400">
-        TEST
-      </div>
     </DashboardLayout>
   );
 }

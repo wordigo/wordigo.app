@@ -17,7 +17,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
   return (
     <main className="flex items-center">
-      <div className="min-w-[280px] max-w-[280px]">
+      <div className="md:min-w-[280px] md:max-w-[280px]">
         <Sidebar />
       </div>
       <section className="py-8 px-8 max-w-[92rem] w-full m-auto overflow-auto">

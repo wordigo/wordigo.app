@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
+import DashboardNavProfil from "@/components/Layout/NavProfile/Navprofile.dashboard";
 import { AnimatePresence } from "framer-motion";
 import { CircleDot } from "lucide-react";
 
@@ -15,10 +16,13 @@ const DashboardNav = () => {
 
   return (
     <AnimatePresence>
-      <nav className="grid items-start">
+      <nav className="flex md:flex-col w-full justify-between">
         {navigations.map((item, index) => (
           <DashboardNav.Item {...item} key={index} />
         ))}
+        <div className="block md:hidden">
+          <DashboardNavProfil />
+        </div>
       </nav>
     </AnimatePresence>
   );
@@ -44,7 +48,7 @@ DashboardNav.Item = (item: SidebarNavItem, index: number) => {
         <span className="flex items-center w-full">
           <div className="flex items-center">
             {item.icon}
-            <span className="ml-3">{item.title}</span>
+            <span className="ml-3 hidden md:block">{item.title}</span>
           </div>
         </span>
       </button>
@@ -56,11 +60,11 @@ DashboardNav.Item = (item: SidebarNavItem, index: number) => {
 DashboardNav.ChildItem = ({ navs, trigger, loading }: SidebarChildNav) => {
   return (
     <Fragment>
-      <div tabIndex={50} className="text-sm z-50 absolute font-medium right-3 top-3 flex items-center justify-center">
+      <div tabIndex={50} className="text-sm z-50 hidden md:flex absolute font-medium right-3 top-3 items-center justify-center">
         {trigger}
       </div>
       {!loading && (
-        <div className="flex flex-col">
+        <div className="flex md:flex-col">
           {navs?.map((item, index) => (
             <Link
               href={item.value ? "/dashboard/dictionaries/" + item.value : item.href}

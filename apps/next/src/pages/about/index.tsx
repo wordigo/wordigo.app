@@ -1,7 +1,7 @@
 import About from "@/components/About";
 import Contact from "@/components/About/Contact";
 import Team from "@/components/About/Team/team";
-import Footer from "@/components/Home/Footers/Footer";
+import Footer from "@/components/Home/Footers";
 import Newsletter from "@/components/Home/Newsletter";
 import MainLayout from "@/components/Layout/MainLayout";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
