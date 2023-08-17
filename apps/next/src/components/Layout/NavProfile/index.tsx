@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 
 import {
@@ -13,7 +13,6 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-  Skeleton,
 } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
@@ -21,10 +20,13 @@ import ChangeLanguage from "../MainLayout/ChangeLanguage";
 import ThemeMode from "../ThemeMode";
 
 const NavProfile = ({ variant }: { variant?: "borgerMenu" }) => {
+  const router = useRouter();
   const { data } = useSession();
 
   const splittedText = data?.user?.name?.toUpperCase()?.split(" ");
   const computedName = (splittedText?.[0]?.[0] || "") + (splittedText?.[1]?.[0] || "");
+
+  const handleChangePage = (path: string) => router.push(path);
 
   return (
     <DropdownMenu>
@@ -51,17 +53,17 @@ const NavProfile = ({ variant }: { variant?: "borgerMenu" }) => {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem className="px-[10px]">
+          <DropdownMenuItem onClick={() => handleChangePage("/dashboard")} className="px-[10px] cursor-pointer">
             {/* <LayoutDashboard className="w-4 mr-2" /> */}
-            <Link href="/dashboard">Dashboard</Link>
+            <span>Dashboard</span>
           </DropdownMenuItem>
-          <DropdownMenuItem className="px-[10px]">
+          <DropdownMenuItem onClick={() => handleChangePage("/dashboard/dictionaries")} className="px-[10px] cursor-pointer">
             {/* <BookMarked className="w-4 mr-2" /> */}
-            <Link href="/dashboard/dictionaries">Dictionaries</Link>
+            <span>Dictionaries</span>
           </DropdownMenuItem>
-          <DropdownMenuItem className="px-[10px]">
+          <DropdownMenuItem onClick={() => handleChangePage("/dashboard/settings")} className="px-[10px] cursor-pointer">
             {/* <Settings className="w-4 mr-2" /> */}
-            <Link href="/dashboard/settings">Settings</Link>
+            <span>Settings</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
@@ -82,15 +84,6 @@ const NavProfile = ({ variant }: { variant?: "borgerMenu" }) => {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
-};
-
-NavProfile.Loader = () => {
-  return (
-    <div className="flex items-end space-x-4 flex-col gap-y-2">
-      <Skeleton className="h-4 w-[150px]" />
-      <Skeleton className="h-4 w-[100px]" />
-    </div>
   );
 };
 

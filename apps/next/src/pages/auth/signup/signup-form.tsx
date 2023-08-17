@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem, FormMessage, Input, Label, useToast } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
-type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
+export type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
 
 const AuthSıgnUpForm = ({ className, ...props }: UserAuthFormProps) => {
   const { t } = useTranslation();

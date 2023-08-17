@@ -1,21 +1,11 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi } from "@reduxjs/toolkit/query/react";
 import { type IResponse } from "types/global";
 
-import { type RootState } from "..";
+import { defaultBaseQuery } from "../baseQuery";
 
-const baseQuery = fetchBaseQuery({
-  baseUrl: process.env.NEXT_PUBLIC_WORDIGO_BACKEND_URL,
-  prepareHeaders: (headers, { getState }) => {
-    const token = (getState() as RootState).auth.token;
-    if (token) {
-      headers.set("authorization", `Bearer ${token}`);
-    }
-    return headers;
-  },
-});
 export const wordApi = createApi({
   reducerPath: "wordApi",
-  baseQuery,
+  baseQuery: defaultBaseQuery,
   endpoints: (builder) => ({
     getWordData: builder.mutation<IResponse, string | number>({
       query: (slug) => ({

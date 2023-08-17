@@ -6,6 +6,8 @@ import NProgress from "nprogress";
 
 import "nprogress/nprogress.css";
 import { Fragment, type PropsWithChildren, useEffect, useState } from "react";
+import { setLanguage } from "@/store/common/slice";
+import { useTranslation } from "next-i18next";
 
 import PageLoader from "../UI/PageLoader";
 
@@ -20,6 +22,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
   const session = useSession();
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     const start = () => {
@@ -40,6 +43,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
       Router.events.off("routeChangeError", end);
     };
   }, []);
+
+  useEffect(() => {
+    dispatch(setLanguage(i18n.language));
+  }, [i18n.language]);
 
   useEffect(() => {
     if (session.status === "authenticated") dispatch(setToken(session?.data?.user?.accessToken));
