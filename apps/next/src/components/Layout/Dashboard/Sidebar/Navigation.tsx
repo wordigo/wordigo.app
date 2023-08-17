@@ -9,6 +9,7 @@ import { CircleDot } from "lucide-react";
 import { Skeleton } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
+import NavProfile from "../../NavProfile";
 import useSidebarNavigations, { type SidebarChildNav, type SidebarNavItem } from "./navigations.constants";
 
 const DashboardNav = () => {
@@ -21,7 +22,7 @@ const DashboardNav = () => {
           <DashboardNav.Item {...item} key={index} />
         ))}
         <div className="block md:hidden">
-          <DashboardNavProfil />
+          <NavProfile />
         </div>
       </nav>
     </AnimatePresence>

@@ -1,23 +1,14 @@
-import { type AuthRegisterValues } from "@/pages/auth/signup/signup-form";
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { type UserAuthFormProps } from "@/pages/auth/signup/signup-form";
+import { createApi } from "@reduxjs/toolkit/query/react";
 import { type IResponse } from "types/global";
 
-import { type RootState } from "..";
+import { defaultBaseQuery } from "../baseQuery";
 
 export const authApi = createApi({
   reducerPath: "authApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: process.env.NEXT_PUBLIC_WORDIGO_BACKEND_URL,
-    prepareHeaders: (headers, { getState }) => {
-      const token = (getState() as RootState).auth.token;
-      if (token) {
-        headers.set("Authorization", `Bearer ${token}`);
-      }
-      return headers;
-    },
-  }),
+  baseQuery: defaultBaseQuery,
   endpoints: (builder) => ({
-    register: builder.mutation<IResponse, AuthRegisterValues>({
+    register: builder.mutation<IResponse, UserAuthFormProps>({
       query: (credentials) => ({
         url: "/auth/signUp",
         body: credentials,
