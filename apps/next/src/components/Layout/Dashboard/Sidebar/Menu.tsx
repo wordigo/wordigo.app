@@ -2,7 +2,6 @@ import Link from "next/link";
 import UnderNavigation from "@/components/Layout/Dashboard/Sidebar/Under.Navigation";
 import DashboardNavProfil from "@/components/Layout/NavProfile/Navprofile.dashboard";
 import DynamicLogo from "@/components/Logo/DynamicLogo";
-
 import DashboardNav from "./Navigation";
 
 export default function BurgerMenu() {
@@ -11,7 +10,7 @@ export default function BurgerMenu() {
       <div>
         <div className="hidden md:flex items-center justify-between w-full mb-6">
           <div className="font-bold text-[18px] flex items-center select-none px-3 pt-3">
-            <Link href="/" className="flex items-center justify-center gap-x-2 max-w-[128px] min-w-[128px] min-h-[34px]">
+            <Link href="/" className="flex items-center justify-center max-w-[128px] min-w-[128px] min-h-[34px]">
               <DynamicLogo size={128} />
             </Link>
           </div>

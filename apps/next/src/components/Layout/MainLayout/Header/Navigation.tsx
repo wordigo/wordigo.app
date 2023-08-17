@@ -1,40 +1,40 @@
 import Link from "next/link";
-import { useTranslation } from "next-i18next";
-
 import { cn } from "@wordigo/ui/lib/utils";
+import homeSidebarNavigations from "./navigation.constant"
 
 const Navigation = ({ variant }: { variant?: "borgerMenu" }) => {
-  const { t } = useTranslation();
-
-  const classes = cn(variant === "borgerMenu" ? "flex-col flex" : "flex items-center gap-6 mb-[2px]");
-  const classes_hover = cn(variant === "borgerMenu" ? "py-4 hover:text-foreground text-muted-foreground" : "");
+  const classes = cn(" w-full", variant === "borgerMenu" ? "flex-col flex" : "flex items-center");
 
   return (
-    <ul className="flex items-center font-sm mt-1">
+    <ul className="flex items-center font-sm mt-1  w-full">
       <li className={cn(classes)}>
-        <Link
-          href="/#features"
-          passHref
-          className={cn("transition-colors hover:text-foreground text-muted-foreground text-sm font-medium", classes_hover)}
-        >
-          {t("navbar.features")}
-        </Link>
-        <Link
-          href="/library"
-          passHref
-          className={cn("transition-colors hover:text-foreground text-muted-foreground text-sm font-medium", classes_hover)}
-        >
-          {t("navbar.library")}
-        </Link>
-        <Link href="/#pricing" className={cn("transition-colors hover:text-foreground text-muted-foreground text-sm font-medium", classes_hover)}>
-          {t("navbar.pricing")}
-        </Link>
-        <Link href="/about" className={cn("transition-colors hover:text-foreground text-muted-foreground text-sm font-medium", classes_hover)}>
-          {t("navbar.about")}
-        </Link>
+        <Navigation.Item variant={variant} />
       </li>
     </ul>
   );
 };
+
+Navigation.Item = ({ variant }: { variant: string }) => {
+  const navigations = homeSidebarNavigations();
+
+  const classes_hover = cn(variant === "borgerMenu" ? "hover:text-foreground text-muted-foreground" : "");
+
+  return (
+    <>
+      {navigations.map((item, index) => [
+        <div key={index} className={cn("flex items-center w-full transition-colors text-muted-foreground text-sm hover:text-accent-foreground font-medium group relative", variant === "borgerMenu" && "p-3  rounded-[6px] hover:bg-[#F8FAFC] dark:hover:bg-[#101929] mb-1")}>
+          {item.icon}
+          <Link
+            href="/#features"
+            passHref
+            className={cn(classes_hover)}
+          >
+            {item.title}
+          </Link>
+        </div>
+      ])}
+    </>
+  )
+}
 
 export default Navigation;
