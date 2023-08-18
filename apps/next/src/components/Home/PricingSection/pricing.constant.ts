@@ -19,16 +19,13 @@ const Prices: Price[] = [
     features: [
       "Access to all basic features",
       "Access to all basic features",
-      "Access to all basic features",
-      "Access to all basic features",
-      "Access to all basic features",
     ],
   },
   {
-    Icon: Star,
-    planName: "Business",
+    Icon: Flame,
+    planName: "Pro",
     popular: true,
-    price: "$10/mth",
+    price: "$15/mth",
     priceDescription: "This description for pro plan.",
     features: [
       "Access to all basic features",
@@ -39,15 +36,12 @@ const Prices: Price[] = [
     ],
   },
   {
-    Icon: Flame,
-    planName: "Pro",
+    Icon: Star,
+    planName: "Business",
     popular: false,
-    price: "$15/mth",
+    price: "$10/mth",
     priceDescription: "This description for business plan.",
     features: [
-      "Access to all basic features",
-      "Access to all basic features",
-      "Access to all basic features",
       "Access to all basic features",
       "Access to all basic features",
     ],

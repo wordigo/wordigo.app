@@ -10,9 +10,9 @@ const Pricing = () => {
 
   return (
     <section id="pricing" className="px-20 py-24 flex flex-col items-center max-lg:py-16 max-md:px-4">
-      <h2 className="text-5xl font-semibold text-center">{t("pricing.heading")}</h2>
-      <p className="text-xl mt-6 text-muted-foreground">{t("pricing.description")}</p>
-      <div className="mt-24 grid grid-cols-3 gap-x-8 w-full max-lg:items-center max-lg:justify-center max-lg:grid-cols-1 max-lg:space-y-12 max-lg:w-fit">
+      <h2 className="text-5xl font-semibold text-center max-lg:text-4xl">{t("pricing.heading")}</h2>
+      <p className="text-xl mt-6 text-muted-foreground max-lg:mt-5">{t("pricing.description")}</p>
+      <div className="mt-24 grid grid-cols-3 gap-x-8 w-full max-lg:items-center max-lg:justify-center max-lg:grid-cols-1 max-lg:space-y-12 max-lg:w-fit max-lg:mt-16 items-center">
         {Prices.map(({ Icon, planName, popular, price, priceDescription, features }, index) => (
           <Pricing.Card
             key={index}
@@ -33,7 +33,7 @@ Pricing.Card = ({ Icon, planName, popular, price, priceDescription, features }: 
   const { t } = useTranslation();
 
   return (
-    <div className={`p-8 pt-12 rounded-2xl border flex flex-col items-center relative ${popular && "border-foreground"}`}>
+    <div className={`p-8 pt-12 rounded-2xl border flex flex-col items-center relative h-fit ${popular && "border-foreground"}`}>
       {popular && (
         <Badge className="text-sm bg-foreground text-primary-foreground font-medium px-2.5 py-1 top-[-0.9375rem] absolute" variant="outline">
           {t("pricing.popular_badge")}

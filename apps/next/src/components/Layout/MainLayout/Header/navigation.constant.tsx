@@ -1,5 +1,5 @@
 import { type ReactElement } from "react";
-import { AlignCenter, Banknote, Info, Library} from "lucide-react";
+import { AlignCenter, Banknote, HelpCircle, Info, Library} from "lucide-react";
 import { useTranslation } from "next-i18next";
 
 export interface IHomeNavbar {
@@ -32,6 +32,11 @@ const homeSidebarNavigations = (): IHomeNavbar[] => {
             title: t("navbar.about"),
             href: "/about",
             icon: <Info className="mr-2 w-5 h-5 lg:hidden" />,
+        },
+        {
+            title: t("faq.nav"),
+            href: "/faq",
+            icon: <HelpCircle className="mr-2 w-5 h-5 lg:hidden" />,
         }
     ];
 };

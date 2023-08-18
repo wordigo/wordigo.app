@@ -156,7 +156,9 @@
   },
   "faq": {
     "heading": "Sıkça Sorulan Sorular",
-    "description": "Ürün ve fatura hakkında bilmeniz gereken her şey."
+    "description": "Ürün ve fatura hakkında bilmeniz gereken her şey.",
+    "nav": "SSS",
+    "button": "Tüm SSS'leri Görüntüle"
   },
   "newsletter": {
     "heading": "Bültenimize abone olun",

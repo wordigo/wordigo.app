@@ -151,7 +151,9 @@
   },
   "faq": {
     "heading": "Frequently asked questions",
-    "description": "Everything you need to know about the product and billing."
+    "description": "Everything you need to know about the product and billing.",
+    "nav": "FAQ",
+    "button": "View all FAQ"
   },
   "newsletter": {
     "heading": "Subscribe our newsletter",

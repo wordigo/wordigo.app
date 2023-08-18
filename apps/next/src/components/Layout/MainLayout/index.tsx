@@ -8,7 +8,7 @@ const MainLayout: React.FC<PropsWithChildren> = ({ children }) => {
     <>
       <Banner />
       <main className="max-w-[90rem] m-auto">
-        <HomeHeader />
+        <HomeHeader className="top-0 sticky" />
         <div className="flex flex-col">{children}</div>
       </main>
     </>

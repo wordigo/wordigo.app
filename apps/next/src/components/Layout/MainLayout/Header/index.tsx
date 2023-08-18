@@ -13,7 +13,7 @@ import { cn } from "@wordigo/ui/lib/utils";
 import NavProfile from "../../NavProfile";
 import Navigation from "./Navigation";
 
-export default function HomeHeader() {
+export default function HomeHeader({className}: {className?: string}) {
   const { t } = useTranslation();
   const { status } = useSession();
 
@@ -25,7 +25,7 @@ export default function HomeHeader() {
 
   return (
     <>
-      <div className="w-full">
+      <div className={cn("w-full fixed max-w-[90rem] bg-LightBackground dark:bg-DarkBackground z-50", className)}>
         <nav className="flex items-center justify-between w-full m-auto py-[1.125rem] px-20 max-md:px-4">
           <div className="flex items-center">
             <Link href="/" className={cn("flex items-center mr-6", !toggleMenu && "hidden")}>
