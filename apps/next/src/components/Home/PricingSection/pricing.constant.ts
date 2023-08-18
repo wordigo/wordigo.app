@@ -9,17 +9,14 @@ export interface Price {
   features: string[];
 }
 
-const Prices: Price[] = [
+const prices: Price[] = [
   {
     Icon: Zap,
     planName: "Free",
     popular: false,
     price: "$0/mth",
     priceDescription: "This description for free plan.",
-    features: [
-      "Access to all basic features",
-      "Access to all basic features",
-    ],
+    features: ["Access to all basic features", "Access to all basic features"],
   },
   {
     Icon: Flame,
@@ -41,11 +38,8 @@ const Prices: Price[] = [
     popular: false,
     price: "$10/mth",
     priceDescription: "This description for business plan.",
-    features: [
-      "Access to all basic features",
-      "Access to all basic features",
-    ],
+    features: ["Access to all basic features", "Access to all basic features"],
   },
 ];
 
-export default Prices;
+export default prices;
