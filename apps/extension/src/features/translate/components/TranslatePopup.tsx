@@ -130,11 +130,13 @@ const TranslatePopup = () => {
         </div>
         <div className="w-full gap-y-2 flex flex-col">
           <div className="relative">
-            <div className="border-gray-200 border-[1.5px] w-full h-32 max-h-32 rounded !opacity-75 disabled:!cursor-default text-sm text-primary p-2 overflow-scroll">
+            <div className="border-gray-200 border-[1.5px] w-full h-32 max-h-32 rounded !opacity-75 disabled:!cursor-default text-sm text-primary p-2">
               {isLoading ? (
                 <TranslatePopup.Loader />
               ) : (
-                result?.data?.translatedText
+                <div className="line-clamp-4 overflow-y-visible">
+                  {result?.data?.translatedText}
+                </div>
               )}
             </div>
             <div className="absolute bottom-2 right-3 flex items-center justify-between gap-x-2">

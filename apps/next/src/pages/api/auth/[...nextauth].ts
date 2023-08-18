@@ -50,17 +50,17 @@ export const authOptions = (
 
           // const profile = await request.json();
 
-          // response.setHeader(
-          //   "Set-Cookie",
-          //   cookie.serialize(
-          //     WORDIGO_JWT_TOKEN_COOKIE,
-          //     token.accessToken as string,
-          //     {
-          //       maxAge: 60 * 60,
-          //       path: "/",
-          //     }
-          //   )
-          // );
+          response.setHeader(
+            "Set-Cookie",
+            cookie.serialize(
+              WORDIGO_JWT_TOKEN_COOKIE,
+              token.accessToken as string,
+              {
+                maxAge: 60 * 60 * 24,
+                path: "/",
+              }
+            )
+          );
 
           // @ts-ignore
           session.user = { accessToken: token.accessToken, ...token.user };
