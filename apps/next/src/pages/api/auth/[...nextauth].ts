@@ -85,21 +85,25 @@ export const authOptions = (
         authorize: async (credentials) => {
           if (!credentials) throw new Error("no credentials");
 
+          const acceptLanguage =
+            request.headers["accept-language"]?.split(",")?.[0];
+
           try {
             const { email, password } = credentials;
 
-            const request = await fetch(
+            const bffRequest = await fetch(
               `${env.NEXT_PUBLIC_WORDIGO_BACKEND_URL}/auth/signIn`,
               {
                 headers: {
                   Accept: "application/json",
                   "Content-Type": "application/json",
+                  "Accept-Language": acceptLanguage,
                 },
                 method: "POST",
                 body: JSON.stringify({ email, password }),
               }
             );
-            const response = await request.json();
+            const response = await bffRequest.json();
 
             if (response?.data?.user) {
               return {

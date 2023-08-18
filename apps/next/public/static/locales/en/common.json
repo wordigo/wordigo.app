@@ -9,6 +9,12 @@
   "general": {
     "new": "New"
   },
+  "notifications": {
+    "success": "Successful",
+    "warning": "Warning",
+    "error": "Error",
+    "signin_success": "Sign in successful you are redirected to homepage."
+  },
   "announcement": {
     "description": "We have <span className='font-semibold'>amazing news,</span> just for you! Learn from our blog!",
     "button": "See More"

@@ -9,6 +9,12 @@
   "general": {
     "new": "Yeni"
   },
+  "notifications": {
+    "success": "Başarılı",
+    "warning": "Uyarı",
+    "error": "Hata",
+    "signin_success": "Başarılı bir şekilde oturum açtınız, ana sayfaya yönlendirildiniz."
+  },
   "announcement": {
     "description": "Sana <span className='font-semibold'>harika bir haberimiz</span> var! Blogumuzdan öğrenin!",
     "button": "Daha Fazla"
