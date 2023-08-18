@@ -18,7 +18,7 @@ const Team: ITeam[] = [
   },
   {
     name: "Yusuf Güneş",
-    src: "https://media.licdn.com/dms/image/D4D03AQHZBnSYQZjKMQ/profile-displayphoto-shrink_200_200/0/1690905608993?e=1696464000&v=beta&t=8cI7Jfw4U1AzDdphiERA5pXBNp8A3T1Iq56LtohLiTU",
+    src: "https://avatars.githubusercontent.com/u/99817309?v=4",
     title: "Frontend Developer",
     github: "https://github.com/yusufgns",
     linkedin: "https://www.linkedin.com/in/yusufgunes/",
@@ -29,7 +29,8 @@ const Team: ITeam[] = [
     src: "https://avatars.githubusercontent.com/u/62629437?v=4",
     title: "Backend Developer",
     github: "https://github.com/sefakpsz",
-    linkedin: "https://www.linkedin.com/in/muhammet-sefa-kap%C4%B1s%C4%B1z-26b136143/",
+    linkedin:
+      "https://www.linkedin.com/in/muhammet-sefa-kap%C4%B1s%C4%B1z-26b136143/",
     twitter: "",
   },
   {

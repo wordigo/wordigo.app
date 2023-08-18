@@ -19,8 +19,7 @@ const Comment: IComment[] = [
     description:
       "I'm thoroughly impressed with the word-sharing feature of this web application. It's so convenient to publish my customized dictionary with others, allowing us to collaborate and learn from each other's linguistic discoveries. It's a game-changer for language learning!",
     name: "Yusuf Güneş",
-    image:
-      "https://media.licdn.com/dms/image/C4D03AQE69stnfq0hLg/profile-displayphoto-shrink_800_800/0/1644590087439?e=1694649600&v=beta&t=ktid4pHV_4W8eiFPXmQ9xZyt3Ohrn9nDY-qMHMk-2ck",
+    image: "https://avatars.githubusercontent.com/u/99817309?v=4",
     title: "Unlock the World of Words",
     userDescription: "Frontend Developer",
   },

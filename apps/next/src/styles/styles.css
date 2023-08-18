@@ -3,7 +3,7 @@
 }
 
 .header_right {
-  background: linear-gradient(180deg, #3F83F8 0%, #3F83F8 36.31%, rgba(151, 151, 151, 0) 100%);
+  background: linear-gradient(180deg, #3f83f8 0%, #3f83f8 36.31%, rgba(151, 151, 151, 0) 100%);
 }
 
 .header_up {
@@ -13,24 +13,35 @@
 
 /* width */
 ::-webkit-scrollbar {
-    width: 5px;
-    position: absolute ;
+  width: 5px;
+  position: absolute;
 }
-  
+
 /* Track */
 ::-webkit-scrollbar-track {
-    background: transparent;
-    position: absolute ;
+  background: transparent;
+  position: absolute;
 }
-  
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 3px;
-    position: absolute ;
+  background: #888;
+  border-radius: 3px;
+  position: absolute;
 }
-  
+
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
+}
+
+/* target the active bullet */
+span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  @apply bg-primary dark:bg-primary;
+  opacity: 1;
+}
+
+/* target all bullets */
+.swiper-pagination-bullet {
+  @apply bg-primary dark:bg-primary;
 }

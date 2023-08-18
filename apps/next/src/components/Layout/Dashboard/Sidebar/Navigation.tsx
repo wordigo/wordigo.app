@@ -2,7 +2,6 @@ import { Fragment } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
-import DashboardNavProfil from "@/components/Layout/NavProfile/Navprofile.dashboard";
 import { AnimatePresence } from "framer-motion";
 import { CircleDot } from "lucide-react";
 

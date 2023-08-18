@@ -17,6 +17,10 @@ import "../styles/globals.css";
 import "../styles/styles.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 
+import "swiper/css";
+import "swiper/css/grid";
+import "swiper/css/pagination";
+
 const App = ({ Component, pageProps }: AppProps<{ session: any; _nextI18Next: { initialLocale: string } }>) => {
   const { t } = useTranslation();
   z.setErrorMap(makeZodI18nMap({ t, ns: ["common", "zod"] }));

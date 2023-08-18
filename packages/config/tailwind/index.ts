@@ -23,6 +23,12 @@ export default {
       },
     },
     extend: {
+      lineClamp: {
+        7: "7",
+        8: "8",
+        9: "9",
+        10: "10",
+      },
       colors: {
         DarkBackground: "#020817",
         LightBackground: "#ffff",
