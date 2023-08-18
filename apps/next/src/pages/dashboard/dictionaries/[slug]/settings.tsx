@@ -1,14 +1,13 @@
-import { Fragment, useEffect } from "react";
-import { type GetStaticPaths } from "next";
-import { useRouter } from "next/router";
 import Settings from "@/components/Dashboard/Dictionaries.Settings/index";
 import DashboardLayout from "@/components/Layout/Dashboard";
 import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
 import { useGetWordDataMutation } from "@/store/word/api";
 import { useAppSelector } from "@/utils/hooks";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-
 import { Skeleton } from "@wordigo/ui";
+import { type GetStaticPaths } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/router";
+import { Fragment, useEffect } from "react";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -42,7 +41,7 @@ const DictionariesSettings = () => {
           </div>
         </Fragment>
       ) : (
-        <Settings></Settings>
+        <Settings />
       )}
     </DashboardShell>
   );

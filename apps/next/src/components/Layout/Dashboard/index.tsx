@@ -1,4 +1,3 @@
-import DashboardHeaders from "@/components/Layout/Dashboard/Headers";
 import { Navbar } from "@/components/Layout/Dashboard/Navbar";
 import Sidebar from "@/components/Layout/Dashboard/Sidebar/Menu";
 import PageLoader from "@/components/UI/PageLoader";
@@ -20,7 +19,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       <div className="md:min-w-[280px] md:max-w-[280px]">
         <Sidebar />
       </div>
-      <section className="py-8 px-8 max-w-[92rem] w-full m-auto overflow-auto">
+      <section className="py-4 px-4 md:py-8 md:px-8 max-w-[92rem] w-full m-auto overflow-auto">
         <Navbar />
         {children}
       </section>

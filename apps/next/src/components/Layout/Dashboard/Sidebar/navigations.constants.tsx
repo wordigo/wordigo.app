@@ -69,6 +69,7 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
     },
     {
       title: t("navbar.settings"),
+      href: "/dashboard/settings",
       icon: <Settings className="text-2xl" />,
       child: {
         trigger: (
