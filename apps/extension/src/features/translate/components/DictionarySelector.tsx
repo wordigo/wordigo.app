@@ -92,7 +92,7 @@ const DictionarySelector = ({
             </TooltipTrigger>
           </HoverCardTrigger>
           {hasToken && (
-            <HoverCardContent className="!p-0 w-[140px] divide-y divide-gray-200 dark:divide-gray-700 !rounded-sm">
+            <HoverCardContent className="!p-0 w-[145px] divide-y divide-gray-200 dark:divide-gray-700 !rounded-sm">
               <div className="text-accent-foreground select-none rounded-sm hover:bg-primary-foreground !opacity-60 !h-7 flex items-center px-2 text-[13.5px]">
                 Select dictionary
               </div>
