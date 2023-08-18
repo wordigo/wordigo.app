@@ -91,7 +91,29 @@ const DictionarySelector = ({
               </Button>
             </TooltipTrigger>
           </HoverCardTrigger>
-          <HoverCardContent>test</HoverCardContent>
+          {hasToken && (
+            <HoverCardContent className="!p-0 w-[140px] divide-y divide-gray-200 dark:divide-gray-700 !rounded-sm">
+              <div className="text-accent-foreground select-none rounded-sm hover:bg-primary-foreground !opacity-60 !h-7 flex items-center px-2 text-[13.5px]">
+                Select dictionary
+              </div>
+              <div className="flex flex-col">
+                <Button
+                  className="!rounded-sm !h-8 !text-start !justify-start"
+                  variant="ghost"
+                  size="sm"
+                >
+                  Inıtial
+                </Button>
+                <Button
+                  className="!rounded-sm !h-8 !text-start !justify-start"
+                  variant="ghost"
+                  size="sm"
+                >
+                  Two Dictionary
+                </Button>
+              </div>
+            </HoverCardContent>
+          )}
           {!hasToken && (
             <TooltipContent className="!py-0.5">
               <p>you need to login.</p>
