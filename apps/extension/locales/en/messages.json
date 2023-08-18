@@ -1,0 +1,110 @@
+{
+  "extensionName": {
+    "message": "Wordigo - Translator, Dictionary, TTS",
+    "description": "Name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Wordigo: Translate text in the browser and add it to the dictionary. Easily bypass language restrictions..",
+    "description": "Description of the extension."
+  },
+  "translate": {
+    "message": "Translate"
+  },
+  "voice": {
+    "message": "Voice"
+  },
+  "add": {
+    "message": "Add"
+  },
+  "popup": {
+    "message": "Logic is the beginning of wisdom, not the end.",
+    "description": "Popup message."
+  },
+  "settings": {
+    "message": "Settings",
+    "description": "Popup message."
+  },
+  "settingsDescription": {
+    "message": "Manage your plugin settings and you can change your translation preference.",
+    "description": "Popup message."
+  },
+  "general": {
+    "message": "General",
+    "description": "Popup message."
+  },
+  "generalDescription": {
+    "message": "Update your translation preference and select target language.",
+    "description": "Popup message."
+  },
+  "uiLanguage": {
+    "message": "Interface Language",
+    "description": "Interface language"
+  },
+  "uiLanguageDesc": {
+    "message": "You can change the interface language of the plugin with this setting.",
+    "description": "Açılır pencere mesajı."
+  },
+  "targetLanguage": {
+    "message": "Target Language",
+    "description": "Popup message."
+  },
+  "targetLanguageDesc": {
+    "message": "You can set the language in which the texts you will translate will be translated.",
+    "description": "Popup message."
+  },
+  "translateOptions": {
+    "message": "Translation options",
+    "description": "Translation options."
+  },
+  "translateOptionsDesc": {
+    "message": "Enable the 'Show Translate Button' for a convenient button next to\nselected text, or use 'Select and translate' to effortlessly \ntranslate by hovering over the text and clicking the spin button.",
+    "description": "Popup message."
+  },
+  "showTranslate": {
+    "message": "Show Translate Button",
+    "description": "Show Translate Button"
+  },
+  "showTranslateDesc": {
+    "message": "Enable this option to display a translate button next to \nthe selected text, making translation more accessible.",
+    "description": "Popup message."
+  },
+  "selectTranslate": {
+    "message": "Select and translate",
+    "description": "Popup message."
+  },
+  "selectTranslateDesc": {
+    "message": "Clicking on the selected text opens a pop-up window that \nprovides the translation of the selected text.",
+    "description": "Popup message."
+  },
+  "saveChanges": {
+    "message": "Save Changes",
+    "description": "save changes"
+  },
+  "font": {
+    "message": "Font"
+  },
+  "fontDesc": {
+    "message": "Choose the font for the extension popup and settings page, customizing your language learning experience based on your font."
+  },
+  "theme": {
+    "message": "Theme"
+  },
+  "themeDesc": {
+    "message": "Choose the theme for the extension's popup and settings page, customizing your language learning experience to your preferred style."
+  },
+  "light": {
+    "message": "Light"
+  },
+  "dark": {
+    "message": "Dark"
+  },
+  "update_prefences": {
+    "message": "Update preferences"
+  },
+  "welcome": {
+    "message": "Welcome to the Wordigo installation page! Here, you can choose your preferred translation language and customize \nthe extension options before completing the installation process."
+  },
+  "footer": {
+    "message": "© Copyright 2023. All Rights Reserved by Wordigo."
+  }
+}

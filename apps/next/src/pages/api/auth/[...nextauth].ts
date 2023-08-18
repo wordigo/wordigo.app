@@ -1,19 +1,23 @@
-import { type NextApiRequest, type NextApiResponse } from "next";
 import { env } from "@/env.mjs";
+import { WORDIGO_JWT_TOKEN_COOKIE } from "@wordigo/common";
 import cookie from "cookie";
+import { type NextApiRequest, type NextApiResponse } from "next";
 import NextAuth, { type NextAuthOptions, type User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 
-import { WORDIGO_JWT_TOKEN_COOKIE } from "@wordigo/common";
-
-export const authOptions = (request: NextApiRequest, response: NextApiResponse): NextAuthOptions => {
+export const authOptions = (
+  request: NextApiRequest,
+  response: NextApiResponse
+): NextAuthOptions => {
   return {
     callbacks: {
       async signIn({ user, account }) {
         try {
           if (account?.provider === "google") {
-            const request = await fetch(`${env.NEXT_PUBLIC_WORDIGO_BACKEND_URL}/auth/googleAuth?accessToken=${account.access_token}`);
+            const request = await fetch(
+              `${env.NEXT_PUBLIC_WORDIGO_BACKEND_URL}/auth/googleAuth?accessToken=${account.access_token}`
+            );
             const profile = await request.json();
 
             user.accessToken = profile.data;
@@ -33,25 +37,33 @@ export const authOptions = (request: NextApiRequest, response: NextApiResponse):
       jwt({ token, user }) {
         return { ...token, ...user };
       },
-      async session({ session, token }) {
+      session({ session, token }) {
         try {
-          const request = await fetch(`${env.NEXT_PUBLIC_WORDIGO_BACKEND_URL}/users/getMe`, {
-            headers: {
-              authorization: "Bearer " + token.accessToken,
-            },
-          });
+          // const request = await fetch(
+          //   `${env.NEXT_PUBLIC_WORDIGO_BACKEND_URL}/users/getMe`,
+          //   {
+          //     headers: {
+          //       authorization: "Bearer " + token.accessToken,
+          //     },
+          //   }
+          // );
 
-          const profile = await request.json();
+          // const profile = await request.json();
 
           response.setHeader(
             "Set-Cookie",
-            cookie.serialize(WORDIGO_JWT_TOKEN_COOKIE, token.accessToken as string, {
-              maxAge: 60 * 60,
-              path: "/",
-            }),
+            cookie.serialize(
+              WORDIGO_JWT_TOKEN_COOKIE,
+              token.accessToken as string,
+              {
+                maxAge: 60 * 60 * 24,
+                path: "/",
+              }
+            )
           );
 
-          session.user = { accessToken: token.accessToken, ...profile.data };
+          // @ts-ignore
+          session.user = { accessToken: token.accessToken, ...token.user };
 
           return session;
         } catch (err) {
@@ -76,18 +88,24 @@ export const authOptions = (request: NextApiRequest, response: NextApiResponse):
           try {
             const { email, password } = credentials;
 
-            const request = await fetch(`${env.NEXT_PUBLIC_WORDIGO_BACKEND_URL}/auth/signIn`, {
-              headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-              },
-              method: "POST",
-              body: JSON.stringify({ email, password }),
-            });
+            const request = await fetch(
+              `${env.NEXT_PUBLIC_WORDIGO_BACKEND_URL}/auth/signIn`,
+              {
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+                method: "POST",
+                body: JSON.stringify({ email, password }),
+              }
+            );
             const response = await request.json();
 
             if (response?.data?.user) {
-              return { user: response.data.user as User, token: response.data.accessToken } as any;
+              return {
+                user: response.data.user as User,
+                token: response.data.accessToken,
+              } as any;
             } else {
               throw new Error(response.message as string);
             }
@@ -105,20 +123,24 @@ export const authOptions = (request: NextApiRequest, response: NextApiResponse):
     secret: process.env.NEXTAUTH_SECRET,
     events: {
       signOut() {
-        const cookieSerialized = cookie.serialize(WORDIGO_JWT_TOKEN_COOKIE, "", {
-          maxAge: 0,
-          path: "/",
-        });
+        const cookieSerialized = cookie.serialize(
+          WORDIGO_JWT_TOKEN_COOKIE,
+          "",
+          {
+            maxAge: 0,
+            path: "/",
+          }
+        );
 
         response.setHeader("Set-Cookie", cookieSerialized);
       },
     },
     session: {
       strategy: "jwt",
-      maxAge: 60 * 60,
+      maxAge: 60 * 60 * 24,
     },
     jwt: {
-      maxAge: 60 * 60,
+      maxAge: 60 * 60 * 24,
     },
   };
 };

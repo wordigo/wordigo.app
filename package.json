@@ -15,6 +15,7 @@
     "clean:workspaces": "turbo clean",
     "dev": "turbo dev --parallel --no-cache --continue",
     "dev:web": "turbo dev --parallel --filter=...nextjs --no-cache --continue",
+    "extension": "turbo dev --parallel --filter=...extension --no-cache --continue",
     "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",
     "lint": "turbo lint && manypkg check",
     "lint:fix": "turbo lint:fix && manypkg fix",
