@@ -1,18 +1,40 @@
-import instance from "~/libs/axios"
+import instance, { type BaseResponse } from "~/libs/axios";
 
-export const getUserDictionaries = async (): Promise<any> => {
-  const response = await instance.get("/dictionaries/getUserDictionaries")
-  return response.data
+export interface Dictionary {
+  id: number;
+  title: string;
+  sourceLang: string;
+  targetLang: string;
+  slug: string;
+  image: string;
+  description: string;
+  rate: number;
+  level: number;
+  published: boolean;
+  authorId: string;
+  createdDate: string;
+  updatedDate: string;
+  numberOfWords: number;
 }
+
+export const getUserDictionaries = async (): Promise<
+  BaseResponse<Dictionary[]>
+> => {
+  const response = await instance.get("/dictionaries/getUserDictionaries");
+  return response.data;
+};
 
 export interface addDictonaryWordType {
-  text: string
-  translatedText: string
-  nativeLanguage: string
-  targetLanguage: string
+  text: string;
+  translatedText: string;
+  nativeLanguage: string;
+  targetLanguage: string;
+  dictionaryId?: number;
 }
 
-export const addDictionaryWord = async (params: addDictonaryWordType): Promise<any> => {
-  const response = await instance.post("/words/create", params)
-  return response.data
-}
+export const addDictionaryWord = async (
+  params: addDictonaryWordType
+): Promise<any> => {
+  const response = await instance.post("/words/create", params);
+  return response.data;
+};

@@ -27,12 +27,12 @@ const Floating = () => {
         id="el-popup-container"
         className="absolute cursor-pointer z-50"
         initial={{
-          top: top + 10,
-          left: left - 50,
+          top: top - 20,
+          left: left - 135,
         }}
         animate={{
-          top: top + 5,
-          left: left - 120,
+          top: top + 10,
+          left: left - 135,
         }}
       >
         <div className="border-gray-200 shadow-md flex items-center space-x-1 rounded !font-thin border bg-background dark:bg-gray-950">

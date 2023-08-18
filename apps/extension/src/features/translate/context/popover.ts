@@ -63,9 +63,8 @@ export const usePopover = ({}) => {
       setSelectedText(selectedText);
 
       const { pageX: x, pageY: y } = event;
-      console.log(isPopup);
 
-      if (isPopup) setPopup(false);
+      setPopup(false);
       setCordinate({ x, y });
       setFloating(true);
     } else {

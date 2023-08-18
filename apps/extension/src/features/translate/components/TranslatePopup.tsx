@@ -71,12 +71,12 @@ const TranslatePopup = () => {
       id="el-translate-container"
       className="absolute z-50"
       initial={{
-        top: top + 30,
-        left: left - 150,
+        top: top - 20,
+        left: left - 200,
         width: TRANSLATE_CARD_WIDTH,
       }}
       animate={{
-        top: top + 10,
+        top: top + 20,
         left: left - 200,
       }}
     >

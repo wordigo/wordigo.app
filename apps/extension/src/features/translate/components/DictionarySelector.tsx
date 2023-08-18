@@ -15,9 +15,10 @@ import {
   useToast,
 } from "@wordigo/ui";
 import { ChevronDown, RotateCw } from "lucide-react";
+import { useRef } from "react";
 import { Fragment, useEffect } from "react";
-import { useMutation } from "react-query";
-import { addDictionaryWord } from "~api/dictionary";
+import { useMutation, useQuery } from "react-query";
+import { addDictionaryWord, getUserDictionaries } from "~api/dictionary";
 
 const DictionarySelector = ({
   sourceLangauge,
@@ -26,7 +27,11 @@ const DictionarySelector = ({
   sourceLangauge: string;
   translatedText: string;
 }) => {
+  const hoverRef = useRef<HTMLDivElement>();
   const { targetLanguage, selectedText } = useContextPopover();
+  const { isLoading, data: dictResponse } = useQuery({
+    queryFn: getUserDictionaries,
+  });
   const {
     mutate: addMutate,
     isLoading: addIsLoading,
@@ -54,14 +59,17 @@ const DictionarySelector = ({
     }
   }, [status]);
 
-  const handleAddLibrary = () => {
+  const handleAddLibrary = (dictionaryId?: number) => {
     if (!hasToken) return;
     addMutate({
       nativeLanguage: sourceLangauge,
       targetLanguage,
       text: selectedText,
       translatedText,
+      dictionaryId,
     });
+    hoverRef.current.hidden = true;
+    hoverRef.current.style.display = "hidden";
   };
 
   return (
@@ -71,9 +79,9 @@ const DictionarySelector = ({
           <HoverCardTrigger asChild>
             <TooltipTrigger disabled={!hasToken || addIsLoading} asChild>
               <Button
-                className="!pointer-events-auto disabled:!opacity-100 !h-8 flex items-center justify-between gap-x-2"
+                className="!pointer-events-auto disabled:!opacity-50 !h-8 flex items-center justify-between gap-x-2"
                 disabled={!hasToken || addIsLoading}
-                onClick={handleAddLibrary}
+                onClick={() => handleAddLibrary()}
                 variant="default"
                 size="sm"
               >
@@ -92,25 +100,26 @@ const DictionarySelector = ({
             </TooltipTrigger>
           </HoverCardTrigger>
           {hasToken && (
-            <HoverCardContent className="!p-0 w-[145px] divide-y divide-gray-200 dark:divide-gray-700 !rounded-sm">
+            <HoverCardContent
+              ref={hoverRef}
+              className="!p-0 w-[145px] divide-y divide-gray-200 dark:divide-gray-700 !rounded-sm"
+            >
               <div className="text-accent-foreground select-none rounded-sm hover:bg-primary-foreground !opacity-60 !h-7 flex items-center px-2 text-[13.5px]">
                 Select dictionary
               </div>
               <div className="flex flex-col">
-                <Button
-                  className="!rounded-sm !h-8 !text-start !justify-start"
-                  variant="ghost"
-                  size="sm"
-                >
-                  Inıtial
-                </Button>
-                <Button
-                  className="!rounded-sm !h-8 !text-start !justify-start"
-                  variant="ghost"
-                  size="sm"
-                >
-                  Two Dictionary
-                </Button>
+                {dictResponse?.data?.map((dictionary) => (
+                  <Button
+                    onClick={() => handleAddLibrary(dictionary.id)}
+                    key={dictionary.id}
+                    disabled={addIsLoading}
+                    className="!rounded-sm !h-8 !text-start !justify-start"
+                    variant="ghost"
+                    size="sm"
+                  >
+                    {dictionary.title}
+                  </Button>
+                ))}
               </div>
             </HoverCardContent>
           )}
