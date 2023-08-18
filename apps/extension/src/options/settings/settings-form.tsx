@@ -1,4 +1,5 @@
-import { zodResolver } from "@hookform/resolvers/zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Storage } from "@plasmohq/storage";
 import {
   Button,
   CardDescription,
@@ -10,69 +11,70 @@ import {
   FormLabel,
   FormMessage,
   Switch,
-  useToast
-} from "@wordigo/ui"
-import LanguageSelector from "@wordigo/ui/components/ui/language-selector"
-import { useEffect, useState } from "react"
-import { useForm } from "react-hook-form"
-import type { z } from "zod"
-
-import { Storage } from "@plasmohq/storage"
-
-import { SettingsFormSchema } from "~utils/schemas"
+  useToast,
+} from "@wordigo/ui";
+import LanguageSelector from "@wordigo/ui/components/ui/language-selector";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import type { z } from "zod";
+import { getLocalMessage } from "~utils/locale";
+import { SettingsFormSchema } from "~utils/schemas";
 
 const storage = new Storage({
-  area: "local"
-})
+  area: "local",
+});
 
-type SettingsFormValues = z.infer<typeof SettingsFormSchema>
+type SettingsFormValues = z.infer<typeof SettingsFormSchema>;
 
 export const SettingsForm = () => {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
   const defaultValues: Partial<SettingsFormValues> = {
     targetLanguage: "",
-    translateStatus: false
-  }
+    translateStatus: false,
+  };
 
-  const { toast } = useToast()
+  const { toast } = useToast();
   const form = useForm<SettingsFormValues>({
     resolver: zodResolver(SettingsFormSchema),
     defaultValues,
-    mode: "onChange"
-  })
+    mode: "onChange",
+  });
 
   const getStatus = async () => {
-    const translateStatus = await storage.get("translateStatus")
-    const targetLanguage = await storage.get("targetLanguage")
-    form.setValue("translateStatus", translateStatus as never)
-    form.setValue("targetLanguage", targetLanguage as never)
+    const translateStatus = await storage.get("translateStatus");
+    const targetLanguage = await storage.get("targetLanguage");
+    form.setValue("translateStatus", translateStatus as never);
+    form.setValue("targetLanguage", targetLanguage as never);
 
-    setIsLoading(false)
-  }
+    setIsLoading(false);
+  };
 
   useEffect(() => {
-    void getStatus()
-  }, [])
+    void getStatus();
+  }, []);
 
   const handleSaveChanges = async (values: SettingsFormValues) => {
-    await storage.set("translateStatus", values.translateStatus)
-    await storage.set("targetLanguage", values.targetLanguage)
+    await storage.set("translateStatus", values.translateStatus);
+    await storage.set("targetLanguage", values.targetLanguage);
     toast({
       title: "Successful",
-      description: "Your changes have been successfully saved."
-    })
-  }
+      description: "Your changes have been successfully saved.",
+    });
+  };
 
   if (!isLoading)
     return (
       <Form {...(form as any)}>
-        <form className="space-y-4" onSubmit={form.handleSubmit(handleSaveChanges)}>
+        <form
+          className="space-y-4"
+          onSubmit={form.handleSubmit(handleSaveChanges)}
+        >
           <FormField
             control={form.control as never}
             name="targetLanguage"
             render={({ field }) => (
               <FormItem className="flex flex-col gap-y-2">
-                <FormLabel>Target Language</FormLabel>
+                <FormLabel>{getLocalMessage("targetLanguage")}</FormLabel>
                 <FormControl>
                   <LanguageSelector
                     className="h-10 px-3 py-2"
@@ -82,16 +84,17 @@ export const SettingsForm = () => {
                   />
                 </FormControl>
                 <FormDescription>
-                  You can set the language in which the texts you will translate will be translated.
+                  {getLocalMessage("targetLanguageDesc")}
                 </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <h3 className="mb-4 text-base font-medium">Translation options</h3>
+          <h3 className="mb-4 text-base font-medium">
+            {getLocalMessage("translateOptions")}
+          </h3>
           <CardDescription>
-            Enable the 'Show Translate Button' for a convenient button next to selected text, or use 'Select and translate' to
-            effortlessly translate by hovering over the text and clicking the spin button.
+            {getLocalMessage("translateOptionsDesc")}
           </CardDescription>
           <div className="space-y-4">
             <FormField
@@ -100,14 +103,18 @@ export const SettingsForm = () => {
               render={({ field }) => (
                 <FormItem className="flex flex-row items-center justify-between rounded-lg border-gray-400 border-opacity-40 border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className="text-base">Show Translate Button</FormLabel>
+                    <FormLabel className="text-base">
+                      {getLocalMessage("showTranslate")}
+                    </FormLabel>
                     <FormDescription>
-                      Enable this option to display a translate button next to the selected text, making translation more
-                      accessible.
+                      {getLocalMessage("showTranslateDesc")}
                     </FormDescription>
                   </div>
                   <FormControl>
-                    <Switch checked={field.value} onCheckedChange={field.onChange} />
+                    <Switch
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
                   </FormControl>
                 </FormItem>
               )}
@@ -118,22 +125,27 @@ export const SettingsForm = () => {
               render={({ field }) => (
                 <FormItem className="flex flex-row items-center justify-between rounded-lg border-gray-400 border-opacity-40  border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className="text-base">Select and translate</FormLabel>
+                    <FormLabel className="text-base">
+                      {getLocalMessage("selectTranslate")}
+                    </FormLabel>
                     <FormDescription>
-                      Clicking on the selected text opens a pop-up window that provides the translation of the selected text.
+                      {getLocalMessage("selectTranslateDesc")}
                     </FormDescription>
                   </div>
                   <FormControl>
-                    <Switch checked={field.value} onCheckedChange={field.onChange} />
+                    <Switch
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
                   </FormControl>
                 </FormItem>
               )}
             />
           </div>
-          <Button type="submit">Save Changes</Button>
+          <Button type="submit">{getLocalMessage("saveChanges")}</Button>
         </form>
       </Form>
-    )
-}
+    );
+};
 
-export default SettingsForm
+export default SettingsForm;

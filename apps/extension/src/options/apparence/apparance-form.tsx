@@ -1,4 +1,5 @@
-import { zodResolver } from "@hookform/resolvers/zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Storage } from "@plasmohq/storage";
 import {
   Button,
   Form,
@@ -11,51 +12,50 @@ import {
   RadioGroup,
   RadioGroupItem,
   buttonVariants,
-  useToast
-} from "@wordigo/ui"
-import { cn } from "@wordigo/ui/lib/utils"
-import { ChevronDownIcon } from "lucide-react"
-import { useEffect, useState } from "react"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
+  useToast,
+} from "@wordigo/ui";
+import { cn } from "@wordigo/ui/lib/utils";
+import { ChevronDownIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import LanguageSelector from "~features/popup/components/LanguageSelector";
+import { getLocalMessage, getUILanguage } from "~utils/locale";
 
-import { Storage } from "@plasmohq/storage"
-
-const storage = new Storage({})
+const storage = new Storage({});
 
 const appearanceFormSchema = z.object({
   theme: z.enum(["light", "dark"], {
-    required_error: "Please select a theme."
-  })
-  // font: z.enum(["inter", "manrope", "system"], {
-  //   invalid_type_error: "Select a font"
-  // })
-})
+    required_error: "Please select a theme.",
+  }),
+});
 
-export type AppearanceFormValues = z.infer<typeof appearanceFormSchema>
+export type AppearanceFormValues = z.infer<typeof appearanceFormSchema>;
 
 const ApparanceForm = () => {
-  const { toast } = useToast()
-  const [mounted, setMounted] = useState(false)
+  const { toast } = useToast();
+  const [mounted, setMounted] = useState(false);
   const form = useForm<AppearanceFormValues>({
     resolver: zodResolver(appearanceFormSchema),
-    defaultValues: {}
-  })
+    defaultValues: {},
+  });
 
   async function onSubmit(data: AppearanceFormValues) {
-    await storage.set("theme", data.theme)
+    await storage.set("theme", data.theme);
     toast({
       title: "Successful",
-      description: "Your changes have been successfully saved."
-    })
+      description: "Your changes have been successfully saved.",
+    });
   }
 
   useEffect(() => {
     void storage.get("theme").then((value: AppearanceFormValues["theme"]) => {
-      form.reset({ theme: value || "light" })
-      setMounted(true)
-    })
-  }, [])
+      form.reset({ theme: value || "light" });
+      setMounted(true);
+    });
+  }, []);
+
+  const uiLanguage = getUILanguage()?.split("-")?.[0]?.toUpperCase();
 
   if (mounted)
     return (
@@ -66,7 +66,9 @@ const ApparanceForm = () => {
             name="font"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="mb-1">Font</FormLabel>
+                <FormLabel className="mb-1">
+                  {getLocalMessage("font")}
+                </FormLabel>
                 <div className="relative w-max">
                   <FormControl>
                     <select
@@ -74,7 +76,8 @@ const ApparanceForm = () => {
                         buttonVariants({ variant: "outline" }),
                         "w-[200px] appearance-none bg-transparent font-normal"
                       )}
-                      {...field}>
+                      {...field}
+                    >
                       <option value="inter">Inter</option>
                       <option value="manrope">Manrope</option>
                       <option value="system">System</option>
@@ -83,25 +86,41 @@ const ApparanceForm = () => {
                   <ChevronDownIcon className="absolute right-3 top-2.5 h-4 w-4 opacity-50" />
                 </div>
                 <FormDescription className="mt-2">
-                  Choose the font for the extension popup and settings page, customizing your language learning experience based
-                  on your font.
+                  {getLocalMessage("fontDesc")}
                 </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
+          <FormItem className="flex flex-col gap-y-2">
+            <FormLabel>{getLocalMessage("uiLanguage")}</FormLabel>
+            <FormControl>
+              <LanguageSelector
+                triggerClass="!w-[200px] h-10 px-3 py-2"
+                defaultValue={uiLanguage}
+                disabled
+              />
+            </FormControl>
+            <FormDescription>
+              {getLocalMessage("uiLanguageDesc")}
+            </FormDescription>
+            <FormMessage />
+          </FormItem>
           <FormField
             control={form.control as never}
             name="theme"
             render={({ field }) => (
               <FormItem className="space-y-1">
-                <FormLabel>Theme</FormLabel>
+                <FormLabel>{getLocalMessage("theme")}</FormLabel>
                 <FormDescription>
-                  Choose the theme for the extension's popup and settings page, customizing your language learning experience to
-                  your preferred style.
+                  {getLocalMessage("themeDesc")}
                 </FormDescription>
                 <FormMessage />
-                <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="grid grid-cols-3 gap-8 pt-2">
+                <RadioGroup
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                  className="grid grid-cols-3 gap-8 pt-2"
+                >
                   <FormItem>
                     <FormLabel className="[&:has([data-state=checked])>div]:border-primary">
                       <FormControl>
@@ -123,7 +142,9 @@ const ApparanceForm = () => {
                           </div>
                         </div>
                       </div>
-                      <span className="block w-full p-2 text-center font-normal">Light</span>
+                      <span className="block w-full p-2 text-center font-normal">
+                        {getLocalMessage("light")}
+                      </span>
                     </FormLabel>
                   </FormItem>
                   <FormItem>
@@ -147,7 +168,9 @@ const ApparanceForm = () => {
                           </div>
                         </div>
                       </div>
-                      <span className="block w-full p-2 text-center font-normal">Dark</span>
+                      <span className="block w-full p-2 text-center font-normal">
+                        {getLocalMessage("dark")}
+                      </span>
                     </FormLabel>
                   </FormItem>
                 </RadioGroup>
@@ -155,10 +178,10 @@ const ApparanceForm = () => {
             )}
           />
 
-          <Button type="submit">Update preferences</Button>
+          <Button type="submit">{getLocalMessage("update_prefences")}</Button>
         </form>
       </Form>
-    )
-}
+    );
+};
 
-export default ApparanceForm
+export default ApparanceForm;

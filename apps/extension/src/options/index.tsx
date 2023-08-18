@@ -1,5 +1,5 @@
 import "~/styles/globals.css";
-import { getLocalMessage } from "../utils/locales";
+import { getLocalMessage } from "../utils/locale";
 import Apparance from "./apparence/layout";
 import { SidebarNav } from "./components/sidebar-nav";
 import {
