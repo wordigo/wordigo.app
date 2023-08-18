@@ -1,8 +1,8 @@
 {
   "name": "@wordigo/extension",
-  "displayName": "Wordigo - Translator, Dictionary, TTS",
+  "displayName": "__MSG_extensionName__",
   "version": "0.0.3",
-  "description": "Wordigo: Translate text in the browser and add it to the dictionary. Easily bypass language restrictions.",
+  "description": "__MSG_extensionDescription__",
   "author": "osmandlsmn",
   "scripts": {
     "dev": "plasmo dev",
@@ -42,6 +42,8 @@
     "typescript": "5.0.4"
   },
   "manifest": {
+    "name": "__MSG_extensionName__",
+    "default_locale": "en",
     "permissions": [
       "cookies"
     ],

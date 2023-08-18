@@ -1,39 +1,41 @@
-import "~/styles/globals.css"
-
-import { Separator } from "@wordigo/ui"
-
-import Provider from "~providers"
-import ThemeProvider from "~providers/theme"
-
-import Apparance from "./apparence/layout"
-import { SidebarNav } from "./components/sidebar-nav"
-import { OptionsContext, useOptions, useOptionsContext } from "./context/options"
-import Settings from "./settings/layout"
+import "~/styles/globals.css";
+import { getLocalMessage } from "../utils/locales";
+import Apparance from "./apparence/layout";
+import { SidebarNav } from "./components/sidebar-nav";
+import {
+  OptionsContext,
+  useOptions,
+  useOptionsContext,
+} from "./context/options";
+import Settings from "./settings/layout";
+import { Separator } from "@wordigo/ui";
+import Provider from "~providers";
+import ThemeProvider from "~providers/theme";
 
 export const sidebarNavItems = [
   {
     title: "General",
-    tab: "general"
+    tab: "general",
   },
   {
     title: "Appearance",
-    tab: "appearance"
-  }
-]
+    tab: "appearance",
+  },
+];
 
 const Dashboard = () => {
-  const options = useOptionsContext()
+  const options = useOptionsContext();
 
   return (
     <div className="flex-1 lg:max-w-2xl">
       {options.activeTab === "general" && <Settings />}
       {options.activeTab === "appearance" && <Apparance />}
     </div>
-  )
-}
+  );
+};
 
 Dashboard.Layout = () => {
-  const options = useOptions({})
+  const options = useOptions({});
 
   return (
     <Provider>
@@ -41,8 +43,12 @@ Dashboard.Layout = () => {
         <OptionsContext.Provider value={options}>
           <div className="space-y-6 p-10 pb-16 bg-background text-primary h-screen">
             <div className="space-y-0.5">
-              <h2 className="text-2xl font-bold tracking-tight">Settings</h2>
-              <p className="text-muted-foreground">Manage your plugin settings and you can change your translation preference.</p>
+              <h2 className="text-2xl font-bold tracking-tight">
+                {getLocalMessage("settings")}
+              </h2>
+              <p className="text-muted-foreground">
+                {getLocalMessage("settingsDescription")}
+              </p>
             </div>
             <Separator className="my-6" />
             <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
@@ -55,7 +61,7 @@ Dashboard.Layout = () => {
         </OptionsContext.Provider>
       </ThemeProvider>
     </Provider>
-  )
-}
+  );
+};
 
-export default Dashboard.Layout
+export default Dashboard.Layout;

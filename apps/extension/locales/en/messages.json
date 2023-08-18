@@ -1,0 +1,22 @@
+{
+  "extensionName": {
+    "message": "Wordigo - Translator, Dictionary, TTS",
+    "description": "Name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Wordigo: Translate text in the browser and add it to the dictionary. Easily bypass language restrictions..",
+    "description": "Description of the extension."
+  },
+  "popup": {
+    "message": "Logic is the beginning of wisdom, not the end.",
+    "description": "Popup message."
+  },
+  "settings": {
+    "message": "Settings",
+    "description": "Popup message."
+  },
+  "settingsDescription": {
+    "message": "Manage your plugin settings and you can change your translation preference.",
+    "description": "Popup message."
+  }
+}
