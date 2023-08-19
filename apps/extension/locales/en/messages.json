@@ -28,6 +28,12 @@
     "message": "Manage your plugin settings and you can change your translation preference.",
     "description": "Popup message."
   },
+  "apparance": {
+    "message": "Apparance"
+  },
+  "apparanceDesciption": {
+    "message": "Customize the appearance of the app. Automatically switch between day and night themes."
+  },
   "general": {
     "message": "General",
     "description": "Popup message."
@@ -52,11 +58,11 @@
     "message": "You can set the language in which the texts you will translate will be translated.",
     "description": "Popup message."
   },
-  "translateOptions": {
+  "translateOption": {
     "message": "Translation options",
     "description": "Translation options."
   },
-  "translateOptionsDesc": {
+  "translateOptionDesc": {
     "message": "Enable the 'Show Translate Button' for a convenient button next to\nselected text, or use 'Select and translate' to effortlessly \ntranslate by hovering over the text and clicking the spin button.",
     "description": "Popup message."
   },
@@ -106,5 +112,11 @@
   },
   "footer": {
     "message": "© Copyright 2023. All Rights Reserved by Wordigo."
+  },
+  "successNotifyTitle": {
+    "message": "Successful"
+  },
+  "successNotifyDesc": {
+    "message": "Your changes have been successfully saved."
   }
 }

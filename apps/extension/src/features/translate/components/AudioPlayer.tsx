@@ -1,4 +1,3 @@
-import { useContextPopover } from "../context/popover";
 import {
   Button,
   Tooltip,
@@ -7,16 +6,24 @@ import {
   TooltipTrigger,
 } from "@wordigo/ui";
 import { Volume2 } from "lucide-react";
+import { useRef } from "react";
+import { usePopoverStore } from "~stores/popover";
 
 const AuidoPlayer = () => {
-  const { playerRef } = useContextPopover();
+  const { targetLanguage, selectedText } = usePopoverStore();
+  const playerRef = useRef<HTMLAudioElement>();
 
   const textToSpeech = () => {
     void playerRef?.current?.play();
   };
 
+  const computedUrl = `https://translate.googleapis.com/translate_tts?client=gtx&tl=${targetLanguage}&q=${encodeURIComponent(
+    selectedText
+  )}`;
+
   return (
     <div>
+      <audio src={computedUrl} ref={playerRef} />
       <TooltipProvider delayDuration={100}>
         <Tooltip>
           <TooltipTrigger asChild>

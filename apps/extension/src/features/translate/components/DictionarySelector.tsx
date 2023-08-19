@@ -1,4 +1,3 @@
-import { useContextPopover } from "../context/popover";
 import { Storage } from "@plasmohq/storage";
 import { useStorage } from "@plasmohq/storage/hook";
 import { WORDIGO_JWT_TOKEN_COOKIE } from "@wordigo/common";
@@ -19,6 +18,7 @@ import { useRef } from "react";
 import { Fragment, useEffect } from "react";
 import { useMutation, useQuery } from "react-query";
 import { addDictionaryWord, getUserDictionaries } from "~api/dictionary";
+import { usePopoverStore } from "~stores/popover";
 
 const DictionarySelector = ({
   sourceLangauge,
@@ -28,7 +28,7 @@ const DictionarySelector = ({
   translatedText: string;
 }) => {
   const hoverRef = useRef<HTMLDivElement>();
-  const { targetLanguage, selectedText } = useContextPopover();
+  const { targetLanguage, selectedText } = usePopoverStore();
   const { isLoading, data: dictResponse } = useQuery({
     queryFn: getUserDictionaries,
   });

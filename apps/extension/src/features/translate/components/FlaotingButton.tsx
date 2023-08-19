@@ -1,14 +1,17 @@
-import { useContextPopover } from "../context/popover";
 import Logo from "./Logo";
 import { Button, TooltipProvider, type ButtonProps } from "@wordigo/ui";
 import { motion } from "framer-motion";
 import { BookMarked, Languages, MoreVertical, Volume2 } from "lucide-react";
 import type { PropsWithChildren } from "react";
+import { useRef } from "react";
+import { usePopoverStore } from "~stores/popover";
 import { getPopupCordinate } from "~utils";
 import { getLocalMessage } from "~utils/locale";
 
 const Floating = () => {
-  const { cordinate, setFloating, setPopup, playerRef } = useContextPopover();
+  const playerRef = useRef<HTMLAudioElement>();
+  const { cordinate, setFloating, setPopup, selectedText, targetLanguage } =
+    usePopoverStore();
   const { top, left } = getPopupCordinate(cordinate);
 
   const handleTogglePopup = () => {
@@ -20,8 +23,13 @@ const Floating = () => {
     void playerRef?.current?.play();
   };
 
+  const computedUrl = `https://translate.googleapis.com/translate_tts?client=gtx&tl=${targetLanguage}&q=${encodeURIComponent(
+    selectedText
+  )}`;
+
   return (
     <TooltipProvider>
+      <audio src={computedUrl} ref={playerRef} />
       <motion.div
         tabIndex={500}
         id="el-popup-container"

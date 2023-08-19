@@ -2,11 +2,7 @@ import "~/styles/globals.css";
 import { getLocalMessage } from "../utils/locale";
 import Apparance from "./apparence/layout";
 import { SidebarNav } from "./components/sidebar-nav";
-import {
-  OptionsContext,
-  useOptions,
-  useOptionsContext,
-} from "./context/options";
+import { OptionsContext, useOptions, useOptionsContext } from "./context/options";
 import Settings from "./settings/layout";
 import { Separator } from "@wordigo/ui";
 import Provider from "~providers";
@@ -14,11 +10,11 @@ import ThemeProvider from "~providers/theme";
 
 export const sidebarNavItems = [
   {
-    title: "General",
+    title: getLocalMessage("general"),
     tab: "general",
   },
   {
-    title: "Appearance",
+    title: getLocalMessage("appearance"),
     tab: "appearance",
   },
 ];
@@ -43,12 +39,8 @@ Dashboard.Layout = () => {
         <OptionsContext.Provider value={options}>
           <div className="space-y-6 p-10 pb-16 bg-background text-primary h-screen">
             <div className="space-y-0.5">
-              <h2 className="text-2xl font-bold tracking-tight">
-                {getLocalMessage("settings")}
-              </h2>
-              <p className="text-muted-foreground">
-                {getLocalMessage("settingsDescription")}
-              </p>
+              <h2 className="text-2xl font-bold tracking-tight">{getLocalMessage("settings")}</h2>
+              <p className="text-muted-foreground">{getLocalMessage("settingsDescription")}</p>
             </div>
             <Separator className="my-6" />
             <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">

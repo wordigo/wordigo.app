@@ -13,19 +13,20 @@ import Logo from "data-base64:~assets/logo.png";
 import { useForm } from "react-hook-form";
 import type { z } from "zod";
 import "~/styles/globals.css";
-import { Storage } from "@plasmohq/storage/";
 import LanguageSelector from "@wordigo/ui/components/ui/language-selector";
 import { RotateCw } from "lucide-react";
 import { useState } from "react";
 import Provider from "~providers";
 import ThemeProvider from "~providers/theme";
+import {
+  TARGET_LANGUAGE_STORAGE,
+  TRANSLATE_OPTION_STORAGE,
+  translateOptionEnums,
+} from "~utils/constants";
 import { getLocalMessage } from "~utils/locale";
 import type { SetupFormSchema } from "~utils/schemas";
 import { SettingsFormSchema } from "~utils/schemas";
-
-const storage = new Storage({
-  area: "local",
-});
+import { localStorage } from "~utils/storage";
 
 type SetupFormValues = z.infer<typeof SetupFormSchema>;
 
@@ -43,9 +44,13 @@ const WelcomePage = () => {
 
   const handleSaveChanges = async (values: SetupFormValues) => {
     setIsLoading(true);
-    await storage.set("targetLanguage", values.targetLanguage);
-    window.close();
+    await localStorage.set(TARGET_LANGUAGE_STORAGE, values.targetLanguage);
+    await localStorage.set(
+      TRANSLATE_OPTION_STORAGE,
+      translateOptionEnums.translate_button
+    );
     setIsLoading(false);
+    window.close();
   };
 
   return (
