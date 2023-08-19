@@ -7,7 +7,8 @@
     "signup_title": "Üye Ol"
   },
   "general": {
-    "new": "Yeni"
+    "new": "Yeni",
+    "loading": "Lütfen bekleyin"
   },
   "notifications": {
     "success": "Başarılı",
