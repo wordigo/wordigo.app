@@ -69,14 +69,14 @@ const TranslatePopup = () => {
               <ArrowRightLeft className="!text-gray-300" size={12} />
               <TranslatePopup.CountryFlag countryCode={getTargetLanguageFlag?.icon} />
             </div>
-            <Button onClick={handleClose} className="!h-8 !w-8 text-gray-500" variant="ghost" size="icon">
+            <Button onClick={handleClose} className="!h-8 !w-8 text-gray-500 dark:text-accent-foreground" variant="ghost" size="icon">
               <X size={18} />
             </Button>
           </div>
         </div>
         <div className="w-full gap-y-2 flex flex-col">
           <div className="relative">
-            <div className="border-gray-200 border-[1.5px] w-full h-32 max-h-32 rounded !opacity-75 disabled:!cursor-default text-sm text-primary p-2">
+            <div className="border-gray-200 dark:!border-gray-700 border-[1.5px] w-full h-32 max-h-32 rounded !opacity-75 disabled:!cursor-default text-sm text-primary p-2">
               {isLoading ? <TranslatePopup.Loader /> : <div className="line-clamp-4 overflow-y-visible">{result?.data?.translatedText}</div>}
             </div>
             <div className="absolute bottom-2 right-3 flex items-center justify-between gap-x-2">
@@ -110,12 +110,12 @@ TranslatePopup.CopyTranslatedText = ({ text }: { text: string }) => {
     <TooltipProvider delayDuration={100}>
       <Tooltip open={visible}>
         <TooltipTrigger onMouseEnter={() => setVisible(true)} onMouseLeave={() => setVisible(false)} onClick={copyTranslatedText} asChild>
-          <Button className="!w-7 !h-7 text-accent-foreground dark:text-accent" variant="ghost" size="icon">
+          <Button className="!w-7 !h-7 text-accent-foreground" variant="ghost" size="icon">
             <Copy size={16} />
           </Button>
         </TooltipTrigger>
         <TooltipContent className="!py-0.5">
-          <p>{copiedStatus ? "Translation copied" : "Copy to clipboard"}</p>
+          <p>{copiedStatus ? getLocalMessage("translation_copied") : getLocalMessage("translation_copy")}</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
@@ -136,12 +136,12 @@ TranslatePopup.SettingsAction = () => {
     <TooltipProvider delayDuration={100}>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button onClick={openSettingsPage} className="!h-8 !w-8 text-accent-foreground dark:text-accent" variant="outline" size="icon">
+          <Button onClick={openSettingsPage} className="!h-8 !w-8 text-accent-foreground dark:text-accent-foreground" variant="outline" size="icon">
             <Settings size={17} />
           </Button>
         </TooltipTrigger>
         <TooltipContent className="!py-0.5">
-          <p>Open Settings page</p>
+          <p>{getLocalMessage("open_settings")}</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

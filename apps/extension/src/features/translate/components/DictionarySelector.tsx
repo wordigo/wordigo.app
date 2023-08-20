@@ -1,58 +1,29 @@
-import { Storage } from "@plasmohq/storage";
-import { useStorage } from "@plasmohq/storage/hook";
-import { WORDIGO_JWT_TOKEN_COOKIE } from "@wordigo/common";
-import {
-  Button,
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-  ToastAction,
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-  useToast,
-} from "@wordigo/ui";
+import { Button, HoverCard, HoverCardContent, HoverCardTrigger, ToastAction, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, useToast } from "@wordigo/ui";
 import { ChevronDown, RotateCw } from "lucide-react";
-import { useRef } from "react";
-import { Fragment, useEffect } from "react";
-import { useMutation, useQuery } from "react-query";
-import { addDictionaryWord, getUserDictionaries } from "~api/dictionary";
+import { Fragment, useEffect, useRef } from "react";
+import { useMutation } from "react-query";
+import { addDictionaryWord } from "~api/dictionary";
+import { useAuthStore } from "~stores/auth";
+import { useDictionaryStore } from "~stores/dictionary";
 import { usePopoverStore } from "~stores/popover";
+import { getLocalMessage } from "~utils/locale";
 
-const DictionarySelector = ({
-  sourceLangauge,
-  translatedText,
-}: {
-  sourceLangauge: string;
-  translatedText: string;
-}) => {
+const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge: string; translatedText: string }) => {
   const hoverRef = useRef<HTMLDivElement>();
+  const { dictionaries } = useDictionaryStore();
   const { targetLanguage, selectedText } = usePopoverStore();
-  const { isLoading, data: dictResponse } = useQuery({
-    queryFn: getUserDictionaries,
-  });
-  const {
-    mutate: addMutate,
-    isLoading: addIsLoading,
-    status,
-  } = useMutation(addDictionaryWord);
+  const { mutate: addMutate, isLoading: addIsLoading, status } = useMutation(addDictionaryWord);
   const { toast } = useToast();
-  const [hasToken] = useStorage({
-    key: WORDIGO_JWT_TOKEN_COOKIE,
-    instance: new Storage({
-      area: "local",
-    }),
-  });
+  const { isLoggedIn } = useAuthStore();
 
   useEffect(() => {
     if (status === "success") {
       toast({
-        title: "Successful",
-        description: "Word insertion successful.",
+        title: getLocalMessage("successNotifyTitle"),
+        description: getLocalMessage("word_add_notify"),
         action: (
           <ToastAction className="text-primary" altText="View Dictionary">
-            View Dictionary
+            {getLocalMessage("view_dictionary")}
           </ToastAction>
         ),
       });
@@ -60,7 +31,7 @@ const DictionarySelector = ({
   }, [status]);
 
   const handleAddLibrary = (dictionaryId?: number) => {
-    if (!hasToken) return;
+    if (!isLoggedIn) return;
     addMutate({
       nativeLanguage: sourceLangauge,
       targetLanguage,
@@ -77,10 +48,10 @@ const DictionarySelector = ({
       <HoverCard openDelay={100}>
         <Tooltip>
           <HoverCardTrigger asChild>
-            <TooltipTrigger disabled={!hasToken || addIsLoading} asChild>
+            <TooltipTrigger disabled={!isLoggedIn || addIsLoading} asChild>
               <Button
                 className="!pointer-events-auto disabled:!opacity-50 !h-8 flex items-center justify-between gap-x-2"
-                disabled={!hasToken || addIsLoading}
+                disabled={!isLoggedIn || addIsLoading}
                 onClick={() => handleAddLibrary()}
                 variant="default"
                 size="sm"
@@ -88,32 +59,27 @@ const DictionarySelector = ({
                 {addIsLoading ? (
                   <Fragment>
                     <RotateCw className="mr-2 h-4 w-4 animate-spin" />
-                    Please wait
+                    {getLocalMessage("loading")}
                   </Fragment>
                 ) : (
                   <Fragment>
-                    Save to library
+                    {getLocalMessage("save_to_libraray")}
                     <ChevronDown size={16} />
                   </Fragment>
                 )}
               </Button>
             </TooltipTrigger>
           </HoverCardTrigger>
-          {hasToken && (
-            <HoverCardContent
-              ref={hoverRef}
-              className="!p-0 w-[145px] divide-y divide-gray-200 dark:divide-gray-700 !rounded-sm"
-            >
-              <div className="text-accent-foreground select-none rounded-sm hover:bg-primary-foreground !opacity-60 !h-7 flex items-center px-2 text-[13.5px]">
-                Select dictionary
-              </div>
+          {isLoggedIn && (
+            <HoverCardContent ref={hoverRef} className="!p-0 w-[145px] divide-y divide-gray-200 dark:divide-gray-700 !rounded-sm">
+              <div className="text-accent-foreground select-none rounded-sm hover:bg-primary-foreground !opacity-60 !h-7 flex items-center px-2 text-[13.5px]">Select dictionary</div>
               <div className="flex flex-col">
-                {dictResponse?.data?.map((dictionary) => (
+                {dictionaries?.map((dictionary) => (
                   <Button
                     onClick={() => handleAddLibrary(dictionary.id)}
                     key={dictionary.id}
                     disabled={addIsLoading}
-                    className="!rounded-sm !h-8 !text-start !justify-start"
+                    className="!rounded-sm !h-8 !text-start !justify-start truncate"
                     variant="ghost"
                     size="sm"
                   >
@@ -123,9 +89,9 @@ const DictionarySelector = ({
               </div>
             </HoverCardContent>
           )}
-          {!hasToken && (
+          {!isLoggedIn && (
             <TooltipContent className="!py-0.5">
-              <p>you need to login.</p>
+              <p>{getLocalMessage("you_need_login")}</p>
             </TooltipContent>
           )}
         </Tooltip>

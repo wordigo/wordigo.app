@@ -26,6 +26,8 @@ const ApparanceForm = () => {
   });
 
   async function onSubmit(data: AppearanceFormValues) {
+    console.log("data.theme", data.theme);
+
     await localStorage.set("theme", data.theme);
     toast({
       title: getLocalMessage("successNotifyTitle"),

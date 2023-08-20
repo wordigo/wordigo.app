@@ -1,5 +1,5 @@
 import { WORDIGO_JWT_TOKEN_COOKIE } from "@wordigo/common";
-import axios from "axios";
+import axios, { AxiosError, isAxiosError } from "axios";
 import { localStorage } from "~utils/storage";
 
 const baseURL = process.env.PLASMO_PUBLIC_BACKEND_URL;
@@ -25,5 +25,26 @@ instance.interceptors.request.use(async (config) => {
     return Promise.reject(error);
   }
 });
+
+instance.interceptors.response.use(
+  async (response) => {
+    try {
+      console.log(response.data);
+
+      // const token = await localStorage.remove(WORDIGO_JWT_TOKEN_COOKIE);
+
+      return response;
+    } catch (error) {
+      console.log("error", error);
+
+      return Promise.reject(error);
+    }
+  },
+  async (error) => {
+    if (error.response.data.message === "jwt expired" && error.response.data.message === "No Authorization.") {
+      const deletedToken = await localStorage.remove(WORDIGO_JWT_TOKEN_COOKIE);
+    }
+  }
+);
 
 export default instance;

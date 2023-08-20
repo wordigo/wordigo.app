@@ -10,8 +10,7 @@ import { getLocalMessage } from "~utils/locale";
 
 const Floating = () => {
   const playerRef = useRef<HTMLAudioElement>();
-  const { cordinate, setFloating, setPopup, selectedText, targetLanguage } =
-    usePopoverStore();
+  const { cordinate, setFloating, setPopup, selectedText, targetLanguage } = usePopoverStore();
   const { top, left } = getPopupCordinate(cordinate);
 
   const handleTogglePopup = () => {
@@ -23,9 +22,7 @@ const Floating = () => {
     void playerRef?.current?.play();
   };
 
-  const computedUrl = `https://translate.googleapis.com/translate_tts?client=gtx&tl=${targetLanguage}&q=${encodeURIComponent(
-    selectedText
-  )}`;
+  const computedUrl = `https://translate.googleapis.com/translate_tts?client=gtx&tl=${targetLanguage}&q=${encodeURIComponent(selectedText)}`;
 
   return (
     <TooltipProvider>

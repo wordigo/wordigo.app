@@ -1,40 +1,37 @@
-import { AllCountryLanguages, type ILanguage } from "@wordigo/common"
-import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, ScrollArea } from "@wordigo/ui"
-import { ChevronDown } from "lucide-react"
-import { useState } from "react"
-import ReactCountryFlag from "react-country-flag"
+import { AllCountryLanguages, type ILanguage } from "@wordigo/common";
+import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, ScrollArea } from "@wordigo/ui";
+import { ChevronDown } from "lucide-react";
+import { useState } from "react";
+import ReactCountryFlag from "react-country-flag";
 
 export interface ILanguageSelector {
-  supportLanguages?: boolean
-  className?: string
-  defaultValue?: string
-  onSelect?: (value: ILanguage) => void
+  supportLanguages?: boolean;
+  className?: string;
+  defaultValue?: string;
+  onSelect?: (value: ILanguage) => void;
 }
 
 const LanguageSelector: React.FC<ILanguageSelector> = ({ defaultValue, onSelect }) => {
-  const computedDefaultValue = AllCountryLanguages.find((lang) => lang.code === defaultValue)
-  const [selected, setSelected] = useState<ILanguage>(computedDefaultValue)
+  const computedDefaultValue = AllCountryLanguages.find((lang) => lang.code === defaultValue);
+  const [selected, setSelected] = useState<ILanguage>(computedDefaultValue);
 
   const handleSelect = (code: string) => {
-    const value = AllCountryLanguages.find((lang) => lang.code === code)
-    setSelected(value)
-    onSelect?.(value)
-  }
+    const value = AllCountryLanguages.find((lang) => lang.code === code);
+    setSelected(value);
+    onSelect?.(value);
+  };
 
-  const selectedValue = AllCountryLanguages.find((lang) => lang.code === selected?.code)
+  const selectedValue = AllCountryLanguages.find((lang) => lang.code === selected?.code);
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="outline"
-          size="default"
-          className="rounded-md !h-9 w-[120px] !px-3 flex justify-between items-center gap-x-2">
+        <Button variant="outline" size="default" className="rounded-md !h-9 w-[120px] !px-3 flex justify-between items-center gap-x-2">
           <div className="flex items-center gap-x-2">
             <ReactCountryFlag
               style={{
                 fontSize: "1em",
-                lineHeight: "1em"
+                lineHeight: "1em",
               }}
               svg
               countryCode={selectedValue.icon}
@@ -53,7 +50,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({ defaultValue, onSelect 
                   <ReactCountryFlag
                     style={{
                       fontSize: "1em",
-                      lineHeight: "1em"
+                      lineHeight: "1em",
                     }}
                     svg
                     countryCode={icon}
@@ -61,12 +58,12 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({ defaultValue, onSelect 
                   {name}
                 </div>
               </DropdownMenuItem>
-            )
+            );
           })}
         </ScrollArea>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
-}
+  );
+};
 
-export default LanguageSelector
+export default LanguageSelector;

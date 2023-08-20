@@ -1,3 +1,4 @@
+import { WORDIGO_JWT_TOKEN_COOKIE } from "@wordigo/common";
 import styleText from "data-text:~/styles/globals.css";
 import type { PlasmoCSConfig } from "plasmo";
 import { Fragment, useEffect, useState } from "react";
@@ -5,6 +6,8 @@ import "~/styles/globals.css";
 import FloatingButton from "~features/translate/components/FlaotingButton";
 import TranslatePopup from "~features/translate/components/TranslatePopup";
 import Provider from "~providers";
+import { useAuthStore } from "~stores/auth";
+import { useDictionaryStore } from "~stores/dictionary";
 import { usePopoverStore } from "~stores/popover";
 import { TARGET_LANGUAGE_STORAGE, TRANSLATE_OPTION_STORAGE, translateOptionEnums } from "~utils/constants";
 import { localStorage } from "~utils/storage";
@@ -53,13 +56,9 @@ const Translate = () => {
       setCordinate({ x, y });
 
       if (translateOption === translateOptionEnums.translate_button) {
-        console.log("floating");
-
         setFloating(true);
         setPopup(false);
       } else {
-        console.log("hep çalışıyor");
-
         setPopup(true);
       }
     } else {
@@ -67,12 +66,11 @@ const Translate = () => {
       setPopup(false);
     }
   };
-  console.log(isPopup);
 
   useEffect(() => {
     document.addEventListener("mouseup", handleMouseUp);
 
-    () => {
+    return () => {
       document.removeEventListener("mouseup", handleMouseUp);
     };
   }, []);
@@ -89,15 +87,31 @@ const Translate = () => {
 };
 
 Translate.Layout = () => {
+  const { getDictionaries } = useDictionaryStore();
   const [mounted, setMounted] = useState(false);
   const { setTargetLanguage, setTranslateOption } = usePopoverStore();
+  const { setToken } = useAuthStore();
+
+  localStorage.watch({
+    [TRANSLATE_OPTION_STORAGE]: (state) => {
+      setTranslateOption(state.newValue);
+    },
+    [TARGET_LANGUAGE_STORAGE]: (state) => {
+      setTargetLanguage(state.newValue);
+    },
+  });
 
   const getStorages = async () => {
+    const tokenStorage = await localStorage.get(WORDIGO_JWT_TOKEN_COOKIE);
     const targetLanguage = await localStorage.get(TARGET_LANGUAGE_STORAGE);
     const translateOption = await localStorage.get(TRANSLATE_OPTION_STORAGE);
+
+    setToken(tokenStorage);
     setTargetLanguage(targetLanguage);
     setTranslateOption(translateOption);
     setMounted(true);
+
+    if (tokenStorage) void getDictionaries();
   };
 
   useEffect(() => {

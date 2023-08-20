@@ -2,6 +2,7 @@ import { Button, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from
 import { Volume2 } from "lucide-react";
 import { useRef } from "react";
 import { usePopoverStore } from "~stores/popover";
+import { getLocalMessage } from "~utils/locale";
 
 const AuidoPlayer = () => {
   const { targetLanguage, selectedText } = usePopoverStore();
@@ -19,12 +20,12 @@ const AuidoPlayer = () => {
       <TooltipProvider delayDuration={100}>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button onClick={textToSpeech} className="!w-7 !h-7 text-accent-foreground dark:text-accent" variant="ghost" size="icon">
+            <Button onClick={textToSpeech} className="!w-7 !h-7 text-accent-foreground" variant="ghost" size="icon">
               <Volume2 size={18} />
             </Button>
           </TooltipTrigger>
           <TooltipContent className="!py-0.5">
-            <p>Text to speech</p>
+            <p>{getLocalMessage("text_to_speech")}</p>
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>

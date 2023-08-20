@@ -118,5 +118,32 @@
   },
   "successNotifyDesc": {
     "message": "Your changes have been successfully saved."
+  },
+  "open_settings": {
+    "message": "Open Settings page"
+  },
+  "translation_copied": {
+    "message": "Translation copied"
+  },
+  "translation_copy": {
+    "message": "Copy to clipboard"
+  },
+  "text_to_speech": {
+    "message": "Text to speech"
+  },
+  "loading": {
+    "message": "Please wait"
+  },
+  "save_to_libraray": {
+    "message": "Save to library"
+  },
+  "you_need_login": {
+    "message": "you need to login."
+  },
+  "view_dictionary": {
+    "message": "View Dictionary"
+  },
+  "word_add_notify": {
+    "message": "Word added to the dictionary."
   }
 }
