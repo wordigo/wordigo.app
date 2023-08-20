@@ -53,16 +53,21 @@ const Translate = () => {
       setCordinate({ x, y });
 
       if (translateOption === translateOptionEnums.translate_button) {
+        console.log("floating");
+
         setFloating(true);
         setPopup(false);
       } else {
-        // setPopup(true);
+        console.log("hep çalışıyor");
+
+        setPopup(true);
       }
     } else {
       setFloating(false);
       setPopup(false);
     }
   };
+  console.log(isPopup);
 
   useEffect(() => {
     document.addEventListener("mouseup", handleMouseUp);

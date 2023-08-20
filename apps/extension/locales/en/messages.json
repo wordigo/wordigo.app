@@ -28,10 +28,10 @@
     "message": "Manage your plugin settings and you can change your translation preference.",
     "description": "Popup message."
   },
-  "apparance": {
+  "appearance": {
     "message": "Apparance"
   },
-  "apparanceDesciption": {
+  "appearanceDesciption": {
     "message": "Customize the appearance of the app. Automatically switch between day and night themes."
   },
   "general": {

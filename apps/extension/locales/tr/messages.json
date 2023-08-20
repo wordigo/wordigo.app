@@ -28,10 +28,10 @@
     "message": "Eklenti ayarlarını yönetin ve çeviri tercihinizi değiştirebilirsiniz.",
     "description": "Açılır ileti."
   },
-  "apparance": {
+  "appearance": {
     "message": "Görünüm"
   },
-  "apparanceDesciption": {
+  "appearanceDesciption": {
     "message": "Uygulamanın görünümünü özelleştirin. Otomatik olarak gece ve gündüz temaları arasında geçiş yapın."
   },
   "general": {
