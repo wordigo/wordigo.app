@@ -1,10 +1,4 @@
-import {
-  Button,
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@wordigo/ui";
+import { Button, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@wordigo/ui";
 import { Volume2 } from "lucide-react";
 import { useRef } from "react";
 import { usePopoverStore } from "~stores/popover";
@@ -17,9 +11,7 @@ const AuidoPlayer = () => {
     void playerRef?.current?.play();
   };
 
-  const computedUrl = `https://translate.googleapis.com/translate_tts?client=gtx&tl=${targetLanguage}&q=${encodeURIComponent(
-    selectedText
-  )}`;
+  const computedUrl = `https://translate.googleapis.com/translate_tts?client=gtx&tl=${targetLanguage}&q=${encodeURIComponent(selectedText)}`;
 
   return (
     <div>
@@ -27,12 +19,7 @@ const AuidoPlayer = () => {
       <TooltipProvider delayDuration={100}>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button
-              onClick={textToSpeech}
-              className="!w-7 !h-7 text-accent-foreground dark:text-accent"
-              variant="ghost"
-              size="icon"
-            >
+            <Button onClick={textToSpeech} className="!w-7 !h-7 text-accent-foreground dark:text-accent" variant="ghost" size="icon">
               <Volume2 size={18} />
             </Button>
           </TooltipTrigger>

@@ -1,7 +1,6 @@
-import React from "react";
-import { useRouter } from "next/router";
-
 import useHeaders from "./headers.constant";
+import { useRouter } from "next/router";
+import React from "react";
 
 const DashboardHeaders = () => {
   return (

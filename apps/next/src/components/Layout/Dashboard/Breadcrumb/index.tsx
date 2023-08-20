@@ -1,9 +1,8 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { cn } from "@wordigo/ui/lib/utils";
 import { ChevronRight, HomeIcon } from "lucide-react";
 import { useTranslation } from "next-i18next";
-
-import { cn } from "@wordigo/ui/lib/utils";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 interface BreadcrumbItemProps {
   href: string;
@@ -17,10 +16,10 @@ const BreadcrumbItem: React.FC<BreadcrumbItemProps> = ({ href, name, initial, ac
   const hasInitial = initial || !name;
 
   const classes = cn(
-    "ml-1 text-sm hover:text-gray-600 font-medium",
+    "ml-1 text-sm hover:text-gray-600 font-medium truncate whitespace-nowrap",
     active ? "text-gray-700 hover:text-gray-600" : "text-gray-500",
     hasInitial && "md:ml-2 dark:text-gray-400 dark:hover:text-white",
-    !hasInitial && "md:ml-2 dark:text-gray-400",
+    !hasInitial && "md:ml-2 dark:text-gray-400"
   );
 
   return (
@@ -48,13 +47,7 @@ const Breadcrumb: React.FC = () => {
     <nav className="flex" aria-label="Breadcrumb">
       <ol className="inline-flex items-center space-x-1 md:space-x-3">
         {pathParts.map((part, index) => (
-          <BreadcrumbItem
-            key={index}
-            href={`/${pathParts.slice(1, index + 1).join("/")}`}
-            name={part}
-            initial={index === 0}
-            active={index === pathParts.length - 1}
-          />
+          <BreadcrumbItem key={index} href={`/${pathParts.slice(1, index + 1).join("/")}`} name={part} initial={index === 0} active={index === pathParts.length - 1} />
         ))}
       </ol>
     </nav>
