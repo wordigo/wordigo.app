@@ -1,4 +1,5 @@
 import Logo from "./Logo";
+import { sendToBackground } from "@plasmohq/messaging";
 import { Button, TooltipProvider, type ButtonProps } from "@wordigo/ui";
 import { motion } from "framer-motion";
 import { BookMarked, Languages, MoreVertical, Volume2 } from "lucide-react";
@@ -20,6 +21,13 @@ const Floating = () => {
 
   const textToSpeech = () => {
     void playerRef?.current?.play();
+  };
+
+  const openSettingsPage = async () => {
+    const opeendSettings = await sendToBackground({
+      name: "openSettings",
+    });
+    opeendSettings && setPopup(false);
   };
 
   const computedUrl = `https://translate.googleapis.com/translate_tts?client=gtx&tl=${targetLanguage}&q=${encodeURIComponent(selectedText)}`;
@@ -51,7 +59,7 @@ const Floating = () => {
               <Volume2 size={15} />
               {getLocalMessage("voice")}
             </Floating.Button>
-            <Floating.Button>
+            <Floating.Button onClick={openSettingsPage}>
               <BookMarked size={14} />
               {getLocalMessage("add")}
             </Floating.Button>

@@ -16,13 +16,17 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
   const { toast } = useToast();
   const { isLoggedIn } = useAuthStore();
 
+  const openDictionaryPage = () => {
+    window.location.href = process.env.PLASMO_PUBLIC_SITE_URL + "/dashboard/dictionaries/" + "data.dictionaryId";
+  };
+
   useEffect(() => {
     if (status === "success") {
       toast({
         title: getLocalMessage("successNotifyTitle"),
         description: getLocalMessage("word_add_notify"),
         action: (
-          <ToastAction className="text-primary" altText="View Dictionary">
+          <ToastAction onClick={openDictionaryPage} className="text-primary" altText={getLocalMessage("view_dictionary")}>
             {getLocalMessage("view_dictionary")}
           </ToastAction>
         ),

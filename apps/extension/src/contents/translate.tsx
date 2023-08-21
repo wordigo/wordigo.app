@@ -27,6 +27,7 @@ export const getStyle = () => {
 
 const Translate = () => {
   const translatorShadowContent = document.querySelector("#wordigo-translate-content");
+
   const { setCordinate, isFloating, isPopup, setFloating, setPopup, setSelectedText, translateOption } = usePopoverStore();
 
   const handleMouseUp = (event) => {

@@ -28,19 +28,16 @@ chrome.cookies.onChanged.addListener((changeInfo) => {
   }
 });
 
-// const getCookie = async () => {
-//   const cookie = await chrome.cookies.get({ url: process.env.PLASMO_PUBLIC_SITE_URL, name: WORDIGO_AUTH_SESSION_COOKIE })
+const getCookie = async () => {
+  const cookie = await chrome.cookies.get({ url: process.env.PLASMO_PUBLIC_SITE_URL, name: WORDIGO_JWT_TOKEN_COOKIE });
 
-//   if (cookie.value.trim() === "") {
-//     void storage.remove(JWT_TOKEN_COOKIE)
-//   } else {
-//     const response = await getSession(cookie.value)
-//     console.log(response)
+  if (cookie.value.trim() === "") {
+    void localStorage.remove(WORDIGO_JWT_TOKEN_COOKIE);
+  } else {
+    void localStorage.set(WORDIGO_JWT_TOKEN_COOKIE, cookie.value);
+  }
+};
 
-//     void storage.set(JWT_TOKEN_COOKIE, response.user.accessToken)
-//   }
-// }
-
-// getCookie()
+void getCookie();
 
 export {};

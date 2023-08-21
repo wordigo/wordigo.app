@@ -8,7 +8,9 @@ import { localStorage } from "~utils/storage";
 const Provider = ({ children }: PropsWithChildren) => {
   const [theme, setTheme] = useState<string>();
   const [mounted, setMounted] = useState(false);
-  const portalContainer = document.getElementById("el-translate-container") || document.body;
+
+  const portalContainer = document.body;
+
   const [queryClient] = useState(() => new QueryClient());
 
   localStorage.watch({

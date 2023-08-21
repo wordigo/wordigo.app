@@ -10,6 +10,12 @@ const ThemeProvider = ({ children }: PropsWithChildren): React.ReactElement => {
     });
   }, []);
 
+  localStorage.watch({
+    theme: (state) => {
+      document.body.setAttribute("data-theme", state.newValue || "light");
+    },
+  });
+
   return <>{children}</>;
 };
 

@@ -1,5 +1,5 @@
 import { WORDIGO_JWT_TOKEN_COOKIE } from "@wordigo/common";
-import axios, { AxiosError, isAxiosError } from "axios";
+import axios from "axios";
 import { localStorage } from "~utils/storage";
 
 const baseURL = process.env.PLASMO_PUBLIC_BACKEND_URL;
@@ -29,14 +29,8 @@ instance.interceptors.request.use(async (config) => {
 instance.interceptors.response.use(
   async (response) => {
     try {
-      console.log(response.data);
-
-      // const token = await localStorage.remove(WORDIGO_JWT_TOKEN_COOKIE);
-
       return response;
     } catch (error) {
-      console.log("error", error);
-
       return Promise.reject(error);
     }
   },
