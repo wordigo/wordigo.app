@@ -1,15 +1,14 @@
-import Router from "next/router";
 import { setToken } from "@/store/auth/slice";
 import { useAppDispatch } from "@/utils/hooks";
 import { useSession } from "next-auth/react";
+import Router from "next/router";
 import NProgress from "nprogress";
-
 import "nprogress/nprogress.css";
-import { Fragment, type PropsWithChildren, useEffect, useState } from "react";
+import PageLoader from "../UI/PageLoader";
+import { setAcceptLanguage, setAuthToken } from "@/store/baseQuery";
 import { setLanguage } from "@/store/common/slice";
 import { useTranslation } from "next-i18next";
-
-import PageLoader from "../UI/PageLoader";
+import { Fragment, type PropsWithChildren, useEffect, useState } from "react";
 
 NProgress.configure({
   minimum: 0.3,
@@ -46,10 +45,14 @@ export default function RootLayout({ children }: PropsWithChildren) {
 
   useEffect(() => {
     dispatch(setLanguage(i18n.language));
+    setAcceptLanguage(i18n.language);
   }, [i18n.language]);
 
   useEffect(() => {
-    if (session.status === "authenticated") dispatch(setToken(session?.data?.user?.accessToken));
+    if (session.status === "authenticated") {
+      dispatch(setToken(session?.data?.user?.accessToken));
+      setAuthToken(session?.data?.user?.accessToken);
+    }
   }, [session?.data]);
 
   return <Fragment>{loading || session.status === "loading" ? <PageLoader /> : children}</Fragment>;

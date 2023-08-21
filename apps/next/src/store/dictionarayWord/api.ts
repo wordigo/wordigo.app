@@ -1,10 +1,10 @@
-import { defaultBaseQuery } from "../baseQuery";
+import { axiosBaseQuery } from "../baseQuery";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { type IResponse } from "types/global";
 
 export const dictionaryWordApi = createApi({
   reducerPath: "dictionaryWordApi",
-  baseQuery: defaultBaseQuery,
+  baseQuery: axiosBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_WORDIGO_BACKEND_URL }),
   endpoints: (builder) => ({
     getDictionaryWords: builder.mutation<IResponse, string | number>({
       query: (slug) => ({
@@ -29,8 +29,4 @@ export const dictionaryWordApi = createApi({
   }),
 });
 
-export const {
-  useCreateWordMutation,
-  useGetDictionaryWordsMutation,
-  useDeleteDicWordMutation,
-} = dictionaryWordApi;
+export const { useCreateWordMutation, useGetDictionaryWordsMutation, useDeleteDicWordMutation } = dictionaryWordApi;

@@ -1,15 +1,11 @@
-import { defaultBaseQuery } from "../baseQuery";
-import {
-  type CreateDictionaryType,
-  type Dictionary,
-  type GetDictionaryIdType,
-} from "./type";
+import { axiosBaseQuery } from "../baseQuery";
+import { type CreateDictionaryType, type Dictionary, type GetDictionaryIdType } from "./type";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { type IResponse } from "types/global";
 
 export const dictionaryApi = createApi({
   reducerPath: "dictionaryApi",
-  baseQuery: defaultBaseQuery,
+  baseQuery: axiosBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_WORDIGO_BACKEND_URL }),
   endpoints: (builder) => ({
     getUserDictionaries: builder.mutation<IResponse<Dictionary[]>, any>({
       query: () => ({
@@ -23,10 +19,7 @@ export const dictionaryApi = createApi({
         method: "GET",
       }),
     }),
-    createDictionary: builder.mutation<
-      CreateDictionaryType,
-      IResponse<Dictionary[]>
-    >({
+    createDictionary: builder.mutation<CreateDictionaryType, IResponse<Dictionary[]>>({
       query: (create) => ({
         url: "/dictionaries/create",
         body: create,
@@ -48,9 +41,4 @@ export const dictionaryApi = createApi({
   }),
 });
 
-export const {
-  useGetUserDictionariesMutation,
-  useCreateDictionaryMutation,
-  useDeleteUserDictionariesMutation,
-  useGetDictionaryDetailMutation,
-} = dictionaryApi;
+export const { useGetUserDictionariesMutation, useCreateDictionaryMutation, useDeleteUserDictionariesMutation, useGetDictionaryDetailMutation } = dictionaryApi;
