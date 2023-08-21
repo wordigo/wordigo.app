@@ -34,6 +34,8 @@ const getCookie = async () => {
   if (cookie.value.trim() === "") {
     void localStorage.remove(WORDIGO_JWT_TOKEN_COOKIE);
   } else {
+    console.log(cookie.value);
+
     void localStorage.set(WORDIGO_JWT_TOKEN_COOKIE, cookie.value);
   }
 };

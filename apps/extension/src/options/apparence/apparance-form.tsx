@@ -129,7 +129,7 @@ const ApparanceForm = () => {
                           </div>
                         </div>
                       </div>
-                      <span className="block w-full p-2 text-center font-normal">{getLocalMessage("dark")}</span>
+                      <span className="block w-full p-2 text-center font-normal w-full">{getLocalMessage("dark")}</span>
                     </FormLabel>
                   </FormItem>
                 </RadioGroup>
@@ -137,7 +137,7 @@ const ApparanceForm = () => {
             )}
           />
 
-          <Button type="submit">{getLocalMessage("update_prefences")}</Button>
+          <Button type="submit">{getLocalMessage("saveChanges")}</Button>
         </form>
       </Form>
     );

@@ -84,7 +84,7 @@ export const SettingsForm = () => {
               control={form.control as never}
               name="translate_button"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between rounded-lg border-gray-400 border-opacity-40 border p-4">
+                <FormItem className="flex flex-row items-center justify-between rounded-lg border-gray-400 border-opacity-40 border p-4 gap-x-2">
                   <div className="space-y-0.5">
                     <FormLabel className="text-base">{getLocalMessage("showTranslate")}</FormLabel>
                     <FormDescription>{getLocalMessage("showTranslateDesc")}</FormDescription>
@@ -99,7 +99,7 @@ export const SettingsForm = () => {
               control={form.control as never}
               name="select_and_translate"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between rounded-lg border-gray-400 border-opacity-40  border p-4">
+                <FormItem className="flex flex-row items-center justify-between rounded-lg border-gray-400 border-opacity-40 border p-4 gap-x-2">
                   <div className="space-y-0.5">
                     <FormLabel className="text-base">{getLocalMessage("selectTranslate")}</FormLabel>
                     <FormDescription>{getLocalMessage("selectTranslateDesc")}</FormDescription>

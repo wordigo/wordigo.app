@@ -1,30 +1,14 @@
-import { useRouter } from "next/router";
+import Images from "./Component/image";
 import CInput from "@/components/UI/Input/Input";
 import { DictionariesSettingsSchema } from "@/schemas/dictionaries.settings";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Button, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Input, Label, Switch, Textarea, useToast } from "@wordigo/ui";
 import { Copy } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { type z } from "zod";
-
-import {
-  Button,
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  Input,
-  Label,
-  Switch,
-  Textarea,
-  useToast,
-} from "@wordigo/ui";
-
-import Images from "./Component/image";
 
 type DictionariesValues = z.infer<typeof DictionariesSettingsSchema>;
 
@@ -48,9 +32,7 @@ export default function index() {
     mode: "onSubmit",
   });
 
-  const handleSave = (data: DictionariesValues) => {
-    console.log(data);
-  };
+  const handleSave = (data: DictionariesValues) => {};
 
   const handleCopyUrl = () => {
     void navigator.clipboard.writeText(`https://wordigo.app/` + form.getValues().title);
@@ -72,11 +54,7 @@ export default function index() {
           <Button onClick={handleCancel} variant="outline" className="font-semibold text-sm mr-1">
             {t("buttons.cancel")}
           </Button>
-          <Button
-            type="submit"
-            variant="outline"
-            className="w-fit dark:bg-LightBackground bg-DarkBackground font-semibold text-sm dark:text-black text-white"
-          >
+          <Button type="submit" variant="outline" className="w-fit dark:bg-LightBackground bg-DarkBackground font-semibold text-sm dark:text-black text-white">
             {t("buttons.save")}
           </Button>
         </span>
@@ -214,11 +192,7 @@ export default function index() {
                 <Button onClick={handleCancel} variant="outline" className="font-semibold text-sm mr-1">
                   {t("buttons.cancel")}
                 </Button>
-                <Button
-                  type="submit"
-                  variant="outline"
-                  className="w-fit dark:bg-LightBackground bg-DarkBackground font-semibold text-sm dark:text-black text-white"
-                >
+                <Button type="submit" variant="outline" className="w-fit dark:bg-LightBackground bg-DarkBackground font-semibold text-sm dark:text-black text-white">
                   {t("buttons.save")}
                 </Button>
               </div>

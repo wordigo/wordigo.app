@@ -26,6 +26,7 @@ import {
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import * as React from "react";
+import {Dictionary} from "@/store/dictionaries/type";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -33,11 +34,11 @@ interface DataTableProps<TData, TValue> {
   isLoading?: boolean;
 }
 
-export function DataTable<TData, TValue>({
+export function DataTable<Dictionary>({
   columns,
   data,
   isLoading,
-}: DataTableProps<TData, TValue>) {
+}: DataTableProps<Dictionary, Dictionary>) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});

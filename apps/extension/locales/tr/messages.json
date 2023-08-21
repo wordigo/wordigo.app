@@ -31,8 +31,8 @@
   "appearance": {
     "message": "Görünüm"
   },
-  "appearanceDesciption": {
-    "message": "Uygulamanın görünümünü özelleştirin. Otomatik olarak gündüz ve gece temaları arasında geçiş yapın."
+  "apparanceDesciption": {
+    "message": "Uygulamanın görünümünü özelleştirin. Gündüz ve gece temaları arasında otomatik olarak geçiş yapın."
   },
   "general": {
     "message": "Genel",
@@ -86,6 +86,12 @@
     "message": "Değişiklikleri Kaydet",
     "description": "değişiklikleri kaydet"
   },
+  "save": {
+    "message": "Kaydet"
+  },
+  "select_language": {
+    "message": "Dil Seçin"
+  },
   "font": {
     "message": "Yazı Tipi"
   },
@@ -104,14 +110,11 @@
   "dark": {
     "message": "Koyu"
   },
-  "update_prefences": {
-    "message": "Tercihleri Güncelle"
-  },
   "welcome": {
     "message": "Wordigo kurulum sayfasına hoş geldiniz! Burada tercih ettiğiniz çeviri dilini seçebilir ve kurulum sürecini tamamlamadan önce uzantı seçeneklerini özelleştirebilirsiniz."
   },
   "footer": {
-    "message": "© Tüm Hakları Saklıdır 2023. Wordigo tarafından."
+    "message": "© Tüm Hakları Saklıdır - 2023 Wordigo."
   },
   "successNotifyTitle": {
     "message": "Başarılı"

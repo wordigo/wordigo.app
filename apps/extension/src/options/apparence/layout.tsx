@@ -6,7 +6,7 @@ const Apparance = () => {
   return (
     <div className="space-y-4">
       <div>
-        <h3 className="text-lg font-medium">{getLocalMessage("apparance")}</h3>
+        <h3 className="text-lg font-medium">{getLocalMessage("appearance")}</h3>
         <p className="text-sm text-muted-foreground">{getLocalMessage("apparanceDesciption")}</p>
       </div>
       <Separator />
@@ -16,4 +16,3 @@ const Apparance = () => {
 };
 
 export default Apparance;
-e

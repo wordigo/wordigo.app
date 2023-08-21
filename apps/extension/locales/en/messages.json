@@ -31,7 +31,7 @@
   "appearance": {
     "message": "Apparance"
   },
-  "appearanceDesciption": {
+  "apparanceDesciption": {
     "message": "Customize the appearance of the app. Automatically switch between day and night themes."
   },
   "general": {
@@ -85,6 +85,12 @@
   "saveChanges": {
     "message": "Save Changes",
     "description": "save changes"
+  },
+  "save": {
+    "message": "Save"
+  },
+  "select_language": {
+    "message": "Select Language"
   },
   "font": {
     "message": "Font"

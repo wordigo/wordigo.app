@@ -1,9 +1,7 @@
-import * as ScrollArea from "@radix-ui/react-scroll-area";
-import ReactCountryFlag from "react-country-flag";
-
-import { AllCountryLanguages, SupportedLanguages } from "@wordigo/common";
-
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "./select";
+import * as ScrollArea from "@radix-ui/react-scroll-area";
+import { AllCountryLanguages, SupportedLanguages } from "@wordigo/common";
+import ReactCountryFlag from "react-country-flag";
 
 export interface ILanguageSelector {
   placeholder?: string;
@@ -14,14 +12,7 @@ export interface ILanguageSelector {
   onSelect?: (value: string) => void;
 }
 
-const LanguageSelector: React.FC<ILanguageSelector> = ({
-  className,
-  defaultValue,
-  targetLanguageSelect,
-  placeholder,
-  providerLanguages = false,
-  onSelect,
-}) => {
+const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue, targetLanguageSelect, placeholder, providerLanguages = false, onSelect }) => {
   const handleSelect = (value: string) => {
     onSelect?.(value);
   };
@@ -38,7 +29,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({
           <SelectGroup>
             {providerLanguages && (
               <SelectItem className="text-start" value="0" disabled>
-                Select language
+                {placeholder || "Select language"}
               </SelectItem>
             )}
             {targetLanguageSelect && (

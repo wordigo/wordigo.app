@@ -49,7 +49,7 @@ const Floating = () => {
         }}
       >
         <div className="border-gray-200 shadow-md flex items-center space-x-1 rounded !font-thin border bg-background dark:bg-gray-950">
-          <Logo className="h-7 w-7 bg-transparent cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 rounded-none" />
+          <Logo className="h-7 w-7 bg-transparent cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 rounded-none select-none" />
           <div className="flex space-x-1.5 items-center">
             <Floating.Button onClick={handleTogglePopup}>
               <Languages size={14} />
@@ -59,13 +59,13 @@ const Floating = () => {
               <Volume2 size={15} />
               {getLocalMessage("voice")}
             </Floating.Button>
-            <Floating.Button onClick={openSettingsPage}>
+            <Floating.Button>
               <BookMarked size={14} />
               {getLocalMessage("add")}
             </Floating.Button>
             <div className="h-7 w-1 border-r border-gray-200 dark:border-gray-500"></div>
           </div>
-          <Button className="more-button" variant="ghost" size="sm">
+          <Button onClick={openSettingsPage} className="more-button" variant="ghost" size="sm">
             <MoreVertical size={14} />
           </Button>
         </div>
