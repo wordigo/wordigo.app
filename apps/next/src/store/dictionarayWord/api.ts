@@ -1,13 +1,12 @@
+import { defaultBaseQuery } from "../baseQuery";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { type IResponse } from "types/global";
 
-import { defaultBaseQuery } from "../baseQuery";
-
-export const wordApi = createApi({
-  reducerPath: "wordApi",
+export const dictionaryWordApi = createApi({
+  reducerPath: "dictionaryWordApi",
   baseQuery: defaultBaseQuery,
   endpoints: (builder) => ({
-    getWordData: builder.mutation<IResponse, string | number>({
+    getDictionaryWords: builder.mutation<IResponse, string | number>({
       query: (slug) => ({
         url: `/dictionaries/getWords?slug=${slug}`,
         method: "GET",
@@ -30,4 +29,8 @@ export const wordApi = createApi({
   }),
 });
 
-export const { useCreateWordMutation, useGetWordDataMutation, useDeleteDicWordMutation } = wordApi;
+export const {
+  useCreateWordMutation,
+  useGetDictionaryWordsMutation,
+  useDeleteDicWordMutation,
+} = dictionaryWordApi;

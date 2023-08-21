@@ -8,7 +8,11 @@
   },
   "general": {
     "new": "New",
-    "loading": "Please wait"
+    "loading": "Please wait",
+    "settings": "Settings",
+    "delete": "Delete",
+    "theme": "Theme",
+    "language": "Language"
   },
   "notifications": {
     "success": "Successful",
@@ -30,7 +34,8 @@
     "signin": "Sign In",
     "signup": "Sign Up",
     "dashboard": "Dashboard",
-    "settings": "Settings"
+    "settings": "Settings",
+    "logout": "Log out"
   },
   "hero": {
     "badge": "Check out our new translate extension!",
@@ -201,6 +206,16 @@
   "buttons": {
     "cancel": "cancel",
     "save": "Save"
+  },
+  "profileSettings": {
+    "title": "Profile",
+    "description": "Customize the overall website. Automatically switch between day and\n night themes and change interface language.",
+    "username_tooltip": "Lorem ipsum dolor sit amet.",
+    "update_action": "Update profile"
+  },
+  "profileAvatar": {
+    "title": "Set Profile Picture",
+    "description": "Upload a photo and change your profile picture"
   },
   "title": "Title",
   "permissions": "Permissions",

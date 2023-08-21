@@ -1,13 +1,10 @@
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { WordPage } from "../../Translate/word.constant";
 import CButton from "@/components/UI/Button";
-import { useCreateWordMutation, useGetWordDataMutation } from "@/store/word/api";
+import {
+  useCreateWordMutation,
+  useGetDictionaryWordsMutation,
+} from "@/store/dictionarayWord/api";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Table2Icon, X } from "lucide-react";
-import { useTranslation } from "next-i18next";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-
 import {
   Button,
   Dialog,
@@ -25,8 +22,12 @@ import {
   Label,
   useToast,
 } from "@wordigo/ui";
-
-import { WordPage } from "../../Translate/word.constant";
+import { Table2Icon, X } from "lucide-react";
+import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 const CreateWordSchema = z.object({
   text: z.string().nonempty(),
@@ -45,7 +46,7 @@ export function CreateWord({ label }: { label: string | null }) {
 
   const router = useRouter();
   const { id } = router.query as any;
-  const [getWordDataMutation] = useGetWordDataMutation();
+  const [getWordDataMutation] = useGetDictionaryWordsMutation();
 
   const defaultValues: Partial<CreateWordValues> = {
     text: "",
@@ -60,7 +61,8 @@ export function CreateWord({ label }: { label: string | null }) {
     defaultValues,
   });
 
-  const [addUserDicWords, { status, isLoading, data }] = useCreateWordMutation();
+  const [addUserDicWords, { status, isLoading, data }] =
+    useCreateWordMutation();
 
   const handleAddWord = (values: CreateWordValues) => {
     void addUserDicWords({
@@ -76,7 +78,7 @@ export function CreateWord({ label }: { label: string | null }) {
     if (status === "fulfilled") {
       if (data.success) {
         setOpen(false);
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+
         void getWordDataMutation(id);
         form.reset();
         toast({
@@ -99,7 +101,11 @@ export function CreateWord({ label }: { label: string | null }) {
   return (
     <Dialog open={open}>
       <DialogTrigger asChild>
-        <Button onClick={toggleShow} variant="outline" className="dark:bg-white dark:text-black bg-black text-white font-semibold text-sm">
+        <Button
+          onClick={toggleShow}
+          variant="outline"
+          className="dark:bg-white dark:text-black bg-black text-white font-semibold text-sm"
+        >
           {t(label)}
         </Button>
       </DialogTrigger>
@@ -107,7 +113,7 @@ export function CreateWord({ label }: { label: string | null }) {
         <DialogHeader>
           <DialogTitle className="flex gap-x-2 items-center">
             <Table2Icon size={18} />
-            Add Dictionary
+            Add Word
           </DialogTitle>
           <button
             onClick={toggleShow}
@@ -119,7 +125,10 @@ export function CreateWord({ label }: { label: string | null }) {
         </DialogHeader>
 
         <Form {...(form as any)}>
-          <form onSubmit={form.handleSubmit(handleAddWord)} className="space-y-4">
+          <form
+            onSubmit={form.handleSubmit(handleAddWord)}
+            className="space-y-4"
+          >
             <div className="grid gap-4 py-4">
               <FormField
                 control={form.control as never}
@@ -128,7 +137,14 @@ export function CreateWord({ label }: { label: string | null }) {
                   <FormItem className="grid gap-1">
                     <Label>{t(WordPage.wordLabel)}</Label>
                     <FormControl>
-                      <Input {...field} id="text" placeholder={t(WordPage.word)} autoCapitalize="none" autoComplete="email" autoCorrect="off" />
+                      <Input
+                        {...field}
+                        id="text"
+                        placeholder={t(WordPage.word)}
+                        autoCapitalize="none"
+                        autoComplete="email"
+                        autoCorrect="off"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

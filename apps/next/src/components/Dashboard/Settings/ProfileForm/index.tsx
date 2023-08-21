@@ -1,11 +1,7 @@
+import ProfileUploadAvatar from "./Avatar.profile";
 import CInput from "@/components/UI/Input/Input";
 import { ProfileFormSchema } from "@/schemas/profile.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { InfoIcon } from "lucide-react";
-import { useSession } from "next-auth/react";
-import { useForm } from "react-hook-form";
-import { type z } from "zod";
-
 import {
   Button,
   Form,
@@ -21,12 +17,16 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@wordigo/ui";
-
-import ProfileUploadAvatar from "./Avatar.profile";
+import { InfoIcon } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { useTranslation } from "next-i18next";
+import { useForm } from "react-hook-form";
+import { type z } from "zod";
 
 type ProfileFormValues = z.infer<typeof ProfileFormSchema>;
 
 export default function ProfileForm() {
+  const { t } = useTranslation();
   const { data } = useSession();
 
   const defaultValues: Partial<ProfileFormValues> = {
@@ -43,23 +43,26 @@ export default function ProfileForm() {
   return (
     <div className="space-y-4 max-w-3xl">
       <div>
-        <h3 className="text-lg font-medium">Profile</h3>
+        <h3 className="text-lg font-medium">{t("profileSettings.title")}</h3>
         <p className="text-sm text-muted-foreground">
-          Customize the overall website. Automatically switch between day and night themes and change interface language.
+          {t("profileSettings.description")}
         </p>
       </div>
       <Separator />
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(() => {})} className="space-y-8 !max-w-2xl">
+        <form
+          onSubmit={form.handleSubmit(() => {})}
+          className="space-y-8 !max-w-2xl"
+        >
           <ProfileUploadAvatar />
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>{t("name")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Ali Osman Delişmen" {...field} />
+                  <Input placeholder={t("name")} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -70,18 +73,25 @@ export default function ProfileForm() {
             name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Username</FormLabel>
+                <FormLabel>{t("username")}</FormLabel>
                 <FormControl>
                   <CInput
-                    leftSection={<span className="text-center text-sm text-muted-foreground select-none">wordigo.app/profile/</span>}
+                    leftSection={
+                      <span className="text-center text-sm text-muted-foreground select-none">
+                        wordigo.app/profile/
+                      </span>
+                    }
                     rightSection={
                       <TooltipProvider delayDuration={100}>
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <InfoIcon className="text-muted-foreground" size={16} />
+                            <InfoIcon
+                              className="text-muted-foreground"
+                              size={16}
+                            />
                           </TooltipTrigger>
                           <TooltipContent>
-                            <p>Lorem ipsum dolor sit amet.</p>
+                            <p>{t("profileSettings.username_tooltip")}</p>
                           </TooltipContent>
                         </Tooltip>
                       </TooltipProvider>
@@ -94,7 +104,7 @@ export default function ProfileForm() {
               </FormItem>
             )}
           />
-          <Button type="submit">Update profile</Button>
+          <Button type="submit">{t("profileSettings.update_action")}</Button>
         </form>
       </Form>
     </div>

@@ -1,6 +1,5 @@
-import { fetchBaseQuery } from "@reduxjs/toolkit/dist/query";
-
 import { type RootState } from ".";
+import { fetchBaseQuery } from "@reduxjs/toolkit/dist/query";
 
 export const defaultBaseQuery = fetchBaseQuery({
   baseUrl: process.env.NEXT_PUBLIC_WORDIGO_BACKEND_URL,

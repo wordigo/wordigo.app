@@ -1,7 +1,7 @@
 import Settings from "@/components/Dashboard/Dictionaries.Settings/index";
 import DashboardLayout from "@/components/Layout/Dashboard";
 import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
-import { useGetWordDataMutation } from "@/store/word/api";
+import { useGetDictionaryDetailMutation } from "@/store/dictionaries/api";
 import { useAppSelector } from "@/utils/hooks";
 import { Skeleton } from "@wordigo/ui";
 import { type GetStaticPaths } from "next";
@@ -21,16 +21,18 @@ const DictionariesSettings = () => {
   const router = useRouter();
   const { slug } = router.query as { slug: string };
 
-  const [getWordDataMutation, { isLoading }] = useGetWordDataMutation();
-  const userDicWords = useAppSelector((state) => state.word.word);
+  const [getDictionaryDetail, { isLoading }] = useGetDictionaryDetailMutation();
+  const dictionaryDetail = useAppSelector(
+    (state) => state.dictionary.dictionaryDetail
+  );
 
   useEffect(() => {
-    void getWordDataMutation(slug);
+    void getDictionaryDetail({ slug });
   }, []);
 
   return (
     <DashboardShell>
-      {isLoading || !userDicWords ? (
+      {isLoading || !dictionaryDetail ? (
         <Fragment>
           <div className="flex gap-y-2 flex-col rounded">
             {new Array(6).fill(1).map((item) => (

@@ -1,8 +1,24 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Images from "./Component/image";
 import CInput from "@/components/UI/Input/Input";
 import { DictionariesSettingsSchema } from "@/schemas/dictionaries.settings";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Input, Label, Switch, Textarea, useToast } from "@wordigo/ui";
+import {
+  Button,
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  Input,
+  Label,
+  Switch,
+  Textarea,
+  useToast,
+} from "@wordigo/ui";
 import { Copy } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
@@ -12,7 +28,7 @@ import { type z } from "zod";
 
 type DictionariesValues = z.infer<typeof DictionariesSettingsSchema>;
 
-export default function index() {
+export default function Settings() {
   const { toast } = useToast();
   const { t } = useTranslation();
   const { data } = useSession();
@@ -35,8 +51,13 @@ export default function index() {
   const handleSave = (data: DictionariesValues) => {};
 
   const handleCopyUrl = () => {
-    void navigator.clipboard.writeText(`https://wordigo.app/` + form.getValues().title);
-    toast({ title: "Successful", description: "Copied dictionary public url." });
+    void navigator.clipboard.writeText(
+      `https://wordigo.app/` + form.getValues().title
+    );
+    toast({
+      title: "Successful",
+      description: "Copied dictionary public url.",
+    });
   };
 
   const handleCancel = () => {
@@ -47,14 +68,26 @@ export default function index() {
     <main>
       <section className="mb-7 flex items-center justify-between">
         <span>
-          <h1 className="text-lg font-semibold leading-7">{t("headers.dictionaries_settings.title")}</h1>
-          <h1 className="text-sm text-[hsl(var(--muted-foreground))] font-semibold leading-7">{t("headers.dictionaries_settings.description")}</h1>
+          <h1 className="text-lg font-semibold leading-7">
+            {t("headers.dictionaries_settings.title")}
+          </h1>
+          <h1 className="text-sm text-[hsl(var(--muted-foreground))] font-semibold leading-7">
+            {t("headers.dictionaries_settings.description")}
+          </h1>
         </span>
         <span>
-          <Button onClick={handleCancel} variant="outline" className="font-semibold text-sm mr-1">
+          <Button
+            onClick={handleCancel}
+            variant="outline"
+            className="font-semibold text-sm mr-1"
+          >
             {t("buttons.cancel")}
           </Button>
-          <Button type="submit" variant="outline" className="w-fit dark:bg-LightBackground bg-DarkBackground font-semibold text-sm dark:text-black text-white">
+          <Button
+            type="submit"
+            variant="outline"
+            className="w-fit dark:bg-LightBackground bg-DarkBackground font-semibold text-sm dark:text-black text-white"
+          >
             {t("buttons.save")}
           </Button>
         </span>
@@ -75,13 +108,21 @@ export default function index() {
                           <Label>
                             <h1>{t("link")}</h1>
                           </Label>
-                          <p className="text-[hsl(var(--muted-foreground))] text-sm">{t("dictionaries_settings.link_notes")}</p>
+                          <p className="text-[hsl(var(--muted-foreground))] text-sm">
+                            {t("dictionaries_settings.link_notes")}
+                          </p>
                         </span>
                         <CInput
                           disabled
                           className="placeholder:!text-gray-400"
                           defaultValue={`wordigo.app/library/${data.user.username}`}
-                          rightSection={<Copy onClick={handleCopyUrl} className="text-muted-foreground" size={20} />}
+                          rightSection={
+                            <Copy
+                              onClick={handleCopyUrl}
+                              className="text-muted-foreground"
+                              size={20}
+                            />
+                          }
                           placeholder={field.value}
                           {...field}
                         />
@@ -97,7 +138,9 @@ export default function index() {
                   <Label>
                     <h1>{t("published_status")}</h1>
                   </Label>
-                  <p className="text-[hsl(var(--muted-foreground))] text-sm">{t("dictionaries_settings.published_status_note")}</p>
+                  <p className="text-[hsl(var(--muted-foreground))] text-sm">
+                    {t("dictionaries_settings.published_status_note")}
+                  </p>
                 </section>
                 <section className="w-full flex flex-col gap-y-4">
                   <FormField
@@ -106,11 +149,20 @@ export default function index() {
                     render={({ field }) => (
                       <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                         <div className="space-y-0.5">
-                          <FormLabel className="text-base">{t("dictionaries_settings.published.true_title")}</FormLabel>
-                          <FormDescription>{t("dictionaries_settings.published.true_description")}</FormDescription>
+                          <FormLabel className="text-base">
+                            {t("dictionaries_settings.published.true_title")}
+                          </FormLabel>
+                          <FormDescription>
+                            {t(
+                              "dictionaries_settings.published.true_description"
+                            )}
+                          </FormDescription>
                         </div>
                         <FormControl>
-                          <Switch checked={field.value} onCheckedChange={field.onChange} />
+                          <Switch
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                          />
                         </FormControl>
                       </FormItem>
                     )}
@@ -121,11 +173,20 @@ export default function index() {
                     render={({ field }) => (
                       <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                         <div className="space-y-0.5">
-                          <FormLabel className="text-base">{t("dictionaries_settings.published.false_title")}</FormLabel>
-                          <FormDescription>{t("dictionaries_settings.published.false_description")}</FormDescription>
+                          <FormLabel className="text-base">
+                            {t("dictionaries_settings.published.false_title")}
+                          </FormLabel>
+                          <FormDescription>
+                            {t(
+                              "dictionaries_settings.published.false_description"
+                            )}
+                          </FormDescription>
                         </div>
                         <FormControl>
-                          <Switch checked={field.value} onCheckedChange={field.onChange} />
+                          <Switch
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                          />
                         </FormControl>
                       </FormItem>
                     )}
@@ -144,7 +205,9 @@ export default function index() {
                           <Label>
                             <h1>{t("title")}</h1>
                           </Label>
-                          <p className="text-[hsl(var(--muted-foreground))] text-sm">{t("dictionaries_settings.title_notes")}</p>
+                          <p className="text-[hsl(var(--muted-foreground))] text-sm">
+                            {t("dictionaries_settings.title_notes")}
+                          </p>
                         </span>
                         <Input {...field} placeholder={t("title")} />
                       </main>
@@ -165,7 +228,9 @@ export default function index() {
                           <Label>
                             <h1>{t("description")}</h1>
                           </Label>
-                          <p className="text-[hsl(var(--muted-foreground))] text-sm">{t("dictionaries_settings.title_notes")}</p>
+                          <p className="text-[hsl(var(--muted-foreground))] text-sm">
+                            {t("dictionaries_settings.title_notes")}
+                          </p>
                         </span>
                         <Textarea {...field} placeholder={t("description")} />
                       </main>
@@ -189,10 +254,18 @@ export default function index() {
               />
 
               <div className="w-full text-end my-7">
-                <Button onClick={handleCancel} variant="outline" className="font-semibold text-sm mr-1">
+                <Button
+                  onClick={handleCancel}
+                  variant="outline"
+                  className="font-semibold text-sm mr-1"
+                >
                   {t("buttons.cancel")}
                 </Button>
-                <Button type="submit" variant="outline" className="w-fit dark:bg-LightBackground bg-DarkBackground font-semibold text-sm dark:text-black text-white">
+                <Button
+                  type="submit"
+                  variant="outline"
+                  className="w-fit dark:bg-LightBackground bg-DarkBackground font-semibold text-sm dark:text-black text-white"
+                >
                   {t("buttons.save")}
                 </Button>
               </div>

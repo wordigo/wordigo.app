@@ -1,6 +1,5 @@
-import { Fragment } from "react";
-
 import { Skeleton, TableCell, TableRow } from "@wordigo/ui";
+import { Fragment } from "react";
 
 const TableColumLoader = () => {
   return (

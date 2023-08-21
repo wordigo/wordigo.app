@@ -16,10 +16,12 @@ import {
 } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 import { signOut, useSession } from "next-auth/react";
+import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 
 const NavProfile = ({ variant }: { variant?: "borgerMenu" }) => {
   const router = useRouter();
+  const { t } = useTranslation();
   const { data } = useSession();
 
   const splittedText = data?.user?.name?.toUpperCase()?.split(" ");
@@ -57,7 +59,7 @@ const NavProfile = ({ variant }: { variant?: "borgerMenu" }) => {
           )}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className={cn("w-full py-0.5")}>
+      <DropdownMenuContent align="end" className={cn("w-[200px] py-0.5")}>
         <DropdownMenuLabel className="font-normal flex items-center">
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium leading-none">
@@ -75,32 +77,32 @@ const NavProfile = ({ variant }: { variant?: "borgerMenu" }) => {
             className="px-[10px] cursor-pointer"
           >
             {/* <LayoutDashboard className="w-4 mr-2" /> */}
-            <span>Dashboard</span>
+            <span>{t("navbar.dashboard")}</span>
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => handleChangePage("/dashboard/dictionaries")}
             className="px-[10px] cursor-pointer"
           >
             {/* <BookMarked className="w-4 mr-2" /> */}
-            <span>Dictionaries</span>
+            <span>{t("navbar.dictionaries")}</span>
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => handleChangePage("/dashboard/settings")}
             className="px-[10px] cursor-pointer"
           >
             {/* <Settings className="w-4 mr-2" /> */}
-            <span>Settings</span>
+            <span>{t("navbar.settings")}</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
 
         <div className="px-[10px] text-sm focus:bg-transparent py-[4px] flex items-center justify-between">
-          <p className="mr-3">Theme</p>
+          <p className="mr-3">{t("general.theme")}</p>
           <ThemeMode />
         </div>
 
         <div className="px-[10px] text-sm focus:bg-transparent py-[4px] flex items-center justify-between">
-          <p className="mr-3">Language</p>
+          <p className="mr-3">{t("general.language")}</p>
           <ChangeLanguage />
         </div>
 
@@ -109,7 +111,7 @@ const NavProfile = ({ variant }: { variant?: "borgerMenu" }) => {
           className="text-red-400 cursor-pointer hover:!text-red-500 px-[10px] py-[5px]"
           onClick={() => signOut()}
         >
-          <div>Log out</div>
+          <div>{t("navbar.logout")}</div>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -1,15 +1,16 @@
+import { dictionaryApi } from "./api";
+import { type Dictionary } from "./type";
 import { computedDictionaries } from "@/utils/computedDictionaries";
 import { createSlice } from "@reduxjs/toolkit";
 
-import { dictionaryApi } from "./api";
-import { type Dictionary } from "./type";
-
 interface IDictionaryState {
-  dictionaries: Dictionary[];
+  dictionaries: Dictionary[] | null;
+  dictionaryDetail: Dictionary | null;
 }
 
 const initialState: IDictionaryState = {
   dictionaries: null,
+  dictionaryDetail: null,
 } as IDictionaryState;
 
 const dictionarySlice = createSlice({
@@ -21,9 +22,18 @@ const dictionarySlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addMatcher(dictionaryApi.endpoints.getUserDictionaries.matchFulfilled, (state, action) => {
-      state.dictionaries = computedDictionaries(action.payload.data);
-    });
+    builder.addMatcher(
+      dictionaryApi.endpoints.getUserDictionaries.matchFulfilled,
+      (state, action) => {
+        state.dictionaries = computedDictionaries(action.payload.data);
+      }
+    );
+    builder.addMatcher(
+      dictionaryApi.endpoints.getDictionaryDetail.matchFulfilled,
+      (state, action) => {
+        state.dictionaryDetail = action.payload;
+      }
+    );
   },
 });
 

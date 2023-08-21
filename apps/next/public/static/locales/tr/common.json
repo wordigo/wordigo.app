@@ -8,17 +8,21 @@
   },
   "general": {
     "new": "Yeni",
-    "loading": "Lütfen bekleyin"
+    "loading": "Lütfen bekleyin",
+    "settings": "Ayarlar",
+    "delete": "Sil",
+    "theme": "Tema",
+    "language": "Dil"
   },
   "notifications": {
     "success": "Başarılı",
     "warning": "Uyarı",
     "error": "Hata",
-    "signin_success": "Başarılı bir şekilde oturum açtınız, ana sayfaya yönlendirildiniz."
+    "signin_success": "Giriş başarılı, anasayfaya yönlendiriliyorsunuz."
   },
   "announcement": {
-    "description": "Sana <span className='font-semibold'>harika bir haberimiz</span> var! Blogumuzdan öğrenin!",
-    "button": "Daha Fazla"
+    "description": "Size özel <span className='font-semibold'>harika haberlerimiz</span> var! Blogumuzdan öğrenin!",
+    "button": "Daha Fazla Gör"
   },
   "navbar": {
     "home": "Ana Sayfa",
@@ -29,23 +33,24 @@
     "library": "Kütüphane",
     "signin": "Giriş Yap",
     "signup": "Üye Ol",
-    "dashboard": "Panel",
-    "settings": "Ayarlar"
+    "dashboard": "Kontrol Paneli",
+    "settings": "Ayarlar",
+    "logout": "Çıkış yap"
   },
   "hero": {
-    "badge": "Yeni çeviri eklentimizi keşfedin!",
-    "title": "Öğren, Ekle ve Paylaş - Wordigo ile!",
-    "description": "Ekran üzerindeki metni seçerek Wordigo çeviri düğmesine tıklayarak tercih ettiğiniz dilde çevirisini görebilir ve telaffuzunu dinleyebilirsiniz.",
-    "try_our_extension": "Eklentimizi Deneyin",
-    "get_started": "Başlamak İçin"
+    "badge": "Yeni çeviri uzantımızı deneyin!",
+    "title": "Wordigo ile Öğren, Ekle ve Paylaş!",
+    "description": "Ekran üzerinde seçili metnin çevirisini tercih ettiğiniz dilde görüntülemek ve telaffuzunu dinlemek için Wordigo çeviri düğmesini tıklatarak yapabilirsiniz.",
+    "try_our_extension": "Uzantımızı Deneyin",
+    "get_started": "Başlayın"
   },
   "footer": {
-    "copyright": "© Tüm Hakları Saklıdır - 2023",
+    "copyright": "© Tüm Hakları Saklıdır 2023. ",
     "stay_updated": "Güncel Kalın",
     "license": "Lisans",
     "documentation": "Dokümantasyon",
     "socials": "Sosyal Medya",
-    "wordigo_description": "Tarayıcı eklentileri becerilerinizi daha da ileri taşıyın. Kelimelerin gücünü keşfedin, sözlüğünüzü genişletin ve diğer insanlar ile paylaşın."
+    "wordigo_description": "Tarayıcı uzantıları ile becerilerinizi ileri taşıyın. Kelimelerin gücünü keşfedin, kelime dağarcığınızı genişletin ve başkalarıyla paylaşın."
   },
   "auth_layout": {
     "back": "Geri",
@@ -53,43 +58,47 @@
     "contiune_google": "Google ile Devam Et"
   },
   "signin": {
-    "title": "Hoş Geldiniz",
+    "title": "Tekrar Hoş Geldiniz",
     "description": "Hesabınıza giriş yapmak için e-postanızı girin.",
-    "email": "E-posta",
-    "password": "Şifre",
     "sign_button": "Giriş Yap",
     "info": "Hesabınız yok mu?",
     "info_link": "Üye Ol"
   },
   "signup": {
     "title": "Hoş Geldiniz",
-    "description": "Hesabınızı oluşturmak için e-postanızı ve kullanıcı adınızı girin.",
-    "username": "Kullanıcı Adı",
-    "email": "E-posta",
-    "password": "Şifre",
+    "description": "Hesap oluşturmak için e-postanızı ve kullanıcı adınızı girin.",
     "sign_button": "Üye Ol",
-    "info": "Zaten hesabınız var mı?",
+    "info": "Zaten bir hesabınız var mı?",
     "info_link": "Giriş Yap"
   },
   "about": {
-    "title": "Hakkımızda",
-    "description": "Wordigo, tarayıcı eklentisiyle gezinirken keşfedilen kelimeleri çevirip, kişisel sözlüğe eklemeye ve paylaşmaya olanak tanır. Wordigo ekibi, daha etkili bir dil öğrenme deneyimi sunmak için birlikte çalışmaktadır.",
+    "title": "Hakkında",
+    "description": "Wordigo, tarayıcı uzantısı ile gezinirken keşfedilen kelimeleri çevirmenize ve eklemenize olanak tanır, böylece kişisel sözlüğünüzde paylaşabilirsiniz. Wordigo ekibi daha etkili bir dil öğrenme deneyimi sunmak amacıyla işbirliği yapmaktadır.",
     "team": {
-      "heading": "Takımımızla tanışın",
+      "heading": "Ekibimizi Tanıyın",
       "subheading": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque recusandae nobis minima rem ratione ipsam tempore id, mollitia non odit."
     }
   },
   "contact": {
-    "title": "Bize ulaşın",
+    "title": "Bizimle İletişime Geçin",
     "subtitle": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quod consectetur fuga doloremque enim quibusdam.",
     "mail_title": "E-posta",
-    "mail_description": "Bize herhangi bir soru, öneri veya talebinizi iletmek için aşağıdaki e-posta adresini kullanabilirsiniz.",
+    "mail_description": "Sorularınızı, önerilerinizi veya taleplerinizi iletmek için aşağıdaki e-posta adresini kullanabilirsiniz.",
     "mail_link": "noreply@wordigo.com"
   },
   "error_404": {
-    "title": "Hoop! Birşeyler yanlış gitti.",
-    "description": "Üzgünüm, aradığınız sayfa bulunamadı.",
-    "action": "Ana Sayfa'ya geri dön"
+    "title": "Ups, bir şeyler ters gitti.",
+    "description": "Üzgünüz, sayfanızı bulamadık.",
+    "action": "Anasayfaya Dön"
+  },
+  "breadcrumbs": {
+    "dashboard": "Kontrol Paneli",
+    "home": "Ana Sayfa",
+    "dictionaries": "Sözlükler",
+    "settings": "Ayarlar",
+    "profile": "Profil",
+    "account": "Hesap",
+    "apparance": "Görünüm"
   },
   "dictionaries": {
     "title": "Başlık",
@@ -97,85 +106,76 @@
     "time": "Oluşturulma Tarihi",
     "word_count": "Kelime Sayısı",
     "add_dictionaries": "Sözlük Ekle",
-    "image": "Görsel",
-    "public": "Herkese Açık",
-    "open_settings": "Sözlük ayarlarına git"
-  },
-  "breadcrumbs": {
-    "home": "Ana Sayfa",
-    "dashboard": "Panel",
-    "dictionaries": "Sözlükler",
-    "settings": "Ayarlar",
-    "profile": "Profil",
-    "account": "Hesap",
-    "apparance": "Görünüm"
+    "image": "Resim",
+    "public": "Genel",
+    "open_settings": "Sözlük Ayarlarını Aç"
   },
   "dic_words": {
-    "text": "Yazı",
-    "translated_text": "Çevrilen Yazı",
-    "time": "Zaman",
+    "text": "Anadil Metni",
+    "translated_text": "Çeviri Metni",
+    "time": "Oluşturulma Tarihi",
     "add_word": "Kelime Ekle",
-    "public": "Herkese Açık",
-    "private": "Size Özel",
+    "public": "Genel",
+    "private": "Özel",
     "settings": "Sözlük Ayarları"
   },
   "dictionaries_settings": {
-    "link_notes": "Bu bağlantı ile sözlüğünüze erişin.",
-    "title_notes": "İnsanların sözlüğünüzü bulmasını kolaylaştırın.",
-    "permissions_notes": "Sözlüğünüzün izinlerini ayarlayın.",
+    "link_notes": "Bu bağlantıyla sözlüğünüze erişebilirsiniz.",
+    "title_notes": "İnsanların sözlüğü aramasını kolaylaştırın.",
+    "published_status_note": "Sözlüğü genel veya özel olarak ayarlayın.",
     "description": {
       "description_notes": "İnsanlara sözlüğünüz hakkında bilgi verin.",
       "left_charachters": "karakter kaldı"
     },
     "images": {
-      "image_notes": "Sözlüğünüz ile anlamlı görsel yükleyin.",
-      "image_color_title": "Tıkla ve yükle",
-      "image_title": "ya da Sürükle ve Bırak",
-      "image_resolution": "SVG, PNG ya da JPG (675x480px)"
+      "image_notes": "Anlamlı resimlerle sözlüğünüzü yükleyin.",
+      "image_color_title": "Yüklemek için tıklayın",
+      "image_title": "veya sürükleyip bırakın",
+      "image_resolution": "SVG, PNG veya JPG (675x480px)"
     },
     "published": {
       "false_title": "Özel",
-      "false_description": "Sözlüğünüzü sizden başka kimse göremez.",
-      "true_title": "Herkese Açık",
-      "true_description": "İnsanların sözlük içeriğine erişmesine izin veriyorsunuz."
+      "false_description": "Sadece siz sözlüğünüzü görebilirsiniz.",
+      "true_title": "Genel",
+      "true_description": "İnsanların sözlük içeriğine erişmesine izin verirsiniz."
     }
   },
   "feature_mockup": {
-    "badge": "Yeni çeviri eklentimizi kontrol edin!",
-    "heading": "Bugün eklentimizi kullanmaya başlayın.",
+    "badge": "Yeni çeviri uzantımızı deneyin!",
+    "heading": "Uzantımızı bugün kullanmaya başlayın.",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, reiciendis sunt atque dolore consectetur incidunt!"
   },
   "features": {
     "badge": "Özellikler",
-    "heading": "Özelliklerimize bir göz atın!",
+    "heading": "Özelliklerimize göz atın!",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error tempore sed provident optio, nihil nulla?"
   },
   "testimonials": {
-    "heading": "İnsanlar tarafından seviliyor!",
+    "heading": "İnsanlar tarafından sevildi!",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam iste odit, ad quisquam explicabo nulla?"
   },
   "pricing": {
-    "heading": "İşleri basit tutmayı seviyoruz",
+    "heading": "Basit tutmayı seviyoruz",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, itaque consequuntur ut ea placeat maiores.",
     "popular_badge": "En Avantajlı",
     "get_started": "Başlayın",
-    "learn_more": "Daha Fazla Bilgi Edinin"
+    "learn_more": "Daha Fazla Bilgi Alın"
   },
   "faq": {
     "heading": "Sıkça Sorulan Sorular",
-    "description": "Ürün ve fatura hakkında bilmeniz gereken her şey.",
+    "description": "Ürün ve faturalandırma hakkında bilmeniz gereken her şey.",
     "nav": "SSS",
     "button": "Tüm SSS'leri Görüntüle"
   },
   "newsletter": {
-    "heading": "Bültenimize abone olun",
+    "heading": "Bültenimize Abone Olun",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur expedita, earum eligendi tenetur soluta quibusdam.",
-    "placeholder": "E-postanızı girin",
+    "placeholder": "E-postanızı Girin",
     "button": "Abone Ol"
   },
   "table": {
     "columns": "Sütunlar",
-    "no_data": "Sonuç yok."
+    "no_data": "Sonuç Bulunamadı."
   },
   "headers": {
     "dashboard": {
@@ -184,37 +184,48 @@
     },
     "dictionaries": {
       "title": "Sözlükler",
-      "description": "Kişisel Sözlüklerinizi Oluşturun ve Düzenleyin"
+      "description": "Kişisel Sözlüklerinizi Oluşturun ve Yönetin"
     },
     "dictionaries_detail": {
       "title": "Sözlük Detayı",
-      "description": "Seçili Sözlükteki Bir Kelimenin Detaylarını Görüntüleyin"
+      "description": "Seçilen Sözlükteki Belirli Bir Kelimenin Ayrıntılarını Görüntüleyin"
     },
     "dictionaries_settings": {
       "title": "Sözlük Ayarları",
-      "description": "Seçtiğiniz sözlüğün bilgilerini güncellemenizi sağlar"
+      "description": "Seçilen Sözlüğün Bilgilerini Güncellemenize İzin Verir"
     }
   },
-  "buttons": {
-    "cancel": "İptal Et",
-    "save": "Kaydet"
-  },
   "public": {
-    "rating_title": "Bu sözlüğü nasıl değerlendiriyorsunuz?",
+    "rating_title": "Bu sözlüğü nasıl değerlendirirsiniz?",
     "too_bad": "Çok Kötü",
     "bad": "Kötü",
-    "not_bad": "İyi Gibi",
+    "not_bad": "Fena Değil",
     "good": "İyi",
     "very_good": "Çok İyi"
   },
-  "description": "Açıklama",
-  "delete": "Sil",
+  "buttons": {
+    "cancel": "İptal",
+    "save": "Kaydet"
+  },
+  "profileSettings": {
+    "title": "Profil",
+    "description": "Genel web sitesini özelleştirin. Otomatik olarak gece ve gündüz temaları arasında geçiş yapın ve arayüz dili değiştirin.",
+    "username_tooltip": "Lorem ipsum dolor sit amet.",
+    "update_action": "Profili Güncelle"
+  },
+  "profileAvatar": {
+    "title": "Profil Resmi Belirle",
+    "description": "Bir fotoğraf yükleyin ve profil resminizi değiştirin"
+  },
   "title": "Başlık",
   "permissions": "İzinler",
-  "image": "Görsel",
+  "published_status": "Yayın Durumu",
+  "published_status_info": "",
+  "image": "Resim",
   "link": "Bağlantı",
-  "name": "Name",
-  "email": "Email",
-  "username": "Username",
-  "password": "Password"
+  "description": "Açıklama",
+  "name": "Ad",
+  "email": "E-posta",
+  "username": "Kullanıcı Adı",
+  "password": "Şifre"
 }

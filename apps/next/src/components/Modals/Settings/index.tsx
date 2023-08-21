@@ -1,8 +1,13 @@
-import { useRouter } from "next/router";
+import {
+  Button,
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@wordigo/ui";
 import { SettingsIcon } from "lucide-react";
 import { useTranslation } from "next-i18next";
-
-import { Button, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@wordigo/ui";
+import { useRouter } from "next/router";
 
 export function DictionarySettingsLink() {
   const { t } = useTranslation();

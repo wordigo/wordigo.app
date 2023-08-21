@@ -1,10 +1,8 @@
-import { type DictionaryWord } from "@/store/word/type";
-import { type ColumnDef } from "@tanstack/react-table";
-
-import { Checkbox } from "@wordigo/ui";
-
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
+import { type DictionaryWord } from "@/store/dictionarayWord/type";
+import { type ColumnDef } from "@tanstack/react-table";
+import { Checkbox } from "@wordigo/ui";
 
 export const columns: ColumnDef<DictionaryWord>[] = [
   {
@@ -16,7 +14,13 @@ export const columns: ColumnDef<DictionaryWord>[] = [
         aria-label="Select all"
       />
     ),
-    cell: ({ row }) => <Checkbox checked={row.getIsSelected()} onCheckedChange={(value) => row.toggleSelected(!!value)} aria-label="Select row" />,
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label="Select row"
+      />
+    ),
     enableSorting: false,
     enableHiding: false,
   },
@@ -24,14 +28,20 @@ export const columns: ColumnDef<DictionaryWord>[] = [
     accessorKey: "text",
     header: () => <DataTableColumnHeader title="dic_words.text" />,
     cell: ({ row }) => {
-      return <span className="truncate font-medium">{row?.original?.text}</span>;
+      return (
+        <span className="truncate font-medium">{row?.original?.text}</span>
+      );
     },
   },
   {
     accessorKey: "translateLanguage",
     header: () => <DataTableColumnHeader title="dic_words.translated_text" />,
     cell: ({ row }) => {
-      return <span className="truncate font-medium]">{row?.original.translatedText}</span>;
+      return (
+        <span className="truncate font-medium]">
+          {row?.original.translatedText}
+        </span>
+      );
     },
   },
   {
