@@ -1,6 +1,5 @@
-import { useTranslation } from "next-i18next";
-
 import { Button, Input } from "@wordigo/ui";
+import { useTranslation } from "next-i18next";
 
 const Newsletter = () => {
   const { t } = useTranslation();

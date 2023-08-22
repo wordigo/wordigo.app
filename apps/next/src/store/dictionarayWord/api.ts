@@ -13,9 +13,9 @@ export const dictionaryWordApi = createApi({
       }),
     }),
     createWord: builder.mutation<any, any>({
-      query: (create) => ({
+      query: (data) => ({
         url: "/words/create",
-        body: create,
+        data,
         method: "post",
       }),
     }),

@@ -1,28 +1,12 @@
-import { useEffect, useState } from "react";
 import CButton from "@/components/UI/Button";
 import { useCreateDictionaryMutation, useGetUserDictionariesMutation } from "@/store/dictionaries/api";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Button, Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, Form, FormControl, FormField, FormItem, FormMessage, Input, useToast } from "@wordigo/ui";
 import { Table2Icon, X } from "lucide-react";
 import { useTranslation } from "next-i18next";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-  Input,
-  useToast,
-} from "@wordigo/ui";
 
 const CreateDictionarySchema = z.object({
   title: z.string().nonempty(),
@@ -61,13 +45,13 @@ export default function CreateDictionary({ label }: { label: string }) {
         form.reset();
         toast({
           variant: "success",
-          title: "Successfull",
-          description: data.message,
+          title: t("notifications.success"),
+          description: t("notifications.created_dictionary"),
         });
       } else {
         toast({
           variant: "destructive",
-          title: "Warning",
+          title: t("notifications.warning"),
           description: data.message,
         });
       }

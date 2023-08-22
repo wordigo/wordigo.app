@@ -31,7 +31,7 @@ export function DataTableRowActions<TData extends object>({ row }: DataTableRowA
         toast({
           variant: "success",
           title: t("notifications.success"),
-          description: data.message,
+          description: t("notifications.deleted_dictionary"),
         });
       } else {
         toast({

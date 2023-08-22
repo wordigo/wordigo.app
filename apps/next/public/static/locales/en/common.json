@@ -18,7 +18,10 @@
     "success": "Successful",
     "warning": "Warning",
     "error": "Error",
-    "signin_success": "Sign in successful you are redirected to homepage."
+    "signin_success": "Sign in successful you are redirected to homepage.",
+    "created_dictionary": "Dictionary created successfully.",
+    "deleted_dictionary": "Dictionary deleted successfully.",
+    "created_word": "Word created successfully."
   },
   "announcement": {
     "description": "We have <span className='font-semibold'>amazing news,</span> just for you! Learn from our blog!",

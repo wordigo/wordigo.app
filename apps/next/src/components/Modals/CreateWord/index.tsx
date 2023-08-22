@@ -1,27 +1,8 @@
 import { WordPage } from "../../Translate/word.constant";
 import CButton from "@/components/UI/Button";
-import {
-  useCreateWordMutation,
-  useGetDictionaryWordsMutation,
-} from "@/store/dictionarayWord/api";
+import { useCreateWordMutation, useGetDictionaryWordsMutation } from "@/store/dictionarayWord/api";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-  Input,
-  Label,
-  useToast,
-} from "@wordigo/ui";
+import { Button, Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, Form, FormControl, FormField, FormItem, FormMessage, Input, Label, useToast } from "@wordigo/ui";
 import { Table2Icon, X } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
@@ -61,8 +42,7 @@ export function CreateWord({ label }: { label: string | null }) {
     defaultValues,
   });
 
-  const [addUserDicWords, { status, isLoading, data }] =
-    useCreateWordMutation();
+  const [addUserDicWords, { status, isLoading, data }] = useCreateWordMutation();
 
   const handleAddWord = (values: CreateWordValues) => {
     void addUserDicWords({
@@ -83,13 +63,13 @@ export function CreateWord({ label }: { label: string | null }) {
         form.reset();
         toast({
           variant: "success",
-          title: "Successfull",
-          description: data.message,
+          title: t("notifications.success"),
+          description: t("notifications.created_word"),
         });
       } else {
         toast({
           variant: "destructive",
-          title: "Warning",
+          title: t("notifications.warning"),
           description: data.message,
         });
       }
@@ -101,11 +81,7 @@ export function CreateWord({ label }: { label: string | null }) {
   return (
     <Dialog open={open}>
       <DialogTrigger asChild>
-        <Button
-          onClick={toggleShow}
-          variant="outline"
-          className="dark:bg-white dark:text-black bg-black text-white font-semibold text-sm"
-        >
+        <Button onClick={toggleShow} variant="outline" className="dark:bg-white dark:text-black bg-black text-white font-semibold text-sm">
           {t(label)}
         </Button>
       </DialogTrigger>
@@ -125,10 +101,7 @@ export function CreateWord({ label }: { label: string | null }) {
         </DialogHeader>
 
         <Form {...(form as any)}>
-          <form
-            onSubmit={form.handleSubmit(handleAddWord)}
-            className="space-y-4"
-          >
+          <form onSubmit={form.handleSubmit(handleAddWord)} className="space-y-4">
             <div className="grid gap-4 py-4">
               <FormField
                 control={form.control as never}
@@ -137,14 +110,7 @@ export function CreateWord({ label }: { label: string | null }) {
                   <FormItem className="grid gap-1">
                     <Label>{t(WordPage.wordLabel)}</Label>
                     <FormControl>
-                      <Input
-                        {...field}
-                        id="text"
-                        placeholder={t(WordPage.word)}
-                        autoCapitalize="none"
-                        autoComplete="email"
-                        autoCorrect="off"
-                      />
+                      <Input {...field} id="text" placeholder={t(WordPage.word)} autoCapitalize="none" autoComplete="email" autoCorrect="off" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -158,14 +124,7 @@ export function CreateWord({ label }: { label: string | null }) {
                   <FormItem className="grid gap-1">
                     <Label>{t(WordPage.translatedWordLabel)}</Label>
                     <FormControl>
-                      <Input
-                        {...field}
-                        id="translatedText"
-                        placeholder={t(WordPage.translatedWord)}
-                        autoCapitalize="none"
-                        autoComplete="text"
-                        autoCorrect="off"
-                      />
+                      <Input {...field} id="translatedText" placeholder={t(WordPage.translatedWord)} autoCapitalize="none" autoComplete="text" autoCorrect="off" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

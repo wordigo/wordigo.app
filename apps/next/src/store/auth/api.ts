@@ -10,7 +10,7 @@ export const authApi = createApi({
     register: builder.mutation<IResponse, AuthRegisterValues>({
       query: (credentials) => ({
         url: "/auth/signUp",
-        body: credentials,
+        data: credentials,
         method: "POST",
       }),
     }),

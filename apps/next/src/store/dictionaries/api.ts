@@ -19,10 +19,10 @@ export const dictionaryApi = createApi({
         method: "GET",
       }),
     }),
-    createDictionary: builder.mutation<CreateDictionaryType, IResponse<Dictionary[]>>({
-      query: (create) => ({
+    createDictionary: builder.mutation<IResponse<Dictionary[]>, CreateDictionaryType>({
+      query: (data) => ({
         url: "/dictionaries/create",
-        body: create,
+        data,
         method: "POST",
       }),
     }),

@@ -13,7 +13,7 @@ export interface GetDictionaryIdType {
 }
 
 export interface CreateDictionaryType {
-  name: string;
+  title: string;
   sourceLang?: string;
   targetLang?: string;
 }
