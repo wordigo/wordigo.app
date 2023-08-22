@@ -9,21 +9,21 @@ export const dictionaryWordApi = createApi({
     getDictionaryWords: builder.mutation<IResponse, string | number>({
       query: (slug) => ({
         url: `/dictionaries/getWords?slug=${slug}`,
-        method: "GET",
+        method: "get",
       }),
     }),
     createWord: builder.mutation<any, any>({
       query: (create) => ({
         url: "/words/create",
         body: create,
-        method: "POST",
+        method: "post",
       }),
     }),
     deleteDicWord: builder.mutation<any, any>({
-      query: (deletes) => ({
+      query: (data: { wordId: string; slug: string }) => ({
         url: "/dictionaries/removeWord",
-        body: deletes,
-        method: "DELETE",
+        method: "delete",
+        data,
       }),
     }),
   }),

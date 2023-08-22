@@ -12,12 +12,12 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
   const hoverRef = useRef<HTMLDivElement>();
   const { dictionaries } = useDictionaryStore();
   const { targetLanguage, selectedText } = usePopoverStore();
-  const { mutate: addMutate, isLoading: addIsLoading, status } = useMutation(addDictionaryWord);
+  const { mutate: addMutate, isLoading: addIsLoading, status, data } = useMutation(addDictionaryWord);
   const { toast } = useToast();
   const { isLoggedIn } = useAuthStore();
 
   const openDictionaryPage = () => {
-    window.location.href = process.env.PLASMO_PUBLIC_SITE_URL + "/dashboard/dictionaries/" + "data.dictionaryId";
+    window.location.href = process.env.PLASMO_PUBLIC_SITE_URL + "/dashboard/dictionaries/" + data.slug;
   };
 
   useEffect(() => {
