@@ -18,12 +18,7 @@ const store = configureStore({
     [dictionaryApi.reducerPath]: dictionaryApi.reducer,
     [dictionaryWordApi.reducerPath]: dictionaryWordApi.reducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false }).concat([
-      authApi.middleware,
-      dictionaryApi.middleware,
-      dictionaryWordApi.middleware,
-    ]),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }).concat([authApi.middleware, dictionaryApi.middleware, dictionaryWordApi.middleware]),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

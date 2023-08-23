@@ -94,6 +94,9 @@ Translate.Layout = () => {
   const { setToken } = useAuthStore();
 
   localStorage.watch({
+    [WORDIGO_JWT_TOKEN_COOKIE]: (state) => {
+      setToken(state.newValue);
+    },
     [TRANSLATE_OPTION_STORAGE]: (state) => {
       setTranslateOption(state.newValue);
     },

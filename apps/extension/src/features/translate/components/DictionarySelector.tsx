@@ -1,3 +1,4 @@
+import { sendToBackground } from "@plasmohq/messaging";
 import { Button, HoverCard, HoverCardContent, HoverCardTrigger, ToastAction, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, useToast } from "@wordigo/ui";
 import { ChevronDown, RotateCw } from "lucide-react";
 import { Fragment, useEffect, useRef } from "react";
@@ -16,8 +17,13 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
   const { toast } = useToast();
   const { isLoggedIn } = useAuthStore();
 
-  const openDictionaryPage = () => {
-    window.location.href = process.env.PLASMO_PUBLIC_SITE_URL + "/dashboard/dictionaries/" + data.slug;
+  const openDictionaryPage = async () => {
+    const openedDictionaryPage = await sendToBackground({
+      name: "openPageUrl",
+      body: {
+        slug: data.slug,
+      },
+    });
   };
 
   useEffect(() => {

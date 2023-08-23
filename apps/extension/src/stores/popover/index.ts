@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-interface IPopoverState {
+export interface IPopoverStore {
   isFloating: boolean;
   isPopup: boolean;
   selectedText: string;
@@ -17,7 +17,7 @@ interface IPopoverState {
   setCordinate: (coord: { x: number; y: number }) => void;
 }
 
-export const usePopoverStore = create<IPopoverState>((set) => ({
+export const usePopoverStore = create<IPopoverStore>((set) => ({
   isFloating: false,
   isPopup: false,
   selectedText: "",

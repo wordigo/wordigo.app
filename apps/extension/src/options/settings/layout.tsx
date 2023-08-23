@@ -7,9 +7,7 @@ const Settings = () => {
     <div className="space-y-4">
       <div>
         <h3 className="text-lg font-medium">{getLocalMessage("general")}</h3>
-        <p className="text-sm text-muted-foreground">
-          {getLocalMessage("generalDescription")}
-        </p>
+        <p className="text-sm text-muted-foreground">{getLocalMessage("generalDescription")}</p>
       </div>
       <Separator />
       <SettingsForm />
