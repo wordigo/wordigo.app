@@ -17,11 +17,9 @@ import GoogleAnalytics from "@/components/GoogleAnalytics";
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/pagination";
+import { type Session } from "next-auth";
 
-const App = ({
-  Component,
-  pageProps,
-}: AppProps<{ session: any; _nextI18Next: { initialLocale: string } }>) => {
+const App = ({ Component, pageProps }: AppProps<{ session: Session; _nextI18Next: { initialLocale: string } }>) => {
   const { t } = useTranslation();
   z.setErrorMap(makeZodI18nMap({ t, ns: ["common", "zod"] }));
 

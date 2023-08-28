@@ -25,10 +25,7 @@ const Document = () => {
         <link rel="icon" type="image/png" href="/static/head/favicon.png" />
         <meta name="msapplication-TileImage" content="/static/head/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff" />
-        <meta
-          name="description"
-          content="Wordigo is a useful add-on that offers the ability to translate text and add it to the dictionary in your browser."
-        />
+        <meta name="description" content="Wordigo is a useful add-on that offers the ability to translate text and add it to the dictionary in your browser." />
         <meta name="google" content="notranslate"></meta>
         <meta name="keywords" content="Wordigo, translation, text translation, dictionary, browser plug-in, language learning" />
       </Head>

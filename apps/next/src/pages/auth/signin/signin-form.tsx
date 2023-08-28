@@ -1,16 +1,7 @@
 import CButton from "@/components/UI/Button";
 import { AuthLoginSchema, type AuthLoginValues } from "@/schemas/auth.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-  Input,
-  Label,
-  useToast,
-} from "@wordigo/ui";
+import { Form, FormControl, FormField, FormItem, FormMessage, Input, Label, useToast } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 import { signIn } from "next-auth/react";
 import { useTranslation } from "next-i18next";
@@ -21,7 +12,7 @@ import { useForm } from "react-hook-form";
 type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
 
 const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { toast } = useToast();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -41,6 +32,7 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
     const { error } = await signIn("credentials", {
       email: values.email,
       password: values.password,
+      language: i18n.language,
       redirect: false,
     });
     setIsLoading(false);
@@ -82,14 +74,7 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
                 render={({ field }) => (
                   <FormItem className="grid gap-2">
                     <FormControl>
-                      <Input
-                        {...field}
-                        id="email"
-                        placeholder={t("email")}
-                        autoCapitalize="none"
-                        autoComplete="email"
-                        autoCorrect="off"
-                      />
+                      <Input {...field} id="email" placeholder={t("email")} autoCapitalize="none" autoComplete="email" autoCorrect="off" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -106,14 +91,7 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
                 render={({ field }) => (
                   <FormItem className="grid gap-2">
                     <FormControl>
-                      <Input
-                        {...field}
-                        id="password"
-                        placeholder="••••••••"
-                        type="password"
-                        autoCapitalize="none"
-                        autoCorrect="off"
-                      />
+                      <Input {...field} id="password" placeholder="••••••••" type="password" autoCapitalize="none" autoCorrect="off" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

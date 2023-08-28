@@ -15,6 +15,10 @@ export const authOptions = (request: NextApiRequest, response: NextApiResponse):
             const request = await fetch(`${env.NEXT_PUBLIC_WORDIGO_BACKEND_URL}/auth/googleAuth?accessToken=${account.access_token}`);
             const profile = await request.json();
 
+            if (!profile.success) {
+              throw new Error(profile.message as string);
+            }
+
             // @ts-ignore
             user.user = profile.data.user;
             user.accessToken = profile.data.token;
@@ -76,20 +80,19 @@ export const authOptions = (request: NextApiRequest, response: NextApiResponse):
         credentials: {
           email: { label: "Email", type: "text" },
           password: { label: "Password", type: "password" },
+          language: { type: "text" },
         },
         authorize: async (credentials) => {
           if (!credentials) throw new Error("no credentials");
 
-          const acceptLanguage = request.headers["accept-language"]?.split(",")?.[0];
-
           try {
-            const { email, password } = credentials;
+            const { email, password, language } = credentials;
 
             const bffRequest = await fetch(`${env.NEXT_PUBLIC_WORDIGO_BACKEND_URL}/auth/signIn`, {
               headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
-                "Accept-Language": acceptLanguage,
+                "Accept-Language": language,
               },
               method: "POST",
               body: JSON.stringify({ email, password }),
@@ -114,6 +117,7 @@ export const authOptions = (request: NextApiRequest, response: NextApiResponse):
       signIn: "/auth/signin",
       newUser: "/auth/signup",
       signOut: "/",
+      error: "/auth/signin",
     },
     secret: process.env.NEXTAUTH_SECRET,
     events: {

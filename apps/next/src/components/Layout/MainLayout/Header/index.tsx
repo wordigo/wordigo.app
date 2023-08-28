@@ -2,7 +2,7 @@ import NavProfile from "../../NavProfile";
 import Navigation from "./Navigation";
 import DynamicLogo from "@/components/Logo/DynamicLogo";
 import StaticLogo from "@/components/Logo/StaticLogo";
-import { Button, Separator, buttonVariants } from "@wordigo/ui";
+import { Badge, Button, Separator, buttonVariants } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -26,7 +26,7 @@ export default function HomeHeader({ className }: { className?: string }) {
       <div className={cn("w-full fixed max-w-[90rem] bg-LightBackground dark:bg-DarkBackground z-50", className)}>
         <nav className="flex items-center justify-between w-full m-auto py-[1.125rem] px-20 max-md:px-4">
           <div className="flex items-center">
-            <Link href="/" className={cn("flex items-center mr-6", !toggleMenu && "hidden")}>
+            <Link href="/" className={cn("flex items-center mr-6 justify-center", !toggleMenu && "hidden")}>
               <StaticLogo />
               <div className="font-semibold ml-[10px]">Wordigo</div>
             </Link>

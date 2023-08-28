@@ -1,6 +1,6 @@
-import Link from "next/link";
+import homeSidebarNavigations from "./navigation.constant";
 import { cn } from "@wordigo/ui/lib/utils";
-import homeSidebarNavigations from "./navigation.constant"
+import Link from "next/link";
 
 const Navigation = ({ variant }: { variant?: "borgerMenu" }) => {
   const classes = cn("w-full", variant === "borgerMenu" ? "flex-col flex" : "flex items-center gap-3");
@@ -22,19 +22,21 @@ Navigation.Item = ({ variant }: { variant: string }) => {
   return (
     <>
       {navigations.map((item, index) => [
-        <div key={index} className={cn("flex items-center w-full transition-colors text-muted-foreground text-sm hover:text-accent-foreground font-medium group relative", variant === "borgerMenu" && "p-3  rounded-[6px] hover:bg-[#F8FAFC] dark:hover:bg-[#101929] mb-1")}>
-          <Link
-            href={item.href}
-            passHref
-            className={cn(classes_hover)}
-          >
+        <div
+          key={index}
+          className={cn(
+            "flex items-center w-full transition-colors text-muted-foreground text-sm hover:text-accent-foreground font-medium group relative",
+            variant === "borgerMenu" && "p-3  rounded-[6px] hover:bg-[#F8FAFC] dark:hover:bg-[#101929] mb-1"
+          )}
+        >
+          <Link href={item.href} passHref className={cn(classes_hover)}>
             {item.icon}
             {item.title}
           </Link>
-        </div>
+        </div>,
       ])}
     </>
-  )
-}
+  );
+};
 
 export default Navigation;
