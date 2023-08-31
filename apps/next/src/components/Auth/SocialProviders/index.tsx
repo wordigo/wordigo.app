@@ -1,8 +1,7 @@
 import getUrl from "@/utils/getUrl";
+import { Button } from "@wordigo/ui";
 import { signIn } from "next-auth/react";
 import { useTranslation } from "next-i18next";
-
-import { Button } from "@wordigo/ui";
 
 const SocialProviders = () => {
   const { t } = useTranslation();
