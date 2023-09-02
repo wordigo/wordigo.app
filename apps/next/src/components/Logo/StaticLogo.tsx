@@ -1,10 +1,25 @@
-import React from "react";
-import Image from "next/image";
-
 import { cn } from "@wordigo/ui/lib/utils";
+import { useTheme } from "next-themes";
+import Image from "next/image";
+import React from "react";
 
-function StaticLogo({ className }: { className?: string }) {
-  return <Image className={cn("w-[45px] h-[45px] ml-[-3px]", className)} src={`/images/logo.svg`} alt="Wordigo Logo" width={45} height={45} />;
-}
+const StaticLogo = ({ className }: { className?: string }) => {
+  const { theme } = useTheme();
+  const classes = cn(
+    "ml-[-3px] rounded",
+    theme === "dark" ? "w-[30px] h-[30px]" : "w-[42px] h-[42px]",
+    className
+  );
+
+  return (
+    <Image
+      className={classes}
+      src={`/images/logo.svg`}
+      alt="Wordigo Logo"
+      width={45}
+      height={45}
+    />
+  );
+};
 
 export default StaticLogo;
