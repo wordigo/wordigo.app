@@ -1,96 +1,26 @@
 {
-  "extensionName": {
-    "message": "Wordigo - Çevirmen, Sözlük, TTS",
-    "description": "Eklentinin adı."
-  },
-  "extensionDescription": {
-    "message": "Wordigo: Metni tarayıcıda çevirin ve sözlüğe ekleyin. Dil kısıtlamalarını kolayca aşın.",
-    "description": "Eklentinin açıklaması."
-  },
-  "translate": {
-    "message": "Çevir"
-  },
-  "voice": {
-    "message": "Ses"
-  },
   "add": {
     "message": "Ekle"
-  },
-  "popup": {
-    "message": "Mantık bilgeliğin başlangıcıdır, sonu değil.",
-    "description": "Açılır pencere mesajı."
-  },
-  "settings": {
-    "message": "Ayarlar",
-    "description": "Açılır pencere mesajı."
-  },
-  "settingsDescription": {
-    "message": "Eklenti ayarlarınızı yönetin ve çeviri tercihinizi değiştirebilirsiniz.",
-    "description": "Açılır pencere mesajı."
-  },
-  "appearance": {
-    "message": "Görünüm"
   },
   "apparanceDesciption": {
     "message": "Uygulamanın görünümünü özelleştirin. Gündüz ve gece temaları arasında otomatik olarak geçiş yapın."
   },
-  "general": {
-    "message": "Genel",
-    "description": "Açılır pencere mesajı."
+  "appearance": {
+    "message": "Görünüm"
   },
-  "generalDescription": {
-    "message": "Çeviri tercihinizi güncelleyin ve hedef dil seçin.",
-    "description": "Açılır pencere mesajı."
+  "dark": {
+    "message": "Koyu"
   },
-  "uiLanguage": {
-    "message": "Arayüz Dili",
-    "description": "Arayüz dili"
+  "errorNotifyTitle": {
+    "message": "İşlem Başarısız"
   },
-  "uiLanguageDesc": {
-    "message": "Bu ayarla eklentinin arayüz dilini değiştirebilirsiniz.",
-    "description": "Açılır pencere mesajı."
+  "extensionDescription": {
+    "description": "Eklentinin açıklaması.",
+    "message": "Wordigo: Metni tarayıcıda çevirin ve sözlüğe ekleyin. Dil kısıtlamalarını kolayca aşın."
   },
-  "targetLanguage": {
-    "message": "Hedef Dil",
-    "description": "Açılır pencere mesajı."
-  },
-  "targetLanguageDesc": {
-    "message": "Çevireceğiniz metinlerin hangi dilde çevrileceğini ayarlayabilirsiniz.",
-    "description": "Açılır pencere mesajı."
-  },
-  "translateOption": {
-    "message": "Çeviri Seçenekleri",
-    "description": "Çeviri seçenekleri."
-  },
-  "translateOptionDesc": {
-    "message": "'Çevir Düğmesini Göster' seçeneğini etkinleştirerek seçilen metnin yanına uygun bir düğme ekleyebilir veya 'Seç ve Çevir' seçeneğini kullanarak metni üzerine gelerek çevirebilirsiniz.",
-    "description": "Açılır pencere mesajı."
-  },
-  "showTranslate": {
-    "message": "Çeviri Düğmesini Göster",
-    "description": "Çeviri Düğmesini Göster"
-  },
-  "showTranslateDesc": {
-    "message": "Bu seçeneği etkinleştirerek seçilen metnin yanında bir çeviri düğmesi görüntüleyerek çeviriyi daha erişilebilir hale getirebilirsiniz.",
-    "description": "Açılır pencere mesajı."
-  },
-  "selectTranslate": {
-    "message": "Seç ve Çevir",
-    "description": "Açılır pencere mesajı."
-  },
-  "selectTranslateDesc": {
-    "message": "Seçilen metne tıkladığınızda, seçili metnin çevirisini sağlayan bir açılır pencere açılır.",
-    "description": "Açılır pencere mesajı."
-  },
-  "saveChanges": {
-    "message": "Değişiklikleri Kaydet",
-    "description": "değişiklikleri kaydet"
-  },
-  "save": {
-    "message": "Kaydet"
-  },
-  "select_language": {
-    "message": "Dil Seçin"
+  "extensionName": {
+    "description": "Eklentinin adı.",
+    "message": "Wordigo - Çevirmen, Sözlük, TTS"
   },
   "font": {
     "message": "Yazı Tipi"
@@ -98,32 +28,103 @@
   "fontDesc": {
     "message": "Uzantının açılır penceresi ve ayarlar sayfası için yazı tipini seçerek dil öğrenme deneyiminizi tercih ettiğiniz yazı tipine göre özelleştirebilirsiniz."
   },
+  "footer": {
+    "message": "© Tüm Hakları Saklıdır - 2023 Wordigo."
+  },
+  "general": {
+    "description": "Açılır pencere mesajı.",
+    "message": "Genel"
+  },
+  "generalDescription": {
+    "description": "Açılır pencere mesajı.",
+    "message": "Çeviri tercihinizi güncelleyin ve hedef dil seçin."
+  },
+  "light": {
+    "message": "Açık"
+  },
+  "loading": {
+    "message": "Lütfen bekleyin"
+  },
+  "open_settings": {
+    "message": "Ayarlar Sayfasını Aç"
+  },
+  "popup": {
+    "description": "Açılır pencere mesajı.",
+    "message": "Mantık bilgeliğin başlangıcıdır, sonu değil."
+  },
+  "save": {
+    "message": "Kaydet"
+  },
+  "saveChanges": {
+    "description": "değişiklikleri kaydet",
+    "message": "Değişiklikleri Kaydet"
+  },
+  "save_to_libraray": {
+    "message": "Kütüphaneye Kaydet"
+  },
+  "selectTranslate": {
+    "description": "Açılır pencere mesajı.",
+    "message": "Seç ve Çevir"
+  },
+  "selectTranslateDesc": {
+    "description": "Açılır pencere mesajı.",
+    "message": "Seçilen metne tıkladığınızda, seçili metnin çevirisini sağlayan bir açılır pencere açılır."
+  },
+  "select_dictionary": {
+    "message": "Sözlük Seç"
+  },
+  "select_language": {
+    "message": "Dil Seçin"
+  },
+  "settings": {
+    "description": "Açılır pencere mesajı.",
+    "message": "Ayarlar"
+  },
+  "settingsDescription": {
+    "description": "Açılır pencere mesajı.",
+    "message": "Eklenti ayarlarınızı yönetin ve çeviri tercihinizi değiştirebilirsiniz."
+  },
+  "showTranslate": {
+    "description": "Çeviri Düğmesini Göster",
+    "message": "Çeviri Düğmesini Göster"
+  },
+  "showTranslateDesc": {
+    "description": "Açılır pencere mesajı.",
+    "message": "Bu seçeneği etkinleştirerek seçilen metnin yanında bir çeviri düğmesi görüntüleyerek çeviriyi daha erişilebilir hale getirebilirsiniz."
+  },
+  "successNotifyDesc": {
+    "message": "Değişiklikleriniz başarıyla kaydedildi."
+  },
+  "successNotifyTitle": {
+    "message": "İşlem Başarılı"
+  },
+  "targetLanguage": {
+    "description": "Açılır pencere mesajı.",
+    "message": "Hedef Dil"
+  },
+  "targetLanguageDesc": {
+    "description": "Açılır pencere mesajı.",
+    "message": "Çevireceğiniz metinlerin hangi dilde çevrileceğini ayarlayabilirsiniz."
+  },
+  "text_to_speech": {
+    "message": "Metin Okuma"
+  },
   "theme": {
     "message": "Tema"
   },
   "themeDesc": {
     "message": "Uzantının açılır penceresi ve ayarlar sayfası için temayı seçerek dil öğrenme deneyiminizi tercih ettiğiniz stile göre özelleştirebilirsiniz."
   },
-  "light": {
-    "message": "Açık"
+  "translate": {
+    "message": "Çevir"
   },
-  "dark": {
-    "message": "Koyu"
+  "translateOption": {
+    "description": "Çeviri seçenekleri.",
+    "message": "Çeviri Seçenekleri"
   },
-  "welcome": {
-    "message": "Wordigo kurulum sayfasına hoş geldiniz! Burada tercih ettiğiniz çeviri dilini seçebilir ve kurulum sürecini tamamlamadan önce uzantı seçeneklerini özelleştirebilirsiniz."
-  },
-  "footer": {
-    "message": "© Tüm Hakları Saklıdır - 2023 Wordigo."
-  },
-  "successNotifyTitle": {
-    "message": "Başarılı"
-  },
-  "successNotifyDesc": {
-    "message": "Değişiklikleriniz başarıyla kaydedildi."
-  },
-  "open_settings": {
-    "message": "Ayarlar Sayfasını Aç"
+  "translateOptionDesc": {
+    "description": "Açılır pencere mesajı.",
+    "message": "'Çevir Düğmesini Göster' seçeneğini etkinleştirerek seçilen metnin yanına uygun bir düğme ekleyebilir veya 'Seç ve Çevir' seçeneğini kullanarak metni üzerine gelerek çevirebilirsiniz."
   },
   "translation_copied": {
     "message": "Çeviri kopyalandı"
@@ -131,22 +132,27 @@
   "translation_copy": {
     "message": "Panoya Kopyala"
   },
-  "text_to_speech": {
-    "message": "Metin Okuma"
+  "uiLanguage": {
+    "description": "Arayüz dili",
+    "message": "Arayüz Dili"
   },
-  "loading": {
-    "message": "Lütfen bekleyin"
-  },
-  "save_to_libraray": {
-    "message": "Kütüphaneye Kaydet"
-  },
-  "you_need_login": {
-    "message": "Giriş yapmanız gerekiyor."
+  "uiLanguageDesc": {
+    "description": "Açılır pencere mesajı.",
+    "message": "Bu ayarla eklentinin arayüz dilini değiştirebilirsiniz."
   },
   "view_dictionary": {
     "message": "Sözlüğü Görüntüle"
   },
+  "voice": {
+    "message": "Ses"
+  },
+  "welcome": {
+    "message": "Wordigo kurulum sayfasına hoş geldiniz! Burada tercih ettiğiniz çeviri dilini seçebilir ve kurulum sürecini tamamlamadan önce uzantı seçeneklerini özelleştirebilirsiniz."
+  },
   "word_add_notify": {
     "message": "Kelime sözlüğe eklendi."
+  },
+  "you_need_login": {
+    "message": "Giriş yapmanız gerekiyor."
   }
 }

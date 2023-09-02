@@ -30,32 +30,31 @@ const signIn = ({ _nextI18Next }: PageProps) => {
 
   return (
     <AuthLayout>
-      <NextSeo title={_nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale]?.common?.seo.signin_title} />
+      <NextSeo
+        title={
+          _nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale]?.common
+            ?.seo.signin_title
+        }
+      />
       <AuthLayout.Title>{t("signin.title")}</AuthLayout.Title>
       <AuthLayout.Description>{t("signin.description")}</AuthLayout.Description>
       <AuthSignInForm />
       <SocialProviders />
       <AuthLayout.Footer url="/auth/signup">
-        {t("signin.info")} <span className="text-foreground font-semibold">{t("signin.info_link")}</span>
+        {t("signin.info")}{" "}
+        <span className="text-foreground font-semibold">
+          {t("signin.info_link")}
+        </span>
       </AuthLayout.Footer>
     </AuthLayout>
   );
 };
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const session = await getSession(context);
-
-  if (session) {
-    return {
-      redirect: {
-        destination: "/dashboard",
-        permanent: false,
-      },
-    };
-  }
-
+export async function getStaticProps(context: GetServerSidePropsContext) {
   return {
-    props: { session, ...(await serverSideTranslations(context.locale, ["common", "zod"])) },
+    props: {
+      ...(await serverSideTranslations(context.locale, ["common", "zod"])),
+    },
   };
 }
 

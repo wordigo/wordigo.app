@@ -1,6 +1,8 @@
 import { sendToBackground } from "@plasmohq/messaging";
 import { Button, HoverCard, HoverCardContent, HoverCardTrigger, ToastAction, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, useToast } from "@wordigo/ui";
+import { cn } from "@wordigo/ui/lib/utils";
 import { ChevronDown, RotateCw } from "lucide-react";
+import { useMemo } from "react";
 import { Fragment, useEffect, useRef } from "react";
 import { useMutation } from "react-query";
 import { addDictionaryWord } from "~api/dictionary";
@@ -21,22 +23,30 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
     const openedDictionaryPage = await sendToBackground({
       name: "openPageUrl",
       body: {
-        slug: data.slug,
+        slug: data?.data?.slug,
       },
     });
   };
 
   useEffect(() => {
     if (status === "success") {
-      toast({
-        title: getLocalMessage("successNotifyTitle"),
-        description: getLocalMessage("word_add_notify"),
-        action: (
-          <ToastAction onClick={openDictionaryPage} className="text-primary" altText={getLocalMessage("view_dictionary")}>
-            {getLocalMessage("view_dictionary")}
-          </ToastAction>
-        ),
-      });
+      if (data.success) {
+        toast({
+          title: getLocalMessage("successNotifyTitle"),
+          description: getLocalMessage("word_add_notify"),
+          action: (
+            <ToastAction onClick={openDictionaryPage} className="text-primary" altText={getLocalMessage("view_dictionary")}>
+              {getLocalMessage("view_dictionary")}
+            </ToastAction>
+          ),
+        });
+      } else {
+        toast({
+          variant: "destructive",
+          title: getLocalMessage("errorNotifyTitle"),
+          description: data.message,
+        });
+      }
     }
   }, [status]);
 
@@ -52,6 +62,8 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
     hoverRef.current.hidden = true;
     hoverRef.current.style.display = "hidden";
   };
+
+  const language = useMemo(() => chrome.i18n.getUILanguage(), [chrome.i18n]);
 
   return (
     <TooltipProvider delayDuration={100}>
@@ -81,8 +93,10 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
             </TooltipTrigger>
           </HoverCardTrigger>
           {isLoggedIn && (
-            <HoverCardContent ref={hoverRef} className="!p-0 w-[145px] divide-y divide-gray-200 dark:divide-gray-700 !rounded-sm">
-              <div className="text-accent-foreground select-none rounded-sm hover:bg-primary-foreground !opacity-60 !h-7 flex items-center px-2 text-[13.5px]">Select dictionary</div>
+            <HoverCardContent ref={hoverRef} className={cn("!p-0 divide-y divide-gray-200 dark:divide-gray-700 !rounded-sm", language === "tr" ? "w-[195px]" : "w-[145px]")}>
+              <div className="text-accent-foreground select-none rounded-sm hover:bg-primary-foreground !opacity-60 !h-7 flex items-center px-2 text-[13.5px]">
+                {getLocalMessage("select_dictionary")}
+              </div>
               <div className="flex flex-col">
                 {dictionaries?.map((dictionary) => (
                   <Button

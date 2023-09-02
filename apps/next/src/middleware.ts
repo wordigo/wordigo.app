@@ -6,7 +6,7 @@ export default async function middleware(req: NextRequest, event: NextFetchEvent
   const token = await getToken({ req });
   const isAuthenticated = !!token;
 
-  if (req.nextUrl.pathname.startsWith("/auth/signin") && isAuthenticated) {
+  if (req.nextUrl.pathname.startsWith("/auth/signin") || req.nextUrl.pathname.startsWith("/auth/signup") && isAuthenticated) {
     return NextResponse.redirect(new URL("/dashboard", req.url));
   }
 

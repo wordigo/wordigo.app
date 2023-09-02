@@ -9,6 +9,7 @@ const instance = axios.create({
 });
 
 export interface BaseResponse<T> {
+  success: boolean;
   data: T;
   messageCode: string;
   message: string;

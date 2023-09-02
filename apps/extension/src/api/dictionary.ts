@@ -14,7 +14,7 @@ export interface addDictonaryWordType {
   dictionaryId?: number;
 }
 
-export const addDictionaryWord = async (params: addDictonaryWordType): Promise<Dictionary> => {
+export const addDictionaryWord = async (params: addDictonaryWordType): Promise<BaseResponse<Dictionary>> => {
   const response = await instance.post("/words/create", params);
   return response.data;
 };
