@@ -120,7 +120,11 @@
     "add_word": "Add Word",
     "public": "Public",
     "private": "Private",
-    "settings": "Dictionaries Settings"
+    "settings": "Dictionaries Settings",
+    "wordLabel": "Word",
+    "wordPlaceholder": "Enter a word",
+    "translatedLabel": "Translated world",
+    "translatedPlaceholder": "Enter a translated world"
   },
   "dictionaries_settings": {
     "link_notes": "Access your dictionary with this link.",
@@ -230,5 +234,6 @@
   "name": "Name",
   "email": "Email",
   "username": "Username",
-  "password": "Password"
+  "password": "Password",
+  "save": "Save"
 }

@@ -89,7 +89,7 @@ export function CreateWord({ label }: { label: string | null }) {
         <DialogHeader>
           <DialogTitle className="flex gap-x-2 items-center">
             <Table2Icon size={18} />
-            Add Word
+            {t("dic_words.add_word")}
           </DialogTitle>
           <button
             onClick={toggleShow}
@@ -108,9 +108,9 @@ export function CreateWord({ label }: { label: string | null }) {
                 name="text"
                 render={({ field }) => (
                   <FormItem className="grid gap-1">
-                    <Label>{t(WordPage.wordLabel)}</Label>
+                    <Label>{t("dic_words.wordLabel")}</Label>
                     <FormControl>
-                      <Input {...field} id="text" placeholder={t(WordPage.word)} autoCapitalize="none" autoComplete="email" autoCorrect="off" />
+                      <Input {...field} id="text" placeholder={t("dic_words.wordPlaceholder")} autoCapitalize="none" autoComplete="email" autoCorrect="off" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -122,9 +122,9 @@ export function CreateWord({ label }: { label: string | null }) {
                 name="translatedText"
                 render={({ field }) => (
                   <FormItem className="grid gap-1">
-                    <Label>{t(WordPage.translatedWordLabel)}</Label>
+                    <Label>{t("dic_words.translatedLabel")} </Label>
                     <FormControl>
-                      <Input {...field} id="translatedText" placeholder={t(WordPage.translatedWord)} autoCapitalize="none" autoComplete="text" autoCorrect="off" />
+                      <Input {...field} id="translatedText" placeholder={t("dic_words.translatedPlaceholder")} autoCapitalize="none" autoComplete="text" autoCorrect="off" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -132,7 +132,7 @@ export function CreateWord({ label }: { label: string | null }) {
               />
               <DialogFooter>
                 <CButton loading={isLoading} type="submit">
-                  {t(WordPage.saveWord)}
+                  {t("save")}
                 </CButton>
               </DialogFooter>
             </div>

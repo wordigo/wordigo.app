@@ -117,7 +117,11 @@
     "add_word": "Kelime Ekle",
     "public": "Genel",
     "private": "Özel",
-    "settings": "Sözlük Ayarları"
+    "settings": "Sözlük Ayarları",
+    "wordLabel": "Kelime",
+    "wordPlaceholder": "Lütfen kelime giriniz",
+    "translatedLabel": "Çevrilecek Kelime",
+    "translatedPlaceholder": "Lütfen çevrilecek kelimeyi giriniz"
   },
   "dictionaries_settings": {
     "link_notes": "Bu bağlantıyla sözlüğünüze erişebilirsiniz.",
@@ -227,5 +231,6 @@
   "name": "Ad",
   "email": "E-posta",
   "username": "Kullanıcı Adı",
-  "password": "Şifre"
+  "password": "Şifre",
+  "save": "Kaydet"
 }
