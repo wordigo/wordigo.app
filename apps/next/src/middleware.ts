@@ -1,12 +1,23 @@
-import { type NextFetchEvent, type NextRequest, NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
 import { type NextRequestWithAuth, withAuth } from "next-auth/middleware";
+import {
+  type NextFetchEvent,
+  type NextRequest,
+  NextResponse,
+} from "next/server";
 
-export default async function middleware(req: NextRequest, event: NextFetchEvent) {
+export default async function middleware(
+  req: NextRequest,
+  event: NextFetchEvent
+) {
   const token = await getToken({ req });
   const isAuthenticated = !!token;
 
-  if (req.nextUrl.pathname.startsWith("/auth/signin") || req.nextUrl.pathname.startsWith("/auth/signup") && isAuthenticated) {
+  if (
+    (req.nextUrl.pathname.startsWith("/auth/signin") ||
+      req.nextUrl.pathname.startsWith("/auth/signup")) &&
+    isAuthenticated
+  ) {
     return NextResponse.redirect(new URL("/dashboard", req.url));
   }
 
@@ -25,5 +36,5 @@ export default async function middleware(req: NextRequest, event: NextFetchEvent
 }
 
 export const config = {
-  matcher: ["/(dashboard|auth)"],
+  matcher: ["/dashboard/:path*", "/auth/:path*"],
 };

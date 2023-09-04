@@ -1,4 +1,4 @@
-import * as React from "react";
+import { DataTableToolbar } from "./data-table-toolbar";
 import Published from "@/components/Published/Published";
 import { type IPublished } from "@/components/Published/published.constants";
 import {
@@ -13,8 +13,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-
-import { DataTableToolbar } from "./data-table-toolbar";
+import * as React from "react";
 
 interface DataTableProps {
   data: IPublished[];
@@ -23,8 +22,11 @@ interface DataTableProps {
 
 export function DataTable({ data }: DataTableProps) {
   const [rowSelection, setRowSelection] = React.useState({});
-  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
+  const [columnVisibility, setColumnVisibility] =
+    React.useState<VisibilityState>({});
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    []
+  );
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
   const table = useReactTable({
@@ -51,11 +53,14 @@ export function DataTable({ data }: DataTableProps) {
 
   return (
     <section className="flex flex-col w-full py-24 max-xl:py-16 px-20 max-md:px-4">
-      <h1 className="text-5xl font-semibold text-center max-xl:text-4xl max-md:text-2xl">Learn from published dictionaries</h1>
+      <h1 className="text-5xl font-semibold text-center max-xl:text-4xl max-md:text-2xl">
+        Learn from published dictionaries
+      </h1>
       <p className="text-xl mt-6 text-muted-foreground text-center max-xl:text-lg max-xl:mt-4 max-md:text-base">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio ipsam possimus, facere fuga ratione aut.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio ipsam
+        possimus, facere fuga ratione aut.
       </p>
-      {/* <DataTableToolbar table={table} /> */}
+      <DataTableToolbar table={table} />
       <Published items={data} />
     </section>
   );

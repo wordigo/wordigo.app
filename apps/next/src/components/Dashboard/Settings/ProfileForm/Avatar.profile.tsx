@@ -1,10 +1,12 @@
+import Spinner from "@/components/UI/Spinner";
+import { useUpdateAvatarMutation } from "@/store/profile/api";
+import { toBase64 } from "@/utils/toBase64";
 import { Avatar, AvatarFallback, AvatarImage } from "@wordigo/ui";
 import { cx } from "class-variance-authority";
 import { FileEditIcon } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
-import { type ChangeEvent, Fragment } from "react";
-import { FaSpinner } from "react-icons/fa";
+import { type ChangeEvent, Fragment, useEffect } from "react";
 
 const ProfileUploadAvatar = () => {
   const { data } = useSession();
@@ -13,24 +15,32 @@ const ProfileUploadAvatar = () => {
   const computedName =
     (splittedText?.[0]?.[0] || "") + (splittedText?.[1]?.[0] || "");
 
+  const [handleUpdateAvatar, { isLoading, data: profileData, status }] =
+    useUpdateAvatarMutation();
+
   const onSelectPhoto = async (event: ChangeEvent<HTMLInputElement>) => {
     const avatarFile = event.target.files[0];
     if (!avatarFile) return;
+
+    const encodedAvatar = (await toBase64(avatarFile)) as string;
+    handleUpdateAvatar({ encodedAvatar });
 
     // await updateAvatar({
     //   avatarFile,
     // });
   };
 
-  // useEffect(() => {
-  //   if (status === "fulfilled") {
-  //     dispatch(setUser(data?.user));
-  //     toast.success("Profil fotoğrafınız güncellendi.");
-  //   } else if (status === "rejected") {
-  //     const errorMessage = getErrorFromPayload(error);
-  //     toast.error(getErrorTranslation(errorMessage));
-  //   }
-  // }, [status]);
+  useEffect(() => {
+    if (status === "fulfilled") {
+      console.log(profileData);
+
+      // dispatch(setUser(data?.user));
+      // toast.success("Profil fotoğrafınız güncellendi.");
+    } else if (status === "rejected") {
+      // const errorMessage = getErrorFromPayload(error);
+      // toast.error(getErrorTranslation(errorMessage));
+    }
+  }, [status]);
 
   return (
     <div className="flex gap-x-4">
@@ -57,12 +67,12 @@ const ProfileUploadAvatar = () => {
           className={cx(
             "absolute inset-0 hidden group-hover:flex items-center justify-center bg-gray-600/50 rounded-full cursor-pointer",
             {
-              "w-30 pointer-events-none gap-x-0 !flex": false,
+              "w-30 pointer-events-none gap-x-0 !flex": isLoading,
             }
           )}
         >
-          {false ? (
-            <FaSpinner className="mr-1" />
+          {isLoading ? (
+            <Spinner />
           ) : (
             <Fragment>
               <FileEditIcon className="text-gray-200/70" size={24} />
