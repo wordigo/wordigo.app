@@ -2,6 +2,7 @@
   "seo": {
     "home_title": "Wordigo: Learn, And, Share – Your Language Dictionary",
     "dictionaries_title": "Learn from published dictionaries.",
+    "faq_title": "Frequently Asked Questions",
     "about_title": "About",
     "signin_title": "Sign In",
     "signup_title": "Sign Up"
@@ -169,10 +170,34 @@
     "learn_more": "Learn More"
   },
   "faq": {
-    "heading": "Frequently asked questions",
+    "heading": "Frequently Asked Questions",
     "description": "Everything you need to know about the product and billing.",
     "nav": "FAQ",
-    "button": "View all FAQ"
+    "button": "View All FAQs",
+    "what_is_wordigo": {
+      "question": "What is Wordigo and what does it do?",
+      "answer": "Wordigo is a browser extension and platform. This tool allows you to translate selected words while browsing the internet into your preferred language and add them to a personal dictionary. It helps enhance your language learning experience."
+    },
+    "how_to_use_wordigo": {
+      "question": "How do I use Wordigo?",
+      "answer": "To use Wordigo, install the Wordigo browser extension and select your preferred language on the setup page. While browsing the web, simply choose a word, and the extension will provide a translation and display it. You can also add this word to your personal dictionary or even have the translated text pronounced."
+    },
+    "supported_languages": {
+      "question": "What languages does it support?",
+      "answer": "Wordigo offers translation support for numerous languages. Among the most popular are English, Spanish, French, German, Italian, and many others."
+    },
+    "share_dictionary_with_others": {
+      "question": "How can I share my dictionary with other people?",
+      "answer": "Wordigo allows users to share their personal dictionaries with others. You can share your dictionary, enabling other users to view and add your words."
+    },
+    "wordigo_mobile_application": {
+      "question": "Is there a mobile application for Wordigo?",
+      "answer": "Wordigo does not have a mobile application at this time. However, you can use the browser extension on your computer."
+    },
+    "free_to_use_wordigo": {
+      "question": "Is Wordigo free to use?",
+      "answer": "Wordigo's basic version is available for free. However, if you desire additional features and storage space, a premium subscription option may be offered. This subscription provides access to extra features."
+    }
   },
   "newsletter": {
     "heading": "Subscribe our newsletter",

@@ -3,6 +3,7 @@
     "home_title": "Wordigo: Öğrenin, Ve Paylaşın – Sizin Dil Sözlüğünüz",
     "dictionaries_title": "Yayınlanmış sözlüklerden öğrenin.",
     "about_title": "Hakkında",
+    "faq_title": "Sıkça Sorulan Sorular",
     "signin_title": "Giriş Yap",
     "signup_title": "Üye Ol"
   },
@@ -169,7 +170,31 @@
     "heading": "Sıkça Sorulan Sorular",
     "description": "Ürün ve faturalandırma hakkında bilmeniz gereken her şey.",
     "nav": "SSS",
-    "button": "Tüm SSS'leri Görüntüle"
+    "button": "Tüm SSS'leri Görüntüle",
+    "what_is_wordigo": {
+      "question": "Wordigo nedir ve ne işe yarar?",
+      "answer": "Wordigo, bir tarayıcı eklentisi ve platformudur. Bu araç, internet üzerinde gezinirken seçilen kelimeleri istediğiniz dile çevirmenize ve kişisel bir sözlüğe eklemenize olanak tanır. Dil öğrenme deneyiminizi geliştirmenize yardımcı olur.      "
+    },
+    "how_to_use_wordigo": {
+      "question": "Wordigo Nasıl kullanılır?",
+      "answer": "Wordigo tarayıcı eklentisini yükleyin ve ardından kurulum sayfasında kendi dilinizi seçtikten sonra tarayıcınızda gezinirken bir kelimeyi seçin. Eklenti, seçili kelimeyi çevirir ve çeviriyi görüntüler. Ardından isterseniz bu kelimeyi kişisel sözlüğünüze ekleyebilir veya çevirilen metni seslendirebilirisiniz."
+    },
+    "supported_languages": {
+      "question": "Hangi dilleri destekliyor?",
+      "answer": "Wordigo, birçok farklı dilde çeviri desteği sunar. En popüler diller arasında İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca ve daha birçok dil bulunur.      "
+    },
+    "share_dictionary_with_others": {
+      "question": "Sözlüğümü diğer kullanıcılarla nasıl paylaşabilirim?",
+      "answer": "Wordigo, kullanıcıların kişisel sözlüklerini diğer kullanıcılarla paylaşmalarına olanak tanır. Sözlüğünüzü paylaşabilir ve diğer kullanıcıların da kelimelerinizi görmesine ve eklemesine izin verebilirsiniz.      "
+    },
+    "wordigo_mobile_application": {
+      "question": "Wordigo'nun mobil uygulaması var mı?",
+      "answer": "Wordigo'nun bir mobil uygulaması bulunmamaktadır. Ancak tarayıcı eklentisini bilgisayarınızda kullanabilirsiniz."
+    },
+    "free_to_use_wordigo": {
+      "question": "Wordigo kullanmak ücretsiz midir?",
+      "answer": "Wordigo'nun temel sürümü ücretsiz olarak kullanılabilir. Ancak daha fazla özellik ve depolama alanı isterseniz, premium bir abonelik seçeneği sunabilir. Bu abonelik, ek özelliklere erişim sağlar.      "
+    }
   },
   "newsletter": {
     "heading": "Bültenimize Abone Olun",
