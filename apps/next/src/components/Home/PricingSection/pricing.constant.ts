@@ -16,7 +16,13 @@ const prices: Price[] = [
     popular: false,
     price: "$0/mth",
     priceDescription: "This description for free plan.",
-    features: ["Access to all basic features", "Access to all basic features"],
+    features: [
+      "Access to all basic features",
+      "Access to all basic features",
+      "Access to all basic features",
+      "Access to all basic features",
+      "Access to all basic features",
+    ],
   },
   {
     Icon: Flame,
@@ -38,7 +44,13 @@ const prices: Price[] = [
     popular: false,
     price: "$10/mth",
     priceDescription: "This description for business plan.",
-    features: ["Access to all basic features", "Access to all basic features"],
+    features: [
+      "Access to all basic features",
+      "Access to all basic features",
+      "Access to all basic features",
+      "Access to all basic features",
+      "Access to all basic features",
+    ],
   },
 ];
 

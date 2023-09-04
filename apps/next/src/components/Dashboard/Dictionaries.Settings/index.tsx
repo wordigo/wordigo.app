@@ -114,7 +114,7 @@ export default function Settings() {
                         </span>
                         <CInput
                           disabled
-                          className="placeholder:!text-gray-400"
+                          classNames="placeholder:!text-gray-400 w-[512px]"
                           defaultValue={`wordigo.app/library/${data.user.username}`}
                           rightSection={
                             <Copy
@@ -142,7 +142,7 @@ export default function Settings() {
                     {t("dictionaries_settings.published_status_note")}
                   </p>
                 </section>
-                <section className="w-full flex flex-col gap-y-4">
+                <section className="flex flex-col gap-y-4 w-[512px]">
                   <FormField
                     control={form.control as never}
                     name="published"
@@ -209,7 +209,7 @@ export default function Settings() {
                             {t("dictionaries_settings.title_notes")}
                           </p>
                         </span>
-                        <Input {...field} placeholder={t("title")} />
+                        <Input {...field} placeholder={t("title")} className="w-[512px]" />
                       </main>
                     </FormControl>
                     <FormMessage />
@@ -232,7 +232,7 @@ export default function Settings() {
                             {t("dictionaries_settings.title_notes")}
                           </p>
                         </span>
-                        <Textarea {...field} placeholder={t("description")} />
+                        <Textarea {...field} placeholder={t("description")} className="w-[512px]" />
                       </main>
                     </FormControl>
                     <FormMessage />
