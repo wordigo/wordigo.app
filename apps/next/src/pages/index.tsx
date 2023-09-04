@@ -14,12 +14,13 @@ import { type PageProps } from "types/global";
 export default function index({ _nextI18Next }: PageProps) {
   useTargetElement();
 
+  const seoTitle =
+    _nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale || "en"]?.common
+      .seo.home_title;
+
   return (
     <MainLayout>
-      <NextSeo
-        title={_nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale]?.common.seo.home_title}
-        titleTemplate={_nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale]?.common.seo.home_title}
-      />
+      <NextSeo title={seoTitle} titleTemplate={seoTitle} />
       <NewHeroSection />
       <FeatureBanner />
       <FeatureSections />
@@ -34,6 +35,5 @@ export default function index({ _nextI18Next }: PageProps) {
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
     props: { ...(await serverSideTranslations(locale, ["common", "zod"])) },
-
   };
 }
