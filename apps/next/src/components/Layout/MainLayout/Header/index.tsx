@@ -15,7 +15,7 @@ export default function HomeHeader({ className }: { className?: string }) {
   const { t } = useTranslation();
   const { status } = useSession();
 
-  const [isMenuOpen, setMenuOpen] = useState(false); // State for burger menu
+  const [isMenuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -23,10 +23,21 @@ export default function HomeHeader({ className }: { className?: string }) {
 
   return (
     <>
-      <div className={cn("w-full fixed max-w-[90rem] bg-LightBackground dark:bg-DarkBackground z-50", className)}>
+      <div
+        className={cn(
+          "w-full fixed max-w-[90rem] bg-LightBackground dark:bg-DarkBackground z-50",
+          className
+        )}
+      >
         <nav className="flex items-center justify-between w-full m-auto py-[1.125rem] px-20 max-md:px-4">
           <div className="flex items-center">
-            <Link href="/" className={cn("flex items-center mr-6 justify-center", !toggleMenu && "hidden")}>
+            <Link
+              href="/"
+              className={cn(
+                "flex items-center mr-6 justify-center",
+                !toggleMenu && "hidden"
+              )}
+            >
               <StaticLogo />
               <div className="font-semibold ml-[10px]">Wordigo</div>
             </Link>
@@ -41,16 +52,30 @@ export default function HomeHeader({ className }: { className?: string }) {
               <NavProfile />
             ) : (
               <span>
-                <Link href="/auth/signin" className={cn("bg-transparent mr-4", buttonVariants({ variant: "outline" }))}>
+                <Link
+                  href="/auth/signin"
+                  className={cn(
+                    "bg-transparent mr-4",
+                    buttonVariants({ variant: "outline" })
+                  )}
+                >
                   {t("navbar.signin")}
                 </Link>
-                <Link href="/auth/signup" className={cn(buttonVariants({ variant: "default" }))}>
+                <Link
+                  href="/auth/signup"
+                  className={cn(buttonVariants({ variant: "default" }))}
+                >
                   {t("navbar.signup")}
                 </Link>
               </span>
             )}
           </div>
-          <Button onClick={toggleMenu} className="lg:hidden text-black bg-transparent bg-white" variant="outline" size="icon">
+          <Button
+            onClick={toggleMenu}
+            className="lg:hidden text-black bg-transparent bg-white"
+            variant="outline"
+            size="icon"
+          >
             <Menu size={17} />
           </Button>
         </nav>
@@ -66,10 +91,21 @@ export default function HomeHeader({ className }: { className?: string }) {
           >
             <span className="flex items-center flex-col w-full mb-8">
               <div className="font-bold text-[18px] flex items-center select-none pt-3 justify-between w-full">
-                <Link href="/" className={cn("flex items-center mr-6 max-w-[128px]  min-w-[128px]", !toggleMenu && "hidden")}>
+                <Link
+                  href="/"
+                  className={cn(
+                    "flex items-center mr-6 max-w-[128px]  min-w-[128px]",
+                    !toggleMenu && "hidden"
+                  )}
+                >
                   <DynamicLogo size={128} />
                 </Link>
-                <Button onClick={toggleMenu} className="text-black dark:text-white !h-9 !w-9" variant="outline" size="icon">
+                <Button
+                  onClick={toggleMenu}
+                  className="text-black dark:text-white !h-9 !w-9"
+                  variant="outline"
+                  size="icon"
+                >
                   <X size={19} />
                 </Button>
               </div>
@@ -92,7 +128,8 @@ export default function HomeHeader({ className }: { className?: string }) {
                       href="/auth/signin"
                       className={buttonVariants({
                         variant: "outline",
-                        className: "bg-transparent mr-4 w-full text-black dark:text-white",
+                        className:
+                          "bg-transparent mr-4 w-full text-black dark:text-white",
                       })}
                     >
                       {t("navbar.signin")}

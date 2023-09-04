@@ -24,11 +24,6 @@ const homeSidebarNavigations = (): IHomeNavbar[] => {
       icon: <Library className="mr-2 w-5 h-5 lg:hidden" />,
     },
     {
-      title: t("navbar.pricing"),
-      href: "/#pricing",
-      icon: <Banknote className="mr-2 w-5 h-5 lg:hidden" />,
-    },
-    {
       title: t("navbar.about"),
       href: "/about",
       icon: <Info className="mr-2 w-5 h-5 lg:hidden" />,

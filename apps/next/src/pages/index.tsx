@@ -12,6 +12,7 @@ import { NextSeo } from "next-seo";
 import { type PageProps } from "types/global";
 
 export default function index({ _nextI18Next }: PageProps) {
+  // This code pricing section page mount auto scroll logic
   useTargetElement();
 
   const seoTitle =

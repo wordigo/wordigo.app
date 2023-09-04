@@ -1,7 +1,8 @@
-import { Badge, Button } from "@wordigo/ui";
+import { Badge, buttonVariants } from "@wordigo/ui";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
+import Link from "next/link";
 
 function NewHeroSection() {
   const { t } = useTranslation();
@@ -27,11 +28,25 @@ function NewHeroSection() {
           {t("hero.description")}
         </p>
         <div className="grid grid-cols-2 gap-x-3 mt-12 max-lg:mt-8">
-          <Button variant="outline" size="lg">
+          <Link
+            className={buttonVariants({
+              variant: "outline",
+              size: "lg",
+            })}
+            href="https://chrome.google.com/webstore/detail/wordigo-translator-dictio/mckifajhmdgpffjciaanamiheadnclpi?hl=tr"
+            target="_blank"
+          >
             <ExternalLink className="mr-2 h-4 w-4" />
             {t("hero.try_our_extension")}
-          </Button>
-          <Button size="lg">{t("hero.get_started")}</Button>
+          </Link>
+          <Link
+            className={buttonVariants({
+              size: "lg",
+            })}
+            href="/auth/signup"
+          >
+            {t("hero.get_started")}
+          </Link>
         </div>
       </section>
       <section className="relative aspect-square lg:min-w-[30rem] xl:max-w-[40rem] xl:max-h-[35rem] md:w-[30rem] md:h-[24rem] max-md:w-[340px] max-md:h-[240px] max-lg:mt-12 mt-0">

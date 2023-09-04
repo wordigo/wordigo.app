@@ -9,7 +9,7 @@ import { useTranslation } from "next-i18next";
 import { type ChangeEvent, Fragment, useEffect } from "react";
 
 const ProfileUploadAvatar = () => {
-  const { data } = useSession();
+  const { data, update } = useSession();
   const { t } = useTranslation();
   const splittedText = data?.user?.name?.toUpperCase()?.split(" ");
   const computedName =
@@ -29,11 +29,17 @@ const ProfileUploadAvatar = () => {
     //   avatarFile,
     // });
   };
-
   useEffect(() => {
     if (status === "fulfilled") {
       console.log(profileData);
-
+      const newSession = {
+        ...data,
+        user: {
+          ...data?.user,
+          avatar_url: profileData.data?.avatar_url,
+        },
+      };
+      update(newSession);
       // dispatch(setUser(data?.user));
       // toast.success("Profil fotoğrafınız güncellendi.");
     } else if (status === "rejected") {

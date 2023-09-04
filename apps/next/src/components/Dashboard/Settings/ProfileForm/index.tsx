@@ -27,7 +27,7 @@ type ProfileFormValues = z.infer<typeof ProfileFormSchema>;
 
 export default function ProfileForm() {
   const { t } = useTranslation();
-  const { data } = useSession();
+  const { data, update } = useSession();
 
   const defaultValues: Partial<ProfileFormValues> = {
     name: data?.user?.name,
