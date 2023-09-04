@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
 import { AnimatePresence } from "framer-motion";
 import { CircleDot } from "lucide-react";
-
 import { Skeleton } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 
@@ -38,20 +37,16 @@ DashboardNav.Item = (item: SidebarNavItem, index: number) => {
     item.disabled && "cursor-not-allowed opacity-80",
   );
 
-  const handleChangePage = () => {
-    if (item.href) void router.push(item.href);
-  };
-
   return (
     <div className={classes} key={index}>
-      <button onClick={handleChangePage} className="flex items-center p-3">
+      <Link href={item.href} className="flex items-center p-3">
         <span className="flex items-center w-full">
           <div className="flex items-center">
             {item.icon}
             <span className="ml-3 hidden md:block">{item.title}</span>
           </div>
         </span>
-      </button>
+      </Link>
       {item.child && <DashboardNav.ChildItem {...item.child} key={item.href} />}
     </div>
   );
