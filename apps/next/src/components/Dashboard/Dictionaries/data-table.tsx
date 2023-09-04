@@ -76,9 +76,9 @@ export function DataTable<Dictionary>({ columns, data, isLoading }: DataTablePro
               <TableColumLoader />
             ) : table.getRowModel() && table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id} onClick={() => router.push(`/dashboard/dictionaries/${row?.original?.slug}`)}>
+                <TableRow key={row.id}>
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
+                    <TableCell key={cell.id} onClick={() => router.push(`/dashboard/dictionaries/${row?.original?.slug}`)}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
                   ))}
                 </TableRow>
               ))
