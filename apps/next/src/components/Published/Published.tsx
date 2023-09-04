@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { Star } from "lucide-react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { type IPublished } from "./published.constants";
+import Link from "next/link";
 
 export default function Published({ items }: { items: IPublished[] }) {
   const router = useRouter();
@@ -28,7 +29,7 @@ export default function Published({ items }: { items: IPublished[] }) {
         className="grid grid-cols-3 gap-x-8 gap-y-16 mt-24 max-xl:mt-10 w-full max-xl:justify-center max-xl:flex max-xl:flex-wrap max-xl:px-2 max-xl:grid-cols-2"
       >
         {data.map((item: IPublished) => (
-          <div key={item.id} className="max-md:min-w-[325px] max-md:max-w-[405px] max-w-[405px]" onClick={() => router.push(`/library/${item.id}`)}>
+          <Link href={`/library/${item.id}`} key={item.id} className="max-md:min-w-[325px] max-md:max-w-[405px] max-w-[405px]">
             {item.user.name && (
               <div className="flex w-full flex-col justify-between h-full">
                 <div>
@@ -59,7 +60,7 @@ export default function Published({ items }: { items: IPublished[] }) {
                 )}
               </div>
             )}
-          </div>
+          </Link>
         ))}
       </InfiniteScroll>
     </>

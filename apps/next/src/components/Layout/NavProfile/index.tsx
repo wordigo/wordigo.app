@@ -17,6 +17,7 @@ import {
 import { cn } from "@wordigo/ui/lib/utils";
 import { signOut, useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 const NavProfile = ({ variant }: { variant?: "borgerMenu" }) => {
@@ -27,8 +28,6 @@ const NavProfile = ({ variant }: { variant?: "borgerMenu" }) => {
   const splittedText = data?.user?.name?.toUpperCase()?.split(" ");
   const computedName =
     (splittedText?.[0]?.[0] || "") + (splittedText?.[1]?.[0] || "");
-
-  const handleChangePage = (path: string) => router.push(path);
 
   return (
     <DropdownMenu>
@@ -72,26 +71,17 @@ const NavProfile = ({ variant }: { variant?: "borgerMenu" }) => {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem
-            onClick={() => handleChangePage("/dashboard")}
-            className="px-[10px] cursor-pointer"
-          >
+          <DropdownMenuItem className="px-[10px] cursor-pointer">
             {/* <LayoutDashboard className="w-4 mr-2" /> */}
-            <span>{t("navbar.dashboard")}</span>
+            <Link href={"/dashboard"}>{t("navbar.dashboard")}</Link>
           </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => handleChangePage("/dashboard/dictionaries")}
-            className="px-[10px] cursor-pointer"
-          >
+          <DropdownMenuItem className="px-[10px] cursor-pointer">
             {/* <BookMarked className="w-4 mr-2" /> */}
-            <span>{t("navbar.dictionaries")}</span>
+            <Link href={"/dashboard/dictionaries"}>{t("navbar.dictionaries")}</Link>
           </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => handleChangePage("/dashboard/settings")}
-            className="px-[10px] cursor-pointer"
-          >
+          <DropdownMenuItem className="px-[10px] cursor-pointer">
             {/* <Settings className="w-4 mr-2" /> */}
-            <span>{t("navbar.settings")}</span>
+            <Link href={"/dashboard/settings"}>{t("navbar.settings")}</Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
