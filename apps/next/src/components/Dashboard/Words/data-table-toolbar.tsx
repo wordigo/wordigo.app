@@ -1,9 +1,11 @@
+import { CopyWord } from "@/components/Modals/CopyWords";
 import { DataTableViewOptions } from "./data-table-view-options.tsx";
 import DashboardHeaders, {
   DashboardButton,
 } from "@/components/Layout/Dashboard/Headers";
 import { type Table } from "@tanstack/react-table";
-import { Input } from "@wordigo/ui";
+import { Button, Input } from "@wordigo/ui";
+import { cn } from "@wordigo/ui/lib/utils";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
@@ -12,6 +14,7 @@ interface DataTableToolbarProps<TData> {
 export function DataTableToolbar<TData>({
   table,
 }: DataTableToolbarProps<TData>) {
+  const isHaveData = table.getSelectedRowModel().rows.map((item) => item.original)
   return (
     <main>
       <section className="h-fit flex flex-col md:flex-row md:items-center md:justify-between gap-y-2 md:gap-y-0 w-full">
@@ -29,7 +32,10 @@ export function DataTableToolbar<TData>({
       </section>
 
       <section className="h-fit flex items-center justify-between gap-y-2 md:gap-y-0 w-full mt-2">
-        <DataTableViewOptions table={table} />
+        <div className="space-x-2 flex items-center">
+          <DataTableViewOptions table={table} />
+          <CopyWord label="dic_words.copyWord" className={cn(isHaveData.length === 0 && "pointer-events-none selection:none")} isHaveData={isHaveData} />
+        </div>
         <DashboardButton />
       </section>
     </main>

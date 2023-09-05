@@ -125,7 +125,8 @@
     "wordLabel": "Word",
     "wordPlaceholder": "Enter a word",
     "translatedLabel": "Translated world",
-    "translatedPlaceholder": "Enter a translated world"
+    "translatedPlaceholder": "Enter a translated world",
+    "copyWord": "Copy"
   },
   "dictionaries_settings": {
     "link_notes": "Access your dictionary with this link.",

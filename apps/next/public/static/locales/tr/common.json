@@ -122,7 +122,8 @@
     "wordLabel": "Kelime",
     "wordPlaceholder": "Lütfen kelime giriniz",
     "translatedLabel": "Çevrilecek Kelime",
-    "translatedPlaceholder": "Lütfen çevrilecek kelimeyi giriniz"
+    "translatedPlaceholder": "Lütfen çevrilecek kelimeyi giriniz",
+    "copyWord": "Kaydet"
   },
   "dictionaries_settings": {
     "link_notes": "Bu bağlantıyla sözlüğünüze erişebilirsiniz.",
@@ -257,5 +258,5 @@
   "email": "E-posta",
   "username": "Kullanıcı Adı",
   "password": "Şifre",
-  "save": "Kaydet"
+  "save": "Kopyala"
 }

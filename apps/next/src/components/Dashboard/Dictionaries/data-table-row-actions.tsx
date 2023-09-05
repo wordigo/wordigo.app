@@ -45,21 +45,23 @@ export function DataTableRowActions<TData extends object>({ row }: DataTableRowA
 
   return (
     <div className="w-full relative z-50">
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="ghost" className="flex h-8 p-0 data-[state=open]:bg-muted">
-            <MoreHorizontal className="h-4 w-4 absolute right-3" />
-            <span className="sr-only">Open menu</span>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-[160px] flex flex-col">
-          <DropdownMenuItem>
-            <Link href={`dictionaries/${row.original.title}/settings`}>{t("general.settings")}</Link>
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={handleDeleteClick}>{t("general.delete")}</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+      {row.original.title !== "initial" && (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="flex h-8 p-0 data-[state=open]:bg-muted">
+              <MoreHorizontal className="h-4 w-4 absolute right-3" />
+              <span className="sr-only">Open menu</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-[160px] flex flex-col">
+            <DropdownMenuItem>
+              <Link href={`dictionaries/${row.original.title}/settings`}>{t("general.settings")}</Link>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={handleDeleteClick}>{t("general.delete")}</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )}
     </div>
   );
 }
