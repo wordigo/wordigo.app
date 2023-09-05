@@ -8,7 +8,17 @@ import { type PageProps } from "types/global";
 export default function index({ _nextI18Next }: PageProps) {
   return (
     <MainLayout>
-      <NextSeo title={_nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale]?.common.seo.dictionaries_title} />
+      <NextSeo
+        title={
+          _nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale]?.common
+            .seo.dictionaries_title
+        }
+        openGraph={{
+          title:
+            _nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale]?.common
+              .seo.dictionaries_title,
+        }}
+      />
       <DataTable data={PublishedConstan} label="" />
     </MainLayout>
   );

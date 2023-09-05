@@ -23,6 +23,11 @@ export default function index({ _nextI18Next }: PageProps) {
           _nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale]?.common
             .seo.faq_title
         }
+        openGraph={{
+          title:
+            _nextI18Next?.initialI18nStore[_nextI18Next?.initialLocale]?.common
+              .seo.faq_title,
+        }}
       />
       <FAQ />
       <Newsletter />
