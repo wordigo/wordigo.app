@@ -80,8 +80,6 @@ export function CopyWord({ label, className, isHaveData }: { label: string | nul
 
   const toggleShow = () => setOpen(!open);
 
-  console.log(isHaveData)
-
   return (
     <Dialog open={open}>
       <DialogTrigger asChild>
