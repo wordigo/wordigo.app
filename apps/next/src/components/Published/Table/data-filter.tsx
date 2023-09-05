@@ -11,7 +11,7 @@ import React from "react";
 export default function Filter() {
   return (
     <>
-      <div className="ml-3 flex flex-col">
+      <div className="flex flex-col">
         <Label htmlFor="category">Category</Label>
         <Select>
           <SelectTrigger
