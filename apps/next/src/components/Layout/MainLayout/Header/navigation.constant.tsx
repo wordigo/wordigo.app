@@ -28,11 +28,11 @@ const homeSidebarNavigations = (): IHomeNavbar[] => {
       href: "/about",
       icon: <Info className="mr-2 w-5 h-5 lg:hidden" />,
     },
-    {
-      title: t("faq.nav"),
-      href: "/faq",
-      icon: <HelpCircle className="mr-2 w-5 h-5 lg:hidden" />,
-    },
+    // {
+    //   title: t("faq.nav"),
+    //   href: "/faq",
+    //   icon: <HelpCircle className="mr-2 w-5 h-5 lg:hidden" />,
+    // },
   ];
 };
 

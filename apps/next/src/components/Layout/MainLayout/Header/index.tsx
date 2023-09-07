@@ -1,4 +1,5 @@
 import NavProfile from "../../NavProfile";
+import Feedback from "./Header.feedback";
 import Navigation from "./Navigation";
 import DynamicLogo from "@/components/Logo/DynamicLogo";
 import StaticLogo from "@/components/Logo/StaticLogo";
@@ -9,7 +10,7 @@ import { Menu, X } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 
 export default function HomeHeader({ className }: { className?: string }) {
   const { t } = useTranslation();
@@ -49,7 +50,11 @@ export default function HomeHeader({ className }: { className?: string }) {
             {status === "loading" ? (
               <NavProfile.Loader />
             ) : status === "authenticated" ? (
-              <NavProfile />
+              <Fragment>
+                <Feedback />
+                <div className="hidden md:block w-[0.5px] h-7 bg-gray-300 dark:bg-gray-700"></div>
+                <NavProfile />
+              </Fragment>
             ) : (
               <span>
                 <Link

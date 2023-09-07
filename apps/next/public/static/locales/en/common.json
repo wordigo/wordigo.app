@@ -77,10 +77,9 @@
   },
   "about": {
     "title": "About",
-    "description": "Wordigo allows you to translate and add discovered words while browsing with its browser extension, and share them in your personal dictionary. The Wordigo team collaborates to provide a more effective language learning experience.",
+    "description": "<b>Wordigo</b> allows you to translate and add discovered words while browsing with its browser extension, and share them in your personal dictionary. The Wordigo team collaborates to provide a more effective language learning experience.",
     "team": {
-      "heading": "Meet our team",
-      "subheading": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque recusandae nobis minima rem ratione ipsam tempore id, mollitia non odit."
+      "heading": "Meet our team"
     }
   },
   "contact": {

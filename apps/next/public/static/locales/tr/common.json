@@ -2,7 +2,7 @@
   "seo": {
     "home_title": "Wordigo: Öğrenin, Ve Paylaşın – Sizin Dil Sözlüğünüz",
     "dictionaries_title": "Yayınlanmış sözlüklerden öğrenin.",
-    "about_title": "Hakkında",
+    "about_title": "Hakkımızda",
     "faq_title": "Sıkça Sorulan Sorular",
     "signin_title": "Giriş Yap",
     "signup_title": "Üye Ol"
@@ -30,7 +30,7 @@
     "features": "Özellikler",
     "dictionaries": "Sözlükler",
     "pricing": "Fiyatlandırma",
-    "about": "Hakkında",
+    "about": "Hakkımızda",
     "library": "Kütüphane",
     "signin": "Giriş Yap",
     "signup": "Üye Ol",
@@ -73,11 +73,10 @@
     "info_link": "Giriş Yap"
   },
   "about": {
-    "title": "Hakkında",
-    "description": "Wordigo, tarayıcı uzantısı ile gezinirken keşfedilen kelimeleri çevirmenize ve eklemenize olanak tanır, böylece kişisel sözlüğünüzde paylaşabilirsiniz. Wordigo ekibi daha etkili bir dil öğrenme deneyimi sunmak amacıyla işbirliği yapmaktadır.",
+    "title": "Hakkımızda",
+    "description": "<b>Wordigo</b>, tarayıcı uzantısı ile gezinirken keşfedilen kelimeleri çevirmenize ve eklemenize olanak tanır, böylece kişisel sözlüğünüzde paylaşabilirsiniz. Wordigo ekibi daha etkili bir dil öğrenme deneyimi sunmak amacıyla işbirliği yapmaktadır.",
     "team": {
-      "heading": "Ekibimizi Tanıyın",
-      "subheading": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque recusandae nobis minima rem ratione ipsam tempore id, mollitia non odit."
+      "heading": "Ekibimizi Tanıyın"
     }
   },
   "contact": {

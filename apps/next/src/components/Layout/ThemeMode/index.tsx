@@ -1,6 +1,12 @@
+import {
+  Button,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@wordigo/ui";
 import { LaptopIcon, MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
-import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@wordigo/ui";
 
 export default function ThemeMode() {
   const { setTheme, resolvedTheme } = useTheme();
@@ -34,9 +40,11 @@ export default function ThemeMode() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="h-fit w-fit px-2 py-0.5">
+        <Button variant="outline" className="w-fit px-2 h-8">
           <span className="mr-2 text-xs">{getThemeIcon()}</span>
-          <span className="rotate-0  scale-100 transition-all">{getThemeLabel()}</span>
+          <span className="rotate-0  scale-100 transition-all">
+            {getThemeLabel()}
+          </span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="center" className="min-w-fit text-[12px]">

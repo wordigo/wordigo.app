@@ -20,8 +20,13 @@ import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const NavProfile = ({ variant }: { variant?: "borgerMenu" }) => {
-  const router = useRouter();
+const NavProfile = ({
+  variant,
+  className,
+}: {
+  variant?: "borgerMenu";
+  className?: string;
+}) => {
   const { t } = useTranslation();
   const { data } = useSession();
 
@@ -31,7 +36,7 @@ const NavProfile = ({ variant }: { variant?: "borgerMenu" }) => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="rounded-full" asChild>
+      <DropdownMenuTrigger className={cn("rounded-full", className)} asChild>
         <Button
           variant="ghost"
           className={cn(
@@ -77,7 +82,9 @@ const NavProfile = ({ variant }: { variant?: "borgerMenu" }) => {
           </DropdownMenuItem>
           <DropdownMenuItem className="px-[10px] cursor-pointer">
             {/* <BookMarked className="w-4 mr-2" /> */}
-            <Link href={"/dashboard/dictionaries"}>{t("navbar.dictionaries")}</Link>
+            <Link href={"/dashboard/dictionaries"}>
+              {t("navbar.dictionaries")}
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem className="px-[10px] cursor-pointer">
             {/* <Settings className="w-4 mr-2" /> */}
