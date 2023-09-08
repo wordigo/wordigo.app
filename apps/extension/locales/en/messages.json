@@ -149,8 +149,29 @@
   "voice": {
     "message": "Voice"
   },
+  "native_language": {
+    "message": "Native Language"
+  },
   "welcome": {
     "message": "Welcome to the Wordigo installation page! Here, you can choose your preferred translation language and customize \nthe extension options before completing the installation process."
+  },
+  "translate_text": {
+    "message": "Translate Text"
+  },
+  "translate_text_desc": {
+    "message": "Translate text that you’ve selected by clicking Translate icon icon or by activating a shortcut."
+  },
+  "complete_install": {
+    "message": "Installation Completion"
+  },
+  "complete_install_desc": {
+    "message": "Welcome to Wordigo! You're at the final stage. Fill out the form and click 'Complete' to finish the installation process."
+  },
+  "add_word_dictionary": {
+    "message": "Add Dictionary to translated text"
+  },
+  "add_word_dictionary_desc": {
+    "message": "Translate text that you’ve selected by clicking Translate icon icon or by activating a shortcut."
   },
   "word_add_notify": {
     "message": "Word added to the dictionary."

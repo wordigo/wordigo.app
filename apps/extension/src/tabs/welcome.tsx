@@ -1,42 +1,47 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@wordigo/ui";
-import Logo from "data-base64:~assets/logo.png";
-import { useForm } from "react-hook-form";
-import type { z } from "zod";
-import "~/styles/globals.css";
-import LanguageSelector from "@wordigo/ui/components/ui/language-selector";
-import { RotateCw } from "lucide-react";
-import { useState } from "react";
-import Provider from "~providers";
-import ThemeProvider from "~providers/theme";
-import { TARGET_LANGUAGE_STORAGE, TRANSLATE_OPTION_STORAGE, translateOptionEnums } from "~utils/constants";
-import { getLocalMessage } from "~utils/locale";
-import type { SetupFormSchema } from "~utils/schemas";
-import { SettingsFormSchema } from "~utils/schemas";
-import { localStorage } from "~utils/storage";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Button, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@wordigo/ui"
+import Logo from "data-base64:~assets/logo.png"
+import { useForm } from "react-hook-form"
+import type { z } from "zod"
 
-type SetupFormValues = z.infer<typeof SetupFormSchema>;
+import "~/styles/globals.css"
+
+import LanguageSelector from "@wordigo/ui/components/ui/language-selector"
+import { RotateCw } from "lucide-react"
+import { useState } from "react"
+
+import Welcome from "~features/welcome/welcome"
+import Provider from "~providers"
+import ThemeProvider from "~providers/theme"
+import { TARGET_LANGUAGE_STORAGE, TRANSLATE_OPTION_STORAGE, translateOptionEnums } from "~utils/constants"
+import { getLocalMessage } from "~utils/locale"
+import type { SetupFormSchema } from "~utils/schemas"
+import { SettingsFormSchema } from "~utils/schemas"
+import { localStorage } from "~utils/storage"
+
+type SetupFormValues = z.infer<typeof SetupFormSchema>
 
 const WelcomePage = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
 
   const defaultValues: Partial<SetupFormValues> = {
-    targetLanguage: "",
-  };
+    targetLanguage: ""
+  }
   const form = useForm<SetupFormValues>({
     resolver: zodResolver(SettingsFormSchema),
     defaultValues,
-    mode: "onChange",
-  });
+    mode: "onChange"
+  })
 
   const handleSaveChanges = async (values: SetupFormValues) => {
-    setIsLoading(true);
-    await localStorage.set(TARGET_LANGUAGE_STORAGE, values.targetLanguage);
-    await localStorage.set(TRANSLATE_OPTION_STORAGE, translateOptionEnums.translate_button);
-    setIsLoading(false);
-    window.close();
-  };
+    setIsLoading(true)
+    await localStorage.set(TARGET_LANGUAGE_STORAGE, values.targetLanguage)
+    await localStorage.set(TRANSLATE_OPTION_STORAGE, translateOptionEnums.translate_button)
+    setIsLoading(false)
+    window.close()
+  }
 
+  return <Welcome />
   return (
     <Provider>
       <ThemeProvider>
@@ -87,7 +92,7 @@ const WelcomePage = () => {
         </div>
       </ThemeProvider>
     </Provider>
-  );
-};
+  )
+}
 
-export default WelcomePage;
+export default WelcomePage
