@@ -106,6 +106,9 @@
     "description": "Popup message.",
     "message": "You can set the language in which the texts you will translate will be translated."
   },
+  "translate_placeholder": {
+    "message": "Type the text you want to translate."
+  },
   "text_to_speech": {
     "message": "Text to speech"
   },

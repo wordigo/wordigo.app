@@ -1,63 +1,64 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, CardDescription, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Switch, useToast } from "@wordigo/ui";
-import LanguageSelector from "@wordigo/ui/components/ui/language-selector";
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { type z } from "zod";
-import { TARGET_LANGUAGE_STORAGE, TRANSLATE_OPTION_STORAGE, translateOptionEnums } from "~utils/constants";
-import { getLocalMessage } from "~utils/locale";
-import { SettingsFormSchema } from "~utils/schemas";
-import { localStorage } from "~utils/storage";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Button, CardDescription, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Switch, useToast } from "@wordigo/ui"
+import LanguageSelector from "@wordigo/ui/components/ui/language-selector"
+import { useEffect, useState } from "react"
+import { useForm } from "react-hook-form"
+import { type z } from "zod"
 
-type SettingsFormValues = z.infer<typeof SettingsFormSchema>;
+import { TARGET_LANGUAGE_STORAGE, TRANSLATE_OPTION_STORAGE, translateOptionEnums } from "~utils/constants"
+import { getLocalMessage } from "~utils/locale"
+import { SettingsFormSchema } from "~utils/schemas"
+import { localStorage } from "~utils/storage"
+
+type SettingsFormValues = z.infer<typeof SettingsFormSchema>
 
 export const SettingsForm = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true)
   const defaultValues: Partial<SettingsFormValues> = {
     targetLanguage: "",
     select_and_translate: false,
-    translate_button: false,
-  };
+    translate_button: false
+  }
 
-  const { toast } = useToast();
+  const { toast } = useToast()
   const form = useForm<SettingsFormValues>({
     resolver: zodResolver(SettingsFormSchema),
     defaultValues,
-    mode: "onChange",
-  });
+    mode: "onChange"
+  })
 
   const getStatus = async () => {
-    const translateOption = await localStorage.get(TRANSLATE_OPTION_STORAGE);
-    const targetLanguage = await localStorage.get(TARGET_LANGUAGE_STORAGE);
+    const translateOption = await localStorage.get(TRANSLATE_OPTION_STORAGE)
+    const targetLanguage = await localStorage.get(TARGET_LANGUAGE_STORAGE)
     if (translateOption === translateOptionEnums.select_and_translate) {
-      form.setValue("select_and_translate", true);
+      form.setValue("select_and_translate", true)
     } else {
-      form.setValue("translate_button", true);
+      form.setValue("translate_button", true)
     }
-    form.setValue("targetLanguage", targetLanguage as never);
-    setIsLoading(false);
-  };
+    form.setValue("targetLanguage", targetLanguage as never)
+    setIsLoading(false)
+  }
 
   useEffect(() => {
-    void getStatus();
-  }, []);
+    void getStatus()
+  }, [])
 
   const handleSaveChanges = async (values: SettingsFormValues) => {
-    const convertStatusEnum = values.translate_button ? translateOptionEnums.translate_button : translateOptionEnums.select_and_translate;
+    const convertStatusEnum = values.translate_button ? translateOptionEnums.translate_button : translateOptionEnums.select_and_translate
 
-    await localStorage.set(TRANSLATE_OPTION_STORAGE, convertStatusEnum);
-    await localStorage.set(TARGET_LANGUAGE_STORAGE, values.targetLanguage);
+    await localStorage.set(TRANSLATE_OPTION_STORAGE, convertStatusEnum)
+    await localStorage.set(TARGET_LANGUAGE_STORAGE, values.targetLanguage)
     toast({
       title: getLocalMessage("successNotifyTitle"),
-      description: getLocalMessage("successNotifyDesc"),
-    });
-  };
+      description: getLocalMessage("successNotifyDesc")
+    })
+  }
 
   const changeTranslateOption = (field: "select_and_translate" | "translate_button", status: boolean) => {
-    if (field === "select_and_translate") form.setValue("translate_button", false);
-    else form.setValue("select_and_translate", false);
-    form.setValue(field, status);
-  };
+    if (field === "select_and_translate") form.setValue("translate_button", false)
+    else form.setValue("select_and_translate", false)
+    form.setValue(field, status)
+  }
 
   if (!isLoading)
     return (
@@ -114,7 +115,7 @@ export const SettingsForm = () => {
           <Button type="submit">{getLocalMessage("saveChanges")}</Button>
         </form>
       </Form>
-    );
-};
+    )
+}
 
-export default SettingsForm;
+export default SettingsForm

@@ -1,18 +1,18 @@
-import { Button, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@wordigo/ui";
-import { Volume2 } from "lucide-react";
-import { useRef } from "react";
-import { usePopoverStore } from "~stores/popover";
-import { getLocalMessage } from "~utils/locale";
+import { Button, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@wordigo/ui"
+import { cn } from "@wordigo/ui/lib/utils"
+import { Volume2 } from "lucide-react"
+import { useRef } from "react"
 
-const AuidoPlayer = () => {
-  const { targetLanguage, selectedText } = usePopoverStore();
-  const playerRef = useRef<HTMLAudioElement>();
+import { getLocalMessage } from "~utils/locale"
+
+const AuidoPlayer = ({ message, targetLanguage, className }: { message: string; targetLanguage: string; className?: string }) => {
+  const playerRef = useRef<HTMLAudioElement>()
 
   const textToSpeech = () => {
-    void playerRef?.current?.play();
-  };
+    void playerRef?.current?.play()
+  }
 
-  const computedUrl = `https://translate.googleapis.com/translate_tts?client=gtx&tl=${targetLanguage}&q=${encodeURIComponent(selectedText)}`;
+  const computedUrl = `https://translate.googleapis.com/translate_tts?client=gtx&tl=${targetLanguage}&q=${encodeURIComponent(message)}`
 
   return (
     <div>
@@ -20,7 +20,7 @@ const AuidoPlayer = () => {
       <TooltipProvider delayDuration={100}>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button onClick={textToSpeech} className="!w-7 !h-7 text-accent-foreground" variant="ghost" size="icon">
+            <Button onClick={textToSpeech} className={cn("!w-7 !h-7 text-accent-foreground", className)} variant="ghost" size="icon">
               <Volume2 size={18} />
             </Button>
           </TooltipTrigger>
@@ -30,7 +30,7 @@ const AuidoPlayer = () => {
         </Tooltip>
       </TooltipProvider>
     </div>
-  );
-};
+  )
+}
 
-export default AuidoPlayer;
+export default AuidoPlayer
