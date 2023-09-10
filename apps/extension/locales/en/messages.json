@@ -1,4 +1,13 @@
 {
+  "prev": {
+    "message": "Previous"
+  },
+  "next": {
+    "message": "Next"
+  },
+  "complete": {
+    "message": "Complete"
+  },
   "add": {
     "message": "Add"
   },
@@ -117,6 +126,9 @@
   },
   "themeDesc": {
     "message": "Choose the theme for the extension's popup and settings page, customizing your language learning experience to your preferred style."
+  },
+  "detect_language": {
+    "message": "Detect Language"
   },
   "translate": {
     "message": "Translate"

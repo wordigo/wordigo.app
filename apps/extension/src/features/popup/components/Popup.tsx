@@ -36,10 +36,10 @@ const ExtensionPopup = () => {
   useEffect(() => {
     const typingTimeout = setTimeout(() => {
       handleTranslate({ query: value, sourceLanguage: null, targetLanguage: targetLanguage.toLowerCase() })
-    }, 1000)
+    }, 500)
 
     return () => clearTimeout(typingTimeout)
-  }, [value])
+  }, [value, targetLanguage])
 
   return (
     <Card tabIndex={1} className="flex-col w-[500px] flex border-0 rounded-none bg-white bg-opacity-40 relative h-56 !shadow-none">
@@ -54,9 +54,9 @@ const ExtensionPopup = () => {
         </div>
         <div className="flex flex-row items-center gap-x-2 justify-between w-full mt-2">
           <LanguageSelector
-            defaultValue={result?.data?.sourceLanguage}
+            defaultValue={result?.data?.sourceLanguage?.toUpperCase()}
             className="!border-lg w-[200px] !bg-gray-300 !bg-opacity-30 !border-opacity-30 !border-gray-300 !text-white"
-            targetLanguageSelect
+            detectLanguage={getLocalMessage("detect_language")}
             providerLanguages
           />
           <ArrowRightLeft className="!text-gray-300" size={20} />
@@ -99,9 +99,9 @@ ExtensionPopup.Textarea = ({
           <Skeleton className="w-full h-4" />
         </div>
       )}
-      <div className="absolute right-3 bottom-3 flex gap-x-2 items-center justify-center">
-        <CopyText className="!w-4 !h-4 flex items-center justify-center !text-gray-500" text={value} />
-        <AuidoPlayer className="!w-4 !h-4 flex items-center justify-center !text-gray-500" message={value} targetLanguage={targetLanguage} />
+      <div className="absolute right-2 bottom-2 flex gap-x-1 items-center justify-center">
+        <AuidoPlayer className="!w-7 !h-7 flex items-center justify-center !text-gray-500 !rounded !p-1" message={value} targetLanguage={targetLanguage} />
+        <CopyText className="!w-6 !h-6 flex items-center justify-center !text-gray-500 !rounded !p-1" text={value} />
       </div>
     </div>
   )

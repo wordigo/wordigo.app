@@ -9,7 +9,7 @@ const AuidoPlayer = ({ message, targetLanguage, className }: { message: string; 
   const playerRef = useRef<HTMLAudioElement>()
 
   const textToSpeech = () => {
-    void playerRef?.current?.play()
+    if (message) void playerRef?.current?.play()
   }
 
   const computedUrl = `https://translate.googleapis.com/translate_tts?client=gtx&tl=${targetLanguage}&q=${encodeURIComponent(message)}`

@@ -60,7 +60,7 @@ const SetupPage = () => {
             )}
           />
           <Button disabled={isLoading} className="mt-10 w-full" type="submit">
-            {isLoading ? <RotateCw className="mr-2 h-4 w-4 animate-spin" /> : "Complete"}
+            {isLoading ? <RotateCw className="mr-2 h-4 w-4 animate-spin" /> : getLocalMessage("complete")}
           </Button>
         </form>
       </Form>

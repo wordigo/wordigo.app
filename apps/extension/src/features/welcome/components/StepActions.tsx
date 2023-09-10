@@ -1,5 +1,7 @@
 import { Button } from "@wordigo/ui"
 
+import { getLocalMessage } from "~utils/locale"
+
 import { useSteps } from "../context/Step"
 
 const StepActions = () => {
@@ -10,10 +12,10 @@ const StepActions = () => {
   return (
     <div className="flex gap-x-4 z-50 container w-full justify-end items-center">
       <Button variant="outline" size="sm" onClick={prev}>
-        Previous
+        {getLocalMessage("prev")}
       </Button>
       <Button size="sm" onClick={next}>
-        Next
+        {getLocalMessage("next")}
       </Button>
     </div>
   )

@@ -1,26 +1,29 @@
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "./select";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import { AllCountryLanguages, SupportedLanguages } from "@wordigo/common";
+import { useState } from "react";
 import ReactCountryFlag from "react-country-flag";
 
 export interface ILanguageSelector {
   placeholder?: string;
+  detectLanguage?: string;
   providerLanguages?: boolean;
-  targetLanguageSelect?: boolean;
   className?: string;
   defaultValue?: string;
   onSelect?: (value: string) => void;
 }
 
-const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue, targetLanguageSelect, placeholder, providerLanguages = false, onSelect }) => {
+const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue, placeholder, detectLanguage, providerLanguages = false, onSelect }) => {
   const handleSelect = (value: string) => {
     onSelect?.(value);
   };
 
   const computedLanguages = providerLanguages ? AllCountryLanguages : SupportedLanguages;
 
+  console.log("control", detectLanguage && !defaultValue ? "DT" : defaultValue || "0");
+
   return (
-    <Select defaultValue={targetLanguageSelect && !defaultValue ? "DT" : defaultValue || "0"} onValueChange={handleSelect}>
+    <Select value={detectLanguage && defaultValue} defaultValue={detectLanguage && !defaultValue ? "DT" : defaultValue || "0"} onValueChange={handleSelect}>
       <SelectTrigger className={className}>
         <SelectValue placeholder={placeholder || "Select language"} />
       </SelectTrigger>
@@ -32,7 +35,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue
                 {placeholder || "Select language"}
               </SelectItem>
             )}
-            {targetLanguageSelect && (
+            {detectLanguage && !defaultValue && (
               <SelectItem key="DT" value="DT">
                 <div className="flex items-center gap-x-2">
                   <ReactCountryFlag
@@ -43,7 +46,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue
                     svg
                     countryCode="DT"
                   />
-                  Detect Language
+                  {detectLanguage || "Detect Language"}
                 </div>
               </SelectItem>
             )}
