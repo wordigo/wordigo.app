@@ -18,7 +18,6 @@ import { cn } from "@wordigo/ui/lib/utils";
 import { signOut, useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 const NavProfile = ({
   variant,
@@ -78,17 +77,21 @@ const NavProfile = ({
         <DropdownMenuGroup>
           <DropdownMenuItem className="px-[10px] cursor-pointer">
             {/* <LayoutDashboard className="w-4 mr-2" /> */}
-            <Link href={"/dashboard"}>{t("navbar.dashboard")}</Link>
+            <Link className="w-full h-full" href={"/dashboard"}>
+              {t("navbar.dashboard")}
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem className="px-[10px] cursor-pointer">
             {/* <BookMarked className="w-4 mr-2" /> */}
-            <Link href={"/dashboard/dictionaries"}>
+            <Link className="w-full h-full" href={"/dashboard/dictionaries"}>
               {t("navbar.dictionaries")}
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem className="px-[10px] cursor-pointer">
             {/* <Settings className="w-4 mr-2" /> */}
-            <Link href={"/dashboard/settings"}>{t("navbar.settings")}</Link>
+            <Link className="w-full h-full" href={"/dashboard/settings"}>
+              {t("navbar.settings")}
+            </Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />

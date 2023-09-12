@@ -1,12 +1,18 @@
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  DropdownMenuLabel,
+  Skeleton,
+} from "@wordigo/ui";
 import { LogOut } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
-
-import { Avatar, AvatarFallback, AvatarImage, DropdownMenuLabel, Skeleton } from "@wordigo/ui";
 
 const NavProfile = () => {
   const { data } = useSession();
   const splittedText = data?.user?.name?.toUpperCase()?.split(" ");
-  const computedName = (splittedText?.[0]?.[0] || "") + (splittedText?.[1]?.[0] || "");
+  const computedName =
+    (splittedText?.[0]?.[0] || "") + (splittedText?.[1]?.[0] || "");
 
   const handleSignOut = () => signOut({ callbackUrl: "/" });
 
@@ -15,14 +21,22 @@ const NavProfile = () => {
       <button className="w-full justify-between focus-visible:ring-0 focus-visible:ring-offset-0 outline-none  select-none cursor-default relative h-fit">
         <div className="flex items-center gap-x-1">
           <Avatar className="w-10 h-10 md:h-12 md:w-12">
-            <AvatarImage className="w-10 h-10 md:h-12 md:w-12" src={data?.user.avatar_url} alt={"@" + data?.user.name} />
+            <AvatarImage
+              className="w-10 h-10 md:h-12 md:w-12"
+              src={data?.user.avatar_url}
+              alt={"@" + data?.user.name}
+            />
             <AvatarFallback>{computedName}</AvatarFallback>
           </Avatar>
 
           <DropdownMenuLabel className="hidden md:flex">
             <div className="flex flex-col">
-              <p className="text-sm font-semibold leading-5 text-start">{data?.user.name}</p>
-              <p className="text-sm font-normal leading-5 text-muted-foreground max-w-[140px] overflow-hidden truncate">{data?.user.email}</p>
+              <p className="text-sm font-semibold leading-5 text-start">
+                {data?.user.name}
+              </p>
+              <p className="text-sm font-normal leading-5 text-muted-foreground max-w-[140px] overflow-hidden truncate">
+                {data?.user.email}
+              </p>
             </div>
           </DropdownMenuLabel>
         </div>
