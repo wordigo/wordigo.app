@@ -41,4 +41,4 @@ export const dictionaryApi = createApi({
   }),
 });
 
-export const { useGetUserDictionariesMutation, useCreateDictionaryMutation, useDeleteUserDictionariesMutation, useGetDictionaryDetailMutation } = dictionaryApi;
+export const { useGetUserDictionariesMutation, useCreateDictionaryMutation, useDeleteUserDictionariesMutation, useGetDictionaryDetailMutation, useUpdateUserDictionariesMutation } = dictionaryApi;
