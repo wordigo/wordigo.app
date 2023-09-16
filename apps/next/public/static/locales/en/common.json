@@ -13,7 +13,12 @@
     "settings": "Settings",
     "delete": "Delete",
     "theme": "Theme",
-    "language": "Language"
+    "language": "Language",
+    "too_bad": "Too Bad",
+    "bad": "Bad",
+    "not_bad": "Not Bad",
+    "good": "Good",
+    "very_good": "Very Good"
   },
   "notifications": {
     "success": "Successful",
@@ -29,6 +34,11 @@
   "announcement": {
     "description": "We have <span className='font-semibold'>amazing news,</span> just for you! Learn from our blog!",
     "button": "See More"
+  },
+  "feedback": {
+    "title": "Feedback",
+    "placeholder": "Write your problem.",
+    "submit": "Submit"
   },
   "navbar": {
     "home": "Home",
@@ -230,12 +240,7 @@
     }
   },
   "public": {
-    "rating_title": "How do you rate these dictionary?",
-    "too_bad": "Too Bad",
-    "bad": "Bad",
-    "not_bad": "Not Bad",
-    "good": "Good",
-    "very_good": "Very Good"
+    "rating_title": "How do you rate these dictionary?"
   },
   "buttons": {
     "cancel": "cancel",

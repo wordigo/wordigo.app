@@ -3,10 +3,8 @@ import CButton from "@/components/UI/Button";
 import CInput from "@/components/UI/Input/Input";
 import { ProfileFormSchema } from "@/schemas/profile.schema";
 import { useUpdateProfileMutation } from "@/store/profile/api";
-import { type RequestUpdateProfileType } from "@/store/profile/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  Button,
   Form,
   FormControl,
   FormField,

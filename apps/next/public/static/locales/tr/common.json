@@ -13,7 +13,17 @@
     "settings": "Ayarlar",
     "delete": "Sil",
     "theme": "Tema",
-    "language": "Dil"
+    "language": "Dil",
+    "too_bad": "Çok Kötü",
+    "bad": "Kötü",
+    "not_bad": "Fena Değil",
+    "good": "İyi",
+    "very_good": "Çok İyi"
+  },
+  "feedback": {
+    "title": "Geri Bildirim",
+    "placeholder": "Lütfen geri bildiriminizi giriniz.",
+    "submit": "Gönder"
   },
   "notifications": {
     "success": "Başarılı",
@@ -225,12 +235,7 @@
     }
   },
   "public": {
-    "rating_title": "Bu sözlüğü nasıl değerlendirirsiniz?",
-    "too_bad": "Çok Kötü",
-    "bad": "Kötü",
-    "not_bad": "Fena Değil",
-    "good": "İyi",
-    "very_good": "Çok İyi"
+    "rating_title": "Bu sözlüğü nasıl değerlendirirsiniz?"
   },
   "dashboard": {
     "statistics": {

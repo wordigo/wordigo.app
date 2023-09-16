@@ -1,32 +1,34 @@
-import { sendToBackground } from "@plasmohq/messaging";
-import { Button, HoverCard, HoverCardContent, HoverCardTrigger, ToastAction, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, useToast } from "@wordigo/ui";
-import { cn } from "@wordigo/ui/lib/utils";
-import { ChevronDown, RotateCw } from "lucide-react";
-import { useMemo } from "react";
-import { Fragment, useEffect, useRef } from "react";
-import { useMutation } from "react-query";
-import { addDictionaryWord } from "~api/dictionary";
-import { useAuthStore } from "~stores/auth";
-import { useDictionaryStore } from "~stores/dictionary";
-import { usePopoverStore } from "~stores/popover";
-import { getLocalMessage } from "~utils/locale";
+import { Button, HoverCard, HoverCardContent, HoverCardTrigger, ToastAction, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, useToast } from "@wordigo/ui"
+import { cn } from "@wordigo/ui/lib/utils"
+import { ChevronDown, RotateCw } from "lucide-react"
+import { useMemo } from "react"
+import { Fragment, useEffect, useRef } from "react"
+import { useMutation } from "react-query"
+
+import { sendToBackground } from "@plasmohq/messaging"
+
+import { addDictionaryWord } from "~api/dictionary"
+import { useAuthStore } from "~stores/auth"
+import { useDictionaryStore } from "~stores/dictionary"
+import { usePopoverStore } from "~stores/popover"
+import { getLocalMessage } from "~utils/locale"
 
 const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge: string; translatedText: string }) => {
-  const hoverRef = useRef<HTMLDivElement>();
-  const { dictionaries } = useDictionaryStore();
-  const { targetLanguage, selectedText } = usePopoverStore();
-  const { mutate: addMutate, isLoading: addIsLoading, status, data } = useMutation(addDictionaryWord);
-  const { toast } = useToast();
-  const { isLoggedIn } = useAuthStore();
+  const hoverRef = useRef<HTMLDivElement>()
+  const { dictionaries } = useDictionaryStore()
+  const { targetLanguage, selectedText } = usePopoverStore()
+  const { mutate: addMutate, isLoading: addIsLoading, status, data } = useMutation(addDictionaryWord)
+  const { toast } = useToast()
+  const { isLoggedIn } = useAuthStore()
 
   const openDictionaryPage = async () => {
     const openedDictionaryPage = await sendToBackground({
       name: "openPageUrl",
       body: {
-        slug: data?.data?.slug,
-      },
-    });
-  };
+        slug: data?.data?.slug
+      }
+    })
+  }
 
   useEffect(() => {
     if (status === "success") {
@@ -38,32 +40,32 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
             <ToastAction onClick={openDictionaryPage} className="text-primary" altText={getLocalMessage("view_dictionary")}>
               {getLocalMessage("view_dictionary")}
             </ToastAction>
-          ),
-        });
+          )
+        })
       } else {
         toast({
           variant: "destructive",
           title: getLocalMessage("errorNotifyTitle"),
-          description: data.message,
-        });
+          description: data.message
+        })
       }
     }
-  }, [status]);
+  }, [status])
 
   const handleAddLibrary = (dictionaryId?: number) => {
-    if (!isLoggedIn) return;
+    if (!isLoggedIn) return
     addMutate({
-      nativeLanguage: sourceLangauge,
-      targetLanguage,
+      nativeLanguage: sourceLangauge.toLowerCase(),
+      targetLanguage: targetLanguage.toLowerCase(),
       text: selectedText,
       translatedText,
-      dictionaryId,
-    });
-    hoverRef.current.hidden = true;
-    hoverRef.current.style.display = "hidden";
-  };
+      dictionaryId
+    })
+    hoverRef.current.hidden = true
+    hoverRef.current.style.display = "hidden"
+  }
 
-  const language = useMemo(() => chrome.i18n.getUILanguage(), [chrome.i18n]);
+  const language = useMemo(() => chrome.i18n.getUILanguage(), [chrome.i18n])
 
   return (
     <TooltipProvider delayDuration={100}>
@@ -76,8 +78,7 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
                 disabled={!isLoggedIn || addIsLoading}
                 onClick={() => handleAddLibrary()}
                 variant="default"
-                size="sm"
-              >
+                size="sm">
                 {addIsLoading ? (
                   <Fragment>
                     <RotateCw className="mr-2 h-4 w-4 animate-spin" />
@@ -105,8 +106,7 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
                     disabled={addIsLoading}
                     className="!rounded-sm !h-8 !text-start !justify-start truncate"
                     variant="ghost"
-                    size="sm"
-                  >
+                    size="sm">
                     {dictionary.title}
                   </Button>
                 ))}
@@ -121,7 +121,7 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
         </Tooltip>
       </HoverCard>
     </TooltipProvider>
-  );
-};
+  )
+}
 
-export default DictionarySelector;
+export default DictionarySelector
