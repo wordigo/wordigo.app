@@ -19,6 +19,8 @@
     "success": "Successful",
     "warning": "Warning",
     "error": "Error",
+    "avatar_update": "Your photo has been successfully updated.",
+    "profile_update": "User information has been successfully updated.",
     "signin_success": "Sign in successful you are redirected to homepage.",
     "created_dictionary": "Dictionary created successfully.",
     "deleted_dictionary": "Dictionary deleted successfully.",

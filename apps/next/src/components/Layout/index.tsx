@@ -64,7 +64,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
   }, [session?.status]);
 
   const renderinCond = loading || session.status === "loading" || !mounted;
-  console.log(renderinCond);
 
   return <Fragment>{renderinCond ? <PageLoader /> : children}</Fragment>;
 }

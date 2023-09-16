@@ -12,3 +12,8 @@ export type ResponseStatisticsType = IResponse<{
   numberOfSubbedDics: number;
   numberOfWords: number;
 }>;
+
+export type RequestUpdateProfileType = IResponse<{
+  name: string;
+  username: string;
+}>;

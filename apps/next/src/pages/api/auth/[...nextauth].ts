@@ -42,10 +42,14 @@ export const authOptions = (
 
         return false;
       },
-      jwt({ token, user }) {
+      jwt({ token, user, trigger, session }) {
+        if (trigger === "update") {
+          token.user = session.user;
+        }
+
         return { ...token, ...user };
       },
-      session({ session, token }) {
+      session({ session, token, newSession, trigger, user }) {
         try {
           // const request = await fetch(
           //   `${env.NEXT_PUBLIC_WORDIGO_BACKEND_URL}/users/getMe`,

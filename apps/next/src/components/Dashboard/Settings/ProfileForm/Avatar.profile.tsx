@@ -1,16 +1,15 @@
 import Spinner from "@/components/UI/Spinner";
 import { useUpdateAvatarMutation } from "@/store/profile/api";
-import getUrl from "@/utils/getUrl";
 import { toBase64 } from "@/utils/toBase64";
-import { Avatar, AvatarFallback, AvatarImage } from "@wordigo/ui";
+import { Avatar, AvatarFallback, AvatarImage, useToast } from "@wordigo/ui";
 import { cx } from "class-variance-authority";
 import { FileEditIcon } from "lucide-react";
-import { signIn, useSession } from "next-auth/react";
-import { getCsrfToken } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
-import { type ChangeEvent, Fragment, useEffect } from "react";
+import { Fragment, useEffect, type ChangeEvent } from "react";
 
 const ProfileUploadAvatar = () => {
+  const { toast } = useToast();
   const { data, update } = useSession();
   const { t } = useTranslation();
   const splittedText = data?.user?.name?.toUpperCase()?.split(" ");
@@ -26,24 +25,31 @@ const ProfileUploadAvatar = () => {
 
     const encodedAvatar = (await toBase64(avatarFile)) as string;
     handleUpdateAvatar({ encodedAvatar });
-
-    // await updateAvatar({
-    //   avatarFile,
-    // });
   };
 
-  const updateUserData = async () => {
-    await signIn("update-user", { accessToken: data.user.accessToken });
+  const updateProfilePhoto = async () => {
+    await update({
+      ...data,
+      user: {
+        ...data?.user,
+        avatar_url: profileData.data.avatar_url,
+      },
+    });
   };
 
   useEffect(() => {
     if (status === "fulfilled") {
-      updateUserData();
-      // dispatch(setUser(data?.user));
-      // toast.success("Profil fotoğrafınız güncellendi.");
+      updateProfilePhoto();
+      toast({
+        title: t("notifications.success"),
+        description: t("notifications.avatar_update"),
+      });
     } else if (status === "rejected") {
-      // const errorMessage = getErrorFromPayload(error);
-      // toast.error(getErrorTranslation(errorMessage));
+      toast({
+        variant: "destructive",
+        title: t("notifications.warning"),
+        description: profileData.message,
+      });
     }
   }, [status]);
 
@@ -77,7 +83,7 @@ const ProfileUploadAvatar = () => {
           )}
         >
           {isLoading ? (
-            <Spinner />
+            <Spinner className="!text-white" />
           ) : (
             <Fragment>
               <FileEditIcon className="text-gray-200/70" size={24} />

@@ -1,6 +1,9 @@
 import ProfileUploadAvatar from "./Avatar.profile";
+import CButton from "@/components/UI/Button";
 import CInput from "@/components/UI/Input/Input";
 import { ProfileFormSchema } from "@/schemas/profile.schema";
+import { useUpdateProfileMutation } from "@/store/profile/api";
+import { type RequestUpdateProfileType } from "@/store/profile/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Button,
@@ -16,29 +19,66 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
+  toast,
 } from "@wordigo/ui";
 import { InfoIcon } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { type z } from "zod";
 
-type ProfileFormValues = z.infer<typeof ProfileFormSchema>;
+export type UpdateProfileFormValues = z.infer<typeof ProfileFormSchema>;
 
 export default function ProfileForm() {
   const { t } = useTranslation();
   const { data, update } = useSession();
+  const [handleUpdateProfile, { status, data: profileData, isLoading }] =
+    useUpdateProfileMutation();
 
-  const defaultValues: Partial<ProfileFormValues> = {
+  const defaultValues: Partial<UpdateProfileFormValues> = {
     name: data?.user?.name,
     username: data?.user?.username,
   };
 
-  const form = useForm<ProfileFormValues>({
+  const form = useForm<UpdateProfileFormValues>({
     resolver: zodResolver(ProfileFormSchema),
     defaultValues,
     mode: "onSubmit",
   });
+
+  const handleSubmit = (values: UpdateProfileFormValues) => {
+    if (values.username === data.user.username) delete values.username;
+    handleUpdateProfile(values);
+  };
+
+  const updateProfileData = async () => {
+    await update({
+      ...data,
+      user: {
+        ...data?.user,
+        ...profileData.data,
+      },
+    });
+  };
+
+  useEffect(() => {
+    if (status === "fulfilled") {
+      if (profileData.success) {
+        updateProfileData();
+        toast({
+          title: t("notifications.success"),
+          description: t("notifications.profile_update"),
+        });
+      } else {
+        toast({
+          variant: "destructive",
+          title: t("notifications.warning"),
+          description: profileData.message,
+        });
+      }
+    }
+  }, [status]);
 
   return (
     <div className="space-y-4 max-w-3xl">
@@ -51,7 +91,7 @@ export default function ProfileForm() {
       <Separator />
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(() => {})}
+          onSubmit={form.handleSubmit(handleSubmit)}
           className="space-y-8 !max-w-2xl"
         >
           <ProfileUploadAvatar />
@@ -104,7 +144,9 @@ export default function ProfileForm() {
               </FormItem>
             )}
           />
-          <Button type="submit">{t("profileSettings.update_action")}</Button>
+          <CButton loading={isLoading} type="submit">
+            {t("profileSettings.update_action")}
+          </CButton>
         </form>
       </Form>
     </div>
