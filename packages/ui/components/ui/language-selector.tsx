@@ -20,8 +20,6 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue
 
   const computedLanguages = providerLanguages ? AllCountryLanguages : SupportedLanguages;
 
-  console.log("control", detectLanguage && !defaultValue ? "DT" : defaultValue || "0");
-
   return (
     <Select value={detectLanguage && defaultValue} defaultValue={detectLanguage && !defaultValue ? "DT" : defaultValue || "0"} onValueChange={handleSelect}>
       <SelectTrigger className={className}>

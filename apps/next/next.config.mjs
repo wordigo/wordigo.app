@@ -16,6 +16,8 @@ const config = {
       "flowbite.s3.amazonaws.com",
       "avatars.githubusercontent.com",
       "media.licdn.com",
+      "wordigo.s3.eu-west-2.amazonaws.com",
+      "storage.googleapis.com",
     ],
   },
 

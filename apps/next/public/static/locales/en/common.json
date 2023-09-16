@@ -211,8 +211,8 @@
   },
   "headers": {
     "dashboard": {
-      "title": "Dashboard",
-      "description": "Manage Your User Data"
+      "title": "Control Panel",
+      "description": "View Your Application Usage Statistics."
     },
     "dictionaries": {
       "title": "Dictionaries",
@@ -248,6 +248,14 @@
   "profileAvatar": {
     "title": "Set Profile Picture",
     "description": "Upload a photo and change your profile picture"
+  },
+  "dashboard": {
+    "statistics": {
+      "dictionaries": "Dictionary Count",
+      "public_dictionaries": "Public Dictionary Count",
+      "sub_dictionary": "Subscribed Dictionary Count",
+      "words": "Word Count"
+    }
   },
   "title": "Title",
   "permissions": "Permissions",

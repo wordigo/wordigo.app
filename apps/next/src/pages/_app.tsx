@@ -1,7 +1,9 @@
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import AppProviders from "@/components/providers";
 import seo from "@/constants/seo";
 import store from "@/store";
 import "@wordigo/ui/styles/globals.css";
+import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { appWithTranslation, useTranslation } from "next-i18next";
 import { DefaultSeo } from "next-seo";
@@ -9,15 +11,13 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { Fragment } from "react";
 import { Provider } from "react-redux";
+import "swiper/css";
+import "swiper/css/grid";
+import "swiper/css/pagination";
 import { z } from "zod";
 import { makeZodI18nMap } from "zod-i18n-map";
 import "../styles/globals.css";
 import "../styles/styles.css";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
-import "swiper/css";
-import "swiper/css/grid";
-import "swiper/css/pagination";
-import { type Session } from "next-auth";
 
 const App = ({
   Component,

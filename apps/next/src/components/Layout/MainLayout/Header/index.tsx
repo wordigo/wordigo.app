@@ -1,11 +1,11 @@
 import NavProfile from "../../NavProfile";
-import Feedback from "./Header.feedback";
+import Feedback from "./Feedback";
 import Navigation from "./Navigation";
 import DynamicLogo from "@/components/Logo/DynamicLogo";
 import StaticLogo from "@/components/Logo/StaticLogo";
-import { Badge, Button, Separator, buttonVariants } from "@wordigo/ui";
+import { Button, Separator, buttonVariants } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";

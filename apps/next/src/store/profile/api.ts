@@ -1,11 +1,10 @@
 import { axiosBaseQuery } from "../baseQuery";
 import {
-  type ResponseUpdateAvatarType,
   type RequestUpdateAvatarType,
+  type ResponseStatisticsType,
+  type ResponseUpdateAvatarType,
 } from "./types";
-import { type AuthRegisterValues } from "@/schemas/auth.schema";
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { type IResponse } from "types/global";
 
 export const profileApi = createApi({
   reducerPath: "profileApi",
@@ -23,7 +22,13 @@ export const profileApi = createApi({
         method: "PUT",
       }),
     }),
+    getStatistics: builder.mutation<ResponseStatisticsType, unknown>({
+      query: () => ({
+        url: "/dashboard/getStatistics",
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useUpdateAvatarMutation } = profileApi;
+export const { useUpdateAvatarMutation, useGetStatisticsMutation } = profileApi;

@@ -8,6 +8,8 @@ import { dictionaryApi } from "./dictionaries/api";
 import DictionarySlice from "./dictionaries/slice";
 import { profileApi } from "./profile/api";
 import ProfileSlice from "./profile/slice";
+import { publicDictionariesApi } from "./publicDictionaries/api";
+import publicDictionaresSlice from "./publicDictionaries/slice";
 import { configureStore } from "@reduxjs/toolkit";
 
 const store = configureStore({
@@ -17,7 +19,9 @@ const store = configureStore({
     dictionaryWord: userDicWordSlice,
     common: CommonSlice,
     profile: ProfileSlice,
+    publicDictionaries: publicDictionaresSlice,
     [authApi.reducerPath]: authApi.reducer,
+    [publicDictionariesApi.reducerPath]: publicDictionariesApi.reducer,
     [dictionaryApi.reducerPath]: dictionaryApi.reducer,
     [dictionaryWordApi.reducerPath]: dictionaryWordApi.reducer,
     [profileApi.reducerPath]: profileApi.reducer,
@@ -28,6 +32,7 @@ const store = configureStore({
       dictionaryApi.middleware,
       dictionaryWordApi.middleware,
       profileApi.middleware,
+      publicDictionariesApi.middleware,
     ]),
 });
 

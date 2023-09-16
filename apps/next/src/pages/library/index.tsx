@@ -1,4 +1,5 @@
 import MainLayout from "@/components/Layout/MainLayout";
+import Published from "@/components/Published";
 import { DataTable } from "@/components/Published/Table/data-table";
 import PublishedConstan from "@/components/Published/published.constants";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -19,7 +20,7 @@ export default function index({ _nextI18Next }: PageProps) {
               .seo.dictionaries_title,
         }}
       />
-      <DataTable data={PublishedConstan} label="" />
+      <Published />
     </MainLayout>
   );
 }

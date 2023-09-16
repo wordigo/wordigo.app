@@ -1,10 +1,12 @@
 import Spinner from "@/components/UI/Spinner";
 import { useUpdateAvatarMutation } from "@/store/profile/api";
+import getUrl from "@/utils/getUrl";
 import { toBase64 } from "@/utils/toBase64";
 import { Avatar, AvatarFallback, AvatarImage } from "@wordigo/ui";
 import { cx } from "class-variance-authority";
 import { FileEditIcon } from "lucide-react";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { getCsrfToken } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 import { type ChangeEvent, Fragment, useEffect } from "react";
 
@@ -29,17 +31,14 @@ const ProfileUploadAvatar = () => {
     //   avatarFile,
     // });
   };
+
+  const updateUserData = async () => {
+    await signIn("update-user", { accessToken: data.user.accessToken });
+  };
+
   useEffect(() => {
     if (status === "fulfilled") {
-      console.log(profileData);
-      const newSession = {
-        ...data,
-        user: {
-          ...data?.user,
-          avatar_url: profileData.data?.avatar_url,
-        },
-      };
-      update(newSession);
+      updateUserData();
       // dispatch(setUser(data?.user));
       // toast.success("Profil fotoğrafınız güncellendi.");
     } else if (status === "rejected") {

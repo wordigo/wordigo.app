@@ -1,6 +1,6 @@
-import { type NextRequest } from "next/server";
 import { ImageResponse } from "@vercel/og";
 import ColorHash from "color-hash";
+import { type NextRequest } from "next/server";
 
 export const config = {
   runtime: "edge",
@@ -34,10 +34,28 @@ export default function handler(req: NextRequest) {
 
   return new ImageResponse(
     (
-      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx={size / 2} cy={size / 2} r={size / 2} fill="url(#gradient)" />
+      <svg
+        width={size}
+        height={size}
+        viewBox={`0 0 ${size} ${size}`}
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={size / 2}
+          fill="url(#gradient)"
+        />
         <defs>
-          <linearGradient id="gradient" x1="0" y1="0" x2={size} y2={size} gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="gradient"
+            x1="0"
+            y1="0"
+            x2={size}
+            y2={size}
+            gradientUnits="userSpaceOnUse"
+          >
             <stop stop-color={c1} />
             <stop offset="1" stop-color={c2} />
           </linearGradient>
@@ -47,6 +65,6 @@ export default function handler(req: NextRequest) {
     {
       width: size,
       height: size,
-    },
+    }
   );
 }

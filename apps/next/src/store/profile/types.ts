@@ -5,3 +5,10 @@ export interface RequestUpdateAvatarType {
 }
 
 export type ResponseUpdateAvatarType = IResponse<{ avatar_url: string }>;
+
+export type ResponseStatisticsType = IResponse<{
+  numberOfDictionaries: number;
+  numberOfPublicDics: number;
+  numberOfSubbedDics: number;
+  numberOfWords: number;
+}>;

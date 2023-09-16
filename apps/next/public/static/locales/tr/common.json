@@ -209,7 +209,7 @@
   "headers": {
     "dashboard": {
       "title": "Kontrol Paneli",
-      "description": "Kullanıcı Verilerinizi Yönetin"
+      "description": "Uygulama Kullanım İstatistiklerinizi Görüntüleyin."
     },
     "dictionaries": {
       "title": "Sözlükler",
@@ -231,6 +231,14 @@
     "not_bad": "Fena Değil",
     "good": "İyi",
     "very_good": "Çok İyi"
+  },
+  "dashboard": {
+    "statistics": {
+      "dictionaries": "Sözlük Sayısı",
+      "public_dictionaries": "Paylaşılan Sözlük Sayısı",
+      "sub_dictionary": "Abone Sözlük Sayısı",
+      "words": "Kelime Sayısı"
+    }
   },
   "buttons": {
     "cancel": "İptal",

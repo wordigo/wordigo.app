@@ -1,22 +1,12 @@
-export interface IPublished {
-  [x: string]: any;
-  title: string;
-  src: string | null;
-  description: string;
-  user: IUser;
-  rating: string | null;
-  words_length: string;
-  id: number;
-}
-
 interface IUser {
   name: string;
   profil_avatar: string | null;
 }
 
-const published: IPublished[] = [
+const published: any[] = [
   {
-    description: "Learn common greetings and phrases used in everyday conversations.",
+    description:
+      "Learn common greetings and phrases used in everyday conversations.",
     rating: "4.8",
     src: "",
     title: "Greetings and Phrases",
@@ -28,7 +18,8 @@ const published: IPublished[] = [
     id: 1,
   },
   {
-    description: "Improve your pronunciation and practice speaking with native speakers.",
+    description:
+      "Improve your pronunciation and practice speaking with native speakers.",
     rating: "4.9",
     src: "",
     title: "Pronunciation Practice",
@@ -41,7 +32,8 @@ const published: IPublished[] = [
     id: 2,
   },
   {
-    description: "Explore essential vocabulary related to travel, food, and culture.",
+    description:
+      "Explore essential vocabulary related to travel, food, and culture.",
     rating: "4.7",
     src: "",
     title: "Travel Vocabulary",
@@ -90,7 +82,8 @@ const published: IPublished[] = [
     id: 6,
   },
   {
-    description: "Expand your vocabulary and express yourself more effectively.",
+    description:
+      "Expand your vocabulary and express yourself more effectively.",
     rating: "4.9",
     src: "",
     title: "Advanced Vocabulary",
@@ -115,7 +108,8 @@ const published: IPublished[] = [
     id: 8,
   },
   {
-    description: "Learn how to hold basic conversations and introduce yourself.",
+    description:
+      "Learn how to hold basic conversations and introduce yourself.",
     rating: "4.6",
     src: "",
     title: "Conversational Skills",
@@ -127,7 +121,8 @@ const published: IPublished[] = [
     id: 9,
   },
   {
-    description: "Study the alphabet, numbers, and essential phrases for beginners.",
+    description:
+      "Study the alphabet, numbers, and essential phrases for beginners.",
     rating: "4.7",
     src: "",
     title: "Beginner's Guide",
@@ -139,7 +134,8 @@ const published: IPublished[] = [
     id: 10,
   },
   {
-    description: "Learn important phrases for emergencies and medical situations.",
+    description:
+      "Learn important phrases for emergencies and medical situations.",
     rating: "4.8",
     src: "",
     title: "Emergency Phrases",
@@ -152,7 +148,8 @@ const published: IPublished[] = [
     id: 11,
   },
   {
-    description: "Enhance your language learning with fun and interactive games.",
+    description:
+      "Enhance your language learning with fun and interactive games.",
     rating: "4.9",
     src: "",
     title: "Language Games",

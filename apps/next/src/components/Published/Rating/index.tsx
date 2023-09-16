@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import { Star } from "lucide-react";
-import { useTranslation } from "next-i18next";
-
 import { Button, Dialog, DialogContent, DialogTrigger } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
+import { Star } from "lucide-react";
+import { useTranslation } from "next-i18next";
+import React, { useState } from "react";
 
 export function Rating() {
   const { t } = useTranslation();
@@ -49,13 +48,24 @@ export function Rating() {
             const ratingValue = i + 1;
             const starClasses = cn({
               fa: true,
-              "text-yellow-400 fill-yellow-400": ratingValue <= (hover || rating),
+              "text-yellow-400 fill-yellow-400":
+                ratingValue <= (hover || rating),
               "fill-gray-100 text-gray-100": ratingValue > (hover || rating),
             });
             return (
               <label key={i} className="mr-2">
-                <input type="radio" name="rating" value={ratingValue} onClick={() => setRating(ratingValue)} className="hidden" />
-                <Star className={cn(starClasses)} onMouseEnter={() => setHover(ratingValue)} onMouseLeave={() => setHover(null)}></Star>
+                <input
+                  type="radio"
+                  name="rating"
+                  value={ratingValue}
+                  onClick={() => setRating(ratingValue)}
+                  className="hidden"
+                />
+                <Star
+                  className={cn(starClasses)}
+                  onMouseEnter={() => setHover(ratingValue)}
+                  onMouseLeave={() => setHover(null)}
+                ></Star>
               </label>
             );
           })}

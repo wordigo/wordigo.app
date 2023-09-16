@@ -1,3 +1,5 @@
+import { type DictionaryWord } from "@/store/dictionarayWord/type";
+
 export interface IResponse<T = null> {
   data: T;
   message: string;
@@ -19,4 +21,23 @@ export interface NextI18Next {
 export interface InitialI18nStore {
   tr: Tr;
   en: En;
+}
+
+export interface IDictionary {
+  id: number;
+  title: string;
+  description: string;
+  slug: string;
+  published: boolean;
+  image: string;
+  rate: number;
+  level: number;
+  createdDate: string;
+  updatedDate: string;
+  userWord?: DictionaryWord[];
+  words?: DictionaryWord[];
+  author: {
+    name: string;
+    avatar_url: string;
+  };
 }

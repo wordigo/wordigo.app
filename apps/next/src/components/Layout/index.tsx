@@ -2,7 +2,7 @@ import { setToken } from "@/store/auth/slice";
 import { useAppDispatch } from "@/utils/hooks";
 import { useSession } from "next-auth/react";
 import Router from "next/router";
-import NProgress from "nprogress";
+import NProgress, { render } from "nprogress";
 import "nprogress/nprogress.css";
 import PageLoader from "../UI/PageLoader";
 import { setAcceptLanguage, setAuthToken } from "@/store/baseQuery";
@@ -21,6 +21,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
   const session = useSession();
+  const [mounted, setMounted] = useState<boolean>();
   const { i18n } = useTranslation();
 
   useEffect(() => {
@@ -51,9 +52,19 @@ export default function RootLayout({ children }: PropsWithChildren) {
   useEffect(() => {
     if (session.status === "authenticated") {
       dispatch(setToken(session?.data?.user?.accessToken));
-      setAuthToken(session?.data?.user?.accessToken);
-    }
-  }, [session?.data]);
 
-  return <Fragment>{loading || session.status === "loading" ? <PageLoader /> : children}</Fragment>;
+      // This code set axios instance token here waiting for that reason promise used.
+      Promise.resolve(setAuthToken(session?.data?.user?.accessToken)).then(() =>
+        setMounted(true)
+      );
+    } else {
+      if (session.status === "loading") return;
+      setMounted(true);
+    }
+  }, [session?.status]);
+
+  const renderinCond = loading || session.status === "loading" || !mounted;
+  console.log(renderinCond);
+
+  return <Fragment>{renderinCond ? <PageLoader /> : children}</Fragment>;
 }

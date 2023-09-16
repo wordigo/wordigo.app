@@ -1,8 +1,12 @@
 import { Navbar } from "@/components/Layout/Dashboard/Navbar";
 import Sidebar from "@/components/Layout/Dashboard/Sidebar/Menu";
 import PageLoader from "@/components/UI/PageLoader";
-import { useAppSelector } from "@/utils/hooks";
+import { setToken } from "@/store/auth/slice";
+import { setAcceptLanguage, setAuthToken } from "@/store/baseQuery";
+import { setLanguage } from "@/store/common/slice";
+import { useAppDispatch, useAppSelector } from "@/utils/hooks";
 import { useSession } from "next-auth/react";
+import { useEffect } from "react";
 
 interface DashboardLayoutProps {
   children?: React.ReactNode;

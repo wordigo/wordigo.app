@@ -1,5 +1,5 @@
 import { DataTableToolbar } from "./data-table-toolbar";
-import Published from "@/components/Published/Published";
+import Published from "@/components/Published/PublishedItem";
 import { type IPublished } from "@/components/Published/published.constants";
 import {
   type ColumnFiltersState,

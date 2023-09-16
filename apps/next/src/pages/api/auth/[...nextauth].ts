@@ -6,13 +6,18 @@ import NextAuth, { type NextAuthOptions, type User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 
-export const authOptions = (request: NextApiRequest, response: NextApiResponse): NextAuthOptions => {
+export const authOptions = (
+  request: NextApiRequest,
+  response: NextApiResponse
+): NextAuthOptions => {
   return {
     callbacks: {
       async signIn({ user, account }) {
         try {
           if (account?.provider === "google") {
-            const request = await fetch(`${env.NEXT_PUBLIC_WORDIGO_BACKEND_URL}/auth/googleAuth?accessToken=${account.access_token}`);
+            const request = await fetch(
+              `${env.NEXT_PUBLIC_WORDIGO_BACKEND_URL}/auth/googleAuth?accessToken=${account.access_token}`
+            );
             const profile = await request.json();
 
             if (!profile.success) {
@@ -55,10 +60,14 @@ export const authOptions = (request: NextApiRequest, response: NextApiResponse):
 
           response.setHeader(
             "Set-Cookie",
-            cookie.serialize(WORDIGO_JWT_TOKEN_COOKIE, token.accessToken as string, {
-              maxAge: 60 * 60 * 24,
-              path: "/",
-            })
+            cookie.serialize(
+              WORDIGO_JWT_TOKEN_COOKIE,
+              token.accessToken as string,
+              {
+                maxAge: 60 * 60 * 24,
+                path: "/",
+              }
+            )
           );
 
           // @ts-ignore
@@ -88,15 +97,18 @@ export const authOptions = (request: NextApiRequest, response: NextApiResponse):
           try {
             const { email, password, language } = credentials;
 
-            const bffRequest = await fetch(`${env.NEXT_PUBLIC_WORDIGO_BACKEND_URL}/auth/signIn`, {
-              headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-                "Accept-Language": language,
-              },
-              method: "POST",
-              body: JSON.stringify({ email, password }),
-            });
+            const bffRequest = await fetch(
+              `${env.NEXT_PUBLIC_WORDIGO_BACKEND_URL}/auth/signIn`,
+              {
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                  "Accept-Language": language,
+                },
+                method: "POST",
+                body: JSON.stringify({ email, password }),
+              }
+            );
             const response = await bffRequest.json();
 
             if (response?.data?.user) {
@@ -122,10 +134,14 @@ export const authOptions = (request: NextApiRequest, response: NextApiResponse):
     secret: process.env.NEXTAUTH_SECRET,
     events: {
       signOut() {
-        const cookieSerialized = cookie.serialize(WORDIGO_JWT_TOKEN_COOKIE, "", {
-          maxAge: 0,
-          path: "/",
-        });
+        const cookieSerialized = cookie.serialize(
+          WORDIGO_JWT_TOKEN_COOKIE,
+          "",
+          {
+            maxAge: 0,
+            path: "/",
+          }
+        );
 
         response.setHeader("Set-Cookie", cookieSerialized);
       },
