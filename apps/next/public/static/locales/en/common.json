@@ -29,6 +29,7 @@
     "signin_success": "Sign in successful you are redirected to homepage.",
     "created_dictionary": "Dictionary created successfully.",
     "deleted_dictionary": "Dictionary deleted successfully.",
+    "updated_dictionary": "Dictionary updated successfully.",
     "created_word": "Word created successfully."
   },
   "announcement": {
@@ -100,6 +101,18 @@
     "mail_title": "Email",
     "mail_description": "You can use the email address below to send us any questions, suggestions, or requests.",
     "mail_link": "noreply@wordigo.com"
+  },
+  "public_dictionaries": {
+    "title": "Learn from published dictionaries",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio ipsam\npossimus, facere fuga ratione aut.",
+    "clear_filters": "Clear Filters",
+    "category": "Category",
+    "level": "Level",
+    "search": "Search"
+  },
+  "search_no_result": {
+    "title": "No results found.",
+    "description": "Try adjusting your search or filter to find what you are looking for."
   },
   "error_404": {
     "title": "Oops, something went wrong.",
@@ -243,7 +256,7 @@
     "rating_title": "How do you rate these dictionary?"
   },
   "buttons": {
-    "cancel": "cancel",
+    "cancel": "Cancel",
     "save": "Save"
   },
   "profileSettings": {

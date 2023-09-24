@@ -24,7 +24,7 @@ const ProfileUploadAvatar = () => {
     if (!avatarFile) return;
 
     const encodedAvatar = (await toBase64(avatarFile)) as string;
-    handleUpdateAvatar({ encodedAvatar });
+    void handleUpdateAvatar({ encodedAvatar });
   };
 
   const updateProfilePhoto = async () => {
@@ -39,7 +39,7 @@ const ProfileUploadAvatar = () => {
 
   useEffect(() => {
     if (status === "fulfilled") {
-      updateProfilePhoto();
+      void updateProfilePhoto();
       toast({
         title: t("notifications.success"),
         description: t("notifications.avatar_update"),

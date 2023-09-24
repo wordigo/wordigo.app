@@ -1,3 +1,4 @@
+import { useGetPublicDictionariesMutation } from "@/store/publicDictionaries/api";
 import {
   Button,
   Input,
@@ -8,25 +9,40 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@wordigo/ui";
+import { useTranslation } from "next-i18next";
+import { useEffect, useState } from "react";
+import { useDebounce } from "usehooks-ts";
 
 const PublishedFilter = () => {
+  const { t } = useTranslation();
+
+  const [searchValue, setSearchValue] = useState<string>("");
+  const debouncedSearchValue = useDebounce(searchValue, 300);
+  const [handleGetPublicDictionaries] = useGetPublicDictionariesMutation();
+
+  useEffect(() => {
+    void handleGetPublicDictionaries({
+      search: debouncedSearchValue,
+      page: 1,
+      size: 10,
+    });
+  }, [debouncedSearchValue]);
+
   return (
     <main className="flex items-end justify-between mt-10 max-lg:flex-col max-lg:spacse-y-5 max-lg:justify-center max-lg:items-center">
       <section>
-        <Label htmlFor="search">Search</Label>
+        <Label htmlFor="search">{t("public_dictionaries.search")}</Label>
         <Input
-          placeholder="Search"
-          // value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
-          // onChange={(event) =>
-          //   table.getColumn("title")?.setFilterValue(event.target.value)
-          // }
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+          placeholder={t("public_dictionaries.search")}
           className="w-80 mt-1.5 max-md:w-48"
           id="search"
         />
       </section>
       <section className="flex items-center space-x-2 max-md:flex-col max-md:space-y-5">
         <div className="flex flex-col">
-          <Label htmlFor="category">Category</Label>
+          <Label htmlFor="category">{t("public_dictionaries.category")}</Label>
           <Select>
             <SelectTrigger
               id="category"
@@ -57,7 +73,7 @@ const PublishedFilter = () => {
           </Select>
         </div>
         <div className="ml-3 grid">
-          <Label htmlFor="level">Level</Label>
+          <Label htmlFor="level">{t("public_dictionaries.level")}</Label>
           <Select>
             <SelectTrigger
               id="level"
@@ -89,7 +105,7 @@ const PublishedFilter = () => {
         </div>
         <Label htmlFor="clearFilters">
           <Button variant="outline" className="md:mt-[1.2rem]">
-            Clear Filters
+            {t("public_dictionaries.clear_filters")}
           </Button>
         </Label>
       </section>

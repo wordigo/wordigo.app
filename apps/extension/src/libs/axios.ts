@@ -1,46 +1,47 @@
-import { WORDIGO_JWT_TOKEN_COOKIE } from "@wordigo/common";
-import axios, { type AxiosError } from "axios";
-import { localStorage } from "~utils/storage";
+import { WORDIGO_JWT_TOKEN_COOKIE } from "@wordigo/common"
+import axios, { type AxiosError } from "axios"
 
-const baseURL = process.env.PLASMO_PUBLIC_BACKEND_URL;
+import { localStorage } from "~utils/storage"
+
+const baseURL = process.env.PLASMO_PUBLIC_BACKEND_URL
 
 const instance = axios.create({
-  baseURL: `${baseURL}`,
-});
+  baseURL
+})
 
 export interface BaseResponse<T> {
-  success: boolean;
-  data: T;
-  messageCode: string;
-  message: string;
+  success: boolean
+  data: T
+  messageCode: string
+  message: string
 }
 
 instance.interceptors.request.use(async (config) => {
   try {
-    const token = await localStorage.get(WORDIGO_JWT_TOKEN_COOKIE);
+    const token = await localStorage.get(WORDIGO_JWT_TOKEN_COOKIE)
 
-    if (token) config.headers.Authorization = `Bearer ${token}`;
+    if (token) config.headers.Authorization = `Bearer ${token}`
 
-    return config;
+    return config
   } catch (error) {
-    return Promise.reject(error);
+    return Promise.reject(error)
   }
-});
+})
 
 instance.interceptors.response.use(
   async (response) => {
     try {
-      return response;
+      return response
     } catch (error) {
-      return Promise.reject(error);
+      return Promise.reject(error)
     }
   },
   async (error) => {
-    const err = error as AxiosError;
+    const err = error as AxiosError
     if (err.response.status === 401) {
-      const deletedToken = await localStorage.remove(WORDIGO_JWT_TOKEN_COOKIE);
+      const deletedToken = await localStorage.remove(WORDIGO_JWT_TOKEN_COOKIE)
     }
   }
-);
+)
 
-export default instance;
+export default instance

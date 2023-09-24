@@ -30,6 +30,7 @@
     "cookie": "^0.5.0",
     "framer-motion": "^10.12.18",
     "i18next": "^23.2.7",
+    "lottie-react": "^2.4.0",
     "lucide-react": "^0.144.0",
     "next": "^13.3.0",
     "next-auth": "^4.22.3",
@@ -47,6 +48,7 @@
     "swiper": "^10.2.0",
     "tailwind-merge": "^1.13.2",
     "tailwindcss-animate": "^1.0.6",
+    "usehooks-ts": "^2.9.1",
     "zod": "^3.21.4",
     "zod-i18n-map": "^2.14.0",
     "zustand": "^4.3.9"

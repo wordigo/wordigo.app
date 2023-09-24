@@ -15,6 +15,7 @@ export interface GetDictionaryIdType {
 }
 
 export interface GetPublicDictionariesType {
+  search: string;
   page: number;
   size: number;
 }

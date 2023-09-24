@@ -77,7 +77,7 @@ const Floating = () => {
 }
 
 Floating.Button = ({ children, ...attr }: PropsWithChildren<ButtonProps>) => (
-  <Button {...attr} className="floating-button" variant="ghost" size="sm">
+  <Button {...attr} className="!flex !h-7 !items-center !gap-x-1 !rounded-none !px-1 !text-sm !font-normal !text-accent-foreground" variant="ghost" size="sm">
     {children}
   </Button>
 )

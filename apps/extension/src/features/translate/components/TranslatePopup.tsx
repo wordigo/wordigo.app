@@ -1,8 +1,8 @@
 import { AllCountryLanguages } from "@wordigo/common"
 import { Button, Card, Skeleton, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, buttonVariants } from "@wordigo/ui"
 import { motion } from "framer-motion"
-import { ArrowRightLeft, Copy, Settings, X } from "lucide-react"
-import { useEffect, useMemo, useState } from "react"
+import { ArrowRightLeft, Settings, X } from "lucide-react"
+import { useEffect, useMemo } from "react"
 import ReactCountryFlag from "react-country-flag"
 import { useMutation } from "react-query"
 
@@ -31,7 +31,7 @@ const TranslatePopup = () => {
   useEffect(() => {
     handleTranslate({
       query: selectedText,
-      sourceLanguage: null,
+      sourceLanguage: "auto",
       targetLanguage: targetLanguage.toLowerCase()
     })
   }, [selectedText])

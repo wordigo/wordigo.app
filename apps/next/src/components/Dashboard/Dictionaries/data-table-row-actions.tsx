@@ -1,6 +1,15 @@
-import { useDeleteUserDictionariesMutation, useGetUserDictionariesMutation } from "@/store/dictionaries/api";
+import { useDeleteDicWordMutation } from "@/store/dictionarayWord/api";
+import { useGetDictionariesMutation } from "@/store/dictionaries/api";
 import { type Dictionary } from "@/store/dictionaries/type";
-import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger, useToast } from "@wordigo/ui";
+import {
+  Button,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+  useToast,
+} from "@wordigo/ui";
 import { MoreHorizontal } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
@@ -11,13 +20,15 @@ interface DataTableRowActionsProps<TData extends object> {
   row: Row<TData & Dictionary>;
 }
 
-export function DataTableRowActions<TData extends object>({ row }: DataTableRowActionsProps<TData>) {
+export function DataTableRowActions<TData extends object>({
+  row,
+}: DataTableRowActionsProps<TData>) {
   const { slug } = row.original;
   const { toast } = useToast();
   const { t } = useTranslation();
 
-  const [getUserDictionaries] = useGetUserDictionariesMutation();
-  const [deleteWord, { status, data }] = useDeleteUserDictionariesMutation();
+  const [getDictionaries] = useGetDictionariesMutation();
+  const [deleteWord, { status, data }] = useDeleteDicWordMutation();
 
   const handleDeleteClick = (event) => {
     event.stopPropagation();
@@ -27,7 +38,7 @@ export function DataTableRowActions<TData extends object>({ row }: DataTableRowA
   useEffect(() => {
     if (status === "fulfilled") {
       if (data.success) {
-        void getUserDictionaries("");
+        void getDictionaries("");
         toast({
           variant: "success",
           title: t("notifications.success"),
@@ -48,17 +59,24 @@ export function DataTableRowActions<TData extends object>({ row }: DataTableRowA
       {row.original.title !== "initial" && (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="flex h-8 p-0 data-[state=open]:bg-muted">
+            <Button
+              variant="ghost"
+              className="flex h-8 p-0 data-[state=open]:bg-muted"
+            >
               <MoreHorizontal className="h-4 w-4 absolute right-3" />
               <span className="sr-only">Open menu</span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-[160px] flex flex-col">
             <DropdownMenuItem>
-              <Link href={`dictionaries/${row.original.title}/settings`}>{t("general.settings")}</Link>
+              <Link href={`dictionaries/${row.original.title}/settings`}>
+                {t("general.settings")}
+              </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={handleDeleteClick}>{t("general.delete")}</DropdownMenuItem>
+            <DropdownMenuItem onClick={handleDeleteClick}>
+              {t("general.delete")}
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )}

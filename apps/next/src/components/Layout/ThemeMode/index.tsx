@@ -40,7 +40,7 @@ export default function ThemeMode() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="w-fit px-2 h-8">
+        <Button variant="outline" className="w-fit px-2 !h-7">
           <span className="mr-2 text-xs">{getThemeIcon()}</span>
           <span className="rotate-0  scale-100 transition-all">
             {getThemeLabel()}

@@ -1,7 +1,25 @@
 import CButton from "@/components/UI/Button";
-import { useCreateDictionaryMutation, useGetUserDictionariesMutation } from "@/store/dictionaries/api";
+import {
+  useCreateDictionaryMutation,
+  useGetDictionariesMutation,
+} from "@/store/dictionaries/api";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, Form, FormControl, FormField, FormItem, FormMessage, Input, useToast } from "@wordigo/ui";
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+  Input,
+  useToast,
+} from "@wordigo/ui";
 import { Table2Icon, X } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
@@ -18,7 +36,7 @@ export default function CreateDictionary({ label }: { label: string }) {
   const [open, setOpen] = useState(false);
   const { toast } = useToast();
   const { t } = useTranslation();
-  const [getUserDictionaries] = useGetUserDictionariesMutation();
+  const [getDictionaries] = useGetDictionariesMutation();
 
   const defaultValues: Partial<CreateDictionaryValues> = {
     title: "",
@@ -29,7 +47,8 @@ export default function CreateDictionary({ label }: { label: string }) {
     defaultValues,
   });
 
-  const [addDictionary, { status, isLoading, data }] = useCreateDictionaryMutation();
+  const [addDictionary, { status, isLoading, data }] =
+    useCreateDictionaryMutation();
 
   const handleAddDictionary = (values: CreateDictionaryValues) => {
     void addDictionary({
@@ -40,7 +59,7 @@ export default function CreateDictionary({ label }: { label: string }) {
   useEffect(() => {
     if (status === "fulfilled") {
       if (data.success) {
-        void getUserDictionaries("");
+        void getDictionaries("");
         setOpen(false);
         form.reset();
         toast({
@@ -63,7 +82,11 @@ export default function CreateDictionary({ label }: { label: string }) {
   return (
     <Dialog open={open}>
       <DialogTrigger asChild>
-        <Button onClick={toggleShow} variant="default" className="font-semibold text-sm">
+        <Button
+          onClick={toggleShow}
+          variant="default"
+          className="font-semibold text-sm"
+        >
           {t(label)}
         </Button>
       </DialogTrigger>
@@ -83,7 +106,10 @@ export default function CreateDictionary({ label }: { label: string }) {
         </DialogHeader>
 
         <Form {...(form as any)}>
-          <form onSubmit={form.handleSubmit(handleAddDictionary)} className="space-y-4">
+          <form
+            onSubmit={form.handleSubmit(handleAddDictionary)}
+            className="space-y-4"
+          >
             <div className="grid gap-4 py-4">
               <FormField
                 control={form.control as never}
@@ -91,7 +117,14 @@ export default function CreateDictionary({ label }: { label: string }) {
                 render={({ field }) => (
                   <FormItem className="grid gap-1">
                     <FormControl>
-                      <Input {...field} id="title" placeholder="Title" autoCapitalize="none" autoComplete="email" autoCorrect="off" />
+                      <Input
+                        {...field}
+                        id="title"
+                        placeholder="Title"
+                        autoCapitalize="none"
+                        autoComplete="email"
+                        autoCorrect="off"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

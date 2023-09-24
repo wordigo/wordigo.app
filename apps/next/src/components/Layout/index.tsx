@@ -2,7 +2,7 @@ import { setToken } from "@/store/auth/slice";
 import { useAppDispatch } from "@/utils/hooks";
 import { useSession } from "next-auth/react";
 import Router from "next/router";
-import NProgress, { render } from "nprogress";
+import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import PageLoader from "../UI/PageLoader";
 import { setAcceptLanguage, setAuthToken } from "@/store/baseQuery";

@@ -1,44 +1,64 @@
 import { axiosBaseQuery } from "../baseQuery";
-import { type CreateDictionaryType, type Dictionary, type GetDictionaryIdType } from "./type";
+import {
+  type CreateDictionaryType,
+  type Dictionary,
+  type GetDictionaryIdType,
+} from "./type";
+import { type DictionariesValues } from "@/components/Dashboard/Dictionaries.Settings";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { type IResponse } from "types/global";
 
 export const dictionaryApi = createApi({
   reducerPath: "dictionaryApi",
-  baseQuery: axiosBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_WORDIGO_BACKEND_URL }),
+  baseQuery: axiosBaseQuery({
+    baseUrl: process.env.NEXT_PUBLIC_WORDIGO_BACKEND_URL,
+  }),
   endpoints: (builder) => ({
-    getUserDictionaries: builder.mutation<IResponse<Dictionary[]>, any>({
+    getDictionaries: builder.mutation<IResponse<Dictionary[]>, any>({
       query: () => ({
         url: "/dictionaries/getUserDictionaries",
         method: "GET",
       }),
     }),
-    getDictionaryDetail: builder.mutation<Dictionary, GetDictionaryIdType>({
+    getDictionaryDetail: builder.mutation<IResponse<Dictionary>, GetDictionaryIdType>({
       query: ({ slug }: GetDictionaryIdType) => ({
         url: `/dictionaries/getUserDictionaryBySlug?slug=${slug}`,
         method: "GET",
       }),
     }),
-    createDictionary: builder.mutation<IResponse<Dictionary[]>, CreateDictionaryType>({
+    createDictionary: builder.mutation<
+      IResponse<Dictionary[]>,
+      CreateDictionaryType
+    >({
       query: (data) => ({
         url: "/dictionaries/create",
         data,
         method: "POST",
       }),
     }),
-    deleteUserDictionaries: builder.mutation<IResponse, GetDictionaryIdType>({
+    deleteDictionaries: builder.mutation<IResponse, GetDictionaryIdType>({
       query: ({ slug }: GetDictionaryIdType) => ({
         url: `/dictionaries/delete?slug=${slug}`,
         method: "DELETE",
       }),
     }),
-    updateUserDictionaries: builder.mutation<GetDictionaryIdType, any>({
-      query: () => ({
+    updateDictionaries: builder.mutation<
+      IResponse<Dictionary>,
+      Partial<Dictionary>
+    >({
+      query: (data) => ({
         url: "/dictionaries/update",
         method: "PUT",
+        data,
       }),
     }),
   }),
 });
 
-export const { useGetUserDictionariesMutation, useCreateDictionaryMutation, useDeleteUserDictionariesMutation, useGetDictionaryDetailMutation, useUpdateUserDictionariesMutation } = dictionaryApi;
+export const {
+  useGetDictionariesMutation,
+  useDeleteDictionariesMutation,
+  useUpdateDictionariesMutation,
+  useCreateDictionaryMutation,
+  useGetDictionaryDetailMutation,
+} = dictionaryApi;

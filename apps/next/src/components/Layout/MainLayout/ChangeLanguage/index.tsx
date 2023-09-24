@@ -16,7 +16,7 @@ const ChangeLanguage = () => {
     <LanguageSelector
       defaultValue={i18n.language?.toUpperCase()}
       onSelect={handleChangeLocale}
-      className="text-xs h-8"
+      className="text-xs !h-7"
     />
   );
 };

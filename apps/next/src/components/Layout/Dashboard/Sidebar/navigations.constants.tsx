@@ -1,10 +1,18 @@
-import { type ReactElement, useState } from "react";
-import { useGetUserDictionariesMutation } from "@/store/dictionaries/api";
+import { useGetDictionariesMutation } from "@/store/dictionaries/api";
 import { computedDictionaries } from "@/utils/computedDictionaries";
-import { BookMarked, ChevronDown, ChevronUp, Home, LayoutDashboard, LibraryIcon, RotateCw, Settings } from "lucide-react";
-import { useTranslation } from "next-i18next";
-
 import { Button } from "@wordigo/ui";
+import {
+  BookMarked,
+  ChevronDown,
+  ChevronUp,
+  Home,
+  LayoutDashboard,
+  LibraryIcon,
+  RotateCw,
+  Settings,
+} from "lucide-react";
+import { useTranslation } from "next-i18next";
+import { type ReactElement, useState } from "react";
 
 export interface SidebarChildNavOption {
   name: string;
@@ -28,7 +36,8 @@ export interface SidebarNavItem {
 
 const useSidebarNavigations = (): SidebarNavItem[] => {
   const { t } = useTranslation();
-  const [handleGetDictionaries, { data, isLoading, reset }] = useGetUserDictionariesMutation();
+  const [handleGetDictionaries, { data, isLoading, reset }] =
+    useGetDictionariesMutation();
   const [showDictionary, setShowDictionary] = useState<boolean>(false);
   const [showSettings, setShowSettings] = useState<boolean>(false);
 
@@ -43,9 +52,12 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
     setShowSettings(!showSettings);
   };
 
-  const computedDictionariesNavs = computedDictionaries(data?.data)?
-    .slice(0, 5)
-    ?.map((item) => ({ name: item.title, value: item.slug })) as SidebarChildNavOption[];
+  const computedDictionariesNavs = computedDictionaries(data?.data)
+    ?.slice(0, 5)
+    ?.map((item) => ({
+      name: item.title,
+      value: item.slug,
+    })) as SidebarChildNavOption[];
 
   return [
     {
@@ -59,8 +71,19 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
       icon: <BookMarked className="text-2xl flex" />,
       child: {
         trigger: (
-          <Button onClick={handleDictionary} variant="outline" size="icon" className="w-fit h-fit p-1">
-            {isLoading ? <RotateCw className="h-3 w-3 animate-spin" /> : showDictionary ? <ChevronDown size={12} /> : <ChevronUp size={"12"} />}
+          <Button
+            onClick={handleDictionary}
+            variant="outline"
+            size="icon"
+            className="w-fit h-fit p-1"
+          >
+            {isLoading ? (
+              <RotateCw className="h-3 w-3 animate-spin" />
+            ) : showDictionary ? (
+              <ChevronDown size={12} />
+            ) : (
+              <ChevronUp size={"12"} />
+            )}
           </Button>
         ),
         loading: isLoading,
@@ -73,8 +96,17 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
       icon: <Settings className="text-2xl" />,
       child: {
         trigger: (
-          <Button onClick={handleSettings} variant="outline" size="icon" className="w-fit h-fit p-1">
-            {showSettings ? <ChevronDown size={12} /> : <ChevronUp size={"12"} />}
+          <Button
+            onClick={handleSettings}
+            variant="outline"
+            size="icon"
+            className="w-fit h-fit p-1"
+          >
+            {showSettings ? (
+              <ChevronDown size={12} />
+            ) : (
+              <ChevronUp size={"12"} />
+            )}
           </Button>
         ),
         loading: false,

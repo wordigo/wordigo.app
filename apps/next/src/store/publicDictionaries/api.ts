@@ -13,8 +13,8 @@ export const publicDictionariesApi = createApi({
       IResponse<IDictionary[]>,
       GetPublicDictionariesType
     >({
-      query: ({ page, size }) => ({
-        url: `/publicDictionary/getPublicDictionaries?page=${page}&size=${size}`,
+      query: ({search, page, size }) => ({
+        url: `/publicDictionary/getPublicDictionaries?search=${search}&page=${page}&size=${size}`,
         method: "GET",
       }),
     }),
