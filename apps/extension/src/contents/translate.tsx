@@ -1,4 +1,5 @@
 import { WORDIGO_JWT_TOKEN_COOKIE } from "@wordigo/common"
+import uistyle from "data-text:@wordigo/ui/styles/globals.css"
 import styleText from "data-text:~/styles/globals.css"
 import type { PlasmoCSConfig } from "plasmo"
 import { Fragment, useEffect, useState } from "react"
@@ -23,7 +24,7 @@ export const getShadowHostId = () => "wordigo-translate-content"
 
 export const getStyle = () => {
   const style = document.createElement("style")
-  style.textContent = styleText
+  style.textContent = styleText + uistyle
   return style
 }
 

@@ -18,7 +18,7 @@ const NavProfile = () => {
 
   return (
     <main className="justify-between items-center relative">
-      <button className="w-full justify-between focus-visible:ring-0 focus-visible:ring-offset-0 outline-none  select-none cursor-default relative h-fit">
+      <button className="w-full justify-between focus-visible:ring-0 focus-visible:ring-offset-0 outline-none select-none cursor-default relative h-fit">
         <div className="flex items-center gap-x-1">
           <Avatar className="w-10 h-10 md:h-12 md:w-12">
             <AvatarImage

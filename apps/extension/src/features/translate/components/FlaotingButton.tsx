@@ -1,4 +1,5 @@
 import { Button, TooltipProvider, type ButtonProps } from "@wordigo/ui"
+import FloatingButton from "@wordigo/ui/components/extension/floating-button"
 import { motion } from "framer-motion"
 import { BookMarked, Languages, MoreVertical, Volume2 } from "lucide-react"
 import type { PropsWithChildren } from "react"
@@ -41,7 +42,7 @@ const Floating = () => {
       <motion.div
         tabIndex={500}
         id="el-popup-container"
-        className="absolute cursor-pointer z-50"
+        className="ui-absolute ui-cursor-pointer ui-z-50"
         initial={{
           top: top - 20,
           left: left - 135
@@ -50,22 +51,22 @@ const Floating = () => {
           top: top + 10,
           left: left - 135
         }}>
-        <div className="border-gray-200 shadow-md flex items-center space-x-1 rounded !font-thin border bg-background dark:bg-gray-950">
-          <Logo className="h-7 w-7 bg-transparent cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 rounded-none select-none" />
-          <div className="flex space-x-1.5 items-center">
-            <Floating.Button onClick={handleTogglePopup}>
+        <div className="ui-border-gray-200 ui-shadow-md ui-flex ui-items-center ui-space-x-1 ui-rounded !font-thin ui-border bg-background dark:bg-gray-950">
+          <Logo className="ui-h-7 ui-w-7 ui-bg-transparent ui-cursor-pointer hover:ui-bg-gray-200 dark:hover:ui-bg-gray-600 ui-rounded-none ui-select-none" />
+          <div className="ui-flex ui-space-x-1.5 ui-items-center">
+            <FloatingButton onClick={handleTogglePopup}>
               <Languages size={14} />
               {getLocalMessage("translate")}
-            </Floating.Button>
-            <Floating.Button onClick={textToSpeech}>
+            </FloatingButton>
+            <FloatingButton onClick={textToSpeech}>
               <Volume2 size={15} />
               {getLocalMessage("voice")}
-            </Floating.Button>
-            <Floating.Button>
+            </FloatingButton>
+            <FloatingButton>
               <BookMarked size={14} />
               {getLocalMessage("add")}
-            </Floating.Button>
-            <div className="h-7 w-1 border-r border-gray-200 dark:border-gray-500"></div>
+            </FloatingButton>
+            <div className="ui-h-7 ui-w-1 ui-border-r ui-border-gray-200 dark:ui-border-gray-500"></div>
           </div>
           <Button onClick={openSettingsPage} className="more-button" variant="ghost" size="sm">
             <MoreVertical size={14} />
@@ -75,11 +76,5 @@ const Floating = () => {
     </TooltipProvider>
   )
 }
-
-Floating.Button = ({ children, ...attr }: PropsWithChildren<ButtonProps>) => (
-  <Button {...attr} className="!flex !h-7 !items-center !gap-x-1 !rounded-none !px-1 !text-sm !font-normal !text-accent-foreground" variant="ghost" size="sm">
-    {children}
-  </Button>
-)
 
 export default Floating

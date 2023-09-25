@@ -44,7 +44,7 @@ const TranslatePopup = () => {
     <motion.div
       tabIndex={50}
       id="el-translate-container"
-      className="absolute z-50"
+      className="ui-absolute ui-z-50"
       initial={{
         top: top - 20,
         left: left - 200,
@@ -54,40 +54,40 @@ const TranslatePopup = () => {
         top: top + 20,
         left: left - 200
       }}>
-      <Card className="border-1 border-gray-300 shadow-md flex items-center space-x-1 rounded-md p-3 flex-col gap-y-3 bg-background">
-        <div className="flex items-center justify-between h-8 w-full">
-          <div className="flex items-center gap-x-1">
-            <Logo className="h-8 w-8 bg-transparent cursor-pointer" />
-            <p className="font-bold text-lg text-gray-950 dark:text-white">{getLocalMessage("translate")}</p>
+      <Card className="border-1 ui-border-gray-300 ui-shadow-md ui-flex ui-items-center ui-space-x-1 ui-rounded-md ui-p-3 ui-flex-col ui-gap-y-3 bg-background">
+        <div className="ui-flex ui-items-center ui-justify-between ui-h-8 ui-w-full">
+          <div className="ui-flex ui-items-center ui-gap-x-1">
+            <Logo className="ui-h-8 ui-w-8 ui-bg-transparent ui-cursor-pointer" />
+            <p className="ui-font-bold ui-text-lg text-gray-950 dark:ui-text-white">{getLocalMessage("translate")}</p>
           </div>
-          <div className="flex items-center gap-x-1">
+          <div className="ui-flex ui-items-center ui-gap-x-1">
             <div
               className={buttonVariants({
                 variant: "outline",
                 size: "sm",
-                className: "flex gap-x-2 items-center rounded-lg !h-7"
+                className: "ui-flex ui-gap-x-2 ui-items-center ui-rounded-lg !h-7"
               })}>
-              {isLoading || !getSourceLanguageFlag ? <Skeleton className="w-4 h-4" /> : <TranslatePopup.CountryFlag countryCode={getSourceLanguageFlag?.icon} />}
+              {isLoading || !getSourceLanguageFlag ? <Skeleton className="ui-w-4 ui-h-4" /> : <TranslatePopup.CountryFlag countryCode={getSourceLanguageFlag?.icon} />}
               <ArrowRightLeft className="!text-gray-300" size={12} />
               <TranslatePopup.CountryFlag countryCode={getTargetLanguageFlag?.icon} />
             </div>
-            <Button onClick={handleClose} className="!h-8 !w-8 text-gray-500 dark:text-accent-foreground" variant="ghost" size="icon">
+            <Button onClick={handleClose} className="!h-8 !w-8 ui-text-gray-500 dark:text-accent-foreground" variant="ghost" size="icon">
               <X size={18} />
             </Button>
           </div>
         </div>
-        <div className="w-full gap-y-2 flex flex-col">
-          <div className="relative">
-            <div className="border-gray-200 dark:!border-gray-700 border-[1.5px] w-full h-32 max-h-32 rounded !opacity-75 disabled:!cursor-default text-sm text-primary p-2">
-              {isLoading ? <TranslatePopup.Loader /> : <div className="line-clamp-4 overflow-y-visible">{result?.data?.translatedText}</div>}
+        <div className="ui-w-full ui-gap-y-2 ui-flex ui-flex-col">
+          <div className="ui-relative">
+            <div className="ui-border-gray-200 dark:!border-gray-700 border-[1.5px] ui-w-full ui-h-32 ui-max-h-32 ui-rounded !opacity-75 disabled:!cursor-default ui-text-sm text-primary ui-p-2">
+              {isLoading ? <TranslatePopup.Loader /> : <div className="line-clamp-4 ui-overflow-y-visible">{result?.data?.translatedText}</div>}
             </div>
-            <div className="absolute bottom-2 right-3 flex items-center justify-between gap-x-2">
+            <div className="ui-absolute ui-bottom-2 ui-right-3 ui-flex ui-items-center ui-justify-between ui-gap-x-2">
               <TranslatePopup.AudioPlayer message={selectedText} targetLanguage={targetLanguage} />
               <TextCopy text={result?.data?.translatedText} />
             </div>
           </div>
         </div>
-        <div className="w-full flex items-center justify-between">
+        <div className="ui-w-full ui-flex ui-items-center ui-justify-between">
           <TranslatePopup.SettingsAction />
           <DictionarySelector translatedText={result?.data?.translatedText} sourceLangauge={result?.data?.sourceLanguage} />
         </div>
@@ -126,9 +126,9 @@ TranslatePopup.SettingsAction = () => {
 
 TranslatePopup.Loader = () => {
   return (
-    <div className="flex flex-col gap-y-1">
-      <Skeleton className="rounded-sm h-4 w-full" />
-      <Skeleton className="rounded-sm h-4 w-full" />
+    <div className="ui-flex ui-flex-col ui-gap-y-1">
+      <Skeleton className="ui-rounded-sm ui-h-4 ui-w-full" />
+      <Skeleton className="ui-rounded-sm ui-h-4 ui-w-full" />
     </div>
   )
 }

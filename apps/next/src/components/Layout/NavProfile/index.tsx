@@ -39,8 +39,8 @@ const NavProfile = ({
         <Button
           variant="ghost"
           className={cn(
-            "relative h-10 w-10 rounded-full",
-            variant === "borgerMenu" && "w-fit h-fit gap-x-1 !px-2"
+            "relative h-10 w-10 rounded-full !x-0",
+            variant === "borgerMenu" && "w-fit h-fit gap-x-1"
           )}
         >
           <Avatar className="h-10 w-10">

@@ -7,6 +7,8 @@ import { localStorage } from "~utils/storage"
 
 import { CToaster } from "./toaster"
 
+import "@wordigo/ui/styles/globals.css"
+
 const Provider = ({ children }: PropsWithChildren) => {
   const [theme, setTheme] = useState<string>()
   const [mounted, setMounted] = useState(false)

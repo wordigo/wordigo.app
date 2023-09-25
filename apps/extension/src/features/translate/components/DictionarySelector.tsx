@@ -62,7 +62,7 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
       dictionaryId
     })
     hoverRef.current.hidden = true
-    hoverRef.current.style.display = "hidden"
+    hoverRef.current.style.display = "ui-hidden"
   }
 
   const language = useMemo(() => chrome.i18n.getUILanguage(), [chrome.i18n])
@@ -74,14 +74,14 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
           <HoverCardTrigger asChild>
             <TooltipTrigger disabled={!isLoggedIn || addIsLoading} asChild>
               <Button
-                className="!pointer-events-auto disabled:!opacity-50 !h-8 flex items-center justify-between gap-x-2"
+                className="ui-pointer-events-auto disabled:ui-opacity-50 ui-h-8 ui-flex ui-items-center ui-justify-between ui-gap-x-2"
                 disabled={!isLoggedIn || addIsLoading}
                 onClick={() => handleAddLibrary()}
                 variant="default"
                 size="sm">
                 {addIsLoading ? (
                   <Fragment>
-                    <RotateCw className="mr-2 h-4 w-4 animate-spin" />
+                    <RotateCw className="ui-mr-2 ui-h-4 ui-w-4 ui-animate-spin" />
                     {getLocalMessage("loading")}
                   </Fragment>
                 ) : (
@@ -94,17 +94,17 @@ const DictionarySelector = ({ sourceLangauge, translatedText }: { sourceLangauge
             </TooltipTrigger>
           </HoverCardTrigger>
           {isLoggedIn && (
-            <HoverCardContent ref={hoverRef} className={cn("!p-0 divide-y divide-gray-200 dark:divide-gray-700 !rounded-sm", language === "tr" ? "w-[195px]" : "w-[145px]")}>
-              <div className="text-accent-foreground select-none rounded-sm hover:bg-primary-foreground !opacity-60 !h-7 flex items-center px-2 text-[13.5px]">
+            <HoverCardContent ref={hoverRef} className={cn("!p-0 ui-divide-y ui-divide-gray-200 dark:ui-divide-gray-700 !rounded-sm", language === "tr" ? "w-[195px]" : "w-[145px]")}>
+              <div className="text-accent-foreground ui-select-none ui-rounded-sm hover:bg-primary-foreground !opacity-60 !h-7 ui-flex ui-items-center ui-px-2 text-[13.5px]">
                 {getLocalMessage("select_dictionary")}
               </div>
-              <div className="flex flex-col">
+              <div className="ui-flex ui-flex-col">
                 {dictionaries?.map((dictionary) => (
                   <Button
                     onClick={() => handleAddLibrary(dictionary.id)}
                     key={dictionary.id}
                     disabled={addIsLoading}
-                    className="!rounded-sm !h-8 !text-start !justify-start truncate"
+                    className="!rounded-sm !h-8 !text-start !justify-start ui-truncate"
                     variant="ghost"
                     size="sm">
                     {dictionary.title}

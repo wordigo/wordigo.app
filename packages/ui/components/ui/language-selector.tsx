@@ -26,7 +26,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue
         <SelectValue placeholder={placeholder || "Select language"} />
       </SelectTrigger>
       <SelectContent>
-        <ScrollArea.Root className="max-h-[400px] overflow-auto" type="auto">
+        <ScrollArea.Root className="max-h-[400px] ui-overflow-auto" type="auto">
           <SelectGroup>
             {providerLanguages && (
               <SelectItem className="text-start" value="0" disabled>
@@ -35,7 +35,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue
             )}
             {detectLanguage && !defaultValue && (
               <SelectItem key="DT" value="DT">
-                <div className="flex items-center gap-x-2">
+                <div className="ui-flex ui-items-center ui-gap-x-2">
                   <ReactCountryFlag
                     style={{
                       fontSize: "1em",
@@ -51,7 +51,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue
             {computedLanguages.map(({ code, name, icon }) => {
               return (
                 <SelectItem key={code} value={code}>
-                  <div className="flex w-fit items-center gap-x-2 text-[12px]">
+                  <div className="ui-flex w-fit ui-items-center ui-gap-x-2 text-[12px]">
                     <ReactCountryFlag
                       style={{
                         fontSize: "1em",

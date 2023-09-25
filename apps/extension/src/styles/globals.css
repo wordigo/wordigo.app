@@ -52,54 +52,54 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply ui-border-border;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply ui-bg-background ui-text-foreground;
   }
 }
 
 @layer components {
   .tooltip-container {
-    @apply absolute z-50 cursor-pointer bg-white;
+    @apply ui-absolute ui-z-50 ui-cursor-pointer ui-bg-white;
   }
 
   .tooltip-content {
-    @apply flex items-center gap-x-1 rounded border border-gray-200 font-thin shadow-md;
-    @apply justify-between p-2;
+    @apply ui-flex ui-items-center ui-gap-x-1 ui-rounded ui-border ui-border-gray-200 ui-font-thin ui-shadow-md;
+    @apply ui-justify-between ui-p-2;
   }
 
   .logo {
-    @apply h-6 w-6;
+    @apply ui-h-6 ui-w-6;
   }
 
   .tooltip-buttons {
-    @apply flex items-center gap-x-2 text-gray-950  dark:text-white;
+    @apply text-gray-950 ui-flex ui-items-center ui-gap-x-2  dark:ui-text-white;
   }
 
   .translate-button {
-    @apply flex items-center gap-x-1.5 text-sm;
+    @apply ui-flex ui-items-center ui-gap-x-1.5 ui-text-sm;
   }
 
   .voice-button {
-    @apply flex items-center gap-x-1.5 text-sm;
+    @apply ui-flex ui-items-center ui-gap-x-1.5 ui-text-sm;
   }
 
   .add-button {
-    @apply flex items-center gap-x-1.5 text-sm;
+    @apply ui-flex ui-items-center ui-gap-x-1.5 ui-text-sm;
   }
 
   .separator {
-    @apply !h-7 !w-1 border-r border-gray-200;
+    @apply ui-h-7 ui-w-1 ui-border-r ui-border-gray-200;
   }
 
   .more-button {
-    @apply mx-0 !h-7 rounded-sm px-1 text-gray-400 transition-all hover:text-primary-blue-500 dark:text-gray-200;
+    @apply ui-mx-0 ui-h-7 ui-rounded-sm ui-px-1 ui-text-gray-400 ui-transition-all dark:ui-text-gray-200;
   }
 
   .floating-button {
-    @apply flex !h-7 items-center gap-x-1 rounded-none !px-1 text-sm font-normal text-accent-foreground;
+    @apply text-accent-foreground ui-flex ui-h-7 ui-items-center ui-gap-x-1 ui-rounded-none ui-px-1 ui-text-sm ui-font-normal;
   }
 }
 

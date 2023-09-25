@@ -5,6 +5,7 @@
   "types": "./index.tsx",
   "license": "MIT",
   "scripts": {
+    "dev": "concurrently \"tailwindcss -i ./styles/tailwind.css -o ./styles/globals.css --watch\"",
     "lint": "eslint \"**/*.ts*\"",
     "ui:add": "yarn shadcn-ui add"
   },
