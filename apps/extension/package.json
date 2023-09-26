@@ -17,6 +17,7 @@
     "@wordigo/tailwind-config": "*",
     "@wordigo/ui": "*",
     "axios": "^1.4.0",
+    "baseui": "^13.0.0",
     "cors": "^2.8.5",
     "framer-motion": "^10.12.18",
     "lucide-react": "^0.257.0",
@@ -26,6 +27,8 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.1",
     "react-query": "^3.39.3",
+    "styletron-engine-atomic": "^1.5.0",
+    "styletron-react": "^6.1.0",
     "zod": "^3.21.4",
     "zustand": "^4.4.1"
   },
