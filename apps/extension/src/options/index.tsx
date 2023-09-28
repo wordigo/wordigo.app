@@ -1,59 +1,68 @@
-import "~/styles/globals.css";
-import { getLocalMessage } from "../utils/locale";
-import Apparance from "./apparence/layout";
-import { SidebarNav } from "./components/sidebar-nav";
-import { OptionsContext, useOptions, useOptionsContext } from "./context/options";
-import Settings from "./settings/layout";
-import { Separator } from "@wordigo/ui";
-import Provider from "~providers";
-import ThemeProvider from "~providers/theme";
+import { Separator } from "@wordigo/ui"
+import { Button } from "baseui/button"
+import { Tab, Tabs } from "baseui/tabs-motion"
+import * as React from "react"
+import { Client as Styletron } from "styletron-engine-atomic"
+import { Provider as StyletronProvider } from "styletron-react"
+import Provider from "~providers"
+import ThemeProvider from "~providers/theme"
+import { Tabs, Tab } from "baseui/tabs-motion";
+
+import { getLocalMessage } from "../utils/locale"
+import Apparance from "./apparence/layout"
+import { SidebarNav } from "./components/sidebar-nav"
+import { OptionsContext, useOptions, useOptionsContext } from "./context/options"
+import Settings from "./settings/layout"
 
 export const sidebarNavItems = [
   {
     title: getLocalMessage("general"),
-    tab: "general",
+    tab: "general"
   },
   {
     title: getLocalMessage("appearance"),
-    tab: "appearance",
-  },
-];
+    tab: "appearance"
+  }
+]
 
 const Dashboard = () => {
-  const options = useOptionsContext();
+  const options = useOptionsContext()
 
   return (
     <div className="flex-1 lg:max-w-2xl">
       {options.activeTab === "general" && <Settings />}
       {options.activeTab === "appearance" && <Apparance />}
     </div>
-  );
-};
+  )
+}
+
+
+const styleElement = document.createElement("style")
+
+const engine = new Styletron({
+  prefix: "wordigo-",
+  container: styleElement
+})
+
+document.body.appendChild(styleElement)
 
 Dashboard.Layout = () => {
-  const options = useOptions({});
+  const options = useOptions({})
+  const [activeKey, setActiveKey] = React.useState("0")
 
   return (
-    <Provider>
-      <ThemeProvider>
-        <OptionsContext.Provider value={options}>
-          <div className="space-y-6 p-10 pb-16 bg-background text-primary h-screen">
-            <div className="space-y-0.5">
-              <h2 className="text-2xl font-bold tracking-tight">{getLocalMessage("settings")}</h2>
-              <p className="text-muted-foreground">{getLocalMessage("settingsDescription")}</p>
-            </div>
-            <Separator className="my-6" />
-            <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
-              <aside className="-mx-4 lg:w-1/5">
-                <SidebarNav items={sidebarNavItems} />
-              </aside>
-              <Dashboard />
-            </div>
-          </div>
-        </OptionsContext.Provider>
-      </ThemeProvider>
-    </Provider>
-  );
-};
+    <Provider engine={engine}>
+    <Tabs
+      activeKey={activeKey}
+      onChange={({ activeKey }) => {
+        setActiveKey(activeKey)
+      }}
+      activateOnFocus>
+      <Tab title="First">Content 1</Tab>
+      <Tab title="Second">Content 2</Tab>
+      <Tab title="Third">Content 3</Tab>
+    </Tabs>    </Provider>
+  )
+}
 
-export default Dashboard.Layout;
+export default Dashboard.Layout

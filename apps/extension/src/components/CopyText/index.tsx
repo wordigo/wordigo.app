@@ -1,12 +1,11 @@
-import { Button, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@wordigo/ui"
-import { cn } from "@wordigo/ui/lib/utils"
+import { Button } from "baseui/button"
 import { Copy } from "lucide-react"
 import { useState } from "react"
 
+import CTooltip from "~components/CTooltip"
 import { getLocalMessage } from "~utils/locale"
 
-const CopyTranslatedText = ({ text, className }: { text: string; className?: string }) => {
-  const [visible, setVisible] = useState<boolean>(false)
+const CopyTranslatedText = ({ text }: { text: string }) => {
   const [copiedStatus, setCopiedStatus] = useState<boolean>(false)
 
   const copyTranslatedText = () => {
@@ -16,18 +15,11 @@ const CopyTranslatedText = ({ text, className }: { text: string; className?: str
   }
 
   return (
-    <TooltipProvider delayDuration={100}>
-      <Tooltip open={visible}>
-        <TooltipTrigger onMouseEnter={() => setVisible(true)} onMouseLeave={() => setVisible(false)} onClick={copyTranslatedText} asChild>
-          <Button className={cn("!w-7 !h-7 text-accent-foreground variant", className)} variant="ghost" size="icon">
-            <Copy size={16} />
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent className="!py-0.5">
-          <p>{copiedStatus ? getLocalMessage("translation_copied") : getLocalMessage("translation_copy")}</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+    <CTooltip content={copiedStatus ? getLocalMessage("translation_copied") : getLocalMessage("translation_copy")}>
+      <Button onClick={copyTranslatedText} kind="secondary" size="mini">
+        <Copy size={14} />
+      </Button>
+    </CTooltip>
   )
 }
 

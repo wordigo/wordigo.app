@@ -1,11 +1,11 @@
-import { Button, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@wordigo/ui"
-import { cn } from "@wordigo/ui/lib/utils"
+import { Button } from "baseui/button"
 import { Volume2 } from "lucide-react"
 import { useRef } from "react"
 
+import CTooltip from "~components/CTooltip"
 import { getLocalMessage } from "~utils/locale"
 
-const AuidoPlayer = ({ message, targetLanguage, className }: { message: string; targetLanguage: string; className?: string }) => {
+const AuidoPlayer = ({ message, targetLanguage }: { message: string; targetLanguage: string }) => {
   const playerRef = useRef<HTMLAudioElement>()
 
   const textToSpeech = () => {
@@ -17,18 +17,11 @@ const AuidoPlayer = ({ message, targetLanguage, className }: { message: string; 
   return (
     <div>
       <audio src={computedUrl} ref={playerRef} />
-      <TooltipProvider delayDuration={100}>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button onClick={textToSpeech} className={cn("!w-7 !h-7 text-accent-foreground", className)} variant="ghost" size="icon">
-              <Volume2 size={18} />
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent className="!py-0.5">
-            <p>{getLocalMessage("text_to_speech")}</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+      <CTooltip content={getLocalMessage("text_to_speech")}>
+        <Button onClick={textToSpeech} kind="secondary" size="mini">
+          <Volume2 size={16} />
+        </Button>
+      </CTooltip>
     </div>
   )
 }
