@@ -49,6 +49,14 @@ const Team: ITeam[] = [
     linkedin: "https://www.linkedin.com/in/fatih-y%C4%B1ld%C4%B1z-b216b31b2/",
     twitter: "https://twitter.com/0fatihyildiz",
   },
+  {
+    name: "Altan Kurt",
+    src: "https://avatars.githubusercontent.com/u/92332508?v=4",
+    title: "Frontend Developer",
+    github: "https://github.com/altankurt",
+    linkedin: "https://www.linkedin.com/in/altankurt/",
+    twitter: "https://twitter.com/aaltankurt",
+  },
 ];
 
 export default Team;
