@@ -19,7 +19,6 @@
     "@tanstack/react-table": "8.9.1",
     "@types/nprogress": "^0.2.0",
     "@types/react-table": "^7.7.14",
-    "@vercel/analytics": "^1.0.1",
     "@vercel/og": "^0.5.9",
     "@wordigo/tailwind-config": "*",
     "@wordigo/ui": "*",

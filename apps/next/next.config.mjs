@@ -18,6 +18,7 @@ const config = {
       "media.licdn.com",
       "wordigo.s3.eu-west-2.amazonaws.com",
       "storage.googleapis.com",
+      "wordigo.app",
     ],
   },
 

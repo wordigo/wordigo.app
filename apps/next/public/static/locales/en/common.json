@@ -18,7 +18,16 @@
     "bad": "Bad",
     "not_bad": "Not Bad",
     "good": "Good",
-    "very_good": "Very Good"
+    "very_good": "Very Good",
+    "words": "Words",
+    "rating": "Rating",
+    "level": "Level",
+    "published": "Published"
+  },
+  "libraryDetail": {
+    "description": "Learn the meanings of words, listen and share with others.",
+    "no_description": "This dictionary has no description.",
+    "copy_dictionary": "Copy Dictionary"
   },
   "notifications": {
     "success": "Successful",

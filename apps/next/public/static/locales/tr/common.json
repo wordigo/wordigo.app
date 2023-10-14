@@ -18,7 +18,16 @@
     "bad": "Kötü",
     "not_bad": "Fena Değil",
     "good": "İyi",
-    "very_good": "Çok İyi"
+    "very_good": "Çok İyi",
+    "words": "Kelime",
+    "rating": "Değerlendirme",
+    "level": "Seviye",
+    "published": "Yayınlandı"
+  },
+  "libraryDetail": {
+    "description": "Kelime anlamlarını öğrenin, dinleyin ve diğerleriyle paylaşın.",
+    "no_description": "Bu sözlüğe bir açıklama eklenmemiş.",
+    "copy_dictionary": "Sözlüğü Kopyala"
   },
   "feedback": {
     "title": "Geri Bildirim",
