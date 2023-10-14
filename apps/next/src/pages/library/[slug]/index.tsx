@@ -1,5 +1,9 @@
-import { ActionsLoader, DetailLoader, WordsItemLoader } from "./Library.loader";
 import MainLayout from "@/components/Layout/MainLayout";
+import {
+  ActionsLoader,
+  DetailLoader,
+  WordsItemLoader,
+} from "@/components/Published/Library/Library.loaders";
 import { Rating } from "@/components/Published/Rating";
 import ArrowRightLeft from "@/components/Published/WordsPage/ArrowRightLeft";
 import { useGetPublicDictionaryBySlugMutation } from "@/store/publicDictionaries/api";
