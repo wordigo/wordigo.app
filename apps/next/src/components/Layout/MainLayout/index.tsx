@@ -1,7 +1,6 @@
-import { type PropsWithChildren } from "react";
-
 import Banner from "./Banner";
 import HomeHeader from "./Header";
+import { type PropsWithChildren } from "react";
 
 const MainLayout: React.FC<PropsWithChildren> = ({ children }) => {
   return (

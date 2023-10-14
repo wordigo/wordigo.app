@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { PartyPopper } from "lucide-react";
-import { useTranslation } from "next-i18next";
-
+import ProductHunt from "./product.hunt";
+import PartyPopper from "/public/images/party-popper.svg";
 import { Button } from "@wordigo/ui";
+import { useTranslation } from "next-i18next";
+import Image from "next/image";
+import { useState } from "react";
 
 const Banner = () => {
   const { t } = useTranslation();
@@ -15,18 +16,21 @@ const Banner = () => {
   return (
     isBannerOpen && (
       <section className="w-full border-b py-3">
-        <div className="max-w-[90rem] max-lg:w-full px-20 max-md:px-4 flex items-center mx-auto justify-between">
+        <div className="max-w-[90rem] max-lg:w-full px-20 max-md:px-4 flex items-center mx-auto justify-center">
           <div className="flex items-center">
-            <div className="w-10 h-10 p-2.5 border rounded-[0.5rem] mr-4">
-              <PartyPopper className="w-5 h-5 animate-pulse" />
+            <div className="w-11 h-11 p-2 border rounded-[0.5rem] mr-4">
+              <Image
+                className="animate-pulse"
+                alt=""
+                src={"/images/party-popper.png"}
+                width={43}
+                height={43}
+              />
             </div>
-            <p className="text-sm" dangerouslySetInnerHTML={{ __html: t("announcement.description") }}></p>
-          </div>
-          <div className="flex items-center">
-            <Button variant="default">{t("announcement.button")}</Button>
-            {/* <Button variant="ghost" onClick={closeBanner}>
-                <X className="w-4 h-4" />
-              </Button> */}
+            <p className="text-sm font-semibold mr-4">
+              {t("announcement.description")}
+            </p>
+            <ProductHunt width="200px" height="43.19px" />
           </div>
         </div>
       </section>
