@@ -19,6 +19,7 @@ const config = {
       "wordigo.s3.eu-west-2.amazonaws.com",
       "storage.googleapis.com",
       "wordigo.app",
+      "lh3.googleusercontent.com",
     ],
   },
 

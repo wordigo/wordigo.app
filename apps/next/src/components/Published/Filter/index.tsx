@@ -1,3 +1,4 @@
+import { DatePickerWithRange } from "./DatePickerWithRange";
 import { useGetPublicDictionariesMutation } from "@/store/publicDictionaries/api";
 import {
   Button,
@@ -9,8 +10,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@wordigo/ui";
+import { addDays } from "date-fns";
 import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
+import { type DateRange } from "react-day-picker";
 import { useDebounce } from "usehooks-ts";
 
 const PublishedFilter = () => {
@@ -18,8 +21,15 @@ const PublishedFilter = () => {
 
   const [searchValue, setSearchValue] = useState<string>("");
   const debouncedSearchValue = useDebounce(searchValue, 300);
-  const [handleGetPublicDictionaries] = useGetPublicDictionariesMutation();
 
+  const [date, setDate] = useState<DateRange | undefined>({
+    from: new Date(2023, 0, 20),
+    to: addDays(new Date(2023, 0, 20), 20),
+  });
+
+  console.log(date);
+
+  const [handleGetPublicDictionaries] = useGetPublicDictionariesMutation();
   useEffect(() => {
     void handleGetPublicDictionaries({
       search: debouncedSearchValue,
@@ -42,35 +52,10 @@ const PublishedFilter = () => {
       </section>
       <section className="flex items-center space-x-2 max-md:flex-col max-md:space-y-5">
         <div className="flex flex-col">
-          <Label htmlFor="category">{t("public_dictionaries.category")}</Label>
-          <Select>
-            <SelectTrigger
-              id="category"
-              className="w-48 px-3 py-2 text-muted-foreground h-10 mt-1.5"
-            >
-              <SelectValue placeholder="Category" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem className="text-left" value="item1">
-                Meeting
-              </SelectItem>
-              <SelectItem className="text-left" value="item2">
-                Cooking
-              </SelectItem>
-              <SelectItem className="text-left" value="item3">
-                Sports
-              </SelectItem>
-              <SelectItem className="text-left" value="item4">
-                Business
-              </SelectItem>
-              <SelectItem className="text-left" value="item5">
-                Travel
-              </SelectItem>
-              <SelectItem className="text-left" value="item6">
-                Technology
-              </SelectItem>
-            </SelectContent>
-          </Select>
+          <Label htmlFor="category" className="mb-2">
+            {t("public_dictionaries.date")}
+          </Label>
+          <DatePickerWithRange date={date} setDate={setDate} />
         </div>
         <div className="ml-3 grid">
           <Label htmlFor="level">{t("public_dictionaries.level")}</Label>

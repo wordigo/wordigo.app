@@ -22,7 +22,8 @@
     "words": "Words",
     "rating": "Rating",
     "level": "Level",
-    "published": "Published"
+    "published": "Published",
+    "pick_date": "Pick a date"
   },
   "libraryDetail": {
     "description": "Learn the meanings of words, listen and share with others.",
@@ -113,15 +114,17 @@
   },
   "public_dictionaries": {
     "title": "Learn from published dictionaries",
-    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio ipsam\npossimus, facere fuga ratione aut.",
+    "description": "Browse published dictionaries to boost your language skills with Wordigo. Filter by category, level, or language to find your perfect match.",
     "clear_filters": "Clear Filters",
     "category": "Category",
     "level": "Level",
+    "language": "Language",
+    "date": "Date",
     "search": "Search"
   },
   "search_no_result": {
-    "title": "No results found.",
-    "description": "Try adjusting your search or filter to find what you are looking for."
+    "title": "Sonuç bulunamadı.",
+    "description": "Aradığınızı bulabilmek için aramanızı veya filtrelerinizi ayarlamayı deneyin."
   },
   "error_404": {
     "title": "Oops, something went wrong.",

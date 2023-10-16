@@ -9,6 +9,7 @@ import { appWithTranslation, useTranslation } from "next-i18next";
 import { DefaultSeo } from "next-seo";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { Fragment } from "react";
 import { Provider } from "react-redux";
 import "swiper/css";
@@ -23,6 +24,7 @@ const App = ({
   Component,
   pageProps,
 }: AppProps<{ session: Session; _nextI18Next: { initialLocale: string } }>) => {
+  const router = useRouter();
   const { t } = useTranslation();
   z.setErrorMap(makeZodI18nMap({ t, ns: ["common", "zod"] }));
 
@@ -36,7 +38,7 @@ const App = ({
       <SessionProvider session={pageProps.session} refetchOnWindowFocus={true}>
         <Provider store={store}>
           <AppProviders>
-            <Component {...pageProps} />
+            <Component {...pageProps} key={router.asPath} />
           </AppProviders>
         </Provider>
       </SessionProvider>

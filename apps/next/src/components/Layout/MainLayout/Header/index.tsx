@@ -1,4 +1,6 @@
 import NavProfile from "../../NavProfile";
+import ThemeMode from "../../ThemeMode";
+import ChangeLanguage from "../ChangeLanguage";
 import Feedback from "./Feedback";
 import Navigation from "./Navigation";
 import DynamicLogo from "@/components/Logo/DynamicLogo";
@@ -129,6 +131,8 @@ export default function HomeHeader({ className }: { className?: string }) {
                   <NavProfile variant="borgerMenu" />
                 ) : (
                   <span className="w-full flex items-center justify-between">
+                    <ThemeMode />
+                    <ChangeLanguage />
                     <Link
                       href="/auth/signin"
                       className={buttonVariants({

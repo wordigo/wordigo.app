@@ -13,7 +13,11 @@ const PublishedItem = (item: IDictionary) => {
 
   return (
     <Link
-      href={`/library/${item.slug}`}
+      href={{
+        pathname: "/library/[slug]",
+        query: { slug: item.slug },
+      }}
+      as={`/library/${item.slug}`}
       key={item.id}
       className="max-md:min-w-[325px] max-md:max-w-[405px] max-w-[405px]"
     >

@@ -1,14 +1,14 @@
 import { setToken } from "@/store/auth/slice";
+import { setAcceptLanguage, setAuthToken } from "@/store/baseQuery";
+import { setLanguage } from "@/store/common/slice";
 import { useAppDispatch } from "@/utils/hooks";
 import { useSession } from "next-auth/react";
+import { useTranslation } from "next-i18next";
 import Router from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import PageLoader from "../UI/PageLoader";
-import { setAcceptLanguage, setAuthToken } from "@/store/baseQuery";
-import { setLanguage } from "@/store/common/slice";
-import { useTranslation } from "next-i18next";
-import { Fragment, type PropsWithChildren, useEffect, useState } from "react";
+import { Fragment, useEffect, useState, type PropsWithChildren } from "react";
 
 NProgress.configure({
   minimum: 0.3,
@@ -54,8 +54,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
       dispatch(setToken(session?.data?.user?.accessToken));
 
       // This code set axios instance token here waiting for that reason promise used.
-      Promise.resolve(setAuthToken(session?.data?.user?.accessToken)).then(() =>
-        setMounted(true)
+      void Promise.resolve(setAuthToken(session?.data?.user?.accessToken)).then(
+        () => setMounted(true)
       );
     } else {
       if (session.status === "loading") return;

@@ -22,7 +22,8 @@
     "words": "Kelime",
     "rating": "Değerlendirme",
     "level": "Seviye",
-    "published": "Yayınlandı"
+    "published": "Yayınlandı",
+    "pick_date": "Tarih Seç"
   },
   "libraryDetail": {
     "description": "Kelime anlamlarını öğrenin, dinleyin ve diğerleriyle paylaşın.",
@@ -263,6 +264,16 @@
     "description": "Genel web sitesini özelleştirin. Otomatik olarak gece ve gündüz temaları arasında geçiş yapın ve arayüz dili değiştirin.",
     "username_tooltip": "Lorem ipsum dolor sit amet.",
     "update_action": "Profili Güncelle"
+  },
+  "public_dictionaries": {
+    "title": "Yayınlanmış sözlüklerden öğrenin",
+    "description": "Wordigo ile dil becerilerinizi geliştirmek için yayınlanmış sözlüklere göz atın. Kategori, seviye veya dil filtreleri ile size uygun olanı kolayca bulun.",
+    "clear_filters": "Filtreleri Temizle",
+    "category": "Kategori",
+    "level": "Seviye",
+    "language": "Dil",
+    "date": "Tarih",
+    "search": "Ara"
   },
   "profileAvatar": {
     "title": "Profil Resmi Belirle",

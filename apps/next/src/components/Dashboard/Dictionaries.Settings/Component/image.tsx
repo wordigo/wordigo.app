@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import { useTranslation } from "next-i18next";
-
-import { Label, toast } from "@wordigo/ui";
-
 import { Images } from "../settings.constant";
+import { Label, toast } from "@wordigo/ui";
+import { useTranslation } from "next-i18next";
+import React, { useState } from "react";
 
 export default function ImageComponent({ ...field }) {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -18,14 +16,17 @@ export default function ImageComponent({ ...field }) {
           const img = new Image();
           img.src = reader?.result as string;
           img.onload = () => {
-            if (img.width === 675 && img.height === 480) {
-              setSelectedImage(img.src);
-            } else {
-              toast({
-                title: "Error",
-                description: "Please select an image with dimensions of 675x480 pixels.",
-              });
-            }
+            console.log(reader.result);
+
+            // if (img.width === 675 && img.height === 480) {
+            setSelectedImage(img.src);
+
+            // } else {
+            //   toast({
+            //     title: "Error",
+            //     description: "Please select an image with dimensions of 675x480 pixels.",
+            //   });
+            // }
           };
         };
         reader.readAsDataURL(file);
@@ -50,7 +51,9 @@ export default function ImageComponent({ ...field }) {
         <Label>
           <h1>{t("image")}</h1>
         </Label>
-        <p className="text-[hsl(var(--muted-foreground))] text-sm">{t("dictionaries_settings.images.image_notes")}</p>
+        <p className="text-[hsl(var(--muted-foreground))] text-sm">
+          {t("dictionaries_settings.images.image_notes")}
+        </p>
       </span>
       <label htmlFor="imageUpload" className="cursor-pointer mr-8">
         <div
@@ -70,7 +73,8 @@ export default function ImageComponent({ ...field }) {
           </section>
           <div className="image-component text-sm dark:bg-[#0208174c] text-[hsl(var(--muted-foreground))] bg-[#ffffff4c] px-2 py-1 rounded-md text-center">
             <h1>
-              <span>{t("dictionaries_settings.images.image_color_title")}</span> {t("dictionaries_settings.images.image_title")}
+              <span>{t("dictionaries_settings.images.image_color_title")}</span>{" "}
+              {t("dictionaries_settings.images.image_title")}
             </h1>
             <h1>{t("dictionaries_settings.images.image_resolution")}</h1>
           </div>

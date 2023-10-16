@@ -7,9 +7,11 @@ const ChangeLanguage = () => {
   const router = useRouter();
 
   const handleChangeLocale = (locale: string) => {
-    void router.replace(router.pathname, router.pathname, {
-      locale: locale.toLowerCase(),
-    });
+    void router.replace(
+      { pathname: router.pathname, query: router.query },
+      undefined,
+      { locale: locale.toLowerCase() }
+    );
   };
 
   return (
