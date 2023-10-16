@@ -18,19 +18,19 @@ const Banner = () => {
       <section className="w-full border-b py-3">
         <div className="max-w-[90rem] max-lg:w-full px-20 max-md:px-4 flex items-center mx-auto justify-center">
           <div className="flex items-center">
-            <div className="w-11 h-11 p-2 border rounded-[0.5rem] mr-4">
-              <Image
-                className="animate-pulse"
-                alt=""
-                src={"/images/party-popper.png"}
-                width={43}
-                height={43}
-              />
-            </div>
+            <Image
+              className="animate-pulse mr-4"
+              alt=""
+              src={"/images/party-popper.png"}
+              width={22}
+              height={22}
+            />
             <p className="text-sm font-semibold mr-4">
               {t("announcement.description")}
             </p>
-            <ProductHunt width="200px" height="43.19px" />
+            <Button className="px-3 h-7 rounded-md bg-[#FF6154] text-white font-bold">
+              Product Hunt
+            </Button>
           </div>
         </div>
       </section>
