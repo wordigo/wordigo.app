@@ -15,22 +15,18 @@ const Banner = () => {
 
   return (
     isBannerOpen && (
-      <section className="w-full border-b py-3">
+      <section className="w-full border-b py-3 bg-[#FF6154] text-white">
         <div className="max-w-[90rem] max-lg:w-full px-20 max-md:px-4 flex items-center mx-auto justify-center">
           <div className="flex items-center">
-            <Image
-              className="animate-pulse mr-4"
-              alt=""
-              src={"/images/party-popper.png"}
-              width={22}
-              height={22}
-            />
-            <p className="text-sm font-semibold mr-4">
+            <p className="text-sm font-semibold">
               {t("announcement.description")}
             </p>
-            <Button className="px-3 h-7 rounded-md bg-[#FF6154] text-white font-bold">
+            <Button className="px-1.5 h-5 rounded-sm font-bold bg-white text-[#FF6154] mx-2">
               Product Hunt
             </Button>
+            <p className="text-sm font-semibold mr-2">
+              {t("announcement.button")}
+            </p>
           </div>
         </div>
       </section>
