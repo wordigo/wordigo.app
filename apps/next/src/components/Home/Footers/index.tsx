@@ -57,9 +57,16 @@ export default function Footer() {
                         <Link href="/library" passHref>
                           {t("navbar.library")}
                         </Link>
-                        <span className="text-xs font-medium bg-vulcan-800 inline-flex items-center ml-4 px-3 py-0.5 rounded-full text-white dark:text-white bg-primary dark:bg-primary-foreground">
+                        <span className="text-xs font-medium bg-vulcan-800 inline-flex items-center ml-2 px-2 py-0.5 rounded text-white dark:text-white bg-primary dark:bg-primary-foreground">
                           {t("general.new")}
                         </span>
+                      </p>
+                    </li>
+                    <li>
+                      <p className="text-sm opacity-70 hover:opacity-100 hover:dark:opacity-100">
+                        <Link href="/post/privacy-policy" passHref>
+                          {t("privacy_policy.title")}
+                        </Link>
                       </p>
                     </li>
                     <li>
@@ -75,7 +82,7 @@ export default function Footer() {
                           {t("faq.nav")}
                         </Link>
                       </p>
-                    </li>
+                    </li>{" "}
                   </ul>
                 </ul>
               </div>

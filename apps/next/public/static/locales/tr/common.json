@@ -25,6 +25,9 @@
     "published": "Yayınlandı",
     "pick_date": "Tarih Seç"
   },
+  "privacy_policy": {
+    "title": "Gizlilik Politikası"
+  },
   "libraryDetail": {
     "description": "Kelime anlamlarını öğrenin, dinleyin ve diğerleriyle paylaşın.",
     "no_description": "Bu sözlüğe bir açıklama eklenmemiş.",

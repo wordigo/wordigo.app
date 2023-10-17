@@ -164,6 +164,9 @@
     "translatedPlaceholder": "Enter a translated world",
     "copyWord": "Copy"
   },
+  "privacy_policy": {
+    "title": "Privacy Policy"
+  },
   "dictionaries_settings": {
     "link_notes": "Access your dictionary with this link.",
     "title_notes": "Make it easy for people to search the dictionary.",

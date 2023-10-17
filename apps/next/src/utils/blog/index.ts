@@ -12,8 +12,8 @@ export const postFilePaths = fs
   // Only include md(x) files
   .filter((path) => /\.mdx?$/.test(path));
 
-export const getPostBySlug = async (slug) => {
-  const postFilePath = path.join(POSTS_PATH, `${slug}.mdx`);
+export const getPostBySlug = async (slug, locale) => {
+  const postFilePath = path.join(POSTS_PATH, locale, `${slug}.mdx`);
   const source = fs.readFileSync(postFilePath);
 
   const { content, data } = matter(source);
