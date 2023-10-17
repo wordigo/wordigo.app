@@ -21,7 +21,7 @@ const Banner = () => {
             <p className="text-sm font-semibold">
               {t("announcement.description")}
             </p>
-            <Button className="px-1.5 h-5 rounded-sm font-bold bg-white text-[#FF6154] mx-2">
+            <Button className="px-1.5 h-5 rounded-sm font-bold bg-white text-[#FF6154] mx-2 hover:bg-white">
               Product Hunt
             </Button>
             <p className="text-sm font-semibold mr-2">
