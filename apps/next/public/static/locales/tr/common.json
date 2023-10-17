@@ -45,8 +45,8 @@
     "signin_success": "Giriş başarılı, anasayfaya yönlendiriliyorsunuz."
   },
   "announcement": {
-    "description": "Size özel <span className='font-semibold'>harika haberlerimiz</span> var! Blogumuzdan öğrenin!",
-    "button": "Daha Fazla Gör"
+    "description": "Yakında başlıyoruz",
+    "button": "haberdar ol"
   },
   "navbar": {
     "home": "Ana Sayfa",

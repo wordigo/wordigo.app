@@ -43,8 +43,8 @@
     "created_word": "Word created successfully."
   },
   "announcement": {
-    "description": "We have <span className='font-semibold'>amazing news,</span> just for you! Learn from our blog!",
-    "button": "See More"
+    "description": "We're launching soon on",
+    "button": "get notified"
   },
   "feedback": {
     "title": "Feedback",
