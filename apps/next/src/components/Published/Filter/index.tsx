@@ -1,4 +1,5 @@
 import { DatePickerWithRange } from "./DatePickerWithRange";
+import { Levels } from "./Levels.enum";
 import { useGetPublicDictionariesMutation } from "@/store/publicDictionaries/api";
 import {
   Button,
@@ -10,33 +11,44 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@wordigo/ui";
-import { addDays } from "date-fns";
 import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { type DateRange } from "react-day-picker";
 import { useDebounce } from "usehooks-ts";
 
 const PublishedFilter = () => {
+  const [level, setLevel] = useState<string>();
   const { t } = useTranslation();
 
-  const [searchValue, setSearchValue] = useState<string>("");
+  const [searchValue, setSearchValue] = useState<string>();
   const debouncedSearchValue = useDebounce(searchValue, 300);
 
   const [date, setDate] = useState<DateRange | undefined>({
-    from: new Date(2023, 0, 20),
-    to: addDays(new Date(2023, 0, 20), 20),
+    from: null,
+    to: null,
   });
 
-  console.log(date);
-
   const [handleGetPublicDictionaries] = useGetPublicDictionariesMutation();
+
   useEffect(() => {
     void handleGetPublicDictionaries({
       search: debouncedSearchValue,
+      level,
       page: 1,
       size: 10,
     });
-  }, [debouncedSearchValue]);
+  }, [debouncedSearchValue, level]);
+
+  const computedLevels = Object.keys(Levels).map((level) => ({
+    label: level.toUpperCase() + " " + t("general.level"),
+    value: Levels[level],
+  }));
+
+  const handleClearFilters = () => {
+    setLevel(undefined);
+    setDate(undefined);
+    setSearchValue(undefined);
+  };
 
   return (
     <main className="flex items-end justify-between mt-10 max-lg:flex-col max-lg:spacse-y-5 max-lg:justify-center max-lg:items-center">
@@ -59,7 +71,7 @@ const PublishedFilter = () => {
         </div>
         <div className="ml-3 grid">
           <Label htmlFor="level">{t("public_dictionaries.level")}</Label>
-          <Select>
+          <Select value={level} onValueChange={(value) => setLevel(value)}>
             <SelectTrigger
               id="level"
               className="w-48 px-3 py-2 text-muted-foreground h-10 mt-1.5"
@@ -67,29 +79,20 @@ const PublishedFilter = () => {
               <SelectValue placeholder="Level" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem className="text-left" value="a1">
-                A1 Level
-              </SelectItem>
-              <SelectItem className="text-left" value="a2">
-                A2 Level
-              </SelectItem>
-              <SelectItem className="text-left" value="b1">
-                B1 Level
-              </SelectItem>
-              <SelectItem className="text-left" value="b2">
-                B2 Level
-              </SelectItem>
-              <SelectItem className="text-left" value="c1">
-                C1 Level
-              </SelectItem>
-              <SelectItem className="text-left" value="c2">
-                C2 Level
-              </SelectItem>
+              {computedLevels.map(({ label, value }) => (
+                <SelectItem key={value} className="text-left" value={value}>
+                  {label}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>
         <Label htmlFor="clearFilters">
-          <Button variant="outline" className="md:mt-[1.2rem]">
+          <Button
+            onClick={handleClearFilters}
+            variant="outline"
+            className="md:mt-[1.2rem]"
+          >
             {t("public_dictionaries.clear_filters")}
           </Button>
         </Label>

@@ -17,7 +17,7 @@ const Published = () => {
   );
 
   useEffect(() => {
-    void handleGetPublicDictionaries({ search: "", page: 1, size: 10 });
+    void handleGetPublicDictionaries({ page: 1, size: 10 });
   }, []);
 
   return (

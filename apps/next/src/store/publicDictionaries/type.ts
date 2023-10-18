@@ -3,7 +3,8 @@ export interface GetDictionaryIdType {
 }
 
 export interface GetPublicDictionariesType {
-  search: string;
+  search?: string;
+  level?: string;
   page: number;
   size: number;
 }

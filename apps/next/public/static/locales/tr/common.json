@@ -42,11 +42,19 @@
     "success": "Başarılı",
     "warning": "Uyarı",
     "error": "Hata",
-    "signin_success": "Giriş başarılı, anasayfaya yönlendiriliyorsunuz."
+    "signin_success": "Giriş başarılı, anasayfaya yönlendiriliyorsunuz.",
+    "avatar_update": "Profil resmi başarıyla güncellendi.",
+    "profile_update": "Profil başarıyla güncellendi.",
+    "created_dictionary": "Sözlük başarıyla oluşturuldu.",
+    "deleted_dictionary": "Sözlük başarıyla silindi.",
+    "updated_dictionary": "Sözlük başarıyla güncellendi.",
+    "created_word": "Kelime başarıyla oluşturuldu.",
+    "copied_word_title": "Kopyalandı!",
+    "copied_word": "Kelime başarıyla kopyalandı."
   },
   "announcement": {
     "description": "Yakında başlıyoruz",
-    "button": "haberdar ol"
+    "button": "haberdar ol!"
   },
   "navbar": {
     "home": "Ana Sayfa",

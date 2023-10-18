@@ -3,6 +3,7 @@ import {
   type GetPublicDictionariesType,
   type GetPublicDictionaryBySlugType,
 } from "./type";
+import { buildDynamicUrl } from "@/utils/getUrl";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { type IDictionary, type IResponse } from "types/global";
 
@@ -16,10 +17,15 @@ export const publicDictionariesApi = createApi({
       IResponse<IDictionary[]>,
       GetPublicDictionariesType
     >({
-      query: ({ search, page, size }) => ({
-        url: `/publicDictionary/getPublicDictionaries?search=${search}&page=${page}&size=${size}`,
-        method: "GET",
-      }),
+      query: ({ search, level, page, size }) => {
+        const baseUrl = "/publicDictionary/getPublicDictionaries?";
+        const url = buildDynamicUrl(baseUrl, { level, page, size, search });
+
+        return {
+          method: "GET",
+          url,
+        };
+      },
     }),
     getPublicDictionaryBySlug: builder.mutation<
       IResponse<IDictionary>,

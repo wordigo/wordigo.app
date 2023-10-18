@@ -1,8 +1,5 @@
-import ProductHunt from "./product.hunt";
-import PartyPopper from "/public/images/party-popper.svg";
 import { Button } from "@wordigo/ui";
 import { useTranslation } from "next-i18next";
-import Image from "next/image";
 import { useState } from "react";
 
 const Banner = () => {

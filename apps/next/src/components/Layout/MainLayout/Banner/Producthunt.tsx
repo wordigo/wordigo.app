@@ -1,5 +1,4 @@
 import { useTheme } from "next-themes";
-import React from "react";
 
 export default function ProductHunt({ height, width }: any) {
   const { theme, systemTheme } = useTheme();

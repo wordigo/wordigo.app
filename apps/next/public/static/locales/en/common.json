@@ -27,8 +27,7 @@
   },
   "libraryDetail": {
     "description": "Learn the meanings of words, listen and share with others.",
-    "no_description": "This dictionary has no description.",
-    "copy_dictionary": "Copy Dictionary"
+    "no_description": "This dictionary has no description."
   },
   "notifications": {
     "success": "Successful",
@@ -40,11 +39,13 @@
     "created_dictionary": "Dictionary created successfully.",
     "deleted_dictionary": "Dictionary deleted successfully.",
     "updated_dictionary": "Dictionary updated successfully.",
-    "created_word": "Word created successfully."
+    "created_word": "Word created successfully.",
+    "copied_word_title": "Copied!",
+    "copied_word": "Word copied to clipboard."
   },
   "announcement": {
     "description": "We're launching soon on",
-    "button": "get notified"
+    "button": "get notified!"
   },
   "feedback": {
     "title": "Feedback",

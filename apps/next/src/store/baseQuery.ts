@@ -40,7 +40,7 @@ export const axiosBaseQuery =
       const err = axiosError as AxiosError;
 
       if (err.response?.status === 401) {
-        // void signOut({ callbackUrl: "/" });
+        void signOut({ callbackUrl: "/" });
       }
 
       return {
