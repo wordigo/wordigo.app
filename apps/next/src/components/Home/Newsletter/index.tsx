@@ -25,7 +25,6 @@ const Newsletter = () => {
 
   const handleAddEmail = (values: NewLetterValues, e: React.FormEvent) => {
     e.preventDefault();
-    // Handle the form submission here
     console.log(values.email);
   };
 
