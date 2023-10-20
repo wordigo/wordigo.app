@@ -23,10 +23,10 @@ const Feedback = () => {
   const [active, setActive] = useState();
   const feedbacks = useFeedbacksConstants();
   const [inputValue, setInputValue] = useState<string>("");
-  const [postFeedBack, { status, isLoading, data }] = usePostFeedBackMutation();
+  const [FeedBack, { status, isLoading, data }] = usePostFeedBackMutation();
 
   const handleSubmitFeedback = () => {
-    void postFeedBack({
+    void FeedBack({
       description: inputValue,
       rate: active,
     });

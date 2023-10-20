@@ -11,7 +11,7 @@ const initialState: IWordState = {
 } as IWordState;
 
 const feedbackSlice = createSlice({
-  name: "dicWord",
+  name: "FeedBack",
   initialState,
   reducers: {
     setFeedback(state, action) {
