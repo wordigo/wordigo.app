@@ -1,6 +1,7 @@
 import useFeedbacksConstants, {
   type IFeedbackType,
 } from "./Feedback.constants";
+import { usePostFeedBackMutation } from "@/store/feedback/api";
 import {
   Button,
   Popover,
@@ -21,6 +22,15 @@ const Feedback = () => {
   const { t } = useTranslation();
   const [active, setActive] = useState();
   const feedbacks = useFeedbacksConstants();
+  const [inputValue, setInputValue] = useState<string>("");
+  const [FeedBack, { status, isLoading, data }] = usePostFeedBackMutation();
+
+  const handleSubmitFeedback = () => {
+    void FeedBack({
+      description: inputValue,
+      rate: active,
+    });
+  };
 
   return (
     <Popover>
@@ -35,6 +45,7 @@ const Feedback = () => {
                 id="width"
                 placeholder={t("feedback.placeholder")}
                 className="col-span-2 h-8"
+                onChange={(e) => setInputValue(e.target.value)}
               />
             </div>
           </div>
@@ -48,7 +59,9 @@ const Feedback = () => {
               />
             ))}
           </div>
-          <Button>{t("feedback.submit")}</Button>
+          <Button onClick={() => handleSubmitFeedback()}>
+            {t("feedback.submit")}
+          </Button>
         </div>
       </PopoverContent>
     </Popover>

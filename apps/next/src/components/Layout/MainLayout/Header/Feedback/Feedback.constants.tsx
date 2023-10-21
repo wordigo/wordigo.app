@@ -21,27 +21,27 @@ const useFeedbacks = (): IFeedbackType[] => {
     {
       title: t("general.too_bad"),
       imageSrc: "/images/faces/very_bad.svg",
-      level: 0,
+      level: 1,
     },
     {
       title: t("general.bad"),
       imageSrc: "/images/faces/very_bad.svg",
-      level: 1,
+      level: 2,
     },
     {
       title: t("general.not_bad"),
       imageSrc: "/images/faces/not_bad.svg",
-      level: 2,
+      level: 3,
     },
     {
       title: t("general.good"),
       imageSrc: "/images/faces/good.svg",
-      level: 3,
+      level: 4,
     },
     {
       title: t("general.very_good"),
       imageSrc: "/images/faces/very_good.svg",
-      level: 4,
+      level: 5,
     },
   ];
 };
