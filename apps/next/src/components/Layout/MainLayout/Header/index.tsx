@@ -126,19 +126,11 @@ export default function HomeHeader({ className }: { className?: string }) {
                 ) : status === "authenticated" ? (
                   <NavProfile variant="borgerMenu" />
                 ) : (
-                  <span className="w-full flex items-center justify-between">
-                    <ThemeMode />
-                    <ChangeLanguage />
-                    <Link
-                      href="/auth/signin"
-                      className={buttonVariants({
-                        variant: "outline",
-                        className:
-                          "bg-transparent mr-4 w-full text-black dark:text-white",
-                      })}
-                    >
-                      {t("navbar.signin")}
-                    </Link>
+                  <span className="w-full flex flex-col gap-y-3">
+                    <div className="flex gap-x-2 items-center justify-between">
+                      <ThemeMode className="!h-8 !px-2 w-full" />
+                      <ChangeLanguage className="!h-8 !px-2 w-full" />
+                    </div>
                     <Link
                       href="/auth/signup"
                       className={cn(
@@ -148,7 +140,7 @@ export default function HomeHeader({ className }: { className?: string }) {
                         })
                       )}
                     >
-                      {t("navbar.signup")}
+                      {t("navbar.get_started")}
                     </Link>
                   </span>
                 )}

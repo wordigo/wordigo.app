@@ -1,5 +1,5 @@
-import ThemeMode from "../../ThemeMode";
 import ChangeLanguage from "../../MainLayout/ChangeLanguage";
+import ThemeMode from "../../ThemeMode";
 
 export function MainNav() {
   return (

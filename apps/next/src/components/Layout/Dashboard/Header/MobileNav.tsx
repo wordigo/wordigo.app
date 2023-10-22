@@ -1,11 +1,8 @@
-import * as React from "react";
-import Link from "next/link";
-import StaticLogo from "@/components/Logo/StaticLogo";
-import { GitlabIcon } from "lucide-react";
-
-import { cn } from "@wordigo/ui/lib/utils";
-
 import { type SidebarNavItem } from "../Sidebar/navigations.constants";
+import StaticLogo from "@/components/Logo/StaticLogo";
+import { cn } from "@wordigo/ui/lib/utils";
+import Link from "next/link";
+import * as React from "react";
 
 interface MobileNavProps {
   items: SidebarNavItem[];
@@ -16,7 +13,7 @@ export function MobileNav({ items, children }: MobileNavProps) {
   return (
     <div
       className={cn(
-        "fixed inset-0 top-16 z-50 grid h-[calc(100vh-4rem)] grid-flow-row auto-rows-max overflow-auto p-6 pb-32 shadow-md animate-in slide-in-from-bottom-80 md:hidden",
+        "fixed inset-0 top-16 z-50 grid h-[calc(100vh-4rem)] grid-flow-row auto-rows-max overflow-auto p-6 pb-32 shadow-md animate-in slide-in-from-bottom-80 md:hidden"
       )}
     >
       <div className="relative z-20 grid gap-6 rounded-md bg-popover p-4 text-popover-foreground shadow-md">
@@ -31,7 +28,7 @@ export function MobileNav({ items, children }: MobileNavProps) {
               href={item.disabled ? "#" : item.href}
               className={cn(
                 "flex w-full items-center rounded-md p-2 text-sm font-medium hover:underline",
-                item.disabled && "cursor-not-allowed opacity-60",
+                item.disabled && "cursor-not-allowed opacity-60"
               )}
             >
               {item.title}
