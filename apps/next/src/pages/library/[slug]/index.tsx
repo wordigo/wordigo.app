@@ -4,7 +4,7 @@ import {
   DetailLoader,
   WordsItemLoader,
 } from "@/components/Published/Library/Library.loaders";
-import { Rating } from "@/components/Published/Rating";
+import DictionaryRating from "@/components/Published/Rating";
 import ArrowRightLeft from "@/components/Published/WordsPage/ArrowRightLeft";
 import { TextToSpeechProvider, useTextToSpeech } from "@/contexts/textToSpeech";
 import { useGetPublicDictionaryBySlugMutation } from "@/store/publicDictionaries/api";
@@ -181,7 +181,7 @@ const LibraryDetail = () => {
                   <Button type="button" variant="outline" size="icon">
                     <Link className="h-5 w-5" />
                   </Button>
-                  <Rating />
+                  <DictionaryRating />
                   <Button type="button" variant="outline" size="icon">
                     <Heart className="h-5 w-5" />
                   </Button>

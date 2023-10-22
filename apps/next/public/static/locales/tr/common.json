@@ -67,7 +67,8 @@
     "signup": "Üye Ol",
     "dashboard": "Kontrol Paneli",
     "settings": "Ayarlar",
-    "logout": "Çıkış yap"
+    "logout": "Çıkış yap",
+    "get_started": "Haydi Başlayın"
   },
   "hero": {
     "badge": "Yeni çeviri uzantımızı deneyin!",
@@ -256,7 +257,7 @@
     }
   },
   "public": {
-    "rating_title": "Bu sözlüğü nasıl değerlendirirsiniz?"
+    "rating_title": "Sözlüğü Değerlendir"
   },
   "dashboard": {
     "statistics": {

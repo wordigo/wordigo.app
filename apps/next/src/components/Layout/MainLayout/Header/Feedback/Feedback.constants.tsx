@@ -1,11 +1,3 @@
-import {
-  Angry,
-  Frown,
-  Laugh,
-  Smile,
-  SmilePlus,
-  type LucideIcon,
-} from "lucide-react";
 import { useTranslation } from "next-i18next";
 
 export interface IFeedbackType {

@@ -61,6 +61,4 @@ function NewHeroSection() {
   );
 }
 
-// min - w - [35rem] h - [25rem] lg: w - [40rem] lg: mt - 12 lg: h - [28rem] md: w - [30rem] md: h - [24rem] max - md: w - [343px] max - md: h - [380px] max - lg: mt - 12 relative
-
 export default NewHeroSection;

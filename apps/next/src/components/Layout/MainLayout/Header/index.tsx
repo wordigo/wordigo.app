@@ -58,23 +58,19 @@ export default function HomeHeader({ className }: { className?: string }) {
                 <NavProfile />
               </Fragment>
             ) : (
-              <span>
-                <Link
-                  href="/auth/signin"
-                  className={cn(
-                    "bg-transparent mr-4",
-                    buttonVariants({ variant: "outline" })
-                  )}
-                >
-                  {t("navbar.signin")}
-                </Link>
+              <div className="flex gap-y-6 gap-x-3 items-center">
+                <ThemeMode showLabel={false} className="!h-9 !px-4 !py-2" />
+                <ChangeLanguage className="!h-9 px-2 !py-2" />
+                <div className="w-[1px] !h-9 bg-gray-200 dark:bg-gray-800"></div>
                 <Link
                   href="/auth/signup"
-                  className={cn(buttonVariants({ variant: "default" }))}
+                  className={cn(
+                    buttonVariants({ variant: "default", className: "!h-9" })
+                  )}
                 >
-                  {t("navbar.signup")}
+                  {t("navbar.get_started")}
                 </Link>
-              </span>
+              </div>
             )}
           </div>
           <Button

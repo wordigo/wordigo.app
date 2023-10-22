@@ -5,10 +5,17 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@wordigo/ui";
+import { cn } from "@wordigo/ui/lib/utils";
 import { LaptopIcon, MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 
-export default function ThemeMode() {
+export default function ThemeMode({
+  className,
+  showLabel = true,
+}: {
+  className?: string;
+  showLabel?: boolean;
+}) {
   const { setTheme, resolvedTheme } = useTheme();
 
   const getThemeLabel = () => {
@@ -40,11 +47,15 @@ export default function ThemeMode() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="w-fit px-2 !h-7">
-          <span className="mr-2 text-xs">{getThemeIcon()}</span>
-          <span className="rotate-0  scale-100 transition-all">
-            {getThemeLabel()}
+        <Button variant="outline" className={cn("w-fit px-2 !h-7", className)}>
+          <span className={cn("text-xs", showLabel ? "mr-2" : "")}>
+            {getThemeIcon()}
           </span>
+          {showLabel && (
+            <span className="rotate-0  scale-100 transition-all">
+              {getThemeLabel()}
+            </span>
+          )}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="center" className="min-w-fit text-[12px]">

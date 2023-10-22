@@ -27,7 +27,8 @@
   },
   "libraryDetail": {
     "description": "Learn the meanings of words, listen and share with others.",
-    "no_description": "This dictionary has no description."
+    "no_description": "This dictionary has no description.",
+    "copy_dictionary": "Copy Dictionary"
   },
   "notifications": {
     "success": "Successful",
@@ -63,7 +64,8 @@
     "signup": "Sign Up",
     "dashboard": "Dashboard",
     "settings": "Settings",
-    "logout": "Log out"
+    "logout": "Log out",
+    "get_started": "Get Started"
   },
   "hero": {
     "badge": "Check out our new translate extension!",
@@ -269,7 +271,7 @@
     }
   },
   "public": {
-    "rating_title": "How do you rate these dictionary?"
+    "rating_title": "Rating"
   },
   "buttons": {
     "cancel": "Cancel",
