@@ -11,6 +11,8 @@ import ProfileSlice from "./profile/slice";
 import { publicDictionariesApi } from "./publicDictionaries/api";
 import publicDictionaresSlice from "./publicDictionaries/slice";
 import { configureStore } from "@reduxjs/toolkit";
+import { feedbackApi } from "./feedback/api";
+import FeedbackSlice from "./feedback/slice";
 
 const store = configureStore({
   reducer: {
@@ -20,11 +22,13 @@ const store = configureStore({
     common: CommonSlice,
     profile: ProfileSlice,
     publicDictionaries: publicDictionaresSlice,
+    feedback: FeedbackSlice,
     [authApi.reducerPath]: authApi.reducer,
     [publicDictionariesApi.reducerPath]: publicDictionariesApi.reducer,
     [dictionaryApi.reducerPath]: dictionaryApi.reducer,
     [dictionaryWordApi.reducerPath]: dictionaryWordApi.reducer,
     [profileApi.reducerPath]: profileApi.reducer,
+    [feedbackApi.reducerPath]: feedbackApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }).concat([
@@ -33,6 +37,7 @@ const store = configureStore({
       dictionaryWordApi.middleware,
       profileApi.middleware,
       publicDictionariesApi.middleware,
+      feedbackApi.middleware,
     ]),
 });
 
