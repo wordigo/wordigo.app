@@ -34,11 +34,11 @@ export default function ThemeMode({
   const getThemeIcon = () => {
     switch (resolvedTheme) {
       case "dark":
-        return <MoonIcon className="h-3 w-3" />;
+        return <MoonIcon size={14} />;
       case "light":
-        return <SunIcon className="h-3 w-3" />;
+        return <SunIcon size={14} />;
       case "system":
-        return <LaptopIcon className="h-3 w-3" />;
+        return <LaptopIcon size={14} />;
       default:
         return null;
     }

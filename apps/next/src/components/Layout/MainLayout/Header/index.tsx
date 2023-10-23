@@ -59,8 +59,8 @@ export default function HomeHeader({ className }: { className?: string }) {
               </Fragment>
             ) : (
               <div className="flex gap-y-6 gap-x-3 items-center">
-                <ThemeMode showLabel={false} className="!h-9 !px-4 !py-2" />
-                <ChangeLanguage className="!h-9 px-2 !py-2" />
+                <ThemeMode showLabel={false} className="!h-9 !px-3 !py-2" />
+                <ChangeLanguage className="!h-9 !px-3 !py-2" />
                 <div className="w-[1px] !h-9 bg-gray-200 dark:bg-gray-800"></div>
                 <Link
                   href="/auth/signup"
