@@ -12,6 +12,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
+  toast,
 } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 import { useTranslation } from "next-i18next";
@@ -23,17 +24,31 @@ const Feedback = () => {
   const [active, setActive] = useState();
   const feedbacks = useFeedbacksConstants();
   const [inputValue, setInputValue] = useState<string>("");
+  const [calendarOpen, setCalendarOpen] = useState(false);
   const [FeedBack, { status, isLoading, data }] = usePostFeedBackMutation();
 
   const handleSubmitFeedback = () => {
     void FeedBack({
       description: inputValue,
       rate: active,
-    });
+    })
+      .then(() => {
+        toast({
+          title: t("notifications.success"),
+          description: t("feedback.success"),
+        });
+        setCalendarOpen(false);
+      })
+      .catch(() => {
+        toast({
+          title: t("notifications.error"),
+          description: t("feedback.error"),
+        });
+      });
   };
 
   return (
-    <Popover>
+    <Popover open={calendarOpen} onOpenChange={setCalendarOpen}>
       <PopoverTrigger asChild>
         <Button variant="outline">{t("feedback.title")}</Button>
       </PopoverTrigger>

@@ -36,7 +36,9 @@
   "feedback": {
     "title": "Geri Bildirim",
     "placeholder": "Lütfen geri bildiriminizi giriniz.",
-    "submit": "Gönder"
+    "submit": "Gönder",
+    "success": "Geri bildiriminiz başarıyla gönderildi. Teşekkür ederiz.",
+    "error": "Geri bildiriminiz gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyiniz."
   },
   "notifications": {
     "success": "Başarılı",

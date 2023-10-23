@@ -51,7 +51,9 @@
   "feedback": {
     "title": "Feedback",
     "placeholder": "Write your problem.",
-    "submit": "Submit"
+    "submit": "Submit",
+    "success": "Your feedback has been successfully sent.",
+    "error": "An error occurred while sending your feedback."
   },
   "navbar": {
     "home": "Home",
