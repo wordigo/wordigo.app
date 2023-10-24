@@ -19,34 +19,32 @@ const PublishedItem = (item: IDictionary) => {
       }}
       as={`/library/${item.slug}`}
       key={item.id}
-      className="max-md:min-w-[325px] max-md:max-w-[405px] max-w-[405px]"
+      className="w-full sm:w-[calc(50%-12px)] md:w-[calc(50%-16px)] lg:w-[calc(33%-18.5px)] max-w-sm sm:max-w-none"
     >
-      <div className="flex w-full flex-col justify-between h-full">
-        <div>
-          <div className="w-full h-60 relative">
-            <Image
-              alt=""
-              src={item.image || "/images/dictionary_banner.jpg"}
-              fill
-              className="rounded-2xl"
-            />
-          </div>
-          <span className="py-1 inline-flex items-center pl-1 pr-2.5 rounded-[0.625rem] text-xs mt-6 font-medium border">
-            <span className="px-1.5 inline-flex items-center py-0.5 rounded-md border mr-2">
-              <Star fill="currentColor" className="h-3 w-3 mr-1" />
-              {item.rate}
-            </span>
-            {item.numberOfWords} {t("general.words")}
-          </span>
-          <h3 className="text-2xl font-semibold mt-4">{item.title}</h3>
-          <h4 className="text-base text-muted-foreground mt-2">
-            {item.description}
-          </h4>
+      <div className="w-full h-full flex flex-col gap-4 sm:gap-5 md:gap-6 justify-between rounded-2xl">
+        <div className="relative h-60">
+          <Image
+            alt=""
+            src={item.image || "/images/dictionary_banner.jpg"}
+            fill
+            className="rounded-2xl object-cover"
+          />
         </div>
-        <span className="flex items-center mt-6">
-          <Avatar className="relative h-10 w-10 mr-3 md:h-12 md:w-12">
+
+        <div className="py-1 w-fit flex items-center pl-1 pr-2.5 rounded-[0.625rem] text-xs font-medium border">
+          <span className="px-1.5 inline-flex items-center py-0.5 rounded-md border mr-2">
+            <Star fill="currentColor" className="h-3 w-3 mr-1" />
+            {item.rate}
+          </span>
+          {item.numberOfWords} {t("general.words")}
+        </div>
+
+        <h3 className="text-2xl font-semibold">{item.title}</h3>
+
+        <span className="flex items-center">
+          <Avatar className="relative mr-3 h-10 md:h-12 w-10 md:w-12">
             <AvatarImage
-              className="w-10 h-10 md:h-12 md:w-12"
+              className="w-10 md:w-12 h-10 md:h-12"
               src={item.author.avatar_url}
               alt={"@" + item.author.name}
             />
