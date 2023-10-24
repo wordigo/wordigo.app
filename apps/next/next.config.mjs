@@ -1,11 +1,9 @@
+/* eslint-disable @typescript-eslint/require-await */
 import i18n from "./next-i18next.config.js";
 
 /** @type {import("next").NextConfig} */
 // @ts-ignore
 const config = {
-  experimental: {
-    appDir: false,
-  },
   reactStrictMode: false,
   /** Enables hot reloading for local packages without a build step */
   transpilePackages: ["@wordigo/ui", "@wordigo/api", "@wordigo/db"],

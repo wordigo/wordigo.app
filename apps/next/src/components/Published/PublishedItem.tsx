@@ -1,8 +1,8 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@wordigo/ui";
+import { Avatar, AvatarFallback, AvatarImage, Skeleton } from "@wordigo/ui";
 import { Star } from "lucide-react";
 import { useTranslation } from "next-i18next";
-import Image from "next/image";
 import Link from "next/link";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { type IDictionary } from "types/global";
 
 const PublishedItem = (item: IDictionary) => {
@@ -23,11 +23,12 @@ const PublishedItem = (item: IDictionary) => {
     >
       <div className="w-full h-full flex flex-col gap-4 sm:gap-5 md:gap-6 justify-between rounded-2xl">
         <div className="relative h-60">
-          <Image
-            alt=""
-            src={item.image || "/images/dictionary_banner.jpg"}
-            fill
+          <LazyLoadImage
+            alt={item.title}
+            src={item.image}
+            effect="blur"
             className="rounded-2xl object-cover"
+            placeholder={<Skeleton className="w-full h-60" />}
           />
         </div>
 

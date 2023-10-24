@@ -34,7 +34,6 @@ const Published = () => {
           {t("public_dictionaries.description")}
         </p>
       </div>
-
       <PublishedFilter
         isAccordionShow={isAccordionShow}
         setIsAccordionShow={setIsAccordionShow}
@@ -45,7 +44,9 @@ const Published = () => {
         <main
           className={cn(
             "mt-6 sm:mt-8 flex flex-wrap justify-center sm:justify-start gap-x-4 sm:gap-x-6 md:gap-x-8 gap-y-12 sm:gap-y-14 md:gap-y-16 transition-transform duration-300",
-            isAccordionShow ? "translate-y-[221px] sm:translate-y-[82px]" : "sm:translate-y-0"
+            isAccordionShow
+              ? "translate-y-[221px] sm:translate-y-[82px]"
+              : "sm:translate-y-0"
           )}
         >
           {dictionariesLoading ? (

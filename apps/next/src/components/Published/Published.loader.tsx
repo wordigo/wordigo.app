@@ -5,7 +5,10 @@ const PublishedLoader = () => {
   return (
     <Fragment>
       {new Array(6).fill(0).map((_, index) => (
-        <div className="w-full sm:w-[calc(50%-12px)] md:w-[calc(50%-16px)] lg:w-[calc(33%-18.5px)] max-w-sm sm:max-w-none" key={index}>
+        <div
+          className="w-full sm:w-[calc(50%-12px)] md:w-[calc(50%-16px)] lg:w-[calc(33%-18.5px)] max-w-sm sm:max-w-none"
+          key={index}
+        >
           <Skeleton className="w-full h-60" />
           <div className="mt-4 flex flex-col gap-y-2">
             <Skeleton className="w-full h-7 rounded-sm" />

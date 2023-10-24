@@ -1,6 +1,7 @@
 import useFeedbacksConstants, {
   type IFeedbackType,
 } from "./Feedback.constants";
+import CButton from "@/components/UI/Button";
 import { usePostFeedBackMutation } from "@/store/feedback/api";
 import {
   Button,
@@ -24,8 +25,8 @@ const Feedback = () => {
   const [active, setActive] = useState();
   const feedbacks = useFeedbacksConstants();
   const [inputValue, setInputValue] = useState<string>("");
-  const [calendarOpen, setCalendarOpen] = useState(false);
-  const [FeedBack, { status, isLoading, data }] = usePostFeedBackMutation();
+  const [isFeedbackShow, setFeedbackShow] = useState(false);
+  const [FeedBack, { isLoading }] = usePostFeedBackMutation();
 
   const handleSubmitFeedback = () => {
     void FeedBack({
@@ -37,7 +38,7 @@ const Feedback = () => {
           title: t("notifications.success"),
           description: t("feedback.success"),
         });
-        setCalendarOpen(false);
+        setFeedbackShow(false);
       })
       .catch(() => {
         toast({
@@ -48,7 +49,7 @@ const Feedback = () => {
   };
 
   return (
-    <Popover open={calendarOpen} onOpenChange={setCalendarOpen}>
+    <Popover open={isFeedbackShow} onOpenChange={setFeedbackShow}>
       <PopoverTrigger asChild>
         <Button variant="outline">{t("feedback.title")}</Button>
       </PopoverTrigger>
@@ -74,9 +75,9 @@ const Feedback = () => {
               />
             ))}
           </div>
-          <Button onClick={() => handleSubmitFeedback()}>
+          <CButton loading={isLoading} onClick={handleSubmitFeedback}>
             {t("feedback.submit")}
-          </Button>
+          </CButton>
         </div>
       </PopoverContent>
     </Popover>

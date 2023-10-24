@@ -23,7 +23,9 @@
     "rating": "Değerlendirme",
     "level": "Seviye",
     "published": "Yayınlandı",
-    "pick_date": "Tarih Seç"
+    "pick_date": "Tarih Seç",
+    "filter": "Filtrele",
+    "all_levels": "Tümü"
   },
   "privacy_policy": {
     "title": "Gizlilik Politikası"

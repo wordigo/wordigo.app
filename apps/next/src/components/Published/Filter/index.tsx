@@ -21,9 +21,9 @@ import { type DateRange } from "react-day-picker";
 import { useDebounce, useWindowSize } from "usehooks-ts";
 
 const PublishedFilter = ({ isAccordionShow, setIsAccordionShow }: any) => {
-  const [level, setLevel] = useState<string>();
   const { t } = useTranslation();
 
+  const [level, setLevel] = useState<string>("0");
   const [searchValue, setSearchValue] = useState<string>();
   const debouncedSearchValue = useDebounce(searchValue, 300);
 
@@ -49,9 +49,9 @@ const PublishedFilter = ({ isAccordionShow, setIsAccordionShow }: any) => {
   }));
 
   const handleClearFilters = () => {
-    setLevel(undefined);
+    setLevel("0");
     setDate(undefined);
-    setSearchValue(undefined);
+    setSearchValue("");
   };
 
   const { width } = useWindowSize();
@@ -61,8 +61,8 @@ const PublishedFilter = ({ isAccordionShow, setIsAccordionShow }: any) => {
   };
 
   return (
-    <main className="relative mx-auto sm:mx-0 w-full max-w-sm sm:max-w-none flex md:flex-col lg:flex-row items-end lg:justify-between gap-4">
-      <section className="w-full lg:max-w-[250px]">
+    <main className="relative mx-auto sm:mx-0 w-full max-w-sm sm:max-w-none flex md:flex-col lg:flex-row items-end lg:justify-between gap-4 mb-4">
+      <section className="w-full lg:max-w-[250px] md:mb-1">
         <Label htmlFor="search">{t("public_dictionaries.search")}</Label>
         <Input
           value={searchValue}
@@ -85,10 +85,12 @@ const PublishedFilter = ({ isAccordionShow, setIsAccordionShow }: any) => {
               onClick={handleAccordion}
               className="w-10 sm:w-auto sm:px-3.5 h-10 border rounded-md md:hidden flex items-center justify-center gap-3"
             >
-              <div className="hidden sm:block mb-0.5">Filter</div>
+              <div className="hidden sm:block mb-0.5">
+                {t("general.filter")}
+              </div>
             </AccordionTrigger>
             <AccordionContent>
-              <section className="absolute md:static left-0 z-10 bg-background mt-4 md:mt-0 w-full flex flex-col sm:flex-row sm:items-end lg:justify-end gap-4">
+              <section className="absolute md:static left-0 z-50 bg-background mt-4 md:mb-1 md:mt-0 w-full flex flex-col sm:flex-row sm:items-end lg:justify-end gap-4">
                 <div className="w-full lg:max-w-[250px] flex flex-col gap-2">
                   <Label htmlFor="category">
                     {t("public_dictionaries.date")}
@@ -102,7 +104,7 @@ const PublishedFilter = ({ isAccordionShow, setIsAccordionShow }: any) => {
                   </Label>
                   <Select
                     value={level}
-                    onValueChange={(value) => setLevel(value)}
+                    onValueChange={(value) => setLevel(value.toString())}
                   >
                     <SelectTrigger
                       id="level"
@@ -111,11 +113,14 @@ const PublishedFilter = ({ isAccordionShow, setIsAccordionShow }: any) => {
                       <SelectValue placeholder="Level" />
                     </SelectTrigger>
                     <SelectContent>
+                      <SelectItem key={0} className="text-left" value={"0"}>
+                        {t("general.all_levels")}
+                      </SelectItem>
                       {computedLevels.map(({ label, value }) => (
                         <SelectItem
                           key={value}
                           className="text-left"
-                          value={value}
+                          value={value.toString()}
                         >
                           {label}
                         </SelectItem>

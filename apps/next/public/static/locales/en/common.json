@@ -23,7 +23,9 @@
     "rating": "Rating",
     "level": "Level",
     "published": "Published",
-    "pick_date": "Pick a date"
+    "pick_date": "Pick a date",
+    "filter": "Filter",
+    "all_levels": "All Levels"
   },
   "libraryDetail": {
     "description": "Learn the meanings of words, listen and share with others.",
