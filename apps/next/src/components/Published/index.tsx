@@ -4,9 +4,10 @@ import PublishedItem from "./PublishedItem";
 import NoDataAnimation from "@/animations/no_data.json";
 import { useGetPublicDictionariesMutation } from "@/store/publicDictionaries/api";
 import { useAppSelector } from "@/utils/hooks";
+import { cn } from "@wordigo/ui/lib/utils";
 import Lottie from "lottie-react";
 import { useTranslation } from "next-i18next";
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 const Published = () => {
   const { t } = useTranslation();
@@ -20,19 +21,33 @@ const Published = () => {
     void handleGetPublicDictionaries({ page: 1, size: 10 });
   }, []);
 
+  const [isAccordionShow, setIsAccordionShow] = useState(false);
+
   return (
-    <section className="flex flex-col w-full py-24 max-xl:py-16 px-20 max-md:px-4">
-      <h1 className="text-5xl font-semibold text-center max-xl:text-4xl max-md:text-2xl">
-        {t("public_dictionaries.title")}
-      </h1>
-      <p className="text-xl mt-6 text-muted-foreground text-center max-xl:text-lg max-xl:mt-4 max-md:text-base">
-        {t("public_dictionaries.description")}
-      </p>
-      <PublishedFilter />
+    <section className="py-16 sm:py-20 md:py-24 px-20 max-md:px-4 w-full">
+      <div className="mb-14 sm:mb-16 md:mb-20 lg:mb-24 text-center max-w-sm sm:max-w-none mx-auto sm:mx-0">
+        <h1 className="text-5xl font-semibold max-xl:text-4xl max-md:text-2xl">
+          {t("public_dictionaries.title")}
+        </h1>
+
+        <p className="text-xl mt-6 text-muted-foreground max-xl:text-lg max-xl:mt-4 max-md:text-base">
+          {t("public_dictionaries.description")}
+        </p>
+      </div>
+
+      <PublishedFilter
+        isAccordionShow={isAccordionShow}
+        setIsAccordionShow={setIsAccordionShow}
+      />
       {dictionaries?.data?.length === 0 ? (
         <Published.NotFound />
       ) : (
-        <main className="grid grid-cols-3 gap-x-8 gap-y-16 mt-14 max-xl:mt-10 w-full max-xl:justify-center max-xl:flex max-xl:flex-wrap max-xl:px-2 max-xl:grid-cols-2">
+        <main
+          className={cn(
+            "mt-6 sm:mt-8 flex flex-wrap justify-center sm:justify-start gap-x-4 sm:gap-x-6 md:gap-x-8 gap-y-12 sm:gap-y-14 md:gap-y-16 transition-transform duration-300",
+            isAccordionShow ? "translate-y-[221px] sm:translate-y-[82px]" : "sm:translate-y-0"
+          )}
+        >
           {dictionariesLoading ? (
             <PublishedLoader />
           ) : (
