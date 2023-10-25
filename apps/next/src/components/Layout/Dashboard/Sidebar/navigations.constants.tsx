@@ -63,12 +63,12 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
     {
       title: t("navbar.dashboard"),
       href: "/dashboard",
-      icon: <LayoutDashboard className="text-2xl" />,
+      icon: <LayoutDashboard size={16} />,
     },
     {
       title: t("navbar.dictionaries"),
       href: "/dashboard/dictionaries",
-      icon: <BookMarked className="text-2xl flex" />,
+      icon: <BookMarked size={16} />,
       child: {
         trigger: (
           <Button
@@ -93,7 +93,7 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
     {
       title: t("navbar.settings"),
       href: "/dashboard/settings",
-      icon: <Settings className="text-2xl" />,
+      icon: <Settings size={16} />,
       child: {
         trigger: (
           <Button

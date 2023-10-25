@@ -1,12 +1,9 @@
-import { Navbar } from "@/components/Layout/Dashboard/Navbar";
+import Breadcrumb from "./Breadcrumb";
+import HomeHeader from "./HomeHeader";
 import Sidebar from "@/components/Layout/Dashboard/Sidebar/Menu";
 import PageLoader from "@/components/UI/PageLoader";
-import { setToken } from "@/store/auth/slice";
-import { setAcceptLanguage, setAuthToken } from "@/store/baseQuery";
-import { setLanguage } from "@/store/common/slice";
-import { useAppDispatch, useAppSelector } from "@/utils/hooks";
+import { useAppSelector } from "@/utils/hooks";
 import { useSession } from "next-auth/react";
-import { useEffect } from "react";
 
 interface DashboardLayoutProps {
   children?: React.ReactNode;
@@ -19,14 +16,17 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   if (session.status !== "authenticated" || !token) return <PageLoader />;
 
   return (
-    <main className="flex items-center">
-      <div className="md:min-w-[280px] md:max-w-[280px]">
+    <main className="max-w-[90rem] m-auto">
+      <HomeHeader />
+      <div className="m-auto flex px-20">
         <Sidebar />
+        <section className="py-4 px-4 md:py-8 md:px-8 w-full m-auto overflow-auto mt-5">
+          <main className="flex items-center justify-between w-full mb-6">
+            <Breadcrumb />
+          </main>
+          {children}
+        </section>
       </div>
-      <section className="py-4 px-4 md:py-8 md:px-8 max-w-[92rem] w-full m-auto overflow-auto">
-        <Navbar />
-        {children}
-      </section>
     </main>
   );
 }
