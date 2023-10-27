@@ -1,5 +1,5 @@
 import Breadcrumb from "./Breadcrumb";
-import HomeHeader from "./HomeHeader";
+import DashboardHeader from "./DashboardHeader";
 import Sidebar from "@/components/Layout/Dashboard/Sidebar/Menu";
 import PageLoader from "@/components/UI/PageLoader";
 import { useAppSelector } from "@/utils/hooks";
@@ -17,10 +17,10 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
   return (
     <main className="max-w-[90rem] m-auto">
-      <HomeHeader />
-      <div className="m-auto flex px-20">
+      <DashboardHeader />
+      <div className="m-auto flex px-20 max-8xl:px-5 max-[1022px]:px-0">
         <Sidebar />
-        <section className="py-4 px-4 md:py-8 md:px-8 w-full m-auto overflow-auto mt-5">
+        <section className="py-4 px-4 md:py-8 md:px- w-full m-auto overflow-auto mt-5 max-[1022px]:px-5">
           <main className="flex items-center justify-between w-full mb-6">
             <Breadcrumb />
           </main>

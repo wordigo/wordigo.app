@@ -2,6 +2,8 @@ import NavProfile from "../../NavProfile";
 import ThemeMode from "../../ThemeMode";
 import Feedback from "./Feedback";
 import Navigation from "./Navigation";
+import DashboardHeader from "@/components/Layout/Dashboard/DashboardHeader";
+import DashboardNavigation from "@/components/Layout/Dashboard/Sidebar/Navigation";
 import ChangeLanguage from "@/components/Layout/MainLayout/ChangeLanguage";
 import DynamicLogo from "@/components/Logo/DynamicLogo";
 import StaticLogo from "@/components/Logo/StaticLogo";
@@ -32,7 +34,7 @@ export default function HomeHeader({ className }: { className?: string }) {
           className
         )}
       >
-        <nav className="flex items-center justify-between w-full m-auto py-[1.125rem] px-20 max-md:px-4">
+        <nav className="flex items-center justify-between w-full m-auto py-[1.125rem] px-20 max-md:px-4 max-8xl:px-5">
           <div className="flex items-center">
             <Link
               href="/"
@@ -90,7 +92,7 @@ export default function HomeHeader({ className }: { className?: string }) {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="col-span-1 flex flex-col fixed justify-between top-0 right-0 z-50 py-4 text-light_text dark:text-white bg-LightBackground dark:bg-DarkBackground g-red-500 px-5 min-w-[280px] max-w-[280px] border-l shadow-md shadow-[rgba(16, 24, 40, 1)] h-screen lg:hidden"
+            className="col-span-1 flex flex-col fixed justify-between top-0 right-0 z-50 py-4 text-light_text dark:text-white bg-LightBackground dark:bg-DarkBackground g-red-500 px-5 min-w-[280px] max-w-[280px] border-l shadow-md shadow-[rgba(16, 24, 40, 1)] h-screen lg:hidden z-50"
           >
             <span className="flex items-center flex-col w-full mb-8">
               <div className="font-bold text-[18px] flex items-center select-none pt-3 justify-between w-full">
@@ -114,7 +116,7 @@ export default function HomeHeader({ className }: { className?: string }) {
               </div>
 
               <div className="flex w-full md:flex-col py-4">
-                <Navigation variant="borgerMenu" />
+                <DashboardNavigation />
               </div>
             </span>
 
