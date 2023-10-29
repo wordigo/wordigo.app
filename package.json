@@ -10,7 +10,7 @@
     "packages/**/*"
   ],
   "scripts": {
-    "build": "turbo build --filter=...",
+    "build": "turbo build",
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "turbo clean",
     "dev": "turbo dev --filter=...nextjs --parallel --no-cache --continue",

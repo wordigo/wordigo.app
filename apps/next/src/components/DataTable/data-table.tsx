@@ -49,9 +49,14 @@ export function DataTable<TData, TValue>({
   searchableColumns = [],
   advancedFilter = false,
 }: DataTableProps<TData, TValue>) {
+  const [mounted, setMounted] = React.useState(false);
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Search params
   const page = searchParams?.get("page") ?? "1";
@@ -117,8 +122,6 @@ export function DataTable<TData, TValue>({
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
   React.useEffect(() => {
-    console.log("bu ibne çalışıyor");
-
     void router.push(
       `${pathname}?${createQueryString({
         page: pageIndex + 1,
@@ -141,6 +144,29 @@ export function DataTable<TData, TValue>({
     );
   }, [sorting]);
 
+  React.useEffect(() => {
+    const test: ColumnFiltersState = [];
+    for (const key of searchParams.keys()) {
+      console.log("key", key);
+
+      console.log("filterableColumnFilters", searchableColumns);
+
+      if (searchableColumns.find((column) => column.id === key)) {
+        console.log("key v2", key);
+
+        test.push({
+          id: key,
+          value: searchParams.get(key),
+        });
+      }
+    }
+    // setColumnFilters(test);
+  }, []);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // Handle server-side filtering
   const debouncedSearchableColumnFilters = JSON.parse(
     useDebounce(
@@ -158,8 +184,7 @@ export function DataTable<TData, TValue>({
   });
 
   React.useEffect(() => {
-    console.log("v2");
-
+    if (!mounted) return; // mounted false ise bu hook'tan çık.
     for (const column of debouncedSearchableColumnFilters) {
       if (typeof column.value === "string") {
         void router.push(
@@ -189,37 +214,6 @@ export function DataTable<TData, TValue>({
     //   }
     // }
   }, [JSON.stringify(debouncedSearchableColumnFilters)]);
-
-  React.useEffect(() => {
-    for (const column of filterableColumnFilters) {
-      if (typeof column.value === "object" && Array.isArray(column.value)) {
-        void router.push(
-          `${pathname}?${createQueryString({
-            page: 1,
-            [column.id]: column.value.join("."),
-          })}`,
-          undefined,
-          { shallow: true }
-        );
-      }
-    }
-
-    for (const key of searchParams.keys()) {
-      if (
-        filterableColumns.find((column) => column.id === key) &&
-        !filterableColumnFilters.find((column) => column.id === key)
-      ) {
-        void router.push(
-          `${pathname}?${createQueryString({
-            page: 1,
-            [key]: null,
-          })}`,
-          undefined,
-          { shallow: true }
-        );
-      }
-    }
-  }, [JSON.stringify(filterableColumnFilters)]);
 
   const table = useReactTable({
     data,

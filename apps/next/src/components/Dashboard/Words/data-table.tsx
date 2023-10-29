@@ -2,10 +2,6 @@ import { DataTablePagination } from "./data-table-pagination";
 import { DataTableToolbar } from "./data-table-toolbar";
 import TableColumLoader from "./table.loader";
 import {
-  type ColumnDef,
-  type ColumnFiltersState,
-  type SortingState,
-  type VisibilityState,
   flexRender,
   getCoreRowModel,
   getFacetedRowModel,
@@ -14,12 +10,16 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
+  type ColumnDef,
+  type ColumnFiltersState,
+  type SortingState,
+  type VisibilityState,
 } from "@tanstack/react-table";
 import {
   Table,
   TableBody,
   TableCell,
-  TableHeadWord,
+  TableHead,
   TableHeader,
   TableRow,
 } from "@wordigo/ui";
@@ -79,7 +79,7 @@ export function DataTable<TData, TValue>({
                 <TableRow key={headerGroup.id}>
                   {headerGroup.headers.map((header) => {
                     return (
-                      <TableHeadWord
+                      <TableHead
                         key={header.id}
                         className={header.id === "select" && "!pl-4 text-start"}
                       >
@@ -89,7 +89,7 @@ export function DataTable<TData, TValue>({
                               header.column.columnDef.header,
                               header.getContext()
                             )}
-                      </TableHeadWord>
+                      </TableHead>
                     );
                   })}
                 </TableRow>

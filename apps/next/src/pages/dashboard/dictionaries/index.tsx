@@ -15,7 +15,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 }
 
 const DictionariesPage = () => {
-  const [getDictionaries, { isLoading }] = useGetDictionariesMutation();
+  const [getDictionaries] = useGetDictionariesMutation();
   const userDictionaries =
     useAppSelector((state) => state.dictionary.dictionaries) || [];
 
