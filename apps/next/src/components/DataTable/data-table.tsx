@@ -23,7 +23,8 @@ import {
   TableHeader,
   TableRow,
 } from "@wordigo/ui";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 import * as React from "react";
 import {
   type DataTableFilterableColumn,
@@ -60,8 +61,8 @@ export function DataTable<TData, TValue>({
   const per_page = searchParams?.get("per_page") ?? "10";
   const perPageAsNumber = Number(per_page);
   const fallbackPerPage = isNaN(perPageAsNumber) ? 10 : perPageAsNumber;
-  const sort = searchParams?.get("sort");
-  const [column, order] = sort?.split(".") ?? [];
+  // const sort = searchParams?.get("sort");
+  // const [column, order] = sort?.split(".") ?? [];
 
   // Create query string
   const createQueryString = React.useCallback(
@@ -105,42 +106,40 @@ export function DataTable<TData, TValue>({
   );
 
   React.useEffect(() => {
+    console.log("bu napıyor");
+
     setPagination({
       pageIndex: fallbackPage - 1,
       pageSize: fallbackPerPage,
     });
   }, [fallbackPage, fallbackPerPage]);
 
-  // React.useEffect(() => {
-  //   router.push(
-  //     `${pathname}?${createQueryString({
-  //       page: pageIndex + 1,
-  //       per_page: pageSize,
-  //     })}`,
-  //     {
-  //       scroll: false,
-  //     }
-  //   );
-  // }, [pageIndex, pageSize]);
+  const [sorting, setSorting] = React.useState<SortingState>([]);
 
-  // Handle server-side sorting
-  const [sorting, setSorting] = React.useState<SortingState>([
-    {
-      id: column ?? "",
-      desc: order === "desc",
-    },
-  ]);
+  React.useEffect(() => {
+    console.log("bu ibne çalışıyor");
 
-  // React.useEffect(() => {
-  //   router.push(
-  //     `${pathname}?${createQueryString({
-  //       page,
-  //       sort: sorting[0]?.id
-  //         ? `${sorting[0]?.id}.${sorting[0]?.desc ? "desc" : "asc"}`
-  //         : null,
-  //     })}`
-  //   );
-  // }, [sorting]);
+    void router.push(
+      `${pathname}?${createQueryString({
+        page: pageIndex + 1,
+        per_page: pageSize,
+      })}`,
+      undefined,
+      { shallow: true }
+    );
+  }, [pageIndex, pageSize]);
+
+  React.useEffect(() => {
+    console.log("bu ibne");
+
+    void router.push(
+      `${pathname}?${createQueryString({
+        page,
+      })}`,
+      undefined,
+      { shallow: true }
+    );
+  }, [sorting]);
 
   // Handle server-side filtering
   const debouncedSearchableColumnFilters = JSON.parse(
@@ -159,40 +158,48 @@ export function DataTable<TData, TValue>({
   });
 
   React.useEffect(() => {
+    console.log("v2");
+
     for (const column of debouncedSearchableColumnFilters) {
       if (typeof column.value === "string") {
-        router.push(
+        void router.push(
           `${pathname}?${createQueryString({
             page: 1,
             [column.id]: typeof column.value === "string" ? column.value : null,
-          })}`
+          })}`,
+          undefined,
+          { shallow: true }
         );
       }
     }
 
-    for (const key of searchParams.keys()) {
-      if (
-        searchableColumns.find((column) => column.id === key) &&
-        !debouncedSearchableColumnFilters.find((column) => column.id === key)
-      ) {
-        router.push(
-          `${pathname}?${createQueryString({
-            page: 1,
-            [key]: null,
-          })}`
-        );
-      }
-    }
+    // for (const key of searchParams.keys()) {
+    //   if (
+    //     searchableColumns.find((column) => column.id === key) &&
+    //     !debouncedSearchableColumnFilters.find((column) => column.id === key)
+    //   ) {
+    //     void router.push(
+    //       `${pathname}?${createQueryString({
+    //         page: 1,
+    //         [key]: null,
+    //       })}`,
+    //       undefined,
+    //       { shallow: true }
+    //     );
+    //   }
+    // }
   }, [JSON.stringify(debouncedSearchableColumnFilters)]);
 
   React.useEffect(() => {
     for (const column of filterableColumnFilters) {
       if (typeof column.value === "object" && Array.isArray(column.value)) {
-        router.push(
+        void router.push(
           `${pathname}?${createQueryString({
             page: 1,
             [column.id]: column.value.join("."),
-          })}`
+          })}`,
+          undefined,
+          { shallow: true }
         );
       }
     }
@@ -202,11 +209,13 @@ export function DataTable<TData, TValue>({
         filterableColumns.find((column) => column.id === key) &&
         !filterableColumnFilters.find((column) => column.id === key)
       ) {
-        router.push(
+        void router.push(
           `${pathname}?${createQueryString({
             page: 1,
             [key]: null,
-          })}`
+          })}`,
+          undefined,
+          { shallow: true }
         );
       }
     }
