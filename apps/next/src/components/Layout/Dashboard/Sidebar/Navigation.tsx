@@ -1,14 +1,16 @@
-import { Fragment } from "react";
+import NavProfile from "../../NavProfile";
+import useSidebarNavigations, {
+  type SidebarChildNav,
+  type SidebarNavItem,
+} from "./navigations.constants";
+import { Skeleton } from "@wordigo/ui";
+import { cn } from "@wordigo/ui/lib/utils";
+import { AnimatePresence } from "framer-motion";
+import { CircleDot } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
-import { AnimatePresence } from "framer-motion";
-import { CircleDot } from "lucide-react";
-import { Skeleton } from "@wordigo/ui";
-import { cn } from "@wordigo/ui/lib/utils";
-
-import NavProfile from "../../NavProfile";
-import useSidebarNavigations, { type SidebarChildNav, type SidebarNavItem } from "./navigations.constants";
+import { Fragment } from "react";
 
 const DashboardNav = () => {
   const navigations = useSidebarNavigations();
@@ -33,17 +35,19 @@ DashboardNav.Item = (item: SidebarNavItem, index: number) => {
 
   const classes = cn(
     "flex flex-col hover:text-accent-foreground rounded-[6px] font-medium group relative mb-1 hover:bg-[#F8FAFC] dark:hover:bg-[#101929]",
-    path === item.href ? "text-accent-foreground bg-[#F8FAFC] dark:bg-[#101929]" : "transparent",
-    item.disabled && "cursor-not-allowed opacity-80",
+    path === item.href
+      ? "text-accent-foreground bg-[#F1F5F9] dark:bg-[#101929]"
+      : "transparent",
+    item.disabled && "cursor-not-allowed opacity-80"
   );
 
   return (
     <div className={classes} key={index}>
-      <Link href={item.href} className="flex items-center p-3">
+      <Link href={item.href} className="flex items-center px-3 py-2">
         <span className="flex items-center w-full">
           <div className="flex items-center">
-            {item.icon}
-            <span className="ml-3 hidden md:block">{item.title}</span>
+            <div>{item.icon}</div>
+            <span className="ml-2 hidden md:block">{item.title}</span>
           </div>
         </span>
       </Link>
@@ -55,20 +59,27 @@ DashboardNav.Item = (item: SidebarNavItem, index: number) => {
 DashboardNav.ChildItem = ({ navs, trigger, loading }: SidebarChildNav) => {
   return (
     <Fragment>
-      <div tabIndex={50} className="text-sm z-50 hidden md:flex absolute font-medium right-3 top-3 items-center justify-center">
+      <div
+        tabIndex={50}
+        className="text-sm z-50 hidden md:flex absolute font-medium right-3 top-2 items-center justify-center"
+      >
         {trigger}
       </div>
       {!loading && (
         <div className="flex md:flex-col">
           {navs?.map((item, index) => (
             <Link
-              href={item.value ? "/dashboard/dictionaries/" + item.value : item.href}
+              href={
+                item.value ? "/dashboard/dictionaries/" + item.value : item.href
+              }
               key={index}
               className="flex items-center hover:bg-accent px-3 mx-3 rounded-md mb-2"
             >
               <CircleDot size="12" />
               <span className={cn("flex items-center px-3 text-sm w-full")}>
-                <span className="flex justify-between w-full items-center px-1 py-1 rounded-sm">{item.name}</span>
+                <span className="flex justify-between w-full items-center px-1 py-1 rounded-sm">
+                  {item.name}
+                </span>
               </span>
             </Link>
           ))}

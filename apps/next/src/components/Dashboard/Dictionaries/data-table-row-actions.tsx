@@ -55,7 +55,7 @@ export function DataTableRowActions<TData extends object>({
   }, [status]);
 
   return (
-    <div className="w-full relative z-50">
+    <div className="w-full relative z-10">
       {row.original.title !== "initial" && (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
