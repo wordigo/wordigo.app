@@ -34,12 +34,12 @@ export default function HomeHeader({ className }: { className?: string }) {
           className
         )}
       >
-        <nav className="flex items-center justify-between w-full m-auto py-[1.125rem] max-md:px-4 max-8xl:px-5">
+        <nav className="flex items-center justify-between w-full m-auto py-[0.8rem] max-md:px-4 max-8xl:px-5">
           <div className="flex items-center">
             <Link
               href="/"
               className={cn(
-                "flex items-center mr-6 justify-center",
+                "flex items-center mr-12 justify-center",
                 !toggleMenu && "hidden"
               )}
             >
