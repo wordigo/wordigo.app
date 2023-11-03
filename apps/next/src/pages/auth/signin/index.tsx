@@ -3,7 +3,6 @@ import AuthLayout from "@/components/Auth/Layout/AuthLayout";
 import SocialProviders from "@/components/Auth/SocialProviders";
 import { useToast } from "@wordigo/ui";
 import { type GetServerSidePropsContext } from "next";
-import { getSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { NextSeo } from "next-seo";

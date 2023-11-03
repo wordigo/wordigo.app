@@ -26,10 +26,10 @@ const PublishedItem = (item: IDictionary) => {
         <div className="relative h-60">
           <Image
             alt={item.title}
-            src={item.image}
+            src={item.image || "/images/dictionary_banner.jpg"}
             className="object-cover rounded-lg"
             placeholder="blur"
-            blurDataURL={item.image}
+            blurDataURL={item.image || "/images/dictionary_banner.jpg"}
             fill
           />
         </div>

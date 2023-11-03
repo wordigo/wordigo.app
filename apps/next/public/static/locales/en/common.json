@@ -130,8 +130,8 @@
     "search": "Search"
   },
   "search_no_result": {
-    "title": "Sonuç bulunamadı.",
-    "description": "Aradığınızı bulabilmek için aramanızı veya filtrelerinizi ayarlamayı deneyin."
+    "title": "No results found.",
+    "description": "Try adjusting your search or filters to find what you're looking for."
   },
   "error_404": {
     "title": "Oops, something went wrong.",

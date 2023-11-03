@@ -4,7 +4,6 @@ import {
   type Dictionary,
   type GetDictionaryIdType,
 } from "./type";
-import { type DictionariesValues } from "@/components/Dashboard/Dictionaries.Settings";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { type IResponse } from "types/global";
 
@@ -20,7 +19,10 @@ export const dictionaryApi = createApi({
         method: "GET",
       }),
     }),
-    getDictionaryDetail: builder.mutation<IResponse<Dictionary>, GetDictionaryIdType>({
+    getDictionaryDetail: builder.mutation<
+      IResponse<Dictionary>,
+      GetDictionaryIdType
+    >({
       query: ({ slug }: GetDictionaryIdType) => ({
         url: `/dictionaries/getUserDictionaryBySlug?slug=${slug}`,
         method: "GET",
