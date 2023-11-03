@@ -20,10 +20,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       <DashboardHeader />
       <div className="m-auto flex px-20 max-8xl:px-5 max-[1022px]:px-0">
         <Sidebar />
-        <section className="py-4 px-4 md:py-8 md:px- w-full m-auto overflow-auto mt-5 max-[1022px]:px-5">
-          <main className="flex items-center justify-between w-full mb-6">
-            <Breadcrumb />
-          </main>
+        <section className="py-4 px-4 md:py-8 md:px- w-full m-auto overflow-auto mt-14 max-[1022px]:px-5">
           {children}
         </section>
       </div>
