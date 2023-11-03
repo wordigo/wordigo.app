@@ -16,11 +16,15 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   if (session.status !== "authenticated" || !token) return <PageLoader />;
 
   return (
-    <main className="max-w-[90rem] m-auto">
+    <main>
       <DashboardHeader />
-      <div className="m-auto flex px-20 max-8xl:px-5 max-[1022px]:px-0">
+      <div className="max-w-[90rem] m-auto flex max-8xl:px-5 max-[1022px]:px-0">
         <Sidebar />
-        <section className="py-4 px-4 md:py-8 md:px- w-full m-auto overflow-auto mt-14 max-[1022px]:px-5">
+        <section className="pl-10 md:py-8 w-full m-auto overflow-auto mt-[80px] max-[1022px]:mt-[100px] max-[1022px]:px-5">
+          {children}
+          {children}
+          {children}
+          {children}
           {children}
         </section>
       </div>
