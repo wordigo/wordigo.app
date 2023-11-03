@@ -38,7 +38,6 @@ import { type IDictionary, type IResponse } from "types/global";
 
 const LibraryDetail = ({ dictionary }: { dictionary: IDictionary }) => {
   const { t } = useTranslation();
-  console.log(dictionary);
 
   // const [handleGetPublicDictionary, { data: response, isLoading }] =
   //   useGetPublicDictionaryBySlugMutation();
@@ -80,8 +79,6 @@ const LibraryDetail = ({ dictionary }: { dictionary: IDictionary }) => {
           images: [
             {
               url: dictionary.image || "/images/dictionary_banner.jpg",
-              width: 800,
-              height: 600,
               alt: dictionary.title,
             },
           ],

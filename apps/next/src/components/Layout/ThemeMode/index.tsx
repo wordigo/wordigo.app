@@ -17,9 +17,10 @@ export default function ThemeMode({
   showLabel?: boolean;
 }) {
   const { setTheme, resolvedTheme } = useTheme();
+  const currentTheme = resolvedTheme ?? "light";
 
   const getThemeLabel = () => {
-    switch (resolvedTheme) {
+    switch (currentTheme) {
       case "dark":
         return <p className="text-[12px]">Dark</p>;
       case "light":
@@ -32,7 +33,7 @@ export default function ThemeMode({
   };
 
   const getThemeIcon = () => {
-    switch (resolvedTheme) {
+    switch (currentTheme) {
       case "dark":
         return <MoonIcon size={14} />;
       case "light":
