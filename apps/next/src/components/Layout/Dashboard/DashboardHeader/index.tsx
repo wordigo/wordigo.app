@@ -2,7 +2,6 @@ import NavProfile from "../../NavProfile";
 import ThemeMode from "../../ThemeMode";
 import Feedback from "./Feedback";
 import Navigation from "./Navigation";
-import DashboardHeader from "@/components/Layout/Dashboard/DashboardHeader";
 import DashboardNavigation from "@/components/Layout/Dashboard/Sidebar/Navigation";
 import ChangeLanguage from "@/components/Layout/MainLayout/ChangeLanguage";
 import DynamicLogo from "@/components/Logo/DynamicLogo";

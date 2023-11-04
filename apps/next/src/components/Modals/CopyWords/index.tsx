@@ -1,4 +1,4 @@
-import CreateDictionary from "../CreateDictionaries";
+import CreateDictionary from "../CreateDictionary";
 import {
   useCreateWordMutation,
   useGetDictionaryWordsMutation,
@@ -12,12 +12,12 @@ import {
   DialogTitle,
   DialogTrigger,
   Label,
-  useToast,
-  SelectTrigger,
   Select,
-  SelectValue,
   SelectContent,
   SelectItem,
+  SelectTrigger,
+  SelectValue,
+  useToast,
 } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 import { Table2Icon, X } from "lucide-react";

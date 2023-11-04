@@ -1,17 +1,29 @@
+import { DataTableRowActions } from "./data-table-row-actions";
 import { DataTable } from "@/components/DataTable/data-table";
 import { DataTableColumnHeader } from "@/components/DataTable/data-table-column-header";
+import { Dictionary } from "@/store/dictionaries/type";
 import { type ColumnDef } from "@tanstack/react-table";
-import { Badge } from "@wordigo/ui";
+import {
+  Badge,
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@wordigo/ui";
+import Link from "next/link";
 import * as React from "react";
 import { MdPublic, MdPublicOff } from "react-icons/md";
 import { type IDictionary } from "types/global";
 
-interface TasksTableShellProps {
-  data: any[];
-  pageCount: number;
+interface DictionariesTableShellProps {
+  data: Dictionary[];
+  pageCount?: number;
 }
 
-export function TasksTableShell({ data, pageCount }: TasksTableShellProps) {
+export function DictionariesTableShell({
+  data,
+  pageCount,
+}: DictionariesTableShellProps) {
   // Memoize the columns so they don't re-render on every render
   const columns = React.useMemo<ColumnDef<IDictionary, unknown>[]>(
     () => [
@@ -21,7 +33,14 @@ export function TasksTableShell({ data, pageCount }: TasksTableShellProps) {
           <DataTableColumnHeader column={column} title="ID" />
         ),
         cell: ({ row }) => {
-          return <div className="w-[80px]">{row.getValue("id")}</div>;
+          return (
+            <Link
+              href={`/dashboard/dictionaries/${row.original.slug}`}
+              className="w-[80px] hover:underline"
+            >
+              {row.getValue("id")}
+            </Link>
+          );
         },
         filterFn: (row, id, value) => {
           return row.original.id === value;
@@ -33,7 +52,23 @@ export function TasksTableShell({ data, pageCount }: TasksTableShellProps) {
           <DataTableColumnHeader column={column} title="Title" />
         ),
         cell: ({ row }) => {
-          return <div className="w-[80px]">{row.getValue("title")}</div>;
+          return (
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger
+                  className="w-[150px] line-clamp-1 hover:underline"
+                  asChild
+                >
+                  <Link href={`/dashboard/dictionaries/${row.original.slug}`}>
+                    {row.getValue("title")}
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent side="top">
+                  <p>{row.getValue("title")}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          );
         },
       },
       {
@@ -89,15 +124,19 @@ export function TasksTableShell({ data, pageCount }: TasksTableShellProps) {
           );
         },
       },
+      {
+        id: "actions",
+        cell: ({ row }) => <DataTableRowActions row={row} />,
+      },
     ],
     [data]
   );
 
   return (
-    <DataTable
+    <DataTable<any, Dictionary>
       columns={columns}
       data={data}
-      pageCount={10}
+      pageCount={pageCount || 1}
       // Render notion like filters
       advancedFilter={false}
       // Render dynamic searchable filters

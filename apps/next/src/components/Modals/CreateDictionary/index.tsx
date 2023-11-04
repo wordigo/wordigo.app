@@ -20,7 +20,7 @@ import {
   Input,
   useToast,
 } from "@wordigo/ui";
-import { Table2Icon, X } from "lucide-react";
+import { BookPlusIcon, PlusIcon, X } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -32,7 +32,7 @@ const CreateDictionarySchema = z.object({
 
 type CreateDictionaryValues = z.infer<typeof CreateDictionarySchema>;
 
-export default function CreateDictionary({ label }: { label: string }) {
+export default function CreateDictionary() {
   const [open, setOpen] = useState(false);
   const { toast } = useToast();
   const { t } = useTranslation();
@@ -85,15 +85,17 @@ export default function CreateDictionary({ label }: { label: string }) {
         <Button
           onClick={toggleShow}
           variant="default"
-          className="font-semibold text-sm"
+          size="sm"
+          className="font-normal text-sm"
         >
-          {t(label)}
+          <PlusIcon size={16} className="text-primary-foreground" />
+          {t("dictionaries.add_dictionaries")}
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle className="flex gap-x-2 items-center">
-            <Table2Icon size={18} />
+            <BookPlusIcon size={18} />
             Add Dictionary
           </DialogTitle>
           <button
@@ -131,7 +133,7 @@ export default function CreateDictionary({ label }: { label: string }) {
                 )}
               />
               <DialogFooter>
-                <CButton loading={isLoading} type="submit">
+                <CButton loading={isLoading} size="sm" type="submit">
                   Save Dictionary
                 </CButton>
               </DialogFooter>

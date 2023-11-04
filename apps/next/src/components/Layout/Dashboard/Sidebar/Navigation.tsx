@@ -76,10 +76,12 @@ DashboardNav.ChildItem = ({ navs, trigger, loading }: SidebarChildNav) => {
               className="flex items-center hover:bg-accent px-3 mx-3 rounded-md mb-2"
             >
               <CircleDot size="12" />
-              <span className={cn("flex items-center px-3 text-sm w-full")}>
-                <span className="flex justify-between w-full items-center px-1 py-1 rounded-sm">
-                  {item.name}
-                </span>
+              <span
+                className={cn(
+                  "px-3 text-sm w-full line-clamp-1 py-1 rounded-sm"
+                )}
+              >
+                {item.name}
               </span>
             </Link>
           ))}

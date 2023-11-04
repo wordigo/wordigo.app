@@ -51,7 +51,9 @@ const Feedback = () => {
   return (
     <Popover open={isFeedbackShow} onOpenChange={setFeedbackShow}>
       <PopoverTrigger asChild>
-        <Button variant="outline">{t("feedback.title")}</Button>
+        <Button variant="default" size="sm">
+          {t("feedback.title")}
+        </Button>
       </PopoverTrigger>
       <PopoverContent className="w-80">
         <div className="grid gap-4">

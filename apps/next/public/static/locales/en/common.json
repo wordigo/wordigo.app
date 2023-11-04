@@ -8,6 +8,7 @@
     "signup_title": "Sign Up"
   },
   "general": {
+    "detail": "Detail",
     "new": "New",
     "loading": "Please wait",
     "settings": "Settings",
@@ -152,7 +153,7 @@
     "subscribers": "Subscribers",
     "time": "Created Date",
     "word_count": "Word Count",
-    "add_dictionaries": "Add Dictionaries",
+    "add_dictionaries": "Add Dictionary",
     "image": "Image",
     "public": "Public",
     "open_settings": "Open dictionary settings"

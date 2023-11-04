@@ -1,6 +1,6 @@
 import { useDeleteDicWordMutation } from "@/store/dictionarayWord/api";
 import { useGetDictionariesMutation } from "@/store/dictionaries/api";
-import { type Dictionary } from "@/store/dictionaries/type";
+import { Row } from "@tanstack/react-table";
 import {
   Button,
   DropdownMenu,
@@ -14,15 +14,13 @@ import { MoreHorizontal } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useEffect } from "react";
-import { type Row } from "react-table";
+import { IDictionary } from "types/global";
 
-interface DataTableRowActionsProps<TData extends object> {
-  row: Row<TData & Dictionary>;
+interface DataTableRowActionsProps {
+  row: Row<IDictionary>;
 }
 
-export function DataTableRowActions<TData extends object>({
-  row,
-}: DataTableRowActionsProps<TData>) {
+export function DataTableRowActions({ row }: DataTableRowActionsProps) {
   const { slug } = row.original;
   const { toast } = useToast();
   const { t } = useTranslation();
@@ -69,12 +67,20 @@ export function DataTableRowActions<TData extends object>({
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-[160px] flex flex-col">
             <DropdownMenuItem>
-              <Link href={`dictionaries/${row.original.title}/settings`}>
+              <Link href={`dictionaries/${row.original.slug}`}>
+                {t("general.detail")}
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href={`dictionaries/${row.original.slug}/settings`}>
                 {t("general.settings")}
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={handleDeleteClick}>
+            <DropdownMenuItem
+              className="text-red-500 cursor-pointer"
+              onClick={handleDeleteClick}
+            >
               {t("general.delete")}
             </DropdownMenuItem>
           </DropdownMenuContent>
