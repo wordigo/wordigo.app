@@ -80,9 +80,9 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
             {isLoading ? (
               <RotateCw className="h-3 w-3 animate-spin" />
             ) : showDictionary ? (
-              <ChevronDown size={12} />
+              <ChevronDown size={9} />
             ) : (
-              <ChevronUp size={"12"} />
+              <ChevronUp size={"9"} />
             )}
           </Button>
         ),
@@ -102,11 +102,7 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
             size="icon"
             className="w-fit h-fit p-1"
           >
-            {showSettings ? (
-              <ChevronDown size={12} />
-            ) : (
-              <ChevronUp size={"12"} />
-            )}
+            {showSettings ? <ChevronDown size={9} /> : <ChevronUp size={"9"} />}
           </Button>
         ),
         loading: false,

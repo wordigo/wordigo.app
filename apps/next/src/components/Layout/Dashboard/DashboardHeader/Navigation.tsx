@@ -5,11 +5,11 @@ import Link from "next/link";
 const Navigation = ({ variant }: { variant?: "borgerMenu" }) => {
   const classes = cn(
     "w-full",
-    variant === "borgerMenu" ? "flex-col flex" : "flex items-center gap-3"
+    variant === "borgerMenu" ? "flex-col flex" : "flex items-center gap-6"
   );
 
   return (
-    <ul className="flex items-center font-sm mt-1  w-full">
+    <ul className="flex items-center mt-1 w-full">
       <li className={cn(classes)}>
         <Navigation.Item variant={variant} />
       </li>
@@ -44,7 +44,7 @@ Navigation.Item = ({ variant }: { variant: string }) => {
           passHref
           key={index}
           className={cn(
-            "flex items-center w-full transition-colors text-muted-foreground text-sm hover:text-accent-foreground font-medium group relative",
+            "flex items-center w-full transition-colors text-gray-600 text-sm hover:text-accent-foreground group relative",
             variant === "borgerMenu" &&
               "p-3  rounded-[6px] hover:bg-[#F8FAFC] dark:hover:bg-[#101929] mb-1",
             classes_hover,
