@@ -34,7 +34,7 @@ DashboardNav.Item = (item: SidebarNavItem, index: number) => {
   const router = useRouter();
 
   const classes = cn(
-    "flex flex-col hover:text-accent-foreground rounded-[6px] font-medium group relative mb-1 hover:bg-[#F8FAFC] dark:hover:bg-[#101929]",
+    "flex flex-col hover:text-accent-foreground rounded-[6px] font-medium  group relative mb-1 hover:bg-[#F8FAFC] dark:hover:bg-[#101929]",
     path === item.href
       ? "text-accent-foreground bg-[#F1F5F9] dark:bg-[#101929]"
       : "transparent",
@@ -47,7 +47,7 @@ DashboardNav.Item = (item: SidebarNavItem, index: number) => {
         <span className="flex items-center w-full">
           <div className="flex items-center">
             <div>{item.icon}</div>
-            <span className="ml-2 hidden md:block">{item.title}</span>
+            <p className="ml-2 hidden md:block text-[14px]">{item.title}</p>
           </div>
         </span>
       </Link>
@@ -61,7 +61,7 @@ DashboardNav.ChildItem = ({ navs, trigger, loading }: SidebarChildNav) => {
     <Fragment>
       <div
         tabIndex={50}
-        className="text-sm z-50 hidden md:flex absolute font-medium right-3 top-2 items-center justify-center"
+        className="z-40 hidden md:flex absolute right-3 top-2 items-center justify-center"
       >
         {trigger}
       </div>
