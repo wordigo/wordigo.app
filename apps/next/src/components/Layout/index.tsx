@@ -7,8 +7,7 @@ import { useTranslation } from "next-i18next";
 import Router from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
-import PageLoader from "../UI/PageLoader";
-import { Fragment, useEffect, useState, type PropsWithChildren } from "react";
+import { useEffect, useState, type PropsWithChildren } from "react";
 
 NProgress.configure({
   minimum: 0.3,
@@ -65,5 +64,5 @@ export default function RootLayout({ children }: PropsWithChildren) {
 
   const renderinCond = loading || session.status === "loading" || !mounted;
 
-  return <Fragment>{renderinCond ? <PageLoader /> : children}</Fragment>;
+  return children;
 }

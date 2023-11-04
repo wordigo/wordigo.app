@@ -33,8 +33,14 @@ export const axiosBaseQuery =
     unknown
   > =>
   async ({ url, method, data }) => {
+    const computedBaseURL =
+      baseUrl || process.env.NEXT_PUBLIC_WORDIGO_BACKEND_URL;
     try {
-      const result = await axiosInstance({ url: baseUrl + url, method, data });
+      const result = await axiosInstance({
+        url: computedBaseURL + url,
+        method,
+        data,
+      });
       return { data: result.data };
     } catch (axiosError) {
       const err = axiosError as AxiosError;

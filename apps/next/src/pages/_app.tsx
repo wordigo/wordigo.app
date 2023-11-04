@@ -11,7 +11,6 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { Fragment } from "react";
-import "react-lazy-load-image-component/src/effects/blur.css";
 import { Provider } from "react-redux";
 import "swiper/css";
 import "swiper/css/grid";

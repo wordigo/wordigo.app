@@ -16,6 +16,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
     },
   };
 }
+
 const Dashboard = () => {
   const { t } = useTranslation();
   const [handleGetStatistics, { data: response, isLoading }] =

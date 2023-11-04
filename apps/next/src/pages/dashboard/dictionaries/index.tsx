@@ -1,5 +1,4 @@
-import { columns } from "@/components/Dashboard/Dictionaries/columns";
-import { DataTable } from "@/components/Dashboard/Dictionaries/data-table";
+import { TasksTableShell } from "@/components/Dashboard/Dictionaries/TestTable";
 import DashboardLayout from "@/components/Layout/Dashboard";
 import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
 import { useGetDictionariesMutation } from "@/store/dictionaries/api";
@@ -16,7 +15,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 }
 
 const DictionariesPage = () => {
-  const [getDictionaries, { isLoading }] = useGetDictionariesMutation();
+  const [getDictionaries] = useGetDictionariesMutation();
   const userDictionaries =
     useAppSelector((state) => state.dictionary.dictionaries) || [];
 
@@ -26,11 +25,12 @@ const DictionariesPage = () => {
 
   return (
     <DashboardShell>
-      <DataTable
+      {/* <DataTable
         columns={columns}
         data={userDictionaries}
         isLoading={isLoading}
-      />
+      /> */}
+      <TasksTableShell data={userDictionaries} pageCount={10} />
     </DashboardShell>
   );
 };

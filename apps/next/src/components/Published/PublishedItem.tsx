@@ -1,8 +1,9 @@
-import { Avatar, AvatarFallback, AvatarImage, Skeleton } from "@wordigo/ui";
+import { roundToFiveOrTen } from "@/utils";
+import { Avatar, AvatarFallback, AvatarImage } from "@wordigo/ui";
 import { Star } from "lucide-react";
 import { useTranslation } from "next-i18next";
+import Image from "next/image";
 import Link from "next/link";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { type IDictionary } from "types/global";
 
 const PublishedItem = (item: IDictionary) => {
@@ -21,14 +22,15 @@ const PublishedItem = (item: IDictionary) => {
       key={item.id}
       className="w-full sm:w-[calc(50%-12px)] md:w-[calc(50%-16px)] lg:w-[calc(33%-18.5px)] max-w-sm sm:max-w-none"
     >
-      <div className="w-full h-full flex flex-col gap-4 sm:gap-5 md:gap-6 justify-between rounded-2xl">
+      <div className="w-full h-full flex flex-col gap-3 sm:gap-4 md:gap-5 justify-between rounded-2xl">
         <div className="relative h-60">
-          <LazyLoadImage
+          <Image
             alt={item.title}
-            src={item.image}
-            effect="blur"
-            className="rounded-2xl object-cover"
-            placeholder={<Skeleton className="w-full h-60" />}
+            src={item.image || "/images/dictionary_banner.jpg"}
+            className="object-cover rounded-lg"
+            placeholder="blur"
+            blurDataURL={item.image || "/images/dictionary_banner.jpg"}
+            fill
           />
         </div>
 
@@ -37,10 +39,15 @@ const PublishedItem = (item: IDictionary) => {
             <Star fill="currentColor" className="h-3 w-3 mr-1" />
             {item.rate}
           </span>
-          {item.numberOfWords} {t("general.words")}
+          {roundToFiveOrTen(item.numberOfWords)}+ {t("general.words")}
         </div>
 
-        <h3 className="text-2xl font-semibold">{item.title}</h3>
+        <div>
+          <h3 className="text-2xl font-semibold">{item.title}</h3>
+          <h4 className="text-base text-muted-foreground mt-2">
+            {item.description}
+          </h4>
+        </div>
 
         <span className="flex items-center">
           <Avatar className="relative mr-3 h-10 md:h-12 w-10 md:w-12">

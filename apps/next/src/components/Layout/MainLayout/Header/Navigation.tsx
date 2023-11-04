@@ -1,6 +1,7 @@
 import homeSidebarNavigations from "./navigation.constant";
 import { cn } from "@wordigo/ui/lib/utils";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Navigation = ({ variant }: { variant?: "borgerMenu" }) => {
   const classes = cn(
@@ -18,17 +19,15 @@ const Navigation = ({ variant }: { variant?: "borgerMenu" }) => {
 };
 
 Navigation.Item = ({ variant }: { variant: string }) => {
+  const { asPath } = useRouter();
   const navigations = homeSidebarNavigations();
 
   const checkActive = (href: string) => {
-    if (typeof window !== "undefined") {
-      if (href.includes("#")) {
-        href = href.split("#")[0];
-      }
-
-      return window.location.pathname === href;
+    if (href.includes("#")) {
+      href = href.split("#")[0];
     }
-    return false;
+
+    return asPath === href;
   };
 
   const classes_hover = cn(

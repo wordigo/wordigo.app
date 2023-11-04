@@ -67,9 +67,6 @@ export const TextToSpeechProvider = ({
     <TextToSpeechContext.Provider
       value={{ textToSpeech, isSpeaking, spokenWord }}
     >
-      <head>
-        <meta name="referrer" content="no-referrer" />
-      </head>
       {children}
       <audio ref={playerRef} onPlay={handlePlay} onEnded={handleEnded} />
     </TextToSpeechContext.Provider>

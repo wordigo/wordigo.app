@@ -89,12 +89,13 @@ const Document = () => {
         <meta name="theme-color" content="#ffffff" />
         <meta
           name="description"
-          content="Wordigo is a useful add-on that offers the ability to translate text and add it to the dictionary in your browser."
+          content="Wordigo, an invaluable browser extension, empowers you to effortlessly translate text and seamlessly add it to your personalized dictionary while browsing."
         />
         <meta name="google" content="notranslate"></meta>
+        <meta name="referrer" content="no-referrer" />
         <meta
           name="keywords"
-          content="Wordigo, translation, text translation, dictionary, browser plug-in, language learning"
+          content="Wordigo, browser extension, language dictionary, instant translation, save words, language learning, personalized dictionary, language barriers, Wordigo app, translate while browsing, Wordigo browser extension, Wordigo dictionary, online dictionary, vocabulary building, educational tool, language skills, multilingual, language tool, learning resource, Wordigo translation"
         />
       </Head>
       <body>

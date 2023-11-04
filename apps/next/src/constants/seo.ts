@@ -1,15 +1,17 @@
 export default {
   en: {
     titleTemplate: "%s - Wordigo",
-    defaultTitle: "Wordigo: Learn, And, Share – Your Language Dictionary",
+    defaultTitle:
+      "Wordigo: Translate, Learn, and Share – Your Personal Language Dictionary",
     description:
-      "Wordigo is a powerful browser extension that allows you to instantly translate and save words while browsing. Easily bridge language barriers and build your own personal dictionary.",
+      "Discover Wordigo, a versatile browser extension that enables you to translate words on-the-go and save them for future reference. Effortlessly overcome language barriers and curate your personalized dictionary.",
     canonical: "https://wordigo.app",
     openGraph: {
       url: "https://wordigo.app",
-      title: "Wordigo - Translate and Save Words Instantly",
+      title:
+        "Wordigo: Translate, Learn, and Share – Your Personal Language Dictionary",
       description:
-        "Wordigo is a powerful browser extension that lets you instantly translate and save words while browsing. Break language barriers and create your personalized dictionary.",
+        "Discover Wordigo, a versatile browser extension that enables you to translate words on-the-go and save them for future reference. Effortlessly overcome language barriers and curate your personalized dictionary.",
       images: [
         {
           url: "https://pbs.twimg.com/profile_banners/1675607441520705536/1689112370/1500x500",
@@ -28,15 +30,16 @@ export default {
   },
   tr: {
     titleTemplate: "%s - Wordigo",
-    defaultTitle: "Wordigo",
+    defaultTitle:
+      "Wordigo: Anında Çevir, Öğren ve Paylaş – Kişisel Dil Sözlüğünüz",
     description:
-      "Wordigo, gezinirken kelime çevirisi yapmanıza ve kelimeleri kaydetmenize olanak tanıyan güçlü bir tarayıcı eklentisidir. Dil engellerini kolayca aşın ve kendi kişisel sözlüğünüzü oluşturun.",
+      "Wordigo, gezinirken kelimeleri anında çevirmenizi ve gelecekte başvurmak üzere kaydetmenizi sağlayan çok yönlü bir tarayıcı eklentisidir. Dil engellerini sorunsuzca aşın ve kişisel sözlüğünüzü oluşturun.",
     canonical: "https://wordigo.app/tr",
     openGraph: {
       url: "https://wordigo.app/tr",
-      title: "Wordigo - Anında Kelime Çevirin ve Kaydedin",
+      title: "Wordigo: Anında Çevir, Öğren ve Paylaş – Kişisel Dil Sözlüğünüz",
       description:
-        "Wordigo, gezinirken kelimeleri anında çevirmenizi ve kaydetmenizi sağlayan güçlü bir tarayıcı eklentisidir. Dil engellerini aşın ve kendi kişisel sözlüğünüzü oluşturun.",
+        "Wordigo, gezinirken kelimeleri anında çevirmenizi ve gelecekte başvurmak üzere kaydetmenizi sağlayan çok yönlü bir tarayıcı eklentisidir. Dil engellerini sorunsuzca aşın ve kişisel sözlüğünüzü oluşturun.",
       images: [
         {
           url: "https://pbs.twimg.com/profile_banners/1675607441520705536/1689112370/1500x500",
