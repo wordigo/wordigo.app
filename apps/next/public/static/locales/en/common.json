@@ -7,7 +7,15 @@
     "signin_title": "Sign In",
     "signup_title": "Sign Up"
   },
+  "columns": {
+    "title": "Title",
+    "published": "Public Status",
+    "numberOfWords": "Word Count",
+    "time": "Created Date"
+  },
   "general": {
+    "public": "Public",
+    "private": "Private",
     "detail": "Detail",
     "new": "New",
     "loading": "Please wait",

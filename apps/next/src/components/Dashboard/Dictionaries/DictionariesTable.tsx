@@ -1,4 +1,4 @@
-import { DataTableRowActions } from "./data-table-row-actions";
+import { DataTableRowActions } from "./TableRowAction";
 import { DataTable } from "@/components/DataTable/data-table";
 import { DataTableColumnHeader } from "@/components/DataTable/data-table-column-header";
 import { Dictionary } from "@/store/dictionaries/type";
@@ -10,6 +10,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@wordigo/ui";
+import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import * as React from "react";
 import { MdPublic, MdPublicOff } from "react-icons/md";
@@ -24,6 +25,7 @@ export function DictionariesTableShell({
   data,
   pageCount,
 }: DictionariesTableShellProps) {
+  const { t } = useTranslation();
   // Memoize the columns so they don't re-render on every render
   const columns = React.useMemo<ColumnDef<IDictionary, unknown>[]>(
     () => [
@@ -49,7 +51,7 @@ export function DictionariesTableShell({
       {
         accessorKey: "title",
         header: ({ column }) => (
-          <DataTableColumnHeader column={column} title="Title" />
+          <DataTableColumnHeader column={column} title={t("columns.title")} />
         ),
         cell: ({ row }) => {
           return (
@@ -74,7 +76,10 @@ export function DictionariesTableShell({
       {
         accessorKey: "numberOfWords",
         header: ({ column }) => (
-          <DataTableColumnHeader column={column} title="Word Count" />
+          <DataTableColumnHeader
+            column={column}
+            title={t("columns.numberOfWords")}
+          />
         ),
         cell: ({ row }) => {
           return (
@@ -89,7 +94,7 @@ export function DictionariesTableShell({
       {
         accessorKey: "time",
         header: ({ column }) => (
-          <DataTableColumnHeader column={column} title={"Created Date"} />
+          <DataTableColumnHeader column={column} title={t("columns.time")} />
         ),
         cell: ({ row }) => {
           const timeValue = row.original.updatedDate;
@@ -103,7 +108,10 @@ export function DictionariesTableShell({
         accessorKey: "published",
         enableSorting: false,
         header: ({ column }) => (
-          <DataTableColumnHeader column={column} title="Public Status" />
+          <DataTableColumnHeader
+            column={column}
+            title={t("columns.published")}
+          />
         ),
         cell: ({ row }) => {
           return (
@@ -119,7 +127,11 @@ export function DictionariesTableShell({
                   size={14}
                 />
               )}
-              <p>{row.original.published ? "Public" : "Private"}</p>
+              <p>
+                {row.original.published
+                  ? t("general.public")
+                  : t("general.private")}
+              </p>
             </div>
           );
         },

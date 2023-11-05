@@ -1,105 +1,82 @@
-import useFeedbacksConstants, {
-  type IFeedbackType,
-} from "@/components/Layout/MainLayout/Header/Feedback/Feedback.constants";
-import {
-  Button,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  Textarea,
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@wordigo/ui";
+import { Button, Dialog, DialogContent, DialogTrigger } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 import { Star } from "lucide-react";
 import { useTranslation } from "next-i18next";
-import Image from "next/image";
 import { useState } from "react";
 
 const DictionaryRating = () => {
   const { t } = useTranslation();
-  const [active, setActive] = useState();
-  const feedbacks = useFeedbacksConstants();
-  const [inputValue, setInputValue] = useState<string>("");
 
-  const handleSubmitFeedback = () => {};
+  const [rating, setRating] = useState(3);
+  const [hover, setHover] = useState(null);
+
+  const getRatingText = () => {
+    switch (rating) {
+      case 1:
+        return "general.too_bad";
+
+      case 2:
+        return "general.bad";
+
+      case 3:
+        return "general.not_bad";
+
+      case 4:
+        return "general.good";
+
+      case 5:
+        return "general.very_good";
+
+      default:
+        return "general.not_bad";
+    }
+  };
 
   return (
-    <Popover>
-      <PopoverTrigger asChild>
+    <Dialog>
+      <DialogTrigger asChild>
         <Button type="button" variant="outline" size="icon">
           <Star className="h-5 w-5" />
         </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-80">
-        <div className="grid gap-4">
-          <div className="grid gap-2">
-            <div className="flex flex-col items-center gap-4">
-              <Textarea
-                id="width"
-                placeholder={t("feedback.placeholder")}
-                className="col-span-2 h-8"
-                onChange={(e) => setInputValue(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className="flex gap-x-2 items-center justify-center">
-            {feedbacks?.map((feedback, index) => (
-              <DictionaryRating.Item
-                key={index}
-                active={active}
-                setActive={setActive}
-                {...feedback}
-              />
-            ))}
-          </div>
-          <Button onClick={() => handleSubmitFeedback()}>
-            {t("feedback.submit")}
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <header className="text-[hsl(var(--muted-foreground))] font-semibold text-center">
+          <h1>{t("public.rating_title")}</h1>
+        </header>
+        <main className="wrapper flex items-center justify-center mt-1 my-2">
+          {[...Array(5)].map((_, i) => {
+            const ratingValue = i + 1;
+            const starClasses = cn({
+              fa: true,
+              "text-yellow-400 fill-yellow-400":
+                ratingValue <= (hover || rating),
+              "fill-gray-100 text-gray-100": ratingValue > (hover || rating),
+            });
+            return (
+              <label key={i} className="mr-2">
+                <input
+                  type="radio"
+                  name="rating"
+                  value={ratingValue}
+                  onClick={() => setRating(ratingValue)}
+                  className="hidden"
+                />
+                <Star
+                  className={cn(starClasses)}
+                  onMouseEnter={() => setHover(ratingValue)}
+                  onMouseLeave={() => setHover(null)}
+                ></Star>
+              </label>
+            );
+          })}
+        </main>
+        <footer className="text-[hsl(var(--muted-foreground))] font-semibold text-center">
+          <Button variant="outline" className="min-w-[120px] max-w-[150px]">
+            {t(getRatingText())}
           </Button>
-        </div>
-      </PopoverContent>
-    </Popover>
-  );
-};
-
-type IFeedbackItem = IFeedbackType & { active: any; setActive: any };
-
-DictionaryRating.Item = ({
-  title,
-  imageSrc,
-  active,
-  setActive,
-  level,
-}: IFeedbackItem) => {
-  const handleclick = () => {
-    setActive(level);
-  };
-
-  const isActive = active === level;
-
-  return (
-    <TooltipProvider delayDuration={100}>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button
-            onClick={handleclick}
-            className={cn(
-              "rounded-full transition-all duration-25",
-              isActive ? " !bg-blue-100" : ""
-            )}
-            size="icon"
-            variant="outline"
-          >
-            <Image src={imageSrc} width={32} height={32} alt={title} />
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>{title}</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+        </footer>
+      </DialogContent>
+    </Dialog>
   );
 };
 

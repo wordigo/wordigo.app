@@ -111,8 +111,6 @@ export function DataTable<TData, TValue>({
   );
 
   React.useEffect(() => {
-    console.log("bu napıyor");
-
     setPagination({
       pageIndex: fallbackPage - 1,
       pageSize: fallbackPerPage,
@@ -133,8 +131,6 @@ export function DataTable<TData, TValue>({
   }, [pageIndex, pageSize]);
 
   React.useEffect(() => {
-    console.log("bu ibne");
-
     void router.push(
       `${pathname}?${createQueryString({
         page,
@@ -145,22 +141,16 @@ export function DataTable<TData, TValue>({
   }, [sorting]);
 
   React.useEffect(() => {
-    const test: ColumnFiltersState = [];
+    const columnFilters: ColumnFiltersState = [];
     for (const key of searchParams.keys()) {
-      console.log("key", key);
-
-      console.log("filterableColumnFilters", searchableColumns);
-
       if (searchableColumns.find((column) => column.id === key)) {
-        console.log("key v2", key);
-
-        test.push({
+        columnFilters.push({
           id: key,
           value: searchParams.get(key),
         });
       }
     }
-    // setColumnFilters(test);
+    setColumnFilters(columnFilters);
   }, []);
 
   React.useEffect(() => {
@@ -198,21 +188,21 @@ export function DataTable<TData, TValue>({
       }
     }
 
-    // for (const key of searchParams.keys()) {
-    //   if (
-    //     searchableColumns.find((column) => column.id === key) &&
-    //     !debouncedSearchableColumnFilters.find((column) => column.id === key)
-    //   ) {
-    //     void router.push(
-    //       `${pathname}?${createQueryString({
-    //         page: 1,
-    //         [key]: null,
-    //       })}`,
-    //       undefined,
-    //       { shallow: true }
-    //     );
-    //   }
-    // }
+    for (const key of searchParams.keys()) {
+      if (
+        searchableColumns.find((column) => column.id === key) &&
+        !debouncedSearchableColumnFilters.find((column) => column.id === key)
+      ) {
+        void router.push(
+          `${pathname}?${createQueryString({
+            page: 1,
+            [key]: null,
+          })}`,
+          undefined,
+          { shallow: true }
+        );
+      }
+    }
   }, [JSON.stringify(debouncedSearchableColumnFilters)]);
 
   const table = useReactTable({

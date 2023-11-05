@@ -22,9 +22,9 @@ import {
   Book,
   Copy,
   Hash,
-  Heart,
   Languages,
   Link,
+  Share2Icon,
   Star,
   Volume2,
 } from "lucide-react";
@@ -196,10 +196,10 @@ const LibraryDetail = ({ dictionary }: { dictionary: IDictionary }) => {
                     <Button type="button" variant="outline" size="icon">
                       <Link className="h-5 w-5" />
                     </Button>
-                    <DictionaryRating />
                     <Button type="button" variant="outline" size="icon">
-                      <Heart className="h-5 w-5" />
+                      <Share2Icon className="h-5 w-5" />
                     </Button>
+                    <DictionaryRating />
                     <Button
                       type="button"
                       variant="default"

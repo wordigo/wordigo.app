@@ -13,13 +13,7 @@ export default function handler(req, res) {
       <priority>1.0</priority>
     </url>
     <url>
-      <loc>https://wordigo.app/features</loc>
-      <lastmod>2023-08-04</lastmod>
-      <changefreq>weekly</changefreq>
-      <priority>0.8</priority>
-    </url>
-    <url>
-      <loc>https://wordigo.app/pricing</loc>
+      <loc>https://wordigo.app/library</loc>
       <lastmod>2023-08-04</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
