@@ -18,6 +18,7 @@ import { cn } from "@wordigo/ui/lib/utils";
 import { signOut, useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
+import { Fragment } from "react";
 
 const NavProfile = ({
   variant,
@@ -119,7 +120,13 @@ const NavProfile = ({
 };
 
 NavProfile.Loader = () => {
-  return <Skeleton className="w-8 h-4" />;
+  return (
+    <Fragment>
+      <Skeleton className="w-32 h-8" />
+      <div className="hidden md:block w-[0.5px] h-7 bg-gray-100 dark:bg-gray-700 animate-pulse"></div>
+      <Skeleton className="w-10 h-10 rounded-full" />
+    </Fragment>
+  );
 };
 
 export default NavProfile;
