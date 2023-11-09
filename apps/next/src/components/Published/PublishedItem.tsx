@@ -23,7 +23,7 @@ const PublishedItem = (item: IDictionary) => {
       className="w-full sm:w-[calc(50%-12px)] md:w-[calc(50%-16px)] lg:w-[calc(33%-18.5px)] max-w-sm sm:max-w-none group"
     >
       <div className="w-full h-full">
-        <div className="h-full flex flex-col rounded-lg border group-hover:border-[#2e3d56] transition-colors">
+        <div className="h-full flex flex-col rounded-lg border group-hover:border-gray-300/95 dark:group-hover:border-[#2e3d56] transition-colors">
           <div className="relative h-60">
             <Image
               alt={item.title}
@@ -35,7 +35,7 @@ const PublishedItem = (item: IDictionary) => {
             />
           </div>
 
-          <div className="flex flex-col gap-4 sm:gap-5 justify-between grow p-4 sm:p-5">
+          <div className="flex flex-col gap-4 sm:gap-5 justify-between grow p-4">
             <div className="flex flex-col gap-4 sm:gap-5">
               <div className="py-1 w-fit flex items-center pl-1 pr-2.5 rounded-[0.625rem] text-xs font-medium border">
                 <span className="px-1.5 inline-flex items-center py-0.5 rounded-md border mr-2">
@@ -47,7 +47,7 @@ const PublishedItem = (item: IDictionary) => {
 
               <div>
                 <h3 className="text-2xl font-semibold">{item.title}</h3>
-                <h4 className="text-base text-muted-foreground mt-2">
+                <h4 className="text-base text-muted-foreground mt-3 text-ellipsis line-clamp-2">
                   {item.description}
                 </h4>
               </div>
@@ -62,7 +62,9 @@ const PublishedItem = (item: IDictionary) => {
                 />
                 <AvatarFallback>{computedName}</AvatarFallback>
               </Avatar>
-              <span className="ml-3 text-sm font-semibold">{item.author.name}</span>
+              <span className="ml-3 text-sm font-semibold">
+                {item.author.name}
+              </span>
             </span>
           </div>
         </div>
