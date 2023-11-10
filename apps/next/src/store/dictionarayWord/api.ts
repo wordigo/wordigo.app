@@ -1,25 +1,34 @@
 import { axiosBaseQuery } from "../baseQuery";
+import { type ResponseDictionaryWords } from "./type";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { type IResponse } from "types/global";
 
 export const dictionaryWordApi = createApi({
   reducerPath: "dictionaryWordApi",
-  baseQuery: axiosBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_WORDIGO_BACKEND_URL }),
+  baseQuery: axiosBaseQuery({
+    baseUrl: process.env.NEXT_PUBLIC_WORDIGO_BACKEND_URL,
+  }),
   endpoints: (builder) => ({
-    getDictionaryWords: builder.mutation<IResponse, string | number>({
+    getDictionaryWords: builder.mutation<
+      IResponse<ResponseDictionaryWords>,
+      string
+    >({
       query: (slug) => ({
         url: `/dictionaries/getWords?slug=${slug}`,
         method: "get",
       }),
     }),
-    createWord: builder.mutation<any, any>({
+    createWord: builder.mutation<IResponse, any>({
       query: (data) => ({
         url: "/words/create",
         data,
         method: "post",
       }),
     }),
-    deleteDicWord: builder.mutation<any, any>({
+    deleteDicWord: builder.mutation<
+      IResponse,
+      { wordId: string; slug: string }
+    >({
       query: (data: { wordId: string; slug: string }) => ({
         url: "/dictionaries/removeWord",
         method: "delete",
@@ -29,4 +38,8 @@ export const dictionaryWordApi = createApi({
   }),
 });
 
-export const { useCreateWordMutation, useGetDictionaryWordsMutation, useDeleteDicWordMutation } = dictionaryWordApi;
+export const {
+  useCreateWordMutation,
+  useGetDictionaryWordsMutation,
+  useDeleteDicWordMutation,
+} = dictionaryWordApi;

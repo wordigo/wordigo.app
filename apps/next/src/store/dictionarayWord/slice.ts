@@ -1,9 +1,9 @@
 import { dictionaryWordApi } from "./api";
-import { type DictionaryWord } from "./type";
+import { type ResponseDictionaryWords } from "./type";
 import { createSlice } from "@reduxjs/toolkit";
 
 interface IWordState {
-  dictionaryWords: { numberOfWords: number; words: DictionaryWord[] } | null;
+  dictionaryWords: ResponseDictionaryWords | null;
 }
 
 const initialState: IWordState = {

@@ -13,10 +13,6 @@ const HeaderItem = ({ title, description }) => (
   </main>
 );
 
-const ButtonItem = ({ components, child_components }: any) => (
-  <main className="flex items-center">{}</main>
-);
-
 const DashboardHeaders = () => {
   const router = useRouter();
   const headers = useHeaders(router.pathname);
@@ -26,18 +22,18 @@ const DashboardHeaders = () => {
       {headers.map((item, index) => (
         <HeaderItem key={index} {...item} />
       ))}
-      <DashboardButton />
+      <DashboardButtons />
     </div>
   );
 };
 
-const DashboardButton = () => {
+const DashboardButtons = () => {
   const router = useRouter();
   const headers = useHeaders(router.pathname);
 
   return (
-    <div>
-      {headers.map((item, index) =>
+    <div className="flex flex-row gap-x-2">
+      {headers.map((item) =>
         item?.components?.map((component, index) => (
           <Fragment key={index}>{component}</Fragment>
         ))
@@ -46,5 +42,4 @@ const DashboardButton = () => {
   );
 };
 
-export { DashboardButton };
 export default DashboardHeaders;

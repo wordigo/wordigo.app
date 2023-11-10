@@ -24,15 +24,15 @@ const useHeaders = (selectedSrc: string | null = null): IHeaders[] => {
       src: "/dashboard/dictionaries",
       title: t("headers.dictionaries.title"),
       description: t("headers.dictionaries.description"),
-      components: [<CreateDictionary />],
+      components: [<CreateDictionary key="create_dictionary" />],
     },
     {
       src: "/dashboard/dictionaries/[slug]",
       title: t("headers.dictionaries_detail.title"),
       description: t("headers.dictionaries_detail.description"),
       components: [
-        <CreateWord label={"dic_words.add_word"} />,
-        <DictionarySettingsLink />,
+        <CreateWord key="dictionary_add_words" />,
+        <DictionarySettingsLink key="dictionary_settings_link" />,
       ],
     },
   ];

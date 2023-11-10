@@ -14,14 +14,14 @@ export function DictionarySettingsLink() {
   const { t } = useTranslation();
 
   const router = useRouter();
-  const routers = router.asPath;
+  const dictionarySlug = router.query.slug as string;
 
   return (
     <TooltipProvider delayDuration={100}>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Link href={`${routers}/settings`}>
-            <Button variant="outline">
+          <Link href={`/dashboard/dictionaries/${dictionarySlug}/settings`}>
+            <Button size="sm" variant="outline">
               <SettingsIcon size={16} />
             </Button>
           </Link>

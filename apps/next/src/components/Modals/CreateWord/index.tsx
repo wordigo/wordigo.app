@@ -1,9 +1,27 @@
-import { WordPage } from "../../Translate/word.constant";
 import CButton from "@/components/UI/Button";
-import { useCreateWordMutation, useGetDictionaryWordsMutation } from "@/store/dictionarayWord/api";
+import {
+  useCreateWordMutation,
+  useGetDictionaryWordsMutation,
+} from "@/store/dictionarayWord/api";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, Form, FormControl, FormField, FormItem, FormMessage, Input, Label, useToast } from "@wordigo/ui";
-import { Table2Icon, X } from "lucide-react";
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+  Input,
+  Label,
+  useToast,
+} from "@wordigo/ui";
+import { PlusIcon, Table2Icon, X } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -15,18 +33,18 @@ const CreateWordSchema = z.object({
   translatedText: z.string().nonempty(),
   nativeLanguage: z.string().nonempty(),
   targetLanguage: z.string().nonempty(),
-  dictionaryId: z.any(),
+  dictionaryId: z.number(),
 });
 
 type CreateWordValues = z.infer<typeof CreateWordSchema>;
 
-export function CreateWord({ label }: { label: string | null }) {
+export function CreateWord() {
   const [open, setOpen] = useState(false);
   const { toast } = useToast();
   const { t } = useTranslation();
 
   const router = useRouter();
-  const { id } = router.query as any;
+  const { id } = router.query as { id: string };
   const [getWordDataMutation] = useGetDictionaryWordsMutation();
 
   const defaultValues: Partial<CreateWordValues> = {
@@ -34,7 +52,7 @@ export function CreateWord({ label }: { label: string | null }) {
     translatedText: "",
     nativeLanguage: "EN",
     targetLanguage: "TR",
-    dictionaryId: id,
+    dictionaryId: Number(id),
   };
 
   const form = useForm<CreateWordValues>({
@@ -42,7 +60,8 @@ export function CreateWord({ label }: { label: string | null }) {
     defaultValues,
   });
 
-  const [addUserDicWords, { status, isLoading, data }] = useCreateWordMutation();
+  const [addUserDicWords, { status, isLoading, data }] =
+    useCreateWordMutation();
 
   const handleAddWord = (values: CreateWordValues) => {
     void addUserDicWords({
@@ -81,8 +100,14 @@ export function CreateWord({ label }: { label: string | null }) {
   return (
     <Dialog open={open}>
       <DialogTrigger asChild>
-        <Button onClick={toggleShow} variant="outline" className="dark:bg-white dark:text-black bg-black text-white font-semibold text-sm">
-          {t(label)}
+        <Button
+          onClick={toggleShow}
+          variant="default"
+          size="sm"
+          className="font-normal text-sm"
+        >
+          <PlusIcon size={16} className="text-primary-foreground" />
+          {t("dic_words.add_word")}
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
@@ -101,7 +126,10 @@ export function CreateWord({ label }: { label: string | null }) {
         </DialogHeader>
 
         <Form {...(form as any)}>
-          <form onSubmit={form.handleSubmit(handleAddWord)} className="space-y-4">
+          <form
+            onSubmit={form.handleSubmit(handleAddWord)}
+            className="space-y-4"
+          >
             <div className="grid gap-4 py-4">
               <FormField
                 control={form.control as never}
@@ -110,7 +138,14 @@ export function CreateWord({ label }: { label: string | null }) {
                   <FormItem className="grid gap-1">
                     <Label>{t("dic_words.wordLabel")}</Label>
                     <FormControl>
-                      <Input {...field} id="text" placeholder={t("dic_words.wordPlaceholder")} autoCapitalize="none" autoComplete="email" autoCorrect="off" />
+                      <Input
+                        {...field}
+                        id="text"
+                        placeholder={t("dic_words.wordPlaceholder")}
+                        autoCapitalize="none"
+                        autoComplete="email"
+                        autoCorrect="off"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -124,7 +159,14 @@ export function CreateWord({ label }: { label: string | null }) {
                   <FormItem className="grid gap-1">
                     <Label>{t("dic_words.translatedLabel")} </Label>
                     <FormControl>
-                      <Input {...field} id="translatedText" placeholder={t("dic_words.translatedPlaceholder")} autoCapitalize="none" autoComplete="text" autoCorrect="off" />
+                      <Input
+                        {...field}
+                        id="translatedText"
+                        placeholder={t("dic_words.translatedPlaceholder")}
+                        autoCapitalize="none"
+                        autoComplete="text"
+                        autoCorrect="off"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

@@ -1,7 +1,7 @@
 import { DataTableRowActions } from "./TableRowAction";
 import { DataTable } from "@/components/DataTable/data-table";
 import { DataTableColumnHeader } from "@/components/DataTable/data-table-column-header";
-import { Dictionary } from "@/store/dictionaries/type";
+import { type Dictionary } from "@/store/dictionaries/type";
 import { type ColumnDef } from "@tanstack/react-table";
 import {
   Badge,
@@ -19,11 +19,13 @@ import { type IDictionary } from "types/global";
 interface DictionariesTableShellProps {
   data: Dictionary[];
   pageCount?: number;
+  isLoading?: boolean;
 }
 
 export function DictionariesTableShell({
   data,
   pageCount,
+  isLoading = false,
 }: DictionariesTableShellProps) {
   const { t } = useTranslation();
   // Memoize the columns so they don't re-render on every render
@@ -151,6 +153,7 @@ export function DictionariesTableShell({
       pageCount={pageCount || 1}
       // Render notion like filters
       advancedFilter={false}
+      isLoading={isLoading}
       // Render dynamic searchable filters
       searchableColumns={[
         {

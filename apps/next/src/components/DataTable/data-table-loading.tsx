@@ -1,12 +1,12 @@
 import {
   Skeleton,
+  Table,
   TableBody,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@wordigo/ui";
-import { Table } from "lucide-react";
 
 interface DataTableLoadingProps {
   columnCount: number;

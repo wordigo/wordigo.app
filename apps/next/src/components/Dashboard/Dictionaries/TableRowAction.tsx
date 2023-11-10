@@ -1,6 +1,6 @@
 import { useDeleteDicWordMutation } from "@/store/dictionarayWord/api";
 import { useGetDictionariesMutation } from "@/store/dictionaries/api";
-import { Row } from "@tanstack/react-table";
+import { type Row } from "@tanstack/react-table";
 import {
   Button,
   DropdownMenu,
@@ -14,7 +14,7 @@ import { MoreHorizontal } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useEffect } from "react";
-import { IDictionary } from "types/global";
+import { type IDictionary } from "types/global";
 
 interface DataTableRowActionsProps {
   row: Row<IDictionary>;

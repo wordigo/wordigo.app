@@ -96,7 +96,7 @@ export default function CreateDictionary() {
         <DialogHeader>
           <DialogTitle className="flex gap-x-2 items-center">
             <BookPlusIcon size={18} />
-            Add Dictionary
+            {t("dictionaries.add_dictionaries")}
           </DialogTitle>
           <button
             onClick={toggleShow}

@@ -11,7 +11,17 @@
     "title": "Title",
     "published": "Public Status",
     "numberOfWords": "Word Count",
-    "time": "Created Date"
+    "time": "Created Date",
+    "text": "Native Text",
+    "translatedText": "Translated Text",
+    "rating": "Rating",
+    "level": "Level",
+    "date": "Date",
+    "category": "Category",
+    "language": "Language",
+    "description": "Description",
+    "name": "Name",
+    "email": "Email"
   },
   "general": {
     "public": "Public",

@@ -1,6 +1,6 @@
-import { columns } from "@/components/Dashboard/Words/columns";
-import { DataTable } from "@/components/Dashboard/Words/data-table";
+import { DictionarayWordsTable } from "@/components/Dashboard/DictionaryDetail/WordsTable";
 import DashboardLayout from "@/components/Layout/Dashboard";
+import DashboardHeaders from "@/components/Layout/Dashboard/Headers";
 import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
 import { useGetDictionaryWordsMutation } from "@/store/dictionarayWord/api";
 import { useAppSelector } from "@/utils/hooks";
@@ -21,9 +21,10 @@ const DictionaryWordPage = () => {
   const router = useRouter();
   const { slug } = router.query as { slug: string };
 
-  const [getDictionaryWordMutation, { isLoading }] =
+  const [getDictionaryWordMutation, { status, isLoading }] =
     useGetDictionaryWordsMutation();
-  const userDicWords = useAppSelector(
+
+  const dictionaryDetail = useAppSelector(
     (state) => state.dictionaryWord.dictionaryWords
   );
 
@@ -33,10 +34,11 @@ const DictionaryWordPage = () => {
 
   return (
     <DashboardShell>
-      <DataTable
-        columns={columns}
-        data={userDicWords?.words || ([] as never)}
-        isLoading={isLoading}
+      <DashboardHeaders />
+      <DictionarayWordsTable
+        data={dictionaryDetail?.words}
+        pageCount={dictionaryDetail?.numberOfWords}
+        isLoading={isLoading || status !== "fulfilled"}
       />
     </DashboardShell>
   );
