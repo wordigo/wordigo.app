@@ -14,7 +14,7 @@ const StaticLogo = ({ className }: { className?: string }) => {
   return (
     <Image
       className={classes}
-      src={`/images/logo.svg`}
+      src={`/images/new-logo.svg`}
       alt="Wordigo Logo"
       width={45}
       height={45}

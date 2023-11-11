@@ -5,7 +5,7 @@ import Feedback from "./Feedback";
 import Navigation from "./Navigation";
 import DynamicLogo from "@/components/Logo/DynamicLogo";
 import StaticLogo from "@/components/Logo/StaticLogo";
-import { Button, Separator, buttonVariants } from "@wordigo/ui";
+import { Badge, Button, Separator, buttonVariants } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -37,12 +37,13 @@ export default function HomeHeader({ className }: { className?: string }) {
             <Link
               href="/"
               className={cn(
-                "flex items-center mr-6 justify-center",
+                "flex items-center gap-1 justify-center mr-6",
                 !toggleMenu && "hidden"
               )}
             >
               <StaticLogo />
-              <div className="font-semibold ml-[10px]">Wordigo</div>
+              <div className="font-semibold">Wordigo</div>
+              <Badge className="rounded-sm shadow-sm opacity-70 px-1 text-[10px]">Beta</Badge>
             </Link>
             <span className="max-lg:hidden">
               <Navigation />
