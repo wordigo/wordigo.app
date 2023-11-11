@@ -76,19 +76,19 @@ const NavProfile = ({
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem className="px-[10px] cursor-pointer">
+          <DropdownMenuItem asChild className="px-[10px] cursor-pointer">
             {/* <LayoutDashboard className="w-4 mr-2" /> */}
             <Link className="w-full h-full" href={"/dashboard"}>
               {t("navbar.dashboard")}
             </Link>
           </DropdownMenuItem>
-          <DropdownMenuItem className="px-[10px] cursor-pointer">
+          <DropdownMenuItem asChild className="px-[10px] cursor-pointer">
             {/* <BookMarked className="w-4 mr-2" /> */}
             <Link className="w-full h-full" href={"/dashboard/dictionaries"}>
               {t("navbar.dictionaries")}
             </Link>
           </DropdownMenuItem>
-          <DropdownMenuItem className="px-[10px] cursor-pointer">
+          <DropdownMenuItem asChild className="px-[10px] cursor-pointer">
             {/* <Settings className="w-4 mr-2" /> */}
             <Link className="w-full h-full" href={"/dashboard/settings"}>
               {t("navbar.settings")}
