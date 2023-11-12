@@ -306,6 +306,14 @@
     "username_tooltip": "Lorem ipsum dolor sit amet.",
     "update_action": "Update profile"
   },
+  "accountSettings": {
+    "title": "Account",
+    "description": "Manage your account settings such as password, security, and other account-related preferences."
+  },
+  "appearanceSettings": {
+    "title": "Appearance",
+    "description": "Adjust the visual appearance of the website, including themes, colors, and other display options."
+  },
   "profileAvatar": {
     "title": "Set Profile Picture",
     "description": "Upload a photo and change your profile picture"

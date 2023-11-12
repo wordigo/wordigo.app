@@ -282,6 +282,14 @@
     "username_tooltip": "Lorem ipsum dolor sit amet.",
     "update_action": "Profili Güncelle"
   },
+  "accountSettings": {
+    "title": "Hesap",
+    "description": "Parola, güvenlik ve diğer hesap tercihlerinizi yönetin."
+  },
+  "appearanceSettings": {
+    "title": "Görünüm",
+    "description": "Web sitesinin görsel görünümünü, temaları, renkleri ve diğer görüntüleme seçeneklerini ayarlayın."
+  },
   "public_dictionaries": {
     "title": "Yayınlanmış sözlüklerden öğrenin",
     "description": "Wordigo ile dil becerilerinizi geliştirmek için yayınlanmış sözlüklere göz atın. Kategori, seviye veya dil filtreleri ile size uygun olanı kolayca bulun.",

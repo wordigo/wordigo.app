@@ -3,7 +3,10 @@ import React from "react";
 
 export default function AppearanceForm() {
   return (
-    <Container tTitle="" tDescription="">
+    <Container
+      tTitle="appearanceSettings.title"
+      tDescription="appearanceSettings.description"
+    >
       AppearanceForm
     </Container>
   );
