@@ -5,15 +5,15 @@ export interface ISettingsTab {
 
 export const SettingsTabs: ISettingsTab[] = [
   {
-    name: "Profile",
+    name: "profileSettings.title",
     value: "profile",
   },
   {
-    name: "Account",
+    name: "accountSettings.title",
     value: "account",
   },
   {
-    name: "Appearance",
+    name: "appearanceSettings.title",
     value: "appearance",
   },
 ];
