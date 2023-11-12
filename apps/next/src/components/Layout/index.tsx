@@ -4,9 +4,10 @@ import { setLanguage } from "@/store/common/slice";
 import { useAppDispatch } from "@/utils/hooks";
 import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
+import PageLoader from "../UI/PageLoader";
 import { useEffect, useState, type PropsWithChildren } from "react";
 
 NProgress.configure({
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
   const session = useSession();
+  const router = useRouter();
   const [mounted, setMounted] = useState<boolean>();
   const { i18n } = useTranslation();
 
@@ -64,5 +66,11 @@ export default function RootLayout({ children }: PropsWithChildren) {
 
   const renderinCond = loading || session.status === "loading" || !mounted;
 
-  return children;
+  const hasDashboard = router.asPath.includes("/dashboard");
+
+  if (renderinCond && hasDashboard) {
+    return <PageLoader />;
+  }
+
+  return <PageLoader />;
 }

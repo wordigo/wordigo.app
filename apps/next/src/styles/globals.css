@@ -41,7 +41,7 @@
   }
 
   .HOVER_NAV:hover .LOGO {
-    opacity: 0.5
+    opacity: 0.5;
   }
 
   .dark {
@@ -88,24 +88,24 @@
 
 /* width */
 ::-webkit-scrollbar {
-    width: 10px;
-    position: absolute ;
+  width: 10px;
+  position: absolute;
 }
-  
+
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    position: absolute ;
+  background: #f1f1f1;
+  position: absolute;
 }
-  
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 5px;
-    position: absolute ;
+  background: #888;
+  border-radius: 5px;
+  position: absolute;
 }
-  
+
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
 }
