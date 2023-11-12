@@ -72,5 +72,5 @@ export default function RootLayout({ children }: PropsWithChildren) {
     return <PageLoader />;
   }
 
-  return <PageLoader />;
+  return children;
 }
