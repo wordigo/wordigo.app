@@ -8,8 +8,8 @@ import { useTranslation } from "next-i18next";
 export default function index() {
   const { t } = useTranslation();
   return (
-    <Tabs defaultValue="account" className="w-full">
-      <TabsList className="grid w-full grid-cols-3">
+    <Tabs defaultValue="profile" className="w-full">
+      <TabsList className="grid w-fit grid-cols-3 gap-1">
         {SettingsTabs.map((tab, index) => (
           <TabsTrigger
             className="px-2 pb-1 pt-0.5 rounded-md border "
