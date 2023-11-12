@@ -21,7 +21,6 @@ import {
   Label,
   Switch,
   Textarea,
-  useToast,
 } from "@wordigo/ui";
 import { Copy } from "lucide-react";
 import { useSession } from "next-auth/react";
@@ -29,12 +28,12 @@ import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { type z } from "zod";
 
 export type DictionariesValues = z.infer<typeof DictionariesSettingsSchema>;
 
 export default function Settings() {
-  const { toast } = useToast();
   const { t } = useTranslation();
   const { data } = useSession();
   const router = useRouter();
@@ -71,8 +70,7 @@ export default function Settings() {
     void navigator.clipboard.writeText(
       `https://wordigo.app/` + form.getValues().title
     );
-    toast({
-      title: "Successful",
+    toast.success("Successful", {
       description: "Copied dictionary public url.",
     });
   };
@@ -86,14 +84,11 @@ export default function Settings() {
   useEffect(() => {
     if (status === "fulfilled") {
       void router.push(`/dashboard/dictionaries`);
-      toast({
-        title: t("notifications.success"),
+      toast.success(t("notifications.success"), {
         description: t("notifications.updated_dictionary"),
       });
     } else if (status === "rejected") {
-      toast({
-        variant: "destructive",
-        title: t("notifications.warning"),
+      toast.error(t("notifications.warning"), {
         description: updateData.message,
       });
     }

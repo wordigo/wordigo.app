@@ -44,7 +44,7 @@ const Dashboard = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">
-                    {response?.data.numberOfDictionaries}
+                    {response?.data.numberOfDictionaries || 0}
                   </div>
                 </CardContent>
               </Card>
@@ -57,7 +57,7 @@ const Dashboard = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">
-                    {response?.data?.numberOfPublicDics}
+                    {response?.data?.numberOfPublicDics || 0}
                   </div>
                 </CardContent>
               </Card>
@@ -70,7 +70,7 @@ const Dashboard = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">
-                    {response?.data?.numberOfSubbedDics}
+                    {response?.data?.numberOfSubbedDics || 0}
                   </div>
                 </CardContent>
               </Card>
@@ -83,7 +83,7 @@ const Dashboard = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">
-                    {response?.data?.numberOfWords}
+                    {response?.data?.numberOfWords || 0}
                   </div>
                 </CardContent>
               </Card>

@@ -4,6 +4,7 @@ import {
   useGetDictionariesMutation,
 } from "@/store/dictionaries/api";
 import { zodResolver } from "@hookform/resolvers/zod";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
 import {
   Button,
   Dialog,
@@ -18,12 +19,12 @@ import {
   FormItem,
   FormMessage,
   Input,
-  useToast,
 } from "@wordigo/ui";
 import { BookPlusIcon, PlusIcon, X } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 const CreateDictionarySchema = z.object({
@@ -34,7 +35,6 @@ type CreateDictionaryValues = z.infer<typeof CreateDictionarySchema>;
 
 export default function CreateDictionary() {
   const [open, setOpen] = useState(false);
-  const { toast } = useToast();
   const { t } = useTranslation();
   const [getDictionaries] = useGetDictionariesMutation();
 
@@ -59,18 +59,14 @@ export default function CreateDictionary() {
   useEffect(() => {
     if (status === "fulfilled") {
       if (data.success) {
-        void getDictionaries("");
+        void getDictionaries({});
         setOpen(false);
         form.reset();
-        toast({
-          variant: "success",
-          title: t("notifications.success"),
+        toast.success(t("notifications.success"), {
           description: t("notifications.created_dictionary"),
         });
       } else {
-        toast({
-          variant: "destructive",
-          title: t("notifications.warning"),
+        toast.error(t("notifications.warning"), {
           description: data.message,
         });
       }
@@ -80,7 +76,7 @@ export default function CreateDictionary() {
   const toggleShow = () => setOpen(!open);
 
   return (
-    <Dialog open={open}>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
           onClick={toggleShow}
@@ -98,13 +94,15 @@ export default function CreateDictionary() {
             <BookPlusIcon size={18} />
             {t("dictionaries.add_dictionaries")}
           </DialogTitle>
-          <button
-            onClick={toggleShow}
-            className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
-          >
-            <X className="h-4 w-4" />
-            <span className="sr-only">Close</span>
-          </button>
+          <DialogPrimitive.Close asChild>
+            <button
+              onClick={toggleShow}
+              className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
+            >
+              <X className="h-4 w-4" />
+              <span className="sr-only">Close</span>
+            </button>
+          </DialogPrimitive.Close>
         </DialogHeader>
 
         <Form {...(form as any)}>

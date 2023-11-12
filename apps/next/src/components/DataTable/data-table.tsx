@@ -66,8 +66,8 @@ export function DataTable<TData, TValue>({
   const pageAsNumber = Number(page);
   const fallbackPage =
     isNaN(pageAsNumber) || pageAsNumber < 1 ? 1 : pageAsNumber;
-  const per_page = searchParams?.get("per_page") ?? "10";
-  const perPageAsNumber = Number(per_page);
+  const size = searchParams?.get("size") ?? "10";
+  const perPageAsNumber = Number(size);
   const fallbackPerPage = isNaN(perPageAsNumber) ? 10 : perPageAsNumber;
   // const sort = searchParams?.get("sort");
   // const [column, order] = sort?.split(".") ?? [];
@@ -126,7 +126,7 @@ export function DataTable<TData, TValue>({
     void router.push(
       `${pathname}?${createQueryString({
         page: pageIndex + 1,
-        per_page: pageSize,
+        size: pageSize,
       })}`,
       undefined,
       { shallow: true }

@@ -11,12 +11,12 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  useToast,
 } from "@wordigo/ui";
 import { MoreHorizontal } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { toast } from "sonner";
 
 interface DataTableRowActionsProps {
   row: Row<DictionaryWord>;
@@ -24,8 +24,6 @@ interface DataTableRowActionsProps {
 
 export function DataTableRowActions({ row }: DataTableRowActionsProps) {
   const router = useRouter();
-  const { toast } = useToast();
-
   const { id } = row.original;
   const { slug } = router.query as { slug: string };
   const { t } = useTranslation();
@@ -36,23 +34,19 @@ export function DataTableRowActions({ row }: DataTableRowActionsProps) {
 
   const handleDeleteClick = (event) => {
     event.stopPropagation();
-    void deleteWord({ wordId: id, slug });
+    void deleteWord({ wordId: Number(id), slug });
   };
 
   useEffect(() => {
     if (status === "fulfilled") {
       if (data.success) {
-        void getDictionaries("");
+        void getDictionaries({});
         void getDictionaryWordMutation(slug);
-        toast({
-          variant: "success",
-          title: t("notifications.success"),
+        toast.success(t("notifications.success"), {
           description: t("notifications.deleted_dictionary"),
         });
       } else {
-        toast({
-          variant: "destructive",
-          title: t("notifications.warning"),
+        toast.error(t("notifications.warning"), {
           description: data.message,
         });
       }

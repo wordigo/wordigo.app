@@ -7,8 +7,6 @@ import Link from "next/link";
 function NewHeroSection() {
   const { t } = useTranslation();
 
-  // max - lg:flex max - lg: flex - col max - lg: pb - 16 max - md: px - 4
-
   return (
     <div className="w-full pt-8 pb-24 px-20 grid grid-cols-2 gap-x-16 max-lg:grid-cols-1 justify-center items-center max-lg:flex max-lg:flex-col max-lg:pb-16 max-md:px-4">
       <section className="flex flex-col items-start justify-center max-lg:items-center">
@@ -51,7 +49,7 @@ function NewHeroSection() {
       </section>
       <section className="relative aspect-square lg:min-w-[30rem] xl:max-w-[40rem] xl:max-h-[35rem] md:w-[30rem] md:h-[24rem] max-md:w-[340px] max-md:h-[240px] max-lg:mt-12 mt-0">
         <Image
-          src="/images/extension.png"
+          src="/images/hero-extension.png"
           fill
           alt=""
           className="rounded-2xl object-cover"

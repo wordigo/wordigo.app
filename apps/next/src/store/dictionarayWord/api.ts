@@ -27,9 +27,9 @@ export const dictionaryWordApi = createApi({
     }),
     deleteDicWord: builder.mutation<
       IResponse,
-      { wordId: string; slug: string }
+      { wordId: number; slug: string }
     >({
-      query: (data: { wordId: string; slug: string }) => ({
+      query: (data: { wordId: number; slug: string }) => ({
         url: "/dictionaries/removeWord",
         method: "delete",
         data,

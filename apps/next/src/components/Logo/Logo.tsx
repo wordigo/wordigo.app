@@ -1,8 +1,13 @@
+import { cn } from "@wordigo/ui/lib/utils";
 import { cubicBezier, motion } from "framer-motion";
 
-import { cn } from "@wordigo/ui/lib/utils";
-
-export default function AnimatinLogo({ className, component }: { className?: string; component?: string }) {
+export default function AnimatinLogo({
+  className,
+  component,
+}: {
+  className?: string;
+  component?: string;
+}) {
   const easing = cubicBezier(0.76, 0, 0.24, 1);
 
   const icon = {
@@ -43,7 +48,13 @@ export default function AnimatinLogo({ className, component }: { className?: str
   };
 
   return (
-    <motion.svg width="73" height="73" viewBox="0 0 73 73" xmlns="http://www.w3.org/2000/svg" className={cn(className)}>
+    <motion.svg
+      width="73"
+      height="73"
+      viewBox="0 0 73 73"
+      xmlns="http://www.w3.org/2000/svg"
+      className={cn(className)}
+    >
       <motion.path
         variants={icon}
         className={"ease"}

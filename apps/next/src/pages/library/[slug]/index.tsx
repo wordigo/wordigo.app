@@ -15,7 +15,6 @@ import {
   AvatarImage,
   Badge,
   Button,
-  useToast,
 } from "@wordigo/ui";
 import { type AxiosResponse } from "axios";
 import {
@@ -233,7 +232,6 @@ const LibraryDetail = ({ dictionary }: { dictionary: IDictionary }) => {
 };
 
 LibraryDetail.WordItem = ({ word, translatedWord }) => {
-  const { toast } = useToast();
   const { textToSpeech, isSpeaking, spokenWord } = useTextToSpeech();
   const { t } = useTranslation();
 

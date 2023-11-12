@@ -5,6 +5,11 @@ export interface IResponse<T = null> {
   success: boolean;
 }
 
+export interface IPagination {
+  page?: number;
+  size?: number;
+}
+
 export interface PageProps {
   _nextI18Next: NextI18Next;
 }

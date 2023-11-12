@@ -1,4 +1,10 @@
-import { BookMarked, ExternalLink, GraduationCap, type LucideIcon, Users } from "lucide-react";
+import {
+  BookMarked,
+  ExternalLink,
+  GraduationCap,
+  Users,
+  type LucideIcon,
+} from "lucide-react";
 
 export interface IFeature {
   Icon: LucideIcon;

@@ -4,6 +4,7 @@ import {
   useGetDictionaryWordsMutation,
 } from "@/store/dictionarayWord/api";
 import { zodResolver } from "@hookform/resolvers/zod";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
 import {
   Button,
   Dialog,
@@ -19,13 +20,13 @@ import {
   FormMessage,
   Input,
   Label,
-  useToast,
 } from "@wordigo/ui";
 import { PlusIcon, Table2Icon, X } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 const CreateWordSchema = z.object({
@@ -40,7 +41,6 @@ type CreateWordValues = z.infer<typeof CreateWordSchema>;
 
 export function CreateWord() {
   const [open, setOpen] = useState(false);
-  const { toast } = useToast();
   const { t } = useTranslation();
 
   const router = useRouter();
@@ -80,15 +80,11 @@ export function CreateWord() {
 
         void getWordDataMutation(id);
         form.reset();
-        toast({
-          variant: "success",
-          title: t("notifications.success"),
+        toast(t("notifications.success"), {
           description: t("notifications.created_word"),
         });
       } else {
-        toast({
-          variant: "destructive",
-          title: t("notifications.warning"),
+        toast.error(t("notifications.warning"), {
           description: data.message,
         });
       }
@@ -98,7 +94,7 @@ export function CreateWord() {
   const toggleShow = () => setOpen(!open);
 
   return (
-    <Dialog open={open}>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
           onClick={toggleShow}
@@ -116,13 +112,15 @@ export function CreateWord() {
             <Table2Icon size={18} />
             {t("dic_words.add_word")}
           </DialogTitle>
-          <button
-            onClick={toggleShow}
-            className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
-          >
-            <X className="h-4 w-4" />
-            <span className="sr-only">Close</span>
-          </button>
+          <DialogPrimitive.Close asChild>
+            <button
+              onClick={toggleShow}
+              className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
+            >
+              <X size={18} />
+              <span className="sr-only">Close</span>
+            </button>
+          </DialogPrimitive.Close>
         </DialogHeader>
 
         <Form {...(form as any)}>

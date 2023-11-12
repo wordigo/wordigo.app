@@ -4,6 +4,7 @@ import { DataTableColumnHeader } from "@/components/DataTable/data-table-column-
 import { type DictionaryWord } from "@/store/dictionarayWord/type";
 import { type ColumnDef } from "@tanstack/react-table";
 import {
+  Checkbox,
   Tooltip,
   TooltipContent,
   TooltipProvider,
@@ -25,8 +26,57 @@ export function DictionarayWordsTable({
 }: DictionaryWordsTableShellProps) {
   const { t } = useTranslation();
 
+  const [selectedRowIds, setSelectedRowIds] = React.useState<number[]>([]);
+
+  function deleteSelectedRows() {
+    // toast.promise(Promise.all(selectedRowIds.map((id) => deleteTask(id))), {
+    //   loading: "Deleting...",
+    //   success: () => {
+    //     setSelectedRowIds([])
+    //     return "Tasks deleted successfully."
+    //   },
+    //   error: (err: unknown) => {
+    //     setSelectedRowIds([])
+    //     return catchError(err)
+    //   },
+    // })
+  }
+
   const columns = React.useMemo<ColumnDef<DictionaryWord, unknown>[]>(
     () => [
+      {
+        id: "select",
+        header: ({ table }) => (
+          <Checkbox
+            checked={table.getIsAllPageRowsSelected()}
+            onCheckedChange={(value) => {
+              table.toggleAllPageRowsSelected(!!value);
+              // setSelectedRowIds((prev) =>
+              //   prev.length === data.length ? [] : data.map((row) => row.id)
+              // );
+            }}
+            aria-label="Select all"
+            className="translate-y-[2px]"
+          />
+        ),
+        cell: ({ row }) => (
+          <Checkbox
+            checked={row.getIsSelected()}
+            // onCheckedChange={(value) => {
+            //   row.toggleSelected(!!value);
+            //   setSelectedRowIds((prev) =>
+            //     value
+            //       ? [...prev, row.original.id]
+            //       : prev.filter((id) => id !== row.original.id)
+            //   );
+            // }}
+            aria-label="Select row"
+            className="translate-y-[2px]"
+          />
+        ),
+        enableSorting: false,
+        enableHiding: false,
+      },
       {
         accessorKey: "text",
         header: ({ column }) => (

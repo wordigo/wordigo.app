@@ -1,7 +1,7 @@
 import CButton from "@/components/UI/Button";
 import {
-  type AuthRegisterValues,
   AuthSıgnUpSchema,
+  type AuthRegisterValues,
 } from "@/schemas/auth.schema";
 import { useRegisterMutation } from "@/store/auth/api";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -13,7 +13,6 @@ import {
   FormMessage,
   Input,
   Label,
-  useToast,
 } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 import { signIn } from "next-auth/react";
@@ -21,13 +20,13 @@ import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 export type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
 
 const AuthSıgnUpForm = ({ className, ...props }: UserAuthFormProps) => {
   const { t } = useTranslation();
   const router = useRouter();
-  const { toast } = useToast();
   const [handleRegister, { data, isLoading: registerIsLoading, status }] =
     useRegisterMutation();
   const [isLoading, setIsLoading] = useState(false);
@@ -57,14 +56,11 @@ const AuthSıgnUpForm = ({ className, ...props }: UserAuthFormProps) => {
       redirect: false,
     });
     if (error) {
-      toast({
-        variant: "destructive",
-        title: t("notifications.warning"),
+      toast.error(t("notifications.warning"), {
         description: error,
       });
     } else {
-      toast({
-        title: t("notifications.success"),
+      toast.success(t("notifications.success"), {
         description: t("notifications.signin_success"),
       });
 

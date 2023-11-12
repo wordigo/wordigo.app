@@ -13,12 +13,12 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-  toast,
 } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import { useState } from "react";
+import { toast } from "sonner";
 
 const Feedback = () => {
   const { t } = useTranslation();
@@ -34,15 +34,13 @@ const Feedback = () => {
       rate: active,
     })
       .then(() => {
-        toast({
-          title: t("notifications.success"),
+        toast.success(t("notifications.success"), {
           description: t("feedback.success"),
         });
         setFeedbackShow(false);
       })
       .catch(() => {
-        toast({
-          title: t("notifications.error"),
+        toast.error(t("notifications.error"), {
           description: t("feedback.error"),
         });
       });

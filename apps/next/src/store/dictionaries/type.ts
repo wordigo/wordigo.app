@@ -1,4 +1,5 @@
 import { type DictionaryWord } from "../dictionarayWord/type";
+import { IPagination } from "types/global";
 
 export interface Dictionary {
   title: string;
@@ -17,3 +18,7 @@ export interface CreateDictionaryType {
   sourceLang?: string;
   targetLang?: string;
 }
+
+export interface GetUserDictionariesType
+  extends Partial<Dictionary>,
+    IPagination {}

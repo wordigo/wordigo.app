@@ -51,6 +51,7 @@
     "react-infinite-scroll-component": "^6.1.0",
     "react-redux": "^8.1.2",
     "remark-gfm": "^3.0.1",
+    "sonner": "^1.2.0",
     "swiper": "^10.2.0",
     "tailwind-merge": "^1.13.2",
     "tailwindcss-animate": "^1.0.6",

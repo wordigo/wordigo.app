@@ -1,8 +1,7 @@
 import RootLayout from "../Layout";
-import { Toaster } from "@wordigo/ui";
-// import { AuthContext, useAuth } from "@/hooks/useAuthStore";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { type PropsWithChildren } from "react";
+import { Toaster } from "sonner";
 
 const AppProviders: React.FC<PropsWithChildren> = ({ children }) => {
   return (

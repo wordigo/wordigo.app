@@ -1,7 +1,6 @@
 import AuthSignInForm from "./signin-form";
 import AuthLayout from "@/components/Auth/Layout/AuthLayout";
 import SocialProviders from "@/components/Auth/SocialProviders";
-import { useToast } from "@wordigo/ui";
 import { type GetServerSidePropsContext } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -12,7 +11,6 @@ import { type PageProps } from "types/global";
 
 const signIn = ({ _nextI18Next }: PageProps) => {
   const { t } = useTranslation();
-  const { toast } = useToast();
 
   const { query, replace } = useRouter();
 

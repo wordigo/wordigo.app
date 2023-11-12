@@ -1,9 +1,11 @@
 import { axiosBaseQuery } from "../baseQuery";
 import {
+  GetUserDictionariesType,
   type CreateDictionaryType,
   type Dictionary,
   type GetDictionaryIdType,
 } from "./type";
+import { buildDynamicUrl } from "@/utils/getUrl";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { type IResponse } from "types/global";
 
@@ -13,11 +15,19 @@ export const dictionaryApi = createApi({
     baseUrl: process.env.NEXT_PUBLIC_WORDIGO_BACKEND_URL,
   }),
   endpoints: (builder) => ({
-    getDictionaries: builder.mutation<IResponse<Dictionary[]>, any>({
-      query: () => ({
-        url: "/dictionaries/getUserDictionaries",
-        method: "GET",
-      }),
+    getDictionaries: builder.mutation<
+      IResponse<Dictionary[]>,
+      GetUserDictionariesType
+    >({
+      query: (queryFilter) => {
+        const baseUrl = "/dictionaries/getUserDictionariesFilter?";
+        const url = buildDynamicUrl(baseUrl, queryFilter);
+
+        return {
+          url,
+          method: "GET",
+        };
+      },
     }),
     getDictionaryDetail: builder.mutation<
       IResponse<Dictionary>,

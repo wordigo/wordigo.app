@@ -43,7 +43,9 @@ export default function HomeHeader({ className }: { className?: string }) {
             >
               <StaticLogo />
               <div className="font-semibold">Wordigo</div>
-              <Badge className="rounded-sm shadow-sm opacity-70 px-1 text-[10px]">Beta</Badge>
+              <Badge className="rounded-sm shadow-sm opacity-70 px-1 text-[10px]">
+                Beta
+              </Badge>
             </Link>
             <span className="max-lg:hidden">
               <Navigation />

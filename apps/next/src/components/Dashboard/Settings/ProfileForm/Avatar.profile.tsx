@@ -1,15 +1,15 @@
 import Spinner from "@/components/UI/Spinner";
 import { useUpdateAvatarMutation } from "@/store/profile/api";
 import { toBase64 } from "@/utils/toBase64";
-import { Avatar, AvatarFallback, AvatarImage, useToast } from "@wordigo/ui";
+import { Avatar, AvatarFallback, AvatarImage } from "@wordigo/ui";
 import { cx } from "class-variance-authority";
 import { FileEditIcon } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 import { Fragment, useEffect, type ChangeEvent } from "react";
+import { toast } from "sonner";
 
 const ProfileUploadAvatar = () => {
-  const { toast } = useToast();
   const { data, update } = useSession();
   const { t } = useTranslation();
   const splittedText = data?.user?.name?.toUpperCase()?.split(" ");
@@ -40,14 +40,11 @@ const ProfileUploadAvatar = () => {
   useEffect(() => {
     if (status === "fulfilled") {
       void updateProfilePhoto();
-      toast({
-        title: t("notifications.success"),
+      toast.success(t("notifications.success"), {
         description: t("notifications.avatar_update"),
       });
     } else if (status === "rejected") {
-      toast({
-        variant: "destructive",
-        title: t("notifications.warning"),
+      toast.error(t("notifications.warning"), {
         description: profileData.message,
       });
     }

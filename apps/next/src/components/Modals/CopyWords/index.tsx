@@ -17,7 +17,6 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-  useToast,
 } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 import { Table2Icon, X } from "lucide-react";
@@ -25,6 +24,7 @@ import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 const CreateWordSchema = z.object({
@@ -47,7 +47,6 @@ export function CopyWord({
   isHaveData: any;
 }) {
   const [open, setOpen] = useState(false);
-  const { toast } = useToast();
   const { t } = useTranslation();
 
   const router = useRouter();
@@ -87,15 +86,11 @@ export function CopyWord({
 
         void getWordDataMutation(id);
         form.reset();
-        toast({
-          variant: "success",
-          title: t("notifications.success"),
+        toast.success(t("notifications.success"), {
           description: t("notifications.created_word"),
         });
       } else {
-        toast({
-          variant: "destructive",
-          title: t("notifications.warning"),
+        toast(t("notifications.warning"), {
           description: data.message,
         });
       }
@@ -146,9 +141,7 @@ export function CopyWord({
           </SelectContent>
         </Select>
         <div className="flex items-center justify-between">
-          <CreateDictionary
-            label={"dictionaries.add_dictionaries"}
-          ></CreateDictionary>
+          <CreateDictionary />
           <Button>{t("save")}</Button>
         </div>
       </DialogContent>

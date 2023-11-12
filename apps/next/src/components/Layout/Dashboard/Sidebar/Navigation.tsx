@@ -9,7 +9,6 @@ import { AnimatePresence } from "framer-motion";
 import { CircleDot } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRouter } from "next/router";
 import { Fragment } from "react";
 
 const DashboardNav = () => {
@@ -31,11 +30,10 @@ const DashboardNav = () => {
 
 DashboardNav.Item = (item: SidebarNavItem, index: number) => {
   const path = usePathname();
-  const router = useRouter();
 
   const classes = cn(
     "flex flex-col hover:text-accent-foreground rounded-[6px] font-medium  group relative mb-1 hover:bg-[#F8FAFC] dark:hover:bg-[#101929]",
-    path === item.href
+    path === item.href || item.href.includes(path.split("/")[2])
       ? "text-accent-foreground bg-[#F1F5F9] dark:bg-[#101929]"
       : "transparent",
     item.disabled && "cursor-not-allowed opacity-80"

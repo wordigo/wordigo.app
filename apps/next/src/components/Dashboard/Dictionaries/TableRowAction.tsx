@@ -1,5 +1,7 @@
-import { useDeleteDicWordMutation } from "@/store/dictionarayWord/api";
-import { useGetDictionariesMutation } from "@/store/dictionaries/api";
+import {
+  useDeleteDictionariesMutation,
+  useGetDictionariesMutation,
+} from "@/store/dictionaries/api";
 import { type Row } from "@tanstack/react-table";
 import {
   Button,
@@ -8,12 +10,12 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-  useToast,
 } from "@wordigo/ui";
 import { MoreHorizontal } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useEffect } from "react";
+import { toast } from "sonner";
 import { type IDictionary } from "types/global";
 
 interface DataTableRowActionsProps {
@@ -22,30 +24,25 @@ interface DataTableRowActionsProps {
 
 export function DataTableRowActions({ row }: DataTableRowActionsProps) {
   const { slug } = row.original;
-  const { toast } = useToast();
   const { t } = useTranslation();
 
   const [getDictionaries] = useGetDictionariesMutation();
-  const [deleteWord, { status, data }] = useDeleteDicWordMutation();
+  const [deleteDictionary, { status, data }] = useDeleteDictionariesMutation();
 
   const handleDeleteClick = (event) => {
     event.stopPropagation();
-    void deleteWord({ slug });
+    void deleteDictionary({ slug });
   };
 
   useEffect(() => {
     if (status === "fulfilled") {
       if (data.success) {
-        void getDictionaries("");
-        toast({
-          variant: "success",
-          title: t("notifications.success"),
+        void getDictionaries({});
+        toast.success(t("notifications.success"), {
           description: t("notifications.deleted_dictionary"),
         });
       } else {
-        toast({
-          variant: "destructive",
-          title: t("notifications.warning"),
+        toast.error(t("notifications.warning"), {
           description: data.message,
         });
       }

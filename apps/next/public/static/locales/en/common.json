@@ -186,8 +186,8 @@
     "settings": "Dictionaries Settings",
     "wordLabel": "Word",
     "wordPlaceholder": "Enter a word",
-    "translatedLabel": "Translated world",
-    "translatedPlaceholder": "Enter a translated world",
+    "translatedLabel": "Translated word",
+    "translatedPlaceholder": "Enter a translated word",
     "copyWord": "Copy"
   },
   "privacy_policy": {
