@@ -61,6 +61,7 @@
     "zustand": "^4.3.9"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@types/cors": "^2.8.13",
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.33",

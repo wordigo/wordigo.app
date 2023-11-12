@@ -4,9 +4,8 @@
     "baseUrl": ".",
     "strict": false,
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"],
+      "images/*": ["./public/images/*"]
     }
   },
   "exclude": [],
