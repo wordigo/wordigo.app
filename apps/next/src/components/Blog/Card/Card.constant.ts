@@ -1,4 +1,5 @@
 export interface BlogCardProperties {
+  id: number;
   blogType?: string;
   title?: string;
   info?: string;
