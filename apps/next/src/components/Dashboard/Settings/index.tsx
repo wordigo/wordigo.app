@@ -12,7 +12,7 @@ export default function index() {
       <TabsList className="grid w-fit grid-cols-3 gap-1">
         {SettingsTabs.map((tab, index) => (
           <TabsTrigger
-            className="px-2 pb-1 pt-0.5 rounded-md border "
+            className="px-2 pb-1 pt-0.5 rounded-md"
             value={tab.value}
             key={index}
           >
