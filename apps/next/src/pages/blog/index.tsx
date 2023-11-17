@@ -5,12 +5,12 @@ export default function Blog() {
   return (
     <MainLayout>
       Blog page
-      <div className="px-2 rounded-xl ">
+      <div className="px-2 rounded-xl text-[#101828]">
         <div className="flex flex-col gap-2 p-3 bg-white border rounded">
           <div className="pt-2 pb-2">
             <div className="bg-red-500 h-[290px] rounded-lg"></div>
           </div>
-          <span className="py-[2px] px-3 rounded bg-blue-700 w-min font-bold text-xs">
+          <span className="py-1 w-fit flex items-center px-2 rounded-[0.625rem] text-xs font-medium border justify-center">
             Article
           </span>
           <div className="font-bold text-xl">Our First Office</div>
