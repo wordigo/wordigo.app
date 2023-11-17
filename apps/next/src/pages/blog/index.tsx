@@ -44,11 +44,19 @@ const dummyData = [
 export default function Blog() {
   return (
     <MainLayout>
-      Blog page
-      <div className="px-4 flex gap-2 flex-col ">
-        {dummyData.map((blog) => {
-          return <BlogCard {...blog} />;
-        })}
+      <div className="flex justify-center">
+        <div className="px-4 gap-2 grid grid-cols-6  w-[1200px]">
+          <div className="text-xl font-semibold col-span-6 pt-7">
+            Wordigo Blog
+          </div>
+          {dummyData.map((blog) => {
+            return (
+              <div className="md:col-span-3 lg:col-span-2">
+                <BlogCard {...blog} />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </MainLayout>
   );

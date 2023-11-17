@@ -10,7 +10,7 @@ export default function BlogCard({
 }: BlogCardProperties) {
   return (
     <div>
-      <div className=" rounded-xl text-[#101828]">
+      <div className=" rounded-2xl text-[#101828]">
         <div className="flex flex-col gap-2 p-3 bg-white border cursor-pointer hover:bg-slate-100 rounded">
           <div className="pt-2 pb-2">
             <div className="bg-black h-[290px] rounded-lg"></div>
