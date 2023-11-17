@@ -45,13 +45,13 @@ export default function Blog() {
   return (
     <MainLayout>
       <div className="flex justify-center">
-        <div className="px-4 gap-2 grid grid-cols-6  w-[1200px]">
+        <div className="px-4 gap-4 grid grid-cols-6  w-[1200px]">
           <div className="text-xl font-semibold col-span-6 pt-7">
             Wordigo Blog
           </div>
           {dummyData.map((blog) => {
             return (
-              <div className="md:col-span-3 lg:col-span-2">
+              <div key={blog.id} className="md:col-span-3 lg:col-span-2">
                 <BlogCard {...blog} />
               </div>
             );
