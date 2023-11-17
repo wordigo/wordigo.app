@@ -51,7 +51,10 @@ export default function Blog() {
           </div>
           {dummyData.map((blog) => {
             return (
-              <div key={blog.id} className="md:col-span-3 lg:col-span-2">
+              <div
+                key={blog.id}
+                className="col-span-6 md:col-span-3 lg:col-span-2"
+              >
                 <BlogCard {...blog} />
               </div>
             );
