@@ -25,7 +25,7 @@ const dummyData = [
     id: 3,
     title: "Our first office",
     readTime: "16 min",
-    info: "Over the past year, Volosoft has undergone many changes! After months of preparation and some hard work, we moved to our new office.",
+    info: "Over the past year, Volosoft has undergone many changes! After months of preparation and some hard work, we moved to our new office.Over the past year, Volosoft has undergone many changes! After months of preparation and some hard work, we moved to our new office.",
     blogType: "Article",
     userName: "Jese Leos",
     date: "Aug 15, 2021",
@@ -46,7 +46,7 @@ export default function Blog() {
     <MainLayout>
       <div className="flex justify-center">
         <div className="px-4 gap-4 grid grid-cols-6  w-[1200px]">
-          <div className="text-xl font-semibold col-span-6 pt-7">
+          <div className="text-3xl font-bold col-span-6 pt-7 flex justify-center mb-10">
             Wordigo Blog
           </div>
           {dummyData.map((blog) => {

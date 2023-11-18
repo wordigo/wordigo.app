@@ -21,7 +21,9 @@ export default function BlogCard({
             </span>
           )}
           <div className="font-bold text-xl">{title}</div>
-          <div className="text-gray-700">{info}</div>
+          <div className="text-gray-700 h-[72px] overflow-hidden text-ellipsis  ">
+            {info}
+          </div>
           <div className="flex items-center gap-3 pt-2">
             <div className="bg-black w-[40px] h-[40px] rounded-full"></div>
             <div>
