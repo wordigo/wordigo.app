@@ -57,13 +57,20 @@ const LibraryDetail = ({ dictionary }: { dictionary: IDictionary }) => {
         title={dictionary.title}
         description={dictionary.description}
         canonical={"https://www.wordigo.app/library/" + dictionary.slug}
+        twitter={{
+          handle: "@wordigoapp",
+          site: "@wordigoapp",
+          cardType: "summary_large_image",
+        }}
         openGraph={{
           url: "https://www.wordigo.app/library/" + dictionary.slug,
           title: dictionary.title,
           description: dictionary.description,
           images: [
             {
-              url: dictionary.image || "/images/dictionary_banner.jpg",
+              url:
+                dictionary.image ||
+                "https://www.wordigo.app/images/dictionary_banner.jpg",
               alt: dictionary.title,
             },
           ],
