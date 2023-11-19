@@ -12,11 +12,13 @@ export default function BlogCard({
 }: BlogCardProperties) {
   return (
     <div>
-      <div className="  text-[#101828]">
+      <div className="  text-slate-800">
         <div className="flex flex-col gap-2 px-4 pt-2 pb-5 bg-white border cursor-pointer hover:bg-slate-100 rounded-xl">
           <div className="pt-2 pb-2">
-            <div className="bg-black h-[290px] rounded-lg">
-              <img className="h-full w-full" src={thumbnail} />
+            <div className="bg-black h-[290px] rounded-xl">
+              {thumbnail && (
+                <img className="h-full w-full rounded-xl" src={thumbnail} />
+              )}
             </div>
           </div>
           {blogType && (
@@ -30,7 +32,12 @@ export default function BlogCard({
           </div>
           <div className="flex items-center gap-3 pt-2">
             <div className="bg-black w-[40px] h-[40px] rounded-full">
-              <img className="h-full w-full" src={profilePicture} />
+              {profilePicture && (
+                <img
+                  className="h-full rounded-full border-none w-full"
+                  src={profilePicture}
+                />
+              )}
             </div>
             <div>
               <div>{userName}</div>
