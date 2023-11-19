@@ -5,6 +5,7 @@ import {
   WordsItemLoader,
 } from "@/components/Published/Library/Library.loaders";
 import DictionaryRating from "@/components/Published/Rating";
+import SocialShare from "@/components/Published/SocialShare";
 import ArrowRightLeft from "@/components/Published/WordsPage/ArrowRightLeft";
 import { TextToSpeechProvider, useTextToSpeech } from "@/contexts/textToSpeech";
 import { axiosBaseQuery } from "@/store/baseQuery";
@@ -17,33 +18,18 @@ import {
   Button,
 } from "@wordigo/ui";
 import { type AxiosResponse } from "axios";
-import {
-  Book,
-  Copy,
-  Hash,
-  Languages,
-  Link,
-  Share2Icon,
-  Star,
-  Volume2,
-} from "lucide-react";
+import { Book, Copy, Hash, Languages, Link, Star, Volume2 } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
 import { Fragment, useMemo } from "react";
 import ReactCountryFlag from "react-country-flag";
+import { toast } from "sonner";
 import { type IDictionary, type IResponse } from "types/global";
 
 const LibraryDetail = ({ dictionary }: { dictionary: IDictionary }) => {
   const { t } = useTranslation();
-
-  // const [handleGetPublicDictionary, { data: response, isLoading }] =
-  //   useGetPublicDictionaryBySlugMutation();
-
-  // useEffect(() => {
-  //   void handleGetPublicDictionary({ slug: slug as string });
-  // }, []);
 
   const computedSourceLang = useMemo(
     () =>
@@ -195,9 +181,7 @@ const LibraryDetail = ({ dictionary }: { dictionary: IDictionary }) => {
                     <Button type="button" variant="outline" size="icon">
                       <Link className="h-5 w-5" />
                     </Button>
-                    <Button type="button" variant="outline" size="icon">
-                      <Share2Icon className="h-5 w-5" />
-                    </Button>
+                    <SocialShare {...dictionary} />
                     <DictionaryRating />
                     <Button
                       type="button"
@@ -241,12 +225,9 @@ LibraryDetail.WordItem = ({ word, translatedWord }) => {
 
   const handleCopyWord = () => {
     void navigator.clipboard.writeText(word);
-    toast({
-      title: t("notifications.copied_word_title"),
+    toast.success(t("notifications.copied_word_title"), {
       description: t("notifications.copied_word"),
-      status: "success",
       duration: 3000,
-      isClosable: true,
     });
   };
 

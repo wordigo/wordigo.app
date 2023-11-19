@@ -176,6 +176,11 @@
     "public": "Public",
     "open_settings": "Open dictionary settings"
   },
+  "share": {
+    "twitter": "Share on Twitter",
+    "linkedin": "Share on Linkedin",
+    "link_copy": "Copy link"
+  },
   "dic_words": {
     "text": "Native Text",
     "translated_text": "Translate Text",

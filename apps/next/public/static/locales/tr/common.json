@@ -147,6 +147,11 @@
     "public": "Genel",
     "open_settings": "Sözlük Ayarlarını Aç"
   },
+  "share": {
+    "twitter": "twitter da paylaş",
+    "linkedin": "linkedin da paylaş",
+    "link_copy": "bağlantıyı Kopyala"
+  },
   "dic_words": {
     "text": "Anadil Metni",
     "translated_text": "Çeviri Metni",
