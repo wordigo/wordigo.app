@@ -63,7 +63,9 @@
     "updated_dictionary": "Dictionary updated successfully.",
     "created_word": "Word created successfully.",
     "copied_word_title": "Copied!",
-    "copied_word": "Word copied to clipboard."
+    "copied_word": "Word copied to clipboard.",
+    "copied_link_title": "Copied!",
+    "copied_link": "Link copied to clipboard."
   },
   "announcement": {
     "description": "We're launching soon on",

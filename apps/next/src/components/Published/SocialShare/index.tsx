@@ -8,7 +8,7 @@ import {
 import { Share2Icon } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import React, { PropsWithChildren } from "react";
-import { BsLink45Deg, BsLinkedin, BsTwitter } from "react-icons/bs";
+import { BsLinkedin, BsTwitter } from "react-icons/bs";
 import { LinkedinShareButton, TwitterShareButton } from "react-share";
 import { IDictionary } from "types/global";
 
@@ -17,12 +17,6 @@ const SocialShare = ({ title, slug }: IDictionary) => {
   const host =
     typeof window !== "undefined" ? window.location.origin : undefined;
   const url = `${host}/library/${slug}`;
-
-  const copyToClipboard = () => {
-    if (typeof navigator !== "undefined" && navigator.clipboard) {
-      navigator.clipboard.writeText(url as string);
-    }
-  };
 
   return (
     <DropdownMenu>
@@ -54,13 +48,6 @@ const SocialShare = ({ title, slug }: IDictionary) => {
             <BsLinkedin />
             {t("share.linkedin")}
           </LinkedinShareButton>
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          className="w-full flex gap-x-2 items-center cursor-pointer"
-          onClick={copyToClipboard}
-        >
-          <BsLink45Deg />
-          {t("share.link_copy")}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

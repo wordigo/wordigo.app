@@ -55,7 +55,9 @@
     "updated_dictionary": "Sözlük başarıyla güncellendi.",
     "created_word": "Kelime başarıyla oluşturuldu.",
     "copied_word_title": "Kopyalandı!",
-    "copied_word": "Kelime başarıyla kopyalandı."
+    "copied_word": "Kelime başarıyla kopyalandı.",
+    "copied_link_title": "Kopyalandı",
+    "copied_link": "Bağlantı başarıyla kopyalandı."
   },
   "announcement": {
     "description": "Yakında başlıyoruz",

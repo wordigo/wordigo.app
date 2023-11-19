@@ -51,6 +51,20 @@ const LibraryDetail = ({ dictionary }: { dictionary: IDictionary }) => {
   const computedName =
     (splittedText?.[0]?.[0] || "") + (splittedText?.[1]?.[0] || "");
 
+  const host =
+    typeof window !== "undefined" ? window.location.origin : undefined;
+  const url = `${host}/library/${dictionary?.slug}`;
+
+  const copyToClipboard = () => {
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      toast.success(t("notifications.copied_link_title"), {
+        description: t("notifications.copied_link"),
+        duration: 3000,
+      });
+      navigator.clipboard.writeText(url as string);
+    }
+  };
+
   return (
     <Fragment>
       <NextSeo
@@ -140,13 +154,7 @@ const LibraryDetail = ({ dictionary }: { dictionary: IDictionary }) => {
                       </div>
                     </div>
                     <div className="flex mt-12 items-center max-xl:mt-6">
-                      <div className="relative h-14 w-14 mr-4">
-                        <Image
-                          src={dictionary?.author.avatar_url}
-                          fill
-                          alt=""
-                          className="rounded-full"
-                        />
+                      <div className="relative h-14 w-14 mr-1">
                         <Avatar className="relative h-10 w-10 mr-3 md:h-12 md:w-12">
                           <AvatarImage
                             className="w-10 h-10 md:h-12 md:w-12"
@@ -161,7 +169,7 @@ const LibraryDetail = ({ dictionary }: { dictionary: IDictionary }) => {
                           {dictionary?.author.name}
                         </span>
                         <span className="text-base text-muted-foreground">
-                          {dictionary?.createdDate}
+                          {new Date(dictionary?.createdDate).toDateString()}
                         </span>
                       </div>
                     </div>
@@ -185,7 +193,12 @@ const LibraryDetail = ({ dictionary }: { dictionary: IDictionary }) => {
                     </p>
                   </span>
                   <div className="grid grid-flow-col gap-x-3 max-md:mt-4">
-                    <Button type="button" variant="outline" size="icon">
+                    <Button
+                      onClick={copyToClipboard}
+                      type="button"
+                      variant="outline"
+                      size="icon"
+                    >
                       <Link className="h-5 w-5" />
                     </Button>
                     <SocialShare {...dictionary} />
