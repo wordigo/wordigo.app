@@ -1,6 +1,7 @@
 import { type BlogCardProperties } from "./Card.constant";
 
 export default function BlogCard({
+  id,
   thumbnail,
   blogType,
   title,
@@ -10,6 +11,8 @@ export default function BlogCard({
   readTime,
   profilePicture,
 }: BlogCardProperties) {
+  const abbreviatedInfoText = `${info.slice(0, 97)}...`;
+  console.log(id + " " + abbreviatedInfoText);
   return (
     <div>
       <div className="  text-slate-800">
@@ -28,10 +31,10 @@ export default function BlogCard({
           )}
           <div className="font-bold text-xl">{title}</div>
           <div className="text-gray-700 h-20 overflow-hidden text-ellipsis  ">
-            {info}
+            {abbreviatedInfoText}
           </div>
           <div className="flex items-center gap-3 pt-2">
-            <div className="bg-black w-[40px] h-[40px] rounded-full">
+            <div className="bg-black w-10 h-10 rounded-full">
               {profilePicture && (
                 <img
                   className="h-full rounded-full border-none w-full"
