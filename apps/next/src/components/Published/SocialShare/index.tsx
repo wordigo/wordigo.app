@@ -16,7 +16,7 @@ const SocialShare = ({ title, slug }: IDictionary) => {
   const { t } = useTranslation();
   const host =
     typeof window !== "undefined" ? window.location.origin : undefined;
-  const url = `${host}/topic/${slug}`;
+  const url = `${host}/library/${slug}`;
 
   const copyToClipboard = () => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
