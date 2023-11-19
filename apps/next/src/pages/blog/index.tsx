@@ -10,6 +10,8 @@ const dummyData = [
     info: "Over the past year, Volosoft has undergone many changes! After months of preparation and some hard work, we moved to our new office.",
     blogType: "Article",
     userName: "Jese Leos",
+    thumbnail: null,
+    profilePicture: null,
     date: "Aug 15, 2021",
   },
   {
@@ -19,15 +21,19 @@ const dummyData = [
     info: "Over the past year, Volosoft has undergone many changes! After months of preparation and some hard work, we moved to our new office.",
     blogType: "Article",
     userName: "Jese Leos",
+    thumbnail: null,
+    profilePicture: null,
     date: "Aug 15, 2021",
   },
   {
     id: 3,
     title: "Our first office",
     readTime: "16 min",
-    info: "Over the past year, Volosoft has undergone many changes! After months of preparation and some hard work, we moved to our new office.Over the past year, Volosoft has undergone many changes! After months of preparation and some hard work, we moved to our new office.",
+    info: "Over the past year, Volosoft has undergone many changes! After months of preparation and some hard work, we moved to our new office.Fixed the size of the info section in the blog cardFixed the size of the info section in the blog card",
     blogType: "Article",
     userName: "Jese Leos",
+    thumbnail: null,
+    profilePicture: null,
     date: "Aug 15, 2021",
   },
   {
@@ -37,6 +43,8 @@ const dummyData = [
     info: "Over the past year, Volosoft has undergone many changes! After months of preparation and some hard work, we moved to our new office.",
     blogType: "Article",
     userName: "Jese Leos",
+    thumbnail: null,
+    profilePicture: null,
     date: "Aug 15, 2021",
   },
 ];
