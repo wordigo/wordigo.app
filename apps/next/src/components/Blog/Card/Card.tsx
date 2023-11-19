@@ -15,7 +15,7 @@ export default function BlogCard({
       <div className="  text-slate-800">
         <div className="flex flex-col gap-2 px-4 pt-2 pb-5 bg-white border cursor-pointer hover:bg-slate-100 rounded-xl">
           <div className="pt-2 pb-2">
-            <div className="bg-black h-[290px] rounded-xl">
+            <div className="bg-black h-64 rounded-xl">
               {thumbnail && (
                 <img className="h-full w-full rounded-xl" src={thumbnail} />
               )}
@@ -27,7 +27,7 @@ export default function BlogCard({
             </span>
           )}
           <div className="font-bold text-xl">{title}</div>
-          <div className="text-gray-700 h-[72px] overflow-hidden text-ellipsis  ">
+          <div className="text-gray-700 h-20 overflow-hidden text-ellipsis  ">
             {info}
           </div>
           <div className="flex items-center gap-3 pt-2">
