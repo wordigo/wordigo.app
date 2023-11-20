@@ -53,7 +53,7 @@ export default function Blog() {
   return (
     <MainLayout>
       <div className="flex justify-center">
-        <div className="px-4 gap-4 grid grid-cols-6 max-w-7xl">
+        <div className="px-4 gap-4 grid grid-cols-6 max-w-6xl">
           <div className="text-3xl font-bold col-span-6 pt-7 flex justify-center mb-10">
             Wordigo Blog
           </div>

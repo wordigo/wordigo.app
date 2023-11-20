@@ -30,7 +30,7 @@ export default function BlogCard({
             </span>
           )}
           <div className="font-bold text-xl">{title}</div>
-          <div className="text-gray-700 h-20 overflow-hidden text-ellipsis  ">
+          <div className="text-gray-700 h-20 overflow-hidden text-ellipsis leading-relaxed">
             {abbreviatedInfoText}
           </div>
           <div className="flex items-center gap-3 pt-2">
