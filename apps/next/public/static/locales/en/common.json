@@ -84,6 +84,7 @@
     "dictionaries": "Dictionaries",
     "pricing": "Pricing",
     "about": "About",
+    "blogs": "Blogs",
     "library": "Library",
     "signin": "Sign In",
     "signup": "Sign Up",
@@ -149,6 +150,10 @@
     "language": "Language",
     "date": "Date",
     "search": "Search"
+  },
+  "blogs": {
+    "title": "Learning at Its Best: Embrace the Power of Reading",
+    "description": "Welcome to your exclusive hub where the latest news, updates, and inspiring content about Wordigo await you. Here, you'll be the first to discover the innovative features and updates that Wordigo offers"
   },
   "search_no_result": {
     "title": "No results found.",

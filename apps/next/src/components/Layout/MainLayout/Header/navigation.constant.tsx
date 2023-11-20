@@ -1,4 +1,4 @@
-import { AlignCenter, Banknote, HelpCircle, Info, Library } from "lucide-react";
+import { AlignCenter, Info, Library } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import { type ReactElement } from "react";
 
@@ -14,8 +14,8 @@ const homeSidebarNavigations = (): IHomeNavbar[] => {
 
   return [
     {
-      title: t("navbar.features"),
-      href: "/#features",
+      title: t("navbar.blogs"),
+      href: "/blogs",
       icon: <AlignCenter className="mr-2 w-5 h-5 lg:hidden" />,
     },
     {
