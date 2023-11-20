@@ -319,10 +319,10 @@
   },
   "dashboard": {
     "statistics": {
-      "dictionaries": "Dictionary Count",
-      "public_dictionaries": "Public Dictionary Count",
-      "sub_dictionary": "Subscribed Dictionary Count",
-      "words": "Word Count"
+      "dictionaries": "Dictionaries",
+      "public_dictionaries": "Public Dictionaries",
+      "sub_dictionary": "Subscribed Dictionaries",
+      "words": "Words"
     }
   },
   "title": "Title",

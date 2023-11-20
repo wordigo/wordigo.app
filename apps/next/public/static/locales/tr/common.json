@@ -273,10 +273,10 @@
   },
   "dashboard": {
     "statistics": {
-      "dictionaries": "Sözlük Sayısı",
-      "public_dictionaries": "Paylaşılan Sözlük Sayısı",
-      "sub_dictionary": "Abone Sözlük Sayısı",
-      "words": "Kelime Sayısı"
+      "dictionaries": "Sözlükler",
+      "public_dictionaries": "Paylaşılan Sözlükler",
+      "sub_dictionary": "Abone Olunan Sözlüker",
+      "words": "Kelimeler"
     }
   },
   "buttons": {
