@@ -1,7 +1,6 @@
 import { type BlogCardProperties } from "./Card.constant";
 
 export default function BlogCard({
-  id,
   thumbnail,
   blogType,
   title,
@@ -12,7 +11,7 @@ export default function BlogCard({
   profilePicture,
 }: BlogCardProperties) {
   const abbreviatedInfoText = `${info.slice(0, 97)}...`;
-  console.log(id + " " + abbreviatedInfoText);
+
   return (
     <div>
       <div className="  text-slate-800">

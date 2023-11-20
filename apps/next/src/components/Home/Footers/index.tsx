@@ -46,8 +46,8 @@ export default function Footer() {
                 <ul className="mt-4 space-y-2" role="list">
                   <li>
                     <p className="text-sm opacity-70 hover:opacity-100 hover:dark:opacity-100">
-                      <Link href="/#features" passHref>
-                        {t("navbar.features")}
+                      <Link href="/blogs" passHref>
+                        {t("navbar.blogs")}
                       </Link>
                     </p>
                   </li>

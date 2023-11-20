@@ -1,5 +1,8 @@
 import BlogCard from "@/components/Blog/Card/Card";
+import Footer from "@/components/Home/Footers";
+import Newsletter from "@/components/Home/Newsletter";
 import MainLayout from "@/components/Layout/MainLayout";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const dummyData = [
@@ -49,14 +52,21 @@ const dummyData = [
   },
 ];
 
-export default function Blog() {
+const Blogs = () => {
+  const { t } = useTranslation();
+
   return (
     <MainLayout>
-      <div className="flex justify-center">
-        <div className="px-4 gap-4 grid grid-cols-6 max-w-6xl">
-          <div className="text-3xl font-bold col-span-6 pt-7 flex justify-center mb-10">
-            Wordigo Blog
-          </div>
+      <div className="flex flex-col justify-center items-center gap-y-6 md:gap-y-14">
+        <div className="flex flex-col items-center max-md:px-4 text-center md:mt-20">
+          <h2 className="text-4xl font-semibold mt-3 max-lg:text-2xl">
+            {t("blogs.title")}
+          </h2>
+          <p className="text-xl mt-4 text-muted-foreground max-lg:text-lg max-lg:mt-2 md:max-w-2xl">
+            {t("blogs.description")}
+          </p>
+        </div>
+        <div className="gap-4 grid grid-cols-6 max-w-7xl">
           {dummyData.map((blog) => {
             return (
               <div
@@ -69,9 +79,13 @@ export default function Blog() {
           })}
         </div>
       </div>
+      <Newsletter />
+      <Footer />
     </MainLayout>
   );
-}
+};
+
+export default Blogs;
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
