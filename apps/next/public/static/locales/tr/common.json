@@ -26,7 +26,8 @@
     "published": "Yayınlandı",
     "pick_date": "Tarih Seç",
     "filter": "Filtrele",
-    "all_levels": "Tümü"
+    "all_levels": "Tümü",
+    "translator": "Çevirmen"
   },
   "privacy_policy": {
     "title": "Gizlilik Politikası"
@@ -72,10 +73,15 @@
     "library": "Kütüphane",
     "signin": "Giriş Yap",
     "signup": "Üye Ol",
+    "blogs": "Bloglar",
     "dashboard": "Kontrol Paneli",
     "settings": "Ayarlar",
     "logout": "Çıkış yap",
     "get_started": "Haydi Başlayın"
+  },
+  "search_no_result": {
+    "title": "Üzgünüz, aradığınızı bulamadık.",
+    "description": "Aramanızla eşleşen hiçbir sonuç bulunamadı. Lütfen aramanızı değiştirin ve tekrar deneyin."
   },
   "hero": {
     "badge": "Yeni çeviri uzantımızı deneyin!",

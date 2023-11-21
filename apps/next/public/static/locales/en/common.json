@@ -44,7 +44,8 @@
     "published": "Published",
     "pick_date": "Pick a date",
     "filter": "Filter",
-    "all_levels": "All Levels"
+    "all_levels": "All Levels",
+    "translator": "Translator"
   },
   "libraryDetail": {
     "description": "Learn the meanings of words, listen and share with others.",

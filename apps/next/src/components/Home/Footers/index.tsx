@@ -1,5 +1,4 @@
 import ChangeLanguage from "@/components/Layout/MainLayout/ChangeLanguage";
-import ThemeMode from "@/components/Layout/ThemeMode";
 import { GithubIcon, LinkedinIcon, TwitterIcon } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
@@ -7,6 +6,10 @@ import Link from "next/link";
 import { type FunctionComponent } from "react";
 
 const DynamicLogo = dynamic(() => import("@/components/Logo/DynamicLogo"), {
+  ssr: false,
+}) as FunctionComponent;
+
+const ThemeMode = dynamic(() => import("@/components/Layout/ThemeMode"), {
   ssr: false,
 }) as FunctionComponent;
 

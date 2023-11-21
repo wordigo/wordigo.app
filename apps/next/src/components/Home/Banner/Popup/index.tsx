@@ -1,4 +1,3 @@
-import DynamicIconLogo from "@/components/Logo/DynamicIconLogo";
 import { useTranslateWordMutation } from "@/store/common/api";
 import {
   Button,
@@ -19,13 +18,28 @@ import {
 } from "@wordigo/ui";
 import { motion } from "framer-motion";
 import { Copy, Settings, Volume2, XIcon } from "lucide-react";
-import React, { useEffect, type PropsWithChildren } from "react";
+import { useTranslation } from "next-i18next";
+import dynamic from "next/dynamic";
+import React, {
+  useEffect,
+  type FunctionComponent,
+  type PropsWithChildren,
+} from "react";
 import ReactCountryFlag from "react-country-flag";
 import { FaArrowRightArrowLeft } from "react-icons/fa6";
+
+const DynamicIconLogo = dynamic(
+  () => import("@/components/Logo/DynamicIconLogo"),
+  {
+    ssr: false,
+  }
+) as FunctionComponent;
 
 const TranslatePopup: React.FC<
   PropsWithChildren<{ selectedWord: string; style: React.CSSProperties }>
 > = ({ selectedWord, style }) => {
+  const { t } = useTranslation();
+
   const [handleTranslate, { data: response, isLoading }] =
     useTranslateWordMutation();
 
@@ -58,11 +72,11 @@ const TranslatePopup: React.FC<
           marginTop: 15,
         }}
       >
-        <Card tabIndex={1} className="flex-col flex !h-50 bg-white">
+        <Card tabIndex={1} className="flex-col flex !h-50 bg-background">
           <CardHeader className="flex flex-row items-center justify-between px-4 !py-[8px]">
             <CardTitle className="!text-base dark:text-white !text-primary flex gap-x-1 items-center ">
               <DynamicIconLogo />
-              Translator
+              {t("general.translator")}
             </CardTitle>
             <div className="flex gap-x-2">
               <div
