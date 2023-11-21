@@ -1,16 +1,29 @@
-import { Fragment } from "react";
+import SettingsContainer from "@/components/Dashboard/Settings";
+import ProfileForm from "@/components/Dashboard/Settings/ProfileForm";
+import DashboardLayout from "@/components/Layout/Dashboard";
+import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-export function getServerSideProps() {
+export async function getStaticProps({ locale }: { locale: string }) {
   return {
-    redirect: {
-      permanent: false,
-      destination: "/dashboard/settings/profile",
+    props: {
+      ...(await serverSideTranslations(locale, ["common", "zod"])),
     },
   };
 }
 
-const Settings = () => {
-  return <Fragment />;
+const SettingsProfile = () => {
+  return <ProfileForm />;
 };
 
-export default Settings;
+SettingsProfile.Layout = () => {
+  return (
+    <DashboardLayout>
+      <DashboardShell>
+        <SettingsContainer />
+      </DashboardShell>
+    </DashboardLayout>
+  );
+};
+
+export default SettingsProfile.Layout;

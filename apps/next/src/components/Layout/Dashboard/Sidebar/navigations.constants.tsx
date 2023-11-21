@@ -94,35 +94,6 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
       title: t("navbar.settings"),
       href: "/dashboard/settings",
       icon: <Settings size={16} />,
-      child: {
-        trigger: (
-          <Button
-            onClick={handleSettings}
-            variant="outline"
-            size="icon"
-            className="w-fit h-fit p-1"
-          >
-            {showSettings ? <ChevronDown size={9} /> : <ChevronUp size={"9"} />}
-          </Button>
-        ),
-        loading: false,
-        navs: showSettings
-          ? [
-              {
-                href: "/dashboard/settings/profile",
-                name: t("breadcrumbs.profile"),
-              },
-              {
-                href: "/dashboard/settings/account",
-                name: t("breadcrumbs.account"),
-              },
-              {
-                href: "/dashboard/settings/apparance",
-                name: t("breadcrumbs.apparance"),
-              },
-            ]
-          : [],
-      },
     },
   ];
 };

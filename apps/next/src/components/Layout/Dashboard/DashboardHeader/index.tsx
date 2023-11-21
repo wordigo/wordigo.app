@@ -26,7 +26,7 @@ export default function HomeHeader({ className }: { className?: string }) {
   };
 
   return (
-    <div className="border-b border-[#E2E8F0] fixed w-full z-50">
+    <div className="border-b border-[#E2E8F0] dark:border-gray-800 fixed w-full z-50">
       <div
         className={cn(
           "w-full max-w-[90rem] bg-LightBackground dark:bg-DarkBackground m-auto",

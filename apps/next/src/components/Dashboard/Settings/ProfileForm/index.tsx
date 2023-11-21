@@ -1,3 +1,4 @@
+import Container from "../SettingsContainer";
 import ProfileUploadAvatar from "./Avatar.profile";
 import CButton from "@/components/UI/Button";
 import CInput from "@/components/UI/Input/Input";
@@ -79,14 +80,10 @@ export default function ProfileForm() {
   }, [status]);
 
   return (
-    <div className="space-y-4 max-w-3xl">
-      <div>
-        <h3 className="text-lg font-medium">{t("profileSettings.title")}</h3>
-        <p className="text-sm text-muted-foreground">
-          {t("profileSettings.description")}
-        </p>
-      </div>
-      <Separator />
+    <Container
+      tDescription="profileSettings.description"
+      tTitle="profileSettings.title"
+    >
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleSubmit)}
@@ -147,6 +144,6 @@ export default function ProfileForm() {
           </CButton>
         </form>
       </Form>
-    </div>
+    </Container>
   );
 }
