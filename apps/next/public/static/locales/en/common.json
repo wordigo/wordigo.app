@@ -316,7 +316,8 @@
     "title": "Profile",
     "description": "Customize the overall website. Automatically switch between day and\n night themes and change interface language.",
     "username_tooltip": "Lorem ipsum dolor sit amet.",
-    "update_action": "Update profile"
+    "update_action": "Update profile",
+    "update_password": "Update Password"
   },
   "accountSettings": {
     "title": "Account",
@@ -349,5 +350,7 @@
   "email": "Email",
   "username": "Username",
   "password": "Password",
+  "new_password": "New Password",
+  "current_password": "Current Password",
   "save": "Save"
 }

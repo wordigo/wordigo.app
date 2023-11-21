@@ -17,7 +17,7 @@ export default function index({ children, tTitle, tDescription }: IProps) {
         <p className="text-sm text-muted-foreground">{t(tDescription)}</p>
       </div>
       <Separator />
-      {children}
+      <section className="w-full">{children}</section>
     </div>
   );
 }

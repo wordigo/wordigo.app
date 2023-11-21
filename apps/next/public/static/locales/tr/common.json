@@ -287,7 +287,8 @@
     "title": "Profil",
     "description": "Genel web sitesini özelleştirin. Otomatik olarak gece ve gündüz temaları arasında geçiş yapın ve arayüz dili değiştirin.",
     "username_tooltip": "Lorem ipsum dolor sit amet.",
-    "update_action": "Profili Güncelle"
+    "update_action": "Profili Güncelle",
+    "update_password": "Şifreyi Güncelle"
   },
   "accountSettings": {
     "title": "Hesap",
@@ -322,5 +323,7 @@
   "email": "E-posta",
   "username": "Kullanıcı Adı",
   "password": "Şifre",
+  "new_password": "Yeni Şifre",
+  "current_password": "Mevcut Şifre",
   "save": "Kopyala"
 }
