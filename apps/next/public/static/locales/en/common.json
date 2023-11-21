@@ -63,7 +63,9 @@
     "updated_dictionary": "Dictionary updated successfully.",
     "created_word": "Word created successfully.",
     "copied_word_title": "Copied!",
-    "copied_word": "Word copied to clipboard."
+    "copied_word": "Word copied to clipboard.",
+    "copied_link_title": "Copied!",
+    "copied_link": "Link copied to clipboard."
   },
   "announcement": {
     "description": "We're launching soon on",
@@ -82,6 +84,7 @@
     "dictionaries": "Dictionaries",
     "pricing": "Pricing",
     "about": "About",
+    "blogs": "Blogs",
     "library": "Library",
     "signin": "Sign In",
     "signup": "Sign Up",
@@ -148,6 +151,10 @@
     "date": "Date",
     "search": "Search"
   },
+  "blogs": {
+    "title": "Learning at Its Best: Embrace the Power of Reading",
+    "description": "Welcome to your exclusive hub where the latest news, updates, and inspiring content about Wordigo await you. Here, you'll be the first to discover the innovative features and updates that Wordigo offers"
+  },
   "search_no_result": {
     "title": "No results found.",
     "description": "Try adjusting your search or filters to find what you're looking for."
@@ -175,6 +182,11 @@
     "image": "Image",
     "public": "Public",
     "open_settings": "Open dictionary settings"
+  },
+  "share": {
+    "twitter": "Share on Twitter",
+    "linkedin": "Share on Linkedin",
+    "link_copy": "Copy link"
   },
   "dic_words": {
     "text": "Native Text",
@@ -320,10 +332,10 @@
   },
   "dashboard": {
     "statistics": {
-      "dictionaries": "Dictionary Count",
-      "public_dictionaries": "Public Dictionary Count",
-      "sub_dictionary": "Subscribed Dictionary Count",
-      "words": "Word Count"
+      "dictionaries": "Dictionaries",
+      "public_dictionaries": "Public Dictionaries",
+      "sub_dictionary": "Subscribed Dictionaries",
+      "words": "Words"
     }
   },
   "title": "Title",

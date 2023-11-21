@@ -1,3 +1,9 @@
+// @ts-nocheck
+import TooBadIcon from "images/faces/bad.svg?url";
+import GoodIcon from "images/faces/good.svg?url";
+import NotBadIcon from "images/faces/not_bad.svg?url";
+import BadIcon from "images/faces/very_bad.svg?url";
+import VeryGoodIcon from "images/faces/very_good.svg?url";
 import { useTranslation } from "next-i18next";
 
 export interface IFeedbackType {
@@ -12,27 +18,27 @@ const useFeedbacks = (): IFeedbackType[] => {
   return [
     {
       title: t("general.too_bad"),
-      imageSrc: "/images/faces/very_bad.svg",
+      imageSrc: TooBadIcon,
       level: 1,
     },
     {
       title: t("general.bad"),
-      imageSrc: "/images/faces/very_bad.svg",
+      imageSrc: BadIcon,
       level: 2,
     },
     {
       title: t("general.not_bad"),
-      imageSrc: "/images/faces/not_bad.svg",
+      imageSrc: NotBadIcon,
       level: 3,
     },
     {
       title: t("general.good"),
-      imageSrc: "/images/faces/good.svg",
+      imageSrc: GoodIcon,
       level: 4,
     },
     {
       title: t("general.very_good"),
-      imageSrc: "/images/faces/very_good.svg",
+      imageSrc: VeryGoodIcon,
       level: 5,
     },
   ];

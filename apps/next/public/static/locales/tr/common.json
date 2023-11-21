@@ -55,7 +55,9 @@
     "updated_dictionary": "Sözlük başarıyla güncellendi.",
     "created_word": "Kelime başarıyla oluşturuldu.",
     "copied_word_title": "Kopyalandı!",
-    "copied_word": "Kelime başarıyla kopyalandı."
+    "copied_word": "Kelime başarıyla kopyalandı.",
+    "copied_link_title": "Kopyalandı",
+    "copied_link": "Bağlantı başarıyla kopyalandı."
   },
   "announcement": {
     "description": "Yakında başlıyoruz",
@@ -146,6 +148,11 @@
     "image": "Resim",
     "public": "Genel",
     "open_settings": "Sözlük Ayarlarını Aç"
+  },
+  "share": {
+    "twitter": "twitter da paylaş",
+    "linkedin": "linkedin da paylaş",
+    "link_copy": "bağlantıyı Kopyala"
   },
   "dic_words": {
     "text": "Anadil Metni",
@@ -266,10 +273,10 @@
   },
   "dashboard": {
     "statistics": {
-      "dictionaries": "Sözlük Sayısı",
-      "public_dictionaries": "Paylaşılan Sözlük Sayısı",
-      "sub_dictionary": "Abone Sözlük Sayısı",
-      "words": "Kelime Sayısı"
+      "dictionaries": "Sözlükler",
+      "public_dictionaries": "Paylaşılan Sözlükler",
+      "sub_dictionary": "Abone Olunan Sözlüker",
+      "words": "Kelimeler"
     }
   },
   "buttons": {
