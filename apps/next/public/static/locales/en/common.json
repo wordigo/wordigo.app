@@ -115,11 +115,12 @@
     "contiune_google": "Continue with Google"
   },
   "signin": {
-    "title": "Welcome Back",
-    "description": "Enter your email to sign in to your account.",
+    "title": "Welcome back",
+    "description": "Let's get started! Please enter your details.",
     "sign_button": "Sign in",
     "info": "Don’t have an account?",
-    "info_link": "Sign up"
+    "info_link": "Sign up",
+    "forgot_password": "Forgot password?"
   },
   "signup": {
     "title": "Welcome",
