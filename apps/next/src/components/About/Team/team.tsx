@@ -8,13 +8,11 @@ const TeamSection = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="w-full flex flex-col items-center px-20 py-20 max-lg:px-9 max-lg:py-12 max-md:px-0">
-      <span className="px-32 w-full flex flex-col max-lg:px-20 max-md:px-4">
-        <h2 className="text-4xl font-semibold text-center max-lg:text-3xl">
-          {t("about.team.heading")}
-        </h2>
-      </span>
-      <div className="mt-16 w-full grid grid-cols-3 grid-rows-2 gap-x-4 gap-y-16 max-lg:grid-cols-3 max-md:grid-cols-2">
+    <section className="flex flex-col gap-8 sm:gap-12 md:gap-16 lg:gap-20">
+      <h2 className="text-center font-semibold text-2xl sm:text-3xl md:text-4xl">
+        {t("about.team.heading")}
+      </h2>
+      <div className="w-full grid grid-cols-3 grid-rows-2 gap-x-4 gap-y-16 max-lg:grid-cols-3 max-md:grid-cols-2">
         {commentConstants.map((item) => (
           <TeamSection.Item key={item.title} {...item} />
         ))}
