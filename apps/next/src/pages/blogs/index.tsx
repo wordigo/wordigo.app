@@ -57,7 +57,7 @@ const Blogs = () => {
 
   return (
     <MainLayout>
-      <div className="flex flex-col justify-center items-center gap-y-6 md:gap-y-14">
+      <div className="flex flex-col justify-center items-center gap-y-6 md:gap-y-14 px-3">
         <div className="flex flex-col items-center max-md:px-4 text-center md:mt-20">
           <h2 className="text-4xl font-semibold mt-3 max-lg:text-2xl">
             {t("blogs.title")}
