@@ -123,8 +123,8 @@ const TranslatePopup: React.FC<
             ) : (
               <Textarea
                 className="!border-0 !p-0 !opacity-75 disabled:!cursor-default !h-full resize-none"
-                disabled
                 value={response?.data?.translatedText}
+                disabled
               />
             )}
             <div className="absolute right-5 bottom-1">
