@@ -24,43 +24,44 @@ const Published = () => {
   const [isAccordionShow, setIsAccordionShow] = useState(false);
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 px-20 max-md:px-4 w-full">
-      <div className="mb-14 sm:mb-16 md:mb-20 lg:mb-24 text-center max-w-sm sm:max-w-none mx-auto sm:mx-0">
-        <h1 className="text-5xl font-semibold max-xl:text-4xl max-md:text-2xl">
+    <>
+      <section className="text-center max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto">
+        <h1 className="font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
           {t("public_dictionaries.title")}
         </h1>
-
-        <p className="text-xl mt-6 text-muted-foreground max-xl:text-lg max-xl:mt-4 max-md:text-base">
+        <p className="sm:text-lg md:text-xl lg:text-lg mt-4 sm:mt-5 md:mt-6 lg:mt-7 xl:mt-8 text-muted-foreground">
           {t("public_dictionaries.description")}
         </p>
-      </div>
-      <PublishedFilter
-        isAccordionShow={isAccordionShow}
-        setIsAccordionShow={setIsAccordionShow}
-      />
-      {dictionaries?.data?.length === 0 ? (
-        <Published.NotFound />
-      ) : (
-        <main
-          className={cn(
-            "mt-6 sm:mt-8 flex flex-wrap justify-center sm:justify-start gap-4 sm:gap-6 md:gap-8 transition-transform duration-300",
-            isAccordionShow
-              ? "translate-y-[221px] sm:translate-y-[82px]"
-              : "sm:translate-y-0"
-          )}
-        >
-          {dictionariesLoading ? (
-            <PublishedLoader />
-          ) : (
-            <Fragment>
-              {dictionaries?.data?.map((dictionary, index) => (
-                <PublishedItem key={index} {...dictionary} />
-              ))}
-            </Fragment>
-          )}
-        </main>
-      )}
-    </section>
+      </section>
+      <section className="flex flex-col gap-6 sm:gap-8">
+        <PublishedFilter
+          isAccordionShow={isAccordionShow}
+          setIsAccordionShow={setIsAccordionShow}
+        />
+        {dictionaries?.data?.length === 0 ? (
+          <Published.NotFound />
+        ) : (
+          <div
+            className={cn(
+              "flex flex-wrap justify-center sm:justify-start gap-4 sm:gap-6 md:gap-8 transition-transform duration-300",
+              isAccordionShow
+                ? "translate-y-[221px] sm:translate-y-[82px]"
+                : "sm:translate-y-0"
+            )}
+          >
+            {dictionariesLoading ? (
+              <PublishedLoader />
+            ) : (
+              <Fragment>
+                {dictionaries?.data?.map((dictionary, index) => (
+                  <PublishedItem key={index} {...dictionary} />
+                ))}
+              </Fragment>
+            )}
+          </div>
+        )}
+      </section>
+    </>
   );
 };
 
