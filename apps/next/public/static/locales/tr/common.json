@@ -26,7 +26,8 @@
     "published": "Yayınlandı",
     "pick_date": "Tarih Seç",
     "filter": "Filtrele",
-    "all_levels": "Tümü"
+    "all_levels": "Tümü",
+    "translator": "Çevirmen"
   },
   "privacy_policy": {
     "title": "Gizlilik Politikası"
@@ -55,7 +56,9 @@
     "updated_dictionary": "Sözlük başarıyla güncellendi.",
     "created_word": "Kelime başarıyla oluşturuldu.",
     "copied_word_title": "Kopyalandı!",
-    "copied_word": "Kelime başarıyla kopyalandı."
+    "copied_word": "Kelime başarıyla kopyalandı.",
+    "copied_link_title": "Kopyalandı",
+    "copied_link": "Bağlantı başarıyla kopyalandı."
   },
   "announcement": {
     "description": "Yakında başlıyoruz",
@@ -70,10 +73,15 @@
     "library": "Kütüphane",
     "signin": "Giriş Yap",
     "signup": "Üye Ol",
+    "blogs": "Bloglar",
     "dashboard": "Kontrol Paneli",
     "settings": "Ayarlar",
     "logout": "Çıkış yap",
     "get_started": "Haydi Başlayın"
+  },
+  "search_no_result": {
+    "title": "Üzgünüz, aradığınızı bulamadık.",
+    "description": "Aramanızla eşleşen hiçbir sonuç bulunamadı. Lütfen aramanızı değiştirin ve tekrar deneyin."
   },
   "hero": {
     "badge": "Yeni çeviri uzantımızı deneyin!",
@@ -146,6 +154,11 @@
     "image": "Resim",
     "public": "Genel",
     "open_settings": "Sözlük Ayarlarını Aç"
+  },
+  "share": {
+    "twitter": "twitter da paylaş",
+    "linkedin": "linkedin da paylaş",
+    "link_copy": "bağlantıyı Kopyala"
   },
   "dic_words": {
     "text": "Anadil Metni",
@@ -266,10 +279,10 @@
   },
   "dashboard": {
     "statistics": {
-      "dictionaries": "Sözlük Sayısı",
-      "public_dictionaries": "Paylaşılan Sözlük Sayısı",
-      "sub_dictionary": "Abone Sözlük Sayısı",
-      "words": "Kelime Sayısı"
+      "dictionaries": "Sözlükler",
+      "public_dictionaries": "Paylaşılan Sözlükler",
+      "sub_dictionary": "Abone Olunan Sözlüker",
+      "words": "Kelimeler"
     }
   },
   "buttons": {
@@ -281,6 +294,14 @@
     "description": "Genel web sitesini özelleştirin. Otomatik olarak gece ve gündüz temaları arasında geçiş yapın ve arayüz dili değiştirin.",
     "username_tooltip": "Lorem ipsum dolor sit amet.",
     "update_action": "Profili Güncelle"
+  },
+  "accountSettings": {
+    "title": "Hesap",
+    "description": "Parola, güvenlik ve diğer hesap tercihlerinizi yönetin."
+  },
+  "appearanceSettings": {
+    "title": "Görünüm",
+    "description": "Web sitesinin görsel görünümünü, temaları, renkleri ve diğer görüntüleme seçeneklerini ayarlayın."
   },
   "public_dictionaries": {
     "title": "Yayınlanmış sözlüklerden öğrenin",

@@ -5,6 +5,7 @@ import {
   WordsItemLoader,
 } from "@/components/Published/Library/Library.loaders";
 import DictionaryRating from "@/components/Published/Rating";
+import SocialShare from "@/components/Published/SocialShare";
 import ArrowRightLeft from "@/components/Published/WordsPage/ArrowRightLeft";
 import { TextToSpeechProvider, useTextToSpeech } from "@/contexts/textToSpeech";
 import { axiosBaseQuery } from "@/store/baseQuery";
@@ -17,33 +18,18 @@ import {
   Button,
 } from "@wordigo/ui";
 import { type AxiosResponse } from "axios";
-import {
-  Book,
-  Copy,
-  Hash,
-  Languages,
-  Link,
-  Share2Icon,
-  Star,
-  Volume2,
-} from "lucide-react";
+import { Book, Copy, Hash, Languages, Link, Star, Volume2 } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
 import { Fragment, useMemo } from "react";
 import ReactCountryFlag from "react-country-flag";
+import { toast } from "sonner";
 import { type IDictionary, type IResponse } from "types/global";
 
 const LibraryDetail = ({ dictionary }: { dictionary: IDictionary }) => {
   const { t } = useTranslation();
-
-  // const [handleGetPublicDictionary, { data: response, isLoading }] =
-  //   useGetPublicDictionaryBySlugMutation();
-
-  // useEffect(() => {
-  //   void handleGetPublicDictionary({ slug: slug as string });
-  // }, []);
 
   const computedSourceLang = useMemo(
     () =>
@@ -65,19 +51,40 @@ const LibraryDetail = ({ dictionary }: { dictionary: IDictionary }) => {
   const computedName =
     (splittedText?.[0]?.[0] || "") + (splittedText?.[1]?.[0] || "");
 
+  const host =
+    typeof window !== "undefined" ? window.location.origin : undefined;
+  const url = `${host}/library/${dictionary?.slug}`;
+
+  const copyToClipboard = () => {
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      toast.success(t("notifications.copied_link_title"), {
+        description: t("notifications.copied_link"),
+        duration: 3000,
+      });
+      navigator.clipboard.writeText(url as string);
+    }
+  };
+
   return (
     <Fragment>
       <NextSeo
         title={dictionary.title}
         description={dictionary.description}
         canonical={"https://www.wordigo.app/library/" + dictionary.slug}
+        twitter={{
+          handle: "@wordigoapp",
+          site: "@wordigoapp",
+          cardType: "summary_large_image",
+        }}
         openGraph={{
           url: "https://www.wordigo.app/library/" + dictionary.slug,
           title: dictionary.title,
           description: dictionary.description,
           images: [
             {
-              url: dictionary.image || "/images/dictionary_banner.jpg",
+              url:
+                dictionary.image ||
+                "https://www.wordigo.app/images/dictionary_banner.jpg",
               alt: dictionary.title,
             },
           ],
@@ -147,13 +154,7 @@ const LibraryDetail = ({ dictionary }: { dictionary: IDictionary }) => {
                       </div>
                     </div>
                     <div className="flex mt-12 items-center max-xl:mt-6">
-                      <div className="relative h-14 w-14 mr-4">
-                        <Image
-                          src={dictionary?.author.avatar_url}
-                          fill
-                          alt=""
-                          className="rounded-full"
-                        />
+                      <div className="relative h-14 w-14 mr-1">
                         <Avatar className="relative h-10 w-10 mr-3 md:h-12 md:w-12">
                           <AvatarImage
                             className="w-10 h-10 md:h-12 md:w-12"
@@ -168,7 +169,7 @@ const LibraryDetail = ({ dictionary }: { dictionary: IDictionary }) => {
                           {dictionary?.author.name}
                         </span>
                         <span className="text-base text-muted-foreground">
-                          {dictionary?.createdDate}
+                          {new Date(dictionary?.createdDate).toDateString()}
                         </span>
                       </div>
                     </div>
@@ -192,12 +193,15 @@ const LibraryDetail = ({ dictionary }: { dictionary: IDictionary }) => {
                     </p>
                   </span>
                   <div className="grid grid-flow-col gap-x-3 max-md:mt-4">
-                    <Button type="button" variant="outline" size="icon">
+                    <Button
+                      onClick={copyToClipboard}
+                      type="button"
+                      variant="outline"
+                      size="icon"
+                    >
                       <Link className="h-5 w-5" />
                     </Button>
-                    <Button type="button" variant="outline" size="icon">
-                      <Share2Icon className="h-5 w-5" />
-                    </Button>
+                    <SocialShare {...dictionary} />
                     <DictionaryRating />
                     <Button
                       type="button"
@@ -241,12 +245,9 @@ LibraryDetail.WordItem = ({ word, translatedWord }) => {
 
   const handleCopyWord = () => {
     void navigator.clipboard.writeText(word);
-    toast({
-      title: t("notifications.copied_word_title"),
+    toast.success(t("notifications.copied_word_title"), {
       description: t("notifications.copied_word"),
-      status: "success",
       duration: 3000,
-      isClosable: true,
     });
   };
 

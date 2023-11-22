@@ -44,7 +44,7 @@ Navigation.Item = ({ variant }: { variant: string }) => {
           passHref
           key={index}
           className={cn(
-            "flex items-center w-full transition-colors text-gray-600 text-sm hover:text-accent-foreground group relative",
+            "flex items-center w-full transition-colors text-gray-600 dark:text-white dark:hover:text-opacity-60 text-sm hover:text-accent-foreground group relative",
             variant === "borgerMenu" &&
               "p-3  rounded-[6px] hover:bg-[#F8FAFC] dark:hover:bg-[#101929] mb-1",
             classes_hover,

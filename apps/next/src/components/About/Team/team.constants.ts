@@ -22,7 +22,7 @@ const Team: ITeam[] = [
     title: "Frontend Developer",
     github: "https://github.com/yusufgns",
     linkedin: "https://www.linkedin.com/in/yusufgunes/",
-    twitter: "https://twitter.com/yusugunes9",
+    twitter: "https://twitter.com/gunesyusuf0",
   },
   {
     name: "Muhammet Sefa Kapısız",
@@ -56,6 +56,14 @@ const Team: ITeam[] = [
     github: "https://github.com/0fatihyildiz",
     linkedin: "https://www.linkedin.com/in/fatih-y%C4%B1ld%C4%B1z-b216b31b2/",
     twitter: "https://twitter.com/0fatihyildiz",
+  },
+  {
+    name: "Ömer Özceylan",
+    src: "https://avatars.githubusercontent.com/u/42185275?v=4",
+    title: "Frontend Developer",
+    github: "https://github.com/omerozceylan",
+    linkedin: "https://www.linkedin.com/in/omer-ozceylan-8602621b5/",
+    twitter: "https://twitter.com/OmerOzclyn",
   },
 ];
 

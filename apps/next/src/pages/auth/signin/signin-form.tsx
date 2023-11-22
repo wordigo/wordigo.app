@@ -67,7 +67,7 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
   return (
     <div className={cn("grid gap-6 py-6", className)} {...props}>
       <Form {...(form as any)}>
-        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
           <div className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="email" className="text-left">
@@ -116,6 +116,9 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
                   </FormItem>
                 )}
               />
+              <a href="#" className="text-end text-sm">
+                {t("signin.forgot_password")}
+              </a>
             </div>
           </div>
           <CButton loading={isLoading} className="w-full">

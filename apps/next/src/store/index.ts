@@ -1,18 +1,19 @@
 import { authApi } from "./auth/api";
-// import { authApi } from "./auth/api";
 import AuthSlice from "./auth/slice";
+import { commonApi } from "./common/api";
 import CommonSlice from "./common/slice";
 import { dictionaryWordApi } from "./dictionarayWord/api";
 import userDicWordSlice from "./dictionarayWord/slice";
 import { dictionaryApi } from "./dictionaries/api";
 import DictionarySlice from "./dictionaries/slice";
+import { feedbackApi } from "./feedback/api";
+import FeedbackSlice from "./feedback/slice";
 import { profileApi } from "./profile/api";
 import ProfileSlice from "./profile/slice";
 import { publicDictionariesApi } from "./publicDictionaries/api";
 import publicDictionaresSlice from "./publicDictionaries/slice";
+// import { authApi } from "./auth/api";
 import { configureStore } from "@reduxjs/toolkit";
-import { feedbackApi } from "./feedback/api";
-import FeedbackSlice from "./feedback/slice";
 
 const store = configureStore({
   reducer: {
@@ -29,6 +30,7 @@ const store = configureStore({
     [dictionaryWordApi.reducerPath]: dictionaryWordApi.reducer,
     [profileApi.reducerPath]: profileApi.reducer,
     [feedbackApi.reducerPath]: feedbackApi.reducer,
+    [commonApi.reducerPath]: commonApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }).concat([
@@ -38,6 +40,7 @@ const store = configureStore({
       profileApi.middleware,
       publicDictionariesApi.middleware,
       feedbackApi.middleware,
+      commonApi.middleware,
     ]),
 });
 

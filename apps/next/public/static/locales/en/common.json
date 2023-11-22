@@ -44,7 +44,8 @@
     "published": "Published",
     "pick_date": "Pick a date",
     "filter": "Filter",
-    "all_levels": "All Levels"
+    "all_levels": "All Levels",
+    "translator": "Translator"
   },
   "libraryDetail": {
     "description": "Learn the meanings of words, listen and share with others.",
@@ -63,7 +64,9 @@
     "updated_dictionary": "Dictionary updated successfully.",
     "created_word": "Word created successfully.",
     "copied_word_title": "Copied!",
-    "copied_word": "Word copied to clipboard."
+    "copied_word": "Word copied to clipboard.",
+    "copied_link_title": "Copied!",
+    "copied_link": "Link copied to clipboard."
   },
   "announcement": {
     "description": "We're launching soon on",
@@ -112,11 +115,12 @@
     "contiune_google": "Continue with Google"
   },
   "signin": {
-    "title": "Welcome Back",
-    "description": "Enter your email to sign in to your account.",
+    "title": "Welcome back",
+    "description": "Let's get started! Please enter your details.",
     "sign_button": "Sign in",
     "info": "Don’t have an account?",
-    "info_link": "Sign up"
+    "info_link": "Sign up",
+    "forgot_password": "Forgot password?"
   },
   "signup": {
     "title": "Welcome",
@@ -180,6 +184,11 @@
     "image": "Image",
     "public": "Public",
     "open_settings": "Open dictionary settings"
+  },
+  "share": {
+    "twitter": "Share on Twitter",
+    "linkedin": "Share on Linkedin",
+    "link_copy": "Copy link"
   },
   "dic_words": {
     "text": "Native Text",
@@ -311,16 +320,24 @@
     "username_tooltip": "Lorem ipsum dolor sit amet.",
     "update_action": "Update profile"
   },
+  "accountSettings": {
+    "title": "Account",
+    "description": "Manage your account settings such as password, security, and other account-related preferences."
+  },
+  "appearanceSettings": {
+    "title": "Appearance",
+    "description": "Adjust the visual appearance of the website, including themes, colors, and other display options."
+  },
   "profileAvatar": {
     "title": "Set Profile Picture",
     "description": "Upload a photo and change your profile picture"
   },
   "dashboard": {
     "statistics": {
-      "dictionaries": "Dictionary Count",
-      "public_dictionaries": "Public Dictionary Count",
-      "sub_dictionary": "Subscribed Dictionary Count",
-      "words": "Word Count"
+      "dictionaries": "Dictionaries",
+      "public_dictionaries": "Public Dictionaries",
+      "sub_dictionary": "Subscribed Dictionaries",
+      "words": "Words"
     }
   },
   "title": "Title",

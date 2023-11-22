@@ -7,6 +7,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { toast } from "sonner";
 import { type PageProps } from "types/global";
 
 const signIn = ({ _nextI18Next }: PageProps) => {
@@ -16,9 +17,7 @@ const signIn = ({ _nextI18Next }: PageProps) => {
 
   useEffect(() => {
     if (query?.error) {
-      toast({
-        variant: "destructive",
-        title: t("notifications.warning"),
+      toast.error(t("notifications.warning"), {
         description: query?.error,
       });
       void replace("/auth/signin", undefined, { shallow: true });
@@ -35,8 +34,10 @@ const signIn = ({ _nextI18Next }: PageProps) => {
       />
       <AuthLayout.Title>{t("signin.title")}</AuthLayout.Title>
       <AuthLayout.Description>{t("signin.description")}</AuthLayout.Description>
-      <AuthSignInForm />
-      <SocialProviders />
+      <AuthLayout.Contet>
+        <AuthSignInForm />
+        <SocialProviders />
+      </AuthLayout.Contet>
       <AuthLayout.Footer url="/auth/signup">
         {t("signin.info")}{" "}
         <span className="text-foreground font-semibold">
