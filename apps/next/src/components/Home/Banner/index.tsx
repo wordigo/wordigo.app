@@ -130,7 +130,11 @@ export default function FeatureBanner() {
           {t("feature_mockup.description")}
         </p>
         <div className="h-[25rem] lg:w-[40rem] lg:mt-12 lg:min-w-[35rem] lg:h-[28rem] md:w-[30rem] md:h-[24rem] max-md:w-[340px] max-md:h-[240px] max-lg:mt-12 border-4 border-primary bg-primary rounded-[0.625rem] mt-16 text-white backdrop-blur-xl overflow-hidden">
-          <div className="top-0 left-0 w-full h-full flex flex-col justify-center shadow-[inset_0px_-7px_11px_22px] shadow-gray-50 items-center bg-white text-black rounded-[0.625rem]">
+          <div className="top-0 left-0 w-full h-full flex flex-col relative justify-center shadow-[inset_0px_-7px_11px_22px] shadow-gray-50 items-center bg-white text-black rounded-[0.625rem]">
+            <div className="popup-effect popup-effect-t"></div>
+            <div className="popup-effect popup-effect-l "></div>
+            <div className="popup-effect popup-effect-r"></div>
+            <div className="popup-effect popup-effect-b"></div>
             <div
               className="flex flex-wrap justify-center absolute p-1 z-10 "
               tabIndex={5}
