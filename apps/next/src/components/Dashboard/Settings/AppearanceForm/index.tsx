@@ -10,16 +10,13 @@ import {
   FormMessage,
   RadioGroup,
   RadioGroupItem,
-  toast,
   Button,
-  buttonVariants,
 } from "@wordigo/ui";
-import { cn } from "@wordigo/ui/lib/utils";
-import { ChevronDownIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import "@/schemas/dashboard.settings";
 import { appearanceFormSchema } from "@/schemas/dashboard.settings";
+import { useTranslation } from "next-i18next";
 
 type AppearanceFormValues = z.infer<typeof appearanceFormSchema>;
 
@@ -28,6 +25,8 @@ const defaultValues: Partial<AppearanceFormValues> = {
 };
 
 export default function AppearanceForm() {
+  const { t } = useTranslation();
+
   const form = useForm<AppearanceFormValues>({
     resolver: zodResolver(appearanceFormSchema),
     defaultValues,
@@ -47,9 +46,9 @@ export default function AppearanceForm() {
             name="theme"
             render={({ field }) => (
               <FormItem className="space-y-1">
-                <FormLabel>Theme</FormLabel>
+                <FormLabel>{t("general.theme")}</FormLabel>
                 <FormDescription>
-                  Select the theme for the dashboard.
+                  {t("appearanceSettings.theme_label")}
                 </FormDescription>
                 <FormMessage />
                 <RadioGroup
