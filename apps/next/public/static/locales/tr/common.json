@@ -292,11 +292,15 @@
   },
   "accountSettings": {
     "title": "Hesap",
-    "description": "Parola, güvenlik ve diğer hesap tercihlerinizi yönetin."
+    "description": "Parola, güvenlik ve diğer hesap tercihlerinizi yönetin.",
+    "email_label": "Mevcut e-postanızı değiştirin",
+    "password_label": "Mevcut şifrenizi değiştirin"
   },
   "appearanceSettings": {
     "title": "Görünüm",
-    "description": "Web sitesinin görsel görünümünü, temaları, renkleri ve diğer görüntüleme seçeneklerini ayarlayın."
+    "description": "Web sitesinin görsel görünümünü, temaları, renkleri ve diğer görüntüleme seçeneklerini ayarlayın.",
+    "interface_theme": "Arayüz Teması",
+    "interface_label": "Uygulama temanızı özelleştirin"
   },
   "public_dictionaries": {
     "title": "Yayınlanmış sözlüklerden öğrenin",

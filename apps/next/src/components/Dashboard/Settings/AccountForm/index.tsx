@@ -34,7 +34,7 @@ import { type z } from "zod";
 
 export type DictionariesValues = z.infer<typeof DictionariesSettingsSchema>;
 
-export default function Settings() {
+export default function AccountForm() {
   const { t } = useTranslation();
   const { data } = useSession();
   const router = useRouter();
@@ -102,129 +102,105 @@ export default function Settings() {
     >
       <Form {...(form as any)}>
         <form onSubmit={form.handleSubmit(handleSave)}>
-          <div className="grid">
+          <div className="grid max-w-[500px]">
             <FormField
               control={form.control as never}
-              name="link"
+              name="email"
               render={({ field }) => (
-                <FormItem className="grid gap-1 my-7">
+                <FormItem className="grid gap-1 my-3">
+                  <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
+                    <Label>
+                      <h1>{t("email")}</h1>
+                    </Label>
+                  </span>
                   <FormControl>
-                    <div className="grid grid-cols-3 w-full">
-                      <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
-                        <Label>
-                          <h1>{t("link")}</h1>
-                        </Label>
-                        <p className="text-[hsl(var(--muted-foreground))] text-sm">
-                          {t("dictionaries_settings.link_notes")}
-                        </p>
-                      </span>
-                      <CInput
-                        disabled
-                        classNames="placeholder:!text-gray-400 w-[512px]"
-                        defaultValue={`wordigo.app/library/${data.user.username}`}
-                        rightSection={
-                          <Copy
-                            onClick={handleCopyUrl}
-                            className="text-muted-foreground"
-                            size={20}
-                          />
-                        }
-                        placeholder={field.value}
-                        {...field}
-                      />
-                    </div>
+                    <Input
+                      {...field}
+                      placeholder={t("email")}
+                      className="w-[512px]"
+                    />
                   </FormControl>
+                  <p className="text-[hsl(var(--muted-foreground))] text-sm">
+                    {t("accountSettings.email_label")}
+                  </p>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <div className="w-full text-end my-7">
-              <Button
-                onClick={handleCancel}
-                variant="outline"
-                className="font-semibold text-sm mr-1"
-              >
-                {t("buttons.cancel")}
-              </Button>
-              <CButton
-                disabled={disabled}
-                loading={isLoading}
-                type="submit"
-                variant="outline"
-                className="w-fit dark:bg-LightBackground bg-DarkBackground font-semibold text-sm dark:text-black text-white"
-              >
-                {t("buttons.save")}
-              </CButton>
-            </div>
+            <CButton
+              disabled={disabled}
+              loading={isLoading}
+              type="submit"
+              variant="outline"
+              className="w-fit dark:bg-LightBackground bg-DarkBackground font-semibold text-sm dark:text-black text-white"
+            >
+              {t("buttons.save")}
+            </CButton>
           </div>
         </form>
       </Form>
 
-      <Separator />
+      <Separator className="my-6" />
+      <Form {...(form as any)}>
+        <form onSubmit={form.handleSubmit(handleSave)}>
+          <div className="grid">
+            <FormField
+              control={form.control as never}
+              name="password"
+              render={({ field }) => (
+                <>
+                  <FormItem className="grid gap-1 my-3">
+                    <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
+                      <Label>
+                        <h1>{t("password")}</h1>
+                      </Label>
+                    </span>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        placeholder={t("********")}
+                        className="w-[512px]"
+                      />
+                    </FormControl>
+                    <p className="text-[hsl(var(--muted-foreground))] text-sm">
+                      {t("accountSettings.password_label")}
+                    </p>
+                    <FormMessage />
+                  </FormItem>
 
-      <div className="w-full py-10 flex">
-        <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
-          <Label>
-            <h1>{t("link")}</h1>
-          </Label>
-          <p className="text-[hsl(var(--muted-foreground))] text-sm">
-            {t("dictionaries_settings.link_notes")}
-          </p>
-        </span>
-        <div>
-          <Form {...(form as any)}>
-            <form onSubmit={form.handleSubmit(handleSave)}>
-              <div className="grid">
-                <FormField
-                  control={form.control as never}
-                  name="link"
-                  render={({ field }) => (
-                    <FormItem className="grid gap-1 my-7 ml-20">
-                      <FormControl>
-                        <div className="grid grid-cols-3 w-full">
-                          <CInput
-                            disabled
-                            classNames="placeholder:!text-gray-400 w-[512px]"
-                            defaultValue={`wordigo.app/library/${data.user.username}`}
-                            rightSection={
-                              <Copy
-                                onClick={handleCopyUrl}
-                                className="text-muted-foreground"
-                                size={20}
-                              />
-                            }
-                            placeholder={field.value}
-                            {...field}
-                          />
-                        </div>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <div className="w-full text-end my-7">
-                  <Button
-                    onClick={handleCancel}
-                    variant="outline"
-                    className="font-semibold text-sm mr-1"
-                  >
-                    {t("buttons.cancel")}
-                  </Button>
-                  <CButton
-                    disabled={disabled}
-                    loading={isLoading}
-                    type="submit"
-                    variant="outline"
-                    className="w-fit dark:bg-LightBackground bg-DarkBackground font-semibold text-sm dark:text-black text-white"
-                  >
-                    {t("buttons.save")}
-                  </CButton>
-                </div>
-              </div>
-            </form>
-          </Form>
-        </div>
-      </div>
+                  <FormItem className="grid gap-1 my-3">
+                    <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
+                      <Label>
+                        <h1>{t("password")}</h1>
+                      </Label>
+                    </span>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        placeholder={t("********")}
+                        className="w-[512px]"
+                      />
+                    </FormControl>
+                    <p className="text-[hsl(var(--muted-foreground))] text-sm">
+                      {t("accountSettings.password_label")}
+                    </p>
+                    <FormMessage />
+                  </FormItem>
+                </>
+              )}
+            />
+            <CButton
+              disabled={disabled}
+              loading={isLoading}
+              type="submit"
+              variant="outline"
+              className="w-fit dark:bg-LightBackground bg-DarkBackground font-semibold text-sm dark:text-black text-white"
+            >
+              {t("buttons.save")}
+            </CButton>
+          </div>
+        </form>
+      </Form>
     </Container>
   );
 }

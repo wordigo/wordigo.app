@@ -321,11 +321,15 @@
   },
   "accountSettings": {
     "title": "Account",
-    "description": "Manage your account settings such as password, security, and other account-related preferences."
+    "description": "Manage your account settings such as password, security, and other account-related preferences.",
+    "email_label": "Change your existing email",
+    "password_label": "Change your current password"
   },
   "appearanceSettings": {
     "title": "Appearance",
-    "description": "Adjust the visual appearance of the website, including themes, colors, and other display options."
+    "description": "Adjust the visual appearance of the website, including themes, colors, and other display options.",
+    "interface_theme": "Interface Theme",
+    "interface_label": "Customise you application theme"
   },
   "profileAvatar": {
     "title": "Set Profile Picture",
