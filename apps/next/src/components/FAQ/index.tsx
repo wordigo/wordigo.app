@@ -8,14 +8,17 @@ const FAQSection = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="px-20 py-24 flex flex-col items-center max-lg:px-9 max-md:px-0 max-lg:py-12 max-md:mx-4 max-md:py-8">
-      <h2 className="text-4xl font-semibold max-lg:text-2xl">
-        {t("faq.heading")}
-      </h2>
-      <p className="text-xl text-muted-foreground mt-5 max-lg:text-base max-lg:mt-4">
-        {t("faq.description")}
-      </p>
-      <div className="mt-16 grid grid-cols-3 gap-x-8 gap-y-16 max-lg:grid-cols-2 max-md:grid-cols-1 max-lg:mt-8">
+    <>
+      <section className="text-center max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto">
+        <h1 className="font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+          {t("faq.heading")}
+        </h1>
+        <p className="sm:text-lg md:text-xl mt-4 sm:mt-5 md:mt-6 lg:mt-7 xl:mt-8 text-muted-foreground">
+          {t("faq.description")}
+        </p>
+      </section>
+
+      <section className="grid grid-cols-3 gap-x-8 gap-y-16 max-lg:grid-cols-2 max-md:grid-cols-1">
         {faq.map((item, index) => (
           <FAQSection.Card
             key={index}
@@ -24,8 +27,8 @@ const FAQSection = () => {
             Icon={item.Icon}
           />
         ))}
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
