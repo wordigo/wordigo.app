@@ -34,7 +34,7 @@ import { type z } from "zod";
 
 export type DictionariesValues = z.infer<typeof DictionariesSettingsSchema>;
 
-export default function Settings() {
+export default function AppearanceForm() {
   const { t } = useTranslation();
   const { data } = useSession();
   const router = useRouter();
@@ -97,60 +97,107 @@ export default function Settings() {
 
   return (
     <Container
-      tTitle="appearanceSettings.title"
-      tDescription="appearanceSettings.description"
+      tTitle="accountSettings.title"
+      tDescription="accountSettings.description"
     >
+      <Form {...(form as any)}>
+        <form onSubmit={form.handleSubmit(handleSave)}>
+          <div className="grid max-w-[500px]">
+            <FormField
+              control={form.control as never}
+              name="email"
+              render={({ field }) => (
+                <FormItem className="grid gap-1 my-3">
+                  <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
+                    <Label>
+                      <h1>{t("email")}</h1>
+                    </Label>
+                  </span>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      placeholder={t("email")}
+                      className="w-[512px]"
+                    />
+                  </FormControl>
+                  <p className="text-[hsl(var(--muted-foreground))] text-sm">
+                    {t("accountSettings.email_label")}
+                  </p>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <CButton
+              disabled={disabled}
+              loading={isLoading}
+              type="submit"
+              variant="outline"
+              className="w-fit dark:bg-LightBackground bg-DarkBackground font-semibold text-sm dark:text-black text-white"
+            >
+              {t("buttons.save")}
+            </CButton>
+          </div>
+        </form>
+      </Form>
+
+      <Separator className="my-6" />
       <Form {...(form as any)}>
         <form onSubmit={form.handleSubmit(handleSave)}>
           <div className="grid">
             <FormField
               control={form.control as never}
-              name="theme"
+              name="password"
               render={({ field }) => (
-                <FormItem className="grid gap-1 my-7">
-                  <FormControl>
-                    <>
-                      <main className="grid grid-cols-3 w-full">
-                        <span className="!max-w-2xl min-w-[280px] mr-8 word-break">
-                          <Label>
-                            <h1>{t("password")}</h1>
-                          </Label>
-                          <p className="text-[hsl(var(--muted-foreground))] text-sm">
-                            {t("accountSettings.password_label")}
-                          </p>
-                        </span>
-                        <Input
-                          {...field}
-                          placeholder={t("********")}
-                          className="w-full"
-                        />
-                      </main>
+                <>
+                  <FormItem className="grid gap-1 my-3">
+                    <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
+                      <Label>
+                        <h1>{t("password")}</h1>
+                      </Label>
+                    </span>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        placeholder={t("********")}
+                        className="w-[512px]"
+                      />
+                    </FormControl>
+                    <p className="text-[hsl(var(--muted-foreground))] text-sm">
+                      {t("accountSettings.password_label")}
+                    </p>
+                    <FormMessage />
+                  </FormItem>
 
-                      <main className="grid grid-cols-3 w-full mt-3">
-                        <span className="max-w-[280px] min-w-[280px] mr-8 word-break"></span>
-                        <Input
-                          {...field}
-                          placeholder={t("********")}
-                          className="w-full"
-                        />
-                      </main>
-                    </>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
+                  <FormItem className="grid gap-1 my-3">
+                    <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
+                      <Label>
+                        <h1>{t("password")}</h1>
+                      </Label>
+                    </span>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        placeholder={t("********")}
+                        className="w-[512px]"
+                      />
+                    </FormControl>
+                    <p className="text-[hsl(var(--muted-foreground))] text-sm">
+                      {t("accountSettings.password_label")}
+                    </p>
+                    <FormMessage />
+                  </FormItem>
+                </>
               )}
             />
-            <div className="w-full text-end my-7">
-              <CButton
-                disabled={disabled}
-                loading={isLoading}
-                type="submit"
-                variant="outline"
-                className="w-fit dark:bg-LightBackground bg-DarkBackground font-semibold text-sm dark:text-black text-white"
-              >
-                {t("buttons.save")}
-              </CButton>
-            </div>
+            <CButton
+              disabled={disabled}
+              loading={isLoading}
+              type="submit"
+              variant="outline"
+              className="w-fit dark:bg-LightBackground bg-DarkBackground font-semibold text-sm dark:text-black text-white"
+            >
+              {t("buttons.save")}
+            </CButton>
           </div>
         </form>
       </Form>
