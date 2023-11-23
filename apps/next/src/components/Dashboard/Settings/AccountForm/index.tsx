@@ -1,110 +1,76 @@
 import Container from "../SettingsContainer";
 import CButton from "@/components/UI/Button";
-import CInput from "@/components/UI/Input/Input";
-import { DictionariesSettingsSchema } from "@/schemas/dictionaries.settings";
 import {
-  useGetDictionaryDetailMutation,
-  useUpdateDictionariesMutation,
-} from "@/store/dictionaries/api";
-import { useAppSelector } from "@/utils/hooks";
+  EmailFormSchema,
+  PasswordFormSchema,
+} from "@/schemas/dashboard.settings";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  Button,
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
   Input,
   Label,
   Separator,
-  Switch,
-  Textarea,
 } from "@wordigo/ui";
-import { Copy } from "lucide-react";
-import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
 import { type z } from "zod";
 
-export type DictionariesValues = z.infer<typeof DictionariesSettingsSchema>;
+export type EmailValues = z.infer<typeof EmailFormSchema>;
+export type PasswordValues = z.infer<typeof PasswordFormSchema>;
 
 export default function AccountForm() {
   const { t } = useTranslation();
-  const { data } = useSession();
-  const router = useRouter();
-  const { slug } = router.query as { slug: string };
 
-  const [dictionaryUpdate, { isLoading, status, data: updateData }] =
-    useUpdateDictionariesMutation();
+  // const [getDictionaryDetail] = useGetDictionaryDetailMutation();
+  // const dictionaryDetail = useAppSelector(
+  //   (state) => state.dictionary.dictionaryDetail
+  // );
+  // useEffect(() => {
+  //   void getDictionaryDetail({ slug });
+  // }, [getDictionaryDetail]);
 
-  const [getDictionaryDetail] = useGetDictionaryDetailMutation();
-  const dictionaryDetail = useAppSelector(
-    (state) => state.dictionary.dictionaryDetail
-  );
+  const emailDetail = { title: "" };
+  const passwordDetail = { password: "", confirmPassword: "" };
+  const isLoading = false;
 
-  useEffect(() => {
-    void getDictionaryDetail({ slug });
-  }, [getDictionaryDetail]);
+  const emailDefaultValues: Partial<EmailValues> = emailDetail;
+  const passwordDefaultValues: Partial<PasswordValues> = passwordDetail;
 
-  const defaultValues: Partial<DictionariesValues> = dictionaryDetail;
-
-  const form = useForm<DictionariesValues>({
-    resolver: zodResolver(DictionariesSettingsSchema),
-    defaultValues,
+  const emailForm = useForm<EmailValues>({
+    resolver: zodResolver(EmailFormSchema),
+    defaultValues: emailDefaultValues,
     mode: "onChange",
   });
 
-  const handleSave = (data: DictionariesValues) => {
-    void dictionaryUpdate({
-      slug: dictionaryDetail.slug,
-      ...data,
-    });
+  const passwordForm = useForm<PasswordValues>({
+    resolver: zodResolver(PasswordFormSchema),
+    defaultValues: passwordDefaultValues,
+    mode: "onChange",
+  });
+
+  const handleEmailSave = (data: EmailValues) => {
+    // void dictionaryUpdate({
+    //   slug: dictionaryDetail.slug,
+    //   ...data,
+    // });
   };
 
-  const handleCopyUrl = () => {
-    void navigator.clipboard.writeText(
-      `https://wordigo.app/` + form.getValues().title
-    );
-    toast.success("Successful", {
-      description: "Copied dictionary public url.",
-    });
-  };
-
-  const handleCancel = () => {
-    void router.push(`/dashboard/dictionaries/${slug}`);
-  };
-
-  const disabled = form.formState.isSubmitting || isLoading;
-
-  useEffect(() => {
-    if (status === "fulfilled") {
-      void router.push(`/dashboard/dictionaries`);
-      toast.success(t("notifications.success"), {
-        description: t("notifications.updated_dictionary"),
-      });
-    } else if (status === "rejected") {
-      toast.error(t("notifications.warning"), {
-        description: updateData.message,
-      });
-    }
-  }, [status]);
+  const handlePasswordSave = (data: PasswordValues) => {};
 
   return (
     <Container
       tTitle="accountSettings.title"
       tDescription="accountSettings.description"
     >
-      <Form {...(form as any)}>
-        <form onSubmit={form.handleSubmit(handleSave)}>
+      <Form {...(emailForm as any)}>
+        <form onSubmit={emailForm.handleSubmit(handleEmailSave)}>
           <div className="grid max-w-[500px]">
             <FormField
-              control={form.control as never}
+              control={emailForm.control as never}
               name="email"
               render={({ field }) => (
                 <FormItem className="grid gap-1 my-3">
@@ -128,11 +94,10 @@ export default function AccountForm() {
               )}
             />
             <CButton
-              disabled={disabled}
+              disabled
+              className="w-fit"
               loading={isLoading}
               type="submit"
-              variant="outline"
-              className="w-fit dark:bg-LightBackground bg-DarkBackground font-semibold text-sm dark:text-black text-white"
             >
               {t("buttons.save")}
             </CButton>
@@ -141,11 +106,12 @@ export default function AccountForm() {
       </Form>
 
       <Separator className="my-6" />
-      <Form {...(form as any)}>
-        <form onSubmit={form.handleSubmit(handleSave)}>
+
+      <Form {...(passwordForm as any)}>
+        <form onSubmit={passwordForm.handleSubmit(handlePasswordSave)}>
           <div className="grid">
             <FormField
-              control={form.control as never}
+              control={passwordForm.control as never}
               name="password"
               render={({ field }) => (
                 <>
@@ -190,11 +156,10 @@ export default function AccountForm() {
               )}
             />
             <CButton
-              disabled={disabled}
+              disabled
+              className="w-fit"
               loading={isLoading}
               type="submit"
-              variant="outline"
-              className="w-fit dark:bg-LightBackground bg-DarkBackground font-semibold text-sm dark:text-black text-white"
             >
               {t("buttons.save")}
             </CButton>

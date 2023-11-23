@@ -1,15 +1,6 @@
 import Container from "../SettingsContainer";
-import CButton from "@/components/UI/Button";
-import CInput from "@/components/UI/Input/Input";
-import { DictionariesSettingsSchema } from "@/schemas/dictionaries.settings";
-import {
-  useGetDictionaryDetailMutation,
-  useUpdateDictionariesMutation,
-} from "@/store/dictionaries/api";
-import { useAppSelector } from "@/utils/hooks";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  Button,
   Form,
   FormControl,
   FormDescription,
@@ -17,188 +8,115 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-  Input,
-  Label,
-  Separator,
-  Switch,
-  Textarea,
+  RadioGroup,
+  RadioGroupItem,
+  toast,
+  Button,
+  buttonVariants,
 } from "@wordigo/ui";
-import { Copy } from "lucide-react";
-import { useSession } from "next-auth/react";
-import { useTranslation } from "next-i18next";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { cn } from "@wordigo/ui/lib/utils";
+import { ChevronDownIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-import { type z } from "zod";
+import * as z from "zod";
+import "@/schemas/dashboard.settings";
+import { appearanceFormSchema } from "@/schemas/dashboard.settings";
 
-export type DictionariesValues = z.infer<typeof DictionariesSettingsSchema>;
+type AppearanceFormValues = z.infer<typeof appearanceFormSchema>;
+
+const defaultValues: Partial<AppearanceFormValues> = {
+  theme: "light",
+};
 
 export default function AppearanceForm() {
-  const { t } = useTranslation();
-  const { data } = useSession();
-  const router = useRouter();
-  const { slug } = router.query as { slug: string };
-
-  const [dictionaryUpdate, { isLoading, status, data: updateData }] =
-    useUpdateDictionariesMutation();
-
-  const [getDictionaryDetail] = useGetDictionaryDetailMutation();
-  const dictionaryDetail = useAppSelector(
-    (state) => state.dictionary.dictionaryDetail
-  );
-
-  useEffect(() => {
-    void getDictionaryDetail({ slug });
-  }, [getDictionaryDetail]);
-
-  const defaultValues: Partial<DictionariesValues> = dictionaryDetail;
-
-  const form = useForm<DictionariesValues>({
-    resolver: zodResolver(DictionariesSettingsSchema),
+  const form = useForm<AppearanceFormValues>({
+    resolver: zodResolver(appearanceFormSchema),
     defaultValues,
-    mode: "onChange",
   });
 
-  const handleSave = (data: DictionariesValues) => {
-    void dictionaryUpdate({
-      slug: dictionaryDetail.slug,
-      ...data,
-    });
-  };
-
-  const handleCopyUrl = () => {
-    void navigator.clipboard.writeText(
-      `https://wordigo.app/` + form.getValues().title
-    );
-    toast.success("Successful", {
-      description: "Copied dictionary public url.",
-    });
-  };
-
-  const handleCancel = () => {
-    void router.push(`/dashboard/dictionaries/${slug}`);
-  };
-
-  const disabled = form.formState.isSubmitting || isLoading;
-
-  useEffect(() => {
-    if (status === "fulfilled") {
-      void router.push(`/dashboard/dictionaries`);
-      toast.success(t("notifications.success"), {
-        description: t("notifications.updated_dictionary"),
-      });
-    } else if (status === "rejected") {
-      toast.error(t("notifications.warning"), {
-        description: updateData.message,
-      });
-    }
-  }, [status]);
+  function onSubmit(data: AppearanceFormValues) {}
 
   return (
     <Container
       tTitle="accountSettings.title"
       tDescription="accountSettings.description"
     >
-      <Form {...(form as any)}>
-        <form onSubmit={form.handleSubmit(handleSave)}>
-          <div className="grid max-w-[500px]">
-            <FormField
-              control={form.control as never}
-              name="email"
-              render={({ field }) => (
-                <FormItem className="grid gap-1 my-3">
-                  <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
-                    <Label>
-                      <h1>{t("email")}</h1>
-                    </Label>
-                  </span>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      placeholder={t("email")}
-                      className="w-[512px]"
-                    />
-                  </FormControl>
-                  <p className="text-[hsl(var(--muted-foreground))] text-sm">
-                    {t("accountSettings.email_label")}
-                  </p>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <CButton
-              disabled={disabled}
-              loading={isLoading}
-              type="submit"
-              variant="outline"
-              className="w-fit dark:bg-LightBackground bg-DarkBackground font-semibold text-sm dark:text-black text-white"
-            >
-              {t("buttons.save")}
-            </CButton>
-          </div>
-        </form>
-      </Form>
-
-      <Separator className="my-6" />
-      <Form {...(form as any)}>
-        <form onSubmit={form.handleSubmit(handleSave)}>
-          <div className="grid">
-            <FormField
-              control={form.control as never}
-              name="password"
-              render={({ field }) => (
-                <>
-                  <FormItem className="grid gap-1 my-3">
-                    <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
-                      <Label>
-                        <h1>{t("password")}</h1>
-                      </Label>
-                    </span>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        placeholder={t("********")}
-                        className="w-[512px]"
-                      />
-                    </FormControl>
-                    <p className="text-[hsl(var(--muted-foreground))] text-sm">
-                      {t("accountSettings.password_label")}
-                    </p>
-                    <FormMessage />
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <FormField
+            control={form.control}
+            name="theme"
+            render={({ field }) => (
+              <FormItem className="space-y-1">
+                <FormLabel>Theme</FormLabel>
+                <FormDescription>
+                  Select the theme for the dashboard.
+                </FormDescription>
+                <FormMessage />
+                <RadioGroup
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                  className="grid max-w-md grid-cols-2 gap-8 pt-2"
+                >
+                  <FormItem>
+                    <FormLabel className="[&:has([data-state=checked])>div]:border-primary">
+                      <FormControl>
+                        <RadioGroupItem value="light" className="sr-only" />
+                      </FormControl>
+                      <div className="items-center rounded-md border-2 border-muted p-1 hover:border-accent">
+                        <div className="space-y-2 rounded-sm bg-[#ecedef] p-2">
+                          <div className="space-y-2 rounded-md bg-white p-2 shadow-sm">
+                            <div className="h-2 w-[80px] rounded-lg bg-[#ecedef]" />
+                            <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
+                          </div>
+                          <div className="flex items-center space-x-2 rounded-md bg-white p-2 shadow-sm">
+                            <div className="h-4 w-4 rounded-full bg-[#ecedef]" />
+                            <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
+                          </div>
+                          <div className="flex items-center space-x-2 rounded-md bg-white p-2 shadow-sm">
+                            <div className="h-4 w-4 rounded-full bg-[#ecedef]" />
+                            <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
+                          </div>
+                        </div>
+                      </div>
+                      <span className="block w-full p-2 text-center font-normal">
+                        Light
+                      </span>
+                    </FormLabel>
                   </FormItem>
-
-                  <FormItem className="grid gap-1 my-3">
-                    <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
-                      <Label>
-                        <h1>{t("password")}</h1>
-                      </Label>
-                    </span>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        placeholder={t("********")}
-                        className="w-[512px]"
-                      />
-                    </FormControl>
-                    <p className="text-[hsl(var(--muted-foreground))] text-sm">
-                      {t("accountSettings.password_label")}
-                    </p>
-                    <FormMessage />
+                  <FormItem>
+                    <FormLabel className="[&:has([data-state=checked])>div]:border-primary">
+                      <FormControl>
+                        <RadioGroupItem value="dark" className="sr-only" />
+                      </FormControl>
+                      <div className="items-center rounded-md border-2 border-muted bg-popover p-1 hover:bg-accent hover:text-accent-foreground">
+                        <div className="space-y-2 rounded-sm bg-slate-950 p-2">
+                          <div className="space-y-2 rounded-md bg-slate-800 p-2 shadow-sm">
+                            <div className="h-2 w-[80px] rounded-lg bg-slate-400" />
+                            <div className="h-2 w-[100px] rounded-lg bg-slate-400" />
+                          </div>
+                          <div className="flex items-center space-x-2 rounded-md bg-slate-800 p-2 shadow-sm">
+                            <div className="h-4 w-4 rounded-full bg-slate-400" />
+                            <div className="h-2 w-[100px] rounded-lg bg-slate-400" />
+                          </div>
+                          <div className="flex items-center space-x-2 rounded-md bg-slate-800 p-2 shadow-sm">
+                            <div className="h-4 w-4 rounded-full bg-slate-400" />
+                            <div className="h-2 w-[100px] rounded-lg bg-slate-400" />
+                          </div>
+                        </div>
+                      </div>
+                      <span className="block w-full p-2 text-center font-normal">
+                        Dark
+                      </span>
+                    </FormLabel>
                   </FormItem>
-                </>
-              )}
-            />
-            <CButton
-              disabled={disabled}
-              loading={isLoading}
-              type="submit"
-              variant="outline"
-              className="w-fit dark:bg-LightBackground bg-DarkBackground font-semibold text-sm dark:text-black text-white"
-            >
-              {t("buttons.save")}
-            </CButton>
-          </div>
+                </RadioGroup>
+              </FormItem>
+            )}
+          />
+
+          <Button type="submit" disabled>
+            Update preferences
+          </Button>
         </form>
       </Form>
     </Container>
