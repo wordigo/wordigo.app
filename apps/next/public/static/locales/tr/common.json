@@ -294,7 +294,9 @@
     "title": "Hesap",
     "description": "Parola, güvenlik ve diğer hesap tercihlerinizi yönetin.",
     "email_label": "Mevcut e-postanızı değiştirin.",
-    "password_label": "Mevcut şifrenizi değiştirin."
+    "password_label": "Mevcut şifrenizi değiştirin.",
+    "email_update": "Email Güncelle",
+    "password_update": "Şifre Güncelle"
   },
   "appearanceSettings": {
     "title": "Görünüm",
@@ -330,5 +332,6 @@
   "password": "Şifre",
   "new_password": "Yeni Şifre",
   "current_password": "Mevcut Şifre",
-  "save": "Kopyala"
+  "save": "Kopyala",
+  "update": "Güncelle"
 }

@@ -11,12 +11,17 @@ import {
   RadioGroup,
   RadioGroupItem,
   Button,
+  Separator,
 } from "@wordigo/ui";
+import LanguageSelector from "@wordigo/ui/components/ui/language-selector";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import "@/schemas/dashboard.settings";
+import ChangeLanguage from "@/components/Layout/MainLayout/ChangeLanguage";
 import { appearanceFormSchema } from "@/schemas/dashboard.settings";
 import { useTranslation } from "next-i18next";
+import { useTheme } from "next-themes";
+import { useRouter } from "next/router";
 
 type AppearanceFormValues = z.infer<typeof appearanceFormSchema>;
 
@@ -34,11 +39,50 @@ export default function AppearanceForm() {
 
   function onSubmit(data: AppearanceFormValues) {}
 
+  const { i18n } = useTranslation();
+  const router = useRouter();
+
+  const handleChangeLocale = (locale: string) => {
+    void router.replace(
+      { pathname: router.pathname, query: router.query },
+      undefined,
+      { locale: locale.toLowerCase() }
+    );
+  };
+
+  const { setTheme, resolvedTheme } = useTheme();
+
   return (
     <Container
-      tTitle="accountSettings.title"
-      tDescription="accountSettings.description"
+      tTitle="appearanceSettings.title"
+      tDescription="appearanceSettings.description"
     >
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <FormField
+            control={form.control}
+            name="theme"
+            render={({ field }) => (
+              <FormItem className="space-y-1">
+                <FormLabel>{t("general.theme")}</FormLabel>
+                <LanguageSelector
+                  defaultValue={i18n.language?.toUpperCase()}
+                  onSelect={handleChangeLocale}
+                  className="mb-8 w-32 h-9"
+                  classNamev2="font-medium text-[16px]"
+                />
+                <FormDescription>
+                  {t("appearanceSettings.theme_label")}
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </form>
+      </Form>
+
+      <Separator className="my-6" />
+
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
@@ -61,7 +105,13 @@ export default function AppearanceForm() {
                       <FormControl>
                         <RadioGroupItem value="light" className="sr-only" />
                       </FormControl>
-                      <div className="items-center rounded-md border-2 border-muted p-1 hover:border-accent">
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setTheme("light");
+                        }}
+                        className="items-center rounded-md border-2 border-muted p-1 hover:border-accent"
+                      >
                         <div className="space-y-2 rounded-sm bg-[#ecedef] p-2">
                           <div className="space-y-2 rounded-md bg-white p-2 shadow-sm">
                             <div className="h-2 w-[80px] rounded-lg bg-[#ecedef]" />
@@ -87,7 +137,13 @@ export default function AppearanceForm() {
                       <FormControl>
                         <RadioGroupItem value="dark" className="sr-only" />
                       </FormControl>
-                      <div className="items-center rounded-md border-2 border-muted bg-popover p-1 hover:bg-accent hover:text-accent-foreground">
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setTheme("dark");
+                        }}
+                        className="items-center rounded-md border-2 border-muted bg-popover p-1 hover:bg-accent hover:text-accent-foreground"
+                      >
                         <div className="space-y-2 rounded-sm bg-slate-950 p-2">
                           <div className="space-y-2 rounded-md bg-slate-800 p-2 shadow-sm">
                             <div className="h-2 w-[80px] rounded-lg bg-slate-400" />
@@ -112,10 +168,6 @@ export default function AppearanceForm() {
               </FormItem>
             )}
           />
-
-          <Button type="submit" disabled>
-            Update preferences
-          </Button>
         </form>
       </Form>
     </Container>

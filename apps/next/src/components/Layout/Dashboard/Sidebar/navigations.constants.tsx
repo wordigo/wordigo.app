@@ -92,7 +92,7 @@ const useSidebarNavigations = (): SidebarNavItem[] => {
     },
     {
       title: t("navbar.settings"),
-      href: "/dashboard/settings",
+      href: "/dashboard/settings?tabs=profile",
       icon: <Settings size={16} />,
     },
   ];

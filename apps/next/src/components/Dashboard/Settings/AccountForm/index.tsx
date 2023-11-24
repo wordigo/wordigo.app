@@ -99,7 +99,7 @@ export default function AccountForm() {
               loading={isLoading}
               type="submit"
             >
-              {t("buttons.save")}
+              {t("accountSettings.email_update")}
             </CButton>
           </div>
         </form>
@@ -161,7 +161,7 @@ export default function AccountForm() {
               loading={isLoading}
               type="submit"
             >
-              {t("buttons.save")}
+              {t("accountSettings.password_update")}
             </CButton>
           </div>
         </form>

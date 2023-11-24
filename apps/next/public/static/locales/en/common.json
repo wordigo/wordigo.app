@@ -323,7 +323,9 @@
     "title": "Account",
     "description": "Manage your account settings such as password, security, and other account-related preferences.",
     "email_label": "Change your existing email.",
-    "password_label": "Change your current password."
+    "password_label": "Change your current password.",
+    "email_update": "Update Email",
+    "password_update": "Update Password"
   },
   "appearanceSettings": {
     "title": "Appearance",
@@ -357,5 +359,6 @@
   "password": "Password",
   "new_password": "New Password",
   "current_password": "Current Password",
-  "save": "Save"
+  "save": "Save",
+  "update": "Update"
 }
