@@ -1,5 +1,9 @@
 import CButton from "@/components/UI/Button";
-import { AuthLoginSchema, type AuthLoginValues } from "@/schemas/auth.schema";
+import {
+  AuthSignUpSchema,
+  type AuthRegisterValues,
+} from "@/schemas/auth.schema";
+import { useRegisterMutation } from "@/store/auth/api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
@@ -14,37 +18,43 @@ import { cn } from "@wordigo/ui/lib/utils";
 import { signIn } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
+export type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
 
-const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
-  const { t, i18n } = useTranslation();
+const AuthSignUpForm = ({ className, ...props }: UserAuthFormProps) => {
+  const { t } = useTranslation();
   const router = useRouter();
+  const [handleRegister, { data, isLoading: registerIsLoading, status }] =
+    useRegisterMutation();
   const [isLoading, setIsLoading] = useState(false);
 
-  const defaultValues: Partial<AuthLoginValues> = {
+  const defaultValues: Partial<AuthRegisterValues> = {
+    name: "",
     email: "",
     password: "",
   };
 
-  const form = useForm<AuthLoginValues>({
-    resolver: zodResolver(AuthLoginSchema),
+  const form = useForm<AuthRegisterValues>({
+    resolver: zodResolver(AuthSignUpSchema),
     defaultValues,
   });
 
-  const handleSubmit = async (values: AuthLoginValues) => {
+  const handleSubmit = async (values: AuthRegisterValues) => {
+    await handleRegister(values);
+  };
+
+  const handleSign = async () => {
     setIsLoading(true);
+    const { email, password } = form.getValues();
+
     const { error } = await signIn("credentials", {
-      email: values.email,
-      password: values.password,
-      language: i18n.language,
+      email,
+      password,
       redirect: false,
     });
-    setIsLoading(false);
-
     if (error) {
       toast.error(t("notifications.warning"), {
         description: error,
@@ -62,13 +72,51 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
         void router.push("/");
       }
     }
+
+    setIsLoading(false);
   };
+
+  useEffect(() => {
+    if (status === "fulfilled") {
+      if (data.success) {
+        void handleSign();
+      } else {
+        toast(t("notifications.warning"), {
+          description: data.message,
+        });
+      }
+    }
+  }, [status]);
 
   return (
     <div className={cn("grid gap-6 py-6", className)} {...props}>
       <Form {...(form as any)}>
-        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
           <div className="grid gap-4">
+            <div className="grid gap-2">
+              <Label htmlFor="name" className="text-left">
+                {t("name")}
+              </Label>
+              <FormField
+                control={form.control as never}
+                name="name"
+                render={({ field }) => (
+                  <FormItem className="grid gap-2">
+                    <FormControl>
+                      <Input
+                        {...field}
+                        id="name"
+                        placeholder={t("name")}
+                        autoCapitalize="none"
+                        autoComplete="email"
+                        autoCorrect="off"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
             <div className="grid gap-2">
               <Label htmlFor="email" className="text-left">
                 {t("email")}
@@ -116,13 +164,10 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
                   </FormItem>
                 )}
               />
-              <a href="#" className="text-end text-sm">
-                {t("signin.forgot_password")}
-              </a>
             </div>
           </div>
-          <CButton loading={isLoading} className="w-full">
-            {t("signin.sign_button")}
+          <CButton loading={registerIsLoading || isLoading} className="w-full">
+            {t("signup.sign_button")}
           </CButton>
         </form>
       </Form>
@@ -130,4 +175,4 @@ const AuthLoginForm = ({ className, ...props }: UserAuthFormProps) => {
   );
 };
 
-export default AuthLoginForm;
+export default AuthSignUpForm;
