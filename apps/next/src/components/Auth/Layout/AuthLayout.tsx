@@ -1,10 +1,14 @@
-import DynamicLogo from "@/components/Logo/DynamicLogo";
 import { buttonVariants } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 import { ChevronLeft } from "lucide-react";
 import { useTranslation } from "next-i18next";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { type PropsWithChildren } from "react";
+
+const CDynamicLogo = dynamic(() => import("@/components/Logo/DynamicLogo"), {
+  ssr: false,
+});
 
 const AuthLayout = ({ children }: PropsWithChildren) => {
   const { t } = useTranslation();
@@ -24,7 +28,7 @@ const AuthLayout = ({ children }: PropsWithChildren) => {
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         <div className="flex flex-col space-y-6 text-center">
           <div className="flex items-center justify-center text-center">
-            <DynamicLogo />
+            <CDynamicLogo />
           </div>
           <div className="text-center">{children}</div>
         </div>

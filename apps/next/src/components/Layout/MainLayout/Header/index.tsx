@@ -104,7 +104,7 @@ export default function HomeHeader({ className }: { className?: string }) {
                     !toggleMenu && "hidden"
                   )}
                 >
-                  <DynamicLogo size={128} />
+                  <DynamicLogo className="!w-[128px]" />
                 </Link>
                 <Button
                   onClick={toggleMenu}
