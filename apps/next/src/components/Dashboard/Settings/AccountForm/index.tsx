@@ -105,7 +105,7 @@ export default function AccountForm() {
         </form>
       </Form>
 
-      <Separator className="my-6" />
+      <Separator className="my-6 max-w-[500px]" />
 
       <Form {...(passwordForm as any)}>
         <form onSubmit={passwordForm.handleSubmit(handlePasswordSave)}>
@@ -137,7 +137,7 @@ export default function AccountForm() {
                   <FormItem className="grid gap-1 my-3">
                     <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
                       <Label>
-                        <h1>{t("password")}</h1>
+                        <h1>{t("new_password")}</h1>
                       </Label>
                     </span>
                     <FormControl>
@@ -148,7 +148,7 @@ export default function AccountForm() {
                       />
                     </FormControl>
                     <p className="text-[hsl(var(--muted-foreground))] text-sm">
-                      {t("accountSettings.password_label")}
+                      {t("accountSettings.new_password_label")}
                     </p>
                     <FormMessage />
                   </FormItem>

@@ -8,6 +8,10 @@
     "signup_title": "Üye Ol"
   },
   "general": {
+    "add": "Ekle",
+    "viewOptions": "Görünüm",
+    "public": "Genel",
+    "private": "Özel",
     "detail": "Detay",
     "new": "Yeni",
     "loading": "Lütfen bekleyin",
@@ -58,6 +62,18 @@
     "copied_word": "Kelime başarıyla kopyalandı.",
     "copied_link_title": "Kopyalandı",
     "copied_link": "Bağlantı başarıyla kopyalandı."
+  },
+  "data-table": {
+    "viewOptions": "Görünüm",
+    "toggle_columns": "Sütunları Değiştir",
+    "selected_rows": "{{selectedRows}} / {{totalRows}} satır seçildi.",
+    "rows_per_page": "Sayfa başına satır sayısı",
+    "page_of": "Sayfa {{page}} / {{pageCount}}",
+    "sorting": {
+      "asc": "Artan",
+      "desc": "Azalan",
+      "none": "Sıralama Yok"
+    }
   },
   "announcement": {
     "description": "Yakında başlıyoruz",
@@ -250,6 +266,22 @@
     "columns": "Sütunlar",
     "no_data": "Sonuç Bulunamadı."
   },
+  "columns": {
+    "title": "Başlık",
+    "published": "Yayın Durumu",
+    "numberOfWords": "Kelime Sayısı",
+    "time": "Oluşturulma Tarihi",
+    "text": "Metin",
+    "translatedText": "Çevrilen Metin",
+    "rating": "Derecelendirme",
+    "level": "Seviye",
+    "date": "Tarih",
+    "category": "Kategori",
+    "language": "Dil",
+    "description": "Açıklama",
+    "name": "Ad",
+    "email": "E-posta"
+  },
   "headers": {
     "dashboard": {
       "title": "Kontrol Paneli",
@@ -286,7 +318,7 @@
   "profileSettings": {
     "title": "Profil",
     "description": "Genel web sitesini özelleştirin. Otomatik olarak gece ve gündüz temaları arasında geçiş yapın ve arayüz dili değiştirin.",
-    "username_tooltip": "Lorem ipsum dolor sit amet.",
+    "username_tooltip": "Kullanıcı adınızı değiştirmek için lütfen destek ekibimizle iletişime geçin.",
     "update_action": "Profili Güncelle",
     "update_password": "Şifreyi Güncelle"
   },
@@ -296,14 +328,16 @@
     "email_label": "Mevcut e-postanızı değiştirin.",
     "password_label": "Mevcut şifrenizi değiştirin.",
     "email_update": "Email Güncelle",
-    "password_update": "Şifre Güncelle"
+    "password_update": "Şifre Güncelle",
+    "new_password_label": "Yeni Şifrenizi giriniz."
   },
   "appearanceSettings": {
     "title": "Görünüm",
     "description": "Web sitesinin görsel görünümünü, temaları, renkleri ve diğer görüntüleme seçeneklerini ayarlayın.",
     "interface_theme": "Arayüz Teması",
     "interface_label": "Uygulama temanızı özelleştirin.",
-    "theme_label": "Kontrol panelinin temasını seçin."
+    "theme_label": "Kontrol panelinin temasını seçin.",
+    "language_label": "Uygulama dilini seçin."
   },
   "public_dictionaries": {
     "title": "Yayınlanmış sözlüklerden öğrenin",
@@ -330,8 +364,8 @@
   "email": "E-posta",
   "username": "Kullanıcı Adı",
   "password": "Şifre",
-  "new_password": "Yeni Şifre",
   "current_password": "Mevcut Şifre",
   "save": "Kopyala",
-  "update": "Güncelle"
+  "update": "Güncelle",
+  "new_password": "Yeni Şifre"
 }

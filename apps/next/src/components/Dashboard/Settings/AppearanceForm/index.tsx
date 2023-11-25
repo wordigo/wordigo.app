@@ -1,4 +1,5 @@
 import Container from "../SettingsContainer";
+import { appearanceFormSchema } from "@/schemas/dashboard.settings";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
@@ -10,18 +11,13 @@ import {
   FormMessage,
   RadioGroup,
   RadioGroupItem,
-  Button,
-  Separator,
 } from "@wordigo/ui";
 import LanguageSelector from "@wordigo/ui/components/ui/language-selector";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
-import "@/schemas/dashboard.settings";
-import ChangeLanguage from "@/components/Layout/MainLayout/ChangeLanguage";
-import { appearanceFormSchema } from "@/schemas/dashboard.settings";
 import { useTranslation } from "next-i18next";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
+import type * as z from "zod";
 
 type AppearanceFormValues = z.infer<typeof appearanceFormSchema>;
 
@@ -58,33 +54,26 @@ export default function AppearanceForm() {
       tDescription="appearanceSettings.description"
     >
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <FormField
             control={form.control}
             name="theme"
             render={({ field }) => (
               <FormItem className="space-y-1">
-                <FormLabel>{t("general.theme")}</FormLabel>
+                <FormLabel>{t("general.language")}</FormLabel>
                 <LanguageSelector
                   defaultValue={i18n.language?.toUpperCase()}
                   onSelect={handleChangeLocale}
-                  className="mb-8 w-32 h-9"
-                  classNamev2="font-medium text-[16px]"
+                  className="mb-8 w-32 h-9 font-medium text-[16px]"
                 />
                 <FormDescription>
-                  {t("appearanceSettings.theme_label")}
+                  {t("appearanceSettings.language_label")}
                 </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
-        </form>
-      </Form>
 
-      <Separator className="my-6" />
-
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
             control={form.control}
             name="theme"
