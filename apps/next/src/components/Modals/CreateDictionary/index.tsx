@@ -132,7 +132,7 @@ export default function CreateDictionary() {
               />
               <DialogFooter>
                 <CButton loading={isLoading} size="sm" type="submit">
-                  Save Dictionary
+                  {t("general.add")}
                 </CButton>
               </DialogFooter>
             </div>
