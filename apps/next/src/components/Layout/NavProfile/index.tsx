@@ -90,7 +90,10 @@ const NavProfile = ({
           </DropdownMenuItem>
           <DropdownMenuItem asChild className="px-[10px] cursor-pointer">
             {/* <Settings className="w-4 mr-2" /> */}
-            <Link className="w-full h-full" href={"/dashboard/settings"}>
+            <Link
+              className="w-full h-full"
+              href={"/dashboard/settings?tabs=profile"}
+            >
               {t("navbar.settings")}
             </Link>
           </DropdownMenuItem>

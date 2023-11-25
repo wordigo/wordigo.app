@@ -1,32 +1,24 @@
 import { LogoEnums, type LogoIconsEnums } from "@/constants/logos";
+import { cn } from "@wordigo/ui/lib/utils";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import { useEffect, useState, type FC } from "react";
+import { type FC } from "react";
 
-const DynamicLogo: FC<{ size?: number }> = ({ size = 200 }) => {
+const DynamicLogo: FC<{ className?: string }> = ({ className }) => {
   const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
 
   const getModeIconUrl =
     LogoEnums[resolvedTheme as keyof typeof LogoIconsEnums];
 
   return (
-    <Image
-      className="rounded-md"
-      src={`/images/${getModeIconUrl}.png`}
-      alt="Wordigo Logo"
-      priority={true}
-      width={size}
-      height={size}
-    />
+    <div className={cn("relative -bottom-3 w-[200px] h-[72px]", className)}>
+      <Image
+        className="rounded-md"
+        src={`/images/${getModeIconUrl}.png`}
+        alt="Wordigo Logo"
+        fill
+      />
+    </div>
   );
 };
 
