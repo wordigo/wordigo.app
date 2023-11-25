@@ -33,6 +33,7 @@ const Published = () => {
           {t("public_dictionaries.description")}
         </p>
       </section>
+
       <section className="flex flex-col gap-6 sm:gap-8">
         <PublishedFilter
           isAccordionShow={isAccordionShow}

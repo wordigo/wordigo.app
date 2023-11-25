@@ -9,14 +9,15 @@ const ContactSection = () => {
 
   return (
     <section className="flex flex-col gap-8 sm:gap-12 md:gap-16 lg:gap-20">
-      <span className="text-center px-32 flex flex-col max-lg:px-20 max-md:px-4">
+      <div className="text-center max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto">
         <h2 className="font-semibold text-2xl sm:text-3xl md:text-4xl">
           {t("contact.title")}
         </h2>
         <p className="sm:text-lg mt-4 sm:mt-5 md:mt-6 text-muted-foreground">
           {t("contact.subtitle")}
         </p>
-      </span>
+      </div>
+
       <div className="grid grid-cols-3 gap-x-8 w-full max-md:grid-cols-1 max-lg:grid-cols-2">
         {contactList.map((item) => (
           <ContactSection.Item key={item.title} {...item} />

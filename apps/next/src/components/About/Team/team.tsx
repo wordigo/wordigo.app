@@ -9,9 +9,12 @@ const TeamSection = () => {
 
   return (
     <section className="flex flex-col gap-8 sm:gap-12 md:gap-16 lg:gap-20">
-      <h2 className="text-center font-semibold text-2xl sm:text-3xl md:text-4xl">
-        {t("about.team.heading")}
-      </h2>
+      <div className="text-center max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto">
+        <h2 className="font-semibold text-2xl sm:text-3xl md:text-4xl">
+          {t("about.team.heading")}
+        </h2>
+      </div>
+
       <div className="w-full grid grid-cols-3 grid-rows-2 gap-x-4 gap-y-16 max-lg:grid-cols-3 max-md:grid-cols-2">
         {commentConstants.map((item) => (
           <TeamSection.Item key={item.title} {...item} />
