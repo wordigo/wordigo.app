@@ -1,7 +1,6 @@
 import Banner from "./Banner";
 import HomeHeader from "./Header";
 import Footer from "@/components/Home/Footers";
-import Newsletter from "@/components/Home/Newsletter";
 import { type PropsWithChildren } from "react";
 
 const MainLayout: React.FC<PropsWithChildren<{ showBanner?: boolean }>> = ({
@@ -12,10 +11,9 @@ const MainLayout: React.FC<PropsWithChildren<{ showBanner?: boolean }>> = ({
     <>
       {showBanner && <Banner />}
       <HomeHeader />
-      <main className="container flex flex-col gap-16 sm:gap-20 md:gap-24 lg:gap-28 py-16 sm:py-20 md:py-24">
+      <main className="container flex flex-col gap-y-16 sm:gap-y-20 md:gap-y-24 lg:gap-y-28 pt-16 sm:pt-20 md:pt-24 pb-[72px] sm:pb-24 md:pb-[104px] lg:pb-28">
         {children}
       </main>
-      <Newsletter />
       <Footer />
     </>
   );
