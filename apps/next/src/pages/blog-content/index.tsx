@@ -11,14 +11,14 @@ export default function BlogContent() {
   return (
     <MainLayout>
       <div className="flex justify-center p-2 pt-0 mt-12 px-5">
-        <div className="max-w-4xl w-full flex gap-8 flex-col">
+        <div className="max-w-4xl w-full flex gap-2 md:gap-8 flex-col">
           {/* <Photo /> */}
           {/* <img
             src={""}
             className="bg-gray-600 w-full h-52 rounded-lg overflow-hidden"
           /> */}
           <div className="flex  justify-between w-full">
-            <div className="text-3xl w-full flex flex-col gap-6">
+            <div className="text-3xl w-full flex flex-col gap-2 md:gap-6">
               <div className="flex w-full items-center justify-between">
                 <div>Lorem ipsum dolor sit amet.</div>{" "}
                 <div className=" py-1 w-fit flex items-center px-2 rounded-[0.625rem] text-xs font-medium border justify-center">
@@ -26,8 +26,8 @@ export default function BlogContent() {
                 </div>{" "}
               </div>
               <div className="bg-gray-600 w-full h-52 rounded-lg overflow-hidden"></div>
-              <div className="flex justify-between items-center">
-                <div className="flex items-center gap-3 pt-2 ">
+              <div className="flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-center">
+                <div className="flex items-center gap-3 pt-2 w-full">
                   <div className="bg-black w-12 h-12 rounded-full"></div>
                   <div>
                     <div className="text-lg font-normal">Omer Ozceylan</div>
@@ -36,13 +36,13 @@ export default function BlogContent() {
                     </div>
                   </div>
                 </div>
-                <div className=" flex  items-center gap-7">
+                <div className=" flex  items-center gap-7 md:w-fit w-full md:justify-normal justify-between">
                   <div className="flex items-center gap-2">
-                    <div className="dark:bg-white dark:text-black transition-all py-1 w-fit flex items-center px-2 rounded-[0.625rem]  font-medium border text-base gap-2 justify-center cursor-pointer">
+                    <div className="dark:bg-white dark:text-black transition-all py-1 w-fit flex items-center px-2 rounded-[0.625rem]  font-medium border text-base gap-2 justify-center cursor-pointer whitespace-nowrap">
                       <XIconSvg className="w-4" />
                       Tweet
                     </div>
-                    <div className="dark:bg-white dark:text-black transition-all py-1 w-fit flex items-center px-2 rounded-[0.625rem]  font-medium border text-base gap-2 justify-center cursor-pointer">
+                    <div className="dark:bg-white dark:text-black transition-all py-1 w-fit flex items-center px-2 rounded-[0.625rem]  font-medium border text-base gap-2 justify-center cursor-pointer whitespace-nowrap">
                       <CopyLinkSvg className="w-4" />
                       Copy Link
                     </div>
