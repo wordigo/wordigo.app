@@ -56,7 +56,7 @@ export default function BlogContent() {
               </div>
             </div>
           </div>
-          <p className="leading-[200%] border-t-2 pt-4">
+          <p className="leading-[200%] border-t-[1px] border-gray-300 pt-4">
             &nbsp;Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Magnam, iure nesciunt recusandae neque illo exercitationem adipisci
             veniam labore quibusdam dicta consectetur aliquam! Dolore enim,
