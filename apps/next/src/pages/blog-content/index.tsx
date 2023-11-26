@@ -19,10 +19,12 @@ export default function BlogContent() {
           /> */}
           <div className="font-semibold ">Blogs / Lorem</div>
           <div className="flex  justify-between w-full">
-            <div className="text-3xl w-full flex flex-col gap-2 md:gap-6">
-              <div className="flex w-full items-center justify-between">
-                <div>Lorem ipsum dolor sit amet.</div>{" "}
-                <div className=" py-1 w-fit flex items-center px-2 rounded-[0.625rem] text-xs font-medium border justify-center">
+            <div className=" w-full flex flex-col gap-2 md:gap-6">
+              <div className="flex w-full gap-2 md:gap-0 items-center justify-between">
+                <div className="text-xl md:text-3xl">
+                  Lorem ipsum dolor sit amet.
+                </div>{" "}
+                <div className=" py-1 w-fit flex items-center px-2 rounded-[0.625rem] text-xs font-medium border justify-center whitespace-nowrap">
                   02.05.2013 · 12 min read
                 </div>{" "}
               </div>
@@ -50,7 +52,7 @@ export default function BlogContent() {
                   </div>
                   <div>
                     <SaveLigtSvg className="w-11 cursor-pointer fill-white hidden dark:block" />
-                    <SaveSvg className="w-11 cursor-pointer fill-white block dark:hidden" />
+                    <SaveSvg className="w-11 cursor-pointer  block dark:hidden" />
                   </div>
                 </div>
               </div>
