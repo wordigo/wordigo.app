@@ -1,7 +1,8 @@
+import { type IPagination } from "types/global";
 import { type DictionaryWord } from "../dictionarayWord/type";
-import { IPagination } from "types/global";
 
 export interface Dictionary {
+  id: number;
   title: string;
   slug: string;
   updatedDate: string;
@@ -17,6 +18,11 @@ export interface CreateDictionaryType {
   title: string;
   sourceLang?: string;
   targetLang?: string;
+}
+
+export interface UpdateDictionaryImageType {
+  dictionaryId: number;
+  encodedImage: string;
 }
 
 export interface GetUserDictionariesType

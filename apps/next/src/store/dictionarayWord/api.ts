@@ -1,7 +1,8 @@
-import { axiosBaseQuery } from "../baseQuery";
-import { type ResponseDictionaryWords } from "./type";
+import { buildDynamicUrl } from "@/utils/getUrl";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { type IResponse } from "types/global";
+import { axiosBaseQuery } from "../baseQuery";
+import { type GetUserDictionaryWordsType, type ResponseDictionaryWords } from "./type";
 
 export const dictionaryWordApi = createApi({
   reducerPath: "dictionaryWordApi",
@@ -11,12 +12,17 @@ export const dictionaryWordApi = createApi({
   endpoints: (builder) => ({
     getDictionaryWords: builder.mutation<
       IResponse<ResponseDictionaryWords>,
-      string
+      GetUserDictionaryWordsType
     >({
-      query: (slug) => ({
-        url: `/dictionaries/getWords?slug=${slug}`,
-        method: "get",
-      }),
+      query: (queryFilter) => {
+        const baseUrl = "/dictionaries/getWords?";
+        const url = buildDynamicUrl(baseUrl, queryFilter);
+
+        return {
+          url,
+          method: "get",
+        }
+      },
     }),
     createWord: builder.mutation<IResponse, any>({
       query: (data) => ({
