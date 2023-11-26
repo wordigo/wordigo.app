@@ -1,4 +1,9 @@
 // import Photo from "./photo";
+
+import CopyLinkSvg from "../../../public/images/blogs/copyLink.svg";
+import SaveSvg from "../../../public/images/blogs/save.svg";
+import SaveLigtSvg from "../../../public/images/blogs/saveLight.svg";
+import XIconSvg from "../../../public/images/blogs/xIcon.svg";
 import MainLayout from "@/components/Layout/MainLayout";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
@@ -21,18 +26,36 @@ export default function BlogContent() {
                 </div>{" "}
               </div>
               <div className="bg-gray-600 w-full h-52 rounded-lg overflow-hidden"></div>
-              <div className="flex items-center gap-3 pt-2 ">
-                <div className="bg-black w-12 h-12 rounded-full"></div>
-                <div>
-                  <div className="text-lg font-normal">Omer Ozceylan</div>
-                  <div className="font-normal py-1 w-fit flex items-center px-2 rounded-[0.625rem] text-xs  border justify-center">
-                    Frontend Dev.
+              <div className="flex justify-between items-center">
+                <div className="flex items-center gap-3 pt-2 ">
+                  <div className="bg-black w-12 h-12 rounded-full"></div>
+                  <div>
+                    <div className="text-lg font-normal">Omer Ozceylan</div>
+                    <div className="font-normal py-1 w-fit flex items-center px-2 rounded-[0.625rem] text-xs  border justify-center">
+                      Frontend Dev.
+                    </div>
+                  </div>
+                </div>
+                <div className=" flex  items-center gap-7">
+                  <div className="flex items-center gap-2">
+                    <div className="dark:bg-white dark:text-black transition-all py-1 w-fit flex items-center px-2 rounded-[0.625rem]  font-medium border text-base gap-2 justify-center cursor-pointer">
+                      <XIconSvg className="w-4" />
+                      Tweet
+                    </div>
+                    <div className="dark:bg-white dark:text-black transition-all py-1 w-fit flex items-center px-2 rounded-[0.625rem]  font-medium border text-base gap-2 justify-center cursor-pointer">
+                      <CopyLinkSvg className="w-4" />
+                      Copy Link
+                    </div>
+                  </div>
+                  <div>
+                    <SaveLigtSvg className="w-11 cursor-pointer fill-white hidden dark:block" />
+                    <SaveSvg className="w-11 cursor-pointer fill-white block dark:hidden" />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <p className="leading-[200%]">
+          <p className="leading-[200%] border-t-2 pt-4">
             &nbsp;Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Magnam, iure nesciunt recusandae neque illo exercitationem adipisci
             veniam labore quibusdam dicta consectetur aliquam! Dolore enim,
