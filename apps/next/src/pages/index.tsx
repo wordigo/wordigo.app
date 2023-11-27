@@ -2,9 +2,7 @@ import FeatureBanner from "@/components/Home/Banner";
 import Comment from "@/components/Home/Comments";
 import FAQSection from "@/components/Home/FAQSection";
 import FeatureSections from "@/components/Home/FeatureSections";
-import Footers from "@/components/Home/Footers";
 import NewHeroSection from "@/components/Home/Hero/NewHeroSection";
-import Newsletter from "@/components/Home/Newsletter";
 import MainLayout from "@/components/Layout/MainLayout";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { NextSeo } from "next-seo";
@@ -23,8 +21,6 @@ export default function index({ _nextI18Next }: PageProps) {
       <FeatureSections />
       <Comment />
       <FAQSection />
-      <Newsletter />
-      <Footers />
     </MainLayout>
   );
 }
