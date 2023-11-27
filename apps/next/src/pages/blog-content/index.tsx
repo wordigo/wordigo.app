@@ -1,10 +1,9 @@
 // import Photo from "./photo";
 
 import CopyLinkSvg from "../../../public/images/blogs/copyLink.svg";
-import SaveSvg from "../../../public/images/blogs/save.svg";
-import SaveLigtSvg from "../../../public/images/blogs/saveLight.svg";
 import XIconSvg from "../../../public/images/blogs/xIcon.svg";
 import MainLayout from "@/components/Layout/MainLayout";
+import Save from "images/blogs/Save";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function BlogContent() {
@@ -51,8 +50,9 @@ export default function BlogContent() {
                     </div>
                   </div>
                   <div>
-                    <SaveLigtSvg className="w-11 cursor-pointer fill-white hidden dark:block" />
-                    <SaveSvg className="w-11 cursor-pointer  block dark:hidden" />
+                    {/* <SaveLigtSvg className="w-11 cursor-pointer fill-white hidden dark:block" />
+                    <SaveSvg className="w-11 cursor-pointer  block dark:hidden" /> */}
+                    <Save className="w-10 cursor-pointer" color={"#ffffff"} />
                   </div>
                 </div>
               </div>
