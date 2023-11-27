@@ -5,8 +5,31 @@ import XIconSvg from "../../../public/images/blogs/xIcon.svg";
 import MainLayout from "@/components/Layout/MainLayout";
 import Save from "images/blogs/Save";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useEffect, useState } from "react";
 
 export default function BlogContent() {
+  const [currentTheme, setCurrentTheme] = useState("light");
+  useEffect(() => {
+    const updateTheme = () => {
+      const isDarkModeActive =
+        document.documentElement.classList.contains("dark");
+      setCurrentTheme(isDarkModeActive ? "dark" : "light");
+    };
+
+    updateTheme();
+
+    console.log("check");
+
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  const colorByTheme = { dark: "#ffffff", light: "#000000" };
+
   return (
     <MainLayout>
       <div className="flex justify-center p-2 pt-0 mt-12 px-5">
@@ -52,7 +75,10 @@ export default function BlogContent() {
                   <div>
                     {/* <SaveLigtSvg className="w-11 cursor-pointer fill-white hidden dark:block" />
                     <SaveSvg className="w-11 cursor-pointer  block dark:hidden" /> */}
-                    <Save className="w-10 cursor-pointer" color={"#ffffff"} />
+                    <Save
+                      className="w-10 cursor-pointer"
+                      color={colorByTheme[currentTheme]}
+                    />
                   </div>
                 </div>
               </div>
