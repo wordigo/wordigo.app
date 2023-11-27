@@ -118,7 +118,7 @@ export default function FeatureBanner() {
           selectedWord={debouncedWord}
         />
       )}
-      <section className="w-full flex flex-col items-center px-20 py-24 max-md:px-4 max-lg:py-16 relative">
+      <section className="flex flex-col items-center relative">
         <Badge className="text-sm font-medium px-2.5 py-1" variant="outline">
           <Zap className="mr-2 h-4 w-4" />
           {t("feature_mockup.badge")}
