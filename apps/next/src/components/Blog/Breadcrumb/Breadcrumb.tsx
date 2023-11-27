@@ -1,0 +1,38 @@
+import BreadCrumbArrowSvg from "../../../../public/images/blogs/breadCrumbArrow.svg";
+import HomeSvg from "../../../../public/images/blogs/home.svg";
+import Link from "next/link";
+
+export default function Breadcrumb({ data }) {
+  return (
+    <nav
+      className="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700 items-center"
+      aria-label="Breadcrumb"
+    >
+      <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+        <li className="inline-flex items-center">
+          <a
+            href="#"
+            className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+          >
+            <HomeSvg className="w-3 mr-2 ml-4" />
+            Home
+          </a>
+        </li>
+        {data &&
+          data.map(({ id, text, link }) => {
+            return (
+              <Link key={id} href={link}>
+                <div className="flex items-center">
+                  <BreadCrumbArrowSvg className="w-2 mr-4 ml-4 text-gray-400" />
+                  <div className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">
+                    {text}
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+      </ol>{" "}
+      <BreadCrumbArrowSvg className="w-2 ml-4 mr-4 text-gray-400" />
+    </nav>
+  );
+}

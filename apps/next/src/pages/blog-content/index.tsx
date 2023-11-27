@@ -2,6 +2,8 @@
 
 import CopyLinkSvg from "../../../public/images/blogs/copyLink.svg";
 import XIconSvg from "../../../public/images/blogs/xIcon.svg";
+// import FilledXIcon from '../../../public/images/blogs/xIconFilled.svg'
+import Breadcrumb from "@/components/Blog/Breadcrumb/Breadcrumb";
 import MainLayout from "@/components/Layout/MainLayout";
 import Save from "images/blogs/Save";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -9,6 +11,7 @@ import { useEffect, useState } from "react";
 
 export default function BlogContent() {
   const [currentTheme, setCurrentTheme] = useState("light");
+
   useEffect(() => {
     const updateTheme = () => {
       const isDarkModeActive =
@@ -18,8 +21,6 @@ export default function BlogContent() {
 
     updateTheme();
 
-    console.log("check");
-
     const observer = new MutationObserver(updateTheme);
     observer.observe(document.documentElement, {
       attributes: true,
@@ -28,19 +29,25 @@ export default function BlogContent() {
     return () => observer.disconnect();
   }, []);
 
-  const colorByTheme = { dark: "#ffffff", light: "#000000" };
+  const colorByTheme = { dark: "#ffffff", light: "#3b3a3a" };
+
+  const dummyData = [
+    { id: 1, text: "Blogs", link: "blogs" },
+    { id: 2, text: "Lorem ipsum", link: "#" },
+  ];
 
   return (
     <MainLayout>
-      <div className="flex justify-center p-2 pt-0 mt-12 px-5">
+      <div className="flex justify-center p-2 pt-0 mt-2 px-5">
         <div className="max-w-4xl w-full flex gap-2 md:gap-6 flex-col">
           {/* <Photo /> */}
           {/* <img
             src={""}
             className="bg-gray-600 w-full h-52 rounded-lg overflow-hidden"
           /> */}
-          <div className="font-semibold ">Blogs / Lorem</div>
-          <div className="flex  justify-between w-full">
+          {/* <div className="font-semibold ">Blogs / Lorem</div> */}
+          <Breadcrumb data={dummyData} />
+          <div className="flex  justify-between w-full mt-10">
             <div className=" w-full flex flex-col gap-2 md:gap-6">
               <div className="flex w-full gap-2 md:gap-0 items-center justify-between">
                 <div className="text-xl md:text-3xl">
@@ -76,6 +83,7 @@ export default function BlogContent() {
                     {/* <SaveLigtSvg className="w-11 cursor-pointer fill-white hidden dark:block" />
                     <SaveSvg className="w-11 cursor-pointer  block dark:hidden" /> */}
                     <Save
+                      isFilled={false}
                       className="w-10 cursor-pointer"
                       color={colorByTheme[currentTheme]}
                     />
