@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Breadcrumb({ data }) {
   return (
     <nav
-      className="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700 items-center"
+      className="flex px-0 md:px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700 items-center"
       aria-label="Breadcrumb"
     >
       <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
@@ -21,10 +21,10 @@ export default function Breadcrumb({ data }) {
         {data &&
           data.map(({ id, text, link }) => {
             return (
-              <Link key={id} href={link}>
-                <div className="flex items-center">
-                  <BreadCrumbArrowSvg className="w-2 mr-4 ml-4 text-gray-400" />
-                  <div className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">
+              <Link className="overflow-hidden" key={id} href={link}>
+                <div className="flex items-center overflow-hidden">
+                  <BreadCrumbArrowSvg className="w-2 md:mr-4 md:ml-4 mr-2 ml-2 text-gray-400" />
+                  <div className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white whitespace-nowrap ">
                     {text}
                   </div>
                 </div>
