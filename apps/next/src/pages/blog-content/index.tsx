@@ -47,7 +47,7 @@ export default function BlogContent() {
           /> */}
           {/* <div className="font-semibold ">Blogs / Lorem</div> */}
           <Breadcrumb data={dummyData} />
-          <div className="flex  justify-between w-full mt-10">
+          <div className="flex  justify-between w-full mt-2 md:mt-5">
             <div className=" w-full flex flex-col gap-2 md:gap-6">
               <div className="flex w-full gap-2 md:gap-0 items-center justify-between">
                 <div className="text-xl md:text-3xl">

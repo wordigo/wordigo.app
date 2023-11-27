@@ -12,7 +12,7 @@ export default function Breadcrumb({ data }) {
         <li className="inline-flex items-center">
           <a
             href="#"
-            className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+            className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-black dark:text-gray-400 dark:hover:text-white"
           >
             <HomeSvg className="w-3 mr-2 ml-4" />
             Home
@@ -24,7 +24,7 @@ export default function Breadcrumb({ data }) {
               <Link className="overflow-hidden" key={id} href={link}>
                 <div className="flex items-center overflow-hidden">
                   <BreadCrumbArrowSvg className="w-2 md:mr-4 md:ml-4 mr-2 ml-2 text-gray-400" />
-                  <div className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white whitespace-nowrap ">
+                  <div className="ms-1 text-sm font-medium text-gray-700 hover:text-black md:ms-2 dark:text-gray-400 dark:hover:text-white whitespace-nowrap ">
                     {text}
                   </div>
                 </div>
