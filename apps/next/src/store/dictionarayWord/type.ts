@@ -1,3 +1,6 @@
+import { type IPagination } from "types/global";
+import { type Dictionary } from "../dictionaries/type";
+
 export interface DictionaryWord {
   id: string;
   text: string;
@@ -9,3 +12,7 @@ export interface ResponseDictionaryWords {
   numberOfWords: number;
   words: DictionaryWord[];
 }
+
+export interface GetUserDictionaryWordsType
+  extends Partial<Dictionary>,
+    IPagination {}

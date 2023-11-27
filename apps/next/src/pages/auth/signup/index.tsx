@@ -1,5 +1,5 @@
-import AuthSignUpForm from "./signup-form";
 import AuthLayout from "@/components/Auth/Layout/AuthLayout";
+import AuthSignUpForm from "@/components/Auth/SignUp/form";
 import SocialProviders from "@/components/Auth/SocialProviders";
 import { type GetServerSidePropsContext } from "next";
 import { useTranslation } from "next-i18next";
@@ -27,11 +27,11 @@ const SignUp = ({ _nextI18Next }: PageProps) => {
         }
       />
       <AuthLayout.Title>{t("signup.title")}</AuthLayout.Title>
-      <AuthLayout.Description>{t("signup.description")}</AuthLayout.Description>
-      <AuthLayout.Contet>
-        <AuthSignUpForm />
-        <SocialProviders />
-      </AuthLayout.Contet>
+      <AuthLayout.Description className="md:max-w-[250px] mx-auto">
+        {t("signup.description")}
+      </AuthLayout.Description>
+      <AuthSignUpForm />
+      <SocialProviders />
       <AuthLayout.Footer url="/auth/signin">
         {t("signup.info")}{" "}
         <span className="text-foreground font-semibold">

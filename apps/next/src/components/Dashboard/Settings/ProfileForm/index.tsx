@@ -13,7 +13,6 @@ import {
   FormLabel,
   FormMessage,
   Input,
-  Separator,
   Tooltip,
   TooltipContent,
   TooltipProvider,
@@ -126,7 +125,12 @@ export default function ProfileForm() {
                             />
                           </TooltipTrigger>
                           <TooltipContent>
-                            <p>{t("profileSettings.username_tooltip")}</p>
+                            <p
+                              className="text-center"
+                              dangerouslySetInnerHTML={{
+                                __html: t("profileSettings.username_tooltip"),
+                              }}
+                            />
                           </TooltipContent>
                         </Tooltip>
                       </TooltipProvider>

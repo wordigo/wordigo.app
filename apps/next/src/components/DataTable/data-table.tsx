@@ -57,10 +57,6 @@ export function DataTable<TData, TValue>({
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-
   // Search params
   const page = searchParams?.get("page") ?? "1";
   const pageAsNumber = Number(page);
@@ -143,23 +139,6 @@ export function DataTable<TData, TValue>({
     );
   }, [sorting]);
 
-  React.useEffect(() => {
-    const columnFilters: ColumnFiltersState = [];
-    for (const key of searchParams.keys()) {
-      if (searchableColumns.find((column) => column.id === key)) {
-        columnFilters.push({
-          id: key,
-          value: searchParams.get(key),
-        });
-      }
-    }
-    setColumnFilters(columnFilters);
-  }, []);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-
   // Handle server-side filtering
   const debouncedSearchableColumnFilters = JSON.parse(
     useDebounce(
@@ -172,12 +151,24 @@ export function DataTable<TData, TValue>({
     )
   ) as ColumnFiltersState;
 
-  const filterableColumnFilters = columnFilters.filter((filter) => {
-    return filterableColumns.find((column) => column.id === filter.id);
-  });
+  React.useEffect(() => {
+    const columnFilters: ColumnFiltersState = [];
+    for (const key of searchParams.keys()) {
+      if (searchableColumns.find((column) => column.id === key)) {
+        columnFilters.push({
+          id: key,
+          value: searchParams.get(key),
+        });
+      }
+    }
+    setColumnFilters(columnFilters);
+    setTimeout(() => {
+      setMounted(true);
+    }, 1000);
+  }, []);
 
   React.useEffect(() => {
-    if (!mounted) return; // mounted false ise bu hook'tan çık.
+    if (!mounted) return;
     for (const column of debouncedSearchableColumnFilters) {
       if (typeof column.value === "string") {
         void router.push(

@@ -61,7 +61,7 @@ const LibraryDetail = ({ dictionary }: { dictionary: IDictionary }) => {
         description: t("notifications.copied_link"),
         duration: 3000,
       });
-      navigator.clipboard.writeText(url as string);
+      navigator.clipboard.writeText(url);
     }
   };
 

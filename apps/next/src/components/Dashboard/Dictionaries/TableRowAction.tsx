@@ -64,18 +64,24 @@ export function DataTableRowActions({ row }: DataTableRowActionsProps) {
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-[160px] flex flex-col">
             <DropdownMenuItem>
-              <Link href={`dictionaries/${row.original.slug}`}>
+              <Link
+                className="w-full h-full"
+                href={`dictionaries/${row.original.slug}`}
+              >
                 {t("general.detail")}
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Link href={`dictionaries/${row.original.slug}/settings`}>
+              <Link
+                className="w-full h-full"
+                href={`dictionaries/${row.original.slug}/settings`}
+              >
                 {t("general.settings")}
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              className="text-red-500 cursor-pointer"
+              className="text-red-500 cursor-pointer w-full h-full"
               onClick={handleDeleteClick}
             >
               {t("general.delete")}
