@@ -136,7 +136,8 @@
     "info": "Hesabınız yok mu?",
     "info_link": "Üye Ol",
     "new_password": "Yeni Şifre",
-    "confirm_password": "Yeni Şifreyi Onayla"
+    "confirm_password": "Yeni Şifreyi Onayla",
+    "email_key": "6 haneli doğrulama kodu"
   },
   "signup": {
     "title": "Hoş Geldiniz",

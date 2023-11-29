@@ -15,7 +15,6 @@ import {
   Label,
 } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
-import { signIn } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import React, { useState } from "react";

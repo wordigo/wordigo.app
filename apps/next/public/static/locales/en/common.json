@@ -145,7 +145,8 @@
     "info": "Don't have an account?",
     "info_link": "Sign Up",
     "new_password": "New Password",
-    "confirm_password": "Confirm New Password"
+    "confirm_password": "Confirm New Password",
+    "email_key": "6 digit verification code"
   },
   "signup": {
     "title": "Welcome",
