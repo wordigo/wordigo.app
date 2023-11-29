@@ -127,12 +127,16 @@
     "info_link": "Üye Ol"
   },
   "reset": {
-    "title": "Tekrar Hoş Geldiniz",
-    "description": "Hesabınızın şifresini güncellemek için adımları tamamlayın.",
-    "refresh_button": "Şifreyi Yenile",
-    "step_button": "Sonraki Adım",
+    "email_title": "E-posta Onaylama Adımı",
+    "email_step": "Hesabınızın şifresini güncellemek için e-postanızı onaylayın.",
+    "email_button": "E-postayı Onayla",
+    "password_title": "Şifre Sıfırlama Adımı",
+    "password_step": "Hesabınızın yeni şifresini girin.",
+    "refresh_button": "Şifreyi Sıfırla",
     "info": "Hesabınız yok mu?",
-    "info_link": "Üye Ol"
+    "info_link": "Üye Ol",
+    "new_password": "Yeni Şifre",
+    "confirm_password": "Yeni Şifreyi Onayla"
   },
   "signup": {
     "title": "Hoş Geldiniz",

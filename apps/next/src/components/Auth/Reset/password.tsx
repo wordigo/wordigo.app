@@ -39,7 +39,7 @@ const AuthResetForm = ({
 
   const defaultValues: Partial<AuthResetPasswordValues> = {
     new_password: "",
-    confrimed_password: "",
+    confrim_password: "",
   };
 
   const form = useForm<AuthResetPasswordValues>({
@@ -88,17 +88,17 @@ const AuthResetForm = ({
           <div className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="password" className="text-left">
-                {t("password")}
+                {t("reset.new_password")}
               </Label>
               <FormField
                 control={form.control as never}
-                name="password"
+                name="new_password"
                 render={({ field }) => (
                   <FormItem className="grid gap-2">
                     <FormControl>
                       <Input
                         {...field}
-                        id="password"
+                        id="new_password"
                         placeholder="••••••••"
                         type="password"
                         autoCapitalize="none"
@@ -113,17 +113,17 @@ const AuthResetForm = ({
 
             <div className="grid gap-2">
               <Label htmlFor="password" className="text-left">
-                {t("password")}
+                {t("reset.confirm_password")}
               </Label>
               <FormField
                 control={form.control as never}
-                name="password"
+                name="confirm_password"
                 render={({ field }) => (
                   <FormItem className="grid gap-2">
                     <FormControl>
                       <Input
                         {...field}
-                        id="password"
+                        id="confirm_password"
                         placeholder="••••••••"
                         type="password"
                         autoCapitalize="none"
@@ -137,7 +137,7 @@ const AuthResetForm = ({
             </div>
           </div>
           <CButton loading={isLoading} className="w-full">
-            {t("signin.sign_button")}
+            {t("reset.refresh_button")}
           </CButton>
         </form>
       </Form>

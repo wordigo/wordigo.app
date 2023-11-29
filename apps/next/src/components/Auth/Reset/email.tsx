@@ -106,7 +106,7 @@ const AuthResetForm = ({
             </div>
           </div>
           <CButton loading={isLoading} className="w-full">
-            {t("signin.sign_button")}
+            {t("reset.email_button")}
           </CButton>
         </form>
       </Form>

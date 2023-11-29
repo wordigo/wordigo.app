@@ -23,7 +23,7 @@ export type AuthResetEmailValues = z.infer<typeof AuthResetEmailSchema>;
 
 export const AuthResetPasswordSchema = z.object({
   new_password: z.string().min(6),
-  confrimed_password: z.string().min(6),
+  confrim_password: z.string().min(6),
 });
 
 export type AuthResetPasswordValues = z.infer<typeof AuthResetPasswordSchema>;
