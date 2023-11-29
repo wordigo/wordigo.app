@@ -126,6 +126,14 @@
     "info": "Hesabınız yok mu?",
     "info_link": "Üye Ol"
   },
+  "reset": {
+    "title": "Tekrar Hoş Geldiniz",
+    "description": "Hesabınızın şifresini güncellemek için adımları tamamlayın.",
+    "refresh_button": "Şifreyi Yenile",
+    "step_button": "Sonraki Adım",
+    "info": "Hesabınız yok mu?",
+    "info_link": "Üye Ol"
+  },
   "signup": {
     "title": "Hoş Geldiniz",
     "description": "Hesap oluşturmak için e-postanızı ve kullanıcı adınızı girin.",

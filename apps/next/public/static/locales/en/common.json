@@ -135,6 +135,14 @@
     "info_link": "Sign up",
     "forgot_password": "Forgot password?"
   },
+  "reset": {
+    "title": "Tekrar Hoş Geldiniz",
+    "description": "Hesabınızın şifresini güncellemek için adımları tamamlayın.",
+    "refresh_button": "Şifreyi Yenile",
+    "step_button": "Sonraki Adım",
+    "info": "Hesabınız yok mu?",
+    "info_link": "Üye Ol"
+  },
   "signup": {
     "title": "Welcome",
     "description": "Enter your email and username below to create your account.",
