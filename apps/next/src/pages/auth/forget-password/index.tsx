@@ -1,8 +1,6 @@
+import ForgetEmailForm from "@/components/Auth/Forget/email";
+import ForgetPasswordForm from "@/components/Auth/Forget/password";
 import AuthLayout from "@/components/Auth/Layout/AuthLayout";
-import ResetEmailForm from "@/components/Auth/Reset/email";
-import ResetPasswordForm from "@/components/Auth/Reset/password";
-import AuthSignInForm from "@/components/Auth/SignIn/form";
-import SocialProviders from "@/components/Auth/SocialProviders";
 import { type GetServerSidePropsContext } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -12,9 +10,9 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { type PageProps } from "types/global";
 
-const reset = ({ _nextI18Next }: PageProps) => {
+const Forget = ({ _nextI18Next }: PageProps) => {
   const { t } = useTranslation();
-  const [resetStep, setResetStep] = useState<"email" | "password">("email");
+  const [ForgetStep, setForgetStep] = useState<"email" | "password">("email");
 
   const { query, replace } = useRouter();
 
@@ -35,12 +33,10 @@ const reset = ({ _nextI18Next }: PageProps) => {
             ?.seo.signin_title
         }
       />
-      <AuthLayout.Title>{t("signin.title")}</AuthLayout.Title>
-      <AuthLayout.Description>{t("signin.description")}</AuthLayout.Description>
-      {resetStep === "email" ? (
-        <ResetEmailForm setResetStep={setResetStep} />
+      {ForgetStep === "email" ? (
+        <ForgetEmailForm setForgetStep={setForgetStep} />
       ) : (
-        <ResetPasswordForm setResetStep={setResetStep} />
+        <ForgetPasswordForm setForgetStep={setForgetStep} />
       )}
     </AuthLayout>
   );
@@ -54,4 +50,4 @@ export async function getStaticProps(context: GetServerSidePropsContext) {
   };
 }
 
-export default reset;
+export default Forget;

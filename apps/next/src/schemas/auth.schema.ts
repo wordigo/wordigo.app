@@ -15,15 +15,15 @@ export const AuthSignUpSchema = z.object({
 
 export type AuthRegisterValues = z.infer<typeof AuthSignUpSchema>;
 
-export const AuthResetEmailSchema = z.object({
+export const AuthForgetEmailSchema = z.object({
   email: z.string().min(1).email(),
 });
 
-export type AuthResetEmailValues = z.infer<typeof AuthResetEmailSchema>;
+export type AuthForgetEmailValues = z.infer<typeof AuthForgetEmailSchema>;
 
-export const AuthResetPasswordSchema = z.object({
+export const AuthForgetPasswordSchema = z.object({
   new_password: z.string().min(6),
   confrim_password: z.string().min(6),
 });
 
-export type AuthResetPasswordValues = z.infer<typeof AuthResetPasswordSchema>;
+export type AuthForgetPasswordValues = z.infer<typeof AuthForgetPasswordSchema>;
