@@ -1,4 +1,6 @@
 import AuthLayout from "@/components/Auth/Layout/AuthLayout";
+import ResetEmailForm from "@/components/Auth/Reset/email";
+import ResetPasswordForm from "@/components/Auth/Reset/password";
 import AuthSignInForm from "@/components/Auth/SignIn/form";
 import SocialProviders from "@/components/Auth/SocialProviders";
 import { type GetServerSidePropsContext } from "next";
@@ -6,12 +8,13 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { type PageProps } from "types/global";
 
-const signIn = ({ _nextI18Next }: PageProps) => {
+const reset = ({ _nextI18Next }: PageProps) => {
   const { t } = useTranslation();
+  const [resetStep, setResetStep] = useState<"email" | "password">("email");
 
   const { query, replace } = useRouter();
 
@@ -34,14 +37,11 @@ const signIn = ({ _nextI18Next }: PageProps) => {
       />
       <AuthLayout.Title>{t("signin.title")}</AuthLayout.Title>
       <AuthLayout.Description>{t("signin.description")}</AuthLayout.Description>
-      <AuthSignInForm />
-      <SocialProviders />
-      <AuthLayout.Footer url="/auth/signup">
-        {t("signin.info")}{" "}
-        <span className="text-foreground font-semibold">
-          {t("signin.info_link")}
-        </span>
-      </AuthLayout.Footer>
+      {resetStep === "email" ? (
+        <ResetEmailForm setResetStep={setResetStep} />
+      ) : (
+        <ResetPasswordForm setResetStep={setResetStep} />
+      )}
     </AuthLayout>
   );
 };
@@ -54,4 +54,4 @@ export async function getStaticProps(context: GetServerSidePropsContext) {
   };
 }
 
-export default signIn;
+export default reset;
