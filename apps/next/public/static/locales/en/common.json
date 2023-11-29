@@ -135,7 +135,7 @@
     "info_link": "Sign up",
     "forgot_password": "Forgot password?"
   },
-  "reset": {
+  "forgot_password": {
     "email_title": "Email Verification Step",
     "email_step": "Verify your email to update your account password.",
     "email_button": "Verify Email",
