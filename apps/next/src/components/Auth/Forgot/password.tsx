@@ -1,8 +1,8 @@
 import AuthLayout from "@/components/Auth/Layout/AuthLayout";
 import CButton from "@/components/UI/Button";
 import {
-  AuthForgetPasswordSchema,
-  type AuthForgetPasswordValues,
+  AuthForgotPasswordSchema,
+  type AuthForgotPasswordValues,
 } from "@/schemas/auth.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -24,30 +24,30 @@ import { toast } from "sonner";
 
 type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
 
-interface AuthForgetFormProps extends UserAuthFormProps {
-  setForgetStep: (step: "email" | "password") => void;
+interface AuthForgotFormProps extends UserAuthFormProps {
+  setForgotStep: (step: "email" | "password") => void;
 }
 
-const AuthPasswordForgetForm = ({
+const AuthPasswordForgotForm = ({
   className,
-  setForgetStep,
+  setForgotStep,
   ...props
-}: AuthForgetFormProps) => {
+}: AuthForgotFormProps) => {
   const { t, i18n } = useTranslation();
   const router = useRouter();
   const [isPasswordLoading, setIsPasswordLoading] = useState(false);
 
-  const defaultValues: Partial<AuthForgetPasswordValues> = {
+  const defaultValues: Partial<AuthForgotPasswordValues> = {
     new_password: "",
     confrim_password: "",
   };
 
-  const form = useForm<AuthForgetPasswordValues>({
-    resolver: zodResolver(AuthForgetPasswordSchema),
+  const form = useForm<AuthForgotPasswordValues>({
+    resolver: zodResolver(AuthForgotPasswordSchema),
     defaultValues,
   });
 
-  const handleSubmit = async (values: AuthForgetPasswordValues) => {
+  const handleSubmit = async (values: AuthForgotPasswordValues) => {
     setIsPasswordLoading(true);
     setIsPasswordLoading(false);
   };
@@ -125,4 +125,4 @@ const AuthPasswordForgetForm = ({
   );
 };
 
-export default AuthPasswordForgetForm;
+export default AuthPasswordForgotForm;

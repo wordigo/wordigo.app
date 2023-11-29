@@ -1,5 +1,5 @@
-import ForgetEmailForm from "@/components/Auth/Forget/email";
-import ForgetPasswordForm from "@/components/Auth/Forget/password";
+import ForgotEmailForm from "@/components/Auth/Forgot/email";
+import ForgotPasswordForm from "@/components/Auth/Forgot/password";
 import AuthLayout from "@/components/Auth/Layout/AuthLayout";
 import { type GetServerSidePropsContext } from "next";
 import { useTranslation } from "next-i18next";
@@ -10,9 +10,9 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { type PageProps } from "types/global";
 
-const Forget = ({ _nextI18Next }: PageProps) => {
+const Forgot = ({ _nextI18Next }: PageProps) => {
   const { t } = useTranslation();
-  const [ForgetStep, setForgetStep] = useState<"email" | "password">("email");
+  const [ForgotStep, setForgotStep] = useState<"email" | "password">("email");
 
   const { query, replace } = useRouter();
 
@@ -33,10 +33,10 @@ const Forget = ({ _nextI18Next }: PageProps) => {
             ?.seo.signin_title
         }
       />
-      {ForgetStep === "email" ? (
-        <ForgetEmailForm setForgetStep={setForgetStep} />
+      {ForgotStep === "email" ? (
+        <ForgotEmailForm setForgotStep={setForgotStep} />
       ) : (
-        <ForgetPasswordForm setForgetStep={setForgetStep} />
+        <ForgotPasswordForm setForgotStep={setForgotStep} />
       )}
     </AuthLayout>
   );
@@ -50,4 +50,4 @@ export async function getStaticProps(context: GetServerSidePropsContext) {
   };
 }
 
-export default Forget;
+export default Forgot;
