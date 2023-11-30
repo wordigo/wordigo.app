@@ -20,7 +20,6 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
 
 const ReactCodeInput = dynamic(import("react-code-input"));
 

@@ -136,9 +136,9 @@
     "forgot_password": "Forgot password?"
   },
   "forgot_password": {
-    "email_title": "Email Verification Step",
-    "email_step": "Verify your email to update your account password.",
-    "email_button": "Verify Email",
+    "email_title": "Password Reset",
+    "email_step": "Enter your email address to reset your password.",
+    "email_button": "Send Email",
     "password_title": "Password Reset Step",
     "password_step": "Enter the new password for your account.",
     "refresh_button": "Reset Password",

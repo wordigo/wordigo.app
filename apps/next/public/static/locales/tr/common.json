@@ -127,7 +127,7 @@
     "info_link": "Üye Ol"
   },
   "forgot_password": {
-    "email_title": "E-posta Onaylama Adımı",
+    "email_title": "Şifre Sıfırlama",
     "email_step": "Hesabınızın şifresini güncellemek için e-postanızı onaylayın.",
     "email_button": "E-postayı Onayla",
     "password_title": "Şifre Sıfırlama Adımı",
