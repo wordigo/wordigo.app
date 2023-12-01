@@ -1,36 +1,16 @@
 // import Photo from "./photo";
 
-import CopyLinkSvg from "../../../public/images/blogs/copyLink.svg";
-import XIconSvg from "../../../public/images/blogs/xIcon.svg";
 // import FilledXIcon from '../../../public/images/blogs/xIconFilled.svg'
 import Breadcrumb from "@/components/Blog/Breadcrumb/Breadcrumb";
 import MainLayout from "@/components/Layout/MainLayout";
-import Save from "images/blogs/Save";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { BsTwitterX } from "react-icons/bs";
+import { FaBookmark, FaRegBookmark } from "react-icons/fa";
+import { MdContentCopy } from "react-icons/md";
 
 export default function BlogContent() {
-  const [currentTheme, setCurrentTheme] = useState("light");
-
-  useEffect(() => {
-    const updateTheme = () => {
-      const isDarkModeActive =
-        document.documentElement.classList.contains("dark");
-      setCurrentTheme(isDarkModeActive ? "dark" : "light");
-    };
-
-    updateTheme();
-
-    const observer = new MutationObserver(updateTheme);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-    return () => observer.disconnect();
-  }, []);
-
-  const colorByTheme = { dark: "#ffffff", light: "#3b3a3a" };
-
+  const [isBlogSaved, setIsBlogSaved] = useState(true);
   const dummyData = [
     { id: 1, text: "Blogs", link: "blogs" },
     { id: 2, text: "Lorem ipsum", link: "#" },
@@ -70,23 +50,25 @@ export default function BlogContent() {
                 </div>
                 <div className=" flex  items-center gap-7 md:w-fit w-full md:justify-normal justify-between">
                   <div className="flex items-center gap-2">
-                    <div className="bg-white dark:text-black transition-all py-1 w-fit flex items-center px-2 rounded-[0.625rem]  font-medium border text-sm gap-2 justify-center cursor-pointer whitespace-nowrap hover:bg-slate-200">
-                      <XIconSvg className="w-4" />
+                    <div className=" dark:text-white text-black transition-all py-1 w-fit flex items-center px-2 rounded-[0.625rem]  font-medium border text-sm gap-2 justify-center cursor-pointer dark:bg-DarkBackground whitespace-nowrap hover:bg-slate-200 ">
+                      <BsTwitterX className="w-4 dark:fill-white fill-black" />
+                      {/* <XIconSvg className="w-4" /> */}
                       Tweet
                     </div>
-                    <div className="bg-white dark:text-black transition-all py-1 w-fit flex items-center px-2 rounded-[0.625rem]  font-medium border text-sm gap-2 justify-center cursor-pointer whitespace-nowrap hover:bg-slate-200">
-                      <CopyLinkSvg className="w-4" />
+                    <div className=" dark:text-white text-black transition-all py-1 w-fit flex items-center px-2 rounded-[0.625rem]  dark:bg-DarkBackground font-medium border text-sm gap-2 justify-center cursor-pointer whitespace-nowrap hover:bg-slate-200">
+                      <MdContentCopy className="w-4 dark:fill-white fill-black" />
                       Copy Link
                     </div>
                   </div>
                   <div>
+                    {isBlogSaved ? (
+                      <FaBookmark className="w-6 fill-black dark:fill-white" />
+                    ) : (
+                      <FaRegBookmark className="w-6 fill-black dark:fill-white" />
+                    )}
+
                     {/* <SaveLigtSvg className="w-11 cursor-pointer fill-white hidden dark:block" />
                     <SaveSvg className="w-11 cursor-pointer  block dark:hidden" /> */}
-                    <Save
-                      isFilled={false}
-                      className="w-10 cursor-pointer"
-                      color={colorByTheme[currentTheme]}
-                    />
                   </div>
                 </div>
               </div>

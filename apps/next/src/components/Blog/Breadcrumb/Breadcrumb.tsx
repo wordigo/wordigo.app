@@ -14,7 +14,7 @@ export default function Breadcrumb({ data }) {
             href="#"
             className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-black dark:text-gray-400 dark:hover:text-white"
           >
-            <HomeSvg className="w-3 mr-2 ml-4" />
+            <HomeSvg className="w-3 mr-2" />
             Home
           </a>
         </li>
