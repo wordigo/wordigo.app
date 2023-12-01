@@ -43,7 +43,6 @@ export default function BlogContent() {
                   <div className="flex items-center gap-2">
                     <div className=" dark:text-white text-black transition-all py-1 w-fit flex items-center px-2 rounded-[0.625rem]  font-medium border text-sm gap-2 justify-center cursor-pointer dark:bg-DarkBackground whitespace-nowrap hover:bg-slate-200 ">
                       <XIcon className="w-4 dark:fill-white fill-black" />
-                      {/* <XIconSvg className="w-4" /> */}
                       Tweet
                     </div>
                     <div className=" dark:text-white text-black transition-all py-1 w-fit flex items-center px-2 rounded-[0.625rem]  dark:bg-DarkBackground font-medium border text-sm gap-2 justify-center cursor-pointer whitespace-nowrap hover:bg-slate-200">

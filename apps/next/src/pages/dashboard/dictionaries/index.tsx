@@ -21,7 +21,8 @@ const DictionariesPage = () => {
   const router = useRouter();
   const queryFilter = router.query as GetUserDictionariesType;
 
-  const [getDictionaries, { isLoading }] = useGetDictionariesMutation();
+  const [getDictionaries, { data: response, isLoading }] =
+    useGetDictionariesMutation();
   const userDictionaries =
     useAppSelector((state) => state.dictionary.dictionaries) || [];
 
@@ -29,10 +30,16 @@ const DictionariesPage = () => {
     void getDictionaries(queryFilter);
   }, []);
 
+  console.log(userDictionaries.length);
+
   return (
     <DashboardShell>
       <DashboardHeaders />
-      <DictionariesTableShell isLoading={isLoading} data={userDictionaries} />
+      <DictionariesTableShell
+        isLoading={isLoading}
+        data={userDictionaries}
+        pageCount={response?.pagination?.totalPage}
+      />
     </DashboardShell>
   );
 };

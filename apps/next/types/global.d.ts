@@ -3,6 +3,10 @@ export interface IResponse<T = null> {
   message: string;
   messageCode: string;
   success: boolean;
+  pagination?: IPagination & {
+    totalPage: number;
+    totalCount: number;
+  }
 }
 
 export interface IPagination {
