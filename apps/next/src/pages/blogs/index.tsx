@@ -2,6 +2,7 @@ import BlogCard from "@/components/Blog/Card/Card";
 import MainLayout from "@/components/Layout/MainLayout";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Link from "next/link";
 
 const dummyData = [
   {
@@ -67,12 +68,13 @@ const Blogs = () => {
       <section className="gap-4 grid grid-cols-6">
         {dummyData.map((blog) => {
           return (
-            <div
+            <Link
+              href={`/blogs/${blog.id}`}
               key={blog.id}
               className="col-span-6 md:col-span-3 lg:col-span-2"
             >
               <BlogCard {...blog} />
-            </div>
+            </Link>
           );
         })}
       </section>
