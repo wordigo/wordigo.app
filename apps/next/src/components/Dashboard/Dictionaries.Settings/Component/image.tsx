@@ -1,20 +1,11 @@
-import { Images } from "./settings.constant";
+import { Images } from "../settings.constant";
 import { Label, toast } from "@wordigo/ui";
 import { useTranslation } from "next-i18next";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 
-export interface IBannerDropzoneProps {
-  image?: string;
-  setImage: (image: string) => void;
-}
-
-export default function BannerDropzone({
-  image,
-  setImage,
-}: IBannerDropzoneProps) {
-  const [selectedImage, setSelectedImage] = useState(image ?? null);
+export default function ImageComponent({ ...field }) {
+  const [selectedImage, setSelectedImage] = useState(null);
   const { t } = useTranslation();
-
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event?.target?.files?.[0];
     if (file) {
@@ -25,6 +16,8 @@ export default function BannerDropzone({
           const img = new Image();
           img.src = reader?.result as string;
           img.onload = () => {
+            console.log(reader.result);
+
             // if (img.width === 675 && img.height === 480) {
             setSelectedImage(img.src);
 
@@ -47,10 +40,6 @@ export default function BannerDropzone({
       setSelectedImage(null);
     }
   };
-
-  useEffect(() => {
-    setImage(selectedImage);
-  }, [selectedImage]);
 
   const backgroundImageStyle = {
     backgroundImage: selectedImage ? `url(${selectedImage})` : "none",
@@ -75,6 +64,7 @@ export default function BannerDropzone({
           style={backgroundImageStyle}
         >
           <input
+            {...field}
             type="file"
             id="imageUpload"
             accept="image/jpeg, image/png, image/gif"
