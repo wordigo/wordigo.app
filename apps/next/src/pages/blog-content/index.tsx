@@ -62,13 +62,16 @@ export default function BlogContent() {
                   </div>
                   <div>
                     {isBlogSaved ? (
-                      <FaBookmark className="w-6 fill-black dark:fill-white" />
+                      <FaBookmark
+                        onClick={() => setIsBlogSaved(!isBlogSaved)}
+                        className="w-6 fill-black dark:fill-white cursor-pointer"
+                      />
                     ) : (
-                      <FaRegBookmark className="w-6 fill-black dark:fill-white" />
+                      <FaRegBookmark
+                        onClick={() => setIsBlogSaved(!isBlogSaved)}
+                        className="w-6 fill-black dark:fill-white cursor-pointer"
+                      />
                     )}
-
-                    {/* <SaveLigtSvg className="w-11 cursor-pointer fill-white hidden dark:block" />
-                    <SaveSvg className="w-11 cursor-pointer  block dark:hidden" /> */}
                   </div>
                 </div>
               </div>
