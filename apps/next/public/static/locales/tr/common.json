@@ -126,6 +126,19 @@
     "info": "Hesabınız yok mu?",
     "info_link": "Üye Ol"
   },
+  "forgot_password": {
+    "email_title": "Şifre Sıfırlama",
+    "email_step": "Hesabınızın şifresini güncellemek için e-postanızı onaylayın.",
+    "email_button": "E-postayı Onayla",
+    "password_title": "Şifre Sıfırlama Adımı",
+    "password_step": "Hesabınızın yeni şifresini girin.",
+    "refresh_button": "Şifreyi Sıfırla",
+    "info": "Hesabınız yok mu?",
+    "info_link": "Üye Ol",
+    "new_password": "Yeni Şifre",
+    "confirm_password": "Yeni Şifreyi Onayla",
+    "email_key": "6 haneli doğrulama kodu"
+  },
   "signup": {
     "title": "Hoş Geldiniz",
     "description": "Hesap oluşturmak için e-postanızı ve kullanıcı adınızı girin.",
