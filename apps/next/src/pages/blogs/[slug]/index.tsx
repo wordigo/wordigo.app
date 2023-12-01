@@ -2,7 +2,6 @@ import Breadcrumb from "@/components/Blog/Breadcrumb/Breadcrumb";
 import MainLayout from "@/components/Layout/MainLayout";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
-import { BsTwitterX } from "react-icons/bs";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import { MdContentCopy } from "react-icons/md";
 
@@ -42,7 +41,7 @@ export default function BlogContent() {
                 <div className=" flex  items-center gap-7 md:w-fit w-full md:justify-normal justify-between">
                   <div className="flex items-center gap-2">
                     <div className=" dark:text-white text-black transition-all py-1 w-fit flex items-center px-2 rounded-[0.625rem]  font-medium border text-sm gap-2 justify-center cursor-pointer dark:bg-DarkBackground whitespace-nowrap hover:bg-slate-200 ">
-                      <BsTwitterX className="w-4 dark:fill-white fill-black" />
+                      {/* <BsTwitterX className="w-4 dark:fill-white fill-black" /> */}
                       {/* <XIconSvg className="w-4" /> */}
                       Tweet
                     </div>
