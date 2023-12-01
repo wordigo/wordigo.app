@@ -58,6 +58,14 @@ const Team: ITeam[] = [
     twitter: "https://twitter.com/0fatihyildiz",
   },
   {
+    name: "Emre Erden",
+    src: "https://avatars.githubusercontent.com/u/37252753?s=400&u=43b1f8011a4b3af0a01ddbddecedcd96dd2c970c&v=4",
+    title: "Front-End Developer",
+    github: "https://github.com/Wiazeph",
+    linkedin: "https://www.linkedin.com/in/wiazeph/",
+    twitter: "https://twitter.com/Wiazeph",
+  },
+  {
     name: "Ömer Özceylan",
     src: "https://avatars.githubusercontent.com/u/42185275?v=4",
     title: "Frontend Developer",

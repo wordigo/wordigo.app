@@ -11,7 +11,7 @@ const FAQSection = () => {
   const computedFaqs = faqs.slice(0, 3);
 
   return (
-    <section className="px-20 py-24 flex flex-col items-center max-md:px-4 max-md:mx-4">
+    <section className="flex flex-col items-center">
       <h2 className="text-4xl font-semibold max-lg:text-2xl">
         {t("faq.heading")}
       </h2>

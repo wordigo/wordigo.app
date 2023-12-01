@@ -1,13 +1,14 @@
-import { axiosBaseQuery } from "../baseQuery";
-import {
-  GetUserDictionariesType,
-  type CreateDictionaryType,
-  type Dictionary,
-  type GetDictionaryIdType,
-} from "./type";
 import { buildDynamicUrl } from "@/utils/getUrl";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { type IResponse } from "types/global";
+import { axiosBaseQuery } from "../baseQuery";
+import {
+  type CreateDictionaryType,
+  type Dictionary,
+  type GetDictionaryIdType,
+  type GetUserDictionariesType,
+  type UpdateDictionaryImageType,
+} from "./type";
 
 export const dictionaryApi = createApi({
   reducerPath: "dictionaryApi",
@@ -64,6 +65,16 @@ export const dictionaryApi = createApi({
         data,
       }),
     }),
+    updateDictionaryImage: builder.mutation<
+      IResponse<Dictionary>,
+      UpdateDictionaryImageType
+    >({
+      query: (data) => ({
+        url: "/dictionaries/updateImage",
+        method: "PUT",
+        data,
+      }),
+    }),
   }),
 });
 
@@ -73,4 +84,5 @@ export const {
   useUpdateDictionariesMutation,
   useCreateDictionaryMutation,
   useGetDictionaryDetailMutation,
+  useUpdateDictionaryImageMutation
 } = dictionaryApi;

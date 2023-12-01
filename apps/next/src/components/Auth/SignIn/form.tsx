@@ -13,6 +13,7 @@ import {
 import { cn } from "@wordigo/ui/lib/utils";
 import { signIn } from "next-auth/react";
 import { useTranslation } from "next-i18next";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -116,6 +117,12 @@ const AuthSignInForm = ({ className, ...props }: UserAuthFormProps) => {
                   </FormItem>
                 )}
               />
+              <Link
+                href="/auth/forgot-password"
+                className="text-foreground font-semibold text-sm text-end flex justify-end"
+              >
+                {t("signin.forgot_password")}
+              </Link>
             </div>
           </div>
           <CButton loading={isLoading} className="w-full">

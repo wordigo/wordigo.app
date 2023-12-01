@@ -135,6 +135,19 @@
     "info_link": "Sign up",
     "forgot_password": "Forgot password?"
   },
+  "forgot_password": {
+    "email_title": "Password Reset",
+    "email_step": "Enter your email address to reset your password.",
+    "email_button": "Send Email",
+    "password_title": "Password Reset Step",
+    "password_step": "Enter the new password for your account.",
+    "refresh_button": "Reset Password",
+    "info": "Don't have an account?",
+    "info_link": "Sign Up",
+    "new_password": "New Password",
+    "confirm_password": "Confirm New Password",
+    "email_key": "6 digit verification code"
+  },
   "signup": {
     "title": "Welcome",
     "description": "Enter your email and username below to create your account.",

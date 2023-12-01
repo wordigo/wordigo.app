@@ -1,10 +1,11 @@
-import Images from "./Component/image";
+import BannerDropzone from "./BannerDropzone";
 import CButton from "@/components/UI/Button";
 import CInput from "@/components/UI/Input/Input";
 import { DictionariesSettingsSchema } from "@/schemas/dictionaries.settings";
 import {
   useGetDictionaryDetailMutation,
   useUpdateDictionariesMutation,
+  useUpdateDictionaryImageMutation,
 } from "@/store/dictionaries/api";
 import { useAppSelector } from "@/utils/hooks";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -42,6 +43,9 @@ export default function Settings() {
   const [dictionaryUpdate, { isLoading, status, data: updateData }] =
     useUpdateDictionariesMutation();
 
+  const [dictionaryUpdateBanner, { data: bannerData, status: bannerStatus }] =
+    useUpdateDictionaryImageMutation();
+
   const [getDictionaryDetail] = useGetDictionaryDetailMutation();
   const dictionaryDetail = useAppSelector(
     (state) => state.dictionary.dictionaryDetail
@@ -59,10 +63,21 @@ export default function Settings() {
     mode: "onChange",
   });
 
-  const handleSave = (data: DictionariesValues) => {
+  const handleSave = (values: DictionariesValues) => {
+    if (values.image) {
+      void dictionaryUpdateBanner({
+        dictionaryId: dictionaryDetail.id,
+        encodedImage: values.image,
+      });
+    }
+
+    delete values.image;
+
+    values.level = 1;
+
     void dictionaryUpdate({
       slug: dictionaryDetail.slug,
-      ...data,
+      ...values,
     });
   };
 
@@ -83,7 +98,7 @@ export default function Settings() {
 
   useEffect(() => {
     if (status === "fulfilled") {
-      void router.push(`/dashboard/dictionaries`);
+      // void router.push(`/dashboard/dictionaries`);
       toast.success(t("notifications.success"), {
         description: t("notifications.updated_dictionary"),
       });
@@ -200,7 +215,6 @@ export default function Settings() {
                             />
                           </FormControl>
                         </FormItem>
-
                         <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                           <div className="space-y-0.5">
                             <FormLabel className="text-base">
@@ -287,7 +301,10 @@ export default function Settings() {
                 render={({ field }) => (
                   <FormItem className="grid gap-1 my-7">
                     <FormControl>
-                      <Images {...field} id="image" />
+                      <BannerDropzone
+                        image={field.value}
+                        setImage={(image) => field.onChange(image)}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

@@ -3,6 +3,7 @@ import DashboardLayout from "@/components/Layout/Dashboard";
 import DashboardHeaders from "@/components/Layout/Dashboard/Headers";
 import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
 import { useGetDictionaryWordsMutation } from "@/store/dictionarayWord/api";
+import { type GetUserDictionaryWordsType } from "@/store/dictionarayWord/type";
 import { useAppSelector } from "@/utils/hooks";
 import { type GetStaticPaths } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -19,7 +20,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
 const DictionaryWordPage = () => {
   const router = useRouter();
-  const { slug } = router.query as { slug: string };
+  const queryFilter = router.query as unknown as GetUserDictionaryWordsType;
 
   const [getDictionaryWordMutation, { status, isLoading }] =
     useGetDictionaryWordsMutation();
@@ -29,7 +30,7 @@ const DictionaryWordPage = () => {
   );
 
   useEffect(() => {
-    void getDictionaryWordMutation(slug);
+    void getDictionaryWordMutation(queryFilter);
   }, []);
 
   return (
@@ -37,7 +38,9 @@ const DictionaryWordPage = () => {
       <DashboardHeaders />
       <DictionarayWordsTable
         data={dictionaryDetail?.words}
-        pageCount={dictionaryDetail?.numberOfWords}
+        pageCount={
+          Number(dictionaryDetail?.numberOfWords / 10).toFixed(0) as never
+        }
         isLoading={isLoading || status !== "fulfilled"}
       />
     </DashboardShell>

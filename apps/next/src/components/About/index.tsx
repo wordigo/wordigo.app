@@ -4,16 +4,14 @@ export default function index() {
   const { t } = useTranslation();
 
   return (
-    <div className="w-full px-20 py-20 flex flex-col items-center max-lg:px-9 max-md:px-0 max-lg:py-12">
-      <span className="px-32 max-lg:px-20 max-md:px-4">
-        <h1 className="text-5xl font-semibold text-center max-lg:text-3xl">
-          {t(`about.title`)}
-        </h1>
-        <p
-          dangerouslySetInnerHTML={{ __html: t("about.description") }}
-          className="text-xl text-muted-foreground mt-6 text-center max-lg:text-lg"
-        />
-      </span>
-    </div>
+    <section className="text-center max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto">
+      <h1 className="font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+        {t(`about.title`)}
+      </h1>
+      <p
+        dangerouslySetInnerHTML={{ __html: t("about.description") }}
+        className="sm:text-lg md:text-xl mt-4 sm:mt-5 md:mt-6 lg:mt-7 xl:mt-8 text-muted-foreground"
+      />
+    </section>
   );
 }

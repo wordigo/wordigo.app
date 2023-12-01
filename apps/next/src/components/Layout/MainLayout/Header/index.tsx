@@ -14,7 +14,7 @@ import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { Fragment, useState } from "react";
 
-export default function HomeHeader({ className }: { className?: string }) {
+export default function HomeHeader() {
   const { t } = useTranslation();
   const { status } = useSession();
 
@@ -26,66 +26,60 @@ export default function HomeHeader({ className }: { className?: string }) {
 
   return (
     <>
-      <div
-        className={cn(
-          "w-full fixed max-w-[90rem] bg-LightBackground dark:bg-DarkBackground z-50",
-          className
-        )}
-      >
-        <nav className="flex items-center justify-between w-full m-auto py-[1.125rem] px-20 max-md:px-4">
-          <div className="flex items-center">
-            <Link
-              href="/"
-              className={cn(
-                "flex items-center gap-1 justify-center mr-6",
-                !toggleMenu && "hidden"
-              )}
-            >
-              <StaticLogo />
-              <div className="font-semibold">Wordigo</div>
-              <Badge className="rounded-sm shadow-sm opacity-70 px-1 text-[10px]">
-                Beta
-              </Badge>
-            </Link>
-            <span className="max-lg:hidden">
-              <Navigation />
-            </span>
-          </div>
-          <div className="flex gap-x-4 items-center max-lg:hidden">
-            {status === "loading" ? (
-              <NavProfile.Loader />
-            ) : status === "authenticated" ? (
-              <Fragment>
-                <Feedback />
-                <div className="hidden md:block w-[0.5px] h-7 bg-gray-300 dark:bg-gray-700"></div>
-                <NavProfile />
-              </Fragment>
-            ) : (
-              <div className="flex gap-y-6 gap-x-3 items-center">
-                <ThemeMode showLabel={false} className="!h-9 !px-3 !py-2" />
-                <ChangeLanguage className="!h-9 !px-3 !py-2" />
-                <div className="w-[1px] !h-9 bg-gray-200 dark:bg-gray-800"></div>
-                <Link
-                  href="/auth/signup"
-                  className={cn(
-                    buttonVariants({ variant: "default", className: "!h-9" })
-                  )}
-                >
-                  {t("navbar.get_started")}
-                </Link>
-              </div>
+      <nav className="sticky top-0 z-50 container flex items-center justify-between py-[1.125rem] bg-LightBackground dark:bg-DarkBackground">
+        <div className="flex items-center">
+          <Link
+            href="/"
+            className={cn(
+              "flex items-center gap-1 justify-center mr-6",
+              !toggleMenu && "hidden"
             )}
-          </div>
-          <Button
-            onClick={toggleMenu}
-            className="lg:hidden text-black bg-transparent bg-white"
-            variant="outline"
-            size="icon"
           >
-            <Menu size={17} />
-          </Button>
-        </nav>
-      </div>
+            <StaticLogo />
+            <div className="font-semibold">Wordigo</div>
+            <Badge className="rounded-sm shadow-sm opacity-70 px-1 text-[10px]">
+              Beta
+            </Badge>
+          </Link>
+          <span className="max-lg:hidden">
+            <Navigation />
+          </span>
+        </div>
+        <div className="flex gap-x-4 items-center max-lg:hidden">
+          {status === "loading" ? (
+            <NavProfile.Loader />
+          ) : status === "authenticated" ? (
+            <Fragment>
+              <Feedback />
+              <div className="hidden md:block w-[0.5px] h-7 bg-gray-300 dark:bg-gray-700"></div>
+              <NavProfile />
+            </Fragment>
+          ) : (
+            <div className="flex gap-y-6 gap-x-3 items-center">
+              <ThemeMode showLabel={false} className="!h-9 !px-3 !py-2" />
+              <ChangeLanguage className="!h-9 !px-3 !py-2" />
+              <div className="w-[1px] !h-9 bg-gray-200 dark:bg-gray-800"></div>
+              <Link
+                href="/auth/signup"
+                className={cn(
+                  buttonVariants({ variant: "default", className: "!h-9" })
+                )}
+              >
+                {t("navbar.get_started")}
+              </Link>
+            </div>
+          )}
+        </div>
+        <Button
+          onClick={toggleMenu}
+          className="lg:hidden text-black bg-transparent bg-white"
+          variant="outline"
+          size="icon"
+        >
+          <Menu size={17} />
+        </Button>
+      </nav>
+
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div

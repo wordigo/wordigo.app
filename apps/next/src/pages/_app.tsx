@@ -6,11 +6,11 @@ import "@wordigo/ui/styles/globals.css";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { appWithTranslation, useTranslation } from "next-i18next";
+import PlausibleProvider from "next-plausible";
 import { DefaultSeo } from "next-seo";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { Fragment } from "react";
 import { Provider } from "react-redux";
 import "swiper/css";
 import "swiper/css/grid";
@@ -29,7 +29,7 @@ const App = ({
   z.setErrorMap(makeZodI18nMap({ t, ns: ["common", "zod"] }));
 
   return (
-    <Fragment>
+    <PlausibleProvider domain="wordigo.app">
       <GoogleAnalytics />
       <DefaultSeo {...seo[pageProps?._nextI18Next?.initialLocale]} />
       <Head>
@@ -42,7 +42,7 @@ const App = ({
           </AppProviders>
         </Provider>
       </SessionProvider>
-    </Fragment>
+    </PlausibleProvider>
   );
 };
 

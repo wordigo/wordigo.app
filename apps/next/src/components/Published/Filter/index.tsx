@@ -61,8 +61,8 @@ const PublishedFilter = ({ isAccordionShow, setIsAccordionShow }: any) => {
   };
 
   return (
-    <main className="relative mx-auto sm:mx-0 w-full max-w-sm sm:max-w-none flex md:flex-col lg:flex-row items-end lg:justify-between gap-4 mb-4">
-      <section className="w-full lg:max-w-[250px] md:mb-1">
+    <div className="relative mx-auto sm:mx-0 w-full max-w-sm sm:max-w-none flex md:flex-col lg:flex-row items-end lg:justify-between gap-4">
+      <div className="w-full lg:max-w-[250px] md:mb-1">
         <Label htmlFor="search">{t("public_dictionaries.search")}</Label>
         <Input
           value={searchValue}
@@ -71,9 +71,9 @@ const PublishedFilter = ({ isAccordionShow, setIsAccordionShow }: any) => {
           className="mt-2"
           id="search"
         />
-      </section>
+      </div>
 
-      <section className="md:w-full">
+      <div className="md:w-full">
         <Accordion
           type="single"
           collapsible
@@ -142,8 +142,8 @@ const PublishedFilter = ({ isAccordionShow, setIsAccordionShow }: any) => {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
-      </section>
-    </main>
+      </div>
+    </div>
   );
 };
 

@@ -8,8 +8,8 @@ function NewHeroSection() {
   const { t } = useTranslation();
 
   return (
-    <div className="w-full pt-8 pb-24 px-20 grid grid-cols-2 gap-x-16 max-lg:grid-cols-1 justify-center items-center max-lg:flex max-lg:flex-col max-lg:pb-16 max-md:px-4">
-      <section className="flex flex-col items-start justify-center max-lg:items-center">
+    <section className="grid grid-cols-2 gap-x-16 max-lg:grid-cols-1 justify-center items-center max-lg:flex max-lg:flex-col">
+      <div className="flex flex-col items-start justify-center max-lg:items-center">
         <Badge
           className="text-sm font-medium px-2.5 py-1 self-start"
           variant="outline"
@@ -46,16 +46,16 @@ function NewHeroSection() {
             {t("hero.get_started")}
           </Link>
         </div>
-      </section>
-      <section className="relative aspect-square lg:min-w-[30rem] xl:max-w-[40rem] xl:max-h-[35rem] md:w-[30rem] md:h-[24rem] max-md:w-[340px] max-md:h-[240px] max-lg:mt-12 mt-0">
+      </div>
+      <div className="relative aspect-square lg:min-w-[30rem] xl:max-w-[40rem] xl:max-h-[35rem] md:w-[30rem] md:h-[24rem] max-md:w-[340px] max-md:h-[240px] max-lg:mt-12 mt-0">
         <Image
           src="/images/hero-extension.png"
           fill
           alt=""
           className="rounded-2xl object-cover"
         />
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }
 
