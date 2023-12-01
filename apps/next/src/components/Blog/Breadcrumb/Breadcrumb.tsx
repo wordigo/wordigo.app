@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Breadcrumb({ data }) {
   return (
     <nav
-      className="flex px-0 md:px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700 items-center"
+      className="flex px-0 py-3 text-gray-700  items-center"
       aria-label="Breadcrumb"
     >
       <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">

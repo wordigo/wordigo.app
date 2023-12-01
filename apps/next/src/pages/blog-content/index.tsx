@@ -70,11 +70,11 @@ export default function BlogContent() {
                 </div>
                 <div className=" flex  items-center gap-7 md:w-fit w-full md:justify-normal justify-between">
                   <div className="flex items-center gap-2">
-                    <div className="bg-white dark:text-black transition-all py-1 w-fit flex items-center px-2 rounded-[0.625rem]  font-medium border text-base gap-2 justify-center cursor-pointer whitespace-nowrap hover:bg-slate-200">
+                    <div className="bg-white dark:text-black transition-all py-1 w-fit flex items-center px-2 rounded-[0.625rem]  font-medium border text-sm gap-2 justify-center cursor-pointer whitespace-nowrap hover:bg-slate-200">
                       <XIconSvg className="w-4" />
                       Tweet
                     </div>
-                    <div className="bg-white dark:text-black transition-all py-1 w-fit flex items-center px-2 rounded-[0.625rem]  font-medium border text-base gap-2 justify-center cursor-pointer whitespace-nowrap hover:bg-slate-200">
+                    <div className="bg-white dark:text-black transition-all py-1 w-fit flex items-center px-2 rounded-[0.625rem]  font-medium border text-sm gap-2 justify-center cursor-pointer whitespace-nowrap hover:bg-slate-200">
                       <CopyLinkSvg className="w-4" />
                       Copy Link
                     </div>
