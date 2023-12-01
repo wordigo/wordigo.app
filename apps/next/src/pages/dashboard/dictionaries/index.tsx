@@ -30,8 +30,6 @@ const DictionariesPage = () => {
     void getDictionaries(queryFilter);
   }, []);
 
-  console.log(userDictionaries.length);
-
   return (
     <DashboardShell>
       <DashboardHeaders />

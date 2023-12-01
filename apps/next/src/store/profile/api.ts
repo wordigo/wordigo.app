@@ -1,12 +1,11 @@
+import { type UpdateProfileFormValues } from "@/components/Dashboard/Settings/ProfileForm";
+import { createApi } from "@reduxjs/toolkit/query/react";
 import { axiosBaseQuery } from "../baseQuery";
 import {
   type RequestUpdateAvatarType,
-  type RequestUpdateProfileType,
   type ResponseStatisticsType,
-  type ResponseUpdateAvatarType,
+  type ResponseUpdateAvatarType
 } from "./types";
-import { type UpdateProfileFormValues } from "@/components/Dashboard/Settings/ProfileForm";
-import { createApi } from "@reduxjs/toolkit/query/react";
 
 export const profileApi = createApi({
   reducerPath: "profileApi",
@@ -33,7 +32,7 @@ export const profileApi = createApi({
     }),
     getStatistics: builder.mutation<ResponseStatisticsType, unknown>({
       query: () => ({
-        url: "/dashboard/getStatistics",
+        url: "/dashboard/generalStatistic",
         method: "GET",
       }),
     }),
