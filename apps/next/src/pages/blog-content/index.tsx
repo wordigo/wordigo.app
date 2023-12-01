@@ -18,8 +18,8 @@ export default function BlogContent() {
 
   return (
     <MainLayout>
-      <div className="flex justify-center p-2 pt-0 mt-2 px-5">
-        <div className="max-w-4xl w-full flex gap-2 md:gap-6 flex-col">
+      <div className="flex justify-center p-0 pt-0 mt-2 px-0">
+        <div className="w-full md:max-w-4xl  flex gap-2 md:gap-6 flex-col">
           {/* <Photo /> */}
           {/* <img
             src={""}
