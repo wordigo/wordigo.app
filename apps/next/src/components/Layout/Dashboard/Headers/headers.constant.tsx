@@ -17,7 +17,7 @@ const useHeaders = (selectedSrc: string | null = null): IHeaders[] => {
   const { t } = useTranslation();
 
   const dictionaryDetail = useAppSelector(
-    (state) => state.dictionaryWord.dictionaryWords
+    (state) => state?.dictionaryWord?.dictionaryWords
   );
 
   const headers = [
@@ -34,9 +34,7 @@ const useHeaders = (selectedSrc: string | null = null): IHeaders[] => {
     },
     {
       src: "/dashboard/dictionaries/[slug]",
-      title:
-        capitalizeWords(dictionaryDetail?.title) ||
-        t("headers.dictionaries_detail.title"),
+      title: capitalizeWords(dictionaryDetail?.title),
       description:
         dictionaryDetail?.description ||
         t("headers.dictionaries_detail.description"),

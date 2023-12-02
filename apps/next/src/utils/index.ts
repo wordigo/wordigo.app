@@ -9,7 +9,7 @@ export const roundToFiveOrTen = (number: number): number => {
 
 export const capitalizeWords = (text: string): string => {
   return text
-    .split(" ")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
+    ?.split(" ")
+    ?.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    ?.join(" ");
 };

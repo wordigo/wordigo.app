@@ -1,6 +1,7 @@
 import { DictionarayWordsTable } from "@/components/Dashboard/DictionaryDetail/WordsTable";
 import DashboardLayout from "@/components/Layout/Dashboard";
 import DashboardHeaders from "@/components/Layout/Dashboard/Headers";
+import DashboardHeaderLoader from "@/components/Layout/Dashboard/Headers/header.loader";
 import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
 import { useGetDictionaryWordsMutation } from "@/store/dictionarayWord/api";
 import { type GetUserDictionaryWordsType } from "@/store/dictionarayWord/type";
@@ -35,7 +36,7 @@ const DictionaryWordPage = () => {
 
   return (
     <DashboardShell>
-      <DashboardHeaders />
+      {isLoading ? <DashboardHeaderLoader /> : <DashboardHeaders />}
       <DictionarayWordsTable
         data={dictionaryDetail?.words}
         pageCount={

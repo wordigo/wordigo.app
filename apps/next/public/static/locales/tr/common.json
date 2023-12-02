@@ -312,7 +312,7 @@
     },
     "dictionaries_detail": {
       "title": "Sözlük Detayı",
-      "description": "Seçilen Sözlükteki Belirli Bir Kelimenin Ayrıntılarını Görüntüleyin"
+      "description": "Burada mevcut sözlük detaylarını görüntüleyebilir, yeni eklemeler yapabilir veya ayarları düzenleyebilirsiniz."
     },
     "dictionaries_settings": {
       "title": "Sözlük Ayarları",

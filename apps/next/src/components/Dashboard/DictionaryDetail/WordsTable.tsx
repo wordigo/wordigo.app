@@ -92,7 +92,7 @@ export function DictionarayWordsTable({
                 >
                   <p>{row.getValue("text")}</p>
                 </TooltipTrigger>
-                <TooltipContent side="top">
+                <TooltipContent side="top" align="start">
                   <p>{row.getValue("text")}</p>
                 </TooltipContent>
               </Tooltip>
@@ -118,7 +118,7 @@ export function DictionarayWordsTable({
                 >
                   <p>{row.getValue("translatedText")}</p>
                 </TooltipTrigger>
-                <TooltipContent side="top">
+                <TooltipContent side="top" align="start">
                   <p>{row.getValue("translatedText")}</p>
                 </TooltipContent>
               </Tooltip>

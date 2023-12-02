@@ -326,7 +326,7 @@
     },
     "dictionaries_detail": {
       "title": "Dictionary Detail",
-      "description": "View Details of a Selected Word in the Chosen Dictionary"
+      "description": "Here you can view existing dictionary details, make new additions or edit settings."
     },
     "dictionaries_settings": {
       "title": "Dictionary Settings",
