@@ -8,7 +8,7 @@ export interface DictionaryWord {
   updatedDate: string;
 }
 
-export interface ResponseDictionaryWords {
+export interface ResponseDictionaryWords extends Dictionary {
   numberOfWords: number;
   words: DictionaryWord[];
 }

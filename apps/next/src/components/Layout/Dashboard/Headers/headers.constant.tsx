@@ -1,6 +1,8 @@
 import CreateDictionary from "@/components/Modals/CreateDictionary";
 import { CreateWord } from "@/components/Modals/CreateWord";
 import { DictionarySettingsLink } from "@/components/Modals/Settings";
+import { capitalizeWords } from "@/utils";
+import { useAppSelector } from "@/utils/hooks";
 import { useTranslation } from "next-i18next";
 import { type ReactElement } from "react";
 
@@ -13,6 +15,10 @@ export interface IHeaders {
 
 const useHeaders = (selectedSrc: string | null = null): IHeaders[] => {
   const { t } = useTranslation();
+
+  const dictionaryDetail = useAppSelector(
+    (state) => state.dictionaryWord.dictionaryWords
+  );
 
   const headers = [
     {
@@ -28,8 +34,12 @@ const useHeaders = (selectedSrc: string | null = null): IHeaders[] => {
     },
     {
       src: "/dashboard/dictionaries/[slug]",
-      title: t("headers.dictionaries_detail.title"),
-      description: t("headers.dictionaries_detail.description"),
+      title:
+        capitalizeWords(dictionaryDetail?.title) ||
+        t("headers.dictionaries_detail.title"),
+      description:
+        dictionaryDetail?.description ||
+        t("headers.dictionaries_detail.description"),
       components: [
         <CreateWord key="dictionary_add_words" />,
         <DictionarySettingsLink key="dictionary_settings_link" />,
