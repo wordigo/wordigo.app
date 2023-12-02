@@ -73,35 +73,14 @@ export default function Footer() {
                 passHref
                 className="transition-colors hover:dark:text-white/70 hover:text-black/50"
               >
-                {t("navbar.home")}
+                {t("navbar.company")}
               </Link>
             </h3>
+
             <ul
               className="flex flex-col gap-y-3 sm:gap-y-4 md:gap-y-5 text-sm lg:text-base dark:text-white/70 text-black/90"
               role="list"
             >
-              <li>
-                <Link
-                  href="/blogs"
-                  passHref
-                  className="transition-colors hover:dark:text-white hover:text-black/50"
-                >
-                  {t("navbar.blogs")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/library"
-                  passHref
-                  className="transition-colors hover:dark:text-white hover:text-black/50"
-                >
-                  {t("navbar.library")}
-
-                  <div className="text-xs font-medium bg-vulcan-800 inline-flex items-center ml-2 px-2 py-0.5 rounded text-white dark:text-white bg-primary dark:bg-primary-foreground">
-                    {t("general.new")}
-                  </div>
-                </Link>
-              </li>
               <li>
                 <Link
                   href="/about"
@@ -109,6 +88,15 @@ export default function Footer() {
                   className="transition-colors hover:dark:text-white hover:text-black/50"
                 >
                   {t("navbar.about")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blogs"
+                  passHref
+                  className="transition-colors hover:dark:text-white hover:text-black/50"
+                >
+                  {t("navbar.blogs")}
                 </Link>
               </li>
               <li>
@@ -130,13 +118,27 @@ export default function Footer() {
                 passHref
                 className="transition-colors hover:dark:text-white/70 hover:text-black/50"
               >
-                {t("navbar.dashboard")}
+                {t("navbar.product")}
               </Link>
             </h3>
+
             <ul
               className="flex flex-col gap-y-3 sm:gap-y-4 md:gap-y-5 text-sm lg:text-base dark:text-white/70 text-black/90"
               role="list"
             >
+              <li>
+                <Link
+                  href="/library"
+                  passHref
+                  className="transition-colors hover:dark:text-white hover:text-black/50"
+                >
+                  {t("navbar.library")}
+
+                  <div className="text-xs font-medium bg-vulcan-800 inline-flex items-center ml-2 px-2 py-0.5 rounded text-white dark:text-white bg-primary dark:bg-primary-foreground">
+                    {t("general.new")}
+                  </div>
+                </Link>
+              </li>
               <li>
                 <Link
                   href={"/dashboard/dictionaries"}
@@ -162,6 +164,7 @@ export default function Footer() {
             <h3 className="font-bold text-sm lg:text-base">
               {t("footer.stay_updated")}
             </h3>
+
             <ul
               className="flex flex-col gap-y-3 sm:gap-y-4 md:gap-y-5 text-sm lg:text-base dark:text-white/70 text-black/90"
               role="list"

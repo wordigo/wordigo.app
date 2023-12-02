@@ -93,6 +93,8 @@
     "error": "An error occurred while sending your feedback."
   },
   "navbar": {
+    "company": "Company",
+    "product": "Product",
     "home": "Home",
     "features": "Features",
     "dictionaries": "Dictionaries",

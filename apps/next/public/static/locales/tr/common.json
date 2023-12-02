@@ -81,6 +81,8 @@
     "button": "haberdar ol!"
   },
   "navbar": {
+    "company": "Ana Sayfa",
+    "product": "Kontrol Paneli",
     "home": "Ana Sayfa",
     "features": "Özellikler",
     "dictionaries": "Sözlükler",
