@@ -23,7 +23,8 @@ import {
   Switch,
   Textarea,
 } from "@wordigo/ui";
-import { Copy } from "lucide-react";
+import LanguageSelector from "@wordigo/ui/components/ui/language-selector";
+import { Copy, ArrowLeftRight } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
@@ -286,6 +287,58 @@ export default function Settings() {
                           placeholder={t("description")}
                           className="w-[512px]"
                         />
+                      </main>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control as never}
+                name="languages"
+                render={({ field }) => (
+                  <FormItem className="grid gap-1 my-7">
+                    <FormControl>
+                      <main className="grid grid-cols-3 w-full">
+                        <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
+                          <Label>
+                            <h1>{t("description")}</h1>
+                          </Label>
+                          <p className="text-[hsl(var(--muted-foreground))] text-sm">
+                            {t("dictionaries_settings.title_notes")}
+                          </p>
+                        </span>
+
+                        <div className="w-[512px] flex items-center space-x-4">
+                          <div className="w-full">
+                            <LanguageSelector
+                              {...field}
+                              providerLanguages
+                              placeholder="Source language"
+                              className="w-full"
+                              defaultValue={form.getValues("sourceLang")}
+                              onSelect={(value) => {
+                                form.setValue("sourceLang", value);
+                              }}
+                            />
+                          </div>
+
+                          <ArrowLeftRight width={40} />
+
+                          <div className="w-full">
+                            <LanguageSelector
+                              {...field}
+                              providerLanguages
+                              placeholder="Target language"
+                              className="w-full"
+                              defaultValue={form.getValues("targetLang")}
+                              onSelect={(value) => {
+                                form.setValue("targetLang", value);
+                              }}
+                            />
+                          </div>
+                        </div>
                       </main>
                     </FormControl>
                     <FormMessage />
