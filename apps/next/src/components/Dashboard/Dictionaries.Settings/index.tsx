@@ -82,9 +82,7 @@ export default function Settings() {
   };
 
   const handleCopyUrl = () => {
-    void navigator.clipboard.writeText(
-      `https://wordigo.app/` + form.getValues().title
-    );
+    void navigator.clipboard.writeText(`https://wordigo.app/library/` + slug);
     toast.success("Successful", {
       description: "Copied dictionary public url.",
     });
@@ -162,7 +160,7 @@ export default function Settings() {
                         <CInput
                           disabled
                           classNames="placeholder:!text-gray-400 w-[512px]"
-                          defaultValue={`wordigo.app/library/${data.user.username}`}
+                          defaultValue={`wordigo.app/library/${slug}`}
                           rightSection={
                             <Copy
                               onClick={handleCopyUrl}
