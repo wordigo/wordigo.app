@@ -303,10 +303,10 @@ export default function Settings() {
                       <main className="grid grid-cols-3 w-full">
                         <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
                           <Label>
-                            <h1>{t("description")}</h1>
+                            <h1>{t("dictionaries_settings.language.title")}</h1>
                           </Label>
                           <p className="text-[hsl(var(--muted-foreground))] text-sm">
-                            {t("dictionaries_settings.title_notes")}
+                            {t("dictionaries_settings.language.description")}
                           </p>
                         </span>
 
@@ -315,7 +315,9 @@ export default function Settings() {
                             <LanguageSelector
                               {...field}
                               providerLanguages
-                              placeholder="Source language"
+                              placeholder={t(
+                                "dictionaries_settings.language.placeholder_source"
+                              )}
                               className="w-full"
                               defaultValue={form.getValues("sourceLang")}
                               onSelect={(value) => {
@@ -330,7 +332,9 @@ export default function Settings() {
                             <LanguageSelector
                               {...field}
                               providerLanguages
-                              placeholder="Target language"
+                              placeholder={t(
+                                "dictionaries_settings.language.placeholder_target"
+                              )}
                               className="w-full"
                               defaultValue={form.getValues("targetLang")}
                               onSelect={(value) => {
