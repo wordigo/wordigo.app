@@ -25,7 +25,6 @@ import {
 } from "@wordigo/ui";
 import LanguageSelector from "@wordigo/ui/components/ui/language-selector";
 import { ArrowLeftRight, Copy } from "lucide-react";
-import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -37,7 +36,6 @@ export type DictionariesValues = z.infer<typeof DictionariesSettingsSchema>;
 
 export default function Settings() {
   const { t } = useTranslation();
-  const { data } = useSession();
   const router = useRouter();
   const { slug } = router.query as { slug: string };
 
@@ -110,12 +108,8 @@ export default function Settings() {
 
   const changeDirection = () => {
     const values = form.getValues();
-    console.log(values);
-
     form.setValue("sourceLang", values.targetLang);
     form.setValue("targetLang", values.sourceLang);
-
-    console.log(form.getValues());
   };
 
   return (
