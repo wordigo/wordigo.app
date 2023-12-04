@@ -23,8 +23,8 @@ import {
   Switch,
   Textarea,
 } from "@wordigo/ui";
-import { Copy } from "lucide-react";
-import { useSession } from "next-auth/react";
+import LanguageSelector from "@wordigo/ui/components/ui/language-selector";
+import { ArrowLeftRight, Copy } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -36,7 +36,6 @@ export type DictionariesValues = z.infer<typeof DictionariesSettingsSchema>;
 
 export default function Settings() {
   const { t } = useTranslation();
-  const { data } = useSession();
   const router = useRouter();
   const { slug } = router.query as { slug: string };
 
@@ -64,7 +63,7 @@ export default function Settings() {
   });
 
   const handleSave = (values: DictionariesValues) => {
-    if (values.image) {
+    if (defaultValues?.image !== values.image) {
       void dictionaryUpdateBanner({
         dictionaryId: dictionaryDetail.id,
         encodedImage: values.image,
@@ -82,9 +81,7 @@ export default function Settings() {
   };
 
   const handleCopyUrl = () => {
-    void navigator.clipboard.writeText(
-      `https://wordigo.app/` + form.getValues().title
-    );
+    void navigator.clipboard.writeText(`https://wordigo.app/library/` + slug);
     toast.success("Successful", {
       description: "Copied dictionary public url.",
     });
@@ -108,6 +105,12 @@ export default function Settings() {
       });
     }
   }, [status]);
+
+  const changeDirection = () => {
+    const values = form.getValues();
+    form.setValue("sourceLang", values.targetLang);
+    form.setValue("targetLang", values.sourceLang);
+  };
 
   return (
     <main>
@@ -162,7 +165,7 @@ export default function Settings() {
                         <CInput
                           disabled
                           classNames="placeholder:!text-gray-400 w-[512px]"
-                          defaultValue={`wordigo.app/library/${data.user.username}`}
+                          defaultValue={`wordigo.app/library/${slug}`}
                           rightSection={
                             <Copy
                               onClick={handleCopyUrl}
@@ -294,6 +297,74 @@ export default function Settings() {
                   </FormItem>
                 )}
               />
+
+              <div>
+                <main className="grid grid-cols-3 w-full ">
+                  <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
+                    <Label>
+                      <h1>{t("dictionaries_settings.language.title")}</h1>
+                    </Label>
+                    <p className="text-[hsl(var(--muted-foreground))] text-sm">
+                      {t("dictionaries_settings.language.description")}
+                    </p>
+                  </span>
+                  <div className="flex items-center space-x-4 w-[512px]">
+                    <FormField
+                      control={form.control as never}
+                      name="sourceLang"
+                      render={({ field }) => (
+                        <FormItem className="grid gap-1 my-7 w-full">
+                          <FormControl>
+                            <div className="w-full">
+                              <LanguageSelector
+                                providerLanguages
+                                placeholder={t(
+                                  "dictionaries_settings.language.placeholder_source"
+                                )}
+                                className="w-full !h-9"
+                                defaultValue={field.value}
+                                onSelect={(value) => {
+                                  field.onChange("sourceLang", value);
+                                }}
+                                {...field}
+                              />
+                            </div>
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                    <ArrowLeftRight
+                      onClick={changeDirection}
+                      className="cursor-pointer"
+                      width={32}
+                    />
+                    <FormField
+                      control={form.control as never}
+                      name="targetLang"
+                      render={({ field }) => (
+                        <FormItem className="grid gap-1 my-7 w-full">
+                          <FormControl>
+                            <div className="w-full">
+                              <LanguageSelector
+                                providerLanguages
+                                placeholder={t(
+                                  "dictionaries_settings.language.placeholder_target"
+                                )}
+                                className="w-full !h-9"
+                                defaultValue={field.value}
+                                onSelect={(value) => {
+                                  field.onChange("targetLang", value);
+                                }}
+                                {...field}
+                              />
+                            </div>
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                </main>
+              </div>
 
               <FormField
                 control={form.control as never}

@@ -224,6 +224,12 @@
       "false_description": "Sadece siz sözlüğünüzü görebilirsiniz.",
       "true_title": "Genel",
       "true_description": "İnsanların sözlük içeriğine erişmesine izin verirsiniz."
+    },
+    "language": {
+      "title": "Dil",
+      "description": "Sözlüğünüzün dilini seçin.",
+      "placeholder_target": "Hedef Dil Seçiniz",
+      "placeholder_source": "Kaynak Dil Seçiniz"
     }
   },
   "feature_mockup": {
