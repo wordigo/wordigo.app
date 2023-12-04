@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/require-await */
 import Footer from "@/components/Home/Footers";
 import MainLayout from "@/components/Layout/MainLayout";
 import { POSTS_PATH, getPostBySlug } from "@/utils/blog";

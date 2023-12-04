@@ -1,5 +1,3 @@
-import { type BlogCardProperties } from "./Card.constant";
-
 export default function BlogCard({
   thumbnail,
   blogType,
@@ -9,8 +7,9 @@ export default function BlogCard({
   date,
   readTime,
   profilePicture,
-}: BlogCardProperties) {
-  const abbreviatedInfoText = `${info.slice(0, 97)}...`;
+  description,
+}: any) {
+  // const abbreviatedInfoText = `${info.slice(0, 97)}...`;
 
   return (
     <div>
@@ -30,7 +29,7 @@ export default function BlogCard({
           )}
           <div className="font-bold text-xl">{title}</div>
           <div className="text-gray-700 dark:text-gray-400 h-20 overflow-hidden text-ellipsis leading-relaxed">
-            {abbreviatedInfoText}
+            {description}
           </div>
           <div className="flex items-center gap-3 pt-2">
             <div className="bg-black w-10 h-10 rounded-full">

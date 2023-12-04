@@ -1,5 +1,6 @@
 import BlogCard from "@/components/Blog/Card/Card";
 import MainLayout from "@/components/Layout/MainLayout";
+import { getAllPosts } from "@/utils/blog";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
@@ -51,8 +52,21 @@ const dummyData = [
   },
 ];
 
-const Blogs = () => {
+export const getServerSideProps = async ({ locale }: { locale: string }) => {
+  const posts = await getAllPosts(locale);
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common", "zod"])),
+      posts,
+    },
+  };
+};
+
+const Blogs = ({ posts }: any) => {
   const { t } = useTranslation();
+
+  console.log(posts);
 
   return (
     <MainLayout>
@@ -66,7 +80,7 @@ const Blogs = () => {
       </section>
 
       <section className="gap-4 grid grid-cols-6">
-        {dummyData.map((blog) => {
+        {posts.map((blog) => {
           return (
             <Link
               href={`/blogs/${blog.id}`}
@@ -83,9 +97,3 @@ const Blogs = () => {
 };
 
 export default Blogs;
-
-export async function getStaticProps({ locale }: { locale: string }) {
-  return {
-    props: { ...(await serverSideTranslations(locale, ["common", "zod"])) },
-  };
-}
