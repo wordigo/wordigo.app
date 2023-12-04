@@ -1,7 +1,6 @@
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "./select";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import { AllCountryLanguages, SupportedLanguages } from "@wordigo/common";
-import { useState } from "react";
 import ReactCountryFlag from "react-country-flag";
 
 export interface ILanguageSelector {
@@ -11,9 +10,10 @@ export interface ILanguageSelector {
   className?: string;
   defaultValue?: string;
   onSelect?: (value: string) => void;
+  value?: string;
 }
 
-const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue, placeholder, detectLanguage, providerLanguages = false, onSelect }) => {
+const LanguageSelector: React.FC<ILanguageSelector> = ({ className, value, defaultValue, placeholder, detectLanguage, providerLanguages = false, onSelect }) => {
   const handleSelect = (value: string) => {
     onSelect?.(value);
   };
@@ -21,7 +21,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({ className, defaultValue
   const computedLanguages = providerLanguages ? AllCountryLanguages : SupportedLanguages;
 
   return (
-    <Select value={detectLanguage && defaultValue} defaultValue={detectLanguage && !defaultValue ? "DT" : defaultValue || "0"} onValueChange={handleSelect}>
+    <Select value={value || (detectLanguage && defaultValue)} defaultValue={detectLanguage && !defaultValue ? "DT" : defaultValue || "0"} onValueChange={handleSelect}>
       <SelectTrigger className={className}>
         <SelectValue placeholder={placeholder || "Select language"} />
       </SelectTrigger>

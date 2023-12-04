@@ -24,7 +24,7 @@ import {
   Textarea,
 } from "@wordigo/ui";
 import LanguageSelector from "@wordigo/ui/components/ui/language-selector";
-import { Copy, ArrowLeftRight } from "lucide-react";
+import { ArrowLeftRight, Copy } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
@@ -65,7 +65,7 @@ export default function Settings() {
   });
 
   const handleSave = (values: DictionariesValues) => {
-    if (values.image) {
+    if (defaultValues?.image !== values.image) {
       void dictionaryUpdateBanner({
         dictionaryId: dictionaryDetail.id,
         encodedImage: values.image,
@@ -107,6 +107,16 @@ export default function Settings() {
       });
     }
   }, [status]);
+
+  const changeDirection = () => {
+    const values = form.getValues();
+    console.log(values);
+
+    form.setValue("sourceLang", values.targetLang);
+    form.setValue("targetLang", values.sourceLang);
+
+    console.log(form.getValues());
+  };
 
   return (
     <main>
@@ -294,61 +304,73 @@ export default function Settings() {
                 )}
               />
 
-              <FormField
-                control={form.control as never}
-                name="languages"
-                render={({ field }) => (
-                  <FormItem className="grid gap-1 my-7">
-                    <FormControl>
-                      <main className="grid grid-cols-3 w-full">
-                        <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
-                          <Label>
-                            <h1>{t("dictionaries_settings.language.title")}</h1>
-                          </Label>
-                          <p className="text-[hsl(var(--muted-foreground))] text-sm">
-                            {t("dictionaries_settings.language.description")}
-                          </p>
-                        </span>
-
-                        <div className="w-[512px] flex items-center space-x-4">
-                          <div className="w-full">
-                            <LanguageSelector
-                              {...field}
-                              providerLanguages
-                              placeholder={t(
-                                "dictionaries_settings.language.placeholder_source"
-                              )}
-                              className="w-full"
-                              defaultValue={form.getValues("sourceLang")}
-                              onSelect={(value) => {
-                                form.setValue("sourceLang", value);
-                              }}
-                            />
-                          </div>
-
-                          <ArrowLeftRight width={40} />
-
-                          <div className="w-full">
-                            <LanguageSelector
-                              {...field}
-                              providerLanguages
-                              placeholder={t(
-                                "dictionaries_settings.language.placeholder_target"
-                              )}
-                              className="w-full"
-                              defaultValue={form.getValues("targetLang")}
-                              onSelect={(value) => {
-                                form.setValue("targetLang", value);
-                              }}
-                            />
-                          </div>
-                        </div>
-                      </main>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              <div>
+                <main className="grid grid-cols-3 w-full ">
+                  <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
+                    <Label>
+                      <h1>{t("dictionaries_settings.language.title")}</h1>
+                    </Label>
+                    <p className="text-[hsl(var(--muted-foreground))] text-sm">
+                      {t("dictionaries_settings.language.description")}
+                    </p>
+                  </span>
+                  <div className="flex items-center space-x-4 w-[512px]">
+                    <FormField
+                      control={form.control as never}
+                      name="sourceLang"
+                      render={({ field }) => (
+                        <FormItem className="grid gap-1 my-7 w-full">
+                          <FormControl>
+                            <div className="w-full">
+                              <LanguageSelector
+                                providerLanguages
+                                placeholder={t(
+                                  "dictionaries_settings.language.placeholder_source"
+                                )}
+                                className="w-full !h-9"
+                                defaultValue={field.value}
+                                onSelect={(value) => {
+                                  field.onChange("sourceLang", value);
+                                }}
+                                {...field}
+                              />
+                            </div>
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                    <ArrowLeftRight
+                      onClick={changeDirection}
+                      className="cursor-pointer"
+                      width={32}
+                    />
+                    <FormField
+                      control={form.control as never}
+                      name="targetLang"
+                      render={({ field }) => (
+                        <FormItem className="grid gap-1 my-7 w-full">
+                          <FormControl>
+                            <div className="w-full">
+                              <LanguageSelector
+                                providerLanguages
+                                placeholder={t(
+                                  "dictionaries_settings.language.placeholder_target"
+                                )}
+                                className="w-full !h-9"
+                                defaultValue={field.value}
+                                onSelect={(value) => {
+                                  field.onChange("targetLang", value);
+                                }}
+                                {...field}
+                              />
+                            </div>
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                </main>
+              </div>
 
               <FormField
                 control={form.control as never}
