@@ -5,10 +5,12 @@ import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 export function DashboardOverview() {
   const { data: response, isLoading } = useGetOverviewStatisticsQuery("");
 
-  const computedData = response?.data?.map((item) => ({
-    name: item.day,
-    total: item.words,
-  }));
+  const computedData = response?.data
+    ?.map((item) => ({
+      name: item.day,
+      total: item.words,
+    }))
+    .reverse();
 
   return (
     <Card className="">
