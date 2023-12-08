@@ -1,8 +1,17 @@
 import { useGetOverviewStatisticsQuery } from "@/store/profile/api";
 import { Card, CardContent, Skeleton } from "@wordigo/ui";
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import { useState } from "react";
+import {
+  Bar,
+  BarChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 export function DashboardOverview() {
+  const [focusDataIndex, setFocusDataIndex] = useState<number | null>(null);
   const { data: response, isLoading } = useGetOverviewStatisticsQuery("");
 
   const computedData = response?.data
@@ -19,7 +28,15 @@ export function DashboardOverview() {
           <Skeleton className="h-80" />
         ) : (
           <ResponsiveContainer width="100%" height={350}>
-            <BarChart data={computedData}>
+            <BarChart
+              data={computedData}
+              onMouseMove={(e: any) => {
+                if (e.activeTooltipIndex !== focusDataIndex) {
+                  setFocusDataIndex(e.activeTooltipIndex);
+                }
+              }}
+              onMouseLeave={() => setFocusDataIndex(null)}
+            >
               <XAxis
                 dataKey="name"
                 stroke="#888888"
@@ -33,6 +50,23 @@ export function DashboardOverview() {
                 tickLine={false}
                 axisLine={false}
                 tickFormatter={(value) => `${value}`}
+              />
+              <Tooltip
+                cursor={false}
+                content={() => {
+                  if (focusDataIndex === null) {
+                    return null;
+                  }
+                  const data = computedData?.[focusDataIndex];
+                  return (
+                    <div className="bg-white p-4 py-2 shadow-md rounded-md">
+                      <div className="text-sm text-gray-500">{data?.name}</div>
+                      <div className="text-2xl font-bold text-gray-800">
+                        {data?.total}
+                      </div>
+                    </div>
+                  );
+                }}
               />
               <Bar dataKey="total" fill="#4a90e2" radius={[4, 4, 0, 0]} />
             </BarChart>
