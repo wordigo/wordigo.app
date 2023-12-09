@@ -1,5 +1,4 @@
 import { type IBlog } from "@/utils/blog";
-import { Badge } from "@wordigo/ui";
 import Image from "next/image";
 
 export default function BlogCard({
@@ -11,48 +10,43 @@ export default function BlogCard({
   thumbnail,
 }: IBlog) {
   return (
-    <div>
-      <div className="text-slate-800 dark:text-slate-200 ">
-        <div className="flex flex-col gap-2 px-4 pt-2 pb-5 bg-white dark:bg-DarkBackground border cursor-pointer hover:bg-slate-100 rounded-xl">
-          <div className="pt-2 pb-2">
-            <div className="bg-black h-64 rounded-xl">
-              {thumbnail && (
-                <Image
-                  src={`/images/blogs/${thumbnail}`}
-                  className="h-full w-full rounded-xl"
-                  alt="Picture of the author"
-                  width={500}
-                  height={500}
-                />
-              )}
-            </div>
+    <div className="group sm:flex rounded-xl dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+      <div className="flex-shrink-0 relative rounded-xl overflow-hidden w-full h-[200px] sm:w-[250px] sm:h-[350px]">
+        <Image
+          src={`/images/blogs/${thumbnail}`}
+          className="absolute top-0 start-0 object-cover hover:scale-105 transition-all duration-500 ease-in-out"
+          alt="Picture of the author"
+          fill
+        />
+      </div>
+
+      <div className="grow">
+        <div className="p-4 flex flex-col h-full sm:p-6">
+          <div className="mb-3">
+            <p className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200">
+              Business
+            </p>
           </div>
-          <div className="flex gap-1">
-            {["#javascript", "#react", "#nextjs"].map((tag) => (
-              <Badge key={tag} variant="outline">
-                {tag}
-              </Badge>
-            ))}
-          </div>
-          <div className="font-bold text-xl">{title}</div>
-          <div className="text-gray-700 dark:text-gray-400 h-10 overflow-hidden text-ellipsis leading-relaxed">
-            {description}
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="bg-black w-10 h-10 rounded-full">
-              {avatar && (
-                <Image
-                  className="h-full rounded-full border-none w-full"
-                  alt=""
-                  width={40}
-                  height={40}
+          <h3 className="text-lg sm:text-2xl font-semibold text-gray-800 group-hover:text-blue-600 dark:text-gray-300 dark:group-hover:text-white">
+            {title}
+          </h3>
+          <p className="mt-2 text-gray-600 dark:text-gray-400">{description}</p>
+
+          <div className="mt-5 sm:mt-auto">
+            <div className="flex items-center">
+              <div className="flex-shrink-0">
+                <img
+                  className="h-[2.875rem] w-[2.875rem] rounded-full"
                   src={avatar}
+                  alt="Image Description"
                 />
-              )}
-            </div>
-            <div>
-              <div>{author}</div>
-              <div className="text-sm">{date} · 5m read</div>
+              </div>
+              <div className="ms-2.5 sm:ms-4">
+                <h4 className="font-semibold text-gray-800 dark:text-gray-200">
+                  {author}
+                </h4>
+                <p className="text-xs text-gray-500">{date}</p>
+              </div>
             </div>
           </div>
         </div>

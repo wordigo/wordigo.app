@@ -23,13 +23,13 @@ const Blogs: React.FC<IBlogs> = ({ posts }) => {
         </p>
       </section>
 
-      <section className="gap-4 grid grid-cols-6">
+      <section className="gap-6 grid lg:grid-cols-2">
         {posts.map((blog) => {
           return (
             <Link
               href={`/blogs/${blog.slug}`}
               key={blog.slug}
-              className="col-span-6 md:col-span-3 lg:col-span-2"
+              className="col-span-1"
             >
               <BlogCard {...blog} />
             </Link>
