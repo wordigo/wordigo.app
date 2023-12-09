@@ -1,4 +1,3 @@
-import Breadcrumb from "@/components/Blog/Breadcrumb/Breadcrumb";
 import MainLayout from "@/components/Layout/MainLayout";
 import { XIcon } from "lucide-react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -17,8 +16,8 @@ export default function BlogContent() {
     <MainLayout>
       <div className="flex justify-center p-0 pt-0 mt-2 px-0">
         <div className="w-full md:max-w-4xl  flex gap-2 md:gap-6 flex-col">
-          <Breadcrumb data={dummyData} />
-          <div className="flex  justify-between w-full mt-2 md:mt-5">
+          {/* <Breadcrumb data={dummyData} /> */}
+          <div className="flex justify-between w-full mt-2 md:mt-5">
             <div className=" w-full flex flex-col gap-2 md:gap-6">
               <div className="flex w-full gap-2 md:gap-0 items-center justify-between">
                 <div className="text-xl md:text-3xl">
