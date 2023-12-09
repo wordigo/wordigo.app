@@ -1,72 +1,16 @@
 import BlogCard from "@/components/Blog/Card/Card";
 import MainLayout from "@/components/Layout/MainLayout";
-import { getAllPosts } from "@/utils/blog";
+import { getAllPosts, type IBlog } from "@/utils/blog";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 
-const dummyData = [
-  {
-    id: 1,
-    title: "Our first office",
-    readTime: "16 min",
-    info: "Over the past year, Volosoft has undergone many changes! After months of preparation and some hard work, we moved to our new office.",
-    blogType: "Article",
-    userName: "Jese Leos",
-    thumbnail: null,
-    profilePicture: null,
-    date: "Aug 15, 2021",
-  },
-  {
-    id: 2,
-    title: "Our first office",
-    readTime: "16 min",
-    info: "Over the past year, Volosoft has undergone many changes! After months of preparation and some hard work, we moved to our new office.",
-    blogType: "Article",
-    userName: "Jese Leos",
-    thumbnail: null,
-    profilePicture: null,
-    date: "Aug 15, 2021",
-  },
-  {
-    id: 3,
-    title: "Our first office",
-    readTime: "16 min",
-    info: "Over the past year, Volosoft has undergone many changes! After months of preparation and some hard work, we moved to our new office.Fixed the size of the info section in the blog cardFixed the size of the info section in the blog card",
-    blogType: "Article",
-    userName: "Jese Leos",
-    thumbnail: null,
-    profilePicture: null,
-    date: "Aug 15, 2021",
-  },
-  {
-    id: 4,
-    title: "Our first office",
-    readTime: "16 min",
-    info: "Over the past year, Volosoft has undergone many changes! After months of preparation and some hard work, we moved to our new office.",
-    blogType: "Article",
-    userName: "Jese Leos",
-    thumbnail: null,
-    profilePicture: null,
-    date: "Aug 15, 2021",
-  },
-];
+export interface IBlogs {
+  posts: IBlog[];
+}
 
-export const getServerSideProps = async ({ locale }: { locale: string }) => {
-  const posts = await getAllPosts(locale);
-
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ["common", "zod"])),
-      posts,
-    },
-  };
-};
-
-const Blogs = ({ posts }: any) => {
+const Blogs: React.FC<IBlogs> = ({ posts }) => {
   const { t } = useTranslation();
-
-  console.log(posts);
 
   return (
     <MainLayout>
@@ -83,8 +27,8 @@ const Blogs = ({ posts }: any) => {
         {posts.map((blog) => {
           return (
             <Link
-              href={`/blogs/${blog.id}`}
-              key={blog.id}
+              href={`/blogs/${blog.slug}`}
+              key={blog.slug}
               className="col-span-6 md:col-span-3 lg:col-span-2"
             >
               <BlogCard {...blog} />
@@ -94,6 +38,17 @@ const Blogs = ({ posts }: any) => {
       </section>
     </MainLayout>
   );
+};
+
+export const getStaticProps = async ({ locale }: { locale: string }) => {
+  const posts = getAllPosts(locale);
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common", "zod"])),
+      posts,
+    },
+  };
 };
 
 export default Blogs;
