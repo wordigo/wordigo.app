@@ -11,7 +11,6 @@ import {
   Textarea,
   Tooltip,
   TooltipContent,
-  TooltipProvider,
   TooltipTrigger,
   toast,
 } from "@wordigo/ui";
@@ -102,26 +101,24 @@ Feedback.Item = ({
   const isActive = active === level;
 
   return (
-    <TooltipProvider delayDuration={100}>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button
-            onClick={handleclick}
-            className={cn(
-              "rounded-full transition-all duration-25",
-              isActive ? " !bg-blue-100" : ""
-            )}
-            size="icon"
-            variant="outline"
-          >
-            <Image src={imageSrc} width={32} height={32} alt={title} />
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>{title}</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button
+          onClick={handleclick}
+          className={cn(
+            "rounded-full transition-all duration-25",
+            isActive ? " !bg-blue-100" : ""
+          )}
+          size="icon"
+          variant="outline"
+        >
+          <Image src={imageSrc} width={32} height={32} alt={title} />
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent>
+        <p>{title}</p>
+      </TooltipContent>
+    </Tooltip>
   );
 };
 

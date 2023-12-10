@@ -36,6 +36,7 @@
     "i18next": "^23.2.7",
     "lottie-react": "^2.4.0",
     "lucide-react": "^0.144.0",
+    "moment": "^2.29.4",
     "next": "^13.3.0",
     "next-auth": "^4.22.3",
     "next-i18next": "^14.0.0",

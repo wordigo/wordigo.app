@@ -7,6 +7,7 @@ import {
 import DictionaryRating from "@/components/Published/Rating";
 import SocialShare from "@/components/Published/SocialShare";
 import ArrowRightLeft from "@/components/Published/WordsPage/ArrowRightLeft";
+import DateTooltip from "@/components/UI/DateToolitp";
 import { TextToSpeechProvider, useTextToSpeech } from "@/contexts/textToSpeech";
 import { axiosBaseQuery } from "@/store/baseQuery";
 import { AllCountryLanguages } from "@wordigo/common";
@@ -169,7 +170,10 @@ const LibraryDetail = ({ dictionary }: { dictionary: IDictionary }) => {
                           {dictionary?.author.name}
                         </span>
                         <span className="text-base text-muted-foreground">
-                          {new Date(dictionary?.createdDate).toDateString()}
+                          <DateTooltip
+                            date={dictionary?.createdDate}
+                            mode="absolute"
+                          />
                         </span>
                       </div>
                     </div>
