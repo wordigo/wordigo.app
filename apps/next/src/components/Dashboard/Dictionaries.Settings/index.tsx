@@ -344,6 +344,9 @@ export default function Settings() {
                               <LanguageSelector
                                 value={field.value}
                                 providerLanguages
+                                placeholder={t(
+                                  "dictionaries_settings.language.placeholder_target"
+                                )}
                                 onSelect={(value) => {
                                   field.onChange(value);
                                 }}
