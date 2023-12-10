@@ -5,6 +5,7 @@ import {
 } from "@/store/dictionaries/api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { QueryStatus } from "@reduxjs/toolkit/query";
 import {
   Button,
   Dialog,
@@ -57,7 +58,7 @@ export default function CreateDictionary() {
   };
 
   useEffect(() => {
-    if (status === "fulfilled") {
+    if (status === QueryStatus.fulfilled) {
       if (data.success) {
         void getDictionaries({});
         setOpen(false);

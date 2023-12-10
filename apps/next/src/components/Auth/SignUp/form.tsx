@@ -5,6 +5,7 @@ import {
 } from "@/schemas/auth.schema";
 import { useRegisterMutation } from "@/store/auth/api";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { QueryStatus } from "@reduxjs/toolkit/query";
 import {
   Form,
   FormControl,
@@ -77,7 +78,7 @@ const AuthSignUpForm = ({ className, ...props }: UserAuthFormProps) => {
   };
 
   useEffect(() => {
-    if (status === "fulfilled") {
+    if (status === QueryStatus.fulfilled) {
       if (data.success) {
         void handleSign();
       } else {

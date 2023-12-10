@@ -14,6 +14,7 @@ export interface IBlog {
   thumbnail: string;
   avatar: string;
   author: string;
+  tags: string;
 }
 
 export const POSTS_PATH = path.join(process.cwd(), "posts");

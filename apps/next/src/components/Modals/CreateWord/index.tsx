@@ -5,6 +5,7 @@ import {
 } from "@/store/dictionarayWord/api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { QueryStatus } from "@reduxjs/toolkit/query";
 import {
   Button,
   Dialog,
@@ -74,11 +75,11 @@ export function CreateWord() {
   };
 
   useEffect(() => {
-    if (status === "fulfilled") {
+    if (status === QueryStatus.fulfilled) {
       if (data.success) {
         setOpen(false);
 
-        void getWordDataMutation(id);
+        void getWordDataMutation({ id: Number(id) });
         form.reset();
         toast(t("notifications.success"), {
           description: t("notifications.created_word"),

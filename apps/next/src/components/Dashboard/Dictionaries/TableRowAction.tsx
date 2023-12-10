@@ -2,6 +2,7 @@ import {
   useDeleteDictionariesMutation,
   useGetDictionariesMutation,
 } from "@/store/dictionaries/api";
+import { QueryStatus } from "@reduxjs/toolkit/query";
 import { type Row } from "@tanstack/react-table";
 import {
   Button,
@@ -35,7 +36,7 @@ export function DataTableRowActions({ row }: DataTableRowActionsProps) {
   };
 
   useEffect(() => {
-    if (status === "fulfilled") {
+    if (status === QueryStatus.fulfilled) {
       if (data.success) {
         void getDictionaries({});
         toast.success(t("notifications.success"), {

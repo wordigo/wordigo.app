@@ -1,5 +1,7 @@
+import DateTooltip from "@/components/UI/DateToolitp";
 import { type IBlog } from "@/utils/blog";
 import Image from "next/image";
+import { useMemo } from "react";
 
 export default function BlogCard({
   title,
@@ -8,13 +10,18 @@ export default function BlogCard({
   avatar,
   description,
   thumbnail,
+  tags,
 }: IBlog) {
+  const computedTags = useMemo(() => {
+    return tags?.split(",");
+  }, [tags]);
+
   return (
     <div className="group sm:flex rounded-xl dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
       <div className="flex-shrink-0 relative rounded-xl overflow-hidden w-full h-[200px] sm:w-[250px] sm:h-[350px]">
         <Image
           src={`/images/blogs/${thumbnail}`}
-          className="absolute top-0 start-0 object-cover hover:scale-105 transition-all duration-500 ease-in-out"
+          className="absolute top-0 start-0 object-cover hover:scale-110 transition-all duration-300 ease-in-out"
           alt="Picture of the author"
           fill
         />
@@ -22,10 +29,15 @@ export default function BlogCard({
 
       <div className="grow">
         <div className="p-4 flex flex-col h-full sm:p-6">
-          <div className="mb-3">
-            <p className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200">
-              Business
-            </p>
+          <div className="mb-3 flex gap-x-2">
+            {computedTags.map((tag) => (
+              <p
+                key={tag}
+                className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200"
+              >
+                {tag}
+              </p>
+            ))}
           </div>
           <h3 className="text-lg sm:text-2xl font-semibold text-gray-800 group-hover:text-blue-600 dark:text-gray-300 dark:group-hover:text-white">
             {title}
@@ -45,7 +57,7 @@ export default function BlogCard({
                 <h4 className="font-semibold text-gray-800 dark:text-gray-200">
                   {author}
                 </h4>
-                <p className="text-xs text-gray-500">{date}</p>
+                <DateTooltip className="text-xs text-gray-500" date={date} />
               </div>
             </div>
           </div>

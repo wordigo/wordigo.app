@@ -1,6 +1,7 @@
 import Spinner from "@/components/UI/Spinner";
 import { useUpdateAvatarMutation } from "@/store/profile/api";
 import { toBase64 } from "@/utils/toBase64";
+import { QueryStatus } from "@reduxjs/toolkit/query";
 import { Avatar, AvatarFallback, AvatarImage } from "@wordigo/ui";
 import { cx } from "class-variance-authority";
 import { FileEditIcon } from "lucide-react";
@@ -38,12 +39,12 @@ const ProfileUploadAvatar = () => {
   };
 
   useEffect(() => {
-    if (status === "fulfilled") {
+    if (status === QueryStatus.fulfilled) {
       void updateProfilePhoto();
       toast.success(t("notifications.success"), {
         description: t("notifications.avatar_update"),
       });
-    } else if (status === "rejected") {
+    } else if (status === QueryStatus.rejected) {
       toast.error(t("notifications.warning"), {
         description: profileData.message,
       });

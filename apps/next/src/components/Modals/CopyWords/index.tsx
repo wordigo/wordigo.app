@@ -4,6 +4,7 @@ import {
   useGetDictionaryWordsMutation,
 } from "@/store/dictionarayWord/api";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { QueryStatus } from "@reduxjs/toolkit/query";
 import {
   Button,
   Dialog,
@@ -80,7 +81,7 @@ export function CopyWord({
   };
 
   useEffect(() => {
-    if (status === "fulfilled") {
+    if (status === QueryStatus.fulfilled) {
       if (data.success) {
         setOpen(false);
 

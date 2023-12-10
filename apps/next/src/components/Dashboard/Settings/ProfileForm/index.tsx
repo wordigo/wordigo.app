@@ -5,6 +5,7 @@ import CInput from "@/components/UI/Input/Input";
 import { ProfileFormSchema } from "@/schemas/profile.schema";
 import { useUpdateProfileMutation } from "@/store/profile/api";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { QueryStatus } from "@reduxjs/toolkit/query";
 import {
   Form,
   FormControl,
@@ -60,9 +61,9 @@ export default function ProfileForm() {
   };
 
   useEffect(() => {
-    if (status === "fulfilled") {
+    if (status === QueryStatus.fulfilled) {
       if (profileData.success) {
-        updateProfileData();
+        void updateProfileData();
         toast({
           title: t("notifications.success"),
           description: t("notifications.profile_update"),

@@ -9,6 +9,7 @@ import {
 } from "@/store/dictionaries/api";
 import { useAppSelector } from "@/utils/hooks";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { QueryStatus } from "@reduxjs/toolkit/query";
 import {
   Button,
   Form,
@@ -94,17 +95,22 @@ export default function Settings() {
   const disabled = form.formState.isSubmitting || isLoading;
 
   useEffect(() => {
-    if (status === "fulfilled") {
-      // void router.push(`/dashboard/dictionaries`);
+    if (
+      (status === QueryStatus.fulfilled && updateData.success) ||
+      (bannerStatus === QueryStatus.fulfilled && bannerData.success)
+    ) {
       toast.success(t("notifications.success"), {
         description: t("notifications.updated_dictionary"),
       });
     } else if (status === "rejected") {
       toast.error(t("notifications.warning"), {
-        description: updateData.message,
+        description:
+          status === QueryStatus.rejected
+            ? updateData.message
+            : bannerData.message,
       });
     }
-  }, [status]);
+  }, [status, bannerStatus]);
 
   const changeDirection = () => {
     const values = form.getValues();
