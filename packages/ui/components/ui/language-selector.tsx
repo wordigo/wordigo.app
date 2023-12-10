@@ -42,6 +42,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({ className, value, defau
                       lineHeight: "1em",
                     }}
                     svg
+                    alt="Detect Language"
                     countryCode="DT"
                   />
                   {detectLanguage || "Detect Language"}
@@ -58,6 +59,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({ className, value, defau
                         lineHeight: "1em",
                       }}
                       svg
+                      alt={name}
                       countryCode={icon as string}
                     />
                     {name}
