@@ -7,4 +7,5 @@ module.exports = {
     localePath: path.resolve("./public/static/locales"),
     reloadOnPrerender: true,
   },
+  react: { useSuspense: false },
 };

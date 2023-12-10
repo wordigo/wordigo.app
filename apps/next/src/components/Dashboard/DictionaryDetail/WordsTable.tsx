@@ -1,15 +1,10 @@
 import { DataTableRowActions } from "./TableRowAction";
 import { DataTable } from "@/components/DataTable/data-table";
 import { DataTableColumnHeader } from "@/components/DataTable/data-table-column-header";
+import DateTooltip from "@/components/UI/DateToolitp";
 import { type DictionaryWord } from "@/store/dictionarayWord/type";
 import { type ColumnDef } from "@tanstack/react-table";
-import {
-  Checkbox,
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@wordigo/ui";
+import { Checkbox, Tooltip, TooltipContent, TooltipTrigger } from "@wordigo/ui";
 import { useTranslation } from "next-i18next";
 import * as React from "react";
 
@@ -84,19 +79,17 @@ export function DictionarayWordsTable({
         ),
         cell: ({ row }) => {
           return (
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger
-                  className="w-[150px] line-clamp-1 hover:underline"
-                  asChild
-                >
-                  <p>{row.getValue("text")}</p>
-                </TooltipTrigger>
-                <TooltipContent side="top" align="start">
-                  <p>{row.getValue("text")}</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger
+                className="w-[150px] line-clamp-1 hover:underline"
+                asChild
+              >
+                <p>{row.getValue("text")}</p>
+              </TooltipTrigger>
+              <TooltipContent side="top" align="start">
+                <p>{row.getValue("text")}</p>
+              </TooltipContent>
+            </Tooltip>
           );
         },
       },
@@ -110,33 +103,28 @@ export function DictionarayWordsTable({
         ),
         cell: ({ row }) => {
           return (
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger
-                  className="w-[150px] line-clamp-1 hover:underline"
-                  asChild
-                >
-                  <p>{row.getValue("translatedText")}</p>
-                </TooltipTrigger>
-                <TooltipContent side="top" align="start">
-                  <p>{row.getValue("translatedText")}</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger
+                className="w-[150px] line-clamp-1 hover:underline"
+                asChild
+              >
+                <p>{row.getValue("translatedText")}</p>
+              </TooltipTrigger>
+              <TooltipContent side="top" align="start">
+                <p>{row.getValue("translatedText")}</p>
+              </TooltipContent>
+            </Tooltip>
           );
         },
       },
       {
-        accessorKey: "time",
+        accessorKey: "createdDate",
         header: ({ column }) => (
           <DataTableColumnHeader column={column} title={t("columns.time")} />
         ),
-        cell: ({ row }) => {
-          const timeValue = row.original.updatedDate;
-          const dateObj = new Date(timeValue);
-          const formattedDate = dateObj.toLocaleString();
-          return <span>{formattedDate}</span>;
-        },
+        cell: ({ row }) => (
+          <DateTooltip date={row.original.createdDate} mode="absolute" />
+        ),
         enableSorting: false,
       },
       {

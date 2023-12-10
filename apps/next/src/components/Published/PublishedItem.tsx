@@ -1,3 +1,4 @@
+import DateTooltip from "../UI/DateToolitp";
 import { roundToFiveOrTen } from "@/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@wordigo/ui";
 import { Star } from "lucide-react";
@@ -62,9 +63,14 @@ const PublishedItem = (item: IDictionary) => {
                 />
                 <AvatarFallback>{computedName}</AvatarFallback>
               </Avatar>
-              <span className="ml-3 text-sm font-semibold">
-                {item.author.name}
-              </span>
+              <div className="flex flex-col justify-center ml-3 text-sm">
+                <span className="font-semibold">{item.author.name}</span>
+                <DateTooltip
+                  date={item.createdDate}
+                  mode="absolute"
+                  className="text-muted-foreground text-xs"
+                />
+              </div>
             </span>
           </div>
         </div>
