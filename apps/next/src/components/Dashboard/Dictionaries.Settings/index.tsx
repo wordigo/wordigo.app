@@ -317,16 +317,15 @@ export default function Settings() {
                           <FormControl>
                             <div className="w-full">
                               <LanguageSelector
+                                value={field.value}
                                 providerLanguages
                                 placeholder={t(
                                   "dictionaries_settings.language.placeholder_source"
                                 )}
-                                className="w-full !h-9"
-                                defaultValue={field.value}
                                 onSelect={(value) => {
-                                  field.onChange("sourceLang", value);
+                                  field.onChange(value);
                                 }}
-                                {...field}
+                                className="w-full !h-9"
                               />
                             </div>
                           </FormControl>
@@ -334,7 +333,7 @@ export default function Settings() {
                       )}
                     />
                     <ArrowLeftRight
-                      onClick={changeDirection}
+                      onClick={() => changeDirection()}
                       className="cursor-pointer"
                       width={32}
                     />
@@ -346,16 +345,15 @@ export default function Settings() {
                           <FormControl>
                             <div className="w-full">
                               <LanguageSelector
+                                value={field.value}
                                 providerLanguages
                                 placeholder={t(
                                   "dictionaries_settings.language.placeholder_target"
                                 )}
-                                className="w-full !h-9"
-                                defaultValue={field.value}
                                 onSelect={(value) => {
-                                  field.onChange("targetLang", value);
+                                  field.onChange(value);
                                 }}
-                                {...field}
+                                className="w-full !h-9"
                               />
                             </div>
                           </FormControl>
