@@ -1,4 +1,4 @@
-import DateTooltip from "../UI/DateTooltip";
+import DateTooltip, { IDateMode } from "../UI/DateTooltip";
 import { roundToFiveOrTen } from "@/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@wordigo/ui";
 import { Star } from "lucide-react";
@@ -67,7 +67,7 @@ const PublishedItem = (item: IDictionary) => {
                 <span className="font-semibold">{item.author.name}</span>
                 <DateTooltip
                   date={item.createdDate}
-                  mode="absolute"
+                  mode={IDateMode.absolute}
                   className="text-muted-foreground text-xs"
                 />
               </div>

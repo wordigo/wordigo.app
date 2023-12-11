@@ -1,7 +1,7 @@
 import { DataTableRowActions } from "./TableRowAction";
 import { DataTable } from "@/components/DataTable/data-table";
 import { DataTableColumnHeader } from "@/components/DataTable/data-table-column-header";
-import DateTooltip from "@/components/UI/DateTooltip";
+import DateTooltip, { IDateMode } from "@/components/UI/DateTooltip";
 import { type DictionaryWord } from "@/store/dictionarayWord/type";
 import { type ColumnDef } from "@tanstack/react-table";
 import { Checkbox, Tooltip, TooltipContent, TooltipTrigger } from "@wordigo/ui";
@@ -123,7 +123,10 @@ export function DictionarayWordsTable({
           <DataTableColumnHeader column={column} title={t("columns.time")} />
         ),
         cell: ({ row }) => (
-          <DateTooltip date={row.original.createdDate} mode="absolute" />
+          <DateTooltip
+            date={row.original.createdDate}
+            mode={IDateMode.absolute}
+          />
         ),
         enableSorting: false,
       },

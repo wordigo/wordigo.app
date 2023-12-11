@@ -4,8 +4,8 @@ import moment from "moment";
 import { useMemo } from "react";
 
 export enum IDateMode {
-  absolute,
-  relative,
+  absolute = "absolute",
+  relative = "relative",
 }
 
 export interface IDateTooltip {
