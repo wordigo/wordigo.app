@@ -1,4 +1,4 @@
-import DateTooltip from "../UI/DateToolitp";
+import DateTooltip from "../UI/DateTooltip";
 import { roundToFiveOrTen } from "@/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@wordigo/ui";
 import { Star } from "lucide-react";

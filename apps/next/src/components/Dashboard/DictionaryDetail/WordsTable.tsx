@@ -1,7 +1,7 @@
 import { DataTableRowActions } from "./TableRowAction";
 import { DataTable } from "@/components/DataTable/data-table";
 import { DataTableColumnHeader } from "@/components/DataTable/data-table-column-header";
-import DateTooltip from "@/components/UI/DateToolitp";
+import DateTooltip from "@/components/UI/DateTooltip";
 import { type DictionaryWord } from "@/store/dictionarayWord/type";
 import { type ColumnDef } from "@tanstack/react-table";
 import { Checkbox, Tooltip, TooltipContent, TooltipTrigger } from "@wordigo/ui";

@@ -7,7 +7,7 @@ import {
 import DictionaryRating from "@/components/Published/Rating";
 import SocialShare from "@/components/Published/SocialShare";
 import ArrowRightLeft from "@/components/Published/WordsPage/ArrowRightLeft";
-import DateTooltip from "@/components/UI/DateToolitp";
+import DateTooltip from "@/components/UI/DateTooltip";
 import { TextToSpeechProvider, useTextToSpeech } from "@/contexts/textToSpeech";
 import { axiosBaseQuery } from "@/store/baseQuery";
 import { AllCountryLanguages } from "@wordigo/common";

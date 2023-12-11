@@ -1,4 +1,4 @@
-import DateTooltip from "@/components/UI/DateToolitp";
+import DateTooltip from "@/components/UI/DateTooltip";
 import { type IBlog } from "@/utils/blog";
 import Image from "next/image";
 import { useMemo } from "react";
@@ -22,7 +22,7 @@ export default function BlogCard({
         <Image
           src={`/images/blogs/${thumbnail}`}
           className="absolute top-0 start-0 object-cover hover:scale-110 transition-all duration-300 ease-in-out"
-          alt="Picture of the author"
+          alt="Blog Image"
           fill
         />
       </div>

@@ -97,6 +97,10 @@
     "logout": "Çıkış yap",
     "get_started": "Haydi Başlayın"
   },
+  "blogs": {
+    "title": "Bloğumuzda En Son Gelişmeleri Keşfedin",
+    "description": "Wordigo hakkında en son haberler, güncellemeler ve ilham verici içeriklerin yer aldığı özel merkezinize hoş geldiniz. Burada, Wordigo'nun sunduğu yenilikçi özellikleri ve güncellemeleri ilk siz keşfedeceksiniz."
+  },
   "search_no_result": {
     "title": "Üzgünüz, aradığınızı bulamadık.",
     "description": "Aramanızla eşleşen hiçbir sonuç bulunamadı. Lütfen aramanızı değiştirin ve tekrar deneyin."
