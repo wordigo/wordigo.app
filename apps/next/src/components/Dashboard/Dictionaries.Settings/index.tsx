@@ -64,6 +64,14 @@ export default function Settings() {
   });
 
   const handleSave = (values: DictionariesValues) => {
+    if (
+      values.published === true &&
+      (values.sourceLang.length <= 0 || values.targetLang.length <= 0)
+    ) {
+      toast.warning(t("dictionaries_settings.published_status_error"));
+      return false;
+    }
+
     if (defaultValues?.image !== values.image) {
       void dictionaryUpdateBanner({
         dictionaryId: dictionaryDetail.id,
@@ -117,9 +125,13 @@ export default function Settings() {
     if (values.sourceLang.length === 0 && values.targetLang.length === 0) {
       toast.warning(t("dictionaries_settings.languages_switch.never_selected"));
     } else if (values.sourceLang.length === 0) {
-      toast.warning(t("dictionaries_settings.languages_switch.source_selected"));
+      toast.warning(
+        t("dictionaries_settings.languages_switch.source_selected")
+      );
     } else if (values.targetLang.length === 0) {
-      toast.warning(t("dictionaries_settings.languages_switch.target_selected"));
+      toast.warning(
+        t("dictionaries_settings.languages_switch.target_selected")
+      );
     } else {
       form.setValue("sourceLang", values.targetLang);
       form.setValue("targetLang", values.sourceLang);
