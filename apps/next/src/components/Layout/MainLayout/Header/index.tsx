@@ -26,7 +26,8 @@ export default function HomeHeader() {
 
   return (
     <>
-      <nav className="sticky top-0 z-50 container flex items-center justify-between py-[1.125rem] bg-LightBackground dark:bg-DarkBackground">
+      <nav className="sticky top-0 z-50 container bg-LightBackground/40 backdrop-blur dark:bg-DarkBackground">
+        <div className="py-[1.125rem] flex items-center justify-between border-b">
         <div className="flex items-center">
           <Link
             href="/"
@@ -78,6 +79,7 @@ export default function HomeHeader() {
         >
           <Menu size={17} />
         </Button>
+        </div>
       </nav>
 
       <AnimatePresence>
