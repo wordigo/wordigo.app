@@ -118,18 +118,21 @@ export default function FeatureBanner() {
           selectedWord={debouncedWord}
         />
       )}
-      <section className="flex flex-col items-center relative">
-        <Badge className="text-sm font-medium px-2.5 py-1" variant="outline">
-          <Zap className="mr-2 h-4 w-4" />
-          {t("feature_mockup.badge")}
-        </Badge>
-        <h2 className="mt-4 text-4xl font-semibold max-lg:text-3xl">
-          {t("feature_mockup.heading")}
-        </h2>
-        <p className="text-xl text-muted-foreground mt-5 max-lg:text-lg max-lg:mt-4">
-          {t("feature_mockup.description")}
-        </p>
-        <div className="h-[25rem] lg:w-[40rem] lg:mt-12 lg:min-w-[35rem] lg:h-[28rem] md:w-[30rem] md:h-[24rem] max-md:w-[340px] max-md:h-[240px] max-lg:mt-12 border-4 border-primary bg-primary rounded-[0.625rem] mt-16 text-white backdrop-blur-xl overflow-hidden">
+      <section className="flex items-center justify-between gap-x-8 relative">
+        <div className="max-w-sm sm:max-w-xl md:max-w-2xl mx-auto flex flex-col gap-y-6">
+          <Badge className="w-fit text-sm font-medium px-2.5 py-1" variant="outline">
+            <Zap className="mr-2 h-4 w-4" />
+            {t("feature_mockup.badge")}
+          </Badge>
+          <h2 className="font-semibold text-2xl sm:text-3xl md:text-4xl">
+            {t("feature_mockup.heading")}
+          </h2>
+          <p className="sm:text-lg lg:text-xl text-muted-foreground">
+            {t("feature_mockup.description")}
+          </p>
+        </div>
+
+        <div className="h-[25rem] lg:w-[40rem] lg:mt-12 lg:min-w-[35rem] lg:h-[28rem] md:w-[30rem] md:h-[24rem] max-md:w-[340px] max-md:h-[240px] max-lg:mt-12 bg-primary rounded-[0.625rem] mt-16 text-white backdrop-blur-xl overflow-hidden">
           <div className="top-0 left-0 w-full h-full flex flex-col relative justify-center shadow-[inset_0px_-7px_11px_22px] shadow-gray-50 items-center bg-white text-black rounded-[0.625rem]">
             <div className="popup-effect popup-effect-t"></div>
             <div className="popup-effect popup-effect-l "></div>
