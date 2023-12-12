@@ -1,7 +1,7 @@
-import Banner from "./Banner";
-import HomeHeader from "./Header";
 import Footer from "@/components/Home/Footers";
 import { type PropsWithChildren } from "react";
+import Banner from "./Banner";
+import HomeHeader from "./Header";
 
 const MainLayout: React.FC<PropsWithChildren<{ showBanner?: boolean }>> = ({
   children,
@@ -18,8 +18,8 @@ const MainLayout: React.FC<PropsWithChildren<{ showBanner?: boolean }>> = ({
         </main>
 
         <svg
-          className="absolute -z-10 top-0 left-0 opacity-[0.15]"
-          width="1920"
+          className="absolute -z-10 top-0 left-0 opacity-40 dark:opacity-[0.15]"
+          width="100%"
           height="1080"
           viewBox="0 0 1440 1032"
           fill="none"

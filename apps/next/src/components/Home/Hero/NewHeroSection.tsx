@@ -11,7 +11,7 @@ function NewHeroSection() {
     <section className="flex flex-col items-center gap-y-12 sm:gap-y-14 md:gap-y-16">
       <div className="flex flex-col items-center gap-y-8 sm:gap-y-9 md:gap-y-10 text-center max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
         <Badge
-          className="text-sm font-medium px-2.5 py-1 self-center -mb-4"
+          className="text-sm font-medium px-2.5 py-1 self-center -mb-4 backdrop-blur"
           variant="outline"
         >
           <div className="w-2.5 h-2.5 mr-2 flex items-center justify-center">
