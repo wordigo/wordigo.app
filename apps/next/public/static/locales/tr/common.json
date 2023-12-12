@@ -207,7 +207,8 @@
     "wordPlaceholder": "Lütfen kelime giriniz",
     "translatedLabel": "Çevrilecek Kelime",
     "translatedPlaceholder": "Lütfen çevrilecek kelimeyi giriniz",
-    "copyWord": "Kaydet"
+    "copyWord": "Kaydet",
+    "auto_translate": "Otomatik Çeviri"
   },
   "dictionaries_settings": {
     "link_notes": "Bu bağlantıyla sözlüğünüze erişebilirsiniz.",
@@ -396,7 +397,7 @@
   "username": "Kullanıcı Adı",
   "password": "Şifre",
   "current_password": "Mevcut Şifre",
-  "save": "Kopyala",
+  "save": "Kaydet",
   "update": "Güncelle",
   "new_password": "Yeni Şifre"
 }

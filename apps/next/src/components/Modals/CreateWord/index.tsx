@@ -21,6 +21,7 @@ import {
   FormMessage,
   Input,
   Label,
+  Switch,
 } from "@wordigo/ui";
 import { PlusIcon, Table2Icon, X } from "lucide-react";
 import { useTranslation } from "next-i18next";
@@ -41,6 +42,7 @@ const CreateWordSchema = z.object({
 type CreateWordValues = z.infer<typeof CreateWordSchema>;
 
 export function CreateWord() {
+  const [autoTranslate, setAutoTranslate] = useState(false);
   const [open, setOpen] = useState(false);
   const { t } = useTranslation();
 
@@ -151,30 +153,46 @@ export function CreateWord() {
                 )}
               />
 
-              <FormField
-                control={form.control as never}
-                name="translatedText"
-                render={({ field }) => (
-                  <FormItem className="grid gap-1">
-                    <Label>{t("dic_words.translatedLabel")} </Label>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        id="translatedText"
-                        placeholder={t("dic_words.translatedPlaceholder")}
-                        autoCapitalize="none"
-                        autoComplete="text"
-                        autoCorrect="off"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <DialogFooter>
-                <CButton loading={isLoading} type="submit">
-                  {t("save")}
-                </CButton>
+              {autoTranslate ? (
+                ""
+              ) : (
+                <>
+                  <FormField
+                    control={form.control as never}
+                    name="translatedText"
+                    render={({ field }) => (
+                      <FormItem className="grid gap-1">
+                        <Label>{t("dic_words.translatedLabel")} </Label>
+                        <FormControl>
+                          <Input
+                            {...field}
+                            id="translatedText"
+                            placeholder={t("dic_words.translatedPlaceholder")}
+                            autoCapitalize="none"
+                            autoComplete="text"
+                            autoCorrect="off"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </>
+              )}
+
+              <DialogFooter className="w-full items-center">
+                <Label className="flex items-center gap-2 mr-auto">
+                  <Switch
+                    checked={autoTranslate}
+                    onCheckedChange={() => setAutoTranslate(!autoTranslate)}
+                  ></Switch>
+                  <p>{t("dic_words.auto_translate")}</p>
+                </Label>
+                {!autoTranslate ? (
+                  <CButton loading={isLoading} type="submit">
+                    {t("save")}
+                  </CButton>
+                ) : null}
               </DialogFooter>
             </div>
           </form>
