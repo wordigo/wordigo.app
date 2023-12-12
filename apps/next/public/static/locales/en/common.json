@@ -237,6 +237,12 @@
   },
   "dictionaries_settings": {
     "link_notes": "Access your dictionary with this link.",
+    "languages_switch": {
+      "never_selected": "Please select the language of the dictionary.",
+      "target_selected": "Please select the target language of the dictionary",
+      "source_selected": "Please select the source language of the dictionary"
+    },
+    "published_status_error": "Language selection needs to be completed.",
     "title_notes": "Make it easy for people to search the dictionary.",
     "published_status_note": "Set dictionary public and private.",
     "description": {

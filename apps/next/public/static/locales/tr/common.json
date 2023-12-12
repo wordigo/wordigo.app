@@ -211,6 +211,12 @@
   },
   "dictionaries_settings": {
     "link_notes": "Bu bağlantıyla sözlüğünüze erişebilirsiniz.",
+    "languages_switch": {
+      "never_selected": "Lütfen sözlüğün dilini seçin.",
+      "target_selected": "Lütfen sözlüğün hedef dilini seçin.",
+      "source_selected": "Lütfen sözlüğün kaynak dilini seçin."
+    },
+    "published_status_error": "Dil seçimi tamamlanması gerekiyor.",
     "title_notes": "İnsanların sözlüğü aramasını kolaylaştırın.",
     "published_status_note": "Sözlüğü genel veya özel olarak ayarlayın.",
     "description": {
