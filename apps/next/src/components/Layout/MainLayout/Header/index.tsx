@@ -63,7 +63,11 @@ export default function HomeHeader() {
                 <Link
                   href="/auth/signup"
                   className={cn(
-                    buttonVariants({ variant: "default", className: "!h-9" })
+                    buttonVariants({
+                      variant: "default",
+                      className:
+                        "!h-9 relative hover:bg-primary transition-colors overflow-hidden before:content-[''] before:absolute before:top-0 before:bottom-0 before:w-1/2 before:bg-gray-50/30 before:blur before:select-none before:translate-x-[-170%] before:skew-x-[-20deg] before:transition-transform before:duration-500 before:ease-in-out hover:before:translate-x-[220%] hover:before:skew-x-[-20deg]",
+                    })
                   )}
                 >
                   {t("navbar.get_started")}
