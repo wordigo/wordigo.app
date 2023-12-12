@@ -8,10 +8,10 @@ function NewHeroSection() {
   const { t } = useTranslation();
 
   return (
-    <section className="grid grid-cols-2 gap-x-16 max-lg:grid-cols-1 justify-center items-center max-lg:flex max-lg:flex-col">
-      <div className="flex flex-col items-start justify-center max-lg:items-center">
+    <section className="flex flex-col items-center gap-y-12 sm:gap-y-14 md:gap-y-16">
+      <div className="flex flex-col items-center gap-y-8 sm:gap-y-9 md:gap-y-10 text-center max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
         <Badge
-          className="text-sm font-medium px-2.5 py-1 self-start"
+          className="text-sm font-medium px-2.5 py-1 self-center -mb-4"
           variant="outline"
         >
           <div className="w-2.5 h-2.5 mr-2 flex items-center justify-center">
@@ -19,13 +19,18 @@ function NewHeroSection() {
           </div>
           {t("hero.badge")} <ArrowRight className="ml-2 h-4 w-4" />
         </Badge>
-        <h1 className="text-6xl text-left font-semibold mt-4 max-lg:text-5xl max-md:text-3xl">
-          {t("hero.title")}
-        </h1>
-        <p className="text-left font-normal text-xl text-muted-foreground mt-6 max-lg:text-lg max-lg:mt-4 max-md:text-lg">
-          {t("hero.description")}
-        </p>
-        <div className="grid grid-cols-2 gap-x-3 mt-12 max-lg:mt-8">
+
+        <div className="flex flex-col gap-y-4 sm:gap-y-5 md:gap-y-6 lg:gap-y-7 xl:gap-y-8">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold">
+            {t("hero.title")}
+          </h1>
+
+          <p className="sm:text-lg md:text-xl text-muted-foreground">
+            {t("hero.description")}
+          </p>
+        </div>
+
+        <div className="flex gap-x-4">
           <Link
             className={buttonVariants({
               variant: "outline",
@@ -47,6 +52,7 @@ function NewHeroSection() {
           </Link>
         </div>
       </div>
+
       <div className="relative aspect-square lg:min-w-[30rem] xl:max-w-[40rem] xl:max-h-[35rem] md:w-[30rem] md:h-[24rem] max-md:w-[340px] max-md:h-[240px] max-lg:mt-12 mt-0">
         <Image
           src="/images/hero-extension.png"
