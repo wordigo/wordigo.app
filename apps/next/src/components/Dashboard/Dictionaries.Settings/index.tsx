@@ -9,6 +9,7 @@ import {
 } from "@/store/dictionaries/api";
 import { useAppSelector } from "@/utils/hooks";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { QueryStatus } from "@reduxjs/toolkit/query";
 import {
   Button,
   Form,
@@ -23,8 +24,8 @@ import {
   Switch,
   Textarea,
 } from "@wordigo/ui";
-import { Copy } from "lucide-react";
-import { useSession } from "next-auth/react";
+import LanguageSelector from "@wordigo/ui/components/ui/language-selector";
+import { ArrowLeftRight, Copy } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -36,7 +37,6 @@ export type DictionariesValues = z.infer<typeof DictionariesSettingsSchema>;
 
 export default function Settings() {
   const { t } = useTranslation();
-  const { data } = useSession();
   const router = useRouter();
   const { slug } = router.query as { slug: string };
 
@@ -64,7 +64,15 @@ export default function Settings() {
   });
 
   const handleSave = (values: DictionariesValues) => {
-    if (values.image) {
+    if (
+      values.published === true &&
+      (values.sourceLang.length <= 0 || values.targetLang.length <= 0)
+    ) {
+      toast.warning(t("dictionaries_settings.published_status_error"));
+      return false;
+    }
+
+    if (defaultValues?.image !== values.image) {
       void dictionaryUpdateBanner({
         dictionaryId: dictionaryDetail.id,
         encodedImage: values.image,
@@ -82,9 +90,7 @@ export default function Settings() {
   };
 
   const handleCopyUrl = () => {
-    void navigator.clipboard.writeText(
-      `https://wordigo.app/` + form.getValues().title
-    );
+    void navigator.clipboard.writeText(`https://wordigo.app/library/` + slug);
     toast.success("Successful", {
       description: "Copied dictionary public url.",
     });
@@ -97,17 +103,40 @@ export default function Settings() {
   const disabled = form.formState.isSubmitting || isLoading;
 
   useEffect(() => {
-    if (status === "fulfilled") {
-      // void router.push(`/dashboard/dictionaries`);
+    if (
+      (status === QueryStatus.fulfilled && updateData.success) ||
+      (bannerStatus === QueryStatus.fulfilled && bannerData.success)
+    ) {
       toast.success(t("notifications.success"), {
         description: t("notifications.updated_dictionary"),
       });
     } else if (status === "rejected") {
       toast.error(t("notifications.warning"), {
-        description: updateData.message,
+        description:
+          status === QueryStatus.rejected
+            ? updateData.message
+            : bannerData.message,
       });
     }
-  }, [status]);
+  }, [status, bannerStatus]);
+
+  const changeDirection = () => {
+    const values = form.getValues();
+    if (values.sourceLang.length === 0 && values.targetLang.length === 0) {
+      toast.warning(t("dictionaries_settings.languages_switch.never_selected"));
+    } else if (values.sourceLang.length === 0) {
+      toast.warning(
+        t("dictionaries_settings.languages_switch.source_selected")
+      );
+    } else if (values.targetLang.length === 0) {
+      toast.warning(
+        t("dictionaries_settings.languages_switch.target_selected")
+      );
+    } else {
+      form.setValue("sourceLang", values.targetLang);
+      form.setValue("targetLang", values.sourceLang);
+    }
+  };
 
   return (
     <main>
@@ -162,7 +191,7 @@ export default function Settings() {
                         <CInput
                           disabled
                           classNames="placeholder:!text-gray-400 w-[512px]"
-                          defaultValue={`wordigo.app/library/${data.user.username}`}
+                          defaultValue={`wordigo.app/library/${slug}`}
                           rightSection={
                             <Copy
                               onClick={handleCopyUrl}
@@ -294,6 +323,72 @@ export default function Settings() {
                   </FormItem>
                 )}
               />
+
+              <div>
+                <main className="grid grid-cols-3 w-full ">
+                  <span className="max-w-[280px] min-w-[280px] mr-8 word-break">
+                    <Label>
+                      <h1>{t("dictionaries_settings.language.title")}</h1>
+                    </Label>
+                    <p className="text-[hsl(var(--muted-foreground))] text-sm">
+                      {t("dictionaries_settings.language.description")}
+                    </p>
+                  </span>
+                  <div className="flex items-center space-x-4 w-[512px]">
+                    <FormField
+                      control={form.control as never}
+                      name="sourceLang"
+                      render={({ field }) => (
+                        <FormItem className="grid gap-1 my-7 w-full">
+                          <FormControl>
+                            <div className="w-full">
+                              <LanguageSelector
+                                value={field.value}
+                                providerLanguages
+                                placeholder={t(
+                                  "dictionaries_settings.language.placeholder_source"
+                                )}
+                                onSelect={(value) => {
+                                  field.onChange(value);
+                                }}
+                                className="w-full !h-9"
+                              />
+                            </div>
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                    <ArrowLeftRight
+                      onClick={() => changeDirection()}
+                      className={"cursor-pointer"}
+                      width={32}
+                    />
+                    <FormField
+                      control={form.control as never}
+                      name="targetLang"
+                      render={({ field }) => (
+                        <FormItem className="grid gap-1 my-7 w-full">
+                          <FormControl>
+                            <div className="w-full">
+                              <LanguageSelector
+                                value={field.value}
+                                providerLanguages
+                                placeholder={t(
+                                  "dictionaries_settings.language.placeholder_target"
+                                )}
+                                onSelect={(value) => {
+                                  field.onChange(value);
+                                }}
+                                className="w-full !h-9"
+                              />
+                            </div>
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                </main>
+              </div>
 
               <FormField
                 control={form.control as never}

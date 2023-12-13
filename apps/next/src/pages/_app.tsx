@@ -1,4 +1,3 @@
-import GoogleAnalytics from "@/components/GoogleAnalytics";
 import AppProviders from "@/components/providers";
 import seo from "@/constants/seo";
 import store from "@/store";
@@ -30,7 +29,6 @@ const App = ({
 
   return (
     <PlausibleProvider domain="wordigo.app">
-      <GoogleAnalytics />
       <DefaultSeo {...seo[pageProps?._nextI18Next?.initialLocale]} />
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />

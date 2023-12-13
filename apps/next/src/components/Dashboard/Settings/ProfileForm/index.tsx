@@ -5,6 +5,7 @@ import CInput from "@/components/UI/Input/Input";
 import { ProfileFormSchema } from "@/schemas/profile.schema";
 import { useUpdateProfileMutation } from "@/store/profile/api";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { QueryStatus } from "@reduxjs/toolkit/query";
 import {
   Form,
   FormControl,
@@ -15,7 +16,6 @@ import {
   Input,
   Tooltip,
   TooltipContent,
-  TooltipProvider,
   TooltipTrigger,
   toast,
 } from "@wordigo/ui";
@@ -47,7 +47,7 @@ export default function ProfileForm() {
 
   const handleSubmit = (values: UpdateProfileFormValues) => {
     if (values.username === data.user.username) delete values.username;
-    handleUpdateProfile(values);
+    void handleUpdateProfile(values);
   };
 
   const updateProfileData = async () => {
@@ -61,9 +61,9 @@ export default function ProfileForm() {
   };
 
   useEffect(() => {
-    if (status === "fulfilled") {
+    if (status === QueryStatus.fulfilled) {
       if (profileData.success) {
-        updateProfileData();
+        void updateProfileData();
         toast({
           title: t("notifications.success"),
           description: t("notifications.profile_update"),
@@ -116,24 +116,22 @@ export default function ProfileForm() {
                       </span>
                     }
                     rightSection={
-                      <TooltipProvider delayDuration={100}>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <InfoIcon
-                              className="text-muted-foreground"
-                              size={16}
-                            />
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p
-                              className="text-center"
-                              dangerouslySetInnerHTML={{
-                                __html: t("profileSettings.username_tooltip"),
-                              }}
-                            />
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <InfoIcon
+                            className="text-muted-foreground"
+                            size={16}
+                          />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p
+                            className="text-center"
+                            dangerouslySetInnerHTML={{
+                              __html: t("profileSettings.username_tooltip"),
+                            }}
+                          />
+                        </TooltipContent>
+                      </Tooltip>
                     }
                     placeholder="@osmandlsmn"
                     {...field}

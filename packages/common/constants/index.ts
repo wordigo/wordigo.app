@@ -1,7 +1,7 @@
-export const DictionaryInitialTitle = 'Initial'
+export const DictionaryInitialTitle = "Initial";
 
 export enum LearningStatuses {
-    "Not Learned",
-    "Learning",
-    "Learned"
+  "Not Learned",
+  "Learning",
+  "Learned",
 }

@@ -93,6 +93,8 @@
     "error": "An error occurred while sending your feedback."
   },
   "navbar": {
+    "company": "Company",
+    "product": "Product",
     "home": "Home",
     "features": "Features",
     "dictionaries": "Dictionaries",
@@ -180,7 +182,7 @@
     "search": "Search"
   },
   "blogs": {
-    "title": "Learning at Its Best: Embrace the Power of Reading",
+    "title": "Discover the Latest Innovations on Our Blog",
     "description": "Welcome to your exclusive hub where the latest news, updates, and inspiring content about Wordigo await you. Here, you'll be the first to discover the innovative features and updates that Wordigo offers"
   },
   "search_no_result": {
@@ -235,6 +237,12 @@
   },
   "dictionaries_settings": {
     "link_notes": "Access your dictionary with this link.",
+    "languages_switch": {
+      "never_selected": "Please select the language of the dictionary.",
+      "target_selected": "Please select the target language of the dictionary",
+      "source_selected": "Please select the source language of the dictionary"
+    },
+    "published_status_error": "Language selection needs to be completed.",
     "title_notes": "Make it easy for people to search the dictionary.",
     "published_status_note": "Set dictionary public and private.",
     "description": {
@@ -252,6 +260,12 @@
       "false_description": "No one but you can see your dictionary.",
       "true_title": "Public",
       "true_description": "You allow people to access the dictionary content."
+    },
+    "language": {
+      "title": "Language",
+      "description": "Select the language of your dictionary.",
+      "placeholder_target": "Select a language",
+      "placeholder_source": "Select a language"
     }
   },
   "feature_mockup": {
@@ -326,7 +340,7 @@
     },
     "dictionaries_detail": {
       "title": "Dictionary Detail",
-      "description": "View Details of a Selected Word in the Chosen Dictionary"
+      "description": "Here you can view existing dictionary details, make new additions or edit settings."
     },
     "dictionaries_settings": {
       "title": "Dictionary Settings",

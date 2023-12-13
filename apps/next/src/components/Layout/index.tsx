@@ -2,6 +2,8 @@ import { setToken } from "@/store/auth/slice";
 import { setAcceptLanguage, setAuthToken } from "@/store/baseQuery";
 import { setLanguage } from "@/store/common/slice";
 import { useAppDispatch } from "@/utils/hooks";
+import moment from "moment";
+import "moment/min/locales";
 import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 import Router, { useRouter } from "next/router";
@@ -48,6 +50,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
   useEffect(() => {
     dispatch(setLanguage(i18n.language));
     setAcceptLanguage(i18n.language);
+    moment.locale(i18n.language);
   }, [i18n.language]);
 
   useEffect(() => {

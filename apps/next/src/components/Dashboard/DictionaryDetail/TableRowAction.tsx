@@ -4,6 +4,7 @@ import {
 } from "@/store/dictionarayWord/api";
 import { type DictionaryWord } from "@/store/dictionarayWord/type";
 import { useGetDictionariesMutation } from "@/store/dictionaries/api";
+import { QueryStatus } from "@reduxjs/toolkit/query";
 import { type Row } from "@tanstack/react-table";
 import {
   Button,
@@ -38,10 +39,10 @@ export function DataTableRowActions({ row }: DataTableRowActionsProps) {
   };
 
   useEffect(() => {
-    if (status === "fulfilled") {
+    if (status === QueryStatus.fulfilled) {
       if (data.success) {
         void getDictionaries({});
-        void getDictionaryWordMutation(slug);
+        void getDictionaryWordMutation({ slug });
         toast.success(t("notifications.success"), {
           description: t("notifications.deleted_dictionary"),
         });

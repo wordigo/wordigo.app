@@ -81,6 +81,8 @@
     "button": "haberdar ol!"
   },
   "navbar": {
+    "company": "Ana Sayfa",
+    "product": "Kontrol Paneli",
     "home": "Ana Sayfa",
     "features": "Özellikler",
     "dictionaries": "Sözlükler",
@@ -94,6 +96,10 @@
     "settings": "Ayarlar",
     "logout": "Çıkış yap",
     "get_started": "Haydi Başlayın"
+  },
+  "blogs": {
+    "title": "Bloğumuzda En Son Gelişmeleri Keşfedin",
+    "description": "Wordigo hakkında en son haberler, güncellemeler ve ilham verici içeriklerin yer aldığı özel merkezinize hoş geldiniz. Burada, Wordigo'nun sunduğu yenilikçi özellikleri ve güncellemeleri ilk siz keşfedeceksiniz."
   },
   "search_no_result": {
     "title": "Üzgünüz, aradığınızı bulamadık.",
@@ -205,6 +211,12 @@
   },
   "dictionaries_settings": {
     "link_notes": "Bu bağlantıyla sözlüğünüze erişebilirsiniz.",
+    "languages_switch": {
+      "never_selected": "Lütfen sözlüğün dilini seçin.",
+      "target_selected": "Lütfen sözlüğün hedef dilini seçin.",
+      "source_selected": "Lütfen sözlüğün kaynak dilini seçin."
+    },
+    "published_status_error": "Dil seçimi tamamlanması gerekiyor.",
     "title_notes": "İnsanların sözlüğü aramasını kolaylaştırın.",
     "published_status_note": "Sözlüğü genel veya özel olarak ayarlayın.",
     "description": {
@@ -222,6 +234,12 @@
       "false_description": "Sadece siz sözlüğünüzü görebilirsiniz.",
       "true_title": "Genel",
       "true_description": "İnsanların sözlük içeriğine erişmesine izin verirsiniz."
+    },
+    "language": {
+      "title": "Dil",
+      "description": "Sözlüğünüzün dilini seçin.",
+      "placeholder_target": "Hedef Dil Seçiniz",
+      "placeholder_source": "Kaynak Dil Seçiniz"
     }
   },
   "feature_mockup": {
@@ -312,7 +330,7 @@
     },
     "dictionaries_detail": {
       "title": "Sözlük Detayı",
-      "description": "Seçilen Sözlükteki Belirli Bir Kelimenin Ayrıntılarını Görüntüleyin"
+      "description": "Burada mevcut sözlük detaylarını görüntüleyebilir, yeni eklemeler yapabilir veya ayarları düzenleyebilirsiniz."
     },
     "dictionaries_settings": {
       "title": "Sözlük Ayarları",

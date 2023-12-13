@@ -1,6 +1,6 @@
 import { Separator } from "@wordigo/ui";
+import { useTranslation } from "next-i18next";
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 export interface IProps {
   children?: React.ReactNode;

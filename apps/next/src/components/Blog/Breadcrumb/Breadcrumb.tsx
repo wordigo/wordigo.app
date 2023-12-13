@@ -1,5 +1,5 @@
-import BreadCrumbArrowSvg from "../../../../public/images/blogs/breadCrumbArrow.svg";
-import HomeSvg from "../../../../public/images/blogs/home.svg";
+import BreadCrumbArrowSvg from "/public/images/blogs/breadCrumbArrow.svg";
+import HomeSvg from "/public/images/blogs/home.svg";
 import Link from "next/link";
 
 export default function Breadcrumb({ data }) {
@@ -18,19 +18,18 @@ export default function Breadcrumb({ data }) {
             Home
           </a>
         </li>
-        {data &&
-          data.map(({ id, text, link }) => {
-            return (
-              <Link className="overflow-hidden" key={id} href={link}>
-                <div className="flex items-center overflow-hidden">
-                  <BreadCrumbArrowSvg className="w-2 md:mr-4 md:ml-4 mr-2 ml-2 text-gray-400" />
-                  <div className="ms-1 text-sm font-medium text-gray-700 hover:text-black md:ms-2 dark:text-gray-400 dark:hover:text-white whitespace-nowrap ">
-                    {text}
-                  </div>
+        {data?.map(({ id, text, link }) => {
+          return (
+            <Link className="overflow-hidden" key={id} href={link}>
+              <div className="flex items-center overflow-hidden">
+                <BreadCrumbArrowSvg className="w-2 md:mr-4 md:ml-4 mr-2 ml-2 text-gray-400" />
+                <div className="ms-1 text-sm font-medium text-gray-700 hover:text-black md:ms-2 dark:text-gray-400 dark:hover:text-white whitespace-nowrap ">
+                  {text}
                 </div>
-              </Link>
-            );
-          })}
+              </div>
+            </Link>
+          );
+        })}
       </ol>{" "}
       <BreadCrumbArrowSvg className="w-2 ml-4 mr-4 text-gray-400" />
     </nav>

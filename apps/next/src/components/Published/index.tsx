@@ -5,9 +5,11 @@ import NoDataAnimation from "@/animations/no_data.json";
 import { useGetPublicDictionariesMutation } from "@/store/publicDictionaries/api";
 import { useAppSelector } from "@/utils/hooks";
 import { cn } from "@wordigo/ui/lib/utils";
-import Lottie from "lottie-react";
 import { useTranslation } from "next-i18next";
+import dynamic from "next/dynamic";
 import { Fragment, useEffect, useState } from "react";
+
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 const Published = () => {
   const { t } = useTranslation();

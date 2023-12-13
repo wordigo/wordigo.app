@@ -1,15 +1,10 @@
 import { DataTableRowActions } from "./TableRowAction";
 import { DataTable } from "@/components/DataTable/data-table";
 import { DataTableColumnHeader } from "@/components/DataTable/data-table-column-header";
+import DateTooltip, { IDateMode } from "@/components/UI/DateTooltip";
 import { type Dictionary } from "@/store/dictionaries/type";
 import { type ColumnDef } from "@tanstack/react-table";
-import {
-  Badge,
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@wordigo/ui";
+import { Badge, Tooltip, TooltipContent, TooltipTrigger } from "@wordigo/ui";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import * as React from "react";
@@ -57,21 +52,19 @@ export function DictionariesTableShell({
         ),
         cell: ({ row }) => {
           return (
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger
-                  className="w-[150px] line-clamp-1 hover:underline"
-                  asChild
-                >
-                  <Link href={`/dashboard/dictionaries/${row.original.slug}`}>
-                    {row.getValue("title")}
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent side="top">
-                  <p>{row.getValue("title")}</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger
+                className="w-[150px] line-clamp-1 hover:underline"
+                asChild
+              >
+                <Link href={`/dashboard/dictionaries/${row.original.slug}`}>
+                  {row.getValue("title")}
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent side="top">
+                <p>{row.getValue("title")}</p>
+              </TooltipContent>
+            </Tooltip>
           );
         },
       },
@@ -94,16 +87,16 @@ export function DictionariesTableShell({
         },
       },
       {
-        accessorKey: "time",
+        accessorKey: "createdDate",
         header: ({ column }) => (
           <DataTableColumnHeader column={column} title={t("columns.time")} />
         ),
-        cell: ({ row }) => {
-          const timeValue = row.original.updatedDate;
-          const dateObj = new Date(timeValue);
-          const formattedDate = dateObj.toLocaleString();
-          return <span>{formattedDate}</span>;
-        },
+        cell: ({ row }) => (
+          <DateTooltip
+            date={row.original.createdDate}
+            mode={IDateMode.absolute}
+          />
+        ),
         enableSorting: false,
       },
       {

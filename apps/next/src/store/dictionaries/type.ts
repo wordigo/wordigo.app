@@ -2,6 +2,7 @@ import { type IPagination } from "types/global";
 import { type DictionaryWord } from "../dictionarayWord/type";
 
 export interface Dictionary {
+  description: string;
   id: number;
   title: string;
   slug: string;

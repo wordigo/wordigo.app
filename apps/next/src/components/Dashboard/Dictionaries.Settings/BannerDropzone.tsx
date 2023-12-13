@@ -1,6 +1,7 @@
+import { Images } from "./settings.constant";
 import { Label, toast } from "@wordigo/ui";
 import { useTranslation } from "next-i18next";
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 
 export interface IBannerDropzoneProps {
   image?: string;
@@ -65,44 +66,38 @@ export default function BannerDropzone({
           {t("dictionaries_settings.images.image_notes")}
         </p>
       </span>
-      <label htmlFor="imageUpload" className="cursor-pointer mr-8">
-        <label
-          htmlFor="dropzone-file"
+      <label
+        htmlFor="imageUpload"
+        className="cursor-pointer mr-8 p-[0.5px] border rounded-md border-dashed border-gray-300 dark:border-gray-800 w-[512px] h-[364.09px]"
+      >
+        <div
+          className="flex flex-col items-center justify-center rounded-md py-4 w-full h-full px-6 bg-no-repeat object-cover bg-cover bg-center"
           style={backgroundImageStyle}
-          className="flex flex-col items-center justify-center w-[512px] h-64 border-2 border-input border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
         >
-          <div className="flex flex-col items-center justify-center pt-5 pb-6">
-            <svg
-              className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 20 16"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-              />
-            </svg>
-            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-              <span className="font-semibold">Click to upload</span> or drag and
-              drop
-            </p>
-            <p className="text-xs text-gray-500 dark:text-gray-400">
-              SVG, PNG, JPG or GIF (MAX. 800x400px)
-            </p>
-          </div>
           <input
-            onChange={handleImageChange}
-            id="dropzone-file"
             type="file"
-            className="hidden"
+            id="imageUpload"
             accept="image/jpeg, image/png, image/gif"
+            onChange={handleImageChange}
+            className="sr-only"
           />
-        </label>
+          {!selectedImage && (
+            <Fragment>
+              <section className="border border-gray-300 dark:border-gray-800 dark:bg-[#0208174c] bg-[#ffffff4c] rounded-md w-fit p-[10px] mb-3">
+                <Images.Icon className="dark:text-white border-gray-300 dark:border-gray-800 text-[hsl(var(--muted-foreground))]" />
+              </section>
+              <div className="image-component text-sm dark:bg-[#0208174c] text-[hsl(var(--muted-foreground))] bg-[#ffffff4c] px-2 py-1 rounded-md text-center">
+                <h1>
+                  <span>
+                    {t("dictionaries_settings.images.image_color_title")}
+                  </span>{" "}
+                  {t("dictionaries_settings.images.image_title")}
+                </h1>
+                <h1>{t("dictionaries_settings.images.image_resolution")}</h1>
+              </div>
+            </Fragment>
+          )}
+        </div>
       </label>
     </main>
   );
