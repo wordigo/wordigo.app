@@ -1,6 +1,6 @@
 import MainLayout from "@/components/Layout/MainLayout";
+import { getPostBySlug, postFilePaths } from "@/utils/blog";
 import { XIcon } from "lucide-react";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import { MdContentCopy } from "react-icons/md";
@@ -157,15 +157,26 @@ export default function BlogContent() {
   );
 }
 
-export async function getStaticProps({ locale }: { locale: string }) {
-  return {
-    props: { ...(await serverSideTranslations(locale, ["common", "zod"])) },
-  };
-}
+export const getStaticPaths = () => {
+  console.log(postFilePaths);
 
-export async function getStaticPaths() {
   return {
-    paths: [{ params: { slug: "1" } }],
-    fallback: false,
+    paths: postFilePaths.map((path) => {
+      params: {
+        slug: path;
+      }
+    }),
+    fallback: true,
   };
-}
+};
+
+export const getStaticProps = async ({ params: { slug } }) => {
+  const post = await getPostBySlug(slug, "en");
+  console.log("POST POST POST: ", post);
+
+  return {
+    props: {
+      post,
+    },
+  };
+};
