@@ -67,6 +67,12 @@ export function CreateWord() {
 
   const debouncedWord = useDebounce<string>(form.watch().text, 500);
 
+  const handleAutoTranslate = () => {
+    setAutoTranslate(!autoTranslate);
+    form.setValue("translatedText", "");
+    form.setValue("text", "");
+  };
+
   const [addUserDicWords, { status, isLoading, data }] =
     useCreateWordMutation();
 
@@ -76,23 +82,30 @@ export function CreateWord() {
   useEffect(() => {
     if (debouncedWord.length > 0 && autoTranslate === true) {
       void handleTranslate({
-        query: "bilgi",
+        query: form.watch().text,
         sourceLanguage: "tr",
         targetLanguage: "en",
-      });
-      return form.setValue("translatedText", response?.data?.translatedText)
+      })
+        .then((res) =>
+          form.setValue("translatedText", res?.data?.data?.translatedText)
+        )
+        .catch((error) => {
+          toast.error(t("notifications.warning"), {
+            description: error.message,
+          });
+        });
     }
-  }, [debouncedWord && autoTranslate]);
+  }, [debouncedWord]);
 
   const handleAddWord = (values: CreateWordValues) => {
     console.log(values);
-    // void addUserDicWords({
-    //   text: values.text,
-    //   translatedText: values.translatedText,
-    //   nativeLanguage: "TR",
-    //   targetLanguage: "EN",
-    //   slug: slug,
-    // });
+    void addUserDicWords({
+      text: values.text,
+      translatedText: values.translatedText,
+      nativeLanguage: "TR",
+      targetLanguage: "EN",
+      slug: slug,
+    });
   };
 
   useEffect(() => {
@@ -183,9 +196,7 @@ export function CreateWord() {
                         <p>{t("dic_words.auto_translate")}</p>
                         <Switch
                           checked={autoTranslate}
-                          onCheckedChange={() =>
-                            setAutoTranslate(!autoTranslate)
-                          }
+                          onCheckedChange={() => handleAutoTranslate()}
                         ></Switch>
                       </Label>
                     </div>
