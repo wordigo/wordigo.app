@@ -4,6 +4,8 @@ import {
   useCreateWordMutation,
   useGetDictionaryWordsMutation,
 } from "@/store/dictionarayWord/api";
+import { useGetDictionaryDetailMutation } from "@/store/dictionaries/api";
+import { useAppSelector } from "@/utils/hooks";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { QueryStatus } from "@reduxjs/toolkit/query";
@@ -50,16 +52,23 @@ export function CreateWord() {
   const router = useRouter();
   const { id, slug } = router.query as { id: string; slug: string };
   const [getWordDataMutation] = useGetDictionaryWordsMutation();
-  const [query, setQuery] = useState("");
+
+  const [getDictionaryDetail] = useGetDictionaryDetailMutation();
+  const dictionaryDetail = useAppSelector(
+    (state) => state.dictionary.dictionaryDetail
+  );
+  useEffect(() => {
+    open && void getDictionaryDetail({ slug });
+  }, [open]);
 
   const defaultValues: Partial<CreateWordValues> = {
     text: "",
     translatedText: "",
-    nativeLanguage: "EN",
-    targetLanguage: "TR",
+    nativeLanguage: (dictionaryDetail && dictionaryDetail?.sourceLang?.length > 0) ? dictionaryDetail?.sourceLang : "EN",
+    targetLanguage: (dictionaryDetail && dictionaryDetail?.targetLang?.length > 0) ? dictionaryDetail?.targetLang : "TR",
     slug: slug,
   };
-
+  
   const form = useForm<CreateWordValues>({
     resolver: zodResolver(CreateWordSchema),
     defaultValues,
@@ -99,13 +108,7 @@ export function CreateWord() {
 
   const handleAddWord = (values: CreateWordValues) => {
     console.log(values);
-    void addUserDicWords({
-      text: values.text,
-      translatedText: values.translatedText,
-      nativeLanguage: "TR",
-      targetLanguage: "EN",
-      slug: slug,
-    });
+    
   };
 
   useEffect(() => {
