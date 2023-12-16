@@ -18,10 +18,6 @@ export interface IBlog {
 }
 
 export const POSTS_PATH = path.join(process.cwd(), "posts");
-// console.log(
-//   "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS" +
-//     fs.readdirSync(path.join(POSTS_PATH, "en"))
-// );
 
 export const postFilePaths = fs
   .readdirSync(POSTS_PATH)
