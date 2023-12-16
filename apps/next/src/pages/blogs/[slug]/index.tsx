@@ -3,7 +3,7 @@ import { getPostBySlug, postFilePathsByLocale, type IBlog } from "@/utils/blog";
 import { Button } from "@wordigo/ui";
 import { t } from "i18next";
 import { XIcon } from "lucide-react";
-import { type GetStaticPaths } from "next";
+import { type GetStaticPaths, type InferGetStaticPropsType } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
@@ -14,13 +14,13 @@ import { toast } from "sonner";
 
 export default function BlogDetailPage({
   source,
-  info?,
+  info,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [isBlogSaved, setIsBlogSaved] = useState(true);
 
   const host =
     typeof window !== "undefined" ? window.location.origin : undefined;
-  const url = `${host}/blogs/${info??.slug}`;
+  const url = `${host}/blogs/${info?.slug}`;
 
   const copyToClipboard = () => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
@@ -142,7 +142,7 @@ export const getStaticProps = async ({ locale, params: { slug } }) => {
   return {
     props: {
       source: mdxSource,
-      info?: mdxSource.scope as unknown as IBlog,
+      info: mdxSource.scope as unknown as IBlog,
       ...(await serverSideTranslations(locale, ["common", "zod"])),
     },
   };
