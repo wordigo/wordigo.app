@@ -1,20 +1,33 @@
 import MainLayout from "@/components/Layout/MainLayout";
 import { getPostBySlug, postFilePaths } from "@/utils/blog";
+import { Button } from "@wordigo/ui";
+import { t } from "i18next";
 import { XIcon } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import { MdContentCopy } from "react-icons/md";
+import { toast } from "sonner";
 
 export default function BlogContent({ post }) {
   if (!post) return;
   const [isBlogSaved, setIsBlogSaved] = useState(true);
+
   const { data: blogData } = post;
-  const dummyData = [
-    { id: 1, text: "Blogs", link: "blogs" },
-    { id: 2, text: "Lorem ipsum", link: "#" },
-  ];
+
+  const host =
+    typeof window !== "undefined" ? window.location.origin : undefined;
+  const url = `${host}/blogs/${blogData?.slug}`;
   console.log(blogData);
+  const copyToClipboard = () => {
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      toast.success(t("notifications.copied_link_title"), {
+        description: t("notifications.copied_link"),
+        duration: 3000,
+      });
+      navigator.clipboard.writeText(url);
+    }
+  };
 
   return (
     <MainLayout>
@@ -29,7 +42,14 @@ export default function BlogContent({ post }) {
                   {blogData.date} · 12 min read
                 </div>{" "}
               </div>
-              <div className="bg-gray-600 w-full h-52 rounded-lg overflow-hidden"></div>
+
+              <div className="bg-gray-600 w-full h-52 rounded-lg overflow-hidden relative">
+                <Image
+                  src={`/images/blogs/${blogData.thumbnail}`}
+                  fill
+                  alt={blogData.title}
+                />
+              </div>
               <div className="flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-center">
                 <div className="flex items-center gap-3 pt-2 w-full">
                   <Image
@@ -53,10 +73,15 @@ export default function BlogContent({ post }) {
                       <XIcon className="w-4 dark:fill-white fill-black" />
                       Tweet
                     </div>
-                    <div className=" dark:text-white text-black transition-all py-1 w-fit flex items-center px-2 rounded-[0.625rem]  dark:bg-DarkBackground font-medium border text-sm gap-2 justify-center cursor-pointer whitespace-nowrap hover:bg-slate-200">
+                    <Button
+                      variant="outline"
+                      className="w-fit"
+                      onClick={copyToClipboard}
+                    >
                       <MdContentCopy className="w-4 dark:fill-white fill-black" />
                       Copy Link
-                    </div>
+                    </Button>
+                    {/* dark:text-white text-black transition-all py-1 w-fit flex items-center px-2 rounded-[0.625rem]  dark:bg-DarkBackground font-medium border text-sm gap-2 justify-center cursor-pointer whitespace-nowrap hover:bg-slate-200 */}
                   </div>
                   <div>
                     {isBlogSaved ? (
