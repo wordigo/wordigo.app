@@ -9,23 +9,26 @@ const FeatureSection = () => {
   const { t } = useTranslation();
 
   return (
-    <section id="features">
-      <div className="flex flex-col items-center max-md:px-4">
+    <section
+      id="features"
+      className="flex flex-col gap-y-8 sm:gap-y-9 md:gap-y-10"
+    >
+      <div className="max-w-sm sm:max-w-xl md:max-w-2xl mx-auto flex flex-col items-center gap-y-6 text-center">
         <Badge
           className="text-sm font-medium px-2.5 py-1 w-fit"
           variant="outline"
         >
           {t("features.badge")}
         </Badge>
-        <h2 className="text-4xl font-semibold mt-3 max-lg:text-2xl">
+        <h2 className="font-semibold text-2xl sm:text-3xl md:text-4xl">
           {t("features.heading")}
         </h2>
-        <p className="text-xl mt-5 text-muted-foreground max-lg:text-lg max-lg:mt-4">
+        <p className="sm:text-lg lg:text-xl text-muted-foreground">
           {t("features.description")}
         </p>
       </div>
 
-      <div className="mt-24 grid gap-y-24 max-lg:mt-12 max-lg:gap-y-12">
+      <div className="flex flex-col gap-y-8 sm:gap-y-9 md:gap-y-10 lg:gap-y-11 xl:gap-y-12">
         {featuresConstants.map((item) => (
           <FeatureSection.Item key={item.title} {...item} />
         ))}
@@ -52,7 +55,7 @@ FeatureSection.Item = ({
   );
 
   return (
-    <section className={classes}>
+    <section className={`${classes} `}>
       <div className="flex flex-col justify-center">
         <Icon className="h-6 w-6 p-3 box-content border rounded-[0.625rem]" />
         <h2 className="text-3xl font-semibold mt-6 max-lg:text-2xl">{title}</h2>
@@ -78,7 +81,7 @@ FeatureSection.Item = ({
 
       <div
         className={cn(
-          "lg:min-w-[35rem] h-[25rem] lg:w-[40rem] lg:mt-12 lg:h-[28rem] md:w-[30rem] md:h-[24rem] max-md:w-[340px] max-md:h-[240px] max-lg:mt-12 relative",
+          "lg:min-w-[35rem] h-[25rem] lg:w-[40rem] lg:h-[28rem] md:w-[30rem] md:h-[24rem] max-md:w-[340px] max-md:h-[240px] relative",
           positionLeft ? "xl:mr-24 max-xl:mr-0" : "xl:ml-24 max-xl:ml-0"
         )}
       >
