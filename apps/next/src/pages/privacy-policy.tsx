@@ -2,6 +2,7 @@ import MainLayout from "@/components/Layout/MainLayout";
 import { getPostBySlug } from "@/utils/blog";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { MDXRemote } from "next-mdx-remote";
+import nextI18nextConfig from "~/next-i18next.config";
 
 export const getStaticProps = async ({ locale }) => {
   const { mdxSource } = await getPostBySlug("privacy-policy", locale);
@@ -10,7 +11,7 @@ export const getStaticProps = async ({ locale }) => {
     props: {
       source: mdxSource,
       info: mdxSource.scope,
-      ...(await serverSideTranslations(locale, ["common", "zod"])),
+      ...(await serverSideTranslations(locale, nextI18nextConfig.ns)),
     },
   };
 };

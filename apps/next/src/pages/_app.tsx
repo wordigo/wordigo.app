@@ -16,6 +16,7 @@ import "swiper/css/grid";
 import "swiper/css/pagination";
 import { z } from "zod";
 import { makeZodI18nMap } from "zod-i18n-map";
+import nextI18nextConfig from "~/next-i18next.config";
 import "../styles/globals.css";
 import "../styles/styles.css";
 
@@ -25,7 +26,7 @@ const App = ({
 }: AppProps<{ session: Session; _nextI18Next: { initialLocale: string } }>) => {
   const router = useRouter();
   const { t } = useTranslation();
-  z.setErrorMap(makeZodI18nMap({ t, ns: ["common", "zod"] }));
+  z.setErrorMap(makeZodI18nMap({ t, ns: nextI18nextConfig.ns }));
 
   return (
     <PlausibleProvider domain="wordigo.app">
@@ -44,4 +45,4 @@ const App = ({
   );
 };
 
-export default appWithTranslation(App);
+export default appWithTranslation(App, nextI18nextConfig);

@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/require-await */
-import i18n from "./next-i18next.config.js";
+import nextLocalization from "./next-i18next.config.js";
 
 /** @type {import("next").NextConfig} */
 // @ts-ignore
@@ -59,8 +58,7 @@ const config = {
 
     return config;
   },
-
-  ...i18n,
+  i18n: nextLocalization.i18n,
 };
 
 export default config;

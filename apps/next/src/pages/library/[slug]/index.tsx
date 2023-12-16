@@ -28,6 +28,7 @@ import { Fragment, useMemo } from "react";
 import ReactCountryFlag from "react-country-flag";
 import { toast } from "sonner";
 import { type IDictionary, type IResponse } from "types/global";
+import nextI18nextConfig from "~/next-i18next.config";
 
 const LibraryDetail = ({ dictionary }: { dictionary: IDictionary }) => {
   const { t } = useTranslation();
@@ -320,7 +321,7 @@ export const getServerSideProps = async ({ params, locale }) => {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common", "zod"])),
+      ...(await serverSideTranslations(locale, nextI18nextConfig.ns)),
       dictionary: response.data,
     },
   };

@@ -3,6 +3,7 @@ import Published from "@/components/Published";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { NextSeo } from "next-seo";
 import { type PageProps } from "types/global";
+import nextI18nextConfig from "~/next-i18next.config";
 
 export default function index({ _nextI18Next }: PageProps) {
   return (
@@ -26,7 +27,7 @@ export default function index({ _nextI18Next }: PageProps) {
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common", "zod"])),
+      ...(await serverSideTranslations(locale, nextI18nextConfig.ns)),
     },
   };
 }

@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { toast } from "sonner";
 import { type PageProps } from "types/global";
+import nextI18nextConfig from "~/next-i18next.config";
 
 const signIn = ({ _nextI18Next }: PageProps) => {
   const { t } = useTranslation();
@@ -49,7 +50,7 @@ const signIn = ({ _nextI18Next }: PageProps) => {
 export async function getStaticProps(context: GetServerSidePropsContext) {
   return {
     props: {
-      ...(await serverSideTranslations(context.locale, ["common", "zod"])),
+      ...(await serverSideTranslations(context.locale, nextI18nextConfig.ns)),
     },
   };
 }

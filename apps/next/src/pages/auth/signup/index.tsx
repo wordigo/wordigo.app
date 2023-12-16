@@ -6,11 +6,12 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { NextSeo } from "next-seo";
 import { type PageProps } from "types/global";
+import nextI18nextConfig from "~/next-i18next.config";
 
 export async function getStaticProps(context: GetServerSidePropsContext) {
   return {
     props: {
-      ...(await serverSideTranslations(context.locale, ["common", "zod"])),
+      ...(await serverSideTranslations(context.locale, nextI18nextConfig.ns)),
     },
   };
 }

@@ -4,6 +4,7 @@ import { getAllPosts, type IBlog } from "@/utils/blog";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
+import nextI18nextConfig from "~/next-i18next.config";
 
 export interface IBlogs {
   posts: IBlog[];
@@ -45,7 +46,7 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common", "zod"])),
+      ...(await serverSideTranslations(locale, nextI18nextConfig.ns)),
       posts,
     },
   };

@@ -4,8 +4,8 @@ module.exports = {
   i18n: {
     defaultLocale: "en",
     locales: ["en", "tr"],
-    localePath: path.resolve("./public/static/locales"),
-    reloadOnPrerender: true,
   },
-  react: { useSuspense: false },
+  reloadOnPrerender: true,
+  localePath: path.resolve("./public/static/locales"),
+  ns: ["common", "zod"],
 };

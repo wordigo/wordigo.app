@@ -13,6 +13,7 @@ import { useState } from "react";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import { MdContentCopy } from "react-icons/md";
 import { toast } from "sonner";
+import nextI18nextConfig from "~/next-i18next.config";
 
 export default function BlogDetailPage({
   source,
@@ -139,7 +140,7 @@ export const getStaticProps = async ({ locale, params: { slug } }) => {
     props: {
       source: mdxSource,
       info: mdxSource.scope as unknown as IBlog,
-      ...(await serverSideTranslations(locale, ["common", "zod"])),
+      ...(await serverSideTranslations(locale, nextI18nextConfig.ns)),
     },
   };
 };

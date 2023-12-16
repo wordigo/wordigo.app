@@ -4,15 +4,15 @@ import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
 import { useGetDictionaryDetailMutation } from "@/store/dictionaries/api";
 import { useAppSelector } from "@/utils/hooks";
 import { Skeleton } from "@wordigo/ui";
-import { type GetStaticPaths } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import { Fragment, useEffect } from "react";
+import nextI18nextConfig from "~/next-i18next.config";
 
-export async function getStaticProps({ locale }: { locale: string }) {
+export async function getServerSideProps({ locale }: { locale: string }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common", "zod"])),
+      ...(await serverSideTranslations(locale, nextI18nextConfig.ns)),
     },
   };
 }
@@ -58,10 +58,3 @@ DictionariesSettings.Layout = () => {
 };
 
 export default DictionariesSettings.Layout;
-
-export const getStaticPaths: GetStaticPaths<{ slug: string }> = () => {
-  return {
-    paths: [],
-    fallback: "blocking",
-  };
-};

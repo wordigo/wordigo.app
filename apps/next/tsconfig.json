@@ -5,6 +5,7 @@
     "strict": false,
     "paths": {
       "@/*": ["./src/*"],
+      "~/*": ["./*"],
       "images/*": ["./public/images/*"]
     }
   },

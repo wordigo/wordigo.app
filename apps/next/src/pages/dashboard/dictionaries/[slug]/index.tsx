@@ -7,15 +7,15 @@ import { useGetDictionaryWordsMutation } from "@/store/dictionarayWord/api";
 import { type GetUserDictionaryWordsType } from "@/store/dictionarayWord/type";
 import { useAppSelector } from "@/utils/hooks";
 import { QueryStatus } from "@reduxjs/toolkit/query";
-import { type GetStaticPaths } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import nextI18nextConfig from "~/next-i18next.config";
 
-export async function getStaticProps({ locale }: { locale: string }) {
+export async function getServerSideProps({ locale }: { locale: string }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common", "zod"])),
+      ...(await serverSideTranslations(locale, nextI18nextConfig.ns)),
     },
   };
 }
@@ -58,10 +58,3 @@ DictionaryWordPage.Layout = () => {
 };
 
 export default DictionaryWordPage.Layout;
-
-export const getStaticPaths: GetStaticPaths<{ slug: string }> = () => {
-  return {
-    paths: [], //indicates that no page needs be created at build time
-    fallback: "blocking", //indicates the type of fallback
-  };
-};
