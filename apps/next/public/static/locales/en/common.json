@@ -230,7 +230,8 @@
     "wordPlaceholder": "Enter a word",
     "translatedLabel": "Translated word",
     "translatedPlaceholder": "Enter a translated word",
-    "copyWord": "Copy"
+    "copyWord": "Copy",
+    "auto_translate": "Auto Translate"
   },
   "privacy_policy": {
     "title": "Privacy Policy"

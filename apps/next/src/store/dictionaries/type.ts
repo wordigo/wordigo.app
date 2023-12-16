@@ -1,5 +1,5 @@
-import { type IPagination } from "types/global";
 import { type DictionaryWord } from "../dictionarayWord/type";
+import { type IPagination } from "types/global";
 
 export interface Dictionary {
   description: string;
@@ -9,6 +9,8 @@ export interface Dictionary {
   updatedDate: string;
   published: boolean;
   userWord?: DictionaryWord[];
+  sourceLang?: string;
+  targetLang?: string;
 }
 
 export interface GetDictionaryIdType {

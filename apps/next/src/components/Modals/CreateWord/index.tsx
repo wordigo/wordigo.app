@@ -1,8 +1,11 @@
 import CButton from "@/components/UI/Button";
+import { useTranslateWordMutation } from "@/store/common/api";
 import {
   useCreateWordMutation,
   useGetDictionaryWordsMutation,
 } from "@/store/dictionarayWord/api";
+import { useGetDictionaryDetailMutation } from "@/store/dictionaries/api";
+import { useAppSelector } from "@/utils/hooks";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { QueryStatus } from "@reduxjs/toolkit/query";
@@ -21,6 +24,7 @@ import {
   FormMessage,
   Input,
   Label,
+  Switch,
 } from "@wordigo/ui";
 import { PlusIcon, Table2Icon, X } from "lucide-react";
 import { useTranslation } from "next-i18next";
@@ -28,6 +32,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { useDebounce } from "usehooks-ts";
 import { z } from "zod";
 
 const CreateWordSchema = z.object({
@@ -35,25 +40,39 @@ const CreateWordSchema = z.object({
   translatedText: z.string().nonempty(),
   nativeLanguage: z.string().nonempty(),
   targetLanguage: z.string().nonempty(),
-  dictionaryId: z.number(),
+  slug: z.string(),
 });
 
 type CreateWordValues = z.infer<typeof CreateWordSchema>;
 
 export function CreateWord() {
+  const [autoTranslate, setAutoTranslate] = useState(false);
   const [open, setOpen] = useState(false);
   const { t } = useTranslation();
-
   const router = useRouter();
-  const { id } = router.query as { id: string };
+  const { id, slug } = router.query as { id: string; slug: string };
   const [getWordDataMutation] = useGetDictionaryWordsMutation();
+
+  const [getDictionaryDetail] = useGetDictionaryDetailMutation();
+  const dictionaryDetail = useAppSelector(
+    (state) => state.dictionary.dictionaryDetail
+  );
+  useEffect(() => {
+    open && void getDictionaryDetail({ slug });
+  }, [open]);
 
   const defaultValues: Partial<CreateWordValues> = {
     text: "",
     translatedText: "",
-    nativeLanguage: "EN",
-    targetLanguage: "TR",
-    dictionaryId: Number(id),
+    nativeLanguage:
+      dictionaryDetail && dictionaryDetail?.sourceLang?.length > 0
+        ? dictionaryDetail?.sourceLang
+        : "EN",
+    targetLanguage:
+      dictionaryDetail && dictionaryDetail?.targetLang?.length > 0
+        ? dictionaryDetail?.targetLang
+        : "TR",
+    slug: slug,
   };
 
   const form = useForm<CreateWordValues>({
@@ -61,17 +80,40 @@ export function CreateWord() {
     defaultValues,
   });
 
+  const debouncedWord = useDebounce<string>(form.watch().text, 500);
+
+  const handleAutoTranslate = () => {
+    setAutoTranslate(!autoTranslate);
+    form.setValue("translatedText", "");
+    form.setValue("text", "");
+  };
+
   const [addUserDicWords, { status, isLoading, data }] =
     useCreateWordMutation();
 
+  const [handleTranslate, { data: response, isLoading: translateWordLoading }] =
+    useTranslateWordMutation();
+
+  useEffect(() => {
+    if (debouncedWord.length > 0 && autoTranslate === true) {
+      void handleTranslate({
+        query: form.watch().text,
+        sourceLanguage: "tr",
+        targetLanguage: "en",
+      })
+        .then((res) =>
+          form.setValue("translatedText", res?.data?.data?.translatedText)
+        )
+        .catch((error) => {
+          toast.error(t("notifications.warning"), {
+            description: error.message,
+          });
+        });
+    }
+  }, [debouncedWord]);
+
   const handleAddWord = (values: CreateWordValues) => {
-    void addUserDicWords({
-      text: values.text,
-      translatedText: values.translatedText,
-      nativeLanguage: "TR",
-      targetLanguage: "EN",
-      dictionaryId: values.dictionaryId,
-    });
+    console.log(values);
   };
 
   useEffect(() => {
@@ -156,7 +198,19 @@ export function CreateWord() {
                 name="translatedText"
                 render={({ field }) => (
                   <FormItem className="grid gap-1">
-                    <Label>{t("dic_words.translatedLabel")} </Label>
+                    <div className="flex items-center justify-between ali w-full">
+                      <Label>{t("dic_words.translatedLabel")} </Label>
+                      <Label className="flex items-center gap-1">
+                        <p className="text-[12px]">
+                          {t("dic_words.auto_translate")}
+                        </p>
+                        <Switch
+                          style={{ transform: "scale(0.8)" }}
+                          checked={autoTranslate}
+                          onCheckedChange={() => handleAutoTranslate()}
+                        ></Switch>
+                      </Label>
+                    </div>
                     <FormControl>
                       <Input
                         {...field}
@@ -165,13 +219,15 @@ export function CreateWord() {
                         autoCapitalize="none"
                         autoComplete="text"
                         autoCorrect="off"
+                        disabled={autoTranslate}
                       />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              <DialogFooter>
+
+              <DialogFooter className="w-full items-center">
                 <CButton loading={isLoading} type="submit">
                   {t("save")}
                 </CButton>
