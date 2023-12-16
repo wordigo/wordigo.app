@@ -200,11 +200,12 @@ export function CreateWord() {
                   <FormItem className="grid gap-1">
                     <div className="flex items-center justify-between ali w-full">
                       <Label>{t("dic_words.translatedLabel")} </Label>
-                      <Label className="flex items-center gap-2">
+                      <Label className="flex items-center gap-1">
                         <p className="text-[12px]">
                           {t("dic_words.auto_translate")}
                         </p>
                         <Switch
+                          style={{ transform: "scale(0.8)" }}
                           checked={autoTranslate}
                           onCheckedChange={() => handleAutoTranslate()}
                         ></Switch>
