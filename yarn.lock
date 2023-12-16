@@ -1290,10 +1290,8 @@
   dependencies:
     glob "7.1.7"
 
-"@next/swc-darwin-arm64@13.4.12":
+"@next/swc-win32-x64-msvc@13.4.12":
   version "13.4.12"
-  resolved "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-13.4.12.tgz"
-  integrity sha512-deUrbCXTMZ6ZhbOoloqecnUeNpUOupi8SE2tx4jPfNS9uyUR9zK4iXBvH65opVcA/9F5I/p8vDXSYbUlbmBjZg==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -2563,11 +2561,11 @@
     satori "0.10.2"
     yoga-wasm-web "0.3.3"
 
-"@wordigo/common@*", "@wordigo/common@file:/Users/yusufgunes/Desktop/github/wordigo/wordigo.app/packages/common":
+"@wordigo/common@*", "@wordigo/common@file:C:\\Users\\omero\\Desktop\\folders\\devThings\\wordigo.app\\packages\\common":
   version "0.1.0"
   resolved "file:packages/common"
 
-"@wordigo/eslint-config@*", "@wordigo/eslint-config@file:/Users/yusufgunes/Desktop/github/wordigo/wordigo.app/packages/config/eslint":
+"@wordigo/eslint-config@*", "@wordigo/eslint-config@file:C:\\Users\\omero\\Desktop\\folders\\devThings\\wordigo.app\\packages\\config\\eslint":
   version "0.1.0"
   resolved "file:packages/config/eslint"
   dependencies:
@@ -2579,7 +2577,7 @@
     eslint-config-turbo "^1.8.8"
     eslint-plugin-react "7.32.2"
 
-"@wordigo/nextjs@file:/Users/yusufgunes/Desktop/github/wordigo/wordigo.app/apps/next":
+"@wordigo/nextjs@file:C:\\Users\\omero\\Desktop\\folders\\devThings\\wordigo.app\\apps\\next":
   version "0.1.0"
   resolved "file:apps/next"
   dependencies:
@@ -2606,6 +2604,7 @@
     i18next "^23.2.7"
     lottie-react "^2.4.0"
     lucide-react "^0.144.0"
+    moment "^2.29.4"
     next "^13.3.0"
     next-auth "^4.22.3"
     next-i18next "^14.0.0"
@@ -2635,11 +2634,11 @@
     zod-i18n-map "^2.14.0"
     zustand "^4.3.9"
 
-"@wordigo/tailwind-config@*", "@wordigo/tailwind-config@^0.1.0", "@wordigo/tailwind-config@file:/Users/yusufgunes/Desktop/github/wordigo/wordigo.app/packages/config/tailwind":
+"@wordigo/tailwind-config@*", "@wordigo/tailwind-config@^0.1.0", "@wordigo/tailwind-config@file:C:\\Users\\omero\\Desktop\\folders\\devThings\\wordigo.app\\packages\\config\\tailwind":
   version "0.1.0"
   resolved "file:packages/config/tailwind"
 
-"@wordigo/ui@*", "@wordigo/ui@file:/Users/yusufgunes/Desktop/github/wordigo/wordigo.app/packages/ui":
+"@wordigo/ui@*", "@wordigo/ui@file:C:\\Users\\omero\\Desktop\\folders\\devThings\\wordigo.app\\packages\\ui":
   version "0.0.0"
   resolved "file:packages/ui"
   dependencies:
@@ -8441,7 +8440,7 @@ tsconfig-paths@^3.14.2:
     minimist "^1.2.6"
     strip-bom "^3.0.0"
 
-tsconfig@*, "tsconfig@file:/Users/yusufgunes/Desktop/github/wordigo/wordigo.app/packages/tsconfig":
+tsconfig@*, "tsconfig@file:C:\\Users\\omero\\Desktop\\folders\\devThings\\wordigo.app\\packages\\tsconfig":
   version "0.0.0"
   resolved "file:packages/tsconfig"
 
@@ -8465,10 +8464,10 @@ tsutils@^3.21.0:
   dependencies:
     tslib "^1.8.1"
 
-turbo-darwin-arm64@1.10.16:
+turbo-windows-64@1.10.16:
   version "1.10.16"
-  resolved "https://registry.npmjs.org/turbo-darwin-arm64/-/turbo-darwin-arm64-1.10.16.tgz"
-  integrity sha512-jqGpFZipIivkRp/i+jnL8npX0VssE6IAVNKtu573LXtssZdV/S+fRGYA16tI46xJGxSAivrZ/IcgZrV6Jk80bw==
+  resolved "https://registry.npmjs.org/turbo-windows-64/-/turbo-windows-64-1.10.16.tgz"
+  integrity sha512-+jsf68krs0N66FfC4/zZvioUap/Tq3sPFumnMV+EBo8jFdqs4yehd6+MxIwYTjSQLIcpH8KoNMB0gQYhJRLZzw==
 
 turbo@^1.10.16:
   version "1.10.16"
