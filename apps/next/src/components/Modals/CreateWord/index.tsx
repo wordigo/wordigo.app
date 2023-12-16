@@ -64,11 +64,17 @@ export function CreateWord() {
   const defaultValues: Partial<CreateWordValues> = {
     text: "",
     translatedText: "",
-    nativeLanguage: (dictionaryDetail && dictionaryDetail?.sourceLang?.length > 0) ? dictionaryDetail?.sourceLang : "EN",
-    targetLanguage: (dictionaryDetail && dictionaryDetail?.targetLang?.length > 0) ? dictionaryDetail?.targetLang : "TR",
+    nativeLanguage:
+      dictionaryDetail && dictionaryDetail?.sourceLang?.length > 0
+        ? dictionaryDetail?.sourceLang
+        : "EN",
+    targetLanguage:
+      dictionaryDetail && dictionaryDetail?.targetLang?.length > 0
+        ? dictionaryDetail?.targetLang
+        : "TR",
     slug: slug,
   };
-  
+
   const form = useForm<CreateWordValues>({
     resolver: zodResolver(CreateWordSchema),
     defaultValues,
@@ -108,7 +114,6 @@ export function CreateWord() {
 
   const handleAddWord = (values: CreateWordValues) => {
     console.log(values);
-    
   };
 
   useEffect(() => {
@@ -196,7 +201,9 @@ export function CreateWord() {
                     <div className="flex items-center justify-between ali w-full">
                       <Label>{t("dic_words.translatedLabel")} </Label>
                       <Label className="flex items-center gap-2">
-                        <p>{t("dic_words.auto_translate")}</p>
+                        <p className="text-[12px]">
+                          {t("dic_words.auto_translate")}
+                        </p>
                         <Switch
                           checked={autoTranslate}
                           onCheckedChange={() => handleAutoTranslate()}
