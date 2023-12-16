@@ -3,7 +3,7 @@ import { getPostBySlug, postFilePathsByLocale, type IBlog } from "@/utils/blog";
 import { Button } from "@wordigo/ui";
 import { t } from "i18next";
 import { XIcon } from "lucide-react";
-import { type GetStaticPaths, type InferGetStaticPropsType } from "next";
+import { type GetStaticPaths } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
@@ -14,13 +14,13 @@ import { toast } from "sonner";
 
 export default function BlogDetailPage({
   source,
-  info,
+  info?,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [isBlogSaved, setIsBlogSaved] = useState(true);
 
   const host =
     typeof window !== "undefined" ? window.location.origin : undefined;
-  const url = `${host}/blogs/${info?.slug}`;
+  const url = `${host}/blogs/${info??.slug}`;
 
   const copyToClipboard = () => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
@@ -39,30 +39,30 @@ export default function BlogDetailPage({
           <div className="flex justify-between w-full mt-2 md:mt-5">
             <div className=" w-full flex flex-col gap-2 md:gap-6">
               <div className="flex w-full gap-2 md:gap-0 items-center justify-between">
-                <div className="text-xl md:text-3xl">{info.title}</div>{" "}
+                <div className="text-xl md:text-3xl">{info?.title}</div>{" "}
                 <div className=" py-1 w-fit flex items-center px-2 rounded-[0.625rem] text-xs font-medium border justify-center whitespace-nowrap">
-                  {info.date} · 12 min read
+                  {info?.date} · 12 min read
                 </div>{" "}
               </div>
 
               <div className="bg-gray-600 w-full h-52 rounded-lg overflow-hidden relative">
                 <Image
-                  src={`/images/blogs/${info.thumbnail}`}
+                  src={`/images/blogs/${info?.thumbnail}`}
                   fill
-                  alt={info.title}
+                  alt={info?.title}
                 />
               </div>
               <div className="flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-center">
                 <div className="flex items-center gap-3 pt-2 w-full">
                   <Image
-                    src={info.avatar}
+                    src={info?.avatar}
                     alt="avatar"
                     width={50}
                     height={50}
                     className="rounded-full"
                   />
                   <div>
-                    <div className="text-lg font-normal">{info.author}</div>
+                    <div className="text-lg font-normal">{info?.author}</div>
                     <div className="font-normal py-1 w-fit flex items-center px-2 rounded-[0.625rem] text-xs  border justify-center">
                       Frontend Dev.
                     </div>
@@ -142,7 +142,7 @@ export const getStaticProps = async ({ locale, params: { slug } }) => {
   return {
     props: {
       source: mdxSource,
-      info: mdxSource.scope as unknown as IBlog,
+      info?: mdxSource.scope as unknown as IBlog,
       ...(await serverSideTranslations(locale, ["common", "zod"])),
     },
   };
