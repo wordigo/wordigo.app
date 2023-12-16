@@ -61,7 +61,7 @@ export default function HomeHeader() {
               <div className="flex gap-y-6 gap-x-3 items-center">
                 <ThemeMode showLabel={false} className="!h-9 !px-3 !py-2" />
                 <ChangeLanguage className="!h-9 !px-3 !py-2" />
-                <div className="w-[1px] !h-9 bg-gray-200 dark:bg-gray-800"></div>
+                <Separator className="h-9" orientation="vertical" />
                 <Link
                   href="/auth/signup"
                   className={cn(

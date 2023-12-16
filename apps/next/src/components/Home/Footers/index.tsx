@@ -1,4 +1,5 @@
 import ChangeLanguage from "@/components/Layout/MainLayout/ChangeLanguage";
+import { Separator } from "@wordigo/ui";
 import { GithubIcon, LinkedinIcon, TwitterIcon } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
@@ -18,7 +19,7 @@ export default function Footer() {
 
   return (
     <footer aria-labelledby="footer" id="footer" className="container">
-      <div className="w-full border-t"></div>
+      <Separator />
 
       <section className="py-10 sm:py-[52px] md:py-16 lg:py-20 flex flex-col sm:flex-row sm:flex-wrap sm:justify-between gap-x-[60px] gap-y-10">
         <div className="flex flex-col gap-y-4 sm:gap-y-5 md:gap-y-6 lg:gap-y-7 xl:gap-y-8">
@@ -190,7 +191,7 @@ export default function Footer() {
         </div>
       </section>
 
-      <div className="w-full border-t"></div>
+      <Separator />
 
       <section className="flex flex-col-reverse sm:flex-row sm:justify-between md:items-center gap-[18px] py-10 sm:lg:py-11 md:py-12">
         <ul

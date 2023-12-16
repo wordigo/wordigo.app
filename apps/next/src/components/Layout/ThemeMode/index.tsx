@@ -48,7 +48,10 @@ export default function ThemeMode({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className={cn("w-fit px-2 !h-7", className)}>
+        <Button
+          variant="outline"
+          className={cn("w-fit px-2 !h-7 bg-transparent", className)}
+        >
           <span className={cn("text-xs", showLabel ? "mr-1" : "")}>
             {getThemeIcon()}
           </span>

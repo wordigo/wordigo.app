@@ -11,7 +11,7 @@ const MainLayout: React.FC<PropsWithChildren<{ showBanner?: boolean }>> = ({
     <>
       <div className="h-screen w-full absolute top-0 left-0 -z-10">
         <svg
-          className="opacity-60 dark:opacity-[0.15]"
+          className="opacity-60 dark:opacity-[0.15] dark:!bg-none"
           width="100%"
           height="100%"
           viewBox="0 0 1440 820"
