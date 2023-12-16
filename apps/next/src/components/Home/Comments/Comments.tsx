@@ -23,8 +23,12 @@ const Comments = () => {
           slidesPerView: 2,
           spaceBetween: 40,
         },
-        1440: {
+        1024: {
           slidesPerView: 3,
+          spaceBetween: 50,
+        },
+        1440: {
+          slidesPerView: 4,
           spaceBetween: 32,
         },
       }}
@@ -47,15 +51,15 @@ Comments.Item = ({
   userDescription,
 }: IComment) => {
   return (
-    <div className="border p-12 rounded-2xl w-full flex flex-col justify-between h-[450px]">
+    <div className="border p-8 rounded-2xl w-full flex flex-col justify-between h-[450px]">
       <div className="flex flex-col">
         <div className="grid grid-flow-col gap-x-1 w-fit">
           {[1, 2, 3, 4, 5].map((index) => (
-            <Star className="h-5 w-5" fill="currentColor" key={index} />
+            <Star className="h-4 w-4" fill="currentColor" key={index} />
           ))}
         </div>
-        <span className="text-2xl font-semibold mt-4">{title}</span>
-        <span className="text-base mt-4 text-muted-foreground w-full line-clamp-6 md:line-clamp-7">
+        <span className="text-xl font-semibold mt-4">{title}</span>
+        <span className="text-base  mt-4 text-muted-foreground w-full line-clamp-6 md:line-clamp-7">
           {description}
         </span>
       </div>
@@ -70,7 +74,7 @@ Comments.Item = ({
         </div>
         <div className="flex flex-col justify-center">
           <span className="text-sm font-semibold">{name}</span>
-          <span className="text-xs md:text-sm text-muted-foreground">
+          <span className="text-xs md:text-sm text-muted-foreground overflow-hidden line-clamp-1">
             {userDescription}
           </span>
         </div>
