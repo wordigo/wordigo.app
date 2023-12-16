@@ -1,12 +1,14 @@
 import MainLayout from "@/components/Layout/MainLayout";
-import { getPostBySlug, postFilePathsByLocale, type IBlog } from "@/utils/blog";
+import { POSTS_PATH, getPostBySlug, type IBlog } from "@/utils/blog";
 import { Button } from "@wordigo/ui";
+import fs from "fs";
 import { t } from "i18next";
 import { XIcon } from "lucide-react";
 import { type GetStaticPaths, type InferGetStaticPropsType } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
+import path from "path";
 import { useState } from "react";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import { MdContentCopy } from "react-icons/md";
@@ -111,28 +113,22 @@ export default function BlogDetailPage({
 }
 
 export const getStaticPaths = (() => {
-  let paths = [];
+  const locales = ["en", "tr"];
+  const paths = [];
 
-  ["en", "tr"].forEach((lang) => {
-    const posts = postFilePathsByLocale(lang);
-    paths = [
-      ...paths,
-      ...posts.map((filePath) => ({
-        params: {
-          locale: lang,
-          slug: filePath
-            .replace(/^.*[\\\/]/, "")
-            .split(".")
-            .slice(0, -1)
-            .join("."),
-        },
-      })),
-    ];
-  });
+  for (const locale of locales) {
+    const postPaths = fs
+      .readdirSync(path.join(POSTS_PATH, locale))
+      .filter((path) => /\.mdx?$/.test(path))
+      .map((path) => path.replace(/\.mdx?$/, ""))
+      .map((slug) => ({ params: { slug }, locale }));
+
+    paths.push(...postPaths);
+  }
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 }) satisfies GetStaticPaths;
 
