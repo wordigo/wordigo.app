@@ -10,7 +10,7 @@ const MainLayout: React.FC<PropsWithChildren<{ showBanner?: boolean }>> = ({
   return (
     <>
       <div
-        className="h-screen w-full absolute top-0 left-0 -z-10"
+        className="h-screen w-full absolute top-0 left-0 -z-10 dark:!bg-none"
         style={{
           background:
             "radial-gradient(137.05% 100% at 50% 0%, #FFD9E7 3.59%, #ECFCFF 34.79%, #FFFFFF 100%)",

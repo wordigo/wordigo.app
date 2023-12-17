@@ -200,7 +200,7 @@ export default function Footer() {
         >
           <li>
             <Link
-              href="/post/privacy-policy"
+              href="/privacy-policy"
               passHref
               className="transition-colors hover:dark:text-white hover:text-black/50"
             >
