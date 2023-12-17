@@ -9,7 +9,13 @@ const MainLayout: React.FC<PropsWithChildren<{ showBanner?: boolean }>> = ({
 }) => {
   return (
     <>
-      <div className="h-screen w-full absolute top-0 left-0 -z-10">
+      <div
+        className="h-screen w-full absolute top-0 left-0 -z-10"
+        style={{
+          background:
+            "radial-gradient(137.05% 100% at 50% 0%, #FFD9E7 3.59%, #ECFCFF 34.79%, #FFFFFF 100%)",
+        }}
+      >
         <svg
           className="opacity-60 dark:opacity-[0.15] dark:!bg-none"
           width="100%"
@@ -17,10 +23,6 @@ const MainLayout: React.FC<PropsWithChildren<{ showBanner?: boolean }>> = ({
           viewBox="0 0 1440 820"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          style={{
-            background:
-              "radial-gradient(137.05% 100% at 50% 0%, #FFD9E7 5.59%, #ECFCFF 44.79%, #FFFFFF 100%)",
-          }}
         >
           <mask
             id="mask0_343_6630"
