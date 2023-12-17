@@ -1,12 +1,12 @@
-import MainLayout from "@/components/Layout/MainLayout";
 import {
   ActionsLoader,
   DetailLoader,
   WordsItemLoader,
-} from "@/components/Published/Library/Library.loaders";
-import DictionaryRating from "@/components/Published/Rating";
-import SocialShare from "@/components/Published/SocialShare";
-import ArrowRightLeft from "@/components/Published/WordsPage/ArrowRightLeft";
+} from "@/components/Company/Published/Library/Library.loaders";
+import DictionaryRating from "@/components/Company/Published/Rating";
+import SocialShare from "@/components/Company/Published/SocialShare";
+import ArrowRightLeft from "@/components/Company/Published/WordsPage/ArrowRightLeft";
+import MainLayout from "@/components/Layout/MainLayout";
 import DateTooltip, { IDateMode } from "@/components/UI/DateTooltip";
 import { TextToSpeechProvider, useTextToSpeech } from "@/contexts/textToSpeech";
 import { axiosBaseQuery } from "@/store/baseQuery";

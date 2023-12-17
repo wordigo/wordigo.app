@@ -1,7 +1,7 @@
-import { DictionariesTableShell } from "@/components/Dashboard/Dictionaries/DictionariesTable";
-import DashboardLayout from "@/components/Layout/Dashboard";
-import DashboardHeaders from "@/components/Layout/Dashboard/Headers";
-import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
+import DashboardLayout from "@/components/Layout/Product";
+import DashboardHeaders from "@/components/Layout/Product/Headers";
+import { DashboardShell } from "@/components/Layout/Product/Shell";
+import { DictionariesTableShell } from "@/components/Product/Dictionaries/DictionariesTable";
 import { useGetDictionariesMutation } from "@/store/dictionaries/api";
 import { type GetUserDictionariesType } from "@/store/dictionaries/type";
 import { useAppSelector } from "@/utils/hooks";

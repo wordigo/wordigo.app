@@ -1,6 +1,6 @@
 import { DataTableLoading } from "./data-table-loading";
-import { DataTablePagination } from "@/components/DataTable/data-table-pagination";
-import { DataTableToolbar } from "@/components/DataTable/data-table-toolbar";
+import { DataTablePagination } from "@/components/UI/DataTable/data-table-pagination";
+import { DataTableToolbar } from "@/components/UI/DataTable/data-table-toolbar";
 import {
   flexRender,
   getCoreRowModel,

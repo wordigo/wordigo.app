@@ -1,19 +1,13 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "globalDependencies": [
-    "**/.env"
-  ],
+  "globalDependencies": ["**/.env"],
   "pipeline": {
     "db:generate": {
-      "inputs": [
-        "prisma/schema.prisma"
-      ],
+      "inputs": ["prisma/schema.prisma"],
       "cache": false
     },
     "db:push": {
-      "inputs": [
-        "prisma/schema.prisma"
-      ],
+      "inputs": ["prisma/schema.prisma"],
       "cache": false
     },
     "dev": {
@@ -21,14 +15,8 @@
       "cache": false
     },
     "build": {
-      "dependsOn": [
-        "^build",
-        "^db:generate"
-      ],
-      "outputs": [
-        ".next/**",
-        ".expo/**"
-      ]
+      "dependsOn": ["^build", "^db:generate"],
+      "outputs": [".next/**", ".expo/**"]
     },
     "lint": {},
     "lint:fix": {},
@@ -39,24 +27,9 @@
       "cache": false
     },
     "type-check": {
-      "dependsOn": [
-        "^db:generate"
-      ],
+      "dependsOn": ["^db:generate"],
       "cache": false
     }
   },
-  "globalEnv": [
-    "CI",
-    "PLASMO_PUBLIC_BACKEND_URL",
-    "NEXT_PUBLIC_WORDIGO_BACKEND_URL",
-    "NODE_ENV",
-    "SKIP_ENV_VALIDATION",
-    "VERCEL_URL",
-    "GOOGLE_OAUTH2_ID",
-    "GOOGLE_OAUTH2_SECRET",
-    "NEXTAUTH_SECRET",
-    "PLASMO_PUBLIC_SITE_URL",
-    "NEXTAUTH_URL",
-    "NEXT_PUBLIC_GA_TRACKING_ID"
-  ]
+  "globalEnv": ["CI", "PLASMO_PUBLIC_BACKEND_URL", "NEXT_PUBLIC_WORDIGO_BACKEND_URL", "NODE_ENV", "SKIP_ENV_VALIDATION", "VERCEL_URL", "GOOGLE_OAUTH2_ID", "GOOGLE_OAUTH2_SECRET", "NEXTAUTH_SECRET", "PLASMO_PUBLIC_SITE_URL", "NEXTAUTH_URL", "NEXT_PUBLIC_GA_TRACKING_ID", "NEXT_PUBLIC_SITE_URL", "NEXT_PUBLIC_VERCEL_URL"]
 }

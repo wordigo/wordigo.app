@@ -1,10 +1,7 @@
 import { DataTableToolbar } from "./data-table-toolbar";
-import Published from "@/components/Published/PublishedItem";
+import Published from "@/components/Company/Published/PublishedItem";
 import { type IPublished } from "@/components/Published/published.constants";
 import {
-  type ColumnFiltersState,
-  type SortingState,
-  type VisibilityState,
   getCoreRowModel,
   getFacetedRowModel,
   getFacetedUniqueValues,
@@ -12,6 +9,9 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
+  type ColumnFiltersState,
+  type SortingState,
+  type VisibilityState,
 } from "@tanstack/react-table";
 import * as React from "react";
 

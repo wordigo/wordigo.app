@@ -1,6 +1,6 @@
 import Banner from "./Banner";
 import HomeHeader from "./Header";
-import Footer from "@/components/Home/Footers";
+import Footer from "@/components/Layout/MainLayout/Footer";
 import { type PropsWithChildren } from "react";
 
 const MainLayout: React.FC<PropsWithChildren<{ showBanner?: boolean }>> = ({

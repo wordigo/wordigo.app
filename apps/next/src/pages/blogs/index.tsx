@@ -1,4 +1,4 @@
-import BlogCard from "@/components/Blog/Card/Card";
+import BlogCard from "@/components/Company/Blog/Card/Card";
 import MainLayout from "@/components/Layout/MainLayout";
 import { getAllPosts, type IBlog } from "@/utils/blog";
 import { useTranslation } from "next-i18next";

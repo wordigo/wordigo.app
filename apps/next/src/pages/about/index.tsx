@@ -1,6 +1,6 @@
-import About from "@/components/About";
-import Contact from "@/components/About/Contact";
-import Team from "@/components/About/Team/team";
+import About from "@/components/Company/About";
+import Contact from "@/components/Company/About/Contact";
+import Team from "@/components/Company/About/Team/team";
 import MainLayout from "@/components/Layout/MainLayout";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { NextSeo } from "next-seo";

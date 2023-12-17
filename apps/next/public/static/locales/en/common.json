@@ -185,6 +185,9 @@
     "title": "Discover the Latest Innovations on Our Blog",
     "description": "Welcome to your exclusive hub where the latest news, updates, and inspiring content about Wordigo await you. Here, you'll be the first to discover the innovative features and updates that Wordigo offers"
   },
+  "terms_conditions": {
+    "title": "Terms and Conditions"
+  },
   "search_no_result": {
     "title": "No results found.",
     "description": "Try adjusting your search or filters to find what you're looking for."

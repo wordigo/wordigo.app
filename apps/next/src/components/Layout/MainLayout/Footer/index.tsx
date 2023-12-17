@@ -213,7 +213,7 @@ export default function Footer() {
               href="/"
               className="transition-colors hover:dark:text-white hover:text-black/50"
             >
-              Terms & conditions
+              {t("terms_conditions.title")}
             </Link>
           </li>
           <li className="hidden md:inline w-0.5 h-0.5 lg:w-1 lg:h-1 rounded-full dark:bg-white/70 bg-black/90"></li>

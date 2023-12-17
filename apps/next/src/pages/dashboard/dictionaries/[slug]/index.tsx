@@ -1,8 +1,8 @@
-import { DictionarayWordsTable } from "@/components/Dashboard/DictionaryDetail/WordsTable";
-import DashboardLayout from "@/components/Layout/Dashboard";
-import DashboardHeaders from "@/components/Layout/Dashboard/Headers";
-import DashboardHeaderLoader from "@/components/Layout/Dashboard/Headers/header.loader";
-import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
+import DashboardLayout from "@/components/Layout/Product";
+import DashboardHeaders from "@/components/Layout/Product/Headers";
+import DashboardHeaderLoader from "@/components/Layout/Product/Headers/header.loader";
+import { DashboardShell } from "@/components/Layout/Product/Shell";
+import { DictionarayWordsTable } from "@/components/Product/DictionaryDetail/WordsTable";
 import { useGetDictionaryWordsMutation } from "@/store/dictionarayWord/api";
 import { type GetUserDictionaryWordsType } from "@/store/dictionarayWord/type";
 import { useAppSelector } from "@/utils/hooks";

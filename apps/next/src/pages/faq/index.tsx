@@ -1,4 +1,4 @@
-import FAQ from "@/components/FAQ";
+import FAQ from "@/components/Company/FAQ";
 import MainLayout from "@/components/Layout/MainLayout";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { NextSeo } from "next-seo";

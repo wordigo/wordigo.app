@@ -4,7 +4,7 @@ import {
   type ResponseStatisticsType,
   type ResponseUpdateAvatarType,
 } from "./types";
-import { type UpdateProfileFormValues } from "@/components/Dashboard/Settings/ProfileForm";
+import { type UpdateProfileFormValues } from "@/components/Product/Settings/ProfileForm";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { type IResponse } from "types/global";
 

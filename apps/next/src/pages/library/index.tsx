@@ -1,5 +1,5 @@
+import Published from "@/components/Company/Published";
 import MainLayout from "@/components/Layout/MainLayout";
-import Published from "@/components/Published";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { NextSeo } from "next-seo";
 import { type PageProps } from "types/global";

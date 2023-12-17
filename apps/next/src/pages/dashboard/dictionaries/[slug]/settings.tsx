@@ -1,6 +1,6 @@
-import Settings from "@/components/Dashboard/Dictionaries.Settings/index";
-import DashboardLayout from "@/components/Layout/Dashboard";
-import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
+import DashboardLayout from "@/components/Layout/Product";
+import { DashboardShell } from "@/components/Layout/Product/Shell";
+import Settings from "@/components/Product/DictionarySettings/index";
 import { useGetDictionaryDetailMutation } from "@/store/dictionaries/api";
 import { useAppSelector } from "@/utils/hooks";
 import { Skeleton } from "@wordigo/ui";

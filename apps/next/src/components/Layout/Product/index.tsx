@@ -1,5 +1,5 @@
 import DashboardHeader from "./DashboardHeader";
-import Sidebar from "@/components/Layout/Dashboard/Sidebar/Menu";
+import Sidebar from "@/components/Layout/Product/Sidebar/Menu";
 import PageLoader from "@/components/UI/PageLoader";
 import { useAppSelector } from "@/utils/hooks";
 import { useSession } from "next-auth/react";

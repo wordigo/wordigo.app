@@ -1,6 +1,6 @@
 import { DataTableRowActions } from "./TableRowAction";
-import { DataTable } from "@/components/DataTable/data-table";
-import { DataTableColumnHeader } from "@/components/DataTable/data-table-column-header";
+import { DataTable } from "@/components/UI/DataTable/data-table";
+import { DataTableColumnHeader } from "@/components/UI/DataTable/data-table-column-header";
 import DateTooltip, { IDateMode } from "@/components/UI/DateTooltip";
 import { type Dictionary } from "@/store/dictionaries/type";
 import { type ColumnDef } from "@tanstack/react-table";

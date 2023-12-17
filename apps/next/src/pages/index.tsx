@@ -1,8 +1,8 @@
-import FeatureBanner from "@/components/Home/Banner";
-import Comment from "@/components/Home/Comments";
-import FAQSection from "@/components/Home/FAQSection";
-import FeatureSections from "@/components/Home/FeatureSections";
-import NewHeroSection from "@/components/Home/Hero/NewHeroSection";
+import FeatureBanner from "@/components/Company/Banner";
+import Comment from "@/components/Company/Comments";
+import FAQSection from "@/components/Company/FAQSection";
+import FeatureSections from "@/components/Company/FeatureSections";
+import NewHeroSection from "@/components/Company/Hero/HeroSection";
 import MainLayout from "@/components/Layout/MainLayout";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { NextSeo } from "next-seo";

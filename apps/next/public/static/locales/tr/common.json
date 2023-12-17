@@ -36,6 +36,9 @@
   "privacy_policy": {
     "title": "Gizlilik Politikası"
   },
+  "terms_conditions": {
+    "title": "Kullanım Koşulları"
+  },
   "libraryDetail": {
     "description": "Kelime anlamlarını öğrenin, dinleyin ve diğerleriyle paylaşın.",
     "no_description": "Bu sözlüğe bir açıklama eklenmemiş.",
@@ -81,8 +84,8 @@
     "button": "haberdar ol!"
   },
   "navbar": {
-    "company": "Ana Sayfa",
-    "product": "Kontrol Paneli",
+    "company": "Şirket",
+    "product": "Ürün",
     "home": "Ana Sayfa",
     "features": "Özellikler",
     "dictionaries": "Sözlükler",

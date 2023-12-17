@@ -1,7 +1,6 @@
-import { motion } from "framer-motion";
-
 import HeroBanner from "./HeroBanner";
 import HeroSection from "./HeroSection";
+import { motion } from "framer-motion";
 
 export default function HeroContainer() {
   const container = {
@@ -33,7 +32,12 @@ export default function HeroContainer() {
   };
 
   return (
-    <motion.main variants={container} initial="hidden" animate="visible" className="m-auto max-w-[1440px] flex justify-between mb-[80px] mt-4">
+    <motion.main
+      variants={container}
+      initial="hidden"
+      animate="visible"
+      className="m-auto max-w-[1440px] flex justify-between mb-[80px] mt-4"
+    >
       <motion.section className="w-full mr-5" variants={item2}>
         <HeroSection />
       </motion.section>

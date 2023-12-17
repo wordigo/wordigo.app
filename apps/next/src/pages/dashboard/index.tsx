@@ -1,8 +1,8 @@
-import DashboardStatistics from "@/components/Dashboard/Overview/Statistics/Cards";
-import { DashboardOverview } from "@/components/Dashboard/Overview/Statistics/Overview";
-import DashboardLayout from "@/components/Layout/Dashboard";
-import DashboardHeaders from "@/components/Layout/Dashboard/Headers";
-import { DashboardShell } from "@/components/Layout/Dashboard/Shell";
+import DashboardLayout from "@/components/Layout/Product";
+import DashboardHeaders from "@/components/Layout/Product/Headers";
+import { DashboardShell } from "@/components/Layout/Product/Shell";
+import DashboardStatistics from "@/components/Product/Overview/Statistics/Cards";
+import { DashboardOverview } from "@/components/Product/Overview/Statistics/Overview";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import nextI18nextConfig from "~/next-i18next.config";
 

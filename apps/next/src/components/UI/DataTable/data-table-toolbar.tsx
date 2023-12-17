@@ -1,9 +1,9 @@
 "use client";
 
 import { DataTableAdvancedFilterItem } from "./data-table-advanced-filter-item";
-import { DataTableAdvancedFilter } from "@/components/DataTable/data-table-advanced-filter";
-import { DataTableFacetedFilter } from "@/components/DataTable/data-table-faceted-filter";
-import { DataTableViewOptions } from "@/components/DataTable/data-table-view-options";
+import { DataTableAdvancedFilter } from "@/components/UI/DataTable/data-table-advanced-filter";
+import { DataTableFacetedFilter } from "@/components/UI/DataTable/data-table-faceted-filter";
+import { DataTableViewOptions } from "@/components/UI/DataTable/data-table-view-options";
 import type { Table } from "@tanstack/react-table";
 import { Button, Input } from "@wordigo/ui";
 import * as React from "react";

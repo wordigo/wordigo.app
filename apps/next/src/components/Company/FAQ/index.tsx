@@ -1,6 +1,6 @@
 import useFaq, {
   type Question,
-} from "@/components/Home/FAQSection/faq.constant";
+} from "@/components/Company/FAQSection/faq.constant";
 import { useTranslation } from "next-i18next";
 
 const FAQSection = () => {

@@ -1,4 +1,4 @@
-import DashboardLoader from "@/components/Dashboard/Home/Home.loader";
+import DashboardLoader from "@/components/Product/Home/Home.loader";
 import { useGetStatisticsMutation } from "@/store/profile/api";
 import { Card, CardContent, CardHeader, CardTitle } from "@wordigo/ui";
 import { BookCopy, BookMarked, FileType, Library } from "lucide-react";
