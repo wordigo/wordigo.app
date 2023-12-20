@@ -90,7 +90,7 @@ const PublishedFilter = ({ isAccordionShow, setIsAccordionShow }: any) => {
               </div>
             </AccordionTrigger>
             <AccordionContent>
-              <section className="absolute md:static left-0 z-50 bg-background mt-4 md:mb-1 md:mt-0 w-full flex flex-col sm:flex-row sm:items-end lg:justify-end gap-4">
+              <section className="absolute md:static left-0 z-50 mt-4 md:mb-1 md:mt-0 w-full flex flex-col sm:flex-row sm:items-end lg:justify-end gap-4">
                 <div className="w-full lg:max-w-[250px] flex flex-col gap-2">
                   <Label htmlFor="category">
                     {t("public_dictionaries.date")}
