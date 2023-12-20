@@ -76,4 +76,8 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .blogStle a {
+    color: #3696d4;
+  }
 }
