@@ -5,7 +5,6 @@ module.exports = {
     defaultLocale: "en",
     locales: ["en", "tr"],
   },
-  reloadOnPrerender: true,
   localePath: path.resolve("./public/static/locales"),
   ns: ["common", "zod"],
 };

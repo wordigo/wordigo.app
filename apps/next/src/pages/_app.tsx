@@ -45,4 +45,7 @@ const App = ({
   );
 };
 
-export default appWithTranslation(App, nextI18nextConfig);
+export default appWithTranslation(App, {
+  ...nextI18nextConfig,
+  ...(process.env.NODE_ENV == "development" && { reloadOnPrerender: true }),
+});

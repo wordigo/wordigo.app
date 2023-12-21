@@ -334,7 +334,12 @@
     },
     "dictionaries_detail": {
       "title": "Sözlük Detayı",
-      "description": "Burada mevcut sözlük detaylarını görüntüleyebilir, yeni eklemeler yapabilir veya ayarları düzenleyebilirsiniz."
+      "description": "Burada mevcut sözlük detaylarını görüntüleyebilir, yeni eklemeler yapabilir veya ayarları düzenleyebilirsiniz.",
+      "delete_dictionary": "Sözlüğü Sil"
+    },
+    "confirm-dialog": {
+      "title": "Emin misiniz?",
+      "description": "Bu işlem geri alınamaz. Bu, hesabınızı kalıcı olarak siler ve verilerinizi sunucularımızdan kaldırır."
     },
     "dictionaries_settings": {
       "title": "Sözlük Ayarları",
@@ -354,7 +359,8 @@
   },
   "buttons": {
     "cancel": "İptal",
-    "save": "Kaydet"
+    "save": "Kaydet",
+    "continue": "Devam Et"
   },
   "profileSettings": {
     "title": "Profil",

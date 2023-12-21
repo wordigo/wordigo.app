@@ -1,3 +1,4 @@
+import { ConfirmModal } from "@/components/UI/ConfirmDialog";
 import {
   useDeleteDictionariesMutation,
   useGetDictionariesMutation,
@@ -28,10 +29,10 @@ export function DataTableRowActions({ row }: DataTableRowActionsProps) {
   const { t } = useTranslation();
 
   const [getDictionaries] = useGetDictionariesMutation();
-  const [deleteDictionary, { status, data }] = useDeleteDictionariesMutation();
+  const [deleteDictionary, { status, data, isLoading }] =
+    useDeleteDictionariesMutation();
 
-  const handleDeleteClick = (event) => {
-    event.stopPropagation();
+  const handleDeleteClick = () => {
     void deleteDictionary({ slug });
   };
 
@@ -81,11 +82,12 @@ export function DataTableRowActions({ row }: DataTableRowActionsProps) {
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem
-              className="text-red-500 cursor-pointer w-full h-full"
-              onClick={handleDeleteClick}
-            >
-              {t("general.delete")}
+            <DropdownMenuItem asChild>
+              <ConfirmModal onConfirm={handleDeleteClick} loading={isLoading}>
+                <span className="text-red-500 cursor-pointer w-full h-full relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                  {t("general.delete")}
+                </span>
+              </ConfirmModal>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

@@ -1,12 +1,15 @@
 import BannerDropzone from "./BannerDropzone";
 import CButton from "@/components/UI/Button";
+import { ConfirmModal } from "@/components/UI/ConfirmDialog";
 import CInput from "@/components/UI/Input/Input";
 import { DictionariesSettingsSchema } from "@/schemas/dictionaries.settings";
 import {
+  useDeleteDictionariesMutation,
   useGetDictionaryDetailMutation,
   useUpdateDictionariesMutation,
   useUpdateDictionaryImageMutation,
 } from "@/store/dictionaries/api";
+import { capitalizeWords } from "@/utils";
 import { useAppSelector } from "@/utils/hooks";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { QueryStatus } from "@reduxjs/toolkit/query";
@@ -39,7 +42,6 @@ export default function Settings() {
   const { t } = useTranslation();
   const router = useRouter();
   const { slug } = router.query as { slug: string };
-
   const [dictionaryUpdate, { isLoading, status, data: updateData }] =
     useUpdateDictionariesMutation();
 
@@ -138,35 +140,49 @@ export default function Settings() {
     }
   };
 
+  const [
+    deleteDictionary,
+    { status: deleteStatus, data: deleteData, isLoading: deleteLoading },
+  ] = useDeleteDictionariesMutation();
+
+  const handleDeleteClick = () => {
+    void deleteDictionary({ slug });
+  };
+
+  useEffect(() => {
+    if (deleteStatus === QueryStatus.fulfilled) {
+      if (deleteData.success) {
+        toast.success(t("notifications.success"), {
+          description: t("notifications.deleted_dictionary"),
+        });
+        void router.push("/dashboard/dictionaries");
+      } else {
+        toast.error(t("notifications.warning"), {
+          description: deleteData.message,
+        });
+      }
+    }
+  }, [deleteStatus]);
+
   return (
     <main>
-      <section className="mb-7 flex items-center justify-between">
+      <section className="mb-5 flex items-center justify-between">
         <span>
           <h1 className="text-lg font-semibold leading-7">
+            {capitalizeWords(dictionaryDetail?.title)}{" "}
             {t("headers.dictionaries_settings.title")}
           </h1>
-          <h1 className="text-sm text-[hsl(var(--muted-foreground))] font-semibold leading-7">
+          <h1 className="text-sm text-[hsl(var(--muted-foreground))] font-normal leading-7">
             {t("headers.dictionaries_settings.description")}
           </h1>
         </span>
-        <span>
-          <Button
-            onClick={handleCancel}
-            variant="outline"
-            className="font-semibold text-sm mr-1"
-          >
-            {t("buttons.cancel")}
-          </Button>
-          <CButton
-            loading={isLoading}
-            disabled={disabled}
-            variant="outline"
-            className="w-fit dark:bg-LightBackground bg-DarkBackground font-semibold text-sm dark:text-black text-white"
-            onClick={form.handleSubmit(handleSave)}
-          >
-            {t("buttons.save")}
-          </CButton>
-        </span>
+        <div>
+          <ConfirmModal onConfirm={handleDeleteClick} loading={deleteLoading}>
+            <CButton variant="destructive" className="mr-2">
+              {t("dictionaries_detail.delete_dictionary")}
+            </CButton>
+          </ConfirmModal>
+        </div>
       </section>
       <section className="w-full">
         <div className="w-full h-[1px] bg-gray-300 dark:bg-gray-800 rounded-full my-5" />
