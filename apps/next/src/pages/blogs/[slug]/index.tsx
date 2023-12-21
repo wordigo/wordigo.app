@@ -57,9 +57,6 @@ export default function BlogDetailPage({
             <div className=" w-full flex flex-col gap-2 md:gap-6">
               <div className="flex w-full gap-2 md:gap-0 items-center justify-between">
                 <h1 className="text-xl md:text-3xl font-bold">{info?.title}</h1>{" "}
-                <div className=" py-1 w-fit flex items-center px-2 rounded-[0.625rem] text-xs font-medium border justify-center whitespace-nowrap">
-                  {info?.date} · 12 min read
-                </div>{" "}
               </div>
 
               <div className="flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-center">
@@ -73,8 +70,8 @@ export default function BlogDetailPage({
                   />
                   <div>
                     <div className="text-lg font-normal">{info?.author}</div>
-                    <div className="font-normal py-1 w-fit flex items-center px-2 rounded-[0.625rem] text-xs  border justify-center">
-                      Frontend Dev.
+                    <div className=" py-1 w-fit flex items-center px-2 rounded-[0.625rem] text-xs font-medium border justify-center whitespace-nowrap">
+                      {info?.date} · 12 min read
                     </div>
                   </div>
                 </div>
