@@ -3,7 +3,7 @@ import { POSTS_PATH, getPostBySlug, type IBlog } from "@/utils/blog";
 import { Button } from "@wordigo/ui";
 import fs from "fs";
 import { t } from "i18next";
-import { XIcon } from "lucide-react";
+import { CopyIcon, Share2, XIcon } from "lucide-react";
 import { type GetStaticPaths, type InferGetStaticPropsType } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { MDXRemote } from "next-mdx-remote";
@@ -11,10 +11,29 @@ import Image from "next/image";
 import Link from "next/link";
 import path from "path";
 import { useState } from "react";
-import { FaBookmark, FaRegBookmark } from "react-icons/fa";
+import { FaBookmark, FaHandSparkles, FaRegBookmark } from "react-icons/fa";
 import { MdContentCopy } from "react-icons/md";
 import { toast } from "sonner";
 import nextI18nextConfig from "~/next-i18next.config";
+
+interface SocialMediaMenu {
+  className?: string;
+  icon: React.ReactNode;
+  onClick?: () => void;
+}
+
+const SocialMediaMenuProps: SocialMediaMenu[] = [
+  {
+    className: "bg-red-400 px-2 py-1 rounded-full dark:bg-[#020817] dark:hover:bg-[#1E293B] bg-[#fff] hover:bg-[#F1F5F9]",
+    icon: <XIcon className="w-4 dark:fill-white fill-black" />,
+    onClick: () => console.log("test"),
+  },
+  {
+    className: "bg-red-400 px-2 py-1 rounded-full dark:bg-[#020817] dark:hover:bg-[#1E293B] bg-[#fff] hover:bg-[#F1F5F9]",
+    icon: <CopyIcon className="w-4 dark:fill-white fill-black" />,
+    onClick: () => console.log("test"),
+  },
+];
 
 export default function BlogDetailPage({
   source,
@@ -25,8 +44,6 @@ export default function BlogDetailPage({
   const host =
     typeof window !== "undefined" ? window.location.origin : undefined;
   const url = `${host}/blogs/${info?.slug}`;
-
-  console.log(source);
 
   const copyToClipboard = () => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
@@ -87,33 +104,30 @@ export default function BlogDetailPage({
                     </div>
                   </div>
                 </div>
-                <div className=" flex  items-center gap-7 md:w-fit w-full md:justify-normal justify-between">
+                <div className=" flex  items-center gap-7 md:w-fit md:justify-normal justify-between">
                   <div
                     onMouseEnter={() => setPopupVisible(true)}
                     onMouseLeave={() => setPopupVisible(false)}
-                    className="flex items-center gap-2 bg-red-500 w-full"
+                    className="flex items-center"
                   >
-                    <Button
-                      variant="outline"
-                      className="text-xs min-w-fit blogSocial"
-                      onMouseEnter={() => setPopupVisible(true)}
-                      onMouseLeave={() => setPopupVisible(false)}
+                    {isPopupVisible && (
+                      <div className="flex gap-2 justify-center bg-transparent w-fit px-2 py-2">
+                        {SocialMediaMenuProps.map((item) => (
+                          <div
+                            onClick={() => item.onClick}
+                            className={item.className}
+                          >
+                            {item.icon}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    <div
+                      className="py-1 px-2 rounded-full dark:bg-[#020817] dark:hover:bg-[#1E293B] bg-[#fff] hover:bg-[#F1F5F9]"
                       onClick={copyToClipboard}
                     >
-                      {isPopupVisible && (
-                        <Button
-                          onMouseEnter={() => setPopupVisible(true)}
-                          onMouseLeave={() => setPopupVisible(false)}
-                          variant="outline"
-                          className={`popup-social bg-transparent hover:bg-transparent  ${
-                            isPopupVisible ? "visible" : ""
-                          }`}
-                        >
-                          asdadsda
-                        </Button>
-                      )}
-                      <MdContentCopy className="w-4 dark:fill-white fill-black" />
-                    </Button>
+                      <Share2 className="w-4 dark:fill-white fill-black" />
+                    </div>
                   </div>
                 </div>
               </div>

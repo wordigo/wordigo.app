@@ -83,8 +83,8 @@
 
   .blogSocial {
     position: relative;
-    display: flex;
-    align-items: center; /* Vertical alignment */
+    border: none;
+    transition: all 0.3s ease-in-out;
   }
 
   .copy-button {
@@ -96,22 +96,25 @@
     margin-right: 0px;
     min-width: 160px;
     background-color: transparent;
+    border: none;
+    transition: all 0.3s ease-in-out;
   }
 
   .blogSocial:hover {
     border: none;
     background-color: transparent;
+    transition: all 0.3s ease-in-out;
   }
 
   .blogSocial:hover .popup-social {
     display: block;
+    border: none;
   }
 
-  /* For mobile devices, make the popup component vertical */
   @media (max-width: 767px) {
     .blogSocial {
-      flex-direction: column; /* Display in a column for mobile devices */
-      align-items: flex-start; /* Adjust alignment as needed */
+      flex-direction: column;
+      align-items: flex-start;
     }
 
     .popup-social {
