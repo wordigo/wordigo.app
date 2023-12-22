@@ -99,7 +99,7 @@ export default function HomeHeader() {
           >
             <div className="flex items-center justify-between select-none">
               <Link href="/" className={cn("", !toggleMenu && "hidden")}>
-                <DynamicLogo className="!w-[128px]" />
+                <DynamicLogo />
               </Link>
               <Button
                 onClick={toggleMenu}
