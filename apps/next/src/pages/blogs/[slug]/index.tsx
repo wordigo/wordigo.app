@@ -6,6 +6,7 @@ import { type GetStaticPaths, type InferGetStaticPropsType } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import path from "path";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -41,6 +42,8 @@ export default function BlogDetailPage({
     ),
   };
 
+  const router = useRouter();
+
   const copyToClipboard = () => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
       toast.success(t("notifications.copied_link_title"), {
@@ -56,13 +59,21 @@ export default function BlogDetailPage({
       className:
         "bg-red-400 px-2 py-1 rounded-full dark:bg-[#020817] dark:hover:bg-[#1E293B] bg-[#fff] hover:bg-[#F1F5F9]",
       icon: <XIcon className="w-4 dark:fill-white fill-black" />,
-      onClick: () => console.log("test"),
+      onClick: () =>
+        window.open(
+          "https://twitter.com/intent/tweet?url=" + info?.title + " " + url,
+          "_blank"
+        ),
     },
     {
       className:
         "bg-red-400 px-2 py-1 rounded-full dark:bg-[#020817] dark:hover:bg-[#1E293B] bg-[#fff] hover:bg-[#F1F5F9]",
       icon: <Linkedin className="w-4 dark:fill-white fill-black" />,
-      onClick: () => console.log("test"),
+      onClick: () =>
+        window.open(
+          "https://www.linkedin.com/shareArticle/?url=" + url,
+          "_blank"
+        ),
     },
     {
       className:
