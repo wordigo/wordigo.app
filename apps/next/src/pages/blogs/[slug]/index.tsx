@@ -20,6 +20,8 @@ export default function BlogDetailPage({
   source,
   info,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const [isPopupVisible, setPopupVisible] = useState(false);
+
   const host =
     typeof window !== "undefined" ? window.location.origin : undefined;
   const url = `${host}/blogs/${info?.slug}`;
@@ -43,7 +45,7 @@ export default function BlogDetailPage({
       </p>
     ),
     p: (props) => (
-      <p {...props} className="blogStle">
+      <p {...props} className="blogStyle">
         {props.children}
       </p>
     ),
@@ -57,6 +59,16 @@ export default function BlogDetailPage({
             <div className=" w-full flex flex-col gap-2 md:gap-6">
               <div className="flex w-full gap-2 md:gap-0 items-center justify-between">
                 <h1 className="text-xl md:text-3xl font-bold">{info?.title}</h1>{" "}
+                <div>
+                  {info.tags?.split(",").map((tag) => (
+                    <p
+                      key={tag}
+                      className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200"
+                    >
+                      {tag}
+                    </p>
+                  ))}
+                </div>
               </div>
 
               <div className="flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-center">
@@ -76,23 +88,32 @@ export default function BlogDetailPage({
                   </div>
                 </div>
                 <div className=" flex  items-center gap-7 md:w-fit w-full md:justify-normal justify-between">
-                  <div className="flex items-center gap-2">
+                  <div
+                    onMouseEnter={() => setPopupVisible(true)}
+                    onMouseLeave={() => setPopupVisible(false)}
+                    className="flex items-center gap-2 bg-red-500 w-full"
+                  >
                     <Button
                       variant="outline"
-                      className="transition-all py-1 w-fit flex items-center px-2 font-medium border text-sm gap-2 justify-center cursor-pointerwhitespace-nowrap dark:bg-transparent"
-                    >
-                      <XIcon className="w-4 dark:fill-white fill-black" />
-                      Tweet
-                    </Button>
-                    <Button
-                      variant="outline"
-                      className="text-xs min-w-fit dark:bg-transparent"
+                      className="text-xs min-w-fit blogSocial"
+                      onMouseEnter={() => setPopupVisible(true)}
+                      onMouseLeave={() => setPopupVisible(false)}
                       onClick={copyToClipboard}
                     >
+                      {isPopupVisible && (
+                        <Button
+                          onMouseEnter={() => setPopupVisible(true)}
+                          onMouseLeave={() => setPopupVisible(false)}
+                          variant="outline"
+                          className={`popup-social bg-transparent hover:bg-transparent  ${
+                            isPopupVisible ? "visible" : ""
+                          }`}
+                        >
+                          asdadsda
+                        </Button>
+                      )}
                       <MdContentCopy className="w-4 dark:fill-white fill-black" />
-                      <p className="w-20"> Copy Link</p>
                     </Button>
-                    {/* dark:text-white text-black transition-all py-1 w-fit flex items-center px-2 rounded-[0.625rem]  dark:bg-DarkBackground font-medium border text-sm gap-2 justify-center cursor-pointer whitespace-nowrap hover:bg-slate-200 */}
                   </div>
                 </div>
               </div>

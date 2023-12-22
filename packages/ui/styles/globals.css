@@ -77,7 +77,46 @@
     @apply bg-background text-foreground;
   }
 
-  .blogStle a {
+  .blogStyle a {
     color: #3696d4;
+  }
+
+  .blogSocial {
+    position: relative;
+    display: flex;
+    align-items: center; /* Vertical alignment */
+  }
+
+  .copy-button {
+    margin-right: 10px; /* Adjust the margin according to your needs */
+  }
+
+  .popup-social {
+    right: 0;
+    margin-right: 0px;
+    min-width: 160px;
+    background-color: transparent;
+  }
+
+  .blogSocial:hover {
+    border: none;
+    background-color: transparent;
+  }
+
+  .blogSocial:hover .popup-social {
+    display: block;
+  }
+
+  /* For mobile devices, make the popup component vertical */
+  @media (max-width: 767px) {
+    .blogSocial {
+      flex-direction: column; /* Display in a column for mobile devices */
+      align-items: flex-start; /* Adjust alignment as needed */
+    }
+
+    .popup-social {
+      top: auto; /* Reset top position */
+      left: 100%; /* Position it to the right of the copy button */
+    }
   }
 }
