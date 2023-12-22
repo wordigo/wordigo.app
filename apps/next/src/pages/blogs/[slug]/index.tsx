@@ -1,18 +1,14 @@
 import MainLayout from "@/components/Layout/MainLayout";
 import { POSTS_PATH, getPostBySlug, type IBlog } from "@/utils/blog";
-import { Button } from "@wordigo/ui";
 import fs from "fs";
-import { t } from "i18next";
-import { CopyIcon, Share2, XIcon } from "lucide-react";
+import { CopyIcon, Linkedin, Share2, XIcon } from "lucide-react";
 import { type GetStaticPaths, type InferGetStaticPropsType } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
-import Link from "next/link";
 import path from "path";
 import { useState } from "react";
-import { FaBookmark, FaHandSparkles, FaRegBookmark } from "react-icons/fa";
-import { MdContentCopy } from "react-icons/md";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import nextI18nextConfig from "~/next-i18next.config";
 
@@ -22,38 +18,15 @@ interface SocialMediaMenu {
   onClick?: () => void;
 }
 
-const SocialMediaMenuProps: SocialMediaMenu[] = [
-  {
-    className: "bg-red-400 px-2 py-1 rounded-full dark:bg-[#020817] dark:hover:bg-[#1E293B] bg-[#fff] hover:bg-[#F1F5F9]",
-    icon: <XIcon className="w-4 dark:fill-white fill-black" />,
-    onClick: () => console.log("test"),
-  },
-  {
-    className: "bg-red-400 px-2 py-1 rounded-full dark:bg-[#020817] dark:hover:bg-[#1E293B] bg-[#fff] hover:bg-[#F1F5F9]",
-    icon: <CopyIcon className="w-4 dark:fill-white fill-black" />,
-    onClick: () => console.log("test"),
-  },
-];
-
 export default function BlogDetailPage({
   source,
   info,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [isPopupVisible, setPopupVisible] = useState(false);
-
+  const { t } = useTranslation();
   const host =
     typeof window !== "undefined" ? window.location.origin : undefined;
   const url = `${host}/blogs/${info?.slug}`;
-
-  const copyToClipboard = () => {
-    if (typeof navigator !== "undefined" && navigator.clipboard) {
-      toast.success(t("notifications.copied_link_title"), {
-        description: t("notifications.copied_link"),
-        duration: 3000,
-      });
-      void navigator.clipboard.writeText(url);
-    }
-  };
 
   const components = {
     h1: (props) => (
@@ -66,6 +39,41 @@ export default function BlogDetailPage({
         {props.children}
       </p>
     ),
+  };
+
+  const copyToClipboard = () => {
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      toast.success(t("notifications.copied_link_title"), {
+        description: t("notifications.copied_link"),
+        duration: 3000,
+      });
+      void navigator.clipboard.writeText(url);
+    }
+  };
+
+  const SocialMediaMenuProps: SocialMediaMenu[] = [
+    {
+      className:
+        "bg-red-400 px-2 py-1 rounded-full dark:bg-[#020817] dark:hover:bg-[#1E293B] bg-[#fff] hover:bg-[#F1F5F9]",
+      icon: <XIcon className="w-4 dark:fill-white fill-black" />,
+      onClick: () => console.log("test"),
+    },
+    {
+      className:
+        "bg-red-400 px-2 py-1 rounded-full dark:bg-[#020817] dark:hover:bg-[#1E293B] bg-[#fff] hover:bg-[#F1F5F9]",
+      icon: <Linkedin className="w-4 dark:fill-white fill-black" />,
+      onClick: () => console.log("test"),
+    },
+    {
+      className:
+        "bg-red-400 px-2 py-1 rounded-full dark:bg-[#020817] dark:hover:bg-[#1E293B] bg-[#fff] hover:bg-[#F1F5F9]",
+      icon: <CopyIcon className="w-4 dark:fill-white fill-black" />,
+      onClick: () => copyToClipboard(),
+    },
+  ];
+
+  const handleSocialPopup = () => {
+    setPopupVisible(!isPopupVisible);
   };
 
   return (
@@ -114,7 +122,7 @@ export default function BlogDetailPage({
                       <div className="flex gap-2 justify-center bg-transparent w-fit px-2 py-2">
                         {SocialMediaMenuProps.map((item) => (
                           <div
-                            onClick={() => item.onClick}
+                            onClick={item.onClick}
                             className={item.className}
                           >
                             {item.icon}
@@ -124,7 +132,7 @@ export default function BlogDetailPage({
                     )}
                     <div
                       className="py-1 px-2 rounded-full dark:bg-[#020817] dark:hover:bg-[#1E293B] bg-[#fff] hover:bg-[#F1F5F9]"
-                      onClick={copyToClipboard}
+                      onClick={handleSocialPopup}
                     >
                       <Share2 className="w-4 dark:fill-white fill-black" />
                     </div>
