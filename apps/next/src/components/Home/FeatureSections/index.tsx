@@ -50,7 +50,7 @@ FeatureSection.Item = ({
   positionLeft,
 }: IFeature) => {
   const classes = cn(
-    "w-full flex flex-col lg:flex-row items-center gap-8 sm:gap-y-9 md:gap-y-10",
+    "w-full flex flex-col lg:flex-row items-center gap-x-4 gap-y-6 sm:gap-y-7 md:gap-y-8",
     positionLeft ? "lg:flex-row-reverse" : ""
   );
 
