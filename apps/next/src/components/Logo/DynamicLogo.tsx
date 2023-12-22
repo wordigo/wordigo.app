@@ -11,7 +11,7 @@ const DynamicLogo: FC<{ className?: string }> = ({ className }) => {
     LogoEnums[resolvedTheme as keyof typeof LogoIconsEnums];
 
   return (
-    <div className={cn("relative -bottom-3 w-[200px] h-[72px]", className)}>
+    <div className={cn("relative w-[165px] h-[64px]", className)}>
       <Image
         className="rounded-md"
         src={`/images/${getModeIconUrl}.png`}
