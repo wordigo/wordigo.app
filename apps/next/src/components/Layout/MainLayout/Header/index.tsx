@@ -95,36 +95,28 @@ export default function HomeHeader() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="col-span-1 flex flex-col fixed justify-between top-0 right-0 z-50 py-4 text-light_text dark:text-white bg-LightBackground dark:bg-DarkBackground g-red-500 px-5 min-w-[280px] max-w-[280px] border-l shadow-md shadow-[rgba(16, 24, 40, 1)] h-screen lg:hidden"
+            className="fixed top-0 right-0 z-50 p-5 w-[280px] h-screen flex flex-col text-light_text dark:text-white bg-LightBackground dark:bg-DarkBackground border-l shadow-md shadow-[rgba(16, 24, 40, 1)] lg:hidden"
           >
-            <span className="flex items-center flex-col w-full mb-8">
-              <div className="font-bold text-[18px] flex items-center select-none pt-3 justify-between w-full">
-                <Link
-                  href="/"
-                  className={cn(
-                    "flex items-center mr-6 max-w-[128px]  min-w-[128px]",
-                    !toggleMenu && "hidden"
-                  )}
-                >
-                  <DynamicLogo className="!w-[128px]" />
-                </Link>
-                <Button
-                  onClick={toggleMenu}
-                  className="text-black dark:text-white !h-9 !w-9"
-                  variant="outline"
-                  size="icon"
-                >
-                  <X size={19} />
-                </Button>
-              </div>
+            <div className="flex items-center justify-between select-none">
+              <Link href="/" className={cn("", !toggleMenu && "hidden")}>
+                <DynamicLogo className="!w-[128px]" />
+              </Link>
+              <Button
+                onClick={toggleMenu}
+                className="text-black dark:text-white !h-9 !w-9"
+                variant="outline"
+                size="icon"
+              >
+                <X size={19} />
+              </Button>
+            </div>
 
-              <div className="flex w-full md:flex-col py-4">
-                <Navigation variant="borgerMenu" />
-              </div>
-            </span>
+            <div className="flex w-full md:flex-col py-4">
+              <Navigation variant="borgerMenu" />
+            </div>
 
-            <div className="lg:hidden">
-              <Separator className="mb-2" />
+            <div className="mt-auto lg:hidden">
+              <Separator className="mb-3" />
               <div className="flex gap-x-4 items-center">
                 {status === "loading" ? (
                   <NavProfile.Loader />
@@ -132,7 +124,7 @@ export default function HomeHeader() {
                   <NavProfile variant="borgerMenu" />
                 ) : (
                   <span className="w-full flex flex-col gap-y-3">
-                    <div className="flex gap-x-2 items-center justify-between">
+                    <div className="flex gap-x-3 items-center justify-between">
                       <ThemeMode className="!h-8 !px-2 w-full" />
                       <ChangeLanguage className="!h-8 !px-2 w-full" />
                     </div>
