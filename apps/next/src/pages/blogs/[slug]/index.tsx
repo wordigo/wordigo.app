@@ -6,7 +6,6 @@ import { type GetStaticPaths, type InferGetStaticPropsType } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import path from "path";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -41,8 +40,6 @@ export default function BlogDetailPage({
       </p>
     ),
   };
-
-  const router = useRouter();
 
   const copyToClipboard = () => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
@@ -107,7 +104,7 @@ export default function BlogDetailPage({
                 </div>
               </div>
 
-              <div className="flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-center">
+              <div className="flex flex-row gap-4 md:gap-0 justify-between items-center">
                 <div className="flex items-center gap-3 pt-2 w-full">
                   <Image
                     src={info?.avatar}
@@ -123,30 +120,25 @@ export default function BlogDetailPage({
                     </div>
                   </div>
                 </div>
-                <div className=" flex  items-center gap-7 md:w-fit md:justify-normal justify-between">
-                  <div
-                    onMouseEnter={() => setPopupVisible(true)}
-                    onMouseLeave={() => setPopupVisible(false)}
-                    className="flex items-center"
-                  >
-                    {isPopupVisible && (
-                      <div className="flex gap-2 justify-center bg-transparent w-fit px-2 py-2">
-                        {SocialMediaMenuProps.map((item) => (
-                          <div
-                            onClick={item.onClick}
-                            className={item.className}
-                          >
-                            {item.icon}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                    <div
-                      className="py-1 px-2 rounded-full dark:bg-[#020817] dark:hover:bg-[#1E293B] bg-[#fff] hover:bg-[#F1F5F9]"
-                      onClick={handleSocialPopup}
-                    >
-                      <Share2 className="w-4 dark:fill-white fill-black" />
+                <div
+                  onMouseEnter={() => setPopupVisible(true)}
+                  onMouseLeave={() => setPopupVisible(false)}
+                  className="flex items-center relative z-50"
+                >
+                  {isPopupVisible && (
+                    <div className="sm:flex gap-2 justify-center bg-transparent w-fit sm:px-2 py-2 absolute right-8 max-sm:space-y-2 max-sm:right-0 max-sm:top-8 max-sm:flex-none">
+                      {SocialMediaMenuProps.map((item) => (
+                        <div onClick={item.onClick} className={item.className}>
+                          {item.icon}
+                        </div>
+                      ))}
                     </div>
+                  )}
+                  <div
+                    className="py-1 px-2 rounded-full dark:bg-[#020817] dark:hover:bg-[#1E293B] bg-[#fff] hover:bg-[#F1F5F9]"
+                    onClick={handleSocialPopup}
+                  >
+                    <Share2 className="w-4 dark:fill-white fill-black" />
                   </div>
                 </div>
               </div>
