@@ -195,8 +195,10 @@
   },
   "share": {
     "twitter": "twitter da paylaş",
+    "x": "x de paylaş",
     "linkedin": "linkedin da paylaş",
-    "link_copy": "bağlantıyı Kopyala"
+    "link_copy": "bağlantıyı Kopyala",
+    "socials": "Sosyal medyada paylaşın"
   },
   "dic_words": {
     "text": "Anadil Metni",

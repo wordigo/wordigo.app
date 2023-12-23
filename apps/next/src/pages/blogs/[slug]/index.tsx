@@ -1,5 +1,11 @@
 import MainLayout from "@/components/Layout/MainLayout";
 import { POSTS_PATH, getPostBySlug, type IBlog } from "@/utils/blog";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@wordigo/ui";
 import fs from "fs";
 import { CopyIcon, Linkedin, Share2, XIcon } from "lucide-react";
 import { type GetStaticPaths, type InferGetStaticPropsType } from "next";
@@ -13,8 +19,8 @@ import { toast } from "sonner";
 import nextI18nextConfig from "~/next-i18next.config";
 
 interface SocialMediaMenu {
-  className?: string;
   icon: React.ReactNode;
+  tooltip: string;
   onClick?: () => void;
 }
 
@@ -53,19 +59,17 @@ export default function BlogDetailPage({
 
   const SocialMediaMenuProps: SocialMediaMenu[] = [
     {
-      className:
-        "bg-red-400 px-2 py-1 rounded-full dark:bg-[#020817] dark:hover:bg-[#1E293B] bg-[#fff] hover:bg-[#F1F5F9]",
       icon: <XIcon className="w-4 dark:fill-white fill-black" />,
+      tooltip: "share.x",
       onClick: () =>
         window.open(
-          "https://twitter.com/intent/tweet?url=" + info?.title + " " + url,
+          "https://x.com/intent/tweet?url=" + info?.title + " " + url,
           "_blank"
         ),
     },
     {
-      className:
-        "bg-red-400 px-2 py-1 rounded-full dark:bg-[#020817] dark:hover:bg-[#1E293B] bg-[#fff] hover:bg-[#F1F5F9]",
       icon: <Linkedin className="w-4 dark:fill-white fill-black" />,
+      tooltip: "share.linkedin",
       onClick: () =>
         window.open(
           "https://www.linkedin.com/shareArticle/?url=" + url,
@@ -73,9 +77,8 @@ export default function BlogDetailPage({
         ),
     },
     {
-      className:
-        "bg-red-400 px-2 py-1 rounded-full dark:bg-[#020817] dark:hover:bg-[#1E293B] bg-[#fff] hover:bg-[#F1F5F9]",
       icon: <CopyIcon className="w-4 dark:fill-white fill-black" />,
+      tooltip: "share.link_copy",
       onClick: () => copyToClipboard(),
     },
   ];
@@ -128,18 +131,37 @@ export default function BlogDetailPage({
                   {isPopupVisible && (
                     <div className="sm:flex gap-2 justify-center bg-transparent w-fit sm:px-2 py-2 absolute right-8 max-sm:space-y-2 max-sm:right-0 max-sm:top-8 max-sm:flex-none">
                       {SocialMediaMenuProps.map((item) => (
-                        <div onClick={item.onClick} className={item.className}>
-                          {item.icon}
-                        </div>
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <div
+                              onClick={item.onClick}
+                              className={
+                                "px-2 py-1 rounded-full dark:bg-[#020817] dark:hover:bg-[#1E293B] bg-[#fff] hover:bg-[#F1F5F9] cursor-pointer"
+                              }
+                            >
+                              {item.icon}
+                            </div>
+                          </TooltipTrigger>
+                          <TooltipContent className="px-2 py-1 text-xs">
+                            {t(item.tooltip)}
+                          </TooltipContent>
+                        </Tooltip>
                       ))}
                     </div>
                   )}
-                  <div
-                    className="py-1 px-2 rounded-full dark:bg-[#020817] dark:hover:bg-[#1E293B] bg-[#fff] hover:bg-[#F1F5F9]"
-                    onClick={handleSocialPopup}
-                  >
-                    <Share2 className="w-4 dark:fill-white fill-black" />
-                  </div>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <div
+                        className="py-1 px-2 rounded-full dark:bg-[#020817] dark:hover:bg-[#1E293B] bg-[#fff] hover:bg-[#F1F5F9] cursor-pointer"
+                        onClick={handleSocialPopup}
+                      >
+                        <Share2 className="w-4 dark:fill-white fill-black" />
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent className="px-2 py-1 text-xs">
+                      {t("share.socials")}
+                    </TooltipContent>
+                  </Tooltip>
                 </div>
               </div>
 
