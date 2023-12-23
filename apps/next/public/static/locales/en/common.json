@@ -218,8 +218,10 @@
   },
   "share": {
     "twitter": "Share on Twitter",
+    "x": "Share on X",
     "linkedin": "Share on Linkedin",
-    "link_copy": "Copy link"
+    "link_copy": "Copy link",
+    "socials": "Share on social media"
   },
   "dic_words": {
     "text": "Native Text",
