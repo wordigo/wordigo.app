@@ -5,6 +5,7 @@ import Feedback from "./Feedback";
 import Navigation from "./Navigation";
 import DynamicLogo from "@/components/Logo/DynamicLogo";
 import StaticLogo from "@/components/Logo/StaticLogo";
+import { useWindowScroll, useWindowSize } from "@uidotdev/usehooks";
 import { Badge, Button, Separator, buttonVariants } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
@@ -12,11 +13,13 @@ import { Menu, X } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
-import { Fragment, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 
 export default function HomeHeader() {
   const { t } = useTranslation();
   const { status } = useSession();
+  const [{ y }] = useWindowScroll();
+  const { width } = useWindowSize();
 
   const [isMenuOpen, setMenuOpen] = useState(false);
 
@@ -24,12 +27,24 @@ export default function HomeHeader() {
     setMenuOpen(!isMenuOpen);
   };
 
+  const isScrolled = useMemo(() => (width <= 642 ? y > 80 : y > 150), [y]);
+
+  const classes = useMemo(
+    () => ({
+      container: cn(
+        "sticky top-0 z-50",
+        isScrolled &&
+          "bg-LightBackground/40 backdrop-blur dark:bg-DarkBackground border-b"
+      ),
+      nav: cn("py-[1.125rem] flex items-center justify-between container"),
+    }),
+    [isScrolled]
+  );
+
   return (
     <>
-      {/* bg-LightBackground/40 backdrop-blur dark:bg-DarkBackground
-    border-b */}
-      <nav className="sticky top-0 z-50 container ">
-        <div className="py-[1.125rem] flex items-center justify-between ">
+      <nav className={classes.container}>
+        <div className={classes.nav}>
           <div className="flex items-center">
             <Link
               href="/"
