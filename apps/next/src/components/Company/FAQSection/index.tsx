@@ -1,5 +1,11 @@
 import useFaqs, { type Question } from "./faq.constant";
-import { Button } from "@wordigo/ui";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+  Button,
+} from "@wordigo/ui";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
@@ -11,14 +17,14 @@ const FAQSection = () => {
   const computedFaqs = faqs.slice(0, 3);
 
   return (
-    <section className="flex flex-col items-center">
+    <section className="flex gap-y-6 flex-col items-center">
       <h2 className="text-4xl font-semibold max-lg:text-2xl">
         {t("faq.heading")}
       </h2>
       <p className="text-xl text-muted-foreground mt-5 max-lg:text-base max-lg:mt-4">
         {t("faq.description")}
       </p>
-      <div className="mt-16 grid grid-cols-3 gap-x-8 gap-y-16 max-lg:grid-cols-1 max-lg:mt-12">
+      <div className="flex flex-col gap-y-8 w-full max-w-3xl">
         {computedFaqs.map((item, index) => (
           <FAQSection.Card
             key={index}
@@ -39,15 +45,14 @@ const FAQSection = () => {
 
 FAQSection.Card = ({ question, answer, Icon }: Question) => {
   return (
-    <div className="flex flex-col items-center">
-      <Icon className="w-6 h-6 p-3 box-content border rounded-[0.625rem]" />
-      <span className="text-xl font-semibold mt-5 text-center max-lg:text-">
-        {question}
-      </span>
-      <p className="text-base text-muted-foreground mt-2 text-center">
-        {answer}
-      </p>
-    </div>
+    <Accordion type="single" collapsible className="w-full">
+      <AccordionItem value={answer}>
+        <AccordionTrigger className="text-lg font-semibold">
+          {question}
+        </AccordionTrigger>
+        <AccordionContent>{answer}</AccordionContent>
+      </AccordionItem>
+    </Accordion>
   );
 };
 
