@@ -179,7 +179,7 @@ export default function Settings() {
         <div>
           <ConfirmModal onConfirm={handleDeleteClick} loading={deleteLoading}>
             <CButton variant="destructive" className="mr-2">
-              {t("dictionaries_detail.delete_dictionary")}
+              {t("headers.dictionaries_detail.delete_dictionary")}
             </CButton>
           </ConfirmModal>
         </div>
