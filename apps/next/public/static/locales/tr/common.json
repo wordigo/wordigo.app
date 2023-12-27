@@ -33,6 +33,10 @@
     "all_levels": "Tümü",
     "translator": "Çevirmen"
   },
+  "confirm_dialog": {
+    "title": "Emin misiniz?",
+    "description": "Bu işlem geri alınamaz. Bu, hesabınızı kalıcı olarak siler ve verilerinizi sunucularımızdan kaldırır."
+  },
   "privacy_policy": {
     "title": "Gizlilik Politikası"
   },
@@ -195,8 +199,10 @@
   },
   "share": {
     "twitter": "twitter da paylaş",
+    "x": "x de paylaş",
     "linkedin": "linkedin da paylaş",
-    "link_copy": "bağlantıyı Kopyala"
+    "link_copy": "bağlantıyı Kopyala",
+    "socials": "Sosyal medyada paylaşın"
   },
   "dic_words": {
     "text": "Anadil Metni",
@@ -336,10 +342,6 @@
       "title": "Sözlük Detayı",
       "description": "Burada mevcut sözlük detaylarını görüntüleyebilir, yeni eklemeler yapabilir veya ayarları düzenleyebilirsiniz.",
       "delete_dictionary": "Sözlüğü Sil"
-    },
-    "confirm-dialog": {
-      "title": "Emin misiniz?",
-      "description": "Bu işlem geri alınamaz. Bu, hesabınızı kalıcı olarak siler ve verilerinizi sunucularımızdan kaldırır."
     },
     "dictionaries_settings": {
       "title": "Sözlük Ayarları",

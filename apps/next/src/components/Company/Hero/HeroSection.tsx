@@ -1,4 +1,5 @@
 import { Badge, buttonVariants } from "@wordigo/ui";
+import { cn } from "@wordigo/ui/lib/utils";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
@@ -11,7 +12,7 @@ function NewHeroSection() {
     <section className="flex flex-col items-center gap-y-12 sm:gap-y-14 md:gap-y-16">
       <div className="flex flex-col items-center gap-y-8 sm:gap-y-9 md:gap-y-10 text-center max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
         <Badge
-          className="text-sm font-medium px-2.5 py-1 self-center -mb-4 backdrop-blur"
+          className="text-sm font-medium w-max px-2.5 py-1 self-center -mb-4 backdrop-blur"
           variant="outline"
         >
           <div className="w-2.5 h-2.5 mr-2 flex items-center justify-center">
@@ -43,9 +44,14 @@ function NewHeroSection() {
             {t("hero.try_our_extension")}
           </Link>
           <Link
-            className={buttonVariants({
-              size: "lg",
-            })}
+            className={cn(
+              buttonVariants({
+                variant: "default",
+                size: "lg",
+                className:
+                  "relative hover:bg-primary transition-colors overflow-hidden before:content-[''] before:absolute before:top-0 before:bottom-0 before:w-1/2 before:bg-gray-50/30 before:blur before:select-none before:translate-x-[-170%] before:skew-x-[-20deg] before:transition-transform before:duration-500 before:ease-in-out hover:before:translate-x-[220%] hover:before:skew-x-[-20deg]",
+              })
+            )}
             href="/auth/signup"
           >
             {t("hero.get_started")}

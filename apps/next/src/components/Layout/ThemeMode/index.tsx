@@ -17,7 +17,7 @@ export default function ThemeMode({
   showLabel?: boolean;
 }) {
   const { setTheme, resolvedTheme } = useTheme();
-  const currentTheme = resolvedTheme ?? "light";
+  const currentTheme = resolvedTheme?.toLowerCase() ?? "light";
 
   const getThemeLabel = () => {
     switch (currentTheme) {

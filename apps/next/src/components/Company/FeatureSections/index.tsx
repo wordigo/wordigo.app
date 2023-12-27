@@ -11,7 +11,7 @@ const FeatureSection = () => {
   return (
     <section
       id="features"
-      className="flex flex-col gap-y-8 sm:gap-y-9 md:gap-y-10"
+      className="flex flex-col gap-y-12 sm:gap-y-14 md:gap-y-16 lg:gap-y-20"
     >
       <div className="max-w-sm sm:max-w-xl md:max-w-2xl mx-auto flex flex-col items-center gap-y-6 text-center">
         <Badge
@@ -28,7 +28,7 @@ const FeatureSection = () => {
         </p>
       </div>
 
-      <div className="flex flex-col gap-y-8 sm:gap-y-9 md:gap-y-10 lg:gap-y-11 xl:gap-y-12">
+      <div className="flex flex-col gap-y-12 sm:gap-y-14">
         {featuresConstants.map((item) => (
           <FeatureSection.Item key={item.title} {...item} />
         ))}
@@ -50,19 +50,21 @@ FeatureSection.Item = ({
   positionLeft,
 }: IFeature) => {
   const classes = cn(
-    "w-full max-xl:flex-col max-xl:items-center max-xl:justify-center",
-    positionLeft ? "flex xl:flex-row-reverse" : "flex"
+    "w-full flex flex-col lg:flex-row items-center gap-x-4 gap-y-6 sm:gap-y-7 md:gap-y-8",
+    positionLeft ? "lg:flex-row-reverse" : ""
   );
 
   return (
     <section className={`${classes} `}>
-      <div className="flex flex-col justify-center">
-        <Icon className="h-6 w-6 p-3 box-content border rounded-[0.625rem]" />
-        <h2 className="text-3xl font-semibold mt-6 max-lg:text-2xl">{title}</h2>
-        <p className="text-lg text-muted-foreground mt-4 max-lg:text-base">
+      <div className="flex flex-col justify-center gap-y-6 sm:gap-y-7 md:gap-y-8">
+        <div className="flex lg:flex-col items-center lg:items-start gap-6 sm:gap-7 md:gap-8">
+          <Icon className="h-6 w-6 p-3 box-content border rounded-[0.625rem]" />
+          <h2 className="text-3xl font-semibold max-lg:text-2xl">{title}</h2>
+        </div>
+        <p className="text-lg text-muted-foreground max-lg:text-base">
           {description}
         </p>
-        <div className="mt-8 grid grid-cols-2 w-fit gap-x-3">
+        <div className="grid grid-cols-2 w-fit gap-x-3">
           <Link
             className={buttonVariants({ variant: "outline", size: "lg" })}
             href={secondaryButtonLink}
@@ -81,7 +83,7 @@ FeatureSection.Item = ({
 
       <div
         className={cn(
-          "lg:min-w-[35rem] h-[25rem] lg:w-[40rem] lg:h-[28rem] md:w-[30rem] md:h-[24rem] max-md:w-[340px] max-md:h-[240px] relative",
+          "relative h-60 sm:h-80 md:h-96 lg:h-[402px] xl:h-[420px] w-80 sm:w-96 md:w-[456px] lg:min-w-[456px] xl:min-w-[35rem]",
           positionLeft ? "xl:mr-24 max-xl:mr-0" : "xl:ml-24 max-xl:ml-0"
         )}
       >

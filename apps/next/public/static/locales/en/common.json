@@ -7,6 +7,10 @@
     "signin_title": "Sign In",
     "signup_title": "Sign Up"
   },
+  "confirm_dialog": {
+    "title": "Are you absolutely sure?",
+    "description": "This action cannot be undone. This will permanently delete your\naccount and remove your data from our servers."
+  },
   "columns": {
     "title": "Title",
     "published": "Public Status",
@@ -218,8 +222,10 @@
   },
   "share": {
     "twitter": "Share on Twitter",
+    "x": "Share on X",
     "linkedin": "Share on Linkedin",
-    "link_copy": "Copy link"
+    "link_copy": "Copy link",
+    "socials": "Share on social media"
   },
   "dic_words": {
     "text": "Native Text",
@@ -258,10 +264,6 @@
       "image_color_title": "Click to upload",
       "image_title": "or drag and drop",
       "image_resolution": "SVG, PNG or JPG (675x480px)"
-    },
-    "confirm-dialog": {
-      "title": "Are you absolutely sure?",
-      "description": "This action cannot be undone. This will permanently delete your\naccount and remove your data from our servers."
     },
     "published": {
       "false_title": "Private",

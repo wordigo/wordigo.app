@@ -25,14 +25,15 @@ export function ConfirmModal({
   loading,
 }: IConfirmModalProps) {
   const { t } = useTranslation();
+
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>{t("confirm-dialog.title")}</AlertDialogTitle>
+          <AlertDialogTitle>{t("confirm_dialog.title")}</AlertDialogTitle>
           <AlertDialogDescription>
-            {t("confirm-dialog.description")}
+            {t("confirm_dialog.description")}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

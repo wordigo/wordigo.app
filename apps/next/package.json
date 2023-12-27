@@ -22,6 +22,7 @@
     "@tanstack/react-table": "8.9.1",
     "@types/nprogress": "^0.2.0",
     "@types/react-table": "^7.7.14",
+    "@uidotdev/usehooks": "^2.4.1",
     "@vercel/og": "^0.5.9",
     "@wordigo/tailwind-config": "*",
     "@wordigo/ui": "*",

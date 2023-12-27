@@ -5,6 +5,7 @@ import Feedback from "./Feedback";
 import Navigation from "./Navigation";
 import DynamicLogo from "@/components/Logo/DynamicLogo";
 import StaticLogo from "@/components/Logo/StaticLogo";
+import { useWindowScroll, useWindowSize } from "@uidotdev/usehooks";
 import { Badge, Button, Separator, buttonVariants } from "@wordigo/ui";
 import { cn } from "@wordigo/ui/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
@@ -12,11 +13,13 @@ import { Menu, X } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
-import { Fragment, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 
 export default function HomeHeader() {
   const { t } = useTranslation();
   const { status } = useSession();
+  const [{ y }] = useWindowScroll();
+  const { width } = useWindowSize();
 
   const [isMenuOpen, setMenuOpen] = useState(false);
 
@@ -24,12 +27,24 @@ export default function HomeHeader() {
     setMenuOpen(!isMenuOpen);
   };
 
+  const isScrolled = useMemo(() => (width <= 642 ? y > 80 : y > 150), [y]);
+
+  const classes = useMemo(
+    () => ({
+      container: cn(
+        "sticky top-0 z-50",
+        isScrolled &&
+          "bg-LightBackground/40 backdrop-blur dark:bg-DarkBackground border-b"
+      ),
+      nav: cn("py-[1.125rem] flex items-center justify-between container"),
+    }),
+    [isScrolled]
+  );
+
   return (
     <>
-      {/* bg-LightBackground/40 backdrop-blur dark:bg-DarkBackground
-    border-b */}
-      <nav className="sticky top-0 z-50 container ">
-        <div className="py-[1.125rem] flex items-center justify-between ">
+      <nav className={classes.container}>
+        <div className={classes.nav}>
           <div className="flex items-center">
             <Link
               href="/"
@@ -95,36 +110,28 @@ export default function HomeHeader() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="col-span-1 flex flex-col fixed justify-between top-0 right-0 z-50 py-4 text-light_text dark:text-white bg-LightBackground dark:bg-DarkBackground g-red-500 px-5 min-w-[280px] max-w-[280px] border-l shadow-md shadow-[rgba(16, 24, 40, 1)] h-screen lg:hidden"
+            className="fixed top-0 right-0 z-50 p-5 w-[280px] h-screen flex flex-col text-light_text dark:text-white bg-LightBackground dark:bg-DarkBackground border-l shadow-md shadow-[rgba(16, 24, 40, 1)] lg:hidden"
           >
-            <span className="flex items-center flex-col w-full mb-8">
-              <div className="font-bold text-[18px] flex items-center select-none pt-3 justify-between w-full">
-                <Link
-                  href="/"
-                  className={cn(
-                    "flex items-center mr-6 max-w-[128px]  min-w-[128px]",
-                    !toggleMenu && "hidden"
-                  )}
-                >
-                  <DynamicLogo className="!w-[128px]" />
-                </Link>
-                <Button
-                  onClick={toggleMenu}
-                  className="text-black dark:text-white !h-9 !w-9"
-                  variant="outline"
-                  size="icon"
-                >
-                  <X size={19} />
-                </Button>
-              </div>
+            <div className="flex items-center justify-between select-none">
+              <Link href="/" className={cn("", !toggleMenu && "hidden")}>
+                <DynamicLogo />
+              </Link>
+              <Button
+                onClick={toggleMenu}
+                className="text-black dark:text-white !h-9 !w-9"
+                variant="outline"
+                size="icon"
+              >
+                <X size={19} />
+              </Button>
+            </div>
 
-              <div className="flex w-full md:flex-col py-4">
-                <Navigation variant="borgerMenu" />
-              </div>
-            </span>
+            <div className="flex w-full md:flex-col py-4">
+              <Navigation variant="borgerMenu" />
+            </div>
 
-            <div className="lg:hidden">
-              <Separator className="mb-2" />
+            <div className="mt-auto lg:hidden">
+              <Separator className="mb-3" />
               <div className="flex gap-x-4 items-center">
                 {status === "loading" ? (
                   <NavProfile.Loader />
@@ -132,7 +139,7 @@ export default function HomeHeader() {
                   <NavProfile variant="borgerMenu" />
                 ) : (
                   <span className="w-full flex flex-col gap-y-3">
-                    <div className="flex gap-x-2 items-center justify-between">
+                    <div className="flex gap-x-3 items-center justify-between">
                       <ThemeMode className="!h-8 !px-2 w-full" />
                       <ChangeLanguage className="!h-8 !px-2 w-full" />
                     </div>
