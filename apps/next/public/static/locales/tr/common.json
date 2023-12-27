@@ -168,7 +168,7 @@
   },
   "contact": {
     "title": "Bizimle İletişime Geçin",
-    "subtitle": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quod consectetur fuga doloremque enim quibusdam.",
+    "subtitle": "Herhangi bir soru veya geri bildirim için bizimle iletişime geçin. Hizmetlerimiz veya Wordigo ile deneyiminiz hakkındaki her türlü sorunuzda yardımcı olmaya hazırız.",
     "mail_title": "E-posta",
     "mail_description": "Sorularınızı, önerilerinizi veya taleplerinizi iletmek için aşağıdaki e-posta adresini kullanabilirsiniz.",
     "mail_link": "noreply@wordigo.com"
@@ -255,16 +255,16 @@
   "feature_mockup": {
     "badge": "Yeni çeviri uzantımızı deneyin!",
     "heading": "Uzantımızı bugün kullanmaya başlayın.",
-    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, reiciendis sunt atque dolore consectetur incidunt!"
+    "description": "Wordigo ile dil öğrenmenin kolaylığını keşfedin. Uzantımız, yeni kelimeleri hızlıca çevirip öğrenmenizi sağlayacak şekilde tarayıcı deneyiminize sorunsuz bir şekilde entegre olur."
   },
   "features": {
     "badge": "Özellikler",
     "heading": "Özelliklerimize göz atın!",
-    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error tempore sed provident optio, nihil nulla?"
+    "description": "Dil öğrenmeyi etkili ve eğlenceli hale getiren Wordigo'nun zengin özelliklerini keşfedin. Anında çevirilerden kişiselleştirilmiş sözlüğe, her şeyi kapsadık."
   },
   "testimonials": {
     "heading": "İnsanlar tarafından sevildi!",
-    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam iste odit, ad quisquam explicabo nulla?"
+    "description": "Wordigo'nun dil öğrenme yolculuklarını nasıl dönüştürdüğü hakkında memnun kullanıcılarımızdan duyun. Wordigo farkını deneyimlemiş gerçek insanlardan gerçek hikayeler."
   },
   "pricing": {
     "heading": "Basit tutmayı seviyoruz",

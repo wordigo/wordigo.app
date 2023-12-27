@@ -170,7 +170,7 @@
   },
   "contact": {
     "title": "Contact us",
-    "subtitle": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quod consectetur fuga doloremque enim quibusdam.",
+    "subtitle": "Get in touch with us for any queries or feedback. We're here to help with any questions about our services or your experience with Wordigo.",
     "mail_title": "Email",
     "mail_description": "You can use the email address below to send us any questions, suggestions, or requests.",
     "mail_link": "noreply@wordigo.com"
@@ -281,16 +281,16 @@
   "feature_mockup": {
     "badge": "Check out our new translate extension!",
     "heading": "Start using our extension, today.",
-    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, reiciendis sunt atque dolore consectetur incidunt!"
+    "description": "Discover the ease of language learning with Wordigo. Our extension seamlessly integrates into your browsing experience, allowing you to quickly translate and learn new words."
   },
   "features": {
     "badge": "Features",
     "heading": "Have a look our features!",
-    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error tempore sed provident optio, nihil nulla?"
+    "description": "Explore the rich features of Wordigo that make language learning effective and fun. From instant translations to personalized dictionary, we've got everything covered."
   },
   "testimonials": {
     "heading": "Loved by people!",
-    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam iste odit, ad quisquam explicabo nulla?"
+    "description": "Hear from our satisfied users about how Wordigo has transformed their language learning journey. Real stories from real people who've experienced the Wordigo difference."
   },
   "pricing": {
     "heading": "We love keeping things simple",
