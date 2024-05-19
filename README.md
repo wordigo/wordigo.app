@@ -2,7 +2,7 @@
 
 ## About
 
-Wordigo is a browser extension project aimed at enhancing users' vocabulary learning experience on the web.
+Wordigo is a comprehensive browser extension project designed to enhance vocabulary learning on the web. It allows users to translate and add words to a personal dictionary directly while browsing.
 
 ## Technologies
 
@@ -16,13 +16,13 @@ Wordigo is a browser extension project aimed at enhancing users' vocabulary lear
 - Node.js
 - Yarn
 
-## Envrioment Variables
+## Environment Variables
 
-Copy `.env.example` to `.env` and fill in the variables.
+Copy `.env.example` to `.env` and fill in the necessary variables to configure the application environment.
 
-## **Folder Structure**
+## Folder Structure
 
-```
+```plaintext
 wordigo/
 ├── apps/
 │   └── next/                          # Main web application built with Next.js.
@@ -46,7 +46,7 @@ wordigo/
 1. Clone the repository:
 
 ```bash
-git clone
+git clone https://github.com/your-repository-url
 ```
 
 2. Install dependencies:
@@ -60,3 +60,20 @@ yarn install
 ```bash
 yarn dev
 ```
+
+## Contributors
+
+Thank you for your contributions! We appreciate all the contributions from the community.
+
+<a href="https://github.com/wordigo/wordigo.app/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=wordigo/wordigo.app" />
+</a>
+
+## Contact
+
+For questions or feedback, please reach out to us at [support@wordigo.app](mailto:support@wordigo.app).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/wordigo/wordigo.app/blob/main/LICENSE) file for details.
+
