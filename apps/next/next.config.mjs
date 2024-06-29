@@ -8,7 +8,13 @@ const config = {
   transpilePackages: ["@wordigo/ui", "@wordigo/api", "@wordigo/db"],
 
   images: {
+    remotePatterns: [
+      {
+        hostname: "res.cloudinary.com",
+      },
+    ],
     domains: [
+      "res.cloudinary.com",
       "api.dicebear.com",
       "flowbite.s3.amazonaws.com",
       "avatars.githubusercontent.com",

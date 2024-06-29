@@ -1,13 +1,14 @@
 import BlogCard from "@/components/Company/Blog/Card/Card";
 import MainLayout from "@/components/Layout/MainLayout";
-import { getAllPosts, type IBlog } from "@/utils/blog";
+import { postivaClient } from "@/libs/postiva";
+import { type APIResponse, type Content } from "@postiva/client";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 import nextI18nextConfig from "~/next-i18next.config";
 
 export interface IBlogs {
-  posts: IBlog[];
+  posts: APIResponse<Content[]>;
 }
 
 const Blogs: React.FC<IBlogs> = ({ posts }) => {
@@ -25,7 +26,7 @@ const Blogs: React.FC<IBlogs> = ({ posts }) => {
       </section>
 
       <section className="gap-6 grid lg:grid-cols-2">
-        {posts.map((blog) => {
+        {posts?.data?.map((blog) => {
           return (
             <Link
               href={`/blogs/${blog.slug}`}
@@ -42,7 +43,7 @@ const Blogs: React.FC<IBlogs> = ({ posts }) => {
 };
 
 export const getStaticProps = async ({ locale }: { locale: string }) => {
-  const posts = getAllPosts(locale);
+  const posts = await postivaClient.contents.getContents();
 
   return {
     props: {

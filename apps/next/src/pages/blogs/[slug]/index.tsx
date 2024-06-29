@@ -1,18 +1,16 @@
 import MainLayout from "@/components/Layout/MainLayout";
-import { POSTS_PATH, getPostBySlug, type IBlog } from "@/utils/blog";
+import { postivaClient } from "@/libs/postiva";
 import {
   Tooltip,
   TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
+  TooltipTrigger
 } from "@wordigo/ui";
-import fs from "fs";
 import { CopyIcon, Linkedin, Share2, XIcon } from "lucide-react";
 import { type GetStaticPaths, type InferGetStaticPropsType } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { MDXRemote } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
 import Image from "next/image";
-import path from "path";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
@@ -87,6 +85,9 @@ export default function BlogDetailPage({
     setPopupVisible(!isPopupVisible);
   };
 
+  console.log("info", source);
+  
+
   return (
     <MainLayout>
       <div className="flex justify-center p-0 pt-0 mt-2 px-0">
@@ -96,12 +97,12 @@ export default function BlogDetailPage({
               <div className="flex w-full gap-2 md:gap-0 items-center justify-between">
                 <h1 className="text-xl md:text-3xl font-bold">{info?.title}</h1>{" "}
                 <div>
-                  {info.tags?.split(",").map((tag) => (
+                  {info.categories?.map((category) => (
                     <p
-                      key={tag}
+                      key={category.id}
                       className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200"
                     >
-                      {tag}
+                      {category.name}
                     </p>
                   ))}
                 </div>
@@ -110,16 +111,16 @@ export default function BlogDetailPage({
               <div className="flex flex-row gap-4 md:gap-0 justify-between items-center">
                 <div className="flex items-center gap-3 pt-2 w-full">
                   <Image
-                    src={info?.avatar}
+                    src={info?.publishedBy?.user?.image}
                     alt="avatar"
                     width={50}
                     height={50}
                     className="rounded-full"
                   />
                   <div>
-                    <div className="text-lg font-normal">{info?.author}</div>
+                    <div className="text-lg font-normal">{info?.publishedBy?.user?.name}</div>
                     <div className=" py-1 w-fit flex items-center px-2 rounded-[0.625rem] text-xs font-medium border justify-center whitespace-nowrap">
-                      {info?.date} · 12 min read
+                    {new Date(info?.publishedAt).toLocaleDateString()} · {info?.readingStatus.minutes} min read
                     </div>
                   </div>
                 </div>
@@ -131,7 +132,7 @@ export default function BlogDetailPage({
                   {isPopupVisible && (
                     <div className="sm:flex gap-2 justify-center bg-transparent w-fit sm:px-2 py-2 absolute right-8 max-sm:space-y-2 max-sm:right-0 max-sm:top-8 max-sm:flex-none">
                       {SocialMediaMenuProps.map((item) => (
-                        <Tooltip>
+                        <Tooltip key={item.tooltip}>
                           <TooltipTrigger>
                             <div
                               onClick={item.onClick}
@@ -165,13 +166,13 @@ export default function BlogDetailPage({
                 </div>
               </div>
 
-              <div className="bg-gray-600 w-full h-52 rounded-lg overflow-hidden relative">
+              {/* <div className="bg-gray-600 w-full h-[400px] rounded-lg overflow-hidden relative">
                 <Image
-                  src={`/images/blogs/${info?.thumbnail}`}
+                  src={info?.thumbnail}
                   fill
                   alt={info?.title}
                 />
-              </div>
+              </div> */}
             </div>
           </div>
           <article className="prose dark:prose-dark min-w-full pt-4 break-words dark:text-white">
@@ -183,19 +184,11 @@ export default function BlogDetailPage({
   );
 }
 
-export const getStaticPaths = (() => {
-  const locales = ["en", "tr"];
-  const paths = [];
+export const getStaticPaths = (async () => {
+  const content = await postivaClient.contents.getContents();
 
-  for (const locale of locales) {
-    const postPaths = fs
-      .readdirSync(path.join(POSTS_PATH, locale))
-      .filter((path) => /\.mdx?$/.test(path))
-      .map((path) => path.replace(/\.mdx?$/, ""))
-      .map((slug) => ({ params: { slug }, locale }));
+  const paths = content?.data?.map((content) => ({ params: { slug: content.slug }, locale: "en" }));
 
-    paths.push(...postPaths);
-  }
 
   return {
     paths,
@@ -204,12 +197,14 @@ export const getStaticPaths = (() => {
 }) satisfies GetStaticPaths;
 
 export const getStaticProps = async ({ locale, params: { slug } }) => {
-  const { mdxSource } = await getPostBySlug(slug, locale);
+  const content = await postivaClient.contents.getContentBySlug(slug);
+
+  const body = await serialize(content.body);
 
   return {
     props: {
-      source: mdxSource,
-      info: mdxSource.scope as unknown as IBlog,
+      source: body,
+      info: content,
       ...(await serverSideTranslations(locale, nextI18nextConfig.ns)),
     },
   };
